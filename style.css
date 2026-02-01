@@ -1,0 +1,80 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    height: 60px;
+}
+
+.header-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-right {
+    display: flex;
+    gap: 10px;
+}
+
+/* Main Layout: 3 Columns */
+.main-container {
+    display: flex;
+    flex: 1; /* Fills remaining height */
+    overflow: hidden; /* Prevents full page scroll, lets panels scroll */
+}
+
+.panel {
+    padding: 1rem;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+/* Column Widths */
+.left-panel {
+    width: 20%;
+    background-color: #f4f4f4;
+}
+
+.center-panel {
+    width: 50%;
+}
+
+.right-panel {
+    width: 30%;
+    background-color: #f9f9f9;
+    border-right: none;
+}
+
+/* Placeholder for grids */
+.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.placeholder-item {
+    background: #ddd;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
