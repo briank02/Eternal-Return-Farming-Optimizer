@@ -1,57 +1,130 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Get the container where we want to put items
-    const epicItemGrid = document.getElementById('epic-item-grid');
+// Global State: Keeps track of selected item names
+const selectedEpics = new Set();
 
-    // 2. Loop through every item in our 'items' database
-    for (const [itemName, itemData] of Object.entries(items)) {
-        
-        // We only want to show "Epic" items in the middle selection panel
-        if (itemData.type === "Epic") {
-            createItemCard(itemName, epicItemGrid);
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize the Main Grid
+    renderMainGrid();
+
+    // 2. Setup Calculate Button
+    const calculateBtn = document.getElementById('calculate-btn');
+    if (calculateBtn) {
+        calculateBtn.addEventListener('click', calculateRoute);
     }
 });
 
-// Helper function to create the HTML for an item
-function createItemCard(name, container) {
+// === UI RENDERING ===
+
+function renderMainGrid() {
+    const grid = document.getElementById('epic-item-grid');
+    if (!grid) return;
+
+    grid.innerHTML = ''; // Clear existing content
+
+    // Loop through data.js items
+    for (const [name, data] of Object.entries(items)) {
+        if (data.type === "Epic") {
+            const card = createItemCard(name);
+            grid.appendChild(card);
+        }
+    }
+}
+
+function createItemCard(name) {
     const card = document.createElement('div');
     card.classList.add('item-card');
-    
-    // 1. Create the Image Element
-    const img = document.createElement('img');
-    // We assume the image is in the 'images' folder and is a PNG
-    img.src = `images/${name}.png`; 
-    img.alt = name; // Accessibility text if image fails to load
-    img.classList.add('item-icon');
+    card.dataset.name = name; // Store name for easy finding later
+    card.title = name;        // Tooltip on hover
 
-    // 2. Fallback: If image is missing, show text
+    // Image Handling
+    const img = document.createElement('img');
+    img.src = `images/${name}.png`; // Assumes .png and exact casing
+    img.alt = name;
+    img.classList.add('item-icon');
+    
+    // Fallback: If image fails to load, show text
     img.onerror = function() {
-        this.style.display = 'none'; // Hide broken image
-        const textFallback = document.createElement('span');
-        textFallback.innerText = name;
-        card.appendChild(textFallback);
-        card.style.justifyContent = 'center'; // Center the text
+        this.style.display = 'none';
+        card.innerText = name;
+        card.style.fontSize = '0.8rem';
+        card.style.textAlign = 'center';
     };
 
-    // 3. Tooltip: Show name when hovering
-    card.title = name;
-
     card.appendChild(img);
-    
-    // 4. Click Listener (Same as before)
+
+    // Click Event
     card.addEventListener('click', () => {
-        toggleItemSelection(card, name);
+        toggleSelection(name);
     });
 
-    container.appendChild(card);
+    return card;
 }
 
-// Simple function to handle clicking
-function toggleItemSelection(cardElement, name) {
-    // Toggle a visual class
-    cardElement.classList.toggle('selected');
-    console.log("Clicked:", name);
+function toggleSelection(name) {
+    // Add or Remove from State
+    if (selectedEpics.has(name)) {
+        selectedEpics.delete(name);
+    } else {
+        selectedEpics.add(name);
+    }
+
+    // Update UI
+    updateMainGridVisuals();
+    updateSelectedPanel();
 }
+
+function updateMainGridVisuals() {
+    const cards = document.querySelectorAll('#epic-item-grid .item-card');
+    cards.forEach(card => {
+        const name = card.dataset.name;
+        if (selectedEpics.has(name)) {
+            card.classList.add('selected');
+        } else {
+            card.classList.remove('selected');
+        }
+    });
+}
+
+function updateSelectedPanel() {
+    const container = document.getElementById('selected-item-grid');
+    if (!container) return;
+
+    container.innerHTML = ''; // Clear current
+
+    if (selectedEpics.size === 0) {
+        container.innerHTML = '<p class="empty-msg">Click items below to add them to your build.</p>';
+        return;
+    }
+
+    selectedEpics.forEach(name => {
+        // Create small card for top panel
+        const div = document.createElement('div');
+        div.classList.add('item-card');
+        div.title = "Click to remove";
+        
+        const img = document.createElement('img');
+        img.src = `images/${name}.png`;
+        img.classList.add('item-icon');
+        
+        // Handle broken images in top panel too
+        img.onerror = function() {
+            this.style.display = 'none';
+            div.innerText = name;
+            div.style.fontSize = '0.7rem';
+            div.style.textAlign = 'center';
+        };
+
+        div.appendChild(img);
+
+        // Click to REMOVE
+        div.addEventListener('click', () => {
+            toggleSelection(name);
+        });
+
+        container.appendChild(div);
+    });
+}
+
+// === ALGORITHM LOGIC ===
 
 async function calculateRoute() {
     const resultOutput = document.getElementById('result-output');
@@ -65,7 +138,6 @@ async function calculateRoute() {
         }
     });
     
-    // If nothing needed, stop
     if (requiredMaterials.size === 0) {
         resultOutput.innerHTML = "No materials needed (or no item selected).";
         return;
@@ -85,10 +157,11 @@ async function calculateRoute() {
         });
     });
 
-    // === THE SMART TIER SYSTEM ===
+    // 3. The Priority Tier System
+    let results = [];
     
     // Priority 1: 2 Zones, 0 Drone
-    let results = findRoutes(2, 0, allZones, zoneContents, requiredList);
+    results = findRoutes(2, 0, allZones, zoneContents, requiredList);
     
     // Priority 2: 2 Zones, 1 Drone
     if (results.length === 0) results = findRoutes(2, 1, allZones, zoneContents, requiredList);
@@ -99,43 +172,35 @@ async function calculateRoute() {
     // Priority 4: 3 Zones, 1 Drone
     if (results.length === 0) results = findRoutes(3, 1, allZones, zoneContents, requiredList);
 
-
-    // 3. Display Results
+    // 4. Display Results
     if (results.length === 0) {
-        resultOutput.innerHTML = "No valid route found within limits (Max 3 zones, 1 drone).";
+        resultOutput.innerHTML = "<p>No valid route found (Max 3 zones, 1 drone).</p>";
     } else {
-        // We sort results by distance (travel time) before showing
         const sortedResults = sortRoutesByDistance(results);
         displayResults(sortedResults, resultOutput);
     }
 }
 
-// === CORE LOGIC ===
-
-/**
- * Finds valid routes for a specific constraints (e.g., "Size 2, Max 1 Drone")
- */
 function findRoutes(routeSize, maxDrones, allZones, zoneContents, requiredList) {
     const validRoutes = [];
     const combinations = getCombinations(allZones, routeSize);
 
     for (const zones of combinations) {
-        // 1. Gather everything found in these zones
+        // Gather everything found in these zones
         const foundItems = new Set();
         zones.forEach(zone => {
             zoneContents[zone].forEach(item => foundItems.add(item));
         });
 
-        // 2. Identify what is missing
+        // Identify what is missing
         const missingItems = requiredList.filter(item => !foundItems.has(item));
 
-        // 3. Check if missing items can be droned
+        // Check Drone Logic
         if (missingItems.length <= maxDrones) {
-            // Success! We found a valid group.
             validRoutes.push({
                 zones: zones,
-                dronedItems: missingItems, // These are the items we buy
-                foundItems: Array.from(foundItems) // For display
+                dronedItems: missingItems,
+                foundItems: Array.from(foundItems)
             });
         }
     }
@@ -145,7 +210,6 @@ function findRoutes(routeSize, maxDrones, allZones, zoneContents, requiredList) 
 // === DISTANCE & PATHING ===
 
 function sortRoutesByDistance(routes) {
-    // For each valid group of zones, we need to find the shortest permutation
     routes.forEach(route => {
         const permutations = getPermutations(route.zones);
         let bestDistance = Infinity;
@@ -163,30 +227,19 @@ function sortRoutesByDistance(routes) {
         route.totalDistance = bestDistance;
     });
 
-    // Sort by total distance (lowest first)
     return routes.sort((a, b) => a.totalDistance - b.totalDistance);
 }
 
-// Calculates distance: A -> B -> C
 function calculatePathDistance(path) {
     let distance = 0;
     for (let i = 0; i < path.length - 1; i++) {
         const current = path[i];
         const next = path[i+1];
         
-        // Distance Logic:
-        // 1. Neighbors = 1
-        // 2. Teleporter (Hyperloop) = 1
-        // 3. Otherwise = Distance is technically "infinity" (invalid direct move), 
-        //    but in ER, you usually walk through zones. For now, let's treat non-neighbors 
-        //    as "high cost" or implement a BFS distance finder if you want exact walking.
-        
         if (isConnected(current, next)) {
             distance += 1;
         } else {
-            // If not connected, you have to walk through other zones. 
-            // Simplified: Add penalty.
-            distance += 3; 
+            distance += 3; // Penalty for non-connected zones
         }
     }
     return distance;
@@ -194,15 +247,15 @@ function calculatePathDistance(path) {
 
 function isConnected(zoneA, zoneB) {
     const data = mapData[zoneA];
-    // Connected if Neighbor OR if zoneA has a Hyperloop
+    if (!data) return false;
+    // Connected if Neighbor OR if current zone has Hyperloop
     if (data.neighbors.includes(zoneB)) return true;
     if (data.hasHyperloop) return true;
     return false;
 }
 
-// === UTILS ===
+// === MATH UTILS ===
 
-// Helper to get Combinations (Order doesn't matter: [A,B] is same as [B,A])
 function getCombinations(arr, size) {
     if (size === 1) return arr.map(i => [i]);
     const res = [];
@@ -221,7 +274,6 @@ function getCombinations(arr, size) {
     return res;
 }
 
-// Helper to get Permutations (Order matters: A->B is different from B->A)
 function getPermutations(arr) {
     if (arr.length === 0) return [[]];
     const firstEl = arr[0];
@@ -238,20 +290,19 @@ function getPermutations(arr) {
     return allPermutations;
 }
 
-// Pretty Print Results
+// === DISPLAY RESULTS ===
+
 function displayResults(routes, container) {
-    let html = `<h3>Top Routes Found:</h3>`;
+    let html = `<h3>Top Routes:</h3>`;
     
-    // Show top 5 routes
     routes.slice(0, 5).forEach((r, index) => {
         const droneText = r.dronedItems.length > 0 
-            ? `<span style="color: red;">(Drone: ${r.dronedItems.join(', ')})</span>` 
-            : `<span style="color: green;">(No Drone)</span>`;
+            ? `<br><span style="color: #e74c3c;">Drone Order: ${r.dronedItems.join(', ')}</span>` 
+            : `<br><span style="color: #2ecc71;">No Drone Needed</span>`;
             
         html += `
-        <div style="border:1px solid #ccc; margin: 10px 0; padding: 10px;">
-            <strong>#${index + 1}: ${r.bestPath.join(" ➔ ")}</strong> <br>
-            Distance Score: ${r.totalDistance} <br>
+        <div style="background: #fff; border:1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 5px;">
+            <strong style="font-size: 1.1rem;">#${index + 1}: ${r.bestPath.join(" ➔ ")}</strong> 
             ${droneText}
         </div>`;
     });
