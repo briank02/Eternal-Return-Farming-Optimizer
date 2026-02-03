@@ -129,6 +129,8 @@ function updateSelectedPanel() {
 async function calculateRoute() {
     const resultOutput = document.getElementById('result-output');
     resultOutput.innerHTML = "Calculating...";
+    console.clear();
+    console.log("=== STARTING CALCULATION ===");
 
     // 1. Identify Required Materials
     const requiredMaterials = new Set();
@@ -139,38 +141,57 @@ async function calculateRoute() {
     });
     
     if (requiredMaterials.size === 0) {
-        resultOutput.innerHTML = "No materials needed (or no item selected).";
+        resultOutput.innerHTML = "No materials needed.";
         return;
     }
 
     const requiredList = Array.from(requiredMaterials);
+    console.log("Required Items:", requiredList);
+
     const allZones = Object.keys(mapData);
 
-    // 2. Pre-calculate: What items are in each zone?
+    // 2. Pre-calculate Zone Contents
     const zoneContents = {}; 
     allZones.forEach(zone => {
         zoneContents[zone] = new Set();
         requiredList.forEach(mat => {
+            // Safety Check: Does the item exist in our database?
+            if (!items[mat]) {
+                console.error(`CRITICAL ERROR: Item "${mat}" is required but not found in items list!`);
+                return;
+            }
+            if (!items[mat].locations) {
+                console.warn(`Warning: Item "${mat}" has no locations defined.`);
+                return;
+            }
+
+            // Check if item is in this zone
             if (items[mat].locations.includes(zone)) {
                 zoneContents[zone].add(mat);
             }
         });
     });
 
-    // 3. The Priority Tier System
+    // 3. Priority Tier System
     let results = [];
     
-    // Priority 1: 2 Zones, 0 Drone
+    console.log("--- Checking Priority 1: 2 Zones, 0 Drone ---");
     results = findRoutes(2, 0, allZones, zoneContents, requiredList);
     
-    // Priority 2: 2 Zones, 1 Drone
-    if (results.length === 0) results = findRoutes(2, 1, allZones, zoneContents, requiredList);
+    if (results.length === 0) {
+        console.log("--- Checking Priority 2: 2 Zones, 1 Drone ---");
+        results = findRoutes(2, 1, allZones, zoneContents, requiredList);
+    }
     
-    // Priority 3: 3 Zones, 0 Drone
-    if (results.length === 0) results = findRoutes(3, 0, allZones, zoneContents, requiredList);
+    if (results.length === 0) {
+        console.log("--- Checking Priority 3: 3 Zones, 0 Drone ---");
+        results = findRoutes(3, 0, allZones, zoneContents, requiredList);
+    }
 
-    // Priority 4: 3 Zones, 1 Drone
-    if (results.length === 0) results = findRoutes(3, 1, allZones, zoneContents, requiredList);
+    if (results.length === 0) {
+        console.log("--- Checking Priority 4: 3 Zones, 1 Drone ---");
+        results = findRoutes(3, 1, allZones, zoneContents, requiredList);
+    }
 
     // 4. Display Results
     if (results.length === 0) {
@@ -185,23 +206,31 @@ function findRoutes(routeSize, maxDrones, allZones, zoneContents, requiredList) 
     const validRoutes = [];
     const combinations = getCombinations(allZones, routeSize);
 
+    // DEBUG: Limit log spam. Only log the first few failures.
+    let debugCount = 0; 
+
     for (const zones of combinations) {
-        // Gather everything found in these zones
+        // Gather found items
         const foundItems = new Set();
         zones.forEach(zone => {
             zoneContents[zone].forEach(item => foundItems.add(item));
         });
 
-        // Identify what is missing
+        // Identify missing
         const missingItems = requiredList.filter(item => !foundItems.has(item));
 
-        // Check Drone Logic
         if (missingItems.length <= maxDrones) {
             validRoutes.push({
                 zones: zones,
                 dronedItems: missingItems,
                 foundItems: Array.from(foundItems)
             });
+        } else {
+            // DEBUG LOGGING: Why did this combination fail?
+            if (routeSize === 2 && maxDrones === 1 && debugCount < 5) {
+                console.log(`Rejected [${zones.join("+")}]: Missing ${missingItems.length} items: ${missingItems.join(", ")}`);
+                debugCount++;
+            }
         }
     }
     return validRoutes;

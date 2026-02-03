@@ -718,7 +718,7 @@ const items = {
         part: "Weapon",
         components: ["Glass Bead", "Oil", "Pickaxe", "Cross"],
     },
-    "The Heirophant": { 
+    "The Hierophant": { 
         type: "Epic", 
         part: "Weapon",
         components: ["Glass Bead", "Ice", "Nail", "Paper"],
