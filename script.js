@@ -3,6 +3,16 @@
 // ==========================================
 const selectedEpics = new Set();
 
+// Hardcoded list of items that are considered "Base Weapons"
+// These are the items characters spawn with.
+const BASE_WEAPONS = new Set([
+    "Cotton Gloves", "Bamboo", "Short Rod", "Hammer", "Whip", 
+    "Baseball", "Razor", "Bow", "Short Crossbow", "Walther PPK", 
+    "Fedorova", "Long Rifle", "Hatchet", "Kitchen Knife", 
+    "Rusty Sword", "Twin Blades", "Short Spear", "Steel Chain", 
+    "Needle", "Starter Guitar", "Lens", "Glass Bead"
+]);
+
 document.addEventListener('DOMContentLoaded', () => {
     renderMainGrid();
     const calculateBtn = document.getElementById('calculate-btn');
@@ -106,7 +116,7 @@ function updateSelectedPanel() {
 }
 
 // ==========================================
-// ALGORITHM LOGIC (TIER + STARTING ITEMS)
+// ALGORITHM LOGIC
 // ==========================================
 
 async function calculateRoute() {
@@ -114,35 +124,36 @@ async function calculateRoute() {
     resultOutput.innerHTML = "Calculating...";
     
     // --- STEP 1: CALCULATE REQUIRED MATERIALS ---
-    // Rule: Remove Starter Items (Shirt, Running Shoes, and Base Weapon)
-    
-    const requiredMaterials = new Set();
+    // Start with universally free items
     const starterItems = new Set(["Shirt", "Running Shoes"]);
     
-    // Find the Base Weapon from the selected Epics
-    // Heuristic: The first component of the Epic Weapon is usually the Base Common Weapon
+    // Scan selected Epics to find the "Base Weapon"
     selectedEpics.forEach(epicName => {
         const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components && epicData.components.length > 0) {
-            starterItems.add(epicData.components[0]);
+        if (epicData && epicData.part === "Weapon" && epicData.components) {
+            // Check which component is in our valid BASE_WEAPONS list
+            epicData.components.forEach(comp => {
+                if (BASE_WEAPONS.has(comp)) {
+                    starterItems.add(comp);
+                }
+            });
         }
     });
 
-    console.log("Starter Items Removed:", Array.from(starterItems));
+    console.log("Free Starter Items:", Array.from(starterItems));
 
+    const requiredMaterials = new Set();
+    
+    // Build required list, respecting the "One Free Copy" rule
     selectedEpics.forEach(epicName => {
         if (items[epicName] && items[epicName].components) {
             items[epicName].components.forEach(mat => {
-                // Only add if it's NOT a starter item
-                // Note: This logic assumes you only need 1 of each starter item. 
-                // In 99% of ER builds, you upgrade your starter, you don't build a 2nd Shirt/Weapon.
-                if (!starterItems.has(mat)) {
-                    requiredMaterials.add(mat);
+                if (starterItems.has(mat)) {
+                    // We have a free copy! Consume it so it can't be used twice.
+                    starterItems.delete(mat);
                 } else {
-                    // Start items are "consumed" once. If a build weirdly needed 2 Shirts, 
-                    // this logic might be too aggressive, but for standard play, this is correct.
-                    // To be safe, we remove it from the starter set so if it appears AGAIN, it gets added.
-                    starterItems.delete(mat); 
+                    // We need to find this on the map
+                    requiredMaterials.add(mat);
                 }
             });
         }
@@ -153,17 +164,13 @@ async function calculateRoute() {
         return;
     }
 
-    // --- STEP 2: BITMASK PREP ---
+    // --- STEP 2: BITMASK SETUP ---
     const materialList = Array.from(requiredMaterials);
-    const materialMap = {}; 
-    materialList.forEach((mat, idx) => {
-        materialMap[mat] = idx;
-    });
-
     const TOTAL_ITEMS = materialList.length;
+    // Use BigInt for bitmask to support >32 items
     const FULL_MASK = (1n << BigInt(TOTAL_ITEMS)) - 1n; 
 
-    // --- STEP 3: ZONE DATA ---
+    // --- STEP 3: ZONE PROCESSING ---
     const allZones = Object.keys(mapData);
     const validZones = [];
 
@@ -187,6 +194,7 @@ async function calculateRoute() {
         }
     });
 
+    // Sort rich zones first for speed
     validZones.sort((a, b) => b.itemCount - a.itemCount);
 
     // --- STEP 4: SUFFIX UNIONS (PRUNING) ---
@@ -205,10 +213,9 @@ async function calculateRoute() {
         const missingMask = FULL_MASK ^ currentMask;
         const missingCount = countSetBits(missingMask);
         
-        // Check Tiers
+        // Check Validity & Tier
         const tier = getRouteTier(currentPath.length, missingCount);
         
-        // If valid tier, save it
         if (tier > 0) {
             foundRoutes.push({
                 zones: [...currentPath],
@@ -216,26 +223,24 @@ async function calculateRoute() {
                 tier: tier
             });
             // Optimization: If we found a Tier 1 (1 Zone) or Tier 2 (2 Zone Perfect), 
-            // deeper recursion usually isn't better.
+            // deeper recursion is unnecessary for this path.
             if (tier === 1 || tier === 2) return;
         }
 
-        // Stop if max depth reached
         if (currentPath.length >= MAX_ZONES) return;
 
-        // Pruning: Look ahead
+        // Pruning
         if (index < validZones.length) {
             const potentialTotal = currentMask | suffixUnions[index];
             const potentialMissing = countSetBits(FULL_MASK ^ potentialTotal);
             
-            // Allow up to 2 drones if we are currently at 0 zones (building a 1-zone route)
-            // Allow 1 drone otherwise
+            // Allow up to 2 drones if currently at 0 zones (for 1-zone builds)
+            // Otherwise strictly 1 drone max
             const allowedDrones = (currentPath.length === 0) ? 2 : 1;
             
             if (potentialMissing > allowedDrones) return; 
         }
 
-        // Branching
         for (let i = index; i < validZones.length; i++) {
             const nextZone = validZones[i];
             if ((currentMask | nextZone.mask) === currentMask) continue;
@@ -259,8 +264,8 @@ async function calculateRoute() {
             }
         }
 
-        // Calculate Best Path
-        // For 1 Zone, distance is 0 (Spawn there)
+        // Distance Calculation
+        // If 1 zone, distance is 0. Else optimize path.
         const { bestPath, dist } = (route.zones.length > 1) 
             ? getBestPermutation(route.zones) 
             : { bestPath: route.zones, dist: 0 };
@@ -273,7 +278,6 @@ async function calculateRoute() {
         };
     });
 
-    // Sort by Tier first, then Distance
     processedRoutes.sort((a, b) => {
         if (a.tier !== b.tier) return a.tier - b.tier;
         return a.distance - b.distance;
@@ -286,9 +290,8 @@ async function calculateRoute() {
 // HELPER LOGIC
 // ==========================================
 
-// NEW TIER LOGIC
 function getRouteTier(zoneCount, droneCount) {
-    // Tier 1: 1 Zone, 0-2 Drones (Best because fastest start)
+    // Tier 1: 1 Zone, 0-2 Drones (God Tier)
     if (zoneCount === 1 && droneCount <= 2) return 1;
     
     // Tier 2: 2 Zones, 0 Drones
@@ -328,11 +331,11 @@ function calculatePathDistance(path) {
         const next = path[i+1];
         
         if (mapData[current].hasHyperloop) {
-            distance += 1; // Teleport
+            distance += 1; 
         } else if (mapData[current].neighbors.includes(next)) {
-            distance += 1; // Walk
+            distance += 1; 
         } else {
-            distance += 2; // Walk to Loop + Teleport
+            distance += 2; 
         }
     }
     return distance;
@@ -368,7 +371,6 @@ function getPermutations(arr) {
 // ==========================================
 
 function displayResults(routes, container) {
-    // Only show top 5
     const topRoutes = routes.slice(0, 5);
     
     let html = `<h3>Top Efficient Routes:</h3>`;
@@ -376,18 +378,17 @@ function displayResults(routes, container) {
     topRoutes.forEach((r, index) => {
         let tierLabel = "";
         
-        // Badges
-        if(r.tier === 1) tierLabel = `<span style="background:#8e44ad; color:white; padding:2px 6px; border-radius:4px; font-size:0.7em; margin-right:5px;">1 ZONE (GOD TIER)</span>`;
-        if(r.tier === 2) tierLabel = `<span style="background:#27ae60; color:white; padding:2px 6px; border-radius:4px; font-size:0.7em; margin-right:5px;">2Z / 0D</span>`;
-        if(r.tier === 3) tierLabel = `<span style="background:#f39c12; color:white; padding:2px 6px; border-radius:4px; font-size:0.7em; margin-right:5px;">2Z / 1D</span>`;
-        if(r.tier === 4) tierLabel = `<span style="background:#2980b9; color:white; padding:2px 6px; border-radius:4px; font-size:0.7em; margin-right:5px;">3Z / 0D</span>`;
-        if(r.tier === 5) tierLabel = `<span style="background:#c0392b; color:white; padding:2px 6px; border-radius:4px; font-size:0.7em; margin-right:5px;">3Z / 1D</span>`;
+        if(r.tier === 1) tierLabel = `<span style="background:#8e44ad; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px; font-weight:bold;">1 ZONE</span>`;
+        if(r.tier === 2) tierLabel = `<span style="background:#27ae60; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 0D</span>`;
+        if(r.tier === 3) tierLabel = `<span style="background:#f39c12; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 1D</span>`;
+        if(r.tier === 4) tierLabel = `<span style="background:#2980b9; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 0D</span>`;
+        if(r.tier === 5) tierLabel = `<span style="background:#c0392b; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 1D</span>`;
 
         let droneHtml = "";
         if (r.drones.length > 0) {
-            droneHtml = `<div style="font-size:0.85em; color:#e74c3c; margin-top:4px;">Need Drone: <strong>${r.drones.join(', ')}</strong></div>`;
+            droneHtml = `<div style="font-size:0.85em; color:#e74c3c; margin-top:4px; padding-left: 5px;">Need Drone: <strong>${r.drones.join(', ')}</strong></div>`;
         } else {
-            droneHtml = `<div style="font-size:0.85em; color:#27ae60; margin-top:4px;">No Drone Needed</div>`;
+            droneHtml = `<div style="font-size:0.85em; color:#27ae60; margin-top:4px; padding-left: 5px;">No Drone Needed</div>`;
         }
 
         html += `
@@ -397,7 +398,7 @@ function displayResults(routes, container) {
                     ${tierLabel} 
                     <strong>${r.path.join(" ➔ ")}</strong>
                 </div>
-                <div style="font-weight:bold; color:#777;">Dist: ${r.distance}</div>
+                <div style="font-weight:bold; color:#777; font-size:0.9em;">Dist: ${r.distance}</div>
             </div>
             ${droneHtml}
         </div>`;
@@ -407,10 +408,10 @@ function displayResults(routes, container) {
 }
 
 function getColorForTier(tier) {
-    if (tier === 1) return "#8e44ad"; // Purple for God Tier
-    if (tier === 2) return "#27ae60"; // Green
-    if (tier === 3) return "#f39c12"; // Orange
-    if (tier === 4) return "#2980b9"; // Blue
-    if (tier === 5) return "#c0392b"; // Red
+    if (tier === 1) return "#8e44ad"; 
+    if (tier === 2) return "#27ae60"; 
+    if (tier === 3) return "#f39c12"; 
+    if (tier === 4) return "#2980b9"; 
+    if (tier === 5) return "#c0392b"; 
     return "#ccc";
 }
