@@ -921,7 +921,7 @@ const items = {
     "Vital Sign Sensor": { 
         type: "Epic", 
         part: "Arm",
-        components: ["Watch", "Chemicals", "Battery", "Piano WIre"],
+        components: ["Watch", "Chemicals", "Battery", "Piano Wire"],
     },
     "Creed of the Knight": { 
         type: "Epic", 
@@ -1020,7 +1020,7 @@ const items = {
         part: "Leg",
         components: ["Running Shoes", "Iron Ball", "Fountain Pen", "Paper"],
     },
-    "StraitJacket Sneakers": { 
+    "Straitjacket Sneakers": { 
         type: "Epic", 
         part: "Leg",
         components: ["Running Shoes", "Scissors", "Paper", "Lighter"],
