@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Farming Route Optimizer</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <header>
         <div class="header-left">
-            </div>
-        
+        </div>
+
         <div class="header-center">
             <h1>Eternal Return Farming Route Optimizer</h1>
         </div>
@@ -26,16 +28,42 @@
     </header>
 
     <main class="main-container">
-        
+
         <section class="panel left-panel">
             <h2>Filters</h2>
+
+            <div class="filter-row">
+                <div class="filter-btn active" data-filter="All" title="Show All">
+                    <img src="images/icon_all.png" alt="All" onerror="this.src=''; this.parentElement.innerText='ALL'">
+                </div>
+                <div class="filter-btn" data-filter="Weapon" title="Weapon">
+                    <img src="images/icon_weapon.png" alt="Weapon"
+                        onerror="this.src=''; this.parentElement.innerText='WPN'">
+                </div>
+                <div class="filter-btn" data-filter="Chest" title="Chest">
+                    <img src="images/icon_chest.png" alt="Chest"
+                        onerror="this.src=''; this.parentElement.innerText='CST'">
+                </div>
+                <div class="filter-btn" data-filter="Head" title="Head">
+                    <img src="images/icon_head.png" alt="Head" onerror="this.src=''; this.parentElement.innerText='HD'">
+                </div>
+                <div class="filter-btn" data-filter="Arm" title="Arm">
+                    <img src="images/icon_arm.png" alt="Arm" onerror="this.src=''; this.parentElement.innerText='ARM'">
+                </div>
+                <div class="filter-btn" data-filter="Leg" title="Leg">
+                    <img src="images/icon_leg.png" alt="Leg" onerror="this.src=''; this.parentElement.innerText='LEG'">
+                </div>
+            </div>
+
             <div id="filter-options">
-                <p>Weapon Type, Armor Type, etc.</p>
+                <p style="margin-top:15px; font-size:0.8rem; color:#666;">
+                    Select a category above to filter the item list.
+                </p>
             </div>
         </section>
 
         <section class="panel center-panel">
-    
+
             <div class="selection-header">
                 <h2>Your Build</h2>
                 <div id="selected-item-grid" class="grid-view small-grid">
@@ -43,7 +71,8 @@
                 </div>
             </div>
 
-            <hr> <h2>Select Epic Items</h2>
+            <hr>
+            <h2>Select Epic Items</h2>
             <div id="epic-item-grid" class="grid-view"></div>
         </section>
 
@@ -60,4 +89,5 @@
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
