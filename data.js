@@ -691,7 +691,7 @@ const items = {
         part: "Weapon",
         components: ["Starter Guitar", "Battery", "Oil", "Lighter"],
     },
-    // Mirrorless
+    // Camera
     "Mirrorless": { 
         type: "Epic", 
         part: "Weapon",
@@ -912,6 +912,11 @@ const items = {
         type: "Epic", 
         part: "Arm",
         components: ["Bandage", "Leather", "Scrap Metal", "Nail"],
+    },
+    "Draupnir": { 
+        type: "Epic", 
+        part: "Arm",
+        components: ["Bracelet", "Pickaxe", "Gemstone", "Bandage"],
     },
     "Vital Sign Sensor": { 
         type: "Epic", 

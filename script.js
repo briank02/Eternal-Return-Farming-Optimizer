@@ -14,20 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Helper function to create the HTML for an item
 function createItemCard(name, container) {
-    // Create a div
     const card = document.createElement('div');
     card.classList.add('item-card');
     
-    // For now, just show the name. 
-    // Later, we can add an <img> tag here.
-    card.innerText = name;
+    // 1. Create the Image Element
+    const img = document.createElement('img');
+    // We assume the image is in the 'images' folder and is a PNG
+    img.src = `images/${name}.png`; 
+    img.alt = name; // Accessibility text if image fails to load
+    img.classList.add('item-icon');
+
+    // 2. Fallback: If image is missing, show text
+    img.onerror = function() {
+        this.style.display = 'none'; // Hide broken image
+        const textFallback = document.createElement('span');
+        textFallback.innerText = name;
+        card.appendChild(textFallback);
+        card.style.justifyContent = 'center'; // Center the text
+    };
+
+    // 3. Tooltip: Show name when hovering
+    card.title = name;
+
+    card.appendChild(img);
     
-    // Add a click listener (so we can select it later)
+    // 4. Click Listener (Same as before)
     card.addEventListener('click', () => {
         toggleItemSelection(card, name);
     });
 
-    // Put it on the screen
     container.appendChild(card);
 }
 
