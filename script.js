@@ -3,8 +3,8 @@
 // ==========================================
 const selectedEpics = new Set();
 
-// Hardcoded list of items that are considered "Base Weapons"
-// These are the items characters spawn with.
+// 1. HARDCODED BASE WEAPONS LIST
+// These are the Common weapons characters spawn with.
 const BASE_WEAPONS = new Set([
     "Cotton Gloves", "Bamboo", "Short Rod", "Hammer", "Whip", 
     "Baseball", "Razor", "Bow", "Short Crossbow", "Walther PPK", 
@@ -52,8 +52,12 @@ function createItemCard(name) {
     img.onerror = function() {
         this.style.display = 'none';
         card.innerText = name;
-        card.style.fontSize = '0.8rem';
+        card.style.fontSize = '0.75rem';
         card.style.textAlign = 'center';
+        card.style.display = 'flex';
+        card.style.alignItems = 'center';
+        card.style.justifyContent = 'center';
+        card.style.color = '#ccc';
     };
 
     card.appendChild(img);
@@ -107,6 +111,9 @@ function updateSelectedPanel() {
             div.innerText = name;
             div.style.fontSize = '0.7rem';
             div.style.textAlign = 'center';
+            div.style.display = 'flex';
+            div.style.alignItems = 'center';
+            div.style.justifyContent = 'center';
         };
 
         div.appendChild(img);
@@ -116,49 +123,63 @@ function updateSelectedPanel() {
 }
 
 // ==========================================
-// ALGORITHM LOGIC
+// ALGORITHM LOGIC (Robust Count Method)
 // ==========================================
 
 async function calculateRoute() {
     const resultOutput = document.getElementById('result-output');
     resultOutput.innerHTML = "Calculating...";
     
-    // --- STEP 1: CALCULATE REQUIRED MATERIALS ---
-    // Start with universally free items
-    const starterItems = new Set(["Shirt", "Running Shoes"]);
+    // --- STEP 1: CALCULATE NEEDS VS OWNED ---
     
-    // Scan selected Epics to find the "Base Weapon"
-    selectedEpics.forEach(epicName => {
-        const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components) {
-            // Check which component is in our valid BASE_WEAPONS list
-            epicData.components.forEach(comp => {
-                if (BASE_WEAPONS.has(comp)) {
-                    starterItems.add(comp);
-                }
-            });
-        }
-    });
-
-    console.log("Free Starter Items:", Array.from(starterItems));
-
-    const requiredMaterials = new Set();
+    // A. Map of "Item Name" -> "Count Needed"
+    const neededCounts = {};
     
-    // Build required list, respecting the "One Free Copy" rule
     selectedEpics.forEach(epicName => {
         if (items[epicName] && items[epicName].components) {
             items[epicName].components.forEach(mat => {
-                if (starterItems.has(mat)) {
-                    // We have a free copy! Consume it so it can't be used twice.
-                    starterItems.delete(mat);
-                } else {
-                    // We need to find this on the map
-                    requiredMaterials.add(mat);
+                neededCounts[mat] = (neededCounts[mat] || 0) + 1;
+            });
+        }
+    });
+
+    // B. Map of "Item Name" -> "Count Owned" (Freebies)
+    const ownedCounts = {
+        "Shirt": 1,         // Always start with 1 Shirt
+        "Running Shoes": 1  // Always start with 1 Shoes
+    };
+
+    // Find the Base Weapon from the build and add it to owned
+    selectedEpics.forEach(epicName => {
+        const epicData = items[epicName];
+        if (epicData && epicData.part === "Weapon" && epicData.components) {
+            epicData.components.forEach(comp => {
+                // If a component is a valid base weapon, we own it
+                if (BASE_WEAPONS.has(comp)) {
+                    ownedCounts[comp] = 1;
                 }
             });
         }
     });
+
+    // C. Calculate Final Requirements
+    const requiredMaterials = new Set();
     
+    for (const [item, count] of Object.entries(neededCounts)) {
+        const owned = ownedCounts[item] || 0;
+        const remaining = count - owned;
+        
+        if (remaining > 0) {
+            // If we still need it after subtracting owned, add it to required list
+            requiredMaterials.add(item);
+        }
+    }
+    
+    // Debugging: Check console to see exactly what is being asked for
+    console.log("Needed:", neededCounts);
+    console.log("Owned:", ownedCounts);
+    console.log("Final Required:", Array.from(requiredMaterials));
+
     if (requiredMaterials.size === 0) {
         resultOutput.innerHTML = "No materials needed (All covered by starter items).";
         return;
@@ -167,7 +188,6 @@ async function calculateRoute() {
     // --- STEP 2: BITMASK SETUP ---
     const materialList = Array.from(requiredMaterials);
     const TOTAL_ITEMS = materialList.length;
-    // Use BigInt for bitmask to support >32 items
     const FULL_MASK = (1n << BigInt(TOTAL_ITEMS)) - 1n; 
 
     // --- STEP 3: ZONE PROCESSING ---
@@ -194,10 +214,9 @@ async function calculateRoute() {
         }
     });
 
-    // Sort rich zones first for speed
     validZones.sort((a, b) => b.itemCount - a.itemCount);
 
-    // --- STEP 4: SUFFIX UNIONS (PRUNING) ---
+    // --- STEP 4: SUFFIX UNIONS ---
     const suffixUnions = new Array(validZones.length).fill(0n);
     let currentSuffix = 0n;
     for (let i = validZones.length - 1; i >= 0; i--) {
@@ -213,7 +232,7 @@ async function calculateRoute() {
         const missingMask = FULL_MASK ^ currentMask;
         const missingCount = countSetBits(missingMask);
         
-        // Check Validity & Tier
+        // Tier Logic
         const tier = getRouteTier(currentPath.length, missingCount);
         
         if (tier > 0) {
@@ -222,8 +241,7 @@ async function calculateRoute() {
                 missingMask: missingMask,
                 tier: tier
             });
-            // Optimization: If we found a Tier 1 (1 Zone) or Tier 2 (2 Zone Perfect), 
-            // deeper recursion is unnecessary for this path.
+            // Stop early if we found a great route
             if (tier === 1 || tier === 2) return;
         }
 
@@ -233,11 +251,8 @@ async function calculateRoute() {
         if (index < validZones.length) {
             const potentialTotal = currentMask | suffixUnions[index];
             const potentialMissing = countSetBits(FULL_MASK ^ potentialTotal);
-            
-            // Allow up to 2 drones if currently at 0 zones (for 1-zone builds)
-            // Otherwise strictly 1 drone max
+            // Allow 2 drones for 1-zone starts, else 1 drone max
             const allowedDrones = (currentPath.length === 0) ? 2 : 1;
-            
             if (potentialMissing > allowedDrones) return; 
         }
 
@@ -264,8 +279,6 @@ async function calculateRoute() {
             }
         }
 
-        // Distance Calculation
-        // If 1 zone, distance is 0. Else optimize path.
         const { bestPath, dist } = (route.zones.length > 1) 
             ? getBestPermutation(route.zones) 
             : { bestPath: route.zones, dist: 0 };
@@ -278,6 +291,7 @@ async function calculateRoute() {
         };
     });
 
+    // Priority Sort
     processedRoutes.sort((a, b) => {
         if (a.tier !== b.tier) return a.tier - b.tier;
         return a.distance - b.distance;
@@ -291,22 +305,12 @@ async function calculateRoute() {
 // ==========================================
 
 function getRouteTier(zoneCount, droneCount) {
-    // Tier 1: 1 Zone, 0-2 Drones (God Tier)
-    if (zoneCount === 1 && droneCount <= 2) return 1;
-    
-    // Tier 2: 2 Zones, 0 Drones
-    if (zoneCount === 2 && droneCount === 0) return 2;
-    
-    // Tier 3: 2 Zones, 1 Drone
-    if (zoneCount === 2 && droneCount === 1) return 3;
-    
-    // Tier 4: 3 Zones, 0 Drones
-    if (zoneCount === 3 && droneCount === 0) return 4;
-    
-    // Tier 5: 3 Zones, 1 Drone
-    if (zoneCount === 3 && droneCount === 1) return 5;
-    
-    return 0; // Invalid
+    if (zoneCount === 1 && droneCount <= 2) return 1; // 1 Zone (God Tier)
+    if (zoneCount === 2 && droneCount === 0) return 2; // 2 Zone Pure
+    if (zoneCount === 2 && droneCount === 1) return 3; // 2 Zone + Drone
+    if (zoneCount === 3 && droneCount === 0) return 4; // 3 Zone Pure
+    if (zoneCount === 3 && droneCount === 1) return 5; // 3 Zone + Drone
+    return 0; 
 }
 
 function getBestPermutation(zones) {
