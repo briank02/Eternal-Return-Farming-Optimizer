@@ -4,6 +4,31 @@
 const selectedEpics = new Set();
 let currentFilter = "All"; // Track active filter
 let currentWeaponFilter = "All";
+let activeSubstats = new Set();
+let currentCharacter = null;
+let chars = {};
+let charLevel = 1;
+let selectedRoutes = [];
+let generatedRoutes = [];
+
+const SUBSTATS = [
+    { id: 'attackPower', name: 'Attack Power' },
+    { id: 'attackSpeedRatio', name: 'Attack Speed' },
+    { id: 'criticalStrikeChance', name: 'Critical Strike Chance' },
+    { id: 'attackRange', name: 'Attack Range' },
+    { id: 'penetrationDefense', name: 'Armor Penetration' },
+    { id: 'skillAmp', name: 'Skill Amplification' },
+    { id: 'cooldownReduction', name: 'Cooldown Reduction' },
+    { id: 'maxHp', name: 'Max HP' },
+    { id: 'hpRegen', name: 'HP Regen' },
+    { id: 'defense', name: 'Defense' },
+    { id: 'damageReduction', name: 'Damage Reduction' },
+    { id: 'tenacity', name: 'Tenacity' },
+    { id: 'visionRange', name: 'Vision Range' },
+    { id: 'lifeSteal', name: 'Lifesteal' },
+    { id: 'omnisyphon', name: 'Omnisyphon' },
+    { id: 'moveSpeed', name: 'Movement Speed' }
+];
 
 const WEAPON_TYPES = [
     { api: "Glove", name: "Glove", img: "01. Glove.png" },
@@ -27,7 +52,8 @@ const WEAPON_TYPES = [
     { api: "Rapier", name: "Rapier", img: "19. Rapier.png" },
     { api: "Guitar", name: "Guitar", img: "20. Guitar.png" },
     { api: "Camera", name: "Camera", img: "21. Camera.png" },
-    { api: "Arcana", name: "Arcana", img: "22. Arcana.png" }
+    { api: "Arcana", name: "Arcana", img: "22. Arcana.png" },
+    { api: "VFArm", name: "VF Prosthetic", img: "23. VF Prosthetic.png" }
 ];
 
 // HARDCODED BASE WEAPONS
@@ -44,11 +70,12 @@ let mapData = {};
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const res = await fetch('/api/data');
+        const res = await fetch('data.json');
         const data = await res.json();
         
         items = data.items;
         mapData = data.mapData;
+        chars = data.chars;
         
         const loading = document.getElementById('loading-screen');
         if (loading) loading.style.display = 'none';
@@ -59,10 +86,96 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 2. Initialize Grid
         renderMainGrid();
 
-        // 3. Setup Calculate Button
+        // 3. Setup Events
         const calculateBtn = document.getElementById('calculate-btn');
         if (calculateBtn) {
             calculateBtn.addEventListener('click', calculateAllVariants);
+        }
+
+        const levelInput = document.getElementById('char-level');
+        if (levelInput) {
+            levelInput.addEventListener('input', (e) => {
+                let val = parseInt(e.target.value) || 1;
+                if (val < 1) val = 1;
+                if (val > 20) val = 20;
+                e.target.value = val;
+                charLevel = val;
+                renderMainGrid();
+                renderStatComparison();
+            });
+        }
+
+        const resetBtn = document.getElementById('reset-build-btn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                selectedEpics.clear();
+                updateMainGridVisuals();
+                updateSelectedPanel();
+            });
+        }
+
+        const resetAllBtn = document.getElementById('reset-all-btn');
+        if (resetAllBtn) {
+            resetAllBtn.addEventListener('click', () => {
+                // Reset character
+                const allCharBtn = document.querySelector('#character-selection .char-btn[data-char="All"]');
+                if (allCharBtn) allCharBtn.click();
+
+                // Reset substats
+                const activeSubstatsBtns = document.querySelectorAll('#substat-filters .substat-btn.active');
+                activeSubstatsBtns.forEach(btn => btn.click());
+
+                // Reset item part filter
+                const allFilterBtn = document.querySelector('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn[data-filter="All"]');
+                if (allFilterBtn) allFilterBtn.click();
+
+                // Reset weapon subfilter
+                const allWeaponBtn = document.querySelector('#weapon-subfilters .weapon-btn[data-subfilter="All"]');
+                if (allWeaponBtn) allWeaponBtn.click();
+
+                // Reset build
+                if (resetBtn) resetBtn.click();
+            });
+        }
+
+        // Setup Resizer
+        const resizer = document.getElementById('resizer');
+        const topPanel = document.getElementById('route-results-container');
+        const bottomPanel = document.getElementById('stat-calculator');
+        
+        if (resizer && topPanel && bottomPanel) {
+            let isResizing = false;
+            let startY, startTopFlex, startBottomFlex;
+
+            resizer.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                startY = e.clientY;
+                startTopFlex = topPanel.getBoundingClientRect().height;
+                startBottomFlex = bottomPanel.getBoundingClientRect().height;
+                document.body.style.cursor = 'ns-resize';
+                document.body.style.userSelect = 'none';
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isResizing) return;
+                const dy = e.clientY - startY;
+                const newTopHeight = startTopFlex + dy;
+                const newBottomHeight = startBottomFlex - dy;
+                
+                if (newTopHeight > 100 && newBottomHeight > 100) {
+                    topPanel.style.flex = `${newTopHeight}`;
+                    bottomPanel.style.flex = `${newBottomHeight}`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isResizing) {
+                    isResizing = false;
+                    document.body.style.cursor = 'default';
+                    document.body.style.userSelect = 'auto';
+                }
+            });
         }
     } catch (e) {
         console.error("Failed to load API data", e);
@@ -86,7 +199,117 @@ function setupFilters() {
     });
     if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
 
-    const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters) > .filter-btn');
+    const charContainer = document.getElementById('character-selection');
+    const substatContainer = document.getElementById('substat-filters');
+
+    // Populate Characters
+    if (charContainer && chars) {
+        let charHtml = `<div class="char-btn active" data-char="All" title="All Characters">
+            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em; color:#333;">ALL</div>
+        </div>`;
+        Object.keys(chars).sort().forEach(cName => {
+            charHtml += `<div class="char-btn" data-char="${cName}" title="${cName}">
+                <img src="images/${cName}.png" alt="${cName}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em; text-align:center; word-break:break-all;\\'>${cName}</div>'">
+            </div>`;
+        });
+        charContainer.innerHTML = charHtml;
+
+        const charBtns = charContainer.querySelectorAll('.char-btn');
+        charBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('active') && btn.dataset.char !== "All") {
+                    // Clicked an already active character, switch to ALL
+                    const allCharBtn = charContainer.querySelector('.char-btn[data-char="All"]');
+                    if (allCharBtn) allCharBtn.click();
+                    return;
+                }
+
+                charBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCharacter = btn.dataset.char === "All" ? null : btn.dataset.char;
+                
+                // Disable invalid weapons and deselect mismatching items in build
+                const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
+                const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
+                
+                if (currentCharacter) {
+                    // Remove mismatching weapons from build
+                    let buildChanged = false;
+                    for (const itemName of selectedEpics) {
+                        const itemData = items[itemName];
+                        if (itemData && itemData.part === "Weapon") {
+                            if (!masteries.includes(itemData.weaponType)) {
+                                selectedEpics.delete(itemName);
+                                buildChanged = true;
+                            }
+                        } else if (itemName === "Harmony in Full Bloom" && currentCharacter !== "Priya") {
+                            selectedEpics.delete(itemName);
+                            buildChanged = true;
+                        } else if (itemData && itemData.part === "Head" && currentCharacter === "Priya" && itemName !== "Harmony in Full Bloom") {
+                            selectedEpics.delete(itemName);
+                            buildChanged = true;
+                        } else if (currentCharacter !== "Echion") {
+                            const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
+                            if (echionWeapons.includes(itemName) || itemData.weaponType === "VFArm") {
+                                selectedEpics.delete(itemName);
+                                buildChanged = true;
+                            }
+                        }
+                    }
+                    if (buildChanged) {
+                        updateMainGridVisuals();
+                        updateSelectedPanel();
+                    }
+                }
+
+                let currentWeaponStillValid = currentCharacter === null;
+                
+                weaponBtns.forEach(wb => {
+                    const wType = wb.dataset.subfilter;
+                    if (wType === "All") return;
+                    if (currentCharacter && !masteries.includes(wType)) {
+                        wb.classList.add('disabled');
+                    } else {
+                        wb.classList.remove('disabled');
+                        if (currentWeaponFilter === wType) currentWeaponStillValid = true;
+                    }
+                });
+
+                if (!currentWeaponStillValid && currentWeaponFilter !== "All") {
+                    const allBtn = document.querySelector('#weapon-subfilters .weapon-btn[data-subfilter="All"]');
+                    if (allBtn) allBtn.click();
+                } else {
+                    renderMainGrid();
+                }
+            });
+        });
+    }
+
+    // Populate Substats
+    if (substatContainer) {
+        let subHtml = '';
+        SUBSTATS.forEach(s => {
+            subHtml += `<div class="substat-btn" data-stat="${s.id}">${s.name}</div>`;
+        });
+        substatContainer.innerHTML = subHtml;
+
+        const subBtns = substatContainer.querySelectorAll('.substat-btn');
+        subBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const statId = btn.dataset.stat;
+                if (activeSubstats.has(statId)) {
+                    activeSubstats.delete(statId);
+                    btn.classList.remove('active');
+                } else {
+                    activeSubstats.add(statId);
+                    btn.classList.add('active');
+                }
+                renderMainGrid();
+            });
+        });
+    }
+
+    const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             topBtns.forEach(b => b.classList.remove('active'));
@@ -135,6 +358,32 @@ function renderMainGrid() {
         if (data.type !== "Epic" && data.type !== "Legendary") return false;
         if (!partOrder[data.part]) return false;
         
+        // Substat filtering (including level scaling)
+        if (activeSubstats.size > 0) {
+            if (!data.stats) return false;
+            for (let stat of activeSubstats) {
+                const baseStat = data.stats[stat] || 0;
+                const lvStat = (data.statsByLv && data.statsByLv[stat]) ? data.statsByLv[stat] * charLevel : 0;
+                if (baseStat + lvStat <= 0) return false;
+            }
+        }
+
+        // Character mastery & unique items filtering
+        if (currentCharacter) {
+            if (data.part === "Weapon") {
+                const masteries = chars[currentCharacter].masteries;
+                if (!masteries.includes(data.weaponType)) return false;
+            }
+            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") return false;
+            if (currentCharacter === "Priya" && data.part === "Head" && name !== "Harmony in Full Bloom") return false;
+            
+            const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
+            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) return false;
+        } else {
+            // No character selected: you can't see Echion/Priya exclusive items to avoid confusion, 
+            // OR we let them see it. The prompt says: "If the character is not selected, let them choose whatever."
+        }
+
         // If currentFilter is "All", we only filter out other weapons
         if (currentFilter === "All") {
             if (data.part === "Weapon" && currentWeaponFilter !== "All" && data.weaponType !== currentWeaponFilter) {
@@ -211,10 +460,41 @@ function toggleSelection(name) {
     if (selectedEpics.has(name)) {
         selectedEpics.delete(name);
     } else {
+        // Unique Selection Logic
+        const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
+        if (name === "Harmony in Full Bloom") {
+            forceCharacterSelection("Priya");
+        } else if (echionWeapons.includes(name) || items[name].weaponType === "VFArm") {
+            forceCharacterSelection("Echion");
+        }
+
+        // If a character is selected, ensure we don't allow mismatching uniques
+        if (currentCharacter) {
+            if (currentCharacter === "Priya" && items[name].part === "Head" && name !== "Harmony in Full Bloom") {
+                return; // Deselect/block
+            }
+            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") {
+                return;
+            }
+            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) {
+                return;
+            }
+            if (items[name].part === "Weapon" && !chars[currentCharacter].masteries.includes(items[name].weaponType)) {
+                return;
+            }
+        }
+
         selectedEpics.add(name);
     }
     updateMainGridVisuals();
     updateSelectedPanel();
+}
+
+function forceCharacterSelection(charName) {
+    const btn = document.querySelector(`.char-btn[data-char="${charName}"]`);
+    if (btn && !btn.classList.contains('active')) {
+        btn.click();
+    }
 }
 
 function updateMainGridVisuals() {
@@ -238,10 +518,16 @@ function updateSelectedPanel() {
 
     if (selectedEpics.size === 0) {
         container.innerHTML = '<p class="empty-msg">Click items to add to build.</p>';
+        calculateStats();
         return;
     }
 
-    selectedEpics.forEach(name => {
+    const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
+    const sortedEpics = Array.from(selectedEpics).sort((a, b) => {
+        return (partOrder[items[a].part] || 99) - (partOrder[items[b].part] || 99);
+    });
+
+    sortedEpics.forEach(name => {
         const div = document.createElement('div');
         div.classList.add('item-card');
         div.title = "Click to remove";
@@ -264,6 +550,169 @@ function updateSelectedPanel() {
         div.addEventListener('click', () => toggleSelection(name)); 
         container.appendChild(div);
     });
+    
+    // Reset comparison when build changes
+    selectedRoutes = [];
+    renderStatComparison();
+}
+
+// ==========================================
+// STATS COMPARISON LOGIC
+// ==========================================
+
+function renderStatComparison() {
+    const statList = document.getElementById('stat-list');
+    if (!statList) return;
+
+    // Use selected routes if any
+    let buildsToCompare = [];
+    if (selectedRoutes.length > 0) {
+        buildsToCompare = selectedRoutes.map(r => r.variantItems);
+    }
+
+    if (buildsToCompare.length === 0) {
+        statList.innerHTML = '<p class="empty-msg">Optimize a route, then click up to 2 routes below to compare stats.</p>';
+        return;
+    }
+
+    const calculatedBuilds = buildsToCompare.map(build => calculateBuildStats(build));
+
+    if (calculatedBuilds.length === 1) {
+        statList.innerHTML = renderSingleStatColumn(calculatedBuilds[0]);
+    } else {
+        statList.innerHTML = renderComparisonColumns(calculatedBuilds[0], calculatedBuilds[1]);
+    }
+}
+
+function calculateBuildStats(itemNames) {
+    const totalStats = {};
+    SUBSTATS.forEach(s => totalStats[s.id] = 0);
+    
+    // Add Character Base & Growth Stats
+    if (currentCharacter && chars[currentCharacter]) {
+        const cBase = chars[currentCharacter].base;
+        const cGrowth = chars[currentCharacter].growth;
+        const lvMinusOne = charLevel - 1;
+        totalStats.maxHp += (cBase.maxHp || 0) + (cGrowth.maxHp || 0) * lvMinusOne;
+        totalStats.attackPower += (cBase.attackPower || 0) + (cGrowth.attackPower || 0) * lvMinusOne;
+        totalStats.defense += (cBase.defense || 0) + (cGrowth.defense || 0) * lvMinusOne;
+        totalStats.hpRegen += (cBase.hpRegen || 0) + (cGrowth.hpRegen || 0) * lvMinusOne;
+        
+        if (cBase.attackSpeed !== undefined) {
+            totalStats.attackSpeedRatio += (cBase.attackSpeed || 0) + (cGrowth.attackSpeed || 0) * lvMinusOne;
+        }
+        if (cBase.moveSpeed !== undefined) {
+            totalStats.moveSpeed += cBase.moveSpeed;
+        }
+    }
+
+    itemNames.forEach(name => {
+        const itemObj = items[name];
+        if (itemObj) {
+            if (itemObj.stats) {
+                Object.keys(itemObj.stats).forEach(key => {
+                    if (totalStats[key] !== undefined) totalStats[key] += itemObj.stats[key];
+                });
+            }
+            if (itemObj.statsByLv) {
+                Object.keys(itemObj.statsByLv).forEach(key => {
+                    if (totalStats[key] !== undefined) totalStats[key] += itemObj.statsByLv[key] * charLevel;
+                });
+            }
+        }
+    });
+
+    return totalStats;
+}
+
+function formatStatValue(id, val) {
+    if (id === 'attackSpeedRatio') return Math.round(val * 100) + '%';
+    if (id === 'moveSpeed' || id === 'hpRegen' || id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
+    if (id === 'cooldownReduction') return Math.round(val) + ' (' + Math.round((val / (100 + val)) * 100) + '%)';
+    if (['criticalStrikeChance', 'lifeSteal', 'omnisyphon', 'tenacity', 'penetrationDefenseRatio'].includes(id)) return (val * 100).toFixed(0) + '%';
+    return Math.round(val);
+}
+
+function renderSingleStatColumn(stats) {
+    let html = `<div style="flex:1;">`;
+    let portraitHtml = '';
+    if (currentCharacter) {
+        portraitHtml = `
+            <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; position:relative; width:100%;">
+                <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin:0 auto;">
+                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${currentCharacter}</div>'">
+                </div>
+                <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.75em; padding:2px 6px; border-radius:8px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
+            </div>`;
+    }
+    html += portraitHtml;
+
+    SUBSTATS.forEach(s => {
+        if (stats[s.id] > 0) {
+            html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed #eee;">
+                <span>${s.name}</span>
+                <strong style="color:#2c3e50;">${formatStatValue(s.id, stats[s.id])}</strong>
+            </div>`;
+        }
+    });
+    html += `</div>`;
+    return html;
+}
+
+function renderComparisonColumns(stats1, stats2) {
+    let html = `<div style="flex:1; display:flex; gap:20px;">`;
+    
+    // Shared portrait
+    let portraitHtml = '';
+    if (currentCharacter) {
+        portraitHtml = `
+            <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; width:100%; position:relative;">
+                <div style="width:50px; height:50px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin: 0 auto;">
+                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${currentCharacter}</div>'">
+                </div>
+                <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.65em; padding:2px 5px; border-radius:6px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
+            </div>`;
+    }
+
+    const commonStats = [];
+    const diffStats = [];
+
+    SUBSTATS.forEach(s => {
+        const v1 = stats1[s.id] || 0;
+        const v2 = stats2[s.id] || 0;
+        if (v1 === 0 && v2 === 0) return;
+        if (Math.round(v1*100) === Math.round(v2*100)) {
+            commonStats.push({ id: s.id, name: s.name, v1, v2 });
+        } else {
+            diffStats.push({ id: s.id, name: s.name, v1, v2 });
+        }
+    });
+
+    const renderRow = (item, isCommon) => {
+        const color1 = isCommon ? '#333' : (item.v1 > item.v2 ? '#27ae60' : '#e74c3c');
+        const color2 = isCommon ? '#333' : (item.v2 > item.v1 ? '#27ae60' : '#e74c3c');
+        return `
+        <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed #eee; font-size:0.85em;">
+            <div style="flex:1; text-align:right; font-weight:bold; color:${color1};">${item.v1 > 0 ? formatStatValue(item.id, item.v1) : '-'}</div>
+            <div style="flex:1.5; text-align:center; color:#555; font-size:0.9em;">${item.name}</div>
+            <div style="flex:1; text-align:left; font-weight:bold; color:${color2};">${item.v2 > 0 ? formatStatValue(item.id, item.v2) : '-'}</div>
+        </div>`;
+    };
+
+    html += `<div style="flex:1; display:flex; flex-direction:column;">`;
+    html += portraitHtml;
+    
+    html += `<div style="display:flex; justify-content:center; margin-bottom:5px; font-weight:bold; border-bottom:2px solid #ccc;">
+        <span style="flex:1; text-align:right; color:#2980b9;">Route 1</span>
+        <span style="flex:1.5;"></span>
+        <span style="flex:1; text-align:left; color:#8e44ad;">Route 2</span>
+    </div>`;
+
+    commonStats.forEach(item => html += renderRow(item, true));
+    diffStats.forEach(item => html += renderRow(item, false));
+
+    html += `</div></div>`;
+    return html;
 }
 
 // ==========================================
@@ -326,6 +775,10 @@ async function calculateAllVariants() {
     // If Variant A and Variant B result in the EXACT same path and missing items, show one?
     // For now, let's just show them all so user sees options.
 
+    // Reset selections on new calculation
+    selectedRoutes = [];
+    renderStatComparison();
+
     displayResults(allResults, resultOutput);
 }
 
@@ -344,8 +797,15 @@ function cartesianProduct(arrays) {
 function solveSpecificBuild(buildSet) {
     // --- STEP 1: CALCULATE NEEDS VS OWNED ---
     const neededCounts = {};
+    const uniqueItemsToIgnore = new Set([
+        "Alpha Sidewinder",
+        "Black Mamba King",
+        "Deathadder Queen",
+        "Harmony in Full Bloom"
+    ]);
+
     buildSet.forEach(epicName => {
-        if (items[epicName] && items[epicName].components) {
+        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
             items[epicName].components.forEach(mat => {
                 neededCounts[mat] = (neededCounts[mat] || 0) + 1;
             });
@@ -530,6 +990,8 @@ function displayResults(routes, container) {
     
     let html = `<h3>Top Optimized Routes:</h3>`;
     
+    generatedRoutes = topRoutes;
+
     topRoutes.forEach((r, index) => {
         let tierLabel = "";
         if(r.tier === 1) tierLabel = `<span style="background:#8e44ad; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px; font-weight:bold;">1Z / 0D</span>`;
@@ -546,11 +1008,11 @@ function displayResults(routes, container) {
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = r.variantItems.map(item => 
-            `<img src="images/${item}.png" title="${item}" style="width:20px; height:20px; object-fit:contain; vertical-align:middle; border:1px solid #ddd; border-radius:3px; margin-right:2px;">`
+            `<img src="images/${item}.png" title="${item}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid #ddd; border-radius:3px; margin-right:2px;">`
         ).join('');
 
         html += `
-        <div style="background: #fff; border:1px solid #ddd; border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px;">
+        <div class="route-card" data-index="${index}" style="background: #fff; border:1px solid #ddd; border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
             
             <div style="margin-bottom: 5px; font-size:0.8rem; color:#888; display:flex; align-items:center;">
                 <strong style="margin-right:5px;">Build Variant:</strong> ${variantSummary}
@@ -561,7 +1023,6 @@ function displayResults(routes, container) {
                     ${tierLabel} 
                     <strong>${r.path.join(" ➔ ")}</strong>
                 </div>
-                <div style="font-weight:bold; color:#777; font-size:0.9em;">Dist: ${r.distance}</div>
             </div>
             
             <div style="font-size:0.85em; margin-top:4px; padding-left: 5px;">
@@ -571,6 +1032,48 @@ function displayResults(routes, container) {
     });
     
     container.innerHTML = html;
+
+    // Add click listeners for comparison
+    const routeCards = container.querySelectorAll('.route-card');
+    routeCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const idx = parseInt(card.dataset.index);
+            const route = generatedRoutes[idx];
+            
+            const existingIdx = selectedRoutes.findIndex(sr => sr === route);
+            if (existingIdx !== -1) {
+                // Deselect
+                selectedRoutes.splice(existingIdx, 1);
+                card.style.boxShadow = 'none';
+                card.style.borderColor = '#ddd';
+            } else {
+                if (selectedRoutes.length >= 2) {
+                    // Remove first
+                    const removedRoute = selectedRoutes.shift();
+                    const removedIdx = generatedRoutes.indexOf(removedRoute);
+                    if (removedIdx !== -1) {
+                        const rCard = container.querySelector(`.route-card[data-index="${removedIdx}"]`);
+                        if (rCard) { rCard.style.boxShadow = 'none'; rCard.style.borderColor = '#ddd'; }
+                    }
+                }
+                selectedRoutes.push(route);
+            }
+            
+            // Apply styles to currently selected
+            selectedRoutes.forEach((sr, i) => {
+                const srIdx = generatedRoutes.indexOf(sr);
+                if (srIdx !== -1) {
+                    const rCard = container.querySelector(`.route-card[data-index="${srIdx}"]`);
+                    if (rCard) {
+                        rCard.style.boxShadow = '0 0 8px ' + (i === 0 ? 'rgba(41, 128, 185, 0.6)' : 'rgba(142, 68, 173, 0.6)');
+                        rCard.style.borderColor = (i === 0 ? '#2980b9' : '#8e44ad');
+                    }
+                }
+            });
+
+            renderStatComparison();
+        });
+    });
 }
 
 function getColorForTier(tier) {
