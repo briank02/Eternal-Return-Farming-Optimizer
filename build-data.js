@@ -79,7 +79,7 @@ function getLeafComponents(itemCode, allItemsMap, l10nEng, visited = new Set()) 
 async function buildData() {
     console.log('Fetching data from ER API...');
     
-    const [l10nEng, l10nKo, wRes, aRes, mRes, cRes, areaRes, spawnRes] = await Promise.all([
+    const [l10nEng, l10nKo, wRes, aRes, mRes, cRes, areaRes, spawnRes, charsRes, charAttrsRes, charLevelsRes] = await Promise.all([
         fetchL10n('English'),
         fetchL10n('Korean'),
         fetchFromApi('/v2/data/ItemWeapon'),
@@ -87,7 +87,10 @@ async function buildData() {
         fetchFromApi('/v2/data/ItemMisc'),
         fetchFromApi('/v2/data/ItemConsumable'),
         fetchFromApi('/v2/data/Area'),
-        fetchFromApi('/v2/data/ItemSpawn')
+        fetchFromApi('/v2/data/ItemSpawn'),
+        fetchFromApi('/v2/data/Character'),
+        fetchFromApi('/v2/data/CharacterAttributes'),
+        fetchFromApi('/v2/data/CharacterLevelUpStat')
     ]);
 
     const allItemsList = [
@@ -96,6 +99,54 @@ async function buildData() {
         ...(mRes.data || []),
         ...(cRes.data || [])
     ];
+    
+    // Build Characters
+    const charsData = {};
+    const charList = charsRes.data || [];
+    const charAttrsList = charAttrsRes.data || [];
+    const charLevelsList = charLevelsRes.data || [];
+    
+    charList.forEach(char => {
+        const engName = l10nEng[`Character/Name/${char.code}`] || char.name;
+        charsData[engName] = {
+            code: char.code,
+            masteries: [],
+            base: {},
+            growth: {}
+        };
+    });
+    
+    charLevelsList.forEach(stat => {
+        const engName = l10nEng[`Character/Name/${stat.code}`] || stat.name;
+        if (charsData[engName]) {
+            // Because ER API sometimes sends multiple entries per char for different masteries/states, 
+            // we just grab the first one we find or overwrite
+            charsData[engName].base = {
+                maxHp: stat.maxHp || 0,
+                attackPower: stat.attackPower || 0,
+                defense: stat.defense || 0,
+                hpRegen: stat.hpRegen || 0,
+                attackSpeed: stat.attackSpeed || 0,
+                moveSpeed: stat.moveSpeed || 0
+            };
+            charsData[engName].growth = {
+                maxHp: stat.maxHpByLv || 0,
+                attackPower: stat.attackPowerByLv || 0,
+                defense: stat.defenseByLv || 0,
+                hpRegen: stat.hpRegenByLv || 0,
+                attackSpeed: stat.attackSpeedByLv || 0
+            };
+        }
+    });
+    
+    charAttrsList.forEach(attr => {
+        const engName = l10nEng[`Character/Name/${attr.characterCode}`] || attr.character;
+        if (charsData[engName] && attr.mastery && attr.mastery !== 'None') {
+            if (!charsData[engName].masteries.includes(attr.mastery)) {
+                charsData[engName].masteries.push(attr.mastery);
+            }
+        }
+    });
     
     const allItemsMap = {};
     allItemsList.forEach(item => {
@@ -138,8 +189,7 @@ async function buildData() {
     };
 
     const EXCLUDE_ITEMS = new Set([
-        "Deathadder Queen", "Black Mamba King", "Alpha Sidewinder", 
-        "Harmony in Full Bloom", "Force Core", "Fish and Chips", 
+        "Force Core", "Fish and Chips", 
         "Mint Choco Ice Cream", "Frozen Pizza"
     ]);
 
@@ -175,7 +225,45 @@ async function buildData() {
             part: partType,
             locations: spawns,
             initialCount: item.initialCount || 1,
-            weaponType: item.weaponType || ""
+            weaponType: item.weaponType || "",
+            stats: {
+                attackPower: item.attackPower || 0,
+                attackSpeedRatio: item.attackSpeedRatio || 0,
+                criticalStrikeChance: item.criticalStrikeChance || 0,
+                attackRange: (item.attackRange || 0) + (item.uniqueAttackRange || 0),
+                penetrationDefenseRatio: item.penetrationDefenseRatio || item.uniquePenetrationDefenseRatio || 0,
+                penetrationDefense: item.penetrationDefense || item.uniquePenetrationDefense || 0,
+                skillAmp: item.skillAmp || 0,
+                cooldownReduction: item.cooldownReduction || 0,
+                maxHp: item.maxHp || 0,
+                defense: item.defense || 0,
+                damageReduction: (item.preventBasicAttackDamaged || 0) + (item.preventSkillDamaged || 0),
+                tenacity: item.uniqueTenacity || 0,
+                visionRange: item.sightRange || 0,
+                lifeSteal: (item.normalLifeSteal || 0),
+                omnisyphon: (item.lifeSteal || 0) + (item.skillLifeSteal || 0) + (item.uniqueLifeSteal || 0),
+                moveSpeed: (item.moveSpeed || 0) + (item.moveSpeedRatio || 0) + (item.uniqueMoveSpeed || 0),
+                hpRegen: (item.hpRegen || 0) + (item.hpRegenRatio || 0)
+            },
+            statsByLv: {
+                attackPower: item.attackPowerByLv || 0,
+                attackSpeedRatio: item.attackSpeedRatioByLv || 0,
+                criticalStrikeChance: 0,
+                attackRange: 0,
+                penetrationDefenseRatio: item.penetrationDefenseRatioByLv || 0,
+                penetrationDefense: item.penetrationDefenseByLv || 0,
+                skillAmp: item.skillAmpByLevel || 0,
+                cooldownReduction: 0,
+                maxHp: item.maxHpByLv || 0,
+                defense: item.defenseByLv || 0,
+                damageReduction: (item.preventBasicAttackDamagedByLv || 0) + (item.preventSkillDamagedByLv || 0),
+                tenacity: 0,
+                visionRange: 0,
+                lifeSteal: 0,
+                omnisyphon: 0,
+                moveSpeed: 0,
+                hpRegen: 0
+            }
         };
 
         if (!isBaseItem) {
@@ -185,7 +273,7 @@ async function buildData() {
         itemsData[engName] = itemObj;
     });
 
-    return { items: itemsData, mapData };
+    return { items: itemsData, mapData, chars: charsData };
 }
 
 buildData().then(data => {

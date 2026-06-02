@@ -33,44 +33,65 @@
     <main class="main-container">
 
         <section class="panel left-panel">
-            <h2>Filters</h2>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <h2 style="margin:0;">Filters</h2>
+                    <button id="reset-all-btn" style="padding: 3px 10px; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#7f8c8d'" onmouseout="this.style.background='#95a5a6'">Reset All</button>
+                </div>
+                <div>
+                    <label for="char-level" style="font-weight:bold; margin-right:5px;">Level:</label>
+                    <input type="number" id="char-level" min="1" max="20" value="1" style="width:50px; font-size:1.1em; padding:3px;">
+                </div>
+            </div>
 
-            <div class="filter-row">
+            <!-- Character Selection -->
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Character</div>
+            <div id="character-selection" class="filter-row character-row" style="background:#e8e8e8; padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(auto-fill, 50px); justify-content: center; gap:5px; max-height:280px; overflow-y:auto;">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Main Parts Filter -->
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Item Part</div>
+            <div class="filter-row" style="margin-bottom:10px;">
                 <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;">
                     ALL
                 </div>
                 <div class="filter-btn" data-filter="Weapon" title="Weapon">
-                    <img src="images/Weapon.png" alt="Weapon" onerror="this.style.display='none'; this.parentElement.innerText='WPN'">
+                    <img src="images/Weapon.png" alt="Weapon" onerror="this.style.display='none'; this.parentElement.innerText='Weapon'">
                 </div>
                 <div class="filter-btn" data-filter="Chest" title="Chest">
-                    <img src="images/Chest.png" alt="Chest" onerror="this.style.display='none'; this.parentElement.innerText='CST'">
+                    <img src="images/Chest.png" alt="Chest" onerror="this.style.display='none'; this.parentElement.innerText='Chest'">
                 </div>
                 <div class="filter-btn" data-filter="Head" title="Head">
-                    <img src="images/Head.png" alt="Head" onerror="this.style.display='none'; this.parentElement.innerText='HD'">
+                    <img src="images/Head.png" alt="Head" onerror="this.style.display='none'; this.parentElement.innerText='Head'">
                 </div>
                 <div class="filter-btn" data-filter="Arm" title="Arm">
-                    <img src="images/Arm.png" alt="Arm" onerror="this.style.display='none'; this.parentElement.innerText='ARM'">
+                    <img src="images/Arm.png" alt="Arm" onerror="this.style.display='none'; this.parentElement.innerText='Arm'">
                 </div>
                 <div class="filter-btn" data-filter="Leg" title="Leg">
-                    <img src="images/Leg.png" alt="Leg" onerror="this.style.display='none'; this.parentElement.innerText='LEG'">
+                    <img src="images/Leg.png" alt="Leg" onerror="this.style.display='none'; this.parentElement.innerText='Leg'">
                 </div>
             </div>
 
-            <div id="weapon-subfilters" class="weapon-filter-row">
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Weapon Type</div>
+            <div id="weapon-subfilters" class="weapon-filter-row" style="margin-bottom:10px;">
                 <!-- Weapon subfilters will be injected here via JS -->
             </div>
 
-            <div id="filter-options">
-                <p style="margin-top:15px; font-size:0.8rem; color:#666;">
-                    Select a category above to filter the item list.
-                </p>
+            <!-- Substat Filters -->
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Substats</div>
+            <div id="substat-filters" class="filter-row substat-row" style="background:#e8e8e8; padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(2, 1fr); gap:5px;">
+                <!-- Injected via JS -->
             </div>
         </section>
 
         <section class="panel center-panel">
 
             <div class="selection-header">
-                <h2>Your Build</h2>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                    <h2 style="margin:0;">Your Build</h2>
+                    <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">Reset Build</button>
+                </div>
                 <div id="selected-item-grid" class="grid-view small-grid">
                     <p class="empty-msg">Click items below to add them to your build.</p>
                 </div>
@@ -81,11 +102,26 @@
             <div id="epic-item-grid" class="grid-view"></div>
         </section>
 
-        <section class="panel right-panel">
-            <h2>Route Results</h2>
-            <div class="result-area">
-                <button id="calculate-btn">Calculate Route</button>
-                <div id="result-output"></div>
+        <section class="panel right-panel" id="build-panel" style="display:flex; flex-direction:column; max-height: 100vh;">
+            <button id="calculate-btn" style="margin-bottom:10px; padding: 15px; font-size: 1.2em; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s;" onmouseover="this.style.background='#2ecc71'" onmouseout="this.style.background='#27ae60'">Optimize Route</button>
+            
+            <div id="route-results-container" style="flex:1.5; overflow-y:auto; border:1px solid #ddd; border-radius:4px; padding:10px; background:#fafafa; margin-bottom:0;">
+                <div id="result-output" class="result-area" style="margin-top:0;">
+                    <p class="empty-msg">Optimize a route, then click up to 2 routes below to compare stats.</p>
+                </div>
+            </div>
+
+            <div id="resizer" style="height: 10px; cursor: ns-resize; display:flex; justify-content:center; align-items:center; margin: 2px 0;">
+                <div style="width: 40px; height: 4px; background: #ccc; border-radius: 2px;"></div>
+            </div>
+
+            <div id="stat-calculator" style="flex:1; background:#fff; padding:10px; border-radius:8px; border:1px solid #ddd; overflow-y:auto;">
+                <h3 style="margin-top:0; border-bottom:1px solid #eee; padding-bottom:5px; display:flex; align-items:center; gap:10px;">
+                    Item Stats Comparison
+                </h3>
+                <div id="stat-list" style="font-size:0.9em; line-height:1.6; display:flex; gap:10px; width:100%;">
+                    <p class="empty-msg">Select routes to see stat comparison.</p>
+                </div>
             </div>
         </section>
 
