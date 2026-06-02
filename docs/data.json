@@ -1,0 +1,8907 @@
+{
+  "items": {
+    "Kitchen Knife": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Hotel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "OneHandSword"
+    },
+    "Army Knife": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch"
+      ]
+    },
+    "Scalpel": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Fountain Pen"
+      ]
+    },
+    "Rose Knife": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch",
+        "Flower"
+      ]
+    },
+    "Swiss Army Knife": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Fountain Pen",
+        "Scissors"
+      ]
+    },
+    "Carapace Katar": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch",
+        "Rubber"
+      ]
+    },
+    "Carnwennan": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch",
+        "Flower",
+        "Feather"
+      ]
+    },
+    "Mount Slicer": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch",
+        "Flower",
+        "Paper"
+      ]
+    },
+    "Vibroblade": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Fountain Pen",
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Damascus Steel Thorn": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Fountain Pen",
+        "Scissors",
+        "Chemicals"
+      ]
+    },
+    "Maharaja": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Branch",
+        "Rubber",
+        "Battery"
+      ]
+    },
+    "Highlander Dirk": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Fountain Pen",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Fragarach": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Mythril"
+      ]
+    },
+    "Eclipse": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Meteorite"
+      ]
+    },
+    "Soul Reaper": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "Tree of Life"
+      ]
+    },
+    "Scarlet Dagger": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "VF Blood Sample"
+      ]
+    },
+    "Malice": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Nail",
+        "Mythril"
+      ]
+    },
+    "Rusty Sword": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Temple",
+        "Archery Range",
+        "Forest",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword"
+    },
+    "Long Sword": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil"
+      ]
+    },
+    "Katana": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Bastard Sword": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Scrap Metal"
+      ]
+    },
+    "Jewel Sword": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Gemstone"
+      ]
+    },
+    "Thuận Thiên": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Scrap Metal",
+        "Turtle Shell"
+      ]
+    },
+    "Arondight": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Gemstone",
+        "Cross"
+      ]
+    },
+    "Excalibur": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Scrap Metal",
+        "Cross"
+      ]
+    },
+    "Plasma Sword": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Laevateinn": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Tree of Life"
+      ]
+    },
+    "Monohoshizao": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Scrap Metal",
+        "Chemicals",
+        "Pickaxe"
+      ]
+    },
+    "Hovud": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "Aurora Longsword": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Meteorite"
+      ]
+    },
+    "Arcane Edge": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "Oil",
+        "Scrap Metal",
+        "Fountain Pen"
+      ]
+    },
+    "Dáinsleif": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "VF Blood Sample"
+      ]
+    },
+    "Almas": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Ice",
+        "Tree of Life"
+      ]
+    },
+    "Chained Nightmare": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Scrap Metal",
+        "Meteorite"
+      ]
+    },
+    "Twin Blades": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Dock",
+        "Beach",
+        "Fire Station",
+        "Temple"
+      ],
+      "initialCount": 1,
+      "weaponType": "DualSword"
+    },
+    "Wrought Swords": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Pickaxe"
+      ]
+    },
+    "Pocket Aces": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Pickaxe",
+        "Scrap Metal"
+      ]
+    },
+    "Florentine": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Divine Dual Swords": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Graphite",
+        "Lighter",
+        "Chalk"
+      ]
+    },
+    "Starsteel Twin Swords": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Meteorite"
+      ]
+    },
+    "Asura": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Graphite",
+        "Lighter",
+        "Gemstone"
+      ]
+    },
+    "Black Butterfly": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Pickaxe",
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Dioscuri": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Pickaxe",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Lloigor & Zahr": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Scissors",
+        "Mythril"
+      ]
+    },
+    "Spring and Autumn": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Mythril"
+      ]
+    },
+    "Phantom Blade": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "VF Blood Sample"
+      ]
+    },
+    "Thanatos": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Scissors",
+        "Meteorite"
+      ]
+    },
+    "Hook Swords": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Pickaxe",
+        "Scrap Metal",
+        "Nail"
+      ]
+    },
+    "Death's Sickles": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "Tree of Life"
+      ]
+    },
+    "Hammer": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Warehouse",
+        "Stream",
+        "Fire Station",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": "Hammer"
+    },
+    "Warhammer": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Nail"
+      ]
+    },
+    "Morning Star": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Nail",
+        "Iron Ball"
+      ]
+    },
+    "Black Stag Hammer": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Rubber"
+      ]
+    },
+    "Forged Destiny": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Rubber",
+        "Playing Cards"
+      ]
+    },
+    "Fang Mace": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Nail",
+        "Iron Ball",
+        "Stallion Medal"
+      ]
+    },
+    "Hammer of Dagda": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Nail",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Hammer of Thor": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Rubber",
+        "Playing Cards",
+        "Battery"
+      ]
+    },
+    "Evening Star": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Meteorite"
+      ]
+    },
+    "Weight of the World": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Rubber",
+        "Playing Cards",
+        "Glass Bottle"
+      ]
+    },
+    "Bookmaster": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Rubber",
+        "Paper",
+        "Leather"
+      ]
+    },
+    "Peacebringer": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "VF Blood Sample"
+      ]
+    },
+    "Squeaky Hammer": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Tree of Life"
+      ]
+    },
+    "Doomsday": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Iron Ball",
+        "Mythril"
+      ]
+    },
+    "Leviathan": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "Mythril"
+      ]
+    },
+    "Hatchet": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Fire Station",
+        "Forest",
+        "Factory",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "Axe"
+    },
+    "Chain Scythe": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Thread"
+      ]
+    },
+    "Battle Axe": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Branch"
+      ]
+    },
+    "Light Hatchet": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Branch",
+        "Feather"
+      ]
+    },
+    "Reaper's Scythe": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Thread",
+        "Pickaxe"
+      ]
+    },
+    "Gigantic Axe": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Branch",
+        "Scrap Metal"
+      ]
+    },
+    "Beam Axe": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Branch",
+        "Scrap Metal",
+        "Laser Pointer"
+      ]
+    },
+    "Santa Muerte": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Thread",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Scythe": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Thread",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Parashu": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Branch",
+        "Feather",
+        "Playing Cards"
+      ]
+    },
+    "Harpe": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Thread",
+        "Pickaxe",
+        "Oil"
+      ]
+    },
+    "The Juggernaut": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Tree of Life"
+      ]
+    },
+    "Axe of Pangu": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "Mythril"
+      ]
+    },
+    "Paradise Lost": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Pickaxe",
+        "Tree of Life"
+      ]
+    },
+    "Scarlet Scythe": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "VF Blood Sample"
+      ]
+    },
+    "Nephleon": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Pickaxe",
+        "Mythril"
+      ]
+    },
+    "Short Spear": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Beach",
+        "Temple",
+        "Archery Range",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": "Spear"
+    },
+    "Bamboo Spear": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Branch"
+      ]
+    },
+    "Bident": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Branch",
+        "Nail"
+      ]
+    },
+    "Pike": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Scrap Metal"
+      ]
+    },
+    "Halberd": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Scrap Metal",
+        "Pickaxe"
+      ]
+    },
+    "Sharpened Spear": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Branch",
+        "Feather"
+      ]
+    },
+    "Gentian Silver Gun": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Mythril"
+      ]
+    },
+    "Eighteen Foot Spear": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Scrap Metal",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Cosmic Bident": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Meteorite"
+      ]
+    },
+    "Lance of Poseidon": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Branch",
+        "Nail",
+        "Oil"
+      ]
+    },
+    "Blazing Lance": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Tree of Life"
+      ]
+    },
+    "Fangtian Huaji": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Branch",
+        "Feather",
+        "Fountain Pen"
+      ]
+    },
+    "Dragon Guandao": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "Scrap Metal",
+        "Pickaxe",
+        "Chalk"
+      ]
+    },
+    "Spear of Longinus": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "VF Blood Sample"
+      ]
+    },
+    "Star Hunter": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Fountain Pen",
+        "Mythril"
+      ]
+    },
+    "Short Rod": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Archery Range",
+        "Forest",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "Bat"
+    },
+    "Long Rod": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Branch"
+      ]
+    },
+    "Goblin Bat": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Branch",
+        "Nail"
+      ]
+    },
+    "Umbrella": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Branch",
+        "Cloth"
+      ]
+    },
+    "Iron Pipe": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Scrap Metal"
+      ]
+    },
+    "Statue of Soteria": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Scrap Metal",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Mallet": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Branch",
+        "Nail",
+        "Piano Wire"
+      ]
+    },
+    "Spy Umbrella": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Branch",
+        "Cloth",
+        "Chemicals"
+      ]
+    },
+    "Magic Stick": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Ribbon",
+        "Meteorite"
+      ]
+    },
+    "Vajra": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Scrap Metal",
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "Pakua Chang": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Scrap Metal",
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "Monkey King Bar": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Mythril"
+      ]
+    },
+    "Ghost Hand": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Tree of Life"
+      ]
+    },
+    "Rod of Heart": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "VF Blood Sample"
+      ]
+    },
+    "Vulture's Eye": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "Meteorite"
+      ]
+    },
+    "Whip": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Uptown",
+        "Archery Range",
+        "Cemetery",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": "Whip"
+    },
+    "Rope Cuffs": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Stallion Medal"
+      ]
+    },
+    "Bullwhip": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Nail"
+      ]
+    },
+    "Thunder Whip": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Stallion Medal",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Lightning Whip": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Nail",
+        "Battery"
+      ]
+    },
+    "Gleipnir": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Stallion Medal",
+        "Oil",
+        "Bandage"
+      ]
+    },
+    "Plasma Whip": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Nail",
+        "Battery",
+        "Fountain Pen"
+      ]
+    },
+    "Cathode Lash": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Ouranos": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Mythril"
+      ]
+    },
+    "Bloody Nine Tails": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "VF Blood Sample"
+      ]
+    },
+    "Sword of Scales": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Meteorite"
+      ]
+    },
+    "The Whip of Fate": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "Tree of Life"
+      ]
+    },
+    "Cotton Gloves": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Warehouse",
+        "Gas Station",
+        "Fire Station",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": "Glove"
+    },
+    "Leather Gloves": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather"
+      ]
+    },
+    "Iron Knuckles": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal"
+      ]
+    },
+    "Gauntlet": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal",
+        "Cloth"
+      ]
+    },
+    "Wing Knuckles": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal",
+        "Feather"
+      ]
+    },
+    "Bone Gauntlet": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Turtle Shell"
+      ]
+    },
+    "Phoenix Gloves": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Lighter"
+      ]
+    },
+    "One Inch Punch": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Turtle Shell",
+        "Feather"
+      ]
+    },
+    "Divine Fist": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal",
+        "Cloth",
+        "Cross"
+      ]
+    },
+    "Bloodwing Knuckles": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal",
+        "Feather",
+        "Gemstone"
+      ]
+    },
+    "Frost Petal Hand": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Lighter",
+        "Ice"
+      ]
+    },
+    "Buddha's Palm": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Turtle Shell",
+        "Paper"
+      ]
+    },
+    "Brasil Gauntlet": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Scrap Metal",
+        "Cloth",
+        "Oil"
+      ]
+    },
+    "White Claw Punch": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Leather",
+        "Lighter",
+        "Chalk"
+      ]
+    },
+    "Imperial Silk Gloves": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Thread",
+        "Mythril"
+      ]
+    },
+    "Mark of the Phoenix": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Leather",
+        "Tree of Life"
+      ]
+    },
+    "Permafrost": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Tree of Life"
+      ]
+    },
+    "Bloody Hand": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "VF Blood Sample"
+      ]
+    },
+    "Iron Fist": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "Mythril"
+      ]
+    },
+    "Bamboo": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Pond",
+        "Temple",
+        "Archery Range",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": "Tonfa"
+    },
+    "Wooden Tonfa": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch"
+      ]
+    },
+    "Police Baton": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Stallion Medal"
+      ]
+    },
+    "Ryukyu Tonfa": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Chalk"
+      ]
+    },
+    "Tactical Tonfa": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Stallion Medal",
+        "Fountain Pen"
+      ]
+    },
+    "Mai Sok": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Chalk",
+        "Turtle Shell"
+      ]
+    },
+    "Plasma Tonfa": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Windrunner": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Branch",
+        "Mythril"
+      ]
+    },
+    "Holster Tonfa": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Branch",
+        "Stallion Medal",
+        "Watch"
+      ]
+    },
+    "Obsidian Jitte": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Meteorite"
+      ]
+    },
+    "Frozen Echo": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Tree of Life"
+      ]
+    },
+    "Blade Tonfa": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "VF Blood Sample"
+      ]
+    },
+    "Mantis Tonfa": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "Mythril"
+      ]
+    },
+    "Baseball": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Pond",
+        "Beach",
+        "Alley",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire"
+    },
+    "Grenade": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder"
+      ]
+    },
+    "Sling": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Fountain Pen",
+        "Rubber"
+      ]
+    },
+    "Autographed Baseball": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Fountain Pen"
+      ]
+    },
+    "Flour Bomb": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder",
+        "Chalk"
+      ]
+    },
+    "Incendiary Bomb": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder",
+        "Battery",
+        "Lighter"
+      ]
+    },
+    "Ball Lightning": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder",
+        "Battery"
+      ]
+    },
+    "Grenade of Antioch": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Gunpowder",
+        "Tree of Life"
+      ]
+    },
+    "David's Sling": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Fountain Pen",
+        "Rubber",
+        "Cross"
+      ]
+    },
+    "Smoke Bomb": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder",
+        "Chalk",
+        "Chemicals"
+      ]
+    },
+    "Ruthenium Marble": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Fountain Pen",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Fireball": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Tree of Life"
+      ]
+    },
+    "Dyadic Prism": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Battery",
+        "Meteorite"
+      ]
+    },
+    "Astrapē": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Mythril"
+      ]
+    },
+    "Sticky Bomb": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Gunpowder",
+        "Battery",
+        "Fountain Pen"
+      ]
+    },
+    "Imugi's Pearl": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "Meteorite"
+      ]
+    },
+    "Chaser": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "VF Blood Sample"
+      ]
+    },
+    "Razor": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Hotel",
+        "Temple",
+        "Factory",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": "DirectFire"
+    },
+    "Dart": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Branch"
+      ]
+    },
+    "Charm": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Playing Cards",
+        "Chalk"
+      ]
+    },
+    "Vintage Cards": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Playing Cards"
+      ]
+    },
+    "Throwing Stars": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Piano Wire"
+      ]
+    },
+    "Chakram": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Piano Wire",
+        "Stallion Medal"
+      ]
+    },
+    "Willow Leaf Spike": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Branch",
+        "Chalk"
+      ]
+    },
+    "Cards of Tyranny": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Playing Cards",
+        "Paper",
+        "Leather"
+      ]
+    },
+    "Plumbata": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Branch",
+        "Scrap Metal"
+      ]
+    },
+    "Mystic Jade Charm": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Playing Cards",
+        "Chalk",
+        "Paper"
+      ]
+    },
+    "Fuhma Shuriken": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Piano Wire",
+        "Stallion Medal",
+        "Graphite"
+      ]
+    },
+    "Frost Venom Dart": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Tree of Life"
+      ]
+    },
+    "Azure Dagger": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Branch",
+        "Chalk",
+        "Chemicals"
+      ]
+    },
+    "Flechette": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Branch",
+        "Scrap Metal",
+        "Chalk"
+      ]
+    },
+    "Wind and Fire Wheels": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Mythril"
+      ]
+    },
+    "Death Rune": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Playing Cards",
+        "Meteorite"
+      ]
+    },
+    "Sudarsana": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "Meteorite"
+      ]
+    },
+    "Petal Torrent": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Nail",
+        "Tree of Life"
+      ]
+    },
+    "Black Lotus Shuriken": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "VF Blood Sample"
+      ]
+    },
+    "Bow": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Pond",
+        "Stream",
+        "Archery Range",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": "Bow"
+    },
+    "Wooden Bow": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire"
+      ]
+    },
+    "Longbow": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Rubber"
+      ]
+    },
+    "Composite Bow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire",
+        "Nail"
+      ]
+    },
+    "Strong Bow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire",
+        "Oil"
+      ]
+    },
+    "Mighty Bow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Rubber",
+        "Gunpowder"
+      ]
+    },
+    "Ancient Bolt": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire",
+        "Oil",
+        "Branch"
+      ]
+    },
+    "Golden-Ratio Bow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Twinbow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Piano Wire",
+        "Nail",
+        "Chemicals"
+      ]
+    },
+    "Elemental Bow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Rubber",
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "Jebe's Altered Bow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Rubber",
+        "Gunpowder",
+        "Feather"
+      ]
+    },
+    "Failnaught": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "VF Blood Sample"
+      ]
+    },
+    "Argyrotoxus": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Mythril"
+      ]
+    },
+    "Crimson Bow": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Tree of Life"
+      ]
+    },
+    "Artemis": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "Meteorite"
+      ]
+    },
+    "Eagle Eye": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Rubber",
+        "Mythril"
+      ]
+    },
+    "Short Crossbow": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Pond",
+        "Police Station",
+        "Archery Range",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": "CrossBow"
+    },
+    "Long Crossbow": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Piano Wire"
+      ]
+    },
+    "Crossbow": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Branch"
+      ]
+    },
+    "Laser Crossbow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Branch",
+        "Laser Pointer"
+      ]
+    },
+    "Heavy Crossbow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "Steel Bow": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Branch",
+        "Scrap Metal"
+      ]
+    },
+    "The Legend of The General": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Piano Wire",
+        "Scrap Metal",
+        "Oil"
+      ]
+    },
+    "Ballista": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Piano Wire",
+        "Scrap Metal",
+        "Nail"
+      ]
+    },
+    "Sniper Crossbow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Branch",
+        "Laser Pointer",
+        "Rubber"
+      ]
+    },
+    "The Golden Ghost": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Meteorite"
+      ]
+    },
+    "Poisoned Crossbow": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Branch",
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Sharanga": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Mythril"
+      ]
+    },
+    "Blood Half Moon": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "VF Blood Sample"
+      ]
+    },
+    "Tempest": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "Tree of Life"
+      ]
+    },
+    "Phantom Bolt": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Piano Wire",
+        "Mythril"
+      ]
+    },
+    "Walther PPK": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Warehouse",
+        "Hotel",
+        "Police Station",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": "Pistol"
+    },
+    "Magnum-Python": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Oil"
+      ]
+    },
+    "Beretta M92F": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Leather"
+      ]
+    },
+    "FN57": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Leather",
+        "Laser Pointer"
+      ]
+    },
+    "Magnum-Anaconda": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Oil",
+        "Fountain Pen"
+      ]
+    },
+    "Derringer": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Devil's Marksman": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Meteorite"
+      ]
+    },
+    "Elegance": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Leather",
+        "Laser Pointer",
+        "Feather"
+      ]
+    },
+    "Electron Blaster": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Oil",
+        "Fountain Pen",
+        "Battery"
+      ]
+    },
+    "Magnum-Boa": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Oil",
+        "Fountain Pen",
+        "Scrap Metal"
+      ]
+    },
+    "Glock 48": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Leather",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Stampede": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Piano Wire",
+        "Plastic",
+        "Scrap Metal"
+      ]
+    },
+    "Molten Malachite": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Tree of Life"
+      ]
+    },
+    "Kelte": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "Mythril"
+      ]
+    },
+    "Altair": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Magazine",
+        "Mythril"
+      ]
+    },
+    "High Noon": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "VF Blood Sample"
+      ]
+    },
+    "Fedorova": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Warehouse",
+        "Hotel",
+        "Police Station",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle"
+    },
+    "STG-44": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Gunpowder"
+      ]
+    },
+    "AK-47": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Gunpowder",
+        "Piano Wire"
+      ]
+    },
+    "M16A1": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Rubber"
+      ]
+    },
+    "Gatling Gun": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Plastic"
+      ]
+    },
+    "Type 95": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Gunpowder",
+        "Piano Wire",
+        "Chalk"
+      ]
+    },
+    "Agni": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Plastic",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "AK-12": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Gunpowder",
+        "Piano Wire",
+        "Laser Pointer"
+      ]
+    },
+    "XCR": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Rubber",
+        "Paper",
+        "Lighter"
+      ]
+    },
+    "Judgement": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Mythril"
+      ]
+    },
+    "Gold Rush": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Plastic",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Black Widow": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Magazine",
+        "Tree of Life"
+      ]
+    },
+    "Hellfire": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "VF Blood Sample"
+      ]
+    },
+    "Endeavor AX": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "Tree of Life"
+      ]
+    },
+    "Valkyrie": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Gunpowder",
+        "Mythril"
+      ]
+    },
+    "Long Rifle": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Uptown",
+        "Police Station",
+        "Fire Station",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": "SniperRifle"
+    },
+    "Springfield": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Laser Pointer"
+      ]
+    },
+    "Harpoon Gun": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Gemstone",
+        "Nail"
+      ]
+    },
+    "Golden Rifle": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Gemstone"
+      ]
+    },
+    "Railgun": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Laser Pointer",
+        "Piano Wire"
+      ]
+    },
+    "Tac-50": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Gemstone",
+        "Nail",
+        "Paper"
+      ]
+    },
+    "Intervention": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Laser Pointer",
+        "Mythril"
+      ]
+    },
+    "NTW-20": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Gemstone",
+        "Nail",
+        "Laser Pointer"
+      ]
+    },
+    "Polaris": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Laser Pointer",
+        "Piano Wire",
+        "Chalk"
+      ]
+    },
+    "Gauss Rifle": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Laser Pointer",
+        "Piano Wire",
+        "Paper"
+      ]
+    },
+    "The Deadly Ray": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Meteorite"
+      ]
+    },
+    "Blackfire Cannon": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Tree of Life"
+      ]
+    },
+    "Andromeda": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Magazine",
+        "Meteorite"
+      ]
+    },
+    "Widow Maker": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "VF Blood Sample"
+      ]
+    },
+    "Dead Eye": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "Mythril"
+      ]
+    },
+    "Steel Chain": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Dock",
+        "Police Station",
+        "Cemetery",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": "Nunchaku"
+    },
+    "Nunchaku": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic"
+      ]
+    },
+    "Sharper": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic",
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Bleeder": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic",
+        "Nail"
+      ]
+    },
+    "The Smiting Dragon": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic",
+        "Nail",
+        "Chemicals"
+      ]
+    },
+    "Vibro Nunchaku": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic",
+        "Nail",
+        "Battery"
+      ]
+    },
+    "Cerberus": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Mythril"
+      ]
+    },
+    "Blue 3": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Plastic",
+        "Chemicals",
+        "Glass Bottle"
+      ]
+    },
+    "Hydra": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "VF Blood Sample"
+      ]
+    },
+    "Crimson Red Lovers": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Tree of Life"
+      ]
+    },
+    "Geryon": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "Meteorite"
+      ]
+    },
+    "Neon Chain": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Battery",
+        "Tree of Life"
+      ]
+    },
+    "Needle": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Uptown",
+        "Hotel",
+        "Fire Station",
+        "Hospital"
+      ],
+      "initialCount": 1,
+      "weaponType": "Rapier"
+    },
+    "Fencing Rapier": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal"
+      ]
+    },
+    "Blooming": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Flower"
+      ]
+    },
+    "Estoc": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Oil"
+      ]
+    },
+    "Sword of Justice": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Flower",
+        "Bandage"
+      ]
+    },
+    "Durendal Mk2": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Flower",
+        "Laser Pointer"
+      ]
+    },
+    "Mistilteinn": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Branch",
+        "Tree of Life"
+      ]
+    },
+    "Volticletto": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Meteor Claymore": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Meteorite"
+      ]
+    },
+    "Joyeuse": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Mythril"
+      ]
+    },
+    "Red Panther": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Oil",
+        "Gemstone"
+      ]
+    },
+    "Esprit": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Oil",
+        "Glass Bottle"
+      ]
+    },
+    "Flamberge": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Scrap Metal",
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Eye of Argos": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Branch",
+        "Meteorite"
+      ]
+    },
+    "Nosferatu": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "VF Blood Sample"
+      ]
+    },
+    "Gear Helix": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "Tree of Life"
+      ]
+    },
+    "Starter Guitar": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Beach",
+        "Uptown",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "Guitar"
+    },
+    "Golden Bridge": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone"
+      ]
+    },
+    "Single Coil Pickup": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery"
+      ]
+    },
+    "Ruby Special": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Lighter"
+      ]
+    },
+    "Humbucker Pickup": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Laser Pointer"
+      ]
+    },
+    "King-V": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Scissors"
+      ]
+    },
+    "Nocaster": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Fountain Pen"
+      ]
+    },
+    "Superstrat": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Wild Horse": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Oil"
+      ]
+    },
+    "Bohemian": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Lighter",
+        "Playing Cards"
+      ]
+    },
+    "Stairway to Heaven": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Laser Pointer",
+        "Cross"
+      ]
+    },
+    "Purple Haze": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Gemstone",
+        "Scissors",
+        "Glass Bottle"
+      ]
+    },
+    "Satisfaction": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Fountain Pen",
+        "Stallion Medal"
+      ]
+    },
+    "Wonderful Tonight": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Meteorite"
+      ]
+    },
+    "The Wall": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Piano Wire",
+        "Chalk"
+      ]
+    },
+    "Teen Spirit": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Battery",
+        "Oil",
+        "Lighter"
+      ]
+    },
+    "Cpt. Pepper": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Tree of Life"
+      ]
+    },
+    "Heartbreaker": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "VF Blood Sample"
+      ]
+    },
+    "Heaven's Door": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Piano Wire",
+        "Meteorite"
+      ]
+    },
+    "Free Bird": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "Mythril"
+      ]
+    },
+    "Lens": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Gas Station",
+        "Hotel",
+        "Temple",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": "Camera"
+    },
+    "Pistol Camera": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Laser Pointer",
+        "Gunpowder"
+      ]
+    },
+    "Compact Camera": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Battery",
+        "Graphite",
+        "Lens"
+      ]
+    },
+    "Rangefinder": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Laser Pointer"
+      ]
+    },
+    "Mirrorless": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Battery",
+        "Graphite",
+        "Lens",
+        "Piano Wire"
+      ]
+    },
+    "Laser Designator": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Laser Pointer",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Cannon Camera": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Laser Pointer",
+        "Tree of Life"
+      ]
+    },
+    "V.I.C.G": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Laser Pointer",
+        "Gunpowder",
+        "Battery"
+      ]
+    },
+    "Instant Camera": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Battery",
+        "Graphite",
+        "Lens",
+        "Paper"
+      ]
+    },
+    "Ultraviolet": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Tree of Life"
+      ]
+    },
+    "Vision Flex": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "VF Blood Sample"
+      ]
+    },
+    "On Air": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Laser Pointer",
+        "Meteorite"
+      ]
+    },
+    "Triple Focus": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "Meteorite"
+      ]
+    },
+    "Glass Bead": {
+      "type": "Common",
+      "part": "Weapon",
+      "locations": [
+        "Alley",
+        "Temple",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": "Arcana"
+    },
+    "Mirror Core": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Oil"
+      ]
+    },
+    "Frigid Pearl": {
+      "type": "Uncommon",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Ice"
+      ]
+    },
+    "Staff of Reliance": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Oil",
+        "Pickaxe"
+      ]
+    },
+    "Sensibility": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Oil",
+        "Cross"
+      ]
+    },
+    "Frigid Pearl Blade": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Ice",
+        "Nail"
+      ]
+    },
+    "Possession Pentacle": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Ice",
+        "Stallion Medal"
+      ]
+    },
+    "The Hermit": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Oil",
+        "Pickaxe",
+        "Cross"
+      ]
+    },
+    "The Hierophant": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Ice",
+        "Nail",
+        "Paper"
+      ]
+    },
+    "Temperance": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Oil",
+        "Cross",
+        "Paper"
+      ]
+    },
+    "The Star": {
+      "type": "Epic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Ice",
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "The Moon": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Meteorite"
+      ]
+    },
+    "The Empress": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Stone",
+        "Tree of Life"
+      ]
+    },
+    "The Death": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "VF Blood Sample"
+      ]
+    },
+    "The Sun": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "Tree of Life"
+      ]
+    },
+    "Deathadder": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2"
+      ]
+    },
+    "Black Mamba": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2"
+      ]
+    },
+    "Sidewinder": {
+      "type": "Rare",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2"
+      ]
+    },
+    "Deathadder Queen MT": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution"
+      ]
+    },
+    "Deathadder Queen FC": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Deathadder Queen VBS": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Black Mamba King TL": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution"
+      ]
+    },
+    "Black Mamba King FC": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Black Mamba King VBS": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Alpha Sidewinder ML": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution"
+      ]
+    },
+    "Alpha Sidewinder FC": {
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Alpha Sidewinder VBS": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "VFArm",
+      "components": [
+        "Viper",
+        "Call of Cadmus Lv2",
+        "Call of Cadmus Lv3",
+        "Gem of Evolution",
+        "Gem of Evolution"
+      ]
+    },
+    "Scarlet Dagger - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Scarlet Dagger - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "OneHandSword",
+      "components": [
+        "Kitchen Knife",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Dáinsleif - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Dáinsleif - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "components": [
+        "Rusty Sword",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Peacebringer - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Peacebringer - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Hammer",
+      "components": [
+        "Hammer",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Scarlet Scythe - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Scarlet Scythe - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Axe",
+      "components": [
+        "Hatchet",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Spear of Longinus - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Spear of Longinus - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Spear",
+      "components": [
+        "Short Spear",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Bloody Nine Tails - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Bloody Nine Tails - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Whip",
+      "components": [
+        "Whip",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Bloody Hand - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Bloody Hand - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Glove",
+      "components": [
+        "Cotton Gloves",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Blade Tonfa - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Blade Tonfa - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Tonfa",
+      "components": [
+        "Bamboo",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Chaser - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Chaser - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "HighAngleFire",
+      "components": [
+        "Baseball",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Black Lotus Shuriken - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Black Lotus Shuriken - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DirectFire",
+      "components": [
+        "Razor",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Failnaught - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Failnaught - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bow",
+      "components": [
+        "Bow",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Blood Half Moon - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Blood Half Moon - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "CrossBow",
+      "components": [
+        "Short Crossbow",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Hellfire - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Hellfire - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "AssaultRifle",
+      "components": [
+        "Fedorova",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Widow Maker - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Widow Maker - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "SniperRifle",
+      "components": [
+        "Long Rifle",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Hydra - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Hydra - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Nunchaku",
+      "components": [
+        "Steel Chain",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Nosferatu - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Nosferatu - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "components": [
+        "Needle",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Heartbreaker - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Heartbreaker - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Guitar",
+      "components": [
+        "Starter Guitar",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "The Death - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "The Death - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "components": [
+        "Glass Bead",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "High Noon - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "High Noon - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Pistol",
+      "components": [
+        "Walther PPK",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Rod of Heart - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Rod of Heart - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "components": [
+        "Short Rod",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Phantom Blade - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Phantom Blade - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "DualSword",
+      "components": [
+        "Twin Blades",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Vision Flex - Crimson": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "VF Blood Sample",
+        "Crimson Shard"
+      ]
+    },
+    "Vision Flex - Dawn": {
+      "type": "Mythic",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Camera",
+      "components": [
+        "Lens",
+        "VF Blood Sample",
+        "Dawnlight Shard"
+      ]
+    },
+    "Hairband": {
+      "type": "Common",
+      "part": "Head",
+      "locations": [
+        "Warehouse",
+        "Pond",
+        "Stream",
+        "Hotel",
+        "Temple",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Hat": {
+      "type": "Common",
+      "part": "Head",
+      "locations": [
+        "Warehouse",
+        "Uptown",
+        "Alley",
+        "Hospital",
+        "Archery Range",
+        "Forest",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Bike Helmet": {
+      "type": "Common",
+      "part": "Head",
+      "locations": [
+        "Uptown",
+        "Gas Station",
+        "Fire Station",
+        "Forest",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Mask": {
+      "type": "Common",
+      "part": "Head",
+      "locations": [
+        "Uptown",
+        "Cemetery",
+        "Factory",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Circlet": {
+      "type": "Uncommon",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Branch"
+      ]
+    },
+    "Beret": {
+      "type": "Uncommon",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors"
+      ]
+    },
+    "Chain Coif": {
+      "type": "Uncommon",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Thread"
+      ]
+    },
+    "Safety Helmet": {
+      "type": "Uncommon",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Stone"
+      ]
+    },
+    "Ballistic Helmet": {
+      "type": "Rare",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors",
+        "Bike Helmet"
+      ]
+    },
+    "Fire Helmet": {
+      "type": "Rare",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Stone",
+        "Plastic"
+      ]
+    },
+    "Crown": {
+      "type": "Rare",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Close Helm": {
+      "type": "Rare",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Virtuous Outlaw": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Crystal Tiara": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Branch",
+        "Lighter",
+        "Gemstone"
+      ]
+    },
+    "Motorcycle Helmet": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Battery",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "Tactical OPS Helmet": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors",
+        "Bike Helmet",
+        "Battery"
+      ]
+    },
+    "Helm of Banneret": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Scrap Metal",
+        "Chemicals",
+        "Graphite"
+      ]
+    },
+    "Imperial Crown": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Pickaxe",
+        "Gemstone",
+        "Ribbon"
+      ]
+    },
+    "Imperial Burgonet": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Scrap Metal",
+        "Chemicals",
+        "Feather"
+      ]
+    },
+    "Mohawk Headgear": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Stone",
+        "Plastic",
+        "Nail"
+      ]
+    },
+    "Vigilante": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Stone",
+        "Plastic",
+        "Gunpowder"
+      ]
+    },
+    "Diadem": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Pickaxe",
+        "Gemstone",
+        "Flower"
+      ]
+    },
+    "Crusader Helmet": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cross",
+        "Mythril"
+      ]
+    },
+    "Cowboy Hat": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors",
+        "Paper",
+        "Lighter"
+      ]
+    },
+    "Plasma Helmet": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Thread",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Welding Helmet": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors",
+        "Bike Helmet",
+        "Plastic"
+      ]
+    },
+    "White Witch Hat": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Branch",
+        "Paper",
+        "Lighter"
+      ]
+    },
+    "Fox Mask": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Branch",
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "Sport Sunglasses": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Battery",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "The Sailor": {
+      "type": "Epic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Scissors",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Mythril Helm": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Mythril"
+      ]
+    },
+    "Laurel Wreath": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Tree of Life"
+      ]
+    },
+    "Chinese Opera Mask": {
+      "type": "Mythic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Mask",
+        "VF Blood Sample"
+      ]
+    },
+    "Elysian Halo": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Fallen Pegasus": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Meteorite"
+      ]
+    },
+    "Persona": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Mask",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Sultan's Turban": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Tree of Life"
+      ]
+    },
+    "Racing Helmet": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Plastic",
+        "Mythril"
+      ]
+    },
+    "The Star of the Wilds": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Meteorite"
+      ]
+    },
+    "Astronaut's Helmet": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Plastic",
+        "Meteorite"
+      ]
+    },
+    "Dwarf's Helmet": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scrap Metal",
+        "Tree of Life"
+      ]
+    },
+    "Twilight": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Ribbon",
+        "Mythril"
+      ]
+    },
+    "Blue Flames": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Plastic",
+        "Tree of Life"
+      ]
+    },
+    "Bunny Hat": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Ribbon",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Legatus": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Tactical Visor": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Binoculars",
+        "Tree of Life"
+      ]
+    },
+    "Fencing Mask": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Smart Glasses": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Binoculars",
+        "Meteorite"
+      ]
+    },
+    "Kundala": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Gemstone",
+        "Meteorite"
+      ]
+    },
+    "Viking Helmet": {
+      "type": "Mythic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "VF Blood Sample"
+      ]
+    },
+    "Eyeshield": {
+      "type": "Mythic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "VF Blood Sample"
+      ]
+    },
+    "David Headphones": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "Mythril"
+      ]
+    },
+    "Tactical Goggles": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Rubber",
+        "Tree of Life"
+      ]
+    },
+    "The Captain": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Meteorite"
+      ]
+    },
+    "Black Veil": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Graphite",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Garland of Petals": {
+      "type": "Rare",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Crown of Buds",
+        "Nature's Call Lv 2"
+      ]
+    },
+    "Celestial Echo": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Crown of Buds",
+        "Nature's Call Lv 2",
+        "Nature's Call Lv 3",
+        "Gem of Evolution"
+      ]
+    },
+    "Featherfall": {
+      "type": "Mythic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "VF Blood Sample"
+      ]
+    },
+    "Demon Mask": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Gemstone",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "White Mitre": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Thread",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Animalistic": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Lighter",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Windbreaker": {
+      "type": "Common",
+      "part": "Chest",
+      "locations": [
+        "Dock",
+        "Pond",
+        "Beach",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Shirt": {
+      "type": "Common",
+      "part": "Chest",
+      "locations": [
+        "Stream",
+        "Gas Station",
+        "Hotel",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Monk's Robe": {
+      "type": "Common",
+      "part": "Chest",
+      "locations": [
+        "Temple",
+        "Archery Range",
+        "Cemetery",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Wetsuit": {
+      "type": "Common",
+      "part": "Chest",
+      "locations": [
+        "Dock",
+        "Pond",
+        "Stream",
+        "Beach"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Leather Armor": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather"
+      ]
+    },
+    "Military Suit": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch"
+      ]
+    },
+    "Patched Robe": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Bandage"
+      ]
+    },
+    "Dress": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Scissors"
+      ]
+    },
+    "Bikini": {
+      "type": "Mythic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Wetsuit",
+        "VF Blood Sample"
+      ]
+    },
+    "Diving Suit": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Rubber"
+      ]
+    },
+    "Deacon Robes": {
+      "type": "Uncommon",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Cloth"
+      ]
+    },
+    "Rider Jacket": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Chemicals"
+      ]
+    },
+    "Chain Armor": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather",
+        "Thread"
+      ]
+    },
+    "Suit": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Ribbon"
+      ]
+    },
+    "Qipao": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Scissors",
+        "Cloth"
+      ]
+    },
+    "Hanbok": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Bandage",
+        "Flower"
+      ]
+    },
+    "Bulletproof Vest": {
+      "type": "Rare",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Plastic"
+      ]
+    },
+    "Cardinal Robes": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Cloth",
+        "Oil",
+        "Bandage"
+      ]
+    },
+    "Sunset Armor": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather",
+        "Thread",
+        "Gemstone"
+      ]
+    },
+    "Covert Agent Uniform": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Bandage",
+        "Flower",
+        "Stallion Medal"
+      ]
+    },
+    "Optical Camouflage Suit": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Rubber",
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "Rocker's Jacket": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Chemicals",
+        "Iron Ball"
+      ]
+    },
+    "Crusader Armor": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather",
+        "Thread",
+        "Cross"
+      ]
+    },
+    "Amazoness Armor": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather",
+        "Thread",
+        "Scissors"
+      ]
+    },
+    "Dragon Dobok": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Scissors",
+        "Cloth",
+        "Turtle Shell"
+      ]
+    },
+    "Commander's Armor": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Leather",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Butler's Suit": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Ribbon",
+        "Feather"
+      ]
+    },
+    "Battle Suit": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Meteorite"
+      ]
+    },
+    "EOD Suit": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Plastic",
+        "Rubber"
+      ]
+    },
+    "Tuxedo": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Ribbon",
+        "Cloth"
+      ]
+    },
+    "High Priest Robes": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Cloth",
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "Changpao": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Scissors",
+        "Cloth",
+        "Feather"
+      ]
+    },
+    "Turnout Coat": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Ribbon",
+        "Plastic"
+      ]
+    },
+    "Doctor's Gown": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Bandage",
+        "Leather",
+        "Cloth"
+      ]
+    },
+    "Uniform": {
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Branch",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Mythril Armor": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Mythril"
+      ]
+    },
+    "Blazing Dress": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Lighter",
+        "Tree of Life"
+      ]
+    },
+    "Mythril Crop": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Wetsuit",
+        "Mythril"
+      ]
+    },
+    "Kabana": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Monk's Robe",
+        "Meteorite"
+      ]
+    },
+    "Queen of Hearts": {
+      "type": "Mythic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Playing Cards",
+        "VF Blood Sample"
+      ]
+    },
+    "Holy Orders": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cross",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Burgundy 47": {
+      "type": "Mythic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Windbreaker",
+        "VF Blood Sample"
+      ]
+    },
+    "Áo Dài": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Phantom Jacket": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Windbreaker",
+        "Tree of Life"
+      ]
+    },
+    "Guardian Suit": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Wetsuit",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Elegant Gown": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Mythril"
+      ]
+    },
+    "Beautiful Garment": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Meteorite"
+      ]
+    },
+    "Specter": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Wetsuit",
+        "Meteorite"
+      ]
+    },
+    "Blood Cloak": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Monk's Robe",
+        "Tree of Life"
+      ]
+    },
+    "Omertà": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Windbreaker",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Shooting Star Jacket": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Windbreaker",
+        "Meteorite"
+      ]
+    },
+    "Couturier": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scissors",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Tactical Armor": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Magazine",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Elf Dress": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Flower",
+        "Tree of Life"
+      ]
+    },
+    "Titan Armor": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Tree of Life"
+      ]
+    },
+    "Ghillie Suit": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Wetsuit",
+        "Tree of Life"
+      ]
+    },
+    "Spectral Jacket": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Leather",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Wisdom Robes": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Monk's Robe",
+        "Mythril"
+      ]
+    },
+    "Inquisitor": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Black Flame Dragon": {
+      "type": "Mythic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Lighter",
+        "VF Blood Sample"
+      ]
+    },
+    "The General's Robe": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Flower",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Red Star": {
+      "type": "Mythic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Shirt",
+        "VF Blood Sample"
+      ]
+    },
+    "Rebel With A Cause": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Leather",
+        "Meteorite"
+      ]
+    },
+    "Watch": {
+      "type": "Common",
+      "part": "Arm",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Gas Station",
+        "Police Station",
+        "Hospital",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Bandage": {
+      "type": "Common",
+      "part": "Arm",
+      "locations": [
+        "Dock",
+        "Fire Station",
+        "Hospital",
+        "Forest",
+        "Factory",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Bracelet": {
+      "type": "Common",
+      "part": "Arm",
+      "locations": [
+        "Warehouse",
+        "Uptown",
+        "Alley",
+        "Hotel",
+        "Hospital",
+        "Cemetery"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Leather Shield": {
+      "type": "Uncommon",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Leather"
+      ]
+    },
+    "Squad Leader Armband": {
+      "type": "Uncommon",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Gunpowder"
+      ]
+    },
+    "Bracer": {
+      "type": "Uncommon",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Leather"
+      ]
+    },
+    "Broken Watch": {
+      "type": "Uncommon",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Chemicals"
+      ]
+    },
+    "Sheath": {
+      "type": "Rare",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scrap Metal",
+        "Chemicals",
+        "Leather"
+      ]
+    },
+    "Golden Bracelet": {
+      "type": "Rare",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Bazuband": {
+      "type": "Rare",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Leather",
+        "Scrap Metal"
+      ]
+    },
+    "Crimson Bracelet": {
+      "type": "Rare",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Lighter",
+        "Gemstone"
+      ]
+    },
+    "Corrupting Touch": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Oil",
+        "Bandage",
+        "Chemicals",
+        "Glass Bottle"
+      ]
+    },
+    "Sword Stopper": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Leather",
+        "Scrap Metal",
+        "Nail"
+      ]
+    },
+    "Draupnir": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Pickaxe",
+        "Gemstone",
+        "Bandage"
+      ]
+    },
+    "Vital Sign Sensor": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Chemicals",
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Creed of the Knight": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Leather",
+        "Bandage",
+        "Gunpowder"
+      ]
+    },
+    "Sheath of Shah Jahan": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scrap Metal",
+        "Chemicals",
+        "Leather",
+        "Gemstone"
+      ]
+    },
+    "Burnished Aegis": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Leather",
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Tindalos Band": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Lighter",
+        "Gemstone",
+        "Watch"
+      ]
+    },
+    "Nightingale": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Plasma Arc": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Leather",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Smart Band": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Battery",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "Minuteman Armband": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Gunpowder",
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "Sports Watch": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Chemicals",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Laced Quiver": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Branch",
+        "Oil",
+        "Bandage"
+      ]
+    },
+    "Veritas Lux Mea": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Ribbon",
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "White Crane Fan": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Nail",
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Jolly Roger": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Oil",
+        "Bandage",
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Buccaneer Doubloon": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Graphite",
+        "Meteorite"
+      ]
+    },
+    "Mythril Shield": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Mythril"
+      ]
+    },
+    "Cube Watch": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Meteorite"
+      ]
+    },
+    "Tellurian Timepiece": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Bracelet of Skadi": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Tree of Life"
+      ]
+    },
+    "Radar": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Battery",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Auto-arms": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Plastic",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Prominence": {
+      "type": "Mythic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "VF Blood Sample"
+      ]
+    },
+    "Centipede's Pauldron": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Meteorite"
+      ]
+    },
+    "Tindalos Monarch": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Watch",
+        "Mythril"
+      ]
+    },
+    "Shield of Kings": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Meteorite"
+      ]
+    },
+    "Bloodripper": {
+      "type": "Mythic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Chemicals",
+        "VF Blood Sample"
+      ]
+    },
+    "Dragon Scale": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Chain of Thorns": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Piano Wire",
+        "Tree of Life"
+      ]
+    },
+    "Nightmare Nails": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Chemicals",
+        "Meteorite"
+      ]
+    },
+    "Helix": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scrap Metal",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Mythril Armband": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Mythril"
+      ]
+    },
+    "Psyche's Blade": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Ice",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Burning Heart": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Iron Ball",
+        "Tree of Life"
+      ]
+    },
+    "Emerald Tablet": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Paper",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Solar System Miniature": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Iron Ball",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Eye of Horus": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Stallion Medal",
+        "Tree of Life"
+      ]
+    },
+    "Mythril Quiver": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Mythril"
+      ]
+    },
+    "Sultan Adorned": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Tree of Life"
+      ]
+    },
+    "Necronomicon": {
+      "type": "Mythic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Paper",
+        "VF Blood Sample"
+      ]
+    },
+    "Dice of Destiny": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Playing Cards",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Lunar Embrace": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Iron Ball",
+        "Meteorite"
+      ]
+    },
+    "Sanguine Gunbai": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Nova Shield": {
+      "type": "Mythic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "VF Blood Sample"
+      ]
+    },
+    "Fáfnir": {
+      "type": "Mythic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Turtle Shell",
+        "VF Blood Sample"
+      ]
+    },
+    "Totem": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Graphite",
+        "Mythril"
+      ]
+    },
+    "Running Shoes": {
+      "type": "Common",
+      "part": "Leg",
+      "locations": [
+        "Beach",
+        "Temple",
+        "Archery Range",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Tights": {
+      "type": "Common",
+      "part": "Leg",
+      "locations": [
+        "Uptown",
+        "Hospital",
+        "Temple",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Slippers": {
+      "type": "Common",
+      "part": "Leg",
+      "locations": [
+        "Stream",
+        "Hotel",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Chain Leggings": {
+      "type": "Uncommon",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Thread"
+      ]
+    },
+    "High Heels": {
+      "type": "Uncommon",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Nail"
+      ]
+    },
+    "Heelys": {
+      "type": "Uncommon",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Iron Ball"
+      ]
+    },
+    "Clogs": {
+      "type": "Common",
+      "part": "Leg",
+      "locations": [
+        "Pond",
+        "Beach",
+        "Temple",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Repaired Slippers": {
+      "type": "Uncommon",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Scissors"
+      ]
+    },
+    "Boots": {
+      "type": "Uncommon",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather"
+      ]
+    },
+    "Hiking Boots": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Scissors",
+        "Leather",
+        "Cloth"
+      ]
+    },
+    "Knee Pads": {
+      "type": "Rare",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather",
+        "Rubber"
+      ]
+    },
+    "Steel Knee Pads": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather",
+        "Rubber",
+        "Scrap Metal"
+      ]
+    },
+    "Combat Boots": {
+      "type": "Rare",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather",
+        "Oil"
+      ]
+    },
+    "Glacier Crampons": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Scissors",
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Feather Boots": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather",
+        "Oil",
+        "Feather"
+      ]
+    },
+    "Maverick Runner": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Iron Ball",
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Straitjacket Sneakers": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Scissors",
+        "Paper",
+        "Lighter"
+      ]
+    },
+    "Bucephalus": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Nail",
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "EOD Boots": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Clogs",
+        "Meteorite"
+      ]
+    },
+    "White Rhinos": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Leather",
+        "Oil",
+        "Nail"
+      ]
+    },
+    "Tachyon Brace": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Battery",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "SCV": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Iron Ball",
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Stellar Steps": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Nail",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Cowboy Boots": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Thread",
+        "Leather",
+        "Cloth"
+      ]
+    },
+    "Gladiator": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Thread",
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Delta Red": {
+      "type": "Epic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Iron Ball",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Mythril Boots": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Mythril"
+      ]
+    },
+    "Glacial Shoes": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Slippers",
+        "Tree of Life"
+      ]
+    },
+    "Taproot": {
+      "type": "Mythic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Clogs",
+        "VF Blood Sample"
+      ]
+    },
+    "Iron Maiden": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Slippers",
+        "Meteorite"
+      ]
+    },
+    "Boots of Hermes": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Clogs",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Red Shoes": {
+      "type": "Mythic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "VF Blood Sample"
+      ]
+    },
+    "Blade Boots": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Nail",
+        "Meteorite"
+      ]
+    },
+    "Alexander": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Tights",
+        "Tree of Life"
+      ]
+    },
+    "Legs of Steel": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Slippers",
+        "Mythril"
+      ]
+    },
+    "Wild Walkers": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Clogs",
+        "Tree of Life"
+      ]
+    },
+    "Galaxy Steps": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Meteorite"
+      ]
+    },
+    "Mirage Lace-Ups": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Ice",
+        "Meteorite"
+      ]
+    },
+    "Racing Boots": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Tights",
+        "Meteorite"
+      ]
+    },
+    "Killer Heels": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Slippers",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Space Boots": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Clogs",
+        "Mythril"
+      ]
+    },
+    "Eldian Boots": {
+      "type": "Mythic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Tights",
+        "VF Blood Sample"
+      ]
+    },
+    "Rose Steps": {
+      "type": "Mythic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Gemstone",
+        "VF Blood Sample"
+      ]
+    },
+    "Pixie Boots": {
+      "type": "Mythic",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Slippers",
+        "VF Blood Sample"
+      ]
+    },
+    "Tactical Shoes": {
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Running Shoes",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Claddagh Ring": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bracelet",
+        "Mythril"
+      ]
+    },
+    "Box": {
+      "type": "Uncommon",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Branch"
+      ]
+    },
+    "Smash Totem": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Tree of Life"
+      ]
+    },
+    "Music Box": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Branch",
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Schrödinger's Box": {
+      "type": "Epic",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cloth",
+        "Branch",
+        "Chemicals",
+        "Glass Bottle"
+      ]
+    },
+    "Magic Lamp": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Gemstone",
+        "Mythril"
+      ]
+    },
+    "Moonlight Pendant": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Thread",
+        "Meteorite"
+      ]
+    },
+    "Pharaoh's Artifact": {
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Stallion Medal",
+        "Mythril"
+      ]
+    },
+    "The Dragon’s Fury": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Mask",
+        "Mythril"
+      ]
+    },
+    "GPNVG": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Binoculars",
+        "Mythril"
+      ]
+    },
+    "The Black Death": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hat",
+        "Mythril"
+      ]
+    },
+    "Cyberstalker": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Battery",
+        "Mythril"
+      ]
+    },
+    "Blaster Helmet": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Tree of Life"
+      ]
+    },
+    "The Revenant": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Monk's Robe",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Commander Headset": {
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bike Helmet",
+        "Meteorite"
+      ]
+    },
+    "Racing Suit": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Windbreaker",
+        "Mythril"
+      ]
+    },
+    "Ghost Bride's Dress": {
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Bandage",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
+    "Blood Crown": {
+      "type": "Mythic",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Hairband",
+        "VF Blood Sample"
+      ]
+    },
+    "Scissors": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Alley",
+        "Hospital",
+        "Archery Range",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Fountain Pen": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Alley",
+        "Hotel",
+        "Fire Station",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Pickaxe": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Beach",
+        "Alley",
+        "Temple",
+        "Cemetery",
+        "Forest",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Branch": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Warehouse",
+        "Pond",
+        "Stream",
+        "Beach",
+        "Uptown",
+        "Alley",
+        "Gas Station",
+        "Hotel",
+        "Police Station",
+        "Fire Station",
+        "Hospital",
+        "Temple",
+        "Archery Range",
+        "Cemetery",
+        "Forest",
+        "Factory",
+        "Chapel",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 2,
+      "weaponType": ""
+    },
+    "Iron Ball": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Uptown",
+        "Police Station",
+        "Fire Station",
+        "Archery Range",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Playing Cards": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Uptown",
+        "Hotel",
+        "Fire Station",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Chalk": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Police Station",
+        "Factory",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Nail": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Alley",
+        "Hotel",
+        "Fire Station",
+        "Archery Range",
+        "Factory",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Leather": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Warehouse",
+        "Pond",
+        "Stream",
+        "Beach",
+        "Uptown",
+        "Alley",
+        "Gas Station",
+        "Hotel",
+        "Police Station",
+        "Fire Station",
+        "Hospital",
+        "Temple",
+        "Archery Range",
+        "Cemetery",
+        "Forest",
+        "Factory",
+        "Chapel",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Turtle Shell": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Pond",
+        "Stream",
+        "Beach",
+        "Temple",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Rubber": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Beach",
+        "Gas Station",
+        "Fire Station",
+        "Hospital",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Scrap Metal": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Stream",
+        "Beach",
+        "Gas Station",
+        "Fire Station",
+        "Factory"
+      ],
+      "initialCount": 2,
+      "weaponType": ""
+    },
+    "Lighter": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Alley",
+        "Gas Station",
+        "Police Station",
+        "Cemetery",
+        "Forest",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Laser Pointer": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Gas Station",
+        "Police Station",
+        "Hospital",
+        "Forest",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Stallion Medal": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Gas Station",
+        "Police Station",
+        "Temple",
+        "Cemetery",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Battery": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Gas Station",
+        "Hotel",
+        "Fire Station",
+        "Hospital",
+        "Temple",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Oil": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Pond",
+        "Beach",
+        "Gas Station",
+        "Hotel",
+        "Hospital",
+        "Factory",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Cloth": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Uptown",
+        "Gas Station",
+        "Hotel",
+        "Hospital",
+        "Temple",
+        "Cemetery",
+        "Chapel",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Gemstone": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Pond",
+        "Stream",
+        "Beach",
+        "Alley",
+        "Temple",
+        "Cemetery",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Paper": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Pond",
+        "Hotel",
+        "Police Station",
+        "Hospital",
+        "Factory",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Gunpowder": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Police Station",
+        "Fire Station",
+        "Archery Range",
+        "Forest",
+        "Chapel"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Stone": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Warehouse",
+        "Pond",
+        "Stream",
+        "Beach",
+        "Uptown",
+        "Alley",
+        "Gas Station",
+        "Hotel",
+        "Police Station",
+        "Fire Station",
+        "Hospital",
+        "Temple",
+        "Archery Range",
+        "Cemetery",
+        "Forest",
+        "Factory",
+        "Chapel",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 2,
+      "weaponType": ""
+    },
+    "Glass Bottle": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Beach",
+        "Alley",
+        "Hospital",
+        "Archery Range",
+        "Chapel",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Piano Wire": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Uptown",
+        "Alley",
+        "Hotel",
+        "Police Station",
+        "Archery Range",
+        "Chapel",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Flower": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Pond",
+        "Stream",
+        "Uptown",
+        "Temple",
+        "Cemetery",
+        "Forest"
+      ],
+      "initialCount": 2,
+      "weaponType": ""
+    },
+    "Ice": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Stream",
+        "Hotel",
+        "Hospital",
+        "Forest",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Oilcloth": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Oil",
+        "Bandage"
+      ]
+    },
+    "Ruby": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Lighter",
+        "Gemstone"
+      ]
+    },
+    "Ash": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Paper",
+        "Lighter"
+      ]
+    },
+    "Electronic Parts": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Battery",
+        "Piano Wire"
+      ]
+    },
+    "Blueprint": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Fountain Pen",
+        "Paper"
+      ]
+    },
+    "Iron Sheet": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Scrap Metal",
+        "Chemicals"
+      ]
+    },
+    "Gold": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 2,
+      "weaponType": "",
+      "components": [
+        "Pickaxe",
+        "Gemstone"
+      ]
+    },
+    "Barbed Wire": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Piano Wire",
+        "Plastic"
+      ]
+    },
+    "Hardcover": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Paper",
+        "Leather"
+      ]
+    },
+    "Ion Battery": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Battery",
+        "Graphite"
+      ]
+    },
+    "Patched Leather": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Leather",
+        "Cloth"
+      ]
+    },
+    "Motor": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Battery",
+        "Piano Wire",
+        "Scrap Metal"
+      ]
+    },
+    "Feather": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Warehouse",
+        "Pond",
+        "Stream",
+        "Temple",
+        "Archery Range",
+        "Forest",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Ribbon": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Pond",
+        "Uptown",
+        "Alley",
+        "Police Station",
+        "Cemetery",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Cross": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Alley",
+        "Fire Station",
+        "Cemetery",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Flower of Fate": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Glass Pieces": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 2,
+      "weaponType": "",
+      "components": [
+        "Glass Bottle",
+        "Stone"
+      ]
+    },
+    "Quiver": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Branch"
+      ]
+    },
+    "Shaman's Bronze": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Stallion Medal",
+        "Piano Wire"
+      ]
+    },
+    "Aether Fringe": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Feather",
+        "Flower",
+        "Gemstone"
+      ]
+    },
+    "Chemicals": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Gas Station",
+        "Fire Station",
+        "Hospital",
+        "Cemetery",
+        "Factory",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Graphite": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Pond",
+        "Beach",
+        "Police Station",
+        "Archery Range",
+        "Cemetery",
+        "School",
+        "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Diamond": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Graphite",
+        "Lighter"
+      ]
+    },
+    "Poison": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Chemicals",
+        "Glass Bottle"
+      ]
+    },
+    "Plastic": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Warehouse",
+        "Stream",
+        "Beach",
+        "Alley",
+        "Fire Station",
+        "Cemetery",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Thread": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Pond",
+        "Beach",
+        "Fire Station",
+        "Archery Range",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Magazine": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Hotel",
+        "Police Station",
+        "Temple",
+        "Factory"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Binoculars": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Beach",
+        "Police Station",
+        "Archery Range",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Boiling Water": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Water"
+      ]
+    },
+    "Flower Liquor": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Water",
+        "Flower"
+      ]
+    },
+    "Tear of Selene": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Water",
+        "Meteorite"
+      ]
+    },
+    "Holy Water": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Water",
+        "Mythril"
+      ]
+    },
+    "Zen Vitality": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Water",
+        "Tree of Life"
+      ]
+    },
+    "Bread": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Gas Station",
+        "Hotel",
+        "Temple",
+        "Chapel",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Oriental Herb": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Pond",
+        "Stream",
+        "Temple",
+        "Forest"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Chocolate": {
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Dock",
+        "Uptown",
+        "Factory",
+        "School"
+      ],
+      "initialCount": 1,
+      "weaponType": ""
+    },
+    "Orchid": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Oriental Herb",
+        "Flower"
+      ]
+    },
+    "Choco Ice Cream": {
+      "type": "Uncommon",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Ice",
+        "Chocolate"
+      ]
+    },
+    "Bread in Tears": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Bread",
+        "Water"
+      ]
+    },
+    "First Aid Kit": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [
+        "Hospital"
+      ],
+      "initialCount": 2,
+      "weaponType": ""
+    },
+    "Breakfast Toast": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 2,
+      "weaponType": "",
+      "components": [
+        "Bread"
+      ]
+    },
+    "Breakfast Sandwich": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Bread",
+        "Meat"
+      ]
+    },
+    "Sizzling Steak": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Meat"
+      ]
+    },
+    "Grilled Mushroom Skewers": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Edible Mushroom"
+      ]
+    },
+    "Fish Cutlet": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Cod"
+      ]
+    },
+    "French Fries": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Potato"
+      ]
+    },
+    "Choco Spread": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Chocolate"
+      ]
+    },
+    "Warm Oriental Concoction": {
+      "type": "Rare",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Oriental Herb"
+      ]
+    },
+    "#11 Combo Meal": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Bread",
+        "Meat"
+      ]
+    },
+    "Fish And Chips": {
+      "type": "Epic",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Cod",
+        "Potato"
+      ]
+    },
+    "Salmon Steak": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Salmon"
+      ]
+    },
+    "Hawaiian Pizza": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Frozen Pizza"
+      ]
+    },
+    "Sweet Potato": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Yellow Sweet Potato"
+      ]
+    },
+    "Truffle Pasta": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 3,
+      "weaponType": "",
+      "components": [
+        "Truffle"
+      ]
+    },
+    "Combat Epinephrine": {
+      "type": "Legend",
+      "part": "Misc",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "components": [
+        "Water",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    }
+  },
+  "mapData": {
+    "Dock": {
+      "neighbors": [
+        "Warehouse",
+        "Factory"
+      ],
+      "hasHyperloop": false
+    },
+    "Warehouse": {
+      "neighbors": [
+        "Uptown",
+        "Chapel",
+        "Dock"
+      ],
+      "hasHyperloop": false
+    },
+    "Pond": {
+      "neighbors": [
+        "Fire Station",
+        "Stream",
+        "Hospital"
+      ],
+      "hasHyperloop": false
+    },
+    "Stream": {
+      "neighbors": [
+        "Temple",
+        "Police Station",
+        "Pond",
+        "Hospital"
+      ],
+      "hasHyperloop": true
+    },
+    "Beach": {
+      "neighbors": [
+        "Hotel",
+        "Forest",
+        "Uptown"
+      ],
+      "hasHyperloop": false
+    },
+    "Uptown": {
+      "neighbors": [
+        "Beach",
+        "Forest",
+        "Chapel",
+        "Warehouse"
+      ],
+      "hasHyperloop": true
+    },
+    "Alley": {
+      "neighbors": [
+        "Gas Station",
+        "Police Station",
+        "Temple"
+      ],
+      "hasHyperloop": true
+    },
+    "Gas Station": {
+      "neighbors": [
+        "Archery Range",
+        "School",
+        "Fire Station",
+        "Alley"
+      ],
+      "hasHyperloop": true
+    },
+    "Hotel": {
+      "neighbors": [
+        "Archery Range",
+        "School",
+        "Forest",
+        "Beach"
+      ],
+      "hasHyperloop": true
+    },
+    "Police Station": {
+      "neighbors": [
+        "Alley",
+        "Temple",
+        "Fire Station",
+        "Stream"
+      ],
+      "hasHyperloop": false
+    },
+    "Fire Station": {
+      "neighbors": [
+        "Gas Station",
+        "School",
+        "Police Station",
+        "Research Center",
+        "Pond"
+      ],
+      "hasHyperloop": true
+    },
+    "Hospital": {
+      "neighbors": [
+        "Pond",
+        "Stream",
+        "Factory",
+        "Cemetery"
+      ],
+      "hasHyperloop": true
+    },
+    "Temple": {
+      "neighbors": [
+        "Alley",
+        "Police Station",
+        "Stream"
+      ],
+      "hasHyperloop": true
+    },
+    "Archery Range": {
+      "neighbors": [
+        "Gas Station",
+        "School",
+        "Hotel"
+      ],
+      "hasHyperloop": false
+    },
+    "Cemetery": {
+      "neighbors": [
+        "Hospital",
+        "Research Center",
+        "Factory",
+        "Chapel"
+      ],
+      "hasHyperloop": false
+    },
+    "Forest": {
+      "neighbors": [
+        "Hotel",
+        "School",
+        "Research Center",
+        "Chapel",
+        "Uptown",
+        "Beach"
+      ],
+      "hasHyperloop": true
+    },
+    "Factory": {
+      "neighbors": [
+        "Hospital",
+        "Cemetery",
+        "Chapel",
+        "Dock"
+      ],
+      "hasHyperloop": true
+    },
+    "Chapel": {
+      "neighbors": [
+        "Forest",
+        "Cemetery",
+        "Factory",
+        "Warehouse",
+        "Uptown"
+      ],
+      "hasHyperloop": true
+    },
+    "School": {
+      "neighbors": [
+        "Archery Range",
+        "Gas Station",
+        "Fire Station",
+        "Research Center",
+        "Forest",
+        "Hotel"
+      ],
+      "hasHyperloop": true
+    },
+    "Research Center": {
+      "neighbors": [
+        "School",
+        "Fire Station",
+        "Forest",
+        "Cemetery"
+      ],
+      "hasHyperloop": false
+    }
+  }
+}
