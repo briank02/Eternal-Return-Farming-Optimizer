@@ -1,0 +1,29 @@
+{
+  "name": "eternal-return-farming-optimizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briank02/Eternal-Return-Farming-Optimizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/briank02/Eternal-Return-Farming-Optimizer/issues"
+  },
+  "homepage": "https://github.com/briank02/Eternal-Return-Farming-Optimizer#readme",
+  "dependencies": {
+    "axios": "^1.16.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2"
+  }
+}

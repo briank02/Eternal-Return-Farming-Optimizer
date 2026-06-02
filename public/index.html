@@ -11,6 +11,9 @@
 <body>
 
     <header>
+        <div id="loading-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); color:white; display:flex; align-items:center; justify-content:center; z-index:9999;">
+            <h2>Loading Game Data from API...</h2>
+        </div>
         <div class="header-left">
         </div>
 
@@ -33,26 +36,28 @@
             <h2>Filters</h2>
 
             <div class="filter-row">
-                <div class="filter-btn active" data-filter="All" title="Show All">
-                    <img src="images/icon_all.png" alt="All" onerror="this.src=''; this.parentElement.innerText='ALL'">
+                <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;">
+                    ALL
                 </div>
                 <div class="filter-btn" data-filter="Weapon" title="Weapon">
-                    <img src="images/icon_weapon.png" alt="Weapon"
-                        onerror="this.src=''; this.parentElement.innerText='WPN'">
+                    <img src="images/Weapon.png" alt="Weapon" onerror="this.style.display='none'; this.parentElement.innerText='WPN'">
                 </div>
                 <div class="filter-btn" data-filter="Chest" title="Chest">
-                    <img src="images/icon_chest.png" alt="Chest"
-                        onerror="this.src=''; this.parentElement.innerText='CST'">
+                    <img src="images/Chest.png" alt="Chest" onerror="this.style.display='none'; this.parentElement.innerText='CST'">
                 </div>
                 <div class="filter-btn" data-filter="Head" title="Head">
-                    <img src="images/icon_head.png" alt="Head" onerror="this.src=''; this.parentElement.innerText='HD'">
+                    <img src="images/Head.png" alt="Head" onerror="this.style.display='none'; this.parentElement.innerText='HD'">
                 </div>
                 <div class="filter-btn" data-filter="Arm" title="Arm">
-                    <img src="images/icon_arm.png" alt="Arm" onerror="this.src=''; this.parentElement.innerText='ARM'">
+                    <img src="images/Arm.png" alt="Arm" onerror="this.style.display='none'; this.parentElement.innerText='ARM'">
                 </div>
                 <div class="filter-btn" data-filter="Leg" title="Leg">
-                    <img src="images/icon_leg.png" alt="Leg" onerror="this.src=''; this.parentElement.innerText='LEG'">
+                    <img src="images/Leg.png" alt="Leg" onerror="this.style.display='none'; this.parentElement.innerText='LEG'">
                 </div>
+            </div>
+
+            <div id="weapon-subfilters" class="weapon-filter-row">
+                <!-- Weapon subfilters will be injected here via JS -->
             </div>
 
             <div id="filter-options">
@@ -86,7 +91,6 @@
 
     </main>
 
-    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 

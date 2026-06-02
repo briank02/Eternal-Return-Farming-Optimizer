@@ -3,6 +3,32 @@
 // ==========================================
 const selectedEpics = new Set();
 let currentFilter = "All"; // Track active filter
+let currentWeaponFilter = "All";
+
+const WEAPON_TYPES = [
+    { api: "Glove", name: "Glove", img: "01. Glove.png" },
+    { api: "Tonfa", name: "Tonfa", img: "02. Tonfa.png" },
+    { api: "Bat", name: "Bat", img: "03. Bat.png" },
+    { api: "Hammer", name: "Hammer", img: "04. Hammer.png" },
+    { api: "Whip", name: "Whip", img: "05. Whip.png" },
+    { api: "HighAngleFire", name: "Throw", img: "06. Throwing.png" },
+    { api: "DirectFire", name: "Shuriken", img: "07. Shuriken.png" },
+    { api: "Bow", name: "Bow", img: "08. Bow.png" },
+    { api: "CrossBow", name: "Crossbow", img: "09. Crossbow.png" },
+    { api: "Pistol", name: "Pistol", img: "10. Pistol.png" },
+    { api: "AssaultRifle", name: "Assault Rifle", img: "11. Assault Rifle.png" },
+    { api: "SniperRifle", name: "Sniper Rifle", img: "12. Sniper Rifle.png" },
+    { api: "Axe", name: "Axe", img: "13. Axe.png" },
+    { api: "OneHandSword", name: "Dagger", img: "14. Dagger.png" },
+    { api: "TwoHandSword", name: "Two-Handed Sword", img: "15. Twohanded Sword.png" },
+    { api: "DualSword", name: "Dual Swords", img: "16. Dual Sword.png" },
+    { api: "Spear", name: "Spear", img: "17. Spear.png" },
+    { api: "Nunchaku", name: "Nunchaku", img: "18. Nunchaku.png" },
+    { api: "Rapier", name: "Rapier", img: "19. Rapier.png" },
+    { api: "Guitar", name: "Guitar", img: "20. Guitar.png" },
+    { api: "Camera", name: "Camera", img: "21. Camera.png" },
+    { api: "Arcana", name: "Arcana", img: "22. Arcana.png" }
+];
 
 // HARDCODED BASE WEAPONS
 const BASE_WEAPONS = new Set([
@@ -13,17 +39,35 @@ const BASE_WEAPONS = new Set([
     "Needle", "Starter Guitar", "Lens", "Glass Bead"
 ]);
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Setup Filters
-    setupFilters();
-    
-    // 2. Initialize Grid
-    renderMainGrid();
+let items = {};
+let mapData = {};
 
-    // 3. Setup Calculate Button
-    const calculateBtn = document.getElementById('calculate-btn');
-    if (calculateBtn) {
-        calculateBtn.addEventListener('click', calculateAllVariants);
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const res = await fetch('/api/data');
+        const data = await res.json();
+        
+        items = data.items;
+        mapData = data.mapData;
+        
+        const loading = document.getElementById('loading-screen');
+        if (loading) loading.style.display = 'none';
+
+        // 1. Setup Filters
+        setupFilters();
+        
+        // 2. Initialize Grid
+        renderMainGrid();
+
+        // 3. Setup Calculate Button
+        const calculateBtn = document.getElementById('calculate-btn');
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', calculateAllVariants);
+        }
+    } catch (e) {
+        console.error("Failed to load API data", e);
+        const loading = document.getElementById('loading-screen');
+        if (loading) loading.innerHTML = '<h2>Error loading API data. Please refresh.</h2>';
     }
 });
 
@@ -32,15 +76,49 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 
 function setupFilters() {
-    const btns = document.querySelectorAll('.filter-btn');
-    btns.forEach(btn => {
+    const subfilterContainer = document.getElementById('weapon-subfilters');
+    
+    let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="All Weapons" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">ALL</div>`;
+    WEAPON_TYPES.forEach(w => {
+        subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name}">
+            <img src="images/${w.img}" alt="${w.name}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
+        </div>`;
+    });
+    if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
+
+    const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters) > .filter-btn');
+    topBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Visual Update
-            btns.forEach(b => b.classList.remove('active'));
+            topBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
-            // Logic Update
             currentFilter = btn.dataset.filter;
+            
+            // Subfilter container remains always visible now
+            renderMainGrid();
+        });
+    });
+
+    const subBtns = document.querySelectorAll('#weapon-subfilters .filter-btn');
+    const mainWeaponImg = document.querySelector('.filter-btn[data-filter="Weapon"] img');
+
+    subBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            subBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentWeaponFilter = btn.dataset.subfilter;
+
+            if (mainWeaponImg) {
+                if (currentWeaponFilter === "All") {
+                    mainWeaponImg.src = "images/Weapon.png";
+                } else {
+                    const clickedImg = btn.querySelector('img');
+                    if (clickedImg) {
+                        mainWeaponImg.src = clickedImg.src;
+                    }
+                }
+            }
+
             renderMainGrid();
         });
     });
@@ -51,17 +129,55 @@ function renderMainGrid() {
     if (!grid) return;
     grid.innerHTML = ''; 
 
-    for (const [name, data] of Object.entries(items)) {
-        // Check Filter
-        if (data.type === "Epic") {
-            // If filter is "All", show everything. 
-            // Else, check if item.part matches currentFilter
-            if (currentFilter === "All" || data.part === currentFilter) {
-                const card = createItemCard(name);
-                grid.appendChild(card);
+    const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
+
+    const epicItems = Object.entries(items).filter(([name, data]) => {
+        if (data.type !== "Epic" && data.type !== "Legendary") return false;
+        if (!partOrder[data.part]) return false;
+        
+        // If currentFilter is "All", we only filter out other weapons
+        if (currentFilter === "All") {
+            if (data.part === "Weapon" && currentWeaponFilter !== "All" && data.weaponType !== currentWeaponFilter) {
+                return false;
             }
+            return true;
         }
-    }
+
+        // If not "All", check part match
+        if (data.part !== currentFilter) return false;
+
+        // If part is Weapon, further filter by weaponType
+        if (data.part === "Weapon") {
+            if (currentWeaponFilter !== "All" && data.weaponType !== currentWeaponFilter) return false;
+        }
+
+        return true;
+    });
+
+    const weaponOrderMap = {};
+    WEAPON_TYPES.forEach((w, i) => weaponOrderMap[w.api] = i);
+
+    epicItems.sort((a, b) => {
+        const dataA = a[1];
+        const dataB = b[1];
+        const orderA = partOrder[dataA.part] || 99;
+        const orderB = partOrder[dataB.part] || 99;
+        
+        if (orderA !== orderB) return orderA - orderB;
+        
+        if (dataA.part === "Weapon" && dataA.weaponType && dataB.weaponType) {
+             const wA = weaponOrderMap[dataA.weaponType] ?? 99;
+             const wB = weaponOrderMap[dataB.weaponType] ?? 99;
+             if (wA !== wB) return wA - wB;
+        }
+        
+        return a[0].localeCompare(b[0]);
+    });
+
+    epicItems.forEach(([name, data]) => {
+        const card = createItemCard(name);
+        grid.appendChild(card);
+    });
 }
 
 function createItemCard(name) {
@@ -308,7 +424,9 @@ function solveSpecificBuild(buildSet) {
         if (index < validZones.length) {
             const potentialTotal = currentMask | suffixUnions[index];
             const potentialMissing = countSetBits(FULL_MASK ^ potentialTotal);
-            const allowedDrones = (currentPath.length === 0) ? 2 : 1;
+            let allowedDrones = 2;
+            if (currentPath.length === 1) allowedDrones = 1;
+            if (currentPath.length === 2) allowedDrones = 0;
             if (potentialMissing > allowedDrones) return; 
         }
 
@@ -347,11 +465,16 @@ function solveSpecificBuild(buildSet) {
 // ==========================================
 
 function getRouteTier(zoneCount, droneCount) {
-    if (zoneCount === 1 && droneCount <= 2) return 1; 
-    if (zoneCount === 2 && droneCount === 0) return 2; 
-    if (zoneCount === 2 && droneCount === 1) return 3; 
-    if (zoneCount === 3 && droneCount === 0) return 4; 
-    if (zoneCount === 3 && droneCount === 1) return 5; 
+    if (zoneCount === 1) {
+        if (droneCount === 0) return 1;
+        if (droneCount === 1) return 2;
+        if (droneCount === 2) return 3;
+    } else if (zoneCount === 2) {
+        if (droneCount === 0) return 4;
+        if (droneCount === 1) return 5;
+    } else if (zoneCount === 3) {
+        if (droneCount === 0) return 6;
+    }
     return 0; 
 }
 
@@ -373,7 +496,7 @@ function calculatePathDistance(path) {
         const next = path[i+1];
         if (mapData[current].hasHyperloop) distance += 1; 
         else if (mapData[current].neighbors.includes(next)) distance += 1; 
-        else distance += 2; 
+        else distance += 100; // Heavy penalty for no hyperloop and non-neighbor
     }
     return distance;
 }
@@ -409,11 +532,12 @@ function displayResults(routes, container) {
     
     topRoutes.forEach((r, index) => {
         let tierLabel = "";
-        if(r.tier === 1) tierLabel = `<span style="background:#8e44ad; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px; font-weight:bold;">1 ZONE</span>`;
-        else if(r.tier === 2) tierLabel = `<span style="background:#27ae60; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 0D</span>`;
-        else if(r.tier === 3) tierLabel = `<span style="background:#f39c12; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 1D</span>`;
-        else if(r.tier === 4) tierLabel = `<span style="background:#2980b9; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 0D</span>`;
-        else if(r.tier === 5) tierLabel = `<span style="background:#c0392b; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 1D</span>`;
+        if(r.tier === 1) tierLabel = `<span style="background:#8e44ad; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px; font-weight:bold;">1Z / 0D</span>`;
+        else if(r.tier === 2) tierLabel = `<span style="background:#9b59b6; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">1Z / 1D</span>`;
+        else if(r.tier === 3) tierLabel = `<span style="background:#af7ac5; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">1Z / 2D</span>`;
+        else if(r.tier === 4) tierLabel = `<span style="background:#27ae60; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 0D</span>`;
+        else if(r.tier === 5) tierLabel = `<span style="background:#f39c12; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">2Z / 1D</span>`;
+        else if(r.tier === 6) tierLabel = `<span style="background:#2980b9; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 0D</span>`;
 
         let droneHtml = r.drones.length > 0 
             ? `<span style="color:#e74c3c;">Need Drone: <strong>${r.drones.join(', ')}</strong></span>` 
@@ -451,9 +575,10 @@ function displayResults(routes, container) {
 
 function getColorForTier(tier) {
     if (tier === 1) return "#8e44ad"; 
-    if (tier === 2) return "#27ae60"; 
-    if (tier === 3) return "#f39c12"; 
-    if (tier === 4) return "#2980b9"; 
-    if (tier === 5) return "#c0392b"; 
+    if (tier === 2) return "#9b59b6"; 
+    if (tier === 3) return "#af7ac5"; 
+    if (tier === 4) return "#27ae60"; 
+    if (tier === 5) return "#f39c12"; 
+    if (tier === 6) return "#2980b9"; 
     return "#ccc";
 }
