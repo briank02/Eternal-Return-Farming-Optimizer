@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Farming Route Optimizer</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,13 +13,13 @@
 
     <header>
         <div id="loading-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); color:white; display:flex; align-items:center; justify-content:center; z-index:9999;">
-            <h2>Loading Game Data from API...</h2>
+            <h2 data-i18n="loading">Loading Game Data from API...</h2>
         </div>
         <div class="header-left">
         </div>
 
         <div class="header-center">
-            <h1>Eternal Return Farming Route Optimizer</h1>
+            <h1 data-i18n="title">Eternal Return Farming Route Optimizer</h1>
         </div>
 
         <div class="header-right">
@@ -35,25 +36,25 @@
         <section class="panel left-panel">
             <div style="display:flex; justify-content:space-between; align-items:center;">
                 <div style="display:flex; align-items:center; gap:10px;">
-                    <h2 style="margin:0;">Filters</h2>
-                    <button id="reset-all-btn" style="padding: 3px 10px; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#7f8c8d'" onmouseout="this.style.background='#95a5a6'">Reset All</button>
+                    <h2 style="margin:0;" data-i18n="filters">Filters</h2>
+                    <button id="reset-all-btn" style="padding: 3px 10px; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#7f8c8d'" onmouseout="this.style.background='#95a5a6'" data-i18n="resetAll">Reset All</button>
                 </div>
                 <div>
-                    <label for="char-level" style="font-weight:bold; margin-right:5px;">Level:</label>
+                    <label for="char-level" style="font-weight:bold; margin-right:5px;" data-i18n="level">Level:</label>
                     <input type="number" id="char-level" min="1" max="20" value="1" style="width:50px; font-size:1.1em; padding:3px;">
                 </div>
             </div>
 
             <!-- Character Selection -->
-            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Character</div>
-            <div id="character-selection" class="filter-row character-row" style="background:#e8e8e8; padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(auto-fill, 50px); justify-content: center; gap:5px; max-height:280px; overflow-y:auto;">
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="character">Character</div>
+            <div id="character-selection" class="filter-row character-row" style="background:var(--filter-bg); padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(auto-fill, 50px); justify-content: center; gap:5px; max-height:280px; overflow-y:auto;">
                 <!-- Injected via JS -->
             </div>
 
             <!-- Main Parts Filter -->
-            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Item Part</div>
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="itemPart">Item Part</div>
             <div class="filter-row" style="margin-bottom:10px;">
-                <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;">
+                <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;" data-i18n="all">
                     ALL
                 </div>
                 <div class="filter-btn" data-filter="Weapon" title="Weapon">
@@ -73,14 +74,14 @@
                 </div>
             </div>
 
-            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Weapon Type</div>
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="weaponType">Weapon Type</div>
             <div id="weapon-subfilters" class="weapon-filter-row" style="margin-bottom:10px;">
                 <!-- Weapon subfilters will be injected here via JS -->
             </div>
 
             <!-- Substat Filters -->
-            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;">Substats</div>
-            <div id="substat-filters" class="filter-row substat-row" style="background:#e8e8e8; padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(2, 1fr); gap:5px;">
+            <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="substats">Substats</div>
+            <div id="substat-filters" class="filter-row substat-row" style="background:var(--filter-bg); padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(2, 1fr); gap:5px;">
                 <!-- Injected via JS -->
             </div>
         </section>
@@ -89,38 +90,38 @@
 
             <div class="selection-header">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <h2 style="margin:0;">Your Build</h2>
-                    <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'">Reset Build</button>
+                    <h2 style="margin:0;" data-i18n="yourBuild">Your Build</h2>
+                    <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'" data-i18n="resetBuild">Reset Build</button>
                 </div>
                 <div id="selected-item-grid" class="grid-view small-grid">
-                    <p class="empty-msg">Click items below to add them to your build.</p>
+                    <p class="empty-msg" data-i18n="clickToAdd">Click items below to add them to your build.</p>
                 </div>
             </div>
 
             <hr>
-            <h2>Select Epic Items</h2>
+            <h2 data-i18n="selectEpicItems">Select Epic Items</h2>
             <div id="epic-item-grid" class="grid-view"></div>
         </section>
 
         <section class="panel right-panel" id="build-panel" style="display:flex; flex-direction:column; max-height: 100vh;">
-            <button id="calculate-btn" style="margin-bottom:10px; padding: 15px; font-size: 1.2em; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s;" onmouseover="this.style.background='#2ecc71'" onmouseout="this.style.background='#27ae60'">Optimize Route</button>
+            <button id="calculate-btn" style="margin-bottom:10px; padding: 15px; font-size: 1.2em; background: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background 0.2s;" onmouseover="this.style.background='#2ecc71'" onmouseout="this.style.background='#27ae60'" data-i18n="optimizeRoute">Optimize Route</button>
             
-            <div id="route-results-container" style="flex:1.5; overflow-y:auto; border:1px solid #ddd; border-radius:4px; padding:10px; background:#fafafa; margin-bottom:0;">
+            <div id="route-results-container" style="flex:1.5; overflow-y:auto; border:1px solid var(--border-color); border-radius:4px; padding:10px; background:var(--bg-main); margin-bottom:0;">
                 <div id="result-output" class="result-area" style="margin-top:0;">
-                    <p class="empty-msg">Optimize a route, then click up to 2 routes below to compare stats.</p>
+                    <p class="empty-msg" data-i18n="optimizeThenCompare">Optimize a route, then click up to 2 routes below to compare stats.</p>
                 </div>
             </div>
 
             <div id="resizer" style="height: 10px; cursor: ns-resize; display:flex; justify-content:center; align-items:center; margin: 2px 0;">
-                <div style="width: 40px; height: 4px; background: #ccc; border-radius: 2px;"></div>
+                <div style="width: 40px; height: 4px; background: var(--border-color); border-radius: 2px;"></div>
             </div>
 
-            <div id="stat-calculator" style="flex:1; background:#fff; padding:10px; border-radius:8px; border:1px solid #ddd; overflow-y:auto;">
-                <h3 style="margin-top:0; border-bottom:1px solid #eee; padding-bottom:5px; display:flex; align-items:center; gap:10px;">
+            <div id="stat-calculator" style="flex:1; background:var(--bg-main); padding:10px; border-radius:8px; border:1px solid var(--border-color); overflow-y:auto;">
+                <h3 style="margin-top:0; border-bottom:1px solid var(--border-color); padding-bottom:5px; display:flex; align-items:center; gap:10px;" data-i18n="itemStatsComparison">
                     Item Stats Comparison
                 </h3>
                 <div id="stat-list" style="font-size:0.9em; line-height:1.6; display:flex; gap:10px; width:100%;">
-                    <p class="empty-msg">Select routes to see stat comparison.</p>
+                    <p class="empty-msg" data-i18n="selectRoutesToCompare">Select routes to see stat comparison.</p>
                 </div>
             </div>
         </section>

@@ -1,6 +1,97 @@
 // ==========================================
 // GLOBAL STATE
 // ==========================================
+
+const DICT = {
+    en: {
+        loading: "Loading Game Data from API...",
+        title: "Eternal Return Farming Route Optimizer",
+        filters: "Filters",
+        resetAll: "Reset All",
+        level: "Level:",
+        character: "Test Subject",
+        itemPart: "Item Part",
+        all: "ALL",
+        weaponType: "Weapon Type",
+        substats: "Item Stats",
+        yourBuild: "Your Build",
+        resetBuild: "Reset Build",
+        clickToAdd: "Click items below to add them to your build.",
+        selectEpicItems: "Select Epic Items",
+        optimizeRoute: "Optimize Route",
+        optimizeThenCompare: "Optimize a route, then click up to 2 routes below to compare stats.",
+        itemStatsComparison: "Item Stats Comparison",
+        selectRoutesToCompare: "Select routes to see stat comparison.",
+        calculating: "Calculating Variants...",
+        pleaseSelect: "Please select items first.",
+        noRoutes: "<p>No valid routes found for any combination.</p>",
+        route1: "Route 1",
+        route2: "Route 2",
+        topRoutes: "<h3>Top Optimized Routes: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: Hyperloop not needed)</span></h3>",
+        needDrone: "Need Drone: <strong>",
+        noDrone: "No Drone Needed",
+        buildVariant: "Build Variant:"
+    },
+    ko: {
+        loading: "API에서 게임 데이터를 불러오는 중...",
+        title: "이터널 리턴 파밍 루트 옵티마이저",
+        filters: "필터",
+        resetAll: "전체 초기화",
+        level: "레벨:",
+        character: "실험체",
+        itemPart: "아이템 부위",
+        all: "ALL",
+        weaponType: "무기 종류",
+        substats: "아이템 스탯",
+        yourBuild: "내 빌드",
+        resetBuild: "빌드 초기화",
+        clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
+        selectEpicItems: "영웅 아이템 선택",
+        optimizeRoute: "루트 최적화",
+        optimizeThenCompare: "루트 최적화 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
+        itemStatsComparison: "아이템 스탯 비교",
+        selectRoutesToCompare: "루트를 선택하여 스탯을 비교하세요.",
+        calculating: "다양한 조합 계산 중...",
+        pleaseSelect: "아이템을 먼저 선택해주세요.",
+        noRoutes: "<p>가능한 루트를 찾지 못했습니다.</p>",
+        route1: "루트 1",
+        route2: "루트 2",
+        topRoutes: "<h3>최적화된 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
+        needDrone: "드론 필요: <strong>",
+        noDrone: "드론 불필요",
+        buildVariant: "빌드 조합:"
+    }
+};
+
+let currentLanguage = localStorage.getItem('language') || 'en';
+
+function t(key) {
+    return DICT[currentLanguage][key] || key;
+}
+
+function getItemName(name) {
+    if (currentLanguage === 'ko' && items[name] && items[name].nameKo) return items[name].nameKo;
+    return name;
+}
+
+function getCharName(name) {
+    if (name === "All") return currentLanguage === 'ko' ? "전체" : "ALL";
+    if (currentLanguage === 'ko' && chars[name] && chars[name].nameKo) return chars[name].nameKo;
+    return name;
+}
+
+function applyTranslations() {
+    document.body.classList.remove('lang-en', 'lang-ko');
+    document.body.classList.add('lang-' + currentLanguage);
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (DICT[currentLanguage][key]) {
+            el.innerHTML = DICT[currentLanguage][key];
+        }
+    });
+}
+
 const selectedEpics = new Set();
 let currentFilter = "All"; // Track active filter
 let currentWeaponFilter = "All";
@@ -12,48 +103,48 @@ let selectedRoutes = [];
 let generatedRoutes = [];
 
 const SUBSTATS = [
-    { id: 'attackPower', name: 'Attack Power' },
-    { id: 'attackSpeedRatio', name: 'Attack Speed' },
-    { id: 'criticalStrikeChance', name: 'Critical Strike Chance' },
-    { id: 'attackRange', name: 'Attack Range' },
-    { id: 'penetrationDefense', name: 'Armor Penetration' },
-    { id: 'skillAmp', name: 'Skill Amplification' },
-    { id: 'cooldownReduction', name: 'Cooldown Reduction' },
-    { id: 'maxHp', name: 'Max HP' },
-    { id: 'hpRegen', name: 'HP Regen' },
-    { id: 'defense', name: 'Defense' },
-    { id: 'damageReduction', name: 'Damage Reduction' },
-    { id: 'tenacity', name: 'Tenacity' },
-    { id: 'visionRange', name: 'Vision Range' },
-    { id: 'lifeSteal', name: 'Lifesteal' },
-    { id: 'omnisyphon', name: 'Omnisyphon' },
-    { id: 'moveSpeed', name: 'Movement Speed' }
+    { id: 'attackPower', name: { en: 'Attack Power', ko: '공격력' } },
+    { id: 'attackSpeedRatio', name: { en: 'Attack Speed', ko: '공격 속도' } },
+    { id: 'criticalStrikeChance', name: { en: 'Critical Strike Chance', ko: '치명타 확률' } },
+    { id: 'attackRange', name: { en: 'Attack Range', ko: '기본 공격 사거리' } },
+    { id: 'penetrationDefense', name: { en: 'Armor Penetration', ko: '방어 관통' } },
+    { id: 'skillAmp', name: { en: 'Skill Amplification', ko: '스킬 증폭' } },
+    { id: 'cooldownReduction', name: { en: 'Cooldown Reduction', ko: '쿨다운 감소' } },
+    { id: 'maxHp', name: { en: 'Max HP', ko: '최대 체력' } },
+    { id: 'hpRegen', name: { en: 'HP Regen', ko: '체력 재생' } },
+    { id: 'defense', name: { en: 'Defense', ko: '방어력' } },
+    { id: 'damageReduction', name: { en: 'Damage Reduction', ko: '피해 감소' } },
+    { id: 'tenacity', name: { en: 'Tenacity', ko: '방해 효과 저항' } },
+    { id: 'visionRange', name: { en: 'Vision Range', ko: '시야' } },
+    { id: 'lifeSteal', name: { en: 'Lifesteal', ko: '생명력 흡수' } },
+    { id: 'omnisyphon', name: { en: 'Omnisyphon', ko: '모든 피해 흡혈' } },
+    { id: 'moveSpeed', name: { en: 'Movement Speed', ko: '이동 속도' } }
 ];
 
 const WEAPON_TYPES = [
-    { api: "Glove", name: "Glove", img: "01. Glove.png" },
-    { api: "Tonfa", name: "Tonfa", img: "02. Tonfa.png" },
-    { api: "Bat", name: "Bat", img: "03. Bat.png" },
-    { api: "Hammer", name: "Hammer", img: "04. Hammer.png" },
-    { api: "Whip", name: "Whip", img: "05. Whip.png" },
-    { api: "HighAngleFire", name: "Throw", img: "06. Throwing.png" },
-    { api: "DirectFire", name: "Shuriken", img: "07. Shuriken.png" },
-    { api: "Bow", name: "Bow", img: "08. Bow.png" },
-    { api: "CrossBow", name: "Crossbow", img: "09. Crossbow.png" },
-    { api: "Pistol", name: "Pistol", img: "10. Pistol.png" },
-    { api: "AssaultRifle", name: "Assault Rifle", img: "11. Assault Rifle.png" },
-    { api: "SniperRifle", name: "Sniper Rifle", img: "12. Sniper Rifle.png" },
-    { api: "Axe", name: "Axe", img: "13. Axe.png" },
-    { api: "OneHandSword", name: "Dagger", img: "14. Dagger.png" },
-    { api: "TwoHandSword", name: "Two-Handed Sword", img: "15. Twohanded Sword.png" },
-    { api: "DualSword", name: "Dual Swords", img: "16. Dual Sword.png" },
-    { api: "Spear", name: "Spear", img: "17. Spear.png" },
-    { api: "Nunchaku", name: "Nunchaku", img: "18. Nunchaku.png" },
-    { api: "Rapier", name: "Rapier", img: "19. Rapier.png" },
-    { api: "Guitar", name: "Guitar", img: "20. Guitar.png" },
-    { api: "Camera", name: "Camera", img: "21. Camera.png" },
-    { api: "Arcana", name: "Arcana", img: "22. Arcana.png" },
-    { api: "VFArm", name: "VF Prosthetic", img: "23. VF Prosthetic.png" }
+    { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "01. Glove.png" },
+    { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "02. Tonfa.png" },
+    { api: "Bat", name: { en: "Bat", ko: "방망이" }, img: "03. Bat.png" },
+    { api: "Hammer", name: { en: "Hammer", ko: "망치" }, img: "04. Hammer.png" },
+    { api: "Whip", name: { en: "Whip", ko: "채찍" }, img: "05. Whip.png" },
+    { api: "HighAngleFire", name: { en: "Throw", ko: "투척" }, img: "06. Throwing.png" },
+    { api: "DirectFire", name: { en: "Shuriken", ko: "암기" }, img: "07. Shuriken.png" },
+    { api: "Bow", name: { en: "Bow", ko: "활" }, img: "08. Bow.png" },
+    { api: "CrossBow", name: { en: "Crossbow", ko: "석궁" }, img: "09. Crossbow.png" },
+    { api: "Pistol", name: { en: "Pistol", ko: "권총" }, img: "10. Pistol.png" },
+    { api: "AssaultRifle", name: { en: "Assault Rifle", ko: "돌격 소총" }, img: "11. Assault Rifle.png" },
+    { api: "SniperRifle", name: { en: "Sniper Rifle", ko: "저격총" }, img: "12. Sniper Rifle.png" },
+    { api: "Axe", name: { en: "Axe", ko: "도끼" }, img: "13. Axe.png" },
+    { api: "OneHandSword", name: { en: "Dagger", ko: "단검" }, img: "14. Dagger.png" },
+    { api: "TwoHandSword", name: { en: "Two-Handed Sword", ko: "양손검" }, img: "15. Twohanded Sword.png" },
+    { api: "DualSword", name: { en: "Dual Swords", ko: "쌍검" }, img: "16. Dual Sword.png" },
+    { api: "Spear", name: { en: "Spear", ko: "창" }, img: "17. Spear.png" },
+    { api: "Nunchaku", name: { en: "Nunchaku", ko: "쌍절곤" }, img: "18. Nunchaku.png" },
+    { api: "Rapier", name: { en: "Rapier", ko: "레이피어" }, img: "19. Rapier.png" },
+    { api: "Guitar", name: { en: "Guitar", ko: "기타" }, img: "20. Guitar.png" },
+    { api: "Camera", name: { en: "Camera", ko: "카메라" }, img: "21. Camera.png" },
+    { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "22. Arcana.png" },
+    { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "23. VF Prosthetic.png" }
 ];
 
 // HARDCODED BASE WEAPONS
@@ -79,6 +170,37 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         const loading = document.getElementById('loading-screen');
         if (loading) loading.style.display = 'none';
+
+        // Initialize Theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Setup Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+
+        // Setup Language Toggle
+        const langSelect = document.getElementById('language-select');
+        if (langSelect) {
+            langSelect.value = currentLanguage;
+            applyTranslations(); // initial apply
+            langSelect.addEventListener('change', (e) => {
+                currentLanguage = e.target.value;
+                localStorage.setItem('language', currentLanguage);
+                applyTranslations();
+                setupFilters();
+                renderMainGrid();
+                updateSelectedPanel();
+                renderStatComparison();
+            });
+        }
 
         // 1. Setup Filters
         setupFilters();
@@ -191,10 +313,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 function setupFilters() {
     const subfilterContainer = document.getElementById('weapon-subfilters');
     
-    let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="All Weapons" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">ALL</div>`;
+    let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
     WEAPON_TYPES.forEach(w => {
-        subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name}">
-            <img src="images/${w.img}" alt="${w.name}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
+        subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
+            <img src="images/${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
         </div>`;
     });
     if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
@@ -204,12 +326,12 @@ function setupFilters() {
 
     // Populate Characters
     if (charContainer && chars) {
-        let charHtml = `<div class="char-btn active" data-char="All" title="All Characters">
-            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em; color:#333;">ALL</div>
+        let charHtml = `<div class="char-btn active" data-char="All" title="${t('all')}">
+            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em; color:var(--text-main);">${t('all')}</div>
         </div>`;
         Object.keys(chars).sort().forEach(cName => {
-            charHtml += `<div class="char-btn" data-char="${cName}" title="${cName}">
-                <img src="images/${cName}.png" alt="${cName}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em; text-align:center; word-break:break-all;\\'>${cName}</div>'">
+            charHtml += `<div class="char-btn" data-char="${cName}" title="${getCharName(cName)}">
+                <img src="images/${cName}.png" alt="${getCharName(cName)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em; text-align:center; word-break:break-all;\\'>${getCharName(cName)}</div>'">
             </div>`;
         });
         charContainer.innerHTML = charHtml;
@@ -289,7 +411,7 @@ function setupFilters() {
     if (substatContainer) {
         let subHtml = '';
         SUBSTATS.forEach(s => {
-            subHtml += `<div class="substat-btn" data-stat="${s.id}">${s.name}</div>`;
+            subHtml += `<div class="substat-btn" data-stat="${s.id}">${s.name[currentLanguage]}</div>`;
         });
         substatContainer.innerHTML = subHtml;
 
@@ -433,7 +555,7 @@ function createItemCard(name) {
     const card = document.createElement('div');
     card.classList.add('item-card');
     card.dataset.name = name; 
-    card.title = name;
+    card.title = getItemName(name);
 
     const img = document.createElement('img');
     img.src = `images/${name}.png`; 
@@ -442,7 +564,7 @@ function createItemCard(name) {
     
     img.onerror = function() {
         this.style.display = 'none';
-        card.innerText = name;
+        card.innerText = getItemName(name);
         card.style.fontSize = '0.75rem';
         card.style.textAlign = 'center';
         card.style.display = 'flex';
@@ -517,7 +639,7 @@ function updateSelectedPanel() {
     container.innerHTML = ''; 
 
     if (selectedEpics.size === 0) {
-        container.innerHTML = '<p class="empty-msg">Click items to add to build.</p>';
+        container.innerHTML = `<p class="empty-msg">${t('clickToAdd')}</p>`;
         calculateStats();
         return;
     }
@@ -571,7 +693,7 @@ function renderStatComparison() {
     }
 
     if (buildsToCompare.length === 0) {
-        statList.innerHTML = '<p class="empty-msg">Optimize a route, then click up to 2 routes below to compare stats.</p>';
+        statList.innerHTML = `<p class="empty-msg">${t('optimizeThenCompare')}</p>`;
         return;
     }
 
@@ -587,6 +709,7 @@ function renderStatComparison() {
 function calculateBuildStats(itemNames) {
     const totalStats = {};
     SUBSTATS.forEach(s => totalStats[s.id] = 0);
+    totalStats.moveSpeedRatio = 0;
     
     // Add Character Base & Growth Stats
     if (currentCharacter && chars[currentCharacter]) {
@@ -622,12 +745,26 @@ function calculateBuildStats(itemNames) {
         }
     });
 
+    let msFlat = totalStats.moveSpeed;
+    let msPct = totalStats.moveSpeedRatio;
+    totalStats.moveSpeed = {
+        flat: msFlat,
+        percent: msPct,
+        valueOf: function() { return this.flat + (this.percent * 10); },
+        toString: function() { return this.percent > 0 ? `${this.flat.toFixed(2)} + ${Math.round(this.percent * 100)}%` : this.flat.toFixed(2); }
+    };
+
     return totalStats;
 }
 
 function formatStatValue(id, val) {
     if (id === 'attackSpeedRatio') return Math.round(val * 100) + '%';
-    if (id === 'moveSpeed' || id === 'hpRegen' || id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
+    if (id === 'moveSpeed') {
+        if (typeof val === 'object') return val.toString();
+        return val.toFixed(2);
+    }
+    if (id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
+    if (id === 'hpRegen') return (val * 100).toFixed(0) + '%';
     if (id === 'cooldownReduction') return Math.round(val) + ' (' + Math.round((val / (100 + val)) * 100) + '%)';
     if (['criticalStrikeChance', 'lifeSteal', 'omnisyphon', 'tenacity', 'penetrationDefenseRatio'].includes(id)) return (val * 100).toFixed(0) + '%';
     return Math.round(val);
@@ -640,7 +777,7 @@ function renderSingleStatColumn(stats) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; position:relative; width:100%;">
                 <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin:0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${currentCharacter}</div>'">
+                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.75em; padding:2px 6px; border-radius:8px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -649,9 +786,9 @@ function renderSingleStatColumn(stats) {
 
     SUBSTATS.forEach(s => {
         if (stats[s.id] > 0) {
-            html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed #eee;">
-                <span>${s.name}</span>
-                <strong style="color:#2c3e50;">${formatStatValue(s.id, stats[s.id])}</strong>
+            html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed var(--border-color);">
+                <span>${s.name[currentLanguage]}</span>
+                <strong style="color:var(--text-main);">${formatStatValue(s.id, stats[s.id])}</strong>
             </div>`;
         }
     });
@@ -668,7 +805,7 @@ function renderComparisonColumns(stats1, stats2) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; width:100%; position:relative;">
                 <div style="width:50px; height:50px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin: 0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${currentCharacter}</div>'">
+                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.65em; padding:2px 5px; border-radius:6px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -689,12 +826,12 @@ function renderComparisonColumns(stats1, stats2) {
     });
 
     const renderRow = (item, isCommon) => {
-        const color1 = isCommon ? '#333' : (item.v1 > item.v2 ? '#27ae60' : '#e74c3c');
-        const color2 = isCommon ? '#333' : (item.v2 > item.v1 ? '#27ae60' : '#e74c3c');
+        const color1 = isCommon ? 'var(--text-main)' : (item.v1 > item.v2 ? '#27ae60' : '#e74c3c');
+        const color2 = isCommon ? 'var(--text-main)' : (item.v2 > item.v1 ? '#27ae60' : '#e74c3c');
         return `
-        <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed #eee; font-size:0.85em;">
+        <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
             <div style="flex:1; text-align:right; font-weight:bold; color:${color1};">${item.v1 > 0 ? formatStatValue(item.id, item.v1) : '-'}</div>
-            <div style="flex:1.5; text-align:center; color:#555; font-size:0.9em;">${item.name}</div>
+            <div style="flex:1.5; text-align:center; color:var(--text-muted); font-size:0.9em;">${item.name[currentLanguage]}</div>
             <div style="flex:1; text-align:left; font-weight:bold; color:${color2};">${item.v2 > 0 ? formatStatValue(item.id, item.v2) : '-'}</div>
         </div>`;
     };
@@ -703,9 +840,9 @@ function renderComparisonColumns(stats1, stats2) {
     html += portraitHtml;
     
     html += `<div style="display:flex; justify-content:center; margin-bottom:5px; font-weight:bold; border-bottom:2px solid #ccc;">
-        <span style="flex:1; text-align:right; color:#2980b9;">Route 1</span>
+        <span style="flex:1; text-align:right; color:#2980b9;">${t('route1')}</span>
         <span style="flex:1.5;"></span>
-        <span style="flex:1; text-align:left; color:#8e44ad;">Route 2</span>
+        <span style="flex:1; text-align:left; color:#8e44ad;">${t('route2')}</span>
     </div>`;
 
     commonStats.forEach(item => html += renderRow(item, true));
@@ -721,11 +858,11 @@ function renderComparisonColumns(stats1, stats2) {
 
 async function calculateAllVariants() {
     const resultOutput = document.getElementById('result-output');
-    resultOutput.innerHTML = "Calculating Variants...";
+    resultOutput.innerHTML = t("calculating");
     console.clear();
 
     if (selectedEpics.size === 0) {
-        resultOutput.innerHTML = "Please select items first.";
+        resultOutput.innerHTML = t("pleaseSelect");
         return;
     }
 
@@ -760,7 +897,7 @@ async function calculateAllVariants() {
     });
 
     if (allResults.length === 0) {
-        resultOutput.innerHTML = "<p>No valid routes found for any combination.</p>";
+        resultOutput.innerHTML = t("noRoutes");
         return;
     }
 
@@ -954,8 +1091,8 @@ function calculatePathDistance(path) {
     for (let i = 0; i < path.length - 1; i++) {
         const current = path[i];
         const next = path[i+1];
-        if (mapData[current].hasHyperloop) distance += 1; 
-        else if (mapData[current].neighbors.includes(next)) distance += 1; 
+        if (mapData[current].neighbors.includes(next)) distance += 1; 
+        else if (mapData[current].hasHyperloop) distance += 10; 
         else distance += 100; // Heavy penalty for no hyperloop and non-neighbor
     }
     return distance;
@@ -988,7 +1125,7 @@ function getPermutations(arr) {
 function displayResults(routes, container) {
     const topRoutes = routes.slice(0, 10); // Show top 10 now since we have variants
     
-    let html = `<h3>Top Optimized Routes:</h3>`;
+    let html = `${t('topRoutes')}`;
     
     generatedRoutes = topRoutes;
 
@@ -1002,26 +1139,37 @@ function displayResults(routes, container) {
         else if(r.tier === 6) tierLabel = `<span style="background:#2980b9; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 0D</span>`;
 
         let droneHtml = r.drones.length > 0 
-            ? `<span style="color:#e74c3c;">Need Drone: <strong>${r.drones.join(', ')}</strong></span>` 
-            : `<span style="color:#27ae60;">No Drone Needed</span>`;
+            ? `<span style="color:#e74c3c;">${t('needDrone')}${r.drones.map(getItemName).join(', ')}</strong></span>` 
+            : `<span style="color:#27ae60;">${t('noDrone')}</span>`;
 
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = r.variantItems.map(item => 
-            `<img src="images/${item}.png" title="${item}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid #ddd; border-radius:3px; margin-right:2px;">`
+            `<img src="images/${item}.png" title="${getItemName(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
+        let formattedPath = r.path.map((z, idx) => {
+            let translatedName = (currentLanguage === 'ko' && mapData[z] && mapData[z].nameKo) ? mapData[z].nameKo : z;
+            if (idx > 0) {
+                const prev = r.path[idx - 1];
+                if (mapData[prev] && mapData[prev].neighbors.includes(z)) {
+                    translatedName += '*';
+                }
+            }
+            return translatedName;
+        });
+
         html += `
-        <div class="route-card" data-index="${index}" style="background: #fff; border:1px solid #ddd; border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
+        <div class="route-card" data-index="${index}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
             
-            <div style="margin-bottom: 5px; font-size:0.8rem; color:#888; display:flex; align-items:center;">
-                <strong style="margin-right:5px;">Build Variant:</strong> ${variantSummary}
+            <div style="margin-bottom: 5px; font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center;">
+                <strong style="margin-right:5px;">${t('buildVariant')}</strong> ${variantSummary}
             </div>
 
             <div style="display:flex; justify-content:space-between; align-items:center;">
-                <div style="font-size: 1.1rem; color:#333;">
+                <div style="font-size: 1.1rem; color:var(--text-main);">
                     ${tierLabel} 
-                    <strong>${r.path.join(" ➔ ")}</strong>
+                    <strong>${formattedPath.join(" ➔ ")}</strong>
                 </div>
             </div>
             

@@ -108,8 +108,10 @@ async function buildData() {
     
     charList.forEach(char => {
         const engName = l10nEng[`Character/Name/${char.code}`] || char.name;
+        const koName = l10nKo[`Character/Name/${char.code}`] || engName;
         charsData[engName] = {
             code: char.code,
+            nameKo: koName,
             masteries: [],
             base: {},
             growth: {}
@@ -159,10 +161,12 @@ async function buildData() {
     // Build Map Data
     (areaRes.data || []).forEach(area => {
         const engName = l10nEng[`Area/Name/${area.name}`] || area.name;
+        const koName = l10nKo[`Area/Name/${area.name}`] || engName;
         areaCodeToEngName[area.code] = engName;
         
         if (hardcodedNeighbors[engName]) {
             mapData[engName] = {
+                nameKo: koName,
                 neighbors: hardcodedNeighbors[engName],
                 hasHyperloop: area.isHyperLoopInstalled || false
             };
@@ -197,6 +201,7 @@ async function buildData() {
     const itemsData = {};
     allItemsList.forEach(item => {
         const engName = l10nEng[`Item/Name/${item.code}`] || item.name;
+        const koName = l10nKo[`Item/Name/${item.code}`] || engName;
         
         // Exclude items that are removed/test items
         if (!engName || engName.includes('Test') || EXCLUDE_ITEMS.has(engName)) return;
@@ -221,6 +226,7 @@ async function buildData() {
         const type = item.itemGrade; // Common, Uncommon, Rare, Epic, Legendary
 
         const itemObj = {
+            nameKo: koName,
             type: type,
             part: partType,
             locations: spawns,
@@ -242,7 +248,8 @@ async function buildData() {
                 visionRange: item.sightRange || 0,
                 lifeSteal: (item.normalLifeSteal || 0),
                 omnisyphon: (item.lifeSteal || 0) + (item.skillLifeSteal || 0) + (item.uniqueLifeSteal || 0),
-                moveSpeed: (item.moveSpeed || 0) + (item.moveSpeedRatio || 0) + (item.uniqueMoveSpeed || 0),
+                moveSpeed: (item.moveSpeed || 0) + (item.uniqueMoveSpeed || 0),
+                moveSpeedRatio: (item.moveSpeedRatio || 0),
                 hpRegen: (item.hpRegen || 0) + (item.hpRegenRatio || 0)
             },
             statsByLv: {
