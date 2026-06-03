@@ -326,11 +326,19 @@ function setupFilters() {
 
     // Populate Characters
     if (charContainer && chars) {
-        let charHtml = `<div class="char-btn active" data-char="All" title="${t('all')}">
+        let charHtml = `<div class="char-btn ${!currentCharacter || currentCharacter === 'All' ? 'active' : ''}" data-char="All" title="${t('all')}">
             <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em; color:var(--text-main);">${t('all')}</div>
         </div>`;
-        Object.keys(chars).sort().forEach(cName => {
-            charHtml += `<div class="char-btn" data-char="${cName}" title="${getCharName(cName)}">
+        
+        const sortedChars = Object.keys(chars).sort((a, b) => {
+            const nameA = getCharName(a);
+            const nameB = getCharName(b);
+            return nameA.localeCompare(nameB, currentLanguage);
+        });
+
+        sortedChars.forEach(cName => {
+            const isActive = currentCharacter === cName ? 'active' : '';
+            charHtml += `<div class="char-btn ${isActive}" data-char="${cName}" title="${getCharName(cName)}">
                 <img src="images/${cName}.png" alt="${getCharName(cName)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em; text-align:center; word-break:break-all;\\'>${getCharName(cName)}</div>'">
             </div>`;
         });

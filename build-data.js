@@ -113,7 +113,14 @@ async function buildData() {
             code: char.code,
             nameKo: koName,
             masteries: [],
-            base: {},
+            base: {
+                maxHp: char.maxHp || 0,
+                attackPower: char.attackPower || 0,
+                defense: char.defense || 0,
+                hpRegen: char.hpRegen || 0,
+                attackSpeed: char.attackSpeed || 0,
+                moveSpeed: char.moveSpeed || 0
+            },
             growth: {}
         };
     });
@@ -121,22 +128,12 @@ async function buildData() {
     charLevelsList.forEach(stat => {
         const engName = l10nEng[`Character/Name/${stat.code}`] || stat.name;
         if (charsData[engName]) {
-            // Because ER API sometimes sends multiple entries per char for different masteries/states, 
-            // we just grab the first one we find or overwrite
-            charsData[engName].base = {
+            charsData[engName].growth = {
                 maxHp: stat.maxHp || 0,
                 attackPower: stat.attackPower || 0,
                 defense: stat.defense || 0,
                 hpRegen: stat.hpRegen || 0,
-                attackSpeed: stat.attackSpeed || 0,
-                moveSpeed: stat.moveSpeed || 0
-            };
-            charsData[engName].growth = {
-                maxHp: stat.maxHpByLv || 0,
-                attackPower: stat.attackPowerByLv || 0,
-                defense: stat.defenseByLv || 0,
-                hpRegen: stat.hpRegenByLv || 0,
-                attackSpeed: stat.attackSpeedByLv || 0
+                attackSpeed: stat.attackSpeed || 0
             };
         }
     });

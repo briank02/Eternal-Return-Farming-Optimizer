@@ -38183,18 +38183,18 @@
         "DualSword"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 36,
+        "defense": 50,
+        "hpRegen": 1.28,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 95,
         "attackPower": 4.7,
         "defense": 2.9999999999999996,
         "hpRegen": 0.077,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38207,18 +38207,18 @@
         "SniperRifle"
       ],
       "base": {
+        "maxHp": 905,
+        "attackPower": 40,
+        "defense": 51,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 76,
         "attackPower": 4.1,
         "defense": 2.3,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38231,18 +38231,18 @@
         "Spear"
       ],
       "base": {
+        "maxHp": 1000,
+        "attackPower": 40,
+        "defense": 56,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.18,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 96,
         "attackPower": 4.4,
         "defense": 3.7,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38254,18 +38254,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 1070,
+        "attackPower": 44,
+        "defense": 49,
+        "hpRegen": 1.7,
+        "attackSpeed": 0.16,
+        "moveSpeed": 3.6
+      },
+      "growth": {
         "maxHp": 95,
         "attackPower": 4.4,
         "defense": 3.2,
         "hpRegen": 0.085,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38277,18 +38277,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 28,
+        "defense": 51,
+        "hpRegen": 0.9,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 79,
         "attackPower": 3.9,
         "defense": 2.6999999999999997,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38300,18 +38300,18 @@
         "CrossBow"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 33,
+        "defense": 52,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.13,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.3,
         "defense": 2.5,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38323,18 +38323,18 @@
         "Tonfa"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 40,
+        "defense": 51,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 89,
         "attackPower": 5.1,
         "defense": 3.3,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38345,18 +38345,18 @@
         "Guitar"
       ],
       "base": {
+        "maxHp": 910,
+        "attackPower": 31,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.4,
         "defense": 2.7,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38368,18 +38368,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 900,
+        "attackPower": 37,
+        "defense": 53,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 75,
         "attackPower": 4.2,
         "defense": 2.6,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38391,18 +38391,18 @@
         "Nunchaku"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 27,
+        "defense": 54,
+        "hpRegen": 2.48,
+        "attackSpeed": 0.15,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 5,
         "defense": 3.3,
         "hpRegen": 0.158,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38414,18 +38414,18 @@
         "DualSword"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 36,
+        "defense": 53,
+        "hpRegen": 1.58,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 91,
         "attackPower": 4.9,
         "defense": 3.1,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38437,18 +38437,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 30,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.08,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.5,
         "defense": 2.8,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38460,18 +38460,18 @@
         "Spear"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 40,
+        "defense": 51,
+        "hpRegen": 2.25,
+        "attackSpeed": 0.16,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.5,
         "defense": 3.4,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38482,18 +38482,18 @@
         "Rapier"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 44,
+        "defense": 54,
+        "hpRegen": 1.5,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 76,
         "attackPower": 4.3,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38505,18 +38505,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 33,
+        "defense": 50,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.15,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 69,
         "attackPower": 4.3,
         "defense": 2.4,
         "hpRegen": 0.03,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38527,18 +38527,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 945,
+        "attackPower": 30,
+        "defense": 53,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.08,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 85,
         "attackPower": 3.4,
         "defense": 3.0999999999999996,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38549,18 +38549,18 @@
         "HighAngleFire"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 38,
+        "defense": 50,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.04,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 76,
         "attackPower": 4.9,
         "defense": 2.4,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38571,18 +38571,18 @@
         "OneHandSword"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 29,
+        "defense": 52,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 5,
         "defense": 3.5,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38594,18 +38594,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 900,
+        "attackPower": 39,
+        "defense": 51,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 75,
         "attackPower": 3.8,
         "defense": 2.7,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38616,18 +38616,18 @@
         "Whip"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 32,
+        "defense": 51,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.6
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.4,
         "defense": 3.2,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38638,18 +38638,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 910,
+        "attackPower": 32,
+        "defense": 50,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 79,
         "attackPower": 4.8,
         "defense": 2.8,
         "hpRegen": 0.03,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38660,18 +38660,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 30,
+        "defense": 52,
+        "hpRegen": 2.25,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 95,
         "attackPower": 5,
         "defense": 3.1,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38683,18 +38683,18 @@
         "DualSword"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 29,
+        "defense": 53,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.09,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 4.3,
         "defense": 3.1999999999999997,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38706,18 +38706,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 43,
+        "defense": 56,
+        "hpRegen": 0.9,
+        "attackSpeed": 0.045,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 78,
         "attackPower": 4.3,
         "defense": 2.4,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38728,18 +38728,18 @@
         "SniperRifle"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 37,
+        "defense": 52,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.2,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 84,
         "attackPower": 4.3,
         "defense": 3.1,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38750,18 +38750,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 38,
+        "defense": 52,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.04,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 84,
         "attackPower": 3.2,
         "defense": 3.2,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38775,18 +38775,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 950,
+        "attackPower": 28,
+        "defense": 49,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.4499999999999997
+      },
+      "growth": {
         "maxHp": 87,
         "attackPower": 4.4,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38798,18 +38798,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 1070,
+        "attackPower": 39,
+        "defense": 57,
+        "hpRegen": 1.58,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 95,
         "attackPower": 3.8,
         "defense": 3.3,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38821,18 +38821,18 @@
         "Tonfa"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 31,
+        "defense": 54,
+        "hpRegen": 2.48,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.4999999999999996
+      },
+      "growth": {
         "maxHp": 91,
         "attackPower": 4.3,
         "defense": 3.1999999999999997,
         "hpRegen": 0.158,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38843,18 +38843,18 @@
         "Hammer"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 35,
+        "defense": 50,
+        "hpRegen": 1.5,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 85,
         "attackPower": 4.5,
         "defense": 2.6999999999999997,
         "hpRegen": 0.105,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38865,18 +38865,18 @@
         "Bow"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 33,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.09,
+        "moveSpeed": 3.4499999999999997
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 4,
         "defense": 2.6,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38887,18 +38887,18 @@
         "HighAngleFire"
       ],
       "base": {
+        "maxHp": 945,
+        "attackPower": 37,
+        "defense": 52,
+        "hpRegen": 1.35,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 77,
         "attackPower": 4.3,
         "defense": 2.4999999999999996,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38909,18 +38909,18 @@
         "Glove"
       ],
       "base": {
+        "maxHp": 1000,
+        "attackPower": 32,
+        "defense": 55,
+        "hpRegen": 1.35,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 95,
         "attackPower": 4.2,
         "defense": 3.5,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38931,18 +38931,18 @@
         "Camera"
       ],
       "base": {
+        "maxHp": 905,
+        "attackPower": 35,
+        "defense": 53,
+        "hpRegen": 0.9,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 86,
         "attackPower": 4.1,
         "defense": 2.9,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38954,18 +38954,18 @@
         "Tonfa"
       ],
       "base": {
+        "maxHp": 1013,
+        "attackPower": 37,
+        "defense": 56,
+        "hpRegen": 1.8,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 96,
         "attackPower": 4.4,
         "defense": 3.6,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38976,18 +38976,18 @@
         "HighAngleFire"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 32,
+        "defense": 52,
+        "hpRegen": 0.9,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 78,
         "attackPower": 3.7,
         "defense": 2.8,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -38998,18 +38998,18 @@
         "OneHandSword"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 32,
+        "defense": 51,
+        "hpRegen": 1.53,
+        "attackSpeed": 0.07,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.7,
         "defense": 2.8,
         "hpRegen": 0.077,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39020,18 +39020,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 935,
+        "attackPower": 35,
+        "defense": 52,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 4.5,
         "defense": 2.7,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39043,18 +39043,18 @@
         "Rapier"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 31,
+        "defense": 51,
+        "hpRegen": 2.25,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 5,
         "defense": 3.0999999999999996,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39065,18 +39065,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 32,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.09,
+        "moveSpeed": 3.4499999999999997
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.3,
         "defense": 2.7,
         "hpRegen": 0.075,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39087,18 +39087,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 910,
+        "attackPower": 39,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 4.6,
         "defense": 2.7,
         "hpRegen": 0.075,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39109,18 +39109,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 870,
+        "attackPower": 31,
+        "defense": 51,
+        "hpRegen": 0.3,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 82,
         "attackPower": 4.4,
         "defense": 2.8,
         "hpRegen": 0.03,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39131,18 +39131,18 @@
         "HighAngleFire"
       ],
       "base": {
+        "maxHp": 990,
+        "attackPower": 35,
+        "defense": 54,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.09,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 4.5,
         "defense": 2.8,
         "hpRegen": 0.045,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39153,18 +39153,18 @@
         "VFArm"
       ],
       "base": {
+        "maxHp": 955,
+        "attackPower": 35,
+        "defense": 50,
+        "hpRegen": 1.13,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 5.1,
         "defense": 3.2,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39175,18 +39175,18 @@
         "Whip"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 30,
+        "defense": 50,
+        "hpRegen": 2.25,
+        "attackSpeed": 0.13,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 89,
         "attackPower": 4.2,
         "defense": 3.2,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39197,18 +39197,18 @@
         "TwoHandSword"
       ],
       "base": {
+        "maxHp": 995,
+        "attackPower": 39,
+        "defense": 57,
+        "hpRegen": 1.53,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 5.3,
         "defense": 3.4,
         "hpRegen": 0.077,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39219,18 +39219,18 @@
         "Whip"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 28,
+        "defense": 51,
+        "hpRegen": 1.28,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.9,
         "defense": 3.1,
         "hpRegen": 0.077,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39241,18 +39241,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 39,
+        "defense": 57,
+        "hpRegen": 1.79,
+        "attackSpeed": 0.07,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 85,
         "attackPower": 3.9,
         "defense": 2.9999999999999996,
         "hpRegen": 0.068,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39263,18 +39263,18 @@
         "Spear"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 33,
+        "defense": 50,
+        "hpRegen": 1.6,
+        "attackSpeed": 0.13,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.3,
         "defense": 3,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39285,18 +39285,18 @@
         "Rapier"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 37,
+        "defense": 51,
+        "hpRegen": 2.04,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 4.4,
         "defense": 3.3,
         "hpRegen": 0.051,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39307,18 +39307,18 @@
         "Guitar"
       ],
       "base": {
+        "maxHp": 915,
+        "attackPower": 40,
+        "defense": 55,
+        "hpRegen": 0.8,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 80,
         "attackPower": 4.5,
         "defense": 2.8,
         "hpRegen": 0.05,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39329,18 +39329,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 880,
+        "attackPower": 34,
+        "defense": 52,
+        "hpRegen": 0.8,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 75,
         "attackPower": 4.5,
         "defense": 2.6,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39352,18 +39352,18 @@
         "Hammer"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 34,
+        "defense": 52,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 4.9,
         "defense": 3.3,
         "hpRegen": 0.136,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39374,18 +39374,18 @@
         "CrossBow"
       ],
       "base": {
+        "maxHp": 910,
+        "attackPower": 34,
+        "defense": 50,
+        "hpRegen": 0.8,
+        "attackSpeed": 0.03,
+        "moveSpeed": 3.4499999999999997
+      },
+      "growth": {
         "maxHp": 80,
         "attackPower": 4.3,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39396,18 +39396,18 @@
         "Axe"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 42,
+        "defense": 55,
+        "hpRegen": 1.3,
+        "attackSpeed": 0.09,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.2,
         "defense": 3,
         "hpRegen": 0.099,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39418,18 +39418,18 @@
         "Nunchaku"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 31,
+        "defense": 52,
+        "hpRegen": 2,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 3.9,
         "defense": 3.3,
         "hpRegen": 0.12,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39440,18 +39440,18 @@
         "Camera"
       ],
       "base": {
+        "maxHp": 1010,
+        "attackPower": 4,
+        "defense": 53,
+        "hpRegen": 2,
+        "attackSpeed": 0.22,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 86,
         "attackPower": 4,
         "defense": 2.8,
         "hpRegen": 0.1,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39462,18 +39462,18 @@
         "AssaultRifle"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 42,
+        "defense": 54,
+        "hpRegen": 1.1,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 4.6,
         "defense": 2.5999999999999996,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39484,18 +39484,18 @@
         "Tonfa"
       ],
       "base": {
+        "maxHp": 950,
+        "attackPower": 31,
+        "defense": 52,
+        "hpRegen": 2.2,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 93,
         "attackPower": 4.9,
         "defense": 3.1,
         "hpRegen": 0.12,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39506,18 +39506,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 955,
+        "attackPower": 30,
+        "defense": 55,
+        "hpRegen": 0.9,
+        "attackSpeed": 0.06,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 83,
         "attackPower": 4.4,
         "defense": 2.9,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39528,18 +39528,18 @@
         "HighAngleFire"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 30,
+        "defense": 51,
+        "hpRegen": 1.22,
+        "attackSpeed": 0.04,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 4.7,
         "defense": 3.0999999999999996,
         "hpRegen": 0.08,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39550,18 +39550,18 @@
         "SniperRifle"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 45,
+        "defense": 53,
+        "hpRegen": 1.3,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 83,
         "attackPower": 3.7,
         "defense": 3.1999999999999997,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39572,18 +39572,18 @@
         "OneHandSword"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 38,
+        "defense": 52,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 4.6,
         "defense": 3.2,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39594,18 +39594,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 30,
+        "defense": 52,
+        "hpRegen": 1.5,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 85,
         "attackPower": 4.5,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39616,18 +39616,18 @@
         "TwoHandSword"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 33,
+        "defense": 52,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 4.1,
         "defense": 3,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39638,18 +39638,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 37,
+        "defense": 54,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 76,
         "attackPower": 4.6,
         "defense": 2.7,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39660,18 +39660,18 @@
         "Axe"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 40,
+        "defense": 52,
+        "hpRegen": 1.4,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 91,
         "attackPower": 4.4,
         "defense": 3.0999999999999996,
         "hpRegen": 0.08,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39682,18 +39682,18 @@
         "Glove"
       ],
       "base": {
+        "maxHp": 1000,
+        "attackPower": 36,
+        "defense": 55,
+        "hpRegen": 1.67,
+        "attackSpeed": 0.1,
+        "moveSpeed": 3.5999999999999996
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 4.2,
         "defense": 3.4,
         "hpRegen": 0.12,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39704,18 +39704,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 35,
+        "defense": 50,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 79,
         "attackPower": 4.1,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39726,18 +39726,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 32,
+        "defense": 50,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 75,
         "attackPower": 4.6,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39748,18 +39748,18 @@
         "Axe"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 34,
+        "defense": 52,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 85,
         "attackPower": 3.9,
         "defense": 2.6999999999999997,
         "hpRegen": 0.136,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39770,18 +39770,18 @@
         "SniperRifle"
       ],
       "base": {
+        "maxHp": 890,
+        "attackPower": 36,
+        "defense": 52,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.13,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 80,
         "attackPower": 4.7,
         "defense": 2.6999999999999997,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39792,18 +39792,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 40,
+        "defense": 51,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.6
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.9,
         "defense": 3.1999999999999997,
         "hpRegen": 0.09,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39814,18 +39814,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 42,
+        "defense": 51,
+        "hpRegen": 2,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 93,
         "attackPower": 4.6,
         "defense": 3.5,
         "hpRegen": 0.136,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39836,18 +39836,18 @@
         "Guitar"
       ],
       "base": {
+        "maxHp": 900,
+        "attackPower": 35,
+        "defense": 52,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 79,
         "attackPower": 4.1,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39858,18 +39858,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 1000,
+        "attackPower": 35,
+        "defense": 50,
+        "hpRegen": 2.2,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 90,
         "attackPower": 4.1,
         "defense": 3.1,
         "hpRegen": 0.136,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39880,18 +39880,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 920,
+        "attackPower": 38,
+        "defense": 50,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.1,
         "defense": 2.8,
         "hpRegen": 0.08,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39902,18 +39902,18 @@
         "TwoHandSword"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 25,
+        "defense": 54,
+        "hpRegen": 1.02,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 96,
         "attackPower": 4.5,
         "defense": 3.7,
         "hpRegen": 0.07,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39924,18 +39924,18 @@
         "CrossBow"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 42,
+        "defense": 52,
+        "hpRegen": 1.1,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.45
+      },
+      "growth": {
         "maxHp": 79,
         "attackPower": 4.3,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39946,18 +39946,18 @@
         "Spear"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 37,
+        "defense": 56,
+        "hpRegen": 1.9,
+        "attackSpeed": 0.15,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 4.2,
         "defense": 3.2,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39968,18 +39968,18 @@
         "Pistol"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 43,
+        "defense": 50,
+        "hpRegen": 0.6,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 73,
         "attackPower": 4.1,
         "defense": 2.7,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -39990,18 +39990,18 @@
         "Rapier"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 35,
+        "defense": 54,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.13,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 4.6,
         "defense": 3,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40012,18 +40012,18 @@
         "DirectFire"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 40,
+        "defense": 52,
+        "hpRegen": 0.75,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 78,
         "attackPower": 4.4,
         "defense": 2.8,
         "hpRegen": 0.06,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40034,18 +40034,18 @@
         "DualSword"
       ],
       "base": {
+        "maxHp": 970,
+        "attackPower": 34,
+        "defense": 47,
+        "hpRegen": 1.1,
+        "attackSpeed": 0.11,
+        "moveSpeed": 3.5
+      },
+      "growth": {
         "maxHp": 86,
         "attackPower": 4.3,
         "defense": 3,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40056,18 +40056,18 @@
         "Hammer"
       ],
       "base": {
+        "maxHp": 960,
+        "attackPower": 39,
+        "defense": 50,
+        "hpRegen": 1.58,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 92,
         "attackPower": 3.8,
         "defense": 2.9,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40078,18 +40078,18 @@
         "Glove"
       ],
       "base": {
+        "maxHp": 980,
+        "attackPower": 33,
+        "defense": 54,
+        "hpRegen": 1.48,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 94,
         "attackPower": 4.8,
         "defense": 3.3,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40100,18 +40100,18 @@
         "Arcana"
       ],
       "base": {
+        "maxHp": 940,
+        "attackPower": 40,
+        "defense": 51,
+        "hpRegen": 1.6,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 74,
         "attackPower": 5.1,
         "defense": 3,
         "hpRegen": 0.113,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     },
@@ -40122,18 +40122,18 @@
         "Bat"
       ],
       "base": {
+        "maxHp": 930,
+        "attackPower": 30,
+        "defense": 52,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.14,
+        "moveSpeed": 3.55
+      },
+      "growth": {
         "maxHp": 88,
         "attackPower": 4.6,
         "defense": 2.9,
         "hpRegen": 0.135,
-        "attackSpeed": 0,
-        "moveSpeed": 0
-      },
-      "growth": {
-        "maxHp": 0,
-        "attackPower": 0,
-        "defense": 0,
-        "hpRegen": 0,
         "attackSpeed": 0
       }
     }
