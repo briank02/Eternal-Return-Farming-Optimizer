@@ -132,7 +132,7 @@ header {
 .item-card {
     width: 100%;
     aspect-ratio: 1 / 1;
-    background-color: var(--card-bg);
+    background: linear-gradient(to bottom, #302A40, #511D8C);
     border: 2px solid var(--card-border);
     border-radius: 8px;
     cursor: pointer;
