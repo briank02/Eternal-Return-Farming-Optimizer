@@ -11993,7 +11993,7 @@
       "initialCount": 1,
       "weaponType": "Pistol",
       "stats": {
-        "attackPower": 68,
+        "attackPower": 66,
         "attackSpeedRatio": 0.3,
         "criticalStrikeChance": 0,
         "attackRange": 0,
@@ -12099,7 +12099,7 @@
       "initialCount": 1,
       "weaponType": "Pistol",
       "stats": {
-        "attackPower": 80,
+        "attackPower": 77,
         "attackSpeedRatio": 0.35,
         "criticalStrikeChance": 0,
         "attackRange": 0,
@@ -26094,7 +26094,7 @@
         "skillAmp": 40,
         "cooldownReduction": 10,
         "maxHp": 0,
-        "defense": 25,
+        "defense": 28,
         "damageReduction": 0,
         "tenacity": 0,
         "visionRange": 0,
@@ -27325,8 +27325,8 @@
         "penetrationDefenseRatio": 0,
         "penetrationDefense": 0,
         "skillAmp": 0,
-        "cooldownReduction": 20,
-        "maxHp": 220,
+        "cooldownReduction": 15,
+        "maxHp": 200,
         "defense": 25,
         "damageReduction": 0,
         "tenacity": 0,
@@ -29624,7 +29624,7 @@
         "skillAmp": 0,
         "cooldownReduction": 15,
         "maxHp": 0,
-        "defense": 18,
+        "defense": 20,
         "damageReduction": 0,
         "tenacity": 0,
         "visionRange": 0,
@@ -38233,7 +38233,7 @@
       "base": {
         "maxHp": 1000,
         "attackPower": 40,
-        "defense": 56,
+        "defense": 54,
         "hpRegen": 1.8,
         "attackSpeed": 0.18,
         "moveSpeed": 3.55
@@ -38424,7 +38424,7 @@
       "growth": {
         "maxHp": 91,
         "attackPower": 4.9,
-        "defense": 3.1,
+        "defense": 3.2,
         "hpRegen": 0.113,
         "attackSpeed": 0
       }
@@ -39265,7 +39265,7 @@
       "base": {
         "maxHp": 960,
         "attackPower": 33,
-        "defense": 50,
+        "defense": 53,
         "hpRegen": 1.6,
         "attackSpeed": 0.13,
         "moveSpeed": 3.5
@@ -39352,7 +39352,7 @@
         "Hammer"
       ],
       "base": {
-        "maxHp": 920,
+        "maxHp": 950,
         "attackPower": 34,
         "defense": 52,
         "hpRegen": 1.02,

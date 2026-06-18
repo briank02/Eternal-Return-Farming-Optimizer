@@ -104,10 +104,11 @@ async function buildData() {
     const charsData = {};
     const charList = charsRes.data || [];
     const charAttrsList = charAttrsRes.data || [];
-    const charLevelsList = charLevelsRes.data || [];
+    const EXCLUDE_CHARS = new Set(["Dummy", "Craver"]);
     
     charList.forEach(char => {
         const engName = l10nEng[`Character/Name/${char.code}`] || char.name;
+        if (EXCLUDE_CHARS.has(engName)) return;
         const koName = l10nKo[`Character/Name/${char.code}`] || engName;
         charsData[engName] = {
             code: char.code,

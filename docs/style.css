@@ -89,12 +89,14 @@ header {
     display: flex;
     flex: 1;
     overflow: hidden;
+    min-height: 0;
 }
 
 .panel {
     padding: 1rem;
     border-right: 1px solid var(--border-color);
     overflow-y: auto;
+    min-height: 0;
 }
 
 .left-panel {
@@ -105,6 +107,10 @@ header {
 .center-panel {
     width: 50%;
     background-color: var(--panel-center);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
 }
 
 .right-panel {
@@ -118,6 +124,11 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
     gap: 10px;
     padding: 10px;
+}
+
+#epic-item-grid {
+    flex: 1;
+    overflow-y: auto;
 }
 
 .placeholder-item {
@@ -136,7 +147,6 @@ header {
     border: 2px solid var(--card-border);
     border-radius: 8px;
     cursor: pointer;
-    overflow: hidden;
     position: relative;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
@@ -255,7 +265,8 @@ body.lang-ko .substat-btn {
 }
 
 body.lang-ko .left-panel > div[data-i18n] {
-    margin-bottom: 0px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
     line-height: 1 !important;
 }
 
@@ -298,4 +309,85 @@ body.lang-ko .left-panel > div[data-i18n] {
     color: var(--empty-msg);
     font-style: italic;
     font-size: 0.9rem;
+}
+
+/* Tooltip Styles */
+/* Tooltip Styles */
+.item-tooltip {
+    display: none;
+    position: fixed;
+    background: linear-gradient(to right, rgba(30, 25, 40, 0.9), rgba(81, 29, 140, 0.9));
+    color: white;
+    padding: 0;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10000;
+    pointer-events: none;
+    border: 1px solid rgba(155, 89, 182, 0.5);
+    min-width: 250px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
+}
+
+.tooltip-header {
+    display: flex;
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+}
+
+.tooltip-highlight {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+}
+
+.tooltip-header-info {
+    flex: 1;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.4;
+}
+
+.tooltip-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+}
+
+.tooltip-type {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.tooltip-part {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.tooltip-image-container {
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.tooltip-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tooltip-stats {
+    padding: 10px;
+}
+
+.tooltip-stat {
+    color: #2ecc71;
+    margin-bottom: 3px;
 }

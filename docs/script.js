@@ -4,7 +4,6 @@
 
 const DICT = {
     en: {
-        loading: "Loading Game Data from API...",
         title: "Eternal Return Farming Route Optimizer",
         filters: "Filters",
         resetAll: "Reset All",
@@ -33,7 +32,6 @@ const DICT = {
         buildVariant: "Build Variant:"
     },
     ko: {
-        loading: "API에서 게임 데이터를 불러오는 중...",
         title: "이터널 리턴 파밍 루트 옵티마이저",
         filters: "필터",
         resetAll: "전체 초기화",
@@ -58,8 +56,8 @@ const DICT = {
         route2: "루트 2",
         topRoutes: "<h3>최적화된 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
         needDrone: "드론 필요: <strong>",
-        noDrone: "드론 불필요",
-        buildVariant: "빌드 조합:"
+        noDrone: "드론 필요 없음",
+        buildVariant: "빌드 변형:"
     }
 };
 
@@ -121,6 +119,19 @@ const SUBSTATS = [
     { id: 'moveSpeed', name: { en: 'Movement Speed', ko: '이동 속도' } }
 ];
 
+const PART_NAMES = {
+    "Weapon": { en: "Weapon", ko: "무기" },
+    "Chest": { en: "Chest", ko: "옷" },
+    "Head": { en: "Head", ko: "머리" },
+    "Arm": { en: "Arm", ko: "팔" },
+    "Leg": { en: "Leg", ko: "다리" }
+};
+
+const TYPE_NAMES = {
+    "Epic": { en: "Epic", ko: "영웅" },
+    "Legendary": { en: "Legendary", ko: "전설" }
+};
+
 const WEAPON_TYPES = [
     { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "01. Glove.png" },
     { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "02. Tonfa.png" },
@@ -168,8 +179,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         mapData = data.mapData;
         chars = data.chars;
         
-        const loading = document.getElementById('loading-screen');
-        if (loading) loading.style.display = 'none';
+        // Removed loading screen logic
 
         // Initialize Theme
         if (localStorage.getItem('theme') === 'dark') {
@@ -209,6 +219,30 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderMainGrid();
 
         // 3. Setup Events
+        const charSearch = document.getElementById('char-search');
+        if (charSearch) {
+            charSearch.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                document.querySelectorAll('#character-selection .char-btn').forEach(btn => {
+                    if (btn.dataset.char === "All") return;
+                    const charNameEn = btn.dataset.char.toLowerCase();
+                    const charNameKo = getCharName(btn.dataset.char).toLowerCase();
+                    if (charNameEn.includes(term) || charNameKo.includes(term)) {
+                        btn.style.display = 'flex';
+                    } else {
+                        btn.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        const itemSearch = document.getElementById('item-search');
+        if (itemSearch) {
+            itemSearch.addEventListener('input', () => {
+                renderMainGrid();
+            });
+        }
+
         const calculateBtn = document.getElementById('calculate-btn');
         if (calculateBtn) {
             calculateBtn.addEventListener('click', calculateAllVariants);
@@ -239,6 +273,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         const resetAllBtn = document.getElementById('reset-all-btn');
         if (resetAllBtn) {
             resetAllBtn.addEventListener('click', () => {
+                // Reset searches
+                const charSearch = document.getElementById('char-search');
+                if (charSearch) {
+                    charSearch.value = '';
+                    charSearch.dispatchEvent(new Event('input'));
+                }
+                const itemSearch = document.getElementById('item-search');
+                if (itemSearch) {
+                    itemSearch.value = '';
+                }
+
                 // Reset character
                 const allCharBtn = document.querySelector('#character-selection .char-btn[data-char="All"]');
                 if (allCharBtn) allCharBtn.click();
@@ -301,8 +346,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     } catch (e) {
         console.error("Failed to load API data", e);
-        const loading = document.getElementById('loading-screen');
-        if (loading) loading.innerHTML = '<h2>Error loading API data. Please refresh.</h2>';
+        console.error("Error loading data.");
     }
 });
 
@@ -488,6 +532,15 @@ function renderMainGrid() {
         if (data.type !== "Epic" && data.type !== "Legendary") return false;
         if (!partOrder[data.part]) return false;
         
+        // Item search filtering
+        const itemSearchInput = document.getElementById('item-search');
+        if (itemSearchInput && itemSearchInput.value) {
+            const term = itemSearchInput.value.toLowerCase();
+            const nameEn = name.toLowerCase();
+            const nameKo = getItemName(name).toLowerCase();
+            if (!nameEn.includes(term) && !nameKo.includes(term)) return false;
+        }
+        
         // Substat filtering (including level scaling)
         if (activeSubstats.size > 0) {
             if (!data.stats) return false;
@@ -563,7 +616,18 @@ function createItemCard(name) {
     const card = document.createElement('div');
     card.classList.add('item-card');
     card.dataset.name = name; 
-    card.title = getItemName(name);
+
+    const textFallback = document.createElement('div');
+    textFallback.innerText = getItemName(name);
+    textFallback.style.fontSize = '0.7rem';
+    textFallback.style.textAlign = 'center';
+    textFallback.style.display = 'none';
+    textFallback.style.width = '100%';
+    textFallback.style.color = '#ccc';
+    textFallback.style.position = 'absolute';
+    textFallback.style.top = '50%';
+    textFallback.style.transform = 'translateY(-50%)';
+    textFallback.style.wordBreak = 'break-all';
 
     const img = document.createElement('img');
     img.src = `images/${name}.png`; 
@@ -572,18 +636,100 @@ function createItemCard(name) {
     
     img.onerror = function() {
         this.style.display = 'none';
-        card.innerText = getItemName(name);
-        card.style.fontSize = '0.75rem';
-        card.style.textAlign = 'center';
-        card.style.display = 'flex';
-        card.style.alignItems = 'center';
-        card.style.justifyContent = 'center';
-        card.style.color = '#ccc';
+        textFallback.style.display = 'block';
     };
 
+    card.appendChild(textFallback);
     card.appendChild(img);
+
+    card.addEventListener('mouseenter', (e) => {
+        showGlobalTooltip(name);
+        moveGlobalTooltip(e);
+    });
+    card.addEventListener('mousemove', (e) => {
+        moveGlobalTooltip(e);
+    });
+    card.addEventListener('mouseleave', () => {
+        hideGlobalTooltip();
+    });
+
     card.addEventListener('click', () => toggleSelection(name));
     return card;
+}
+
+function showGlobalTooltip(name) {
+    const itemData = items[name];
+    if (!itemData) return;
+    
+    const tooltip = document.getElementById('global-tooltip');
+    if (!tooltip) return;
+    
+    const typeColor = '#9b59b6'; 
+    const partName = PART_NAMES[itemData.part] ? PART_NAMES[itemData.part][currentLanguage] : itemData.part;
+    const typeName = TYPE_NAMES[itemData.type] ? TYPE_NAMES[itemData.type][currentLanguage] : itemData.type;
+    
+    let tooltipHtml = `
+        <div class="tooltip-header">
+            <div class="tooltip-highlight" style="background-color: ${typeColor};"></div>
+            <div class="tooltip-header-info">
+                <div class="tooltip-name">${getItemName(name)}</div>
+                <div class="tooltip-type" style="color: ${typeColor};">${typeName}</div>
+                <div class="tooltip-part">${partName}</div>
+            </div>
+            <div class="tooltip-image-container">
+                <img src="images/${name}.png" alt="${name}">
+            </div>
+        </div>
+        <div class="tooltip-stats">
+    `;
+    
+    if (itemData.stats) {
+        SUBSTATS.forEach(s => {
+            let baseVal = itemData.stats[s.id] || 0;
+            let lvVal = (itemData.statsByLv && itemData.statsByLv[s.id]) ? itemData.statsByLv[s.id] : 0;
+            
+            const statName = s.name[currentLanguage];
+            const perLevelStr = currentLanguage === 'ko' ? `레벨 당 ${statName}` : `${statName} per level`;
+            
+            if (baseVal > 0 && lvVal === 0) {
+                tooltipHtml += `<div class="tooltip-stat"><span>${statName} +${baseVal}</span></div>`;
+            } else if (lvVal > 0 && baseVal === 0) {
+                const maxLvVal = (lvVal * 20).toFixed(1);
+                tooltipHtml += `<div class="tooltip-stat"><span>${perLevelStr} +${lvVal.toFixed(1)}~${maxLvVal}</span></div>`;
+            } else if (baseVal > 0 && lvVal > 0) {
+                const maxLvVal = (lvVal * 20).toFixed(1);
+                tooltipHtml += `<div class="tooltip-stat"><span>${statName} +${baseVal}</span></div>`;
+                tooltipHtml += `<div class="tooltip-stat"><span>${perLevelStr} +${lvVal.toFixed(1)}~${maxLvVal}</span></div>`;
+            }
+        });
+    }
+    tooltipHtml += `</div>`;
+    tooltip.innerHTML = tooltipHtml;
+    tooltip.style.display = 'block';
+}
+
+function moveGlobalTooltip(e) {
+    const tooltip = document.getElementById('global-tooltip');
+    if (!tooltip || tooltip.style.display === 'none') return;
+    
+    let x = e.clientX + 15;
+    let y = e.clientY + 15;
+    
+    const rect = tooltip.getBoundingClientRect();
+    if (x + rect.width > window.innerWidth) {
+        x = e.clientX - rect.width - 15;
+    }
+    if (y + rect.height > window.innerHeight) {
+        y = window.innerHeight - rect.height - 15;
+    }
+    
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+}
+
+function hideGlobalTooltip() {
+    const tooltip = document.getElementById('global-tooltip');
+    if (tooltip) tooltip.style.display = 'none';
 }
 
 function toggleSelection(name) {
