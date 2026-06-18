@@ -29,7 +29,9 @@ const DICT = {
         topRoutes: "<h3>Top Optimized Routes: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: Hyperloop not needed)</span></h3>",
         needDrone: "Need Drone: <strong>",
         noDrone: "No Drone Needed",
-        buildVariant: "Build Variant:"
+        buildVariant: "Build Variant:",
+        searchCharPlaceholder: "Search...",
+        searchItemPlaceholder: "Search item..."
     },
     ko: {
         title: "이터널 리턴 파밍 루트 옵티마이저",
@@ -57,7 +59,9 @@ const DICT = {
         topRoutes: "<h3>최적화된 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
         needDrone: "드론 필요: <strong>",
         noDrone: "드론 필요 없음",
-        buildVariant: "빌드 변형:"
+        buildVariant: "빌드 변형:",
+        searchCharPlaceholder: "실험체 검색...",
+        searchItemPlaceholder: "아이템 검색..."
     }
 };
 
@@ -86,6 +90,13 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n');
         if (DICT[currentLanguage][key]) {
             el.innerHTML = DICT[currentLanguage][key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (DICT[currentLanguage][key]) {
+            el.setAttribute('placeholder', DICT[currentLanguage][key]);
         }
     });
 }
