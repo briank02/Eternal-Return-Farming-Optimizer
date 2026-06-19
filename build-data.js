@@ -5,6 +5,129 @@ const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
 
+const MANUAL_ITEM_STATS = {
+    Nightingale: { healingPower: 0.05 },
+    Temperance: { healingPower: 0.05 }
+};
+
+const PASSIVE_SKILL_TRANSLATIONS = {
+    "Biotic Infusion": "의념",
+    "Burden: Magnetic Midnight": "충전 - 섬광",
+    "Debilitation": "부패",
+    "Electric Shock": "전자기 충격",
+    "Flame Barrier": "불꽃 결계",
+    "Healing Reduction": "치유 감소",
+    "Magic Bullet": "마탄",
+    "Photon Launcher": "포톤 런처",
+    "Primordial Hex": "저주",
+    "Reflection": "리플렉션",
+    "Streamlined": "신속",
+    "Streamlined: Charge Carrier": "신속 - 플라즈마",
+    "Streamlined: Rudra Embodied": "신속 - 루드라의 단검",
+    "Swift Strides": "가벼운 발걸음",
+    "Vigor": "열정",
+    "Vigor-Circulation": "열정 - 순환"
+};
+
+const ITEM_PASSIVE_SKILLS = {
+    "Buddha's Palm": "Primordial Hex",
+    "Brasil Gauntlet": "Vigor",
+    "Mai Sok": "Primordial Hex",
+    "Pakua Chang": "Primordial Hex",
+    "Mallet": "Healing Reduction",
+    "Weight of the World": "Burden: Magnetic Midnight",
+    "Bookmaster": "Healing Reduction",
+    "Thunder Whip": "Healing Reduction",
+    "Cathode Lash": "Streamlined: Charge Carrier",
+    "Incendiary Bomb": "Healing Reduction",
+    "Smoke Bomb": "Vigor",
+    "Sticky Bomb": "Burden: Magnetic Midnight",
+    "Mystic Jade Charm": "Primordial Hex",
+    "Azure Dagger": "Healing Reduction",
+    "Flechette": "Vigor",
+    "Ancient Bolt": "Vigor",
+    "Elemental Bow": "Primordial Hex",
+    "Poisoned Crossbow": "Healing Reduction",
+    "Glock 48": "Vigor",
+    "Stampede": "Magic Bullet",
+    "Type 95": "Healing Reduction",
+    "AK-12": "Vigor",
+    "Beam Axe": "Healing Reduction",
+    "Scythe": "Burden: Magnetic Midnight",
+    "Harpe": "Swift Strides",
+    "Carnwennan": "Burden: Magnetic Midnight",
+    "Vibroblade": "Vigor",
+    "Damascus Steel Thorn": "Healing Reduction",
+    "Maharaja": "Streamlined: Rudra Embodied",
+    "Arondight": "Vigor",
+    "Divine Dual Swords": "Healing Reduction",
+    "Black Butterfly": "Primordial Hex",
+    "Fangtian Huaji": "Healing Reduction",
+    "The Smiting Dragon": "Healing Reduction",
+    "Vibro Nunchaku": "Vigor",
+    "Blue 3": "Healing Reduction",
+    "Esprit": "Streamlined",
+    "Red Panther": "Healing Reduction",
+    "Durendal Mk2": "Burden: Magnetic Midnight",
+    "Bohemian": "Healing Reduction",
+    "The Wall": "Vigor",
+    "V.I.C.G": "Biotic Infusion",
+    "The Hermit": "Primordial Hex",
+    "The Hierophant": "Healing Reduction",
+    "Deathadder Queen": "Biotic Infusion",
+    "Black Mamba King": "Flame Barrier",
+    "Alpha Sidewinder": "Swift Strides",
+    "Cardinal Robes": "Healing Reduction",
+    "Sunset Armor": "Flame Barrier",
+    "Rocker's Jacket": "Healing Reduction",
+    "Amazoness Armor": "Streamlined",
+    "Virtuous Outlaw": "Swift Strides",
+    "Crystal Tiara": "Healing Reduction",
+    "Motorcycle Helmet": "Photon Launcher",
+    "Mohawk Headgear": "Reflection",
+    "Tactical OPS Helmet": "Electric Shock",
+    "Vigilante": "Debilitation",
+    "Diadem": "Healing Reduction",
+    "Cowboy Hat": "Healing Reduction",
+    "Sport Sunglasses": "Healing Reduction",
+    "White Witch Hat": "Healing Reduction",
+    "Corrupting Touch": "Healing Reduction",
+    "Sword Stopper": "Reflection",
+    "Creed of the Knight": "Healing Reduction",
+    "Vital Sign Sensor": "Photon Launcher",
+    "Sports Watch": "Vigor-Circulation",
+    "Schrödinger's Box": "Healing Reduction",
+    "White Crane Fan": "Primordial Hex",
+    "White Rhinos": "Healing Reduction",
+    "SCV": "Healing Reduction"
+};
+
+function getPassiveSkill(itemName) {
+    const name = ITEM_PASSIVE_SKILLS[itemName];
+    if (!name) return null;
+    return {
+        name,
+        nameKo: PASSIVE_SKILL_TRANSLATIONS[name] || name
+    };
+}
+
+const UNIQUE_STAT_FIELDS = [
+    { source: 'uniqueAttackRange', target: 'attackRange' },
+    { source: 'uniquePenetrationDefenseRatio', target: 'penetrationDefenseRatio' },
+    { source: 'uniquePenetrationDefense', target: 'penetrationDefense' },
+    { source: 'uniqueTenacity', target: 'tenacity' },
+    { source: 'uniqueLifeSteal', target: 'omnisyphon' },
+    { source: 'uniqueMoveSpeed', target: 'moveSpeed' }
+];
+
+function getUniqueStats(item) {
+    return UNIQUE_STAT_FIELDS.reduce((stats, field) => {
+        const value = item[field.source] || 0;
+        if (value > 0) stats[field.target] = value;
+        return stats;
+    }, {});
+}
+
 const hardcodedNeighbors = {
     "Alley": ["Gas Station", "Police Station", "Temple"],
     "Temple": ["Alley", "Police Station", "Stream"],
@@ -99,6 +222,7 @@ async function buildData() {
         ...(mRes.data || []),
         ...(cRes.data || [])
     ];
+    const charLevelsList = charLevelsRes.data || [];
     
     // Build Characters
     const charsData = {};
@@ -222,6 +346,7 @@ async function buildData() {
         // Let's map Epic/Legendary to "Epic" for the UI since they are end-goal items, 
         // or just keep their actual grade.
         const type = item.itemGrade; // Common, Uncommon, Rare, Epic, Legendary
+        const uniqueStats = getUniqueStats(item);
 
         const itemObj = {
             nameKo: koName,
@@ -230,26 +355,29 @@ async function buildData() {
             locations: spawns,
             initialCount: item.initialCount || 1,
             weaponType: item.weaponType || "",
+            passiveSkill: getPassiveSkill(engName),
             stats: {
                 attackPower: item.attackPower || 0,
                 attackSpeedRatio: item.attackSpeedRatio || 0,
                 criticalStrikeChance: item.criticalStrikeChance || 0,
-                attackRange: (item.attackRange || 0) + (item.uniqueAttackRange || 0),
-                penetrationDefenseRatio: item.penetrationDefenseRatio || item.uniquePenetrationDefenseRatio || 0,
-                penetrationDefense: item.penetrationDefense || item.uniquePenetrationDefense || 0,
+                attackRange: item.attackRange || 0,
+                penetrationDefenseRatio: item.penetrationDefenseRatio || 0,
+                penetrationDefense: item.penetrationDefense || 0,
                 skillAmp: item.skillAmp || 0,
                 cooldownReduction: item.cooldownReduction || 0,
                 maxHp: item.maxHp || 0,
                 defense: item.defense || 0,
                 damageReduction: (item.preventBasicAttackDamaged || 0) + (item.preventSkillDamaged || 0),
-                tenacity: item.uniqueTenacity || 0,
+                tenacity: 0,
                 visionRange: item.sightRange || 0,
                 lifeSteal: (item.normalLifeSteal || 0),
-                omnisyphon: (item.lifeSteal || 0) + (item.skillLifeSteal || 0) + (item.uniqueLifeSteal || 0),
-                moveSpeed: (item.moveSpeed || 0) + (item.uniqueMoveSpeed || 0),
+                omnisyphon: (item.lifeSteal || 0) + (item.skillLifeSteal || 0),
+                moveSpeed: item.moveSpeed || 0,
                 moveSpeedRatio: (item.moveSpeedRatio || 0),
-                hpRegen: (item.hpRegen || 0) + (item.hpRegenRatio || 0)
+                hpRegen: (item.hpRegen || 0) + (item.hpRegenRatio || 0),
+                healingPower: (MANUAL_ITEM_STATS[engName] && MANUAL_ITEM_STATS[engName].healingPower) || 0
             },
+            uniqueStats,
             statsByLv: {
                 attackPower: item.attackPowerByLv || 0,
                 attackSpeedRatio: item.attackSpeedRatioByLv || 0,
@@ -267,6 +395,8 @@ async function buildData() {
                 lifeSteal: 0,
                 omnisyphon: 0,
                 moveSpeed: 0,
+                moveSpeedRatio: 0,
+                healingPower: 0,
                 hpRegen: 0
             }
         };

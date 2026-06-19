@@ -1,0 +1,43 @@
+{
+  "ItemSkillLinker": {
+    "keys": [
+      "code",
+      "message"
+    ],
+    "sample": {
+      "code": 404,
+      "message": "Not Found"
+    }
+  },
+  "ItemSkillGroup": {
+    "keys": [
+      "code",
+      "message"
+    ],
+    "sample": {
+      "code": 404,
+      "message": "Not Found"
+    }
+  },
+  "Skill": {
+    "keys": [
+      "code",
+      "message"
+    ],
+    "sample": {
+      "code": 404,
+      "message": "Not Found"
+    }
+  },
+  "SkillGroup": {
+    "keys": [
+      "code",
+      "message"
+    ],
+    "sample": {
+      "code": 404,
+      "message": "Not Found"
+    }
+  },
+  "hash": "res.data.data.slice is not a function"
+}

@@ -130,6 +130,13 @@ const SUBSTATS = [
     { id: 'moveSpeed', name: { en: 'Movement Speed', ko: '이동 속도' } }
 ];
 
+const DISPLAY_STATS = [
+    ...SUBSTATS,
+    { id: 'healingPower', name: { en: 'Healing Power', ko: 'Healing Power' } }
+];
+
+const ITEM_TOOLTIP_STATS = DISPLAY_STATS;
+
 const PART_NAMES = {
     "Weapon": { en: "Weapon", ko: "무기" },
     "Chest": { en: "Chest", ko: "옷" },
@@ -556,8 +563,14 @@ function renderMainGrid() {
         if (activeSubstats.size > 0) {
             if (!data.stats) return false;
             for (let stat of activeSubstats) {
-                const baseStat = data.stats[stat] || 0;
-                const lvStat = (data.statsByLv && data.statsByLv[stat]) ? data.statsByLv[stat] * charLevel : 0;
+                let baseStat = data.stats[stat] || 0;
+                let lvStat = (data.statsByLv && data.statsByLv[stat]) ? data.statsByLv[stat] * charLevel : 0;
+                baseStat += (data.uniqueStats && data.uniqueStats[stat]) || 0;
+                if (stat === 'moveSpeed') {
+                    baseStat += data.stats.moveSpeedRatio || 0;
+                    baseStat += (data.uniqueStats && data.uniqueStats.moveSpeedRatio) || 0;
+                    lvStat += (data.statsByLv && data.statsByLv.moveSpeedRatio) ? data.statsByLv.moveSpeedRatio * charLevel : 0;
+                }
                 if (baseStat + lvStat <= 0) return false;
             }
         }
@@ -695,28 +708,70 @@ function showGlobalTooltip(name) {
     `;
     
     if (itemData.stats) {
-        SUBSTATS.forEach(s => {
+        let uniqueTooltipHtml = '';
+        ITEM_TOOLTIP_STATS.forEach(s => {
+            if (s.id === 'moveSpeed') {
+                const flatVal = itemData.stats.moveSpeed || 0;
+                const pctVal = itemData.stats.moveSpeedRatio || 0;
+                const uniqueFlatVal = (itemData.uniqueStats && itemData.uniqueStats.moveSpeed) || 0;
+                const uniquePctVal = (itemData.uniqueStats && itemData.uniqueStats.moveSpeedRatio) || 0;
+                if (flatVal > 0 || pctVal > 0) {
+                    tooltipHtml += renderTooltipStatLine(s.name[currentLanguage], formatMovementSpeedValue(flatVal, pctVal));
+                }
+                if (uniqueFlatVal > 0 || uniquePctVal > 0) {
+                    uniqueTooltipHtml += renderTooltipStatLine(s.name[currentLanguage], formatMovementSpeedValue(uniqueFlatVal, uniquePctVal), true);
+                }
+                return;
+            }
+
             let baseVal = itemData.stats[s.id] || 0;
             let lvVal = (itemData.statsByLv && itemData.statsByLv[s.id]) ? itemData.statsByLv[s.id] : 0;
+            let uniqueVal = (itemData.uniqueStats && itemData.uniqueStats[s.id]) || 0;
             
             const statName = s.name[currentLanguage];
             const perLevelStr = currentLanguage === 'ko' ? `레벨 당 ${statName}` : `${statName} per level`;
             
             if (baseVal > 0 && lvVal === 0) {
-                tooltipHtml += `<div class="tooltip-stat"><span>${statName} +${baseVal}</span></div>`;
+                tooltipHtml += renderTooltipStatLine(statName, formatTooltipStatValue(s.id, baseVal));
             } else if (lvVal > 0 && baseVal === 0) {
-                const maxLvVal = (lvVal * 20).toFixed(1);
-                tooltipHtml += `<div class="tooltip-stat"><span>${perLevelStr} +${lvVal.toFixed(1)}~${maxLvVal}</span></div>`;
+                const maxLvVal = lvVal * 20;
+                tooltipHtml += renderTooltipStatLine(perLevelStr, `${formatTooltipStatValue(s.id, lvVal)}~${formatTooltipStatValue(s.id, maxLvVal)}`);
             } else if (baseVal > 0 && lvVal > 0) {
-                const maxLvVal = (lvVal * 20).toFixed(1);
-                tooltipHtml += `<div class="tooltip-stat"><span>${statName} +${baseVal}</span></div>`;
-                tooltipHtml += `<div class="tooltip-stat"><span>${perLevelStr} +${lvVal.toFixed(1)}~${maxLvVal}</span></div>`;
+                const maxLvVal = lvVal * 20;
+                tooltipHtml += renderTooltipStatLine(statName, formatTooltipStatValue(s.id, baseVal));
+                tooltipHtml += renderTooltipStatLine(perLevelStr, `${formatTooltipStatValue(s.id, lvVal)}~${formatTooltipStatValue(s.id, maxLvVal)}`);
+            }
+
+            if (uniqueVal > 0) {
+                uniqueTooltipHtml += renderTooltipStatLine(statName, formatTooltipStatValue(s.id, uniqueVal), true);
             }
         });
+        tooltipHtml += uniqueTooltipHtml;
+    }
+    if (itemData.passiveSkill) {
+        tooltipHtml += renderPassiveSkillLine(itemData.passiveSkill);
     }
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
     tooltip.style.display = 'block';
+}
+
+function getUniquePrefixHtml() {
+    const label = currentLanguage === 'ko' ? '(고유)' : '(Unique)';
+    return `<span style="color:#f1c40f; font-weight:bold;">${label}</span> `;
+}
+
+function renderTooltipStatLine(statName, value, isUnique = false) {
+    const prefix = isUnique ? getUniquePrefixHtml() : '';
+    return `<div class="tooltip-stat"><span>${prefix}${statName} +${value}</span></div>`;
+}
+
+function getPassiveSkillName(passiveSkill) {
+    return currentLanguage === 'ko' ? (passiveSkill.nameKo || passiveSkill.name) : passiveSkill.name;
+}
+
+function renderPassiveSkillLine(passiveSkill) {
+    return `<div class="tooltip-stat"><span style="color:#f1c40f; font-weight:bold;">${getPassiveSkillName(passiveSkill)}</span></div>`;
 }
 
 function moveGlobalTooltip(e) {
@@ -873,8 +928,9 @@ function renderStatComparison() {
 
 function calculateBuildStats(itemNames) {
     const totalStats = {};
-    SUBSTATS.forEach(s => totalStats[s.id] = 0);
+    DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
     totalStats.moveSpeedRatio = 0;
+    let baseMoveSpeed = 0;
     
     // Add Character Base & Growth Stats
     if (currentCharacter && chars[currentCharacter]) {
@@ -891,8 +947,11 @@ function calculateBuildStats(itemNames) {
         }
         if (cBase.moveSpeed !== undefined) {
             totalStats.moveSpeed += cBase.moveSpeed;
+            baseMoveSpeed = cBase.moveSpeed || 0;
         }
     }
+
+    const uniqueMaxStats = {};
 
     itemNames.forEach(name => {
         const itemObj = items[name];
@@ -900,6 +959,13 @@ function calculateBuildStats(itemNames) {
             if (itemObj.stats) {
                 Object.keys(itemObj.stats).forEach(key => {
                     if (totalStats[key] !== undefined) totalStats[key] += itemObj.stats[key];
+                });
+            }
+            if (itemObj.uniqueStats) {
+                Object.keys(itemObj.uniqueStats).forEach(key => {
+                    if (totalStats[key] !== undefined) {
+                        uniqueMaxStats[key] = Math.max(uniqueMaxStats[key] || 0, itemObj.uniqueStats[key]);
+                    }
                 });
             }
             if (itemObj.statsByLv) {
@@ -910,28 +976,70 @@ function calculateBuildStats(itemNames) {
         }
     });
 
-    let msFlat = totalStats.moveSpeed;
+    Object.keys(uniqueMaxStats).forEach(key => {
+        totalStats[key] += uniqueMaxStats[key];
+    });
+
+    let msFlat = totalStats.moveSpeed - baseMoveSpeed;
     let msPct = totalStats.moveSpeedRatio;
     totalStats.moveSpeed = {
         flat: msFlat,
         percent: msPct,
+        baseFlat: baseMoveSpeed,
         valueOf: function() { return this.flat + (this.percent * 10); },
-        toString: function() { return this.percent > 0 ? `${this.flat.toFixed(2)} + ${Math.round(this.percent * 100)}%` : this.flat.toFixed(2); }
+        toString: function() { return formatMovementSpeedValue(this.flat, this.percent, this.baseFlat); }
     };
 
     return totalStats;
 }
 
+function formatPercentValue(val) {
+    return (val * 100).toFixed(0) + '%';
+}
+
+function formatMovementSpeedValue(flat, percent, fallbackFlat = 0) {
+    const parts = [];
+    if (percent > 0) parts.push(formatPercentValue(percent));
+    if (flat > 0) parts.push(flat.toFixed(2));
+    if (parts.length > 0) return parts.join(' + ');
+    return fallbackFlat > 0 ? fallbackFlat.toFixed(2) : '0';
+}
+
+function isPercentStat(id) {
+    return [
+        'attackSpeedRatio',
+        'criticalStrikeChance',
+        'hpRegen',
+        'lifeSteal',
+        'omnisyphon',
+        'tenacity',
+        'penetrationDefenseRatio',
+        'healingPower'
+    ].includes(id);
+}
+
+function formatTooltipStatValue(id, val) {
+    if (isPercentStat(id)) return formatPercentValue(val);
+    if (id === 'moveSpeed') return val.toFixed(2);
+    if (id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
+    if (id === 'cooldownReduction') return Math.round(val);
+    return Number.isInteger(val) ? String(val) : val.toFixed(1);
+}
+
+function isZeroStatValue(val) {
+    return Number(val) === 0;
+}
+
 function formatStatValue(id, val) {
-    if (id === 'attackSpeedRatio') return Math.round(val * 100) + '%';
+    if (id === 'attackSpeedRatio') return formatPercentValue(val);
     if (id === 'moveSpeed') {
         if (typeof val === 'object') return val.toString();
         return val.toFixed(2);
     }
     if (id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
-    if (id === 'hpRegen') return (val * 100).toFixed(0) + '%';
+    if (id === 'hpRegen') return formatPercentValue(val);
     if (id === 'cooldownReduction') return Math.round(val) + ' (' + Math.round((val / (100 + val)) * 100) + '%)';
-    if (['criticalStrikeChance', 'lifeSteal', 'omnisyphon', 'tenacity', 'penetrationDefenseRatio'].includes(id)) return (val * 100).toFixed(0) + '%';
+    if (['criticalStrikeChance', 'lifeSteal', 'omnisyphon', 'tenacity', 'penetrationDefenseRatio', 'healingPower'].includes(id)) return formatPercentValue(val);
     return Math.round(val);
 }
 
@@ -949,8 +1057,8 @@ function renderSingleStatColumn(stats) {
     }
     html += portraitHtml;
 
-    SUBSTATS.forEach(s => {
-        if (stats[s.id] > 0) {
+    DISPLAY_STATS.forEach(s => {
+        if (!isZeroStatValue(stats[s.id]) && stats[s.id] > 0) {
             html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed var(--border-color);">
                 <span>${s.name[currentLanguage]}</span>
                 <strong style="color:var(--text-main);">${formatStatValue(s.id, stats[s.id])}</strong>
@@ -979,10 +1087,10 @@ function renderComparisonColumns(stats1, stats2) {
     const commonStats = [];
     const diffStats = [];
 
-    SUBSTATS.forEach(s => {
+    DISPLAY_STATS.forEach(s => {
         const v1 = stats1[s.id] || 0;
         const v2 = stats2[s.id] || 0;
-        if (v1 === 0 && v2 === 0) return;
+        if (isZeroStatValue(v1) && isZeroStatValue(v2)) return;
         if (Math.round(v1*100) === Math.round(v2*100)) {
             commonStats.push({ id: s.id, name: s.name, v1, v2 });
         } else {
