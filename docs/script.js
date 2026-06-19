@@ -132,7 +132,7 @@ const SUBSTATS = [
 
 const DISPLAY_STATS = [
     ...SUBSTATS,
-    { id: 'healingPower', name: { en: 'Healing Power', ko: 'Healing Power' } }
+    { id: 'healingPower', name: { en: 'Healing Power', ko: '주는 회복 증가' } }
 ];
 
 const ITEM_TOOLTIP_STATS = DISPLAY_STATS;
