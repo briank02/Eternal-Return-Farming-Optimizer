@@ -101,6 +101,58 @@ function applyTranslations() {
     });
 }
 
+function prettifyStatId(id) {
+    return id
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        .replace(/\bHp\b/g, 'HP')
+        .replace(/\bVf\b/g, 'VF')
+        .replace(/\bCdr\b/g, 'CDR')
+        .replace(/^./, c => c.toUpperCase());
+}
+
+function getStatName(id) {
+    return STAT_LABELS[id] || { en: prettifyStatId(id), ko: prettifyStatId(id) };
+}
+
+function buildDisplayStats() {
+    const orderedIds = [];
+    const seen = new Set();
+    const addId = (id) => {
+        if (!id || HIDDEN_DISPLAY_STATS.has(id) || seen.has(id)) return;
+        seen.add(id);
+        orderedIds.push(id);
+    };
+
+    DISPLAY_STAT_ORDER.forEach(addId);
+    Object.values(items).forEach(item => {
+        Object.keys(item.stats || {}).forEach(addId);
+        Object.keys(item.uniqueStats || {}).forEach(addId);
+        Object.keys(item.statsByLv || {}).forEach(addId);
+    });
+
+    DISPLAY_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
+    ITEM_TOOLTIP_STATS = DISPLAY_STATS;
+}
+
+const FILTER_STAT_KEYS = {
+    damageReduction: ['preventBasicAttackDamaged', 'preventSkillDamaged'],
+    hpRegen: ['hpRegen', 'hpRegenRatio'],
+    lifeSteal: ['normalLifeSteal'],
+    omnisyphon: ['lifeSteal', 'skillLifeSteal'],
+    visionRange: ['sightRange'],
+    moveSpeed: ['moveSpeed', 'moveSpeedRatio']
+};
+
+function getItemStatValue(item, statId, level = charLevel) {
+    const keys = FILTER_STAT_KEYS[statId] || [statId];
+    return keys.reduce((sum, key) => {
+        const base = (item.stats && item.stats[key]) || 0;
+        const unique = (item.uniqueStats && item.uniqueStats[key]) || 0;
+        const perLevel = (item.statsByLv && item.statsByLv[key]) ? item.statsByLv[key] * level : 0;
+        return sum + base + unique + perLevel;
+    }, 0);
+}
+
 const selectedEpics = new Set();
 let currentFilter = "All"; // Track active filter
 let currentWeaponFilter = "All";
@@ -130,12 +182,73 @@ const SUBSTATS = [
     { id: 'moveSpeed', name: { en: 'Movement Speed', ko: '이동 속도' } }
 ];
 
-const DISPLAY_STATS = [
-    ...SUBSTATS,
-    { id: 'healingPower', name: { en: 'Healing Power', ko: '주는 회복 증가' } }
-];
+let DISPLAY_STATS = [];
+let ITEM_TOOLTIP_STATS = DISPLAY_STATS;
 
-const ITEM_TOOLTIP_STATS = DISPLAY_STATS;
+const STAT_LABELS = {
+    adaptiveForce: { en: 'Adaptive Force', ko: '적응형 능력치' },
+    attackPower: { en: 'Attack Power', ko: '공격력' },
+    attackSpeedRatio: { en: 'Attack Speed', ko: '공격 속도' },
+    criticalStrikeChance: { en: 'Critical Strike Chance', ko: '치명타 확률' },
+    criticalStrikeDamage: { en: 'Critical Strike Damage', ko: '치명타 피해량' },
+    attackRange: { en: 'Attack Range', ko: '기본 공격 사거리' },
+    penetrationDefenseRatio: { en: 'Armor Penetration %', ko: '방어 관통 %' },
+    penetrationDefense: { en: 'Armor Penetration', ko: '방어 관통' },
+    skillAmp: { en: 'Skill Amplification', ko: '스킬 증폭' },
+    skillAmpRatio: { en: 'Skill Amplification %', ko: '스킬 증폭 %' },
+    cooldownReduction: { en: 'Cooldown Reduction', ko: '쿨다운 감소' },
+    tacticalCooldownReduction: { en: 'Tactical Skill Cooldown Reduction', ko: '전술 스킬 쿨다운 감소' },
+    ultCooldownReduction: { en: 'Ultimate Cooldown Reduction', ko: '궁극기 쿨다운 감소' },
+    maxHp: { en: 'Max HP', ko: '최대 체력' },
+    hpRegen: { en: 'HP Regen', ko: '체력 재생' },
+    hpRegenRatio: { en: 'HP Regen', ko: '체력 재생' },
+    defense: { en: 'Defense', ko: '방어력' },
+    preventBasicAttackDamaged: { en: 'Basic Attack Damage Reduction', ko: '기본 공격 피해 감소' },
+    preventSkillDamaged: { en: 'Skill Damage Reduction', ko: '스킬 피해 감소' },
+    tenacity: { en: 'Tenacity', ko: '방해 효과 저항' },
+    sightRange: { en: 'Vision Range', ko: '시야' },
+    normalLifeSteal: { en: 'Lifesteal', ko: '생명력 흡수' },
+    lifeSteal: { en: 'Omnisyphon', ko: '모든 피해 흡혈' },
+    skillLifeSteal: { en: 'Skill Lifesteal', ko: '스킬 흡혈' },
+    moveSpeed: { en: 'Movement Speed', ko: '이동 속도' },
+    moveSpeedRatio: { en: 'Movement Speed %', ko: '이동 속도 %' },
+    healerGiveHpHealRatio: { en: 'Healing Power', ko: '주는 회복 증가' },
+    slowResistRatio: { en: 'Slow Resist', ko: '둔화 저항' },
+    increaseBasicAttackDamageRatio: { en: 'Basic Attack Damage Increase', ko: '기본 공격 피해 증가' }
+};
+
+const HIDDEN_DISPLAY_STATS = new Set(['moveSpeedRatio']);
+
+const DISPLAY_STAT_ORDER = [
+    'attackPower',
+    'attackSpeedRatio',
+    'criticalStrikeChance',
+    'criticalStrikeDamage',
+    'attackRange',
+    'penetrationDefenseRatio',
+    'penetrationDefense',
+    'adaptiveForce',
+    'skillAmp',
+    'skillAmpRatio',
+    'cooldownReduction',
+    'tacticalCooldownReduction',
+    'ultCooldownReduction',
+    'maxHp',
+    'hpRegen',
+    'hpRegenRatio',
+    'defense',
+    'preventBasicAttackDamaged',
+    'preventSkillDamaged',
+    'tenacity',
+    'slowResistRatio',
+    'sightRange',
+    'normalLifeSteal',
+    'lifeSteal',
+    'skillLifeSteal',
+    'moveSpeed',
+    'healerGiveHpHealRatio',
+    'increaseBasicAttackDamageRatio'
+];
 
 const PART_NAMES = {
     "Weapon": { en: "Weapon", ko: "무기" },
@@ -196,6 +309,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         items = data.items;
         mapData = data.mapData;
         chars = data.chars;
+        buildDisplayStats();
         
         // Removed loading screen logic
 
@@ -563,15 +677,7 @@ function renderMainGrid() {
         if (activeSubstats.size > 0) {
             if (!data.stats) return false;
             for (let stat of activeSubstats) {
-                let baseStat = data.stats[stat] || 0;
-                let lvStat = (data.statsByLv && data.statsByLv[stat]) ? data.statsByLv[stat] * charLevel : 0;
-                baseStat += (data.uniqueStats && data.uniqueStats[stat]) || 0;
-                if (stat === 'moveSpeed') {
-                    baseStat += data.stats.moveSpeedRatio || 0;
-                    baseStat += (data.uniqueStats && data.uniqueStats.moveSpeedRatio) || 0;
-                    lvStat += (data.statsByLv && data.statsByLv.moveSpeedRatio) ? data.statsByLv.moveSpeedRatio * charLevel : 0;
-                }
-                if (baseStat + lvStat <= 0) return false;
+                if (getItemStatValue(data, stat) <= 0) return false;
             }
         }
 
@@ -931,12 +1037,17 @@ function calculateBuildStats(itemNames) {
     DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
     totalStats.moveSpeedRatio = 0;
     let baseMoveSpeed = 0;
+
+    const ensureStat = (key) => {
+        if (totalStats[key] === undefined) totalStats[key] = 0;
+    };
     
     // Add Character Base & Growth Stats
     if (currentCharacter && chars[currentCharacter]) {
         const cBase = chars[currentCharacter].base;
         const cGrowth = chars[currentCharacter].growth;
         const lvMinusOne = charLevel - 1;
+        ['maxHp', 'attackPower', 'defense', 'hpRegen', 'attackSpeedRatio', 'moveSpeed'].forEach(ensureStat);
         totalStats.maxHp += (cBase.maxHp || 0) + (cGrowth.maxHp || 0) * lvMinusOne;
         totalStats.attackPower += (cBase.attackPower || 0) + (cGrowth.attackPower || 0) * lvMinusOne;
         totalStats.defense += (cBase.defense || 0) + (cGrowth.defense || 0) * lvMinusOne;
@@ -1006,16 +1117,14 @@ function formatMovementSpeedValue(flat, percent, fallbackFlat = 0) {
 }
 
 function isPercentStat(id) {
-    return [
-        'attackSpeedRatio',
-        'criticalStrikeChance',
-        'hpRegen',
-        'lifeSteal',
-        'omnisyphon',
-        'tenacity',
-        'penetrationDefenseRatio',
-        'healingPower'
-    ].includes(id);
+    return id.endsWith('Ratio') ||
+        id.endsWith('Chance') ||
+        id.endsWith('LifeSteal') ||
+        id === 'criticalStrikeDamage' ||
+        id === 'hpRegen' ||
+        id === 'lifeSteal' ||
+        id === 'tenacity' ||
+        id === 'omnisyphon';
 }
 
 function formatTooltipStatValue(id, val) {
@@ -1039,7 +1148,7 @@ function formatStatValue(id, val) {
     if (id === 'attackRange' || id === 'visionRange') return val.toFixed(2);
     if (id === 'hpRegen') return formatPercentValue(val);
     if (id === 'cooldownReduction') return Math.round(val) + ' (' + Math.round((val / (100 + val)) * 100) + '%)';
-    if (['criticalStrikeChance', 'lifeSteal', 'omnisyphon', 'tenacity', 'penetrationDefenseRatio', 'healingPower'].includes(id)) return formatPercentValue(val);
+    if (isPercentStat(id)) return formatPercentValue(val);
     return Math.round(val);
 }
 

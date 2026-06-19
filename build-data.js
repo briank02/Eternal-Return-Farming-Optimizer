@@ -5,11 +5,6 @@ const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
 
-const MANUAL_ITEM_STATS = {
-    Nightingale: { healingPower: 0.05 },
-    Temperance: { healingPower: 0.05 }
-};
-
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
     "Burden: Magnetic Midnight": "충전 - 섬광",
@@ -111,21 +106,56 @@ function getPassiveSkill(itemName) {
     };
 }
 
-const UNIQUE_STAT_FIELDS = [
-    { source: 'uniqueAttackRange', target: 'attackRange' },
-    { source: 'uniquePenetrationDefenseRatio', target: 'penetrationDefenseRatio' },
-    { source: 'uniquePenetrationDefense', target: 'penetrationDefense' },
-    { source: 'uniqueTenacity', target: 'tenacity' },
-    { source: 'uniqueLifeSteal', target: 'omnisyphon' },
-    { source: 'uniqueMoveSpeed', target: 'moveSpeed' }
-];
+const NON_STAT_ITEM_FIELDS = new Set([
+    'code',
+    'initialCount',
+    'makeMaterial1',
+    'makeMaterial2',
+    'manufacturableType',
+    'stackable',
+    'itemUsableValueList',
+    'exclusiveProducer',
+    'exchange',
+    'modeType',
+    'addStateCode',
+    'creditValueWhenConvertedToBounty'
+]);
 
-function getUniqueStats(item) {
-    return UNIQUE_STAT_FIELDS.reduce((stats, field) => {
-        const value = item[field.source] || 0;
-        if (value > 0) stats[field.target] = value;
-        return stats;
-    }, {});
+function normalizeUniqueStatKey(key) {
+    const withoutPrefix = key.replace(/^unique/, '');
+    return withoutPrefix.charAt(0).toLowerCase() + withoutPrefix.slice(1);
+}
+
+function normalizeLevelStatKey(key) {
+    if (key.endsWith('ByLevel')) return key.slice(0, -'ByLevel'.length);
+    if (key.endsWith('ByLv')) return key.slice(0, -'ByLv'.length);
+    return key;
+}
+
+function addStat(target, key, value) {
+    if (!Number.isFinite(value) || value === 0) return;
+    target[key] = (target[key] || 0) + value;
+}
+
+function extractItemStats(item) {
+    const stats = {};
+    const uniqueStats = {};
+    const statsByLv = {};
+
+    Object.entries(item).forEach(([key, value]) => {
+        if (NON_STAT_ITEM_FIELDS.has(key)) return;
+        if (typeof value !== 'number' || value === 0) return;
+
+        if (key.startsWith('unique')) {
+            addStat(uniqueStats, normalizeUniqueStatKey(key), value);
+        } else if (key.endsWith('ByLv') || key.endsWith('ByLevel')) {
+            addStat(statsByLv, normalizeLevelStatKey(key), value);
+        } else {
+            addStat(stats, key, value);
+        }
+    });
+
+    return { stats, uniqueStats, statsByLv };
 }
 
 const hardcodedNeighbors = {
@@ -346,7 +376,7 @@ async function buildData() {
         // Let's map Epic/Legendary to "Epic" for the UI since they are end-goal items, 
         // or just keep their actual grade.
         const type = item.itemGrade; // Common, Uncommon, Rare, Epic, Legendary
-        const uniqueStats = getUniqueStats(item);
+        const itemStats = extractItemStats(item);
 
         const itemObj = {
             nameKo: koName,
@@ -356,49 +386,9 @@ async function buildData() {
             initialCount: item.initialCount || 1,
             weaponType: item.weaponType || "",
             passiveSkill: getPassiveSkill(engName),
-            stats: {
-                attackPower: item.attackPower || 0,
-                attackSpeedRatio: item.attackSpeedRatio || 0,
-                criticalStrikeChance: item.criticalStrikeChance || 0,
-                attackRange: item.attackRange || 0,
-                penetrationDefenseRatio: item.penetrationDefenseRatio || 0,
-                penetrationDefense: item.penetrationDefense || 0,
-                skillAmp: item.skillAmp || 0,
-                cooldownReduction: item.cooldownReduction || 0,
-                maxHp: item.maxHp || 0,
-                defense: item.defense || 0,
-                damageReduction: (item.preventBasicAttackDamaged || 0) + (item.preventSkillDamaged || 0),
-                tenacity: 0,
-                visionRange: item.sightRange || 0,
-                lifeSteal: (item.normalLifeSteal || 0),
-                omnisyphon: (item.lifeSteal || 0) + (item.skillLifeSteal || 0),
-                moveSpeed: item.moveSpeed || 0,
-                moveSpeedRatio: (item.moveSpeedRatio || 0),
-                hpRegen: (item.hpRegen || 0) + (item.hpRegenRatio || 0),
-                healingPower: (MANUAL_ITEM_STATS[engName] && MANUAL_ITEM_STATS[engName].healingPower) || 0
-            },
-            uniqueStats,
-            statsByLv: {
-                attackPower: item.attackPowerByLv || 0,
-                attackSpeedRatio: item.attackSpeedRatioByLv || 0,
-                criticalStrikeChance: 0,
-                attackRange: 0,
-                penetrationDefenseRatio: item.penetrationDefenseRatioByLv || 0,
-                penetrationDefense: item.penetrationDefenseByLv || 0,
-                skillAmp: item.skillAmpByLevel || 0,
-                cooldownReduction: 0,
-                maxHp: item.maxHpByLv || 0,
-                defense: item.defenseByLv || 0,
-                damageReduction: (item.preventBasicAttackDamagedByLv || 0) + (item.preventSkillDamagedByLv || 0),
-                tenacity: 0,
-                visionRange: 0,
-                lifeSteal: 0,
-                omnisyphon: 0,
-                moveSpeed: 0,
-                moveSpeedRatio: 0,
-                healingPower: 0,
-                hpRegen: 0
-            }
+            stats: itemStats.stats,
+            uniqueStats: itemStats.uniqueStats,
+            statsByLv: itemStats.statsByLv
         };
 
         if (!isBaseItem) {
