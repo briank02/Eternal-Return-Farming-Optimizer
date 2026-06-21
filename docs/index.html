@@ -45,10 +45,7 @@
 
             <!-- Character Selection -->
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="character">Character</div>
-            <div style="margin-bottom:5px;">
-                <input type="text" id="char-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="Search..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
-            </div>
-            <div id="character-selection" class="filter-row character-row" style="background:var(--filter-bg); padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(auto-fill, 50px); justify-content: start; align-content: start; gap:5px; max-height:230px; overflow-y:auto;">
+            <div id="character-selection" class="character-row" style="margin-bottom:10px;">
                 <!-- Injected via JS -->
             </div>
 
@@ -82,7 +79,7 @@
 
             <!-- Substat Filters -->
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="substats">Substats</div>
-            <div id="substat-filters" class="filter-row substat-row" style="background:var(--filter-bg); padding:5px; border-radius:5px; margin-bottom:10px; display:grid; grid-template-columns: repeat(2, 1fr); gap:5px;">
+            <div id="substat-filters" class="substat-row" style="margin-bottom:10px;">
                 <!-- Injected via JS -->
             </div>
         </section>

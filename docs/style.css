@@ -102,6 +102,7 @@ header {
 .left-panel {
     width: 20%;
     background-color: var(--panel-left);
+    overflow-y: visible;
 }
 
 .center-panel {
@@ -231,6 +232,182 @@ header {
 .weapon-btn {
     width: 35px;
     height: 35px;
+}
+
+.compact-select {
+    position: relative;
+    width: 100%;
+}
+
+.compact-select-toggle {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 9px;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.compact-select-toggle:hover {
+    border-color: #f1c40f;
+}
+
+.compact-select-arrow {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.8em;
+}
+
+.compact-select-menu {
+    position: absolute;
+    z-index: 50;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    padding: 6px;
+    display: none;
+}
+
+.compact-select.open .compact-select-menu {
+    display: block;
+}
+
+.compact-select-search {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.compact-options {
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.compact-option {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.compact-option:hover,
+.compact-option.active {
+    background: var(--filter-bg);
+}
+
+.compact-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+    background: var(--btn-bg);
+    flex-shrink: 0;
+}
+
+.compact-avatar.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72em;
+    font-weight: bold;
+}
+
+.stat-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    min-height: 0;
+    margin-bottom: 6px;
+}
+
+.stat-picker-row {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+}
+
+.stat-picker-row .compact-select {
+    min-width: 0;
+    flex: 1;
+}
+
+.stat-reset-btn {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--filter-bg);
+    color: var(--text-main);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82em;
+    padding: 0 10px;
+    white-space: nowrap;
+}
+
+.stat-reset-btn:hover {
+    border-color: #e67e22;
+    color: #e67e22;
+}
+
+.stat-reset-btn:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.stat-reset-btn:disabled:hover {
+    border-color: var(--border-color);
+    color: var(--text-main);
+}
+
+.stat-pill {
+    border: 1px solid #2980b9;
+    background: #3498db;
+    color: white;
+    border-radius: 999px;
+    padding: 3px 7px;
+    font-size: 0.78em;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: 100%;
+}
+
+.stat-pill button {
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    line-height: 1;
+}
+
+.stat-option-check {
+    width: 16px;
+    color: #3498db;
+    flex-shrink: 0;
 }
 
 .substat-btn {

@@ -13,6 +13,10 @@ const DICT = {
         all: "ALL",
         weaponType: "Weapon Type",
         substats: "Item Stats",
+        selectCharacter: "Select Character",
+        addStat: "Add stat",
+        resetStats: "Reset",
+        searchStatsPlaceholder: "Search stats...",
         yourBuild: "Your Build",
         resetBuild: "Reset Build",
         clickToAdd: "Click items below to add them to your build.",
@@ -43,6 +47,10 @@ const DICT = {
         all: "ALL",
         weaponType: "무기 종류",
         substats: "아이템 스탯",
+        selectCharacter: "\uc2e4\ud5d8\uccb4 \uc120\ud0dd",
+        addStat: "\uc2a4\ud0ef \ucd94\uac00",
+        resetStats: "\ucd08\uae30\ud654",
+        searchStatsPlaceholder: "\uc2a4\ud0ef \uac80\uc0c9...",
         yourBuild: "내 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
@@ -132,6 +140,53 @@ function buildDisplayStats() {
 
     DISPLAY_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
     ITEM_TOOLTIP_STATS = DISPLAY_STATS;
+    buildSelectableStats();
+}
+
+function getSelectableStats() {
+    return sortStatsByCurrentLanguage(SELECTABLE_STATS.length ? SELECTABLE_STATS : SUBSTATS);
+}
+
+function sortStatsByCurrentLanguage(stats) {
+    const locale = currentLanguage === 'ko' ? 'ko' : 'en';
+    return [...stats].sort((a, b) => {
+        const labelA = (a.name[currentLanguage] || a.name.en || a.id).toLowerCase();
+        const labelB = (b.name[currentLanguage] || b.name.en || b.id).toLowerCase();
+        return labelA.localeCompare(labelB, locale);
+    });
+}
+
+function buildSelectableStats() {
+    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+    const actualIds = new Set();
+    const normalizeId = (id) => id === 'moveSpeedRatio' ? 'moveSpeed' : id;
+    const addActualId = (id) => {
+        const normalizedId = normalizeId(id);
+        if (!normalizedId || HIDDEN_DISPLAY_STATS.has(normalizedId)) return;
+        actualIds.add(normalizedId);
+    };
+
+    Object.values(items).forEach(item => {
+        if ((item.type !== 'Epic' && item.type !== 'Legendary') || !equipmentParts.has(item.part)) return;
+        Object.keys(item.stats || {}).forEach(addActualId);
+        Object.keys(item.uniqueStats || {}).forEach(addActualId);
+        Object.keys(item.statsByLv || {}).forEach(addActualId);
+    });
+
+    const orderedIds = [];
+    const seen = new Set();
+    const addOrderedId = (id) => {
+        if (!actualIds.has(id) || seen.has(id)) return;
+        seen.add(id);
+        orderedIds.push(id);
+    };
+
+    DISPLAY_STAT_ORDER.forEach(addOrderedId);
+    Array.from(actualIds)
+        .sort((a, b) => getStatName(a).en.localeCompare(getStatName(b).en))
+        .forEach(addOrderedId);
+
+    SELECTABLE_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
 }
 
 const FILTER_STAT_KEYS = {
@@ -184,6 +239,7 @@ const SUBSTATS = [
 
 let DISPLAY_STATS = [];
 let ITEM_TOOLTIP_STATS = DISPLAY_STATS;
+let SELECTABLE_STATS = [];
 
 const STAT_LABELS = {
     adaptiveForce: { en: 'Adaptive Force', ko: '적응형 능력치' },
@@ -346,28 +402,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 1. Setup Filters
         setupFilters();
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.compact-select')) closeCompactSelects();
+        });
         
         // 2. Initialize Grid
         renderMainGrid();
 
         // 3. Setup Events
-        const charSearch = document.getElementById('char-search');
-        if (charSearch) {
-            charSearch.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase();
-                document.querySelectorAll('#character-selection .char-btn').forEach(btn => {
-                    if (btn.dataset.char === "All") return;
-                    const charNameEn = btn.dataset.char.toLowerCase();
-                    const charNameKo = getCharName(btn.dataset.char).toLowerCase();
-                    if (charNameEn.includes(term) || charNameKo.includes(term)) {
-                        btn.style.display = 'flex';
-                    } else {
-                        btn.style.display = 'none';
-                    }
-                });
-            });
-        }
-
         const itemSearch = document.getElementById('item-search');
         if (itemSearch) {
             itemSearch.addEventListener('input', () => {
@@ -406,23 +448,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (resetAllBtn) {
             resetAllBtn.addEventListener('click', () => {
                 // Reset searches
-                const charSearch = document.getElementById('char-search');
-                if (charSearch) {
-                    charSearch.value = '';
-                    charSearch.dispatchEvent(new Event('input'));
-                }
                 const itemSearch = document.getElementById('item-search');
                 if (itemSearch) {
                     itemSearch.value = '';
                 }
 
                 // Reset character
-                const allCharBtn = document.querySelector('#character-selection .char-btn[data-char="All"]');
-                if (allCharBtn) allCharBtn.click();
+                selectCharacter(null);
+                const charSearch = document.getElementById('char-search');
+                if (charSearch) charSearch.value = '';
 
                 // Reset substats
-                const activeSubstatsBtns = document.querySelectorAll('#substat-filters .substat-btn.active');
-                activeSubstatsBtns.forEach(btn => btn.click());
+                activeSubstats.clear();
+                const substatContainer = document.getElementById('substat-filters');
+                if (substatContainer) renderSubstatPicker(substatContainer);
+                renderMainGrid();
 
                 // Reset item part filter
                 const allFilterBtn = document.querySelector('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn[data-filter="All"]');
@@ -500,120 +540,8 @@ function setupFilters() {
     const charContainer = document.getElementById('character-selection');
     const substatContainer = document.getElementById('substat-filters');
 
-    // Populate Characters
-    if (charContainer && chars) {
-        let charHtml = `<div class="char-btn ${!currentCharacter || currentCharacter === 'All' ? 'active' : ''}" data-char="All" title="${t('all')}">
-            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em; color:var(--text-main);">${t('all')}</div>
-        </div>`;
-        
-        const sortedChars = Object.keys(chars).sort((a, b) => {
-            const nameA = getCharName(a);
-            const nameB = getCharName(b);
-            return nameA.localeCompare(nameB, currentLanguage);
-        });
-
-        sortedChars.forEach(cName => {
-            const isActive = currentCharacter === cName ? 'active' : '';
-            charHtml += `<div class="char-btn ${isActive}" data-char="${cName}" title="${getCharName(cName)}">
-                <img src="images/${cName}.png" alt="${getCharName(cName)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em; text-align:center; word-break:break-all;\\'>${getCharName(cName)}</div>'">
-            </div>`;
-        });
-        charContainer.innerHTML = charHtml;
-
-        const charBtns = charContainer.querySelectorAll('.char-btn');
-        charBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (btn.classList.contains('active') && btn.dataset.char !== "All") {
-                    // Clicked an already active character, switch to ALL
-                    const allCharBtn = charContainer.querySelector('.char-btn[data-char="All"]');
-                    if (allCharBtn) allCharBtn.click();
-                    return;
-                }
-
-                charBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentCharacter = btn.dataset.char === "All" ? null : btn.dataset.char;
-                
-                // Disable invalid weapons and deselect mismatching items in build
-                const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
-                const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
-                
-                if (currentCharacter) {
-                    // Remove mismatching weapons from build
-                    let buildChanged = false;
-                    for (const itemName of selectedEpics) {
-                        const itemData = items[itemName];
-                        if (itemData && itemData.part === "Weapon") {
-                            if (!masteries.includes(itemData.weaponType)) {
-                                selectedEpics.delete(itemName);
-                                buildChanged = true;
-                            }
-                        } else if (itemName === "Harmony in Full Bloom" && currentCharacter !== "Priya") {
-                            selectedEpics.delete(itemName);
-                            buildChanged = true;
-                        } else if (itemData && itemData.part === "Head" && currentCharacter === "Priya" && itemName !== "Harmony in Full Bloom") {
-                            selectedEpics.delete(itemName);
-                            buildChanged = true;
-                        } else if (currentCharacter !== "Echion") {
-                            const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-                            if (echionWeapons.includes(itemName) || itemData.weaponType === "VFArm") {
-                                selectedEpics.delete(itemName);
-                                buildChanged = true;
-                            }
-                        }
-                    }
-                    if (buildChanged) {
-                        updateMainGridVisuals();
-                        updateSelectedPanel();
-                    }
-                }
-
-                let currentWeaponStillValid = currentCharacter === null;
-                
-                weaponBtns.forEach(wb => {
-                    const wType = wb.dataset.subfilter;
-                    if (wType === "All") return;
-                    if (currentCharacter && !masteries.includes(wType)) {
-                        wb.classList.add('disabled');
-                    } else {
-                        wb.classList.remove('disabled');
-                        if (currentWeaponFilter === wType) currentWeaponStillValid = true;
-                    }
-                });
-
-                if (!currentWeaponStillValid && currentWeaponFilter !== "All") {
-                    const allBtn = document.querySelector('#weapon-subfilters .weapon-btn[data-subfilter="All"]');
-                    if (allBtn) allBtn.click();
-                } else {
-                    renderMainGrid();
-                }
-            });
-        });
-    }
-
-    // Populate Substats
-    if (substatContainer) {
-        let subHtml = '';
-        SUBSTATS.forEach(s => {
-            subHtml += `<div class="substat-btn" data-stat="${s.id}">${s.name[currentLanguage]}</div>`;
-        });
-        substatContainer.innerHTML = subHtml;
-
-        const subBtns = substatContainer.querySelectorAll('.substat-btn');
-        subBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const statId = btn.dataset.stat;
-                if (activeSubstats.has(statId)) {
-                    activeSubstats.delete(statId);
-                    btn.classList.remove('active');
-                } else {
-                    activeSubstats.add(statId);
-                    btn.classList.add('active');
-                }
-                renderMainGrid();
-            });
-        });
-    }
+    if (charContainer && chars) renderCharacterPicker(charContainer);
+    if (substatContainer) renderSubstatPicker(substatContainer);
 
     const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
@@ -653,6 +581,255 @@ function setupFilters() {
     });
 }
 
+function closeCompactSelects(except = null) {
+    document.querySelectorAll('.compact-select.open').forEach(select => {
+        if (select !== except) select.classList.remove('open');
+    });
+}
+
+function getSortedCharacterNames() {
+    return Object.keys(chars).sort((a, b) => {
+        const nameA = getCharName(a);
+        const nameB = getCharName(b);
+        return nameA.localeCompare(nameB, currentLanguage);
+    });
+}
+
+function renderCharacterPicker(container) {
+    const selectedLabel = currentCharacter ? getCharName(currentCharacter) : t('selectCharacter');
+    const avatarHtml = currentCharacter
+        ? `<img class="compact-avatar" src="images/${currentCharacter}.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
+        : `<img class="compact-avatar" src="images/CharacterSelect.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
+
+    container.innerHTML = `
+        <div class="compact-select" id="character-select">
+            <button type="button" class="compact-select-toggle" id="char-select-toggle">
+                ${avatarHtml}
+                <span>${selectedLabel}</span>
+                <span class="compact-select-arrow">▾</span>
+            </button>
+            <div class="compact-select-menu">
+                <input type="text" id="char-search" class="compact-select-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="${t('searchCharPlaceholder')}">
+                <div id="char-options" class="compact-options"></div>
+            </div>
+        </div>
+    `;
+
+    const select = container.querySelector('#character-select');
+    const toggle = container.querySelector('#char-select-toggle');
+    const search = container.querySelector('#char-search');
+    const options = container.querySelector('#char-options');
+
+    const renderOptions = () => renderCharacterOptions(options, search.value);
+    renderOptions();
+
+    toggle.addEventListener('click', () => {
+        closeCompactSelects(select);
+        select.classList.toggle('open');
+        if (select.classList.contains('open')) {
+            search.focus();
+            search.select();
+        }
+    });
+
+    search.addEventListener('input', renderOptions);
+}
+
+function renderCharacterOptions(container, term = '') {
+    const normalizedTerm = term.trim().toLowerCase();
+    const optionData = [
+        { value: null, label: t('selectCharacter') },
+        ...getSortedCharacterNames().map(name => ({ value: name, label: getCharName(name) }))
+    ].filter(option => {
+        if (!normalizedTerm || option.value === null) return true;
+        return option.value.toLowerCase().includes(normalizedTerm) || option.label.toLowerCase().includes(normalizedTerm);
+    });
+
+    container.innerHTML = '';
+    optionData.forEach(option => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'compact-option' + (option.value === currentCharacter || (!option.value && !currentCharacter) ? ' active' : '');
+        btn.dataset.char = option.value || '';
+
+        if (option.value) {
+            const img = document.createElement('img');
+            img.className = 'compact-avatar';
+            img.src = `images/${option.value}.png`;
+            img.alt = option.label;
+            img.onerror = function() {
+                this.replaceWith(createCompactPlaceholder('?'));
+            };
+            btn.appendChild(img);
+        } else {
+            const img = document.createElement('img');
+            img.className = 'compact-avatar';
+            img.src = 'images/CharacterSelect.png';
+            img.alt = option.label;
+            img.onerror = function() {
+                this.replaceWith(createCompactPlaceholder('?'));
+            };
+            btn.appendChild(img);
+        }
+
+        const label = document.createElement('span');
+        label.textContent = option.label;
+        btn.appendChild(label);
+        btn.addEventListener('click', () => selectCharacter(option.value));
+        container.appendChild(btn);
+    });
+}
+
+function createCompactPlaceholder(text) {
+    const span = document.createElement('span');
+    span.className = 'compact-avatar placeholder';
+    span.textContent = text;
+    return span;
+}
+
+function selectCharacter(charName) {
+    currentCharacter = charName || null;
+    const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
+    const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
+
+    if (currentCharacter) {
+        let buildChanged = false;
+        for (const itemName of selectedEpics) {
+            const itemData = items[itemName];
+            if (itemData && itemData.part === "Weapon") {
+                if (!masteries.includes(itemData.weaponType)) {
+                    selectedEpics.delete(itemName);
+                    buildChanged = true;
+                }
+            } else if (itemName === "Harmony in Full Bloom" && currentCharacter !== "Priya") {
+                selectedEpics.delete(itemName);
+                buildChanged = true;
+            } else if (itemData && itemData.part === "Head" && currentCharacter === "Priya" && itemName !== "Harmony in Full Bloom") {
+                selectedEpics.delete(itemName);
+                buildChanged = true;
+            } else if (currentCharacter !== "Echion") {
+                const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
+                if (echionWeapons.includes(itemName) || itemData.weaponType === "VFArm") {
+                    selectedEpics.delete(itemName);
+                    buildChanged = true;
+                }
+            }
+        }
+        if (buildChanged) updateSelectedPanel();
+    }
+
+    let currentWeaponStillValid = currentCharacter === null;
+    weaponBtns.forEach(wb => {
+        const wType = wb.dataset.subfilter;
+        if (wType === "All") return;
+        if (currentCharacter && !masteries.includes(wType)) {
+            wb.classList.add('disabled');
+        } else {
+            wb.classList.remove('disabled');
+            if (currentWeaponFilter === wType) currentWeaponStillValid = true;
+        }
+    });
+
+    const charContainer = document.getElementById('character-selection');
+    if (charContainer) renderCharacterPicker(charContainer);
+
+    if (!currentWeaponStillValid && currentWeaponFilter !== "All") {
+        const allBtn = document.querySelector('#weapon-subfilters .weapon-btn[data-subfilter="All"]');
+        if (allBtn) allBtn.click();
+    } else {
+        renderMainGrid();
+    }
+    renderStatComparison();
+}
+
+function renderSubstatPicker(container) {
+    const selectedStats = getSelectableStats().filter(s => activeSubstats.has(s.id));
+    const pillsHtml = selectedStats.length
+        ? selectedStats.map(s => `<span class="stat-pill" data-stat="${s.id}">${s.name[currentLanguage]} <button type="button" aria-label="Remove ${s.name[currentLanguage]}">×</button></span>`).join('')
+        : '';
+    const resetHtml = `<button type="button" class="stat-reset-btn" id="stat-reset-btn" ${activeSubstats.size ? '' : 'disabled'}>${t('resetStats')}</button>`;
+
+    container.innerHTML = `
+        <div id="substat-pills" class="stat-pills">${pillsHtml}</div>
+        <div class="stat-picker-row">
+        <div class="compact-select" id="stat-select">
+            <button type="button" class="compact-select-toggle" id="stat-select-toggle">
+                <span>${currentLanguage === 'ko' ? '스탯 추가' : 'Add stat'}</span>
+                <span class="compact-select-arrow">▾</span>
+            </button>
+            <div class="compact-select-menu">
+                <input type="text" id="stat-search" class="compact-select-search" placeholder="${currentLanguage === 'ko' ? '스탯 검색...' : 'Search stats...'}">
+                <div id="stat-options" class="compact-options"></div>
+            </div>
+        </div>
+        ${resetHtml}
+        </div>
+    `;
+
+    container.querySelectorAll('.stat-pill button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            activeSubstats.delete(btn.closest('.stat-pill').dataset.stat);
+            renderSubstatPicker(container);
+            renderMainGrid();
+        });
+    });
+
+    const statToggleLabel = container.querySelector('#stat-select-toggle span:first-child');
+    if (statToggleLabel) statToggleLabel.textContent = t('addStat');
+
+    const resetBtn = container.querySelector('#stat-reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            activeSubstats.clear();
+            renderSubstatPicker(container);
+            renderMainGrid();
+        });
+    }
+
+    const select = container.querySelector('#stat-select');
+    const toggle = container.querySelector('#stat-select-toggle');
+    const search = container.querySelector('#stat-search');
+    if (search) search.setAttribute('placeholder', t('searchStatsPlaceholder'));
+    const options = container.querySelector('#stat-options');
+    const renderOptions = () => renderSubstatOptions(options, search.value, container);
+    renderOptions();
+
+    toggle.addEventListener('click', () => {
+        closeCompactSelects(select);
+        select.classList.toggle('open');
+        if (select.classList.contains('open')) {
+            search.focus();
+            search.select();
+        }
+    });
+
+    search.addEventListener('input', renderOptions);
+}
+
+function renderSubstatOptions(container, term = '', pickerContainer) {
+    const normalizedTerm = term.trim().toLowerCase();
+    const statOptions = getSelectableStats().filter(stat => {
+        const label = stat.name[currentLanguage];
+        return !normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm);
+    });
+
+    container.innerHTML = '';
+    statOptions.forEach(stat => {
+        const isActive = activeSubstats.has(stat.id);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'compact-option' + (isActive ? ' active' : '');
+        btn.innerHTML = `<span class="stat-option-check">${isActive ? '✓' : ''}</span><span>${stat.name[currentLanguage]}</span>`;
+        btn.addEventListener('click', () => {
+            if (isActive) activeSubstats.delete(stat.id);
+            else activeSubstats.add(stat.id);
+            renderSubstatPicker(pickerContainer);
+            renderMainGrid();
+        });
+        container.appendChild(btn);
+    });
+}
+
 function renderMainGrid() {
     const grid = document.getElementById('epic-item-grid');
     if (!grid) return;
@@ -675,7 +852,7 @@ function renderMainGrid() {
         
         // Substat filtering (including level scaling)
         if (activeSubstats.size > 0) {
-            if (!data.stats) return false;
+            if (!data.stats && !data.uniqueStats && !data.statsByLv) return false;
             for (let stat of activeSubstats) {
                 if (getItemStatValue(data, stat) <= 0) return false;
             }
@@ -939,10 +1116,7 @@ function toggleSelection(name) {
 }
 
 function forceCharacterSelection(charName) {
-    const btn = document.querySelector(`.char-btn[data-char="${charName}"]`);
-    if (btn && !btn.classList.contains('active')) {
-        btn.click();
-    }
+    if (currentCharacter !== charName) selectCharacter(charName);
 }
 
 function updateMainGridVisuals() {
