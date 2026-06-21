@@ -192,8 +192,7 @@ function buildSelectableStats() {
 const FILTER_STAT_KEYS = {
     damageReduction: ['preventBasicAttackDamaged', 'preventSkillDamaged'],
     hpRegen: ['hpRegen', 'hpRegenRatio'],
-    lifeSteal: ['normalLifeSteal'],
-    omnisyphon: ['lifeSteal', 'skillLifeSteal'],
+    omnisyphon: ['lifeSteal'],
     visionRange: ['sightRange'],
     moveSpeed: ['moveSpeed', 'moveSpeedRatio']
 };
@@ -415,6 +414,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             itemSearch.addEventListener('input', () => {
                 renderMainGrid();
             });
+            setupSearchClearButton(itemSearch);
         }
 
         const calculateBtn = document.getElementById('calculate-btn');
@@ -587,6 +587,42 @@ function closeCompactSelects(except = null) {
     });
 }
 
+function setupSearchClearButton(input) {
+    if (!input || input.dataset.clearable === 'true') return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'search-clear-wrap';
+    if (input.classList.contains('compact-select-search')) {
+        wrapper.classList.add('compact-search-clear-wrap');
+    }
+
+    input.parentNode.insertBefore(wrapper, input);
+    wrapper.appendChild(input);
+
+    const clearBtn = document.createElement('button');
+    clearBtn.type = 'button';
+    clearBtn.className = 'search-clear-btn';
+    clearBtn.textContent = '×';
+    clearBtn.setAttribute('aria-label', currentLanguage === 'ko' ? '검색어 지우기' : 'Clear search');
+    wrapper.appendChild(clearBtn);
+
+    const updateClearButton = () => {
+        wrapper.classList.toggle('has-value', input.value.length > 0);
+    };
+
+    input.dataset.clearable = 'true';
+    input.addEventListener('input', updateClearButton);
+    clearBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!input.value) return;
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.focus();
+    });
+    updateClearButton();
+}
+
 function getSortedCharacterNames() {
     return Object.keys(chars).sort((a, b) => {
         const nameA = getCharName(a);
@@ -633,6 +669,7 @@ function renderCharacterPicker(container) {
     });
 
     search.addEventListener('input', renderOptions);
+    setupSearchClearButton(search);
 }
 
 function renderCharacterOptions(container, term = '') {
@@ -766,9 +803,9 @@ function renderSubstatPicker(container) {
         </div>
     `;
 
-    container.querySelectorAll('.stat-pill button').forEach(btn => {
-        btn.addEventListener('click', () => {
-            activeSubstats.delete(btn.closest('.stat-pill').dataset.stat);
+    container.querySelectorAll('.stat-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            activeSubstats.delete(pill.dataset.stat);
             renderSubstatPicker(container);
             renderMainGrid();
         });
@@ -804,6 +841,7 @@ function renderSubstatPicker(container) {
     });
 
     search.addEventListener('input', renderOptions);
+    setupSearchClearButton(search);
 }
 
 function renderSubstatOptions(container, term = '', pickerContainer) {

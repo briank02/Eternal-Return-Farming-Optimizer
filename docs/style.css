@@ -293,6 +293,48 @@ header {
     margin-bottom: 6px;
 }
 
+.search-clear-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.search-clear-wrap input {
+    padding-right: 28px !important;
+}
+
+.search-clear-btn {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.compact-search-clear-wrap .search-clear-btn {
+    top: calc(50% - 3px);
+}
+
+.search-clear-wrap.has-value .search-clear-btn {
+    display: flex;
+}
+
+.search-clear-btn:hover {
+    background: var(--filter-bg);
+    color: var(--text-main);
+}
+
 .compact-options {
     max-height: 230px;
     overflow-y: auto;
@@ -392,6 +434,11 @@ header {
     align-items: center;
     gap: 5px;
     max-width: 100%;
+    cursor: pointer;
+}
+
+.stat-pill:hover {
+    background: #2980b9;
 }
 
 .stat-pill button {
