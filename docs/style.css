@@ -120,6 +120,235 @@ header {
     border-right: none;
 }
 
+.mode-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.mode-tab {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--filter-bg);
+    color: var(--text-main);
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 10px;
+}
+
+.mode-tab.active {
+    background: #3498db;
+    border-color: #2980b9;
+    color: white;
+}
+
+.mode-view {
+    display: none;
+    min-height: 0;
+}
+
+.mode-view.active {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    flex-direction: column;
+}
+
+.recommendation-controls {
+    background: var(--filter-bg);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.recommendation-toolbar {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.recommendation-stat-picker {
+    flex: 1;
+    min-width: 0;
+}
+
+.recommend-primary-btn {
+    border: 0;
+    border-radius: 6px;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 14px;
+    white-space: nowrap;
+}
+
+.recommend-primary-btn:hover {
+    background: #2ecc71;
+}
+
+.recommendation-route-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 0.86em;
+    line-height: 1.2;
+}
+
+.recommendation-route-filter input {
+    accent-color: #27ae60;
+    flex-shrink: 0;
+}
+
+.recommendation-priority-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.recommendation-priority-row {
+    display: grid;
+    grid-template-columns: 28px minmax(120px, 1fr) 80px 80px 30px 30px 30px;
+    gap: 6px;
+    align-items: center;
+}
+
+.priority-rank {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #3498db;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.priority-name {
+    font-weight: bold;
+    font-size: 0.88em;
+}
+
+.priority-bound-input {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding: 5px 6px;
+}
+
+.priority-order-btn,
+.priority-remove-btn {
+    height: 28px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.priority-order-btn:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+.priority-remove-btn {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.recommendation-empty-option {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    padding: 8px;
+}
+
+.recommendation-results {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 4px;
+}
+
+.recommendation-card {
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-left: 5px solid #3498db;
+    border-radius: 6px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+}
+
+.recommendation-card:hover,
+.recommendation-card.selected {
+    border-color: #f1c40f;
+    box-shadow: 0 0 8px rgba(241, 196, 15, 0.25);
+}
+
+.recommendation-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.recommendation-item-row {
+    display: grid;
+    grid-template-columns: repeat(5, 42px);
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.recommendation-item-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 5px;
+    border: 1px solid var(--card-border);
+    background: linear-gradient(to bottom, #302A40, #511D8C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.55em;
+    overflow: hidden;
+}
+
+.recommendation-item-icon img {
+    max-width: 96%;
+    max-height: 96%;
+    object-fit: contain;
+}
+
+.recommendation-stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.recommendation-stat-chip {
+    border-radius: 999px;
+    background: var(--filter-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 3px 7px;
+    font-size: 0.78em;
+}
+
 .grid-view {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));

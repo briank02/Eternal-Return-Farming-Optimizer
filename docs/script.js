@@ -13,6 +13,20 @@ const DICT = {
         all: "ALL",
         weaponType: "Weapon Type",
         substats: "Item Stats",
+        routeOptimizerTab: "Route Optimizer",
+        recommendationsTab: "Item Recommendations",
+        addPriorityStat: "Add priority stat",
+        recommendBuilds: "Recommend Builds",
+        recommendationSelectCharacter: "Select a character and add priority stats in order of importance to get recommend builds.",
+        recommendationNeedCharacter: "Please select a character first.",
+        recommendationNeedStats: "Please add at least one priority stat.",
+        recommendationNoBuilds: "No recommended builds matched the current filters.",
+        recommendationScore: "Stat Score: ",
+        recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
+        onlyTwoZones: "Only show builds with 2 or less zones",
+        priorityLabel: "Priority",
+        minLabel: "Min",
+        maxLabel: "Max",
         selectCharacter: "Select Character",
         addStat: "Add stat",
         resetStats: "Reset",
@@ -47,10 +61,10 @@ const DICT = {
         all: "ALL",
         weaponType: "무기 종류",
         substats: "아이템 스탯",
-        selectCharacter: "\uc2e4\ud5d8\uccb4 \uc120\ud0dd",
-        addStat: "\uc2a4\ud0ef \ucd94\uac00",
-        resetStats: "\ucd08\uae30\ud654",
-        searchStatsPlaceholder: "\uc2a4\ud0ef \uac80\uc0c9...",
+        selectCharacter: "실험체 선택",
+        addStat: "스탯 추가",
+        resetStats: "초기화",
+        searchStatsPlaceholder: "스탯 검색...",
         yourBuild: "내 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
@@ -73,10 +87,35 @@ const DICT = {
     }
 };
 
+Object.assign(DICT.ko, {
+    routeOptimizerTab: "루트 옵티마이저",
+    recommendationsTab: "아이템 추천",
+    addPriorityStat: "선호 스탯 추가",
+    recommendBuilds: "빌드 추천",
+    recommendationSelectCharacter: "실험체를 선택하고, 선호 스탯을 중요도 순서로 추가한 뒤 빌드를 추천받으세요.",
+    recommendationNeedCharacter: "실험체를 먼저 선택해주세요.",
+    recommendationNeedStats: "선호 스탯을 한개 이상 추가해주세요.",
+    recommendationNoBuilds: "현재 필터를 충족하는 추천 빌드가 없습니다.",
+    recommendationScore: "스탯 점수: ",
+    recommendationApplied: "빌드가 적용되었습니다. 루트 최적화를 눌러 파밍 루트를 찾으세요.",
+    onlyTwoZones: "2구역 이하 빌드만 보기",
+    priorityLabel: "우선순위",
+    minLabel: "최소",
+    maxLabel: "최대"
+});
+
 let currentLanguage = localStorage.getItem('language') || 'en';
 
 function t(key) {
     return DICT[currentLanguage][key] || key;
+}
+
+function escapeAttribute(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 }
 
 function getItemName(name) {
@@ -208,6 +247,12 @@ function getItemStatValue(item, statId, level = charLevel) {
 }
 
 const selectedEpics = new Set();
+let currentMode = "optimizer";
+let recommendationPriorities = [];
+let recommendationConstraints = {};
+let recommendationResults = [];
+let recommendationOnlyTwoZones = false;
+const recommendationRouteCache = new Map();
 let currentFilter = "All"; // Track active filter
 let currentWeaponFilter = "All";
 let activeSubstats = new Set();
@@ -393,6 +438,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 localStorage.setItem('language', currentLanguage);
                 applyTranslations();
                 setupFilters();
+                setupRecommendationControls();
+                renderRecommendationPriorityList();
+                renderRecommendationResults();
                 renderMainGrid();
                 updateSelectedPanel();
                 renderStatComparison();
@@ -401,6 +449,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // 1. Setup Filters
         setupFilters();
+        setupModeTabs();
+        setupRecommendationControls();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
         });
@@ -432,6 +482,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 charLevel = val;
                 renderMainGrid();
                 renderStatComparison();
+                if (currentMode === "recommendations") {
+                    recommendationResults = [];
+                    renderRecommendationResults();
+                }
             });
         }
 
@@ -460,8 +514,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 // Reset substats
                 activeSubstats.clear();
+                recommendationPriorities = [];
+                recommendationConstraints = {};
+                recommendationResults = [];
+                recommendationOnlyTwoZones = false;
+                const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+                if (twoZoneFilter) twoZoneFilter.checked = false;
                 const substatContainer = document.getElementById('substat-filters');
                 if (substatContainer) renderSubstatPicker(substatContainer);
+                renderRecommendationPriorityList();
+                renderRecommendationResults();
                 renderMainGrid();
 
                 // Reset item part filter
@@ -564,6 +626,7 @@ function setupFilters() {
             subBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentWeaponFilter = btn.dataset.subfilter;
+            recommendationResults = [];
 
             if (mainWeaponImg) {
                 if (currentWeaponFilter === "All") {
@@ -577,8 +640,535 @@ function setupFilters() {
             }
 
             renderMainGrid();
+            renderRecommendationResults();
         });
     });
+}
+
+function setupModeTabs() {
+    const tabs = document.querySelectorAll('.mode-tab');
+    const views = document.querySelectorAll('.mode-view');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            currentMode = tab.dataset.mode || 'optimizer';
+            tabs.forEach(t => t.classList.toggle('active', t === tab));
+            views.forEach(view => view.classList.toggle('active', view.id === `${currentMode}-view`));
+            if (currentMode === 'recommendations') {
+                setupRecommendationControls();
+                renderRecommendationPriorityList();
+                renderRecommendationResults();
+            }
+        });
+    });
+}
+
+function setupRecommendationControls() {
+    const select = document.getElementById('recommendation-stat-select');
+    const toggle = document.getElementById('recommendation-stat-toggle');
+    const search = document.getElementById('recommendation-stat-search');
+    const options = document.getElementById('recommendation-stat-options');
+    const recommendBtn = document.getElementById('recommend-builds-btn');
+    const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+
+    if (!select || !toggle || !search || !options) return;
+
+    const renderOptions = () => renderRecommendationStatOptions(options, search.value);
+    renderOptions();
+
+    if (toggle.dataset.bound !== 'true') {
+        toggle.addEventListener('click', () => {
+            closeCompactSelects(select);
+            select.classList.toggle('open');
+            if (select.classList.contains('open')) {
+                search.focus();
+                search.select();
+            }
+        });
+        toggle.dataset.bound = 'true';
+    }
+
+    if (search.dataset.recommendationBound !== 'true') {
+        search.addEventListener('input', renderOptions);
+        setupSearchClearButton(search);
+        search.dataset.recommendationBound = 'true';
+    }
+
+    if (recommendBtn && recommendBtn.dataset.bound !== 'true') {
+        recommendBtn.addEventListener('click', recommendBuilds);
+        recommendBtn.dataset.bound = 'true';
+    }
+
+    if (twoZoneFilter) {
+        twoZoneFilter.checked = recommendationOnlyTwoZones;
+        if (twoZoneFilter.dataset.bound !== 'true') {
+            twoZoneFilter.addEventListener('change', () => {
+                recommendationOnlyTwoZones = twoZoneFilter.checked;
+                recommendationResults = [];
+                renderRecommendationResults();
+            });
+            twoZoneFilter.dataset.bound = 'true';
+        }
+    }
+}
+
+function renderRecommendationStatOptions(container, term = '') {
+    const normalizedTerm = term.trim().toLowerCase();
+    const selected = new Set(recommendationPriorities);
+    const statOptions = getSelectableStats().filter(stat => {
+        const label = stat.name[currentLanguage] || stat.name.en;
+        return !selected.has(stat.id) &&
+            (!normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+    });
+
+    container.innerHTML = '';
+    statOptions.forEach(stat => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'compact-option';
+        btn.innerHTML = `<span class="stat-option-check"></span><span>${stat.name[currentLanguage]}</span>`;
+        btn.addEventListener('click', () => {
+            recommendationPriorities.push(stat.id);
+            if (!recommendationConstraints[stat.id]) recommendationConstraints[stat.id] = { min: '', max: '' };
+            renderRecommendationPriorityList();
+            renderRecommendationStatOptions(container, '');
+            const search = document.getElementById('recommendation-stat-search');
+            if (search) {
+                search.value = '';
+                search.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+        container.appendChild(btn);
+    });
+
+    if (statOptions.length === 0) {
+        container.innerHTML = `<div class="recommendation-empty-option">${currentLanguage === 'ko' ? '추가할 스탯 없음' : 'No stats available'}</div>`;
+    }
+}
+
+function renderRecommendationPriorityList() {
+    const container = document.getElementById('recommendation-priority-list');
+    if (!container) return;
+
+    if (recommendationPriorities.length === 0) {
+        container.innerHTML = `<p class="empty-msg">${t('recommendationSelectCharacter')}</p>`;
+        return;
+    }
+
+    const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
+    container.innerHTML = recommendationPriorities.map((statId, index) => {
+        const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
+        const constraints = recommendationConstraints[statId] || { min: '', max: '' };
+        return `
+            <div class="recommendation-priority-row" data-stat="${statId}">
+                <div class="priority-rank">${index + 1}</div>
+                <div class="priority-name">${stat.name[currentLanguage]}</div>
+                <input type="number" class="priority-bound-input" data-bound="min" value="${constraints.min}" placeholder="${t('minLabel')}" step="any">
+                <input type="number" class="priority-bound-input" data-bound="max" value="${constraints.max}" placeholder="${t('maxLabel')}" step="any">
+                <button type="button" class="priority-order-btn" data-action="up" ${index === 0 ? 'disabled' : ''}>↑</button>
+                <button type="button" class="priority-order-btn" data-action="down" ${index === recommendationPriorities.length - 1 ? 'disabled' : ''}>↓</button>
+                <button type="button" class="priority-remove-btn" data-action="remove">×</button>
+            </div>
+        `;
+    }).join('');
+
+    container.querySelectorAll('.priority-bound-input').forEach(input => {
+        input.addEventListener('input', () => {
+            const statId = input.closest('.recommendation-priority-row').dataset.stat;
+            const bound = input.dataset.bound;
+            if (!recommendationConstraints[statId]) recommendationConstraints[statId] = { min: '', max: '' };
+            recommendationConstraints[statId][bound] = input.value;
+        });
+    });
+
+    container.querySelectorAll('button[data-action]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const row = btn.closest('.recommendation-priority-row');
+            const statId = row.dataset.stat;
+            const index = recommendationPriorities.indexOf(statId);
+            const action = btn.dataset.action;
+
+            if (action === 'remove') {
+                recommendationPriorities.splice(index, 1);
+                delete recommendationConstraints[statId];
+            } else if (action === 'up' && index > 0) {
+                [recommendationPriorities[index - 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index - 1]];
+            } else if (action === 'down' && index < recommendationPriorities.length - 1) {
+                [recommendationPriorities[index + 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index + 1]];
+            }
+
+            renderRecommendationPriorityList();
+            setupRecommendationControls();
+        });
+    });
+}
+
+function getRecommendationMessage(message) {
+    return `<p class="empty-msg">${message}</p>`;
+}
+
+function recommendBuilds() {
+    if (!currentCharacter) {
+        renderRecommendationMessage(t('recommendationNeedCharacter'));
+        return;
+    }
+    if (recommendationPriorities.length === 0) {
+        renderRecommendationMessage(t('recommendationNeedStats'));
+        return;
+    }
+
+    const results = generateRecommendedBuilds();
+    recommendationResults = results;
+    if (results.length === 0) {
+        renderRecommendationMessage(t('recommendationNoBuilds'));
+    } else {
+        renderRecommendationResults();
+    }
+}
+
+function renderRecommendationMessage(message) {
+    const container = document.getElementById('recommendation-results');
+    if (container) container.innerHTML = getRecommendationMessage(message);
+}
+
+function renderRecommendationResults() {
+    const container = document.getElementById('recommendation-results');
+    if (!container) return;
+
+    if (recommendationResults.length === 0) {
+        container.innerHTML = getRecommendationMessage(t('recommendationSelectCharacter'));
+        return;
+    }
+
+    const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
+    container.innerHTML = recommendationResults.map((result, index) => {
+        const itemIcons = result.items.map(name => `
+            <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}">
+                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(getItemName(name))}">
+            </div>
+        `).join('');
+
+        const statHighlights = recommendationPriorities.map(statId => {
+            const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
+            return `<span class="recommendation-stat-chip">${stat.name[currentLanguage]} ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</span>`;
+        }).join('');
+
+        return `
+            <button type="button" class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
+                <div class="recommendation-card-head">
+                    <strong>${t('recommendationScore')} ${Math.round(result.score * 100)}%</strong>
+                    <span>${result.weaponType || ''}</span>
+                </div>
+                <div class="recommendation-item-row">${itemIcons}</div>
+                <div class="recommendation-stat-row">${statHighlights}</div>
+            </button>
+        `;
+    }).join('');
+
+    container.querySelectorAll('.recommendation-card').forEach(card => {
+        card.addEventListener('click', () => applyRecommendedBuild(Number(card.dataset.index)));
+    });
+
+    container.querySelectorAll('.recommendation-item-icon[data-item]').forEach(icon => {
+        icon.addEventListener('mouseenter', (e) => {
+            showGlobalTooltip(icon.dataset.item);
+            moveGlobalTooltip(e);
+        });
+        icon.addEventListener('mousemove', moveGlobalTooltip);
+        icon.addEventListener('mouseleave', hideGlobalTooltip);
+    });
+}
+
+function generateRecommendedBuilds() {
+    const candidateSlots = getRecommendationCandidatesBySlot();
+    const requiredSlots = ['Weapon', 'Chest', 'Head', 'Arm', 'Leg'];
+    if (requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) return [];
+
+    const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
+    const slotCandidates = {};
+    requiredSlots.forEach(slot => {
+        slotCandidates[slot] = candidateSlots[slot]
+            .map(name => ({ name, score: scoreItemForRecommendation(name, itemNormalizers) }))
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 24)
+            .map(entry => entry.name);
+    });
+
+    let beam = [{ items: [], roughScore: 0 }];
+    requiredSlots.forEach(slot => {
+        const expanded = [];
+        beam.forEach(partial => {
+            slotCandidates[slot].forEach(name => {
+                const itemsForBuild = [...partial.items, name];
+                expanded.push({
+                    items: itemsForBuild,
+                    roughScore: partial.roughScore + scoreItemForRecommendation(name, itemNormalizers)
+                });
+            });
+        });
+        expanded.sort((a, b) => b.roughScore - a.roughScore);
+        beam = expanded.slice(0, 250);
+    });
+
+    const finalCandidates = beam
+        .map(build => {
+            const stats = calculateItemOnlyBuildStats(build.items);
+            return { ...build, stats, weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : '' };
+        })
+        .filter(build => passesRecommendationConstraints(build.stats));
+
+    if (finalCandidates.length === 0) return [];
+
+    const finalNormalizers = {};
+    recommendationPriorities.forEach(statId => {
+        finalNormalizers[statId] = Math.max(...finalCandidates.map(build => getNumericRecommendationStat(build.stats, statId)), 0.0001);
+    });
+
+    let scoredCandidates = finalCandidates
+        .map(build => ({
+            ...build,
+            score: scoreStatsForRecommendation(build.stats, finalNormalizers)
+        }))
+        .sort((a, b) => b.score - a.score);
+
+    if (recommendationOnlyTwoZones) {
+        scoredCandidates = scoredCandidates.filter(build => hasFeasibleRouteWithinZones(build.items, 2));
+    }
+
+    return scoredCandidates.slice(0, 20);
+}
+
+function getRecommendationCandidatesBySlot() {
+    const slots = { Weapon: [], Chest: [], Head: [], Arm: [], Leg: [] };
+    const masteries = currentCharacter && chars[currentCharacter] ? chars[currentCharacter].masteries : [];
+    const echionWeapons = new Set(["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"]);
+
+    Object.entries(items).forEach(([name, item]) => {
+        if ((item.type !== "Epic" && item.type !== "Legendary") || !slots[item.part]) return;
+        if (item.part === "Weapon") {
+            if (!masteries.includes(item.weaponType)) return;
+            if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
+        }
+        if (name === "Harmony in Full Bloom" && currentCharacter !== "Priya") return;
+        if (currentCharacter === "Priya" && item.part === "Head" && name !== "Harmony in Full Bloom") return;
+        if (currentCharacter !== "Echion" && (echionWeapons.has(name) || item.weaponType === "VFArm")) return;
+        slots[item.part].push(name);
+    });
+
+    return slots;
+}
+
+function hasFeasibleRouteWithinZones(itemNames, maxZones) {
+    const cacheKey = `${maxZones}|${[...itemNames].sort().join('|')}`;
+    if (recommendationRouteCache.has(cacheKey)) return recommendationRouteCache.get(cacheKey);
+
+    const neededCounts = {};
+    const uniqueItemsToIgnore = new Set([
+        "Alpha Sidewinder",
+        "Black Mamba King",
+        "Deathadder Queen",
+        "Harmony in Full Bloom"
+    ]);
+
+    itemNames.forEach(epicName => {
+        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
+            items[epicName].components.forEach(mat => {
+                neededCounts[mat] = (neededCounts[mat] || 0) + 1;
+            });
+        }
+    });
+
+    const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
+    itemNames.forEach(epicName => {
+        const epicData = items[epicName];
+        if (epicData && epicData.part === "Weapon" && epicData.components) {
+            epicData.components.forEach(comp => {
+                if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
+            });
+        }
+    });
+
+    const requiredMaterials = new Set();
+    Object.entries(neededCounts).forEach(([itemName, count]) => {
+        const owned = ownedCounts[itemName] || 0;
+        if (count - owned > 0) requiredMaterials.add(itemName);
+    });
+
+    if (requiredMaterials.size === 0) {
+        recommendationRouteCache.set(cacheKey, true);
+        return true;
+    }
+
+    const materialList = Array.from(requiredMaterials);
+    const fullMask = (1n << BigInt(materialList.length)) - 1n;
+    const validZones = [];
+
+    Object.keys(mapData).forEach(zone => {
+        let mask = 0n;
+        materialList.forEach((mat, idx) => {
+            if (items[mat] && items[mat].locations && items[mat].locations.includes(zone)) {
+                mask |= (1n << BigInt(idx));
+            }
+        });
+        if (mask > 0n) validZones.push({ id: zone, mask, itemCount: countSetBits(mask) });
+    });
+
+    validZones.sort((a, b) => b.itemCount - a.itemCount);
+
+    const suffixUnions = new Array(validZones.length).fill(0n);
+    let currentSuffix = 0n;
+    for (let i = validZones.length - 1; i >= 0; i--) {
+        currentSuffix |= validZones[i].mask;
+        suffixUnions[i] = currentSuffix;
+    }
+
+    function search(index, currentMask, zoneCount) {
+        const missingMask = fullMask ^ currentMask;
+        const missingCount = countSetBits(missingMask);
+        if (getRouteTier(zoneCount, missingCount) > 0 && zoneCount <= maxZones) return true;
+        if (zoneCount >= maxZones) return false;
+
+        if (index < validZones.length) {
+            const potentialTotal = currentMask | suffixUnions[index];
+            const potentialMissing = countSetBits(fullMask ^ potentialTotal);
+            let allowedDrones = 2;
+            if (zoneCount === 1) allowedDrones = 1;
+            if (zoneCount >= 2) allowedDrones = 0;
+            if (potentialMissing > allowedDrones) return false;
+        }
+
+        for (let i = index; i < validZones.length; i++) {
+            const nextZone = validZones[i];
+            const nextMask = currentMask | nextZone.mask;
+            if (nextMask === currentMask) continue;
+            if (search(i + 1, nextMask, zoneCount + 1)) return true;
+        }
+        return false;
+    }
+
+    const result = search(0, 0n, 0);
+    recommendationRouteCache.set(cacheKey, result);
+    return result;
+}
+
+function getItemNormalizers(itemNames) {
+    const normalizers = {};
+    recommendationPriorities.forEach(statId => normalizers[statId] = 0.0001);
+    itemNames.forEach(name => {
+        const stats = calculateItemOnlyBuildStats([name]);
+        recommendationPriorities.forEach(statId => {
+            normalizers[statId] = Math.max(normalizers[statId], getNumericRecommendationStat(stats, statId));
+        });
+    });
+    return normalizers;
+}
+
+function getPriorityWeight(index) {
+    return Math.pow(0.68, index);
+}
+
+function scoreItemForRecommendation(name, normalizers) {
+    const stats = calculateItemOnlyBuildStats([name]);
+    return scoreStatsForRecommendation(stats, normalizers);
+}
+
+function scoreStatsForRecommendation(stats, normalizers) {
+    let weightedScore = 0;
+    let totalWeight = 0;
+    recommendationPriorities.forEach((statId, index) => {
+        const weight = getPriorityWeight(index);
+        weightedScore += weight * (getNumericRecommendationStat(stats, statId) / (normalizers[statId] || 1));
+        totalWeight += weight;
+    });
+    return totalWeight > 0 ? weightedScore / totalWeight : 0;
+}
+
+function parseRecommendationBound(statId, value) {
+    if (value === '' || value === null || value === undefined) return null;
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return null;
+    return isPercentStat(statId) && Math.abs(parsed) > 1 ? parsed / 100 : parsed;
+}
+
+function passesRecommendationConstraints(stats) {
+    return recommendationPriorities.every(statId => {
+        const constraints = recommendationConstraints[statId] || {};
+        const value = getNumericRecommendationStat(stats, statId);
+        const min = parseRecommendationBound(statId, constraints.min);
+        const max = parseRecommendationBound(statId, constraints.max);
+        if (min !== null && value < min) return false;
+        if (max !== null && value > max) return false;
+        return true;
+    });
+}
+
+function calculateItemOnlyBuildStats(itemNames, level = charLevel) {
+    const totalStats = {};
+    DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
+    totalStats.moveSpeedRatio = 0;
+    const uniqueMaxStats = {};
+
+    itemNames.forEach(name => {
+        const itemObj = items[name];
+        if (!itemObj) return;
+        Object.keys(itemObj.stats || {}).forEach(key => {
+            if (totalStats[key] === undefined) totalStats[key] = 0;
+            totalStats[key] += itemObj.stats[key];
+        });
+        Object.keys(itemObj.uniqueStats || {}).forEach(key => {
+            uniqueMaxStats[key] = Math.max(uniqueMaxStats[key] || 0, itemObj.uniqueStats[key]);
+            if (totalStats[key] === undefined) totalStats[key] = 0;
+        });
+        Object.keys(itemObj.statsByLv || {}).forEach(key => {
+            if (totalStats[key] === undefined) totalStats[key] = 0;
+            totalStats[key] += itemObj.statsByLv[key] * level;
+        });
+    });
+
+    Object.keys(uniqueMaxStats).forEach(key => {
+        totalStats[key] += uniqueMaxStats[key];
+    });
+
+    const flatMoveSpeed = totalStats.moveSpeed || 0;
+    const pctMoveSpeed = totalStats.moveSpeedRatio || 0;
+    totalStats.moveSpeed = {
+        flat: flatMoveSpeed,
+        percent: pctMoveSpeed,
+        valueOf: function() { return this.flat + (this.percent * 10); },
+        toString: function() { return formatMovementSpeedValue(this.flat, this.percent); }
+    };
+
+    return totalStats;
+}
+
+function getNumericRecommendationStat(stats, statId) {
+    const value = stats[statId] || 0;
+    if (typeof value === 'object') return value.valueOf();
+    return Number(value) || 0;
+}
+
+function formatRecommendationStatValue(statId, value) {
+    if (typeof value === 'object') return value.toString();
+    return formatStatValue(statId, value);
+}
+
+function applyRecommendedBuild(index) {
+    const result = recommendationResults[index];
+    if (!result) return;
+
+    selectedEpics.clear();
+    result.items.forEach(name => selectedEpics.add(name));
+    recommendationResults.forEach((entry, entryIndex) => {
+        entry.applied = entryIndex === index;
+    });
+    selectedRoutes = [];
+    generatedRoutes = [];
+
+    updateMainGridVisuals();
+    updateSelectedPanel();
+    renderRecommendationResults();
+
+    const resultOutput = document.getElementById('result-output');
+    if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
 }
 
 function closeCompactSelects(except = null) {
@@ -726,6 +1316,7 @@ function createCompactPlaceholder(text) {
 
 function selectCharacter(charName) {
     currentCharacter = charName || null;
+    recommendationResults = [];
     const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
     const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
 
@@ -777,6 +1368,7 @@ function selectCharacter(charName) {
         renderMainGrid();
     }
     renderStatComparison();
+    renderRecommendationResults();
 }
 
 function renderSubstatPicker(container) {

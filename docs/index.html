@@ -85,6 +85,10 @@
         </section>
 
         <section class="panel center-panel" style="min-height: 0;">
+            <div class="mode-tabs" style="flex-shrink:0;">
+                <button type="button" class="mode-tab active" data-mode="optimizer" data-i18n="routeOptimizerTab">Route Optimizer</button>
+                <button type="button" class="mode-tab" data-mode="recommendations" data-i18n="recommendationsTab">Item Recommendations</button>
+            </div>
 
             <div class="selection-header" style="flex-shrink: 0;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
@@ -96,12 +100,42 @@
                 </div>
             </div>
 
-            <hr style="flex-shrink: 0;">
-            <h2 data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
-            <div style="margin-bottom: 10px; flex-shrink: 0;">
-                <input type="text" id="item-search" data-i18n-placeholder="searchItemPlaceholder" placeholder="Search item..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
+            <div id="optimizer-view" class="mode-view active">
+                <hr style="flex-shrink: 0;">
+                <h2 data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
+                <div style="margin-bottom: 10px; flex-shrink: 0;">
+                    <input type="text" id="item-search" data-i18n-placeholder="searchItemPlaceholder" placeholder="Search item..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
+                </div>
+                <div id="epic-item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
             </div>
-            <div id="epic-item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
+
+            <div id="recommendations-view" class="mode-view">
+                <div class="recommendation-controls">
+                    <div class="recommendation-toolbar">
+                        <div class="recommendation-stat-picker">
+                            <div class="compact-select" id="recommendation-stat-select">
+                                <button type="button" class="compact-select-toggle" id="recommendation-stat-toggle">
+                                    <span data-i18n="addPriorityStat">Add priority stat</span>
+                                    <span class="compact-select-arrow">▾</span>
+                                </button>
+                                <div class="compact-select-menu">
+                                    <input type="text" id="recommendation-stat-search" class="compact-select-search" data-i18n-placeholder="searchStatsPlaceholder" placeholder="Search stats...">
+                                    <div id="recommendation-stat-options" class="compact-options"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="recommend-builds-btn" class="recommend-primary-btn" data-i18n="recommendBuilds">Recommend Builds</button>
+                    </div>
+                    <label class="recommendation-route-filter">
+                        <input type="checkbox" id="recommend-two-zone-filter">
+                        <span data-i18n="onlyTwoZones">Only show builds with 2 or less zones</span>
+                    </label>
+                    <div id="recommendation-priority-list" class="recommendation-priority-list"></div>
+                </div>
+                <div id="recommendation-results" class="recommendation-results">
+                    <p class="empty-msg" data-i18n="recommendationSelectCharacter">Select a character, add priority stats, then recommend builds.</p>
+                </div>
+            </div>
         </section>
 
         <section class="panel right-panel" id="build-panel" style="display:flex; flex-direction:column; max-height: 100vh;">
