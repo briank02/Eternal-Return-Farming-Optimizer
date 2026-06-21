@@ -795,6 +795,7 @@ function setupRecommendationControls() {
             prefix: 'recommendation-passive-skill',
             labelKey: 'desiredPassiveSkills',
             labelBeforePills: true,
+            showReset: false,
             onChange: () => {
                 recommendationResults = [];
                 renderRecommendationResults();
@@ -1567,13 +1568,15 @@ function renderSubstatOptions(container, term = '', pickerContainer) {
     });
 }
 
-function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, labelKey = '', labelBeforePills = false }) {
+function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, labelKey = '', labelBeforePills = false, showReset = true }) {
     const selectedOptions = getPassiveSkillOptions().filter(option => selectedSet.has(option.id));
     const pillsHtml = selectedOptions.length
         ? selectedOptions.map(option => `<span class="stat-pill passive-skill-pill" data-passive="${escapeAttribute(option.id)}">${getPassiveSkillOptionName(option)} <button type="button" aria-label="Remove ${escapeAttribute(getPassiveSkillOptionName(option))}">×</button></span>`).join('')
         : '';
-    const resetHtml = `<button type="button" class="stat-reset-btn" id="${prefix}-reset" ${selectedSet.size ? '' : 'disabled'}>${t('resetStats')}</button>`;
-    const pickerOptions = { prefix, onChange, labelKey, labelBeforePills };
+    const resetHtml = showReset
+        ? `<button type="button" class="stat-reset-btn" id="${prefix}-reset" ${selectedSet.size ? '' : 'disabled'}>${t('resetStats')}</button>`
+        : '';
+    const pickerOptions = { prefix, onChange, labelKey, labelBeforePills, showReset };
     const labelHtml = labelKey
         ? `<div class="recommendation-block-label">${t(labelKey)}</div>`
         : '';
@@ -1635,12 +1638,14 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
         });
     });
 
-    resetBtn.addEventListener('click', () => {
-        if (selectedSet.size === 0) return;
-        selectedSet.clear();
-        renderPassiveSkillPicker(container, selectedSet, pickerOptions);
-        notifyChange();
-    });
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            if (selectedSet.size === 0) return;
+            selectedSet.clear();
+            renderPassiveSkillPicker(container, selectedSet, pickerOptions);
+            notifyChange();
+        });
+    }
 }
 
 function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {

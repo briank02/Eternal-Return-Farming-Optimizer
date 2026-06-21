@@ -181,7 +181,7 @@ header {
     color: white;
     cursor: pointer;
     font-weight: bold;
-    padding: 0 14px;
+    padding: 8px 14px;
     white-space: nowrap;
 }
 
@@ -221,6 +221,12 @@ header {
     flex-direction: column;
     gap: 6px;
     margin-top: 8px;
+}
+
+.recommendation-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
 }
 
 .recommendation-priority-row {
