@@ -1,0 +1,167 @@
+[33mcommit 1784b068af78380adf447cc65f04dc76e983afaf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Sun Jun 21 01:13:59 2026 -0400
+
+    Item recommendations tab created
+
+[33mcommit 8243e2c9606e4a2b4d291eb37cd78f6ee6ecea67[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Sat Jun 20 23:31:49 2026 -0400
+
+    Lifesteal/omnisyphon clarity, UI adjustments
+
+[33mcommit 98caaade75ba7cc7578f74593b48d021a05084a7[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Sat Jun 20 23:17:37 2026 -0400
+
+    UI cleanup
+
+[33mcommit 586e404a3b2e4e4c851e9ea86600f9b072705f28[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Fri Jun 19 14:08:53 2026 -0400
+
+    stat fixes
+
+[33mcommit 18c910c7aa3859a270efdc9deb4a0c9a6df71a39[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Fri Jun 19 03:26:34 2026 -0400
+
+    localization updates
+
+[33mcommit 93c1ec38233b52ba3ecb3d265a96f214916cf397[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Fri Jun 19 03:22:39 2026 -0400
+
+    Tenacity, lifesteal, attack speed, omnisyphon, hp regen now shows as %, movement speed now shows in x% + y format, Temperance and Nightingale Healing Power added, Item Passive Skills added
+
+[33mcommit 80ffc6025e6b7b5abe9bfc77d63ca5bdf5afbdb6[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Thu Jun 18 03:54:04 2026 -0400
+
+    UI improvements
+
+[33mcommit 98ce765b365f4ca37e4908c9f5dc9d14db1b082e[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Thu Jun 18 03:39:06 2026 -0400
+
+    Updated data to 11.4, created search bar for character/items, hover over item to show stats (unique passive not added yet)
+
+[33mcommit 89bfcd416c888bdaa2e0c3d35bb02e0229cee2aa[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Wed Jun 3 00:38:44 2026 -0400
+
+    changed item background color to better match in-game art
+
+[33mcommit 4e9200508ea53fe52b3282ca007d6426d66d2db6[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 22:12:27 2026 -0400
+
+    Korean alphabetical sorting for Characters, fixed character stats
+
+[33mcommit 0c4aed0fc19908cd24ddbd0f7cc4a59252625bd8[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 21:40:45 2026 -0400
+
+    Korean localization, Light/Dark mode, favicon
+
+[33mcommit c4c309f7d9c16fff2e2356d418258a36c57f281c[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 02:01:00 2026 -0400
+
+    Clean up repository: Remove legacy public folder and unused scripts/packages
+
+[33mcommit 2e0a682fd512f232c59fe740b7d6f5fc15e62d53[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 01:49:09 2026 -0400
+
+    Mirror docs changes to public directory for live express server
+
+[33mcommit c7450b2385707d4f745e1a4b8ebd45bfc9260528[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 01:45:06 2026 -0400
+
+    image loading
+
+[33mcommit 0ed77fa2bb8f04504d959835b6e00b9ccef7b5a7[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Tue Jun 2 01:42:44 2026 -0400
+
+    More filters, cleaner UI Changes, and more features
+
+[33mcommit 1730d80a8f601825bf735c199729da09095cdfba[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Mon Jun 1 22:27:51 2026 -0400
+
+    Implemented new architecture to eliminate constant API needs
+
+[33mcommit 65428ebf89f11b10b72631206f2e1ebae65aa03b[m
+Author: briank02 <57153070+briank02@users.noreply.github.com>
+Date:   Mon Jun 1 21:52:16 2026 -0400
+
+    Now linked with Eternal Return API and updated for 11.2, along with filter updates
+
+[33mcommit a5de6e3bec1c28ebaabb1f8c3189e78b25111e5f[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 07:40:25 2026 -0500
+
+    Added Filter
+
+[33mcommit 9f486350bcc928a3434345ff2a55f8899ac475aa[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 07:31:36 2026 -0500
+
+    Debugging
+
+[33mcommit e1751e09a26ce66e5a7f5771f88718e7faca6e4f[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 07:26:21 2026 -0500
+
+    Debugging Optimizer
+
+[33mcommit fe9892404df7dda220e5a9be4b600046f0d829d8[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 07:18:51 2026 -0500
+
+    Starting item logic added, optimization updates
+
+[33mcommit c1f25bfe2474953aa3cac96e933f65b783ab94fe[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 06:47:26 2026 -0500
+
+    Debugging
+
+[33mcommit 9e322259ec3f68735459162173f72305b0cebe46[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 06:24:45 2026 -0500
+
+    Debugging
+
+[33mcommit 45849bb2d35c946692dbd2dd61ad5c8d32f8b8fd[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 06:06:02 2026 -0500
+
+    Updated index.html, script.js, and style.css
+
+[33mcommit 95be5d2fd137d75369c59cefdc02912b3a0f2885[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 05:51:49 2026 -0500
+
+    index.htm updates
+
+[33mcommit 67a7a813776051bde0d9f729b6164ffd12c35523[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 05:49:03 2026 -0500
+
+    Added Images, along with other adjustments
+
+[33mcommit 97d130c39b861ab38ca0d5aa643751b6f5633170[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Tue Feb 3 04:53:25 2026 -0500
+
+    Filled data.js, optimization algorithm
+
+[33mcommit 9e166134894c09e6925729e6f8b26d2bcd8b91b5[m
+Author: briank02 <kwonbrian02@gmail.com>
+Date:   Sat Jan 31 20:28:58 2026 -0500
+
+    Initial commit.

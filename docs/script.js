@@ -13,13 +13,17 @@ const DICT = {
         all: "ALL",
         weaponType: "Weapon Type",
         substats: "Item Stats",
-        routeOptimizerTab: "Route Optimizer",
+        passiveSkills: "Unique Passives",
+        routeOptimizerTab: "Item Selection",
         recommendationsTab: "Item Recommendations",
         addPriorityStat: "Add priority stat",
+        addPassiveSkill: "Add unique passive",
+        desiredPassiveSkills: "Desired unique passives",
+        searchPassiveSkillsPlaceholder: "Search unique passives...",
         recommendBuilds: "Recommend Builds",
         recommendationSelectCharacter: "Select a character and add priority stats in order of importance to get recommend builds.",
         recommendationNeedCharacter: "Please select a character first.",
-        recommendationNeedStats: "Please add at least one priority stat.",
+        recommendationNeedStats: "Please add at least one priority stat or unique passive.",
         recommendationNoBuilds: "No recommended builds matched the current filters.",
         recommendationScore: "Stat Score: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
@@ -35,7 +39,7 @@ const DICT = {
         resetBuild: "Reset Build",
         clickToAdd: "Click items below to add them to your build.",
         selectEpicItems: "Select Epic Items",
-        optimizeRoute: "Optimize Route",
+        optimizeRoute: "Run Optimizer",
         optimizeThenCompare: "Optimize a route, then click up to 2 routes below to compare stats.",
         itemStatsComparison: "Item Stats Comparison",
         selectRoutesToCompare: "Select routes to see stat comparison.",
@@ -69,8 +73,8 @@ const DICT = {
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
         selectEpicItems: "영웅 아이템 선택",
-        optimizeRoute: "루트 최적화",
-        optimizeThenCompare: "루트 최적화 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
+        optimizeRoute: "옵티마이저 실행",
+        optimizeThenCompare: "옵티마이저 실행 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
         itemStatsComparison: "아이템 스탯 비교",
         selectRoutesToCompare: "루트를 선택하여 스탯을 비교하세요.",
         calculating: "다양한 조합 계산 중...",
@@ -78,7 +82,7 @@ const DICT = {
         noRoutes: "<p>가능한 루트를 찾지 못했습니다.</p>",
         route1: "루트 1",
         route2: "루트 2",
-        topRoutes: "<h3>최적화된 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
+        topRoutes: "<h3>최적화 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
         needDrone: "드론 필요: <strong>",
         noDrone: "드론 필요 없음",
         buildVariant: "빌드 변형:",
@@ -88,17 +92,21 @@ const DICT = {
 };
 
 Object.assign(DICT.ko, {
-    routeOptimizerTab: "루트 옵티마이저",
+    routeOptimizerTab: "아이템 선택",
     recommendationsTab: "아이템 추천",
     addPriorityStat: "선호 스탯 추가",
     recommendBuilds: "빌드 추천",
     recommendationSelectCharacter: "실험체를 선택하고, 선호 스탯을 중요도 순서로 추가한 뒤 빌드를 추천받으세요.",
     recommendationNeedCharacter: "실험체를 먼저 선택해주세요.",
-    recommendationNeedStats: "선호 스탯을 한개 이상 추가해주세요.",
+    recommendationNeedStats: "선호 스탯이나 고유 장착 효과를 하나 이상 추가해주세요.",
     recommendationNoBuilds: "현재 필터를 충족하는 추천 빌드가 없습니다.",
     recommendationScore: "스탯 점수: ",
-    recommendationApplied: "빌드가 적용되었습니다. 루트 최적화를 눌러 파밍 루트를 찾으세요.",
+    recommendationApplied: "빌드가 적용되었습니다. '옵티마이저 실행' 버튼을 눌러 파밍 루트를 찾으세요.",
     onlyTwoZones: "2구역 이하 빌드만 보기",
+    passiveSkills: "고유 장착 효과",
+    addPassiveSkill: "고유 장착 효과 추가",
+    desiredPassiveSkills: "선호 고유 장착 효과",
+    searchPassiveSkillsPlaceholder: "고유 장착 효과 검색...",
     priorityLabel: "우선순위",
     minLabel: "최소",
     maxLabel: "최대"
@@ -180,6 +188,7 @@ function buildDisplayStats() {
     DISPLAY_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
     ITEM_TOOLTIP_STATS = DISPLAY_STATS;
     buildSelectableStats();
+    buildPassiveSkillOptions();
 }
 
 function getSelectableStats() {
@@ -228,6 +237,56 @@ function buildSelectableStats() {
     SELECTABLE_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
 }
 
+function buildPassiveSkillOptions() {
+    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+    const passiveMap = new Map();
+
+    Object.values(items).forEach(item => {
+        if ((item.type !== 'Epic' && item.type !== 'Legendary') || !equipmentParts.has(item.part) || !item.passiveSkill) return;
+        if (!passiveMap.has(item.passiveSkill.name)) {
+            passiveMap.set(item.passiveSkill.name, {
+                id: item.passiveSkill.name,
+                name: item.passiveSkill.name,
+                nameKo: item.passiveSkill.nameKo || item.passiveSkill.name
+            });
+        }
+    });
+
+    PASSIVE_SKILL_OPTIONS = Array.from(passiveMap.values());
+}
+
+function getPassiveSkillOptionName(option) {
+    return currentLanguage === 'ko' ? (option.nameKo || option.name) : option.name;
+}
+
+function getPassiveSkillOptions() {
+    const locale = currentLanguage === 'ko' ? 'ko' : 'en';
+    return [...PASSIVE_SKILL_OPTIONS].sort((a, b) => {
+        return getPassiveSkillOptionName(a).localeCompare(getPassiveSkillOptionName(b), locale);
+    });
+}
+
+function getPassiveSkillOptionById(id) {
+    return PASSIVE_SKILL_OPTIONS.find(option => option.id === id) || { id, name: id, nameKo: id };
+}
+
+function getWeaponTypeName(api) {
+    const weapon = WEAPON_TYPES.find(w => w.api === api);
+    return weapon ? weapon.name[currentLanguage] : api;
+}
+
+const BUILD_SLOT_ORDER = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
+
+function sortItemsByBuildSlot(itemNames) {
+    return [...itemNames].sort((a, b) => {
+        const itemA = items[a] || {};
+        const itemB = items[b] || {};
+        const partDiff = (BUILD_SLOT_ORDER[itemA.part] || 99) - (BUILD_SLOT_ORDER[itemB.part] || 99);
+        if (partDiff !== 0) return partDiff;
+        return getItemName(a).localeCompare(getItemName(b), currentLanguage === 'ko' ? 'ko' : 'en');
+    });
+}
+
 const FILTER_STAT_KEYS = {
     damageReduction: ['preventBasicAttackDamaged', 'preventSkillDamaged'],
     hpRegen: ['hpRegen', 'hpRegenRatio'],
@@ -251,11 +310,13 @@ let currentMode = "optimizer";
 let recommendationPriorities = [];
 let recommendationConstraints = {};
 let recommendationResults = [];
+let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
 const recommendationRouteCache = new Map();
 let currentFilter = "All"; // Track active filter
 let currentWeaponFilter = "All";
 let activeSubstats = new Set();
+let activePassiveSkills = new Set();
 let currentCharacter = null;
 let chars = {};
 let charLevel = 1;
@@ -284,6 +345,7 @@ const SUBSTATS = [
 let DISPLAY_STATS = [];
 let ITEM_TOOLTIP_STATS = DISPLAY_STATS;
 let SELECTABLE_STATS = [];
+let PASSIVE_SKILL_OPTIONS = [];
 
 const STAT_LABELS = {
     adaptiveForce: { en: 'Adaptive Force', ko: '적응형 능력치' },
@@ -514,14 +576,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 // Reset substats
                 activeSubstats.clear();
+                activePassiveSkills.clear();
                 recommendationPriorities = [];
                 recommendationConstraints = {};
                 recommendationResults = [];
+                recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
                 const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
                 if (twoZoneFilter) twoZoneFilter.checked = false;
                 const substatContainer = document.getElementById('substat-filters');
                 if (substatContainer) renderSubstatPicker(substatContainer);
+                const passiveSkillContainer = document.getElementById('passive-skill-filters');
+                if (passiveSkillContainer) {
+                    renderPassiveSkillPicker(passiveSkillContainer, activePassiveSkills, {
+                        prefix: 'passive-skill-filter',
+                        onChange: () => renderMainGrid()
+                    });
+                }
+                setupRecommendationControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
                 renderMainGrid();
@@ -601,9 +673,16 @@ function setupFilters() {
 
     const charContainer = document.getElementById('character-selection');
     const substatContainer = document.getElementById('substat-filters');
+    const passiveSkillContainer = document.getElementById('passive-skill-filters');
 
     if (charContainer && chars) renderCharacterPicker(charContainer);
     if (substatContainer) renderSubstatPicker(substatContainer);
+    if (passiveSkillContainer) {
+        renderPassiveSkillPicker(passiveSkillContainer, activePassiveSkills, {
+            prefix: 'passive-skill-filter',
+            onChange: () => renderMainGrid()
+        });
+    }
 
     const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
@@ -669,6 +748,7 @@ function setupRecommendationControls() {
     const options = document.getElementById('recommendation-stat-options');
     const recommendBtn = document.getElementById('recommend-builds-btn');
     const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+    const passivePicker = document.getElementById('recommendation-passive-picker');
 
     if (!select || !toggle || !search || !options) return;
 
@@ -708,6 +788,18 @@ function setupRecommendationControls() {
             });
             twoZoneFilter.dataset.bound = 'true';
         }
+    }
+
+    if (passivePicker) {
+        renderPassiveSkillPicker(passivePicker, recommendationPassiveSkills, {
+            prefix: 'recommendation-passive-skill',
+            labelKey: 'desiredPassiveSkills',
+            labelBeforePills: true,
+            onChange: () => {
+                recommendationResults = [];
+                renderRecommendationResults();
+            }
+        });
     }
 }
 
@@ -811,7 +903,7 @@ function recommendBuilds() {
         renderRecommendationMessage(t('recommendationNeedCharacter'));
         return;
     }
-    if (recommendationPriorities.length === 0) {
+    if (recommendationPriorities.length === 0 && recommendationPassiveSkills.size === 0) {
         renderRecommendationMessage(t('recommendationNeedStats'));
         return;
     }
@@ -856,7 +948,7 @@ function renderRecommendationResults() {
             <button type="button" class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
                 <div class="recommendation-card-head">
                     <strong>${t('recommendationScore')} ${Math.round(result.score * 100)}%</strong>
-                    <span>${result.weaponType || ''}</span>
+                    <span>${result.weaponType ? getWeaponTypeName(result.weaponType) : ''}</span>
                 </div>
                 <div class="recommendation-item-row">${itemIcons}</div>
                 <div class="recommendation-stat-row">${statHighlights}</div>
@@ -886,11 +978,14 @@ function generateRecommendedBuilds() {
     const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
     const slotCandidates = {};
     requiredSlots.forEach(slot => {
-        slotCandidates[slot] = candidateSlots[slot]
+        const ranked = candidateSlots[slot]
             .map(name => ({ name, score: scoreItemForRecommendation(name, itemNormalizers) }))
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 24)
-            .map(entry => entry.name);
+            .sort((a, b) => b.score - a.score);
+        const candidateNames = new Set(ranked.slice(0, 24).map(entry => entry.name));
+        ranked.forEach(entry => {
+            if (itemHasSelectedRecommendationPassive(entry.name)) candidateNames.add(entry.name);
+        });
+        slotCandidates[slot] = Array.from(candidateNames);
     });
 
     let beam = [{ items: [], roughScore: 0 }];
@@ -914,7 +1009,7 @@ function generateRecommendedBuilds() {
             const stats = calculateItemOnlyBuildStats(build.items);
             return { ...build, stats, weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : '' };
         })
-        .filter(build => passesRecommendationConstraints(build.stats));
+        .filter(build => passesRecommendationConstraints(build.stats) && passesRecommendationPassiveRequirements(build.items));
 
     if (finalCandidates.length === 0) return [];
 
@@ -955,6 +1050,18 @@ function getRecommendationCandidatesBySlot() {
     });
 
     return slots;
+}
+
+function itemHasSelectedRecommendationPassive(itemName) {
+    if (recommendationPassiveSkills.size === 0) return false;
+    const passiveSkill = items[itemName] && items[itemName].passiveSkill;
+    return !!passiveSkill && recommendationPassiveSkills.has(passiveSkill.name);
+}
+
+function passesRecommendationPassiveRequirements(itemNames) {
+    if (recommendationPassiveSkills.size === 0) return true;
+    const effectivePassives = new Set(getEffectivePassiveSkills(itemNames).map(passive => passive.name));
+    return Array.from(recommendationPassiveSkills).every(passiveName => effectivePassives.has(passiveName));
 }
 
 function hasFeasibleRouteWithinZones(itemNames, maxZones) {
@@ -1460,6 +1567,108 @@ function renderSubstatOptions(container, term = '', pickerContainer) {
     });
 }
 
+function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, labelKey = '', labelBeforePills = false }) {
+    const selectedOptions = getPassiveSkillOptions().filter(option => selectedSet.has(option.id));
+    const pillsHtml = selectedOptions.length
+        ? selectedOptions.map(option => `<span class="stat-pill passive-skill-pill" data-passive="${escapeAttribute(option.id)}">${getPassiveSkillOptionName(option)} <button type="button" aria-label="Remove ${escapeAttribute(getPassiveSkillOptionName(option))}">×</button></span>`).join('')
+        : '';
+    const resetHtml = `<button type="button" class="stat-reset-btn" id="${prefix}-reset" ${selectedSet.size ? '' : 'disabled'}>${t('resetStats')}</button>`;
+    const pickerOptions = { prefix, onChange, labelKey, labelBeforePills };
+    const labelHtml = labelKey
+        ? `<div class="recommendation-block-label">${t(labelKey)}</div>`
+        : '';
+    const pillsSection = `<div id="${prefix}-pills" class="stat-pills">${pillsHtml}</div>`;
+    const pickerRow = `
+        <div class="stat-picker-row">
+            <div class="compact-select" id="${prefix}-select">
+                <button type="button" class="compact-select-toggle" id="${prefix}-toggle">
+                    <span>${t('addPassiveSkill')}</span>
+                    <span class="compact-select-arrow">▾</span>
+                </button>
+                <div class="compact-select-menu">
+                    <input type="text" id="${prefix}-search" class="compact-select-search" placeholder="${t('searchPassiveSkillsPlaceholder')}">
+                    <div id="${prefix}-options" class="compact-options"></div>
+                </div>
+            </div>
+            ${resetHtml}
+        </div>
+    `;
+
+    container.innerHTML = labelBeforePills
+        ? `${pickerRow}${labelHtml}${pillsSection}`
+        : `${pillsSection}${pickerRow}${labelHtml}`;
+
+    const select = container.querySelector(`#${prefix}-select`);
+    const toggle = container.querySelector(`#${prefix}-toggle`);
+    const search = container.querySelector(`#${prefix}-search`);
+    const options = container.querySelector(`#${prefix}-options`);
+    const resetBtn = container.querySelector(`#${prefix}-reset`);
+
+    const notifyChange = () => {
+        if (typeof onChange === 'function') onChange();
+    };
+
+    const renderOptions = () => renderPassiveSkillOptions(options, search.value, selectedSet, () => {
+        renderPassiveSkillPicker(container, selectedSet, pickerOptions);
+        notifyChange();
+    });
+
+    renderOptions();
+    setupSearchClearButton(search);
+
+    toggle.addEventListener('click', () => {
+        closeCompactSelects(select);
+        select.classList.toggle('open');
+        if (select.classList.contains('open')) {
+            search.focus();
+            search.select();
+        }
+    });
+
+    search.addEventListener('input', renderOptions);
+
+    container.querySelectorAll('.passive-skill-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            selectedSet.delete(pill.dataset.passive);
+            renderPassiveSkillPicker(container, selectedSet, pickerOptions);
+            notifyChange();
+        });
+    });
+
+    resetBtn.addEventListener('click', () => {
+        if (selectedSet.size === 0) return;
+        selectedSet.clear();
+        renderPassiveSkillPicker(container, selectedSet, pickerOptions);
+        notifyChange();
+    });
+}
+
+function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {
+    const normalizedTerm = term.trim().toLowerCase();
+    const options = getPassiveSkillOptions().filter(option => {
+        const label = getPassiveSkillOptionName(option);
+        return !selectedSet.has(option.id) &&
+            (!normalizedTerm || option.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+    });
+
+    container.innerHTML = '';
+    options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'compact-option';
+        btn.innerHTML = `<span class="stat-option-check"></span><span>${getPassiveSkillOptionName(option)}</span>`;
+        btn.addEventListener('click', () => {
+            selectedSet.add(option.id);
+            onSelect();
+        });
+        container.appendChild(btn);
+    });
+
+    if (options.length === 0) {
+        container.innerHTML = `<div class="recommendation-empty-option">${currentLanguage === 'ko' ? '추가할 고유 장착 효과 없음' : 'No unique passives available'}</div>`;
+    }
+}
+
 function renderMainGrid() {
     const grid = document.getElementById('epic-item-grid');
     if (!grid) return;
@@ -1486,6 +1695,10 @@ function renderMainGrid() {
             for (let stat of activeSubstats) {
                 if (getItemStatValue(data, stat) <= 0) return false;
             }
+        }
+
+        if (activePassiveSkills.size > 0) {
+            if (!data.passiveSkill || !activePassiveSkills.has(data.passiveSkill.name)) return false;
         }
 
         // Character mastery & unique items filtering
@@ -1683,6 +1896,21 @@ function getPassiveSkillName(passiveSkill) {
     return currentLanguage === 'ko' ? (passiveSkill.nameKo || passiveSkill.name) : passiveSkill.name;
 }
 
+function getEffectivePassiveSkills(itemNames) {
+    const passiveMap = new Map();
+    itemNames.forEach(name => {
+        const passiveSkill = items[name] && items[name].passiveSkill;
+        if (passiveSkill && !passiveMap.has(passiveSkill.name)) {
+            passiveMap.set(passiveSkill.name, passiveSkill);
+        }
+    });
+
+    const locale = currentLanguage === 'ko' ? 'ko' : 'en';
+    return Array.from(passiveMap.values()).sort((a, b) => {
+        return getPassiveSkillName(a).localeCompare(getPassiveSkillName(b), locale);
+    });
+}
+
 function renderPassiveSkillLine(passiveSkill) {
     return `<div class="tooltip-stat"><span style="color:#f1c40f; font-weight:bold;">${getPassiveSkillName(passiveSkill)}</span></div>`;
 }
@@ -1774,10 +2002,7 @@ function updateSelectedPanel() {
         return;
     }
 
-    const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
-    const sortedEpics = Array.from(selectedEpics).sort((a, b) => {
-        return (partOrder[items[a].part] || 99) - (partOrder[items[b].part] || 99);
-    });
+    const sortedEpics = sortItemsByBuildSlot(selectedEpics);
 
     sortedEpics.forEach(name => {
         const div = document.createElement('div');
@@ -1840,6 +2065,7 @@ function calculateBuildStats(itemNames) {
     const totalStats = {};
     DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
     totalStats.moveSpeedRatio = 0;
+    totalStats.__passiveSkills = getEffectivePassiveSkills(itemNames);
     let baseMoveSpeed = 0;
 
     const ensureStat = (key) => {
@@ -1956,6 +2182,62 @@ function formatStatValue(id, val) {
     return Math.round(val);
 }
 
+function renderPassiveSkillsHeader() {
+    return `<div style="margin-top:10px; padding-top:6px; border-top:1px solid var(--border-color); color:var(--text-muted); font-weight:bold; font-size:0.85em;">${t('passiveSkills')}</div>`;
+}
+
+function renderSinglePassiveSkills(passiveSkills) {
+    if (!passiveSkills || passiveSkills.length === 0) return '';
+    let html = renderPassiveSkillsHeader();
+    passiveSkills.forEach(passiveSkill => {
+        html += `<div style="padding:2px 0; color:#2ecc71; font-weight:bold;">${escapeAttribute(getPassiveSkillName(passiveSkill))}</div>`;
+    });
+    return html;
+}
+
+function renderPassiveSkillComparison(passiveSkills1 = [], passiveSkills2 = []) {
+    if (passiveSkills1.length === 0 && passiveSkills2.length === 0) return '';
+
+    const map1 = new Map(passiveSkills1.map(passive => [passive.name, passive]));
+    const map2 = new Map(passiveSkills2.map(passive => [passive.name, passive]));
+    const common = passiveSkills1.filter(passive => map2.has(passive.name));
+    const leftOnly = passiveSkills1.filter(passive => !map2.has(passive.name));
+    const rightOnly = passiveSkills2.filter(passive => !map1.has(passive.name));
+    const rows = [];
+
+    common.forEach(passiveSkill => {
+        rows.push({
+            left: getPassiveSkillName(passiveSkill),
+            right: getPassiveSkillName(map2.get(passiveSkill.name)),
+            shared: true
+        });
+    });
+
+    const maxRows = Math.max(leftOnly.length, rightOnly.length);
+    for (let i = 0; i < maxRows; i++) {
+        rows.push({
+            left: leftOnly[i] ? getPassiveSkillName(leftOnly[i]) : '',
+            right: rightOnly[i] ? getPassiveSkillName(rightOnly[i]) : '',
+            shared: false
+        });
+    }
+
+    let html = '';
+    rows.forEach((row, index) => {
+        const leftColor = row.shared ? 'var(--text-main)' : (row.left ? '#27ae60' : 'var(--text-muted)');
+        const rightColor = row.shared ? 'var(--text-main)' : (row.right ? '#27ae60' : 'var(--text-muted)');
+        html += `
+            <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
+                <div style="flex:1; text-align:right; font-weight:bold; color:${leftColor};">${escapeAttribute(row.left)}</div>
+                <div style="flex:1.5; text-align:center; color:var(--text-muted); font-size:0.9em;">${t('passiveSkills')}</div>
+                <div style="flex:1; text-align:left; font-weight:bold; color:${rightColor};">${escapeAttribute(row.right)}</div>
+            </div>
+        `;
+    });
+
+    return html;
+}
+
 function renderSingleStatColumn(stats) {
     let html = `<div style="flex:1;">`;
     let portraitHtml = '';
@@ -1978,6 +2260,7 @@ function renderSingleStatColumn(stats) {
             </div>`;
         }
     });
+    html += renderSinglePassiveSkills(stats.__passiveSkills);
     html += `</div>`;
     return html;
 }
@@ -2033,6 +2316,7 @@ function renderComparisonColumns(stats1, stats2) {
 
     commonStats.forEach(item => html += renderRow(item, true));
     diffStats.forEach(item => html += renderRow(item, false));
+    html += renderPassiveSkillComparison(stats1.__passiveSkills, stats2.__passiveSkills);
 
     html += `</div></div>`;
     return html;
@@ -2330,7 +2614,7 @@ function displayResults(routes, container) {
 
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
-        const variantSummary = r.variantItems.map(item => 
+        const variantSummary = sortItemsByBuildSlot(r.variantItems).map(item =>
             `<img src="images/${item}.png" title="${getItemName(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
