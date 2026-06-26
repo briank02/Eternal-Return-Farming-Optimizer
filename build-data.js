@@ -258,7 +258,7 @@ async function buildData() {
     const charsData = {};
     const charList = charsRes.data || [];
     const charAttrsList = charAttrsRes.data || [];
-    const EXCLUDE_CHARS = new Set(["Dummy", "Craver"]);
+    const EXCLUDE_CHARS = new Set(["Dummy"]);
     
     charList.forEach(char => {
         const engName = l10nEng[`Character/Name/${char.code}`] || char.name;
