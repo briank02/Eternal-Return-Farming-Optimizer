@@ -5987,7 +5987,7 @@
       "weaponType": "Rapier",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 61,
+        "attackPower": 58,
         "attackSpeedRatio": 0.33,
         "criticalStrikeChance": 0.25,
         "criticalStrikeDamage": 0.07,
@@ -6409,7 +6409,7 @@
       "weaponType": "Guitar",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 68,
+        "attackPower": 66,
         "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
@@ -6431,7 +6431,7 @@
         "nameKo": "열정"
       },
       "stats": {
-        "attackPower": 60,
+        "attackPower": 58,
         "attackSpeedRatio": 0.23
       },
       "uniqueStats": {},
@@ -7224,7 +7224,7 @@
         "nameKo": "의념"
       },
       "stats": {
-        "attackPower": 57,
+        "attackPower": 60,
         "attackSpeedRatio": 0.15
       },
       "uniqueStats": {
@@ -7251,7 +7251,7 @@
         "nameKo": "불꽃 결계"
       },
       "stats": {
-        "attackPower": 49,
+        "attackPower": 52,
         "lifeSteal": 0.1
       },
       "uniqueStats": {},
@@ -7297,7 +7297,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 63,
+        "attackPower": 66,
         "attackSpeedRatio": 0.2
       },
       "uniqueStats": {
@@ -7322,7 +7322,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 70,
+        "attackPower": 72,
         "attackSpeedRatio": 0.3
       },
       "uniqueStats": {
@@ -7349,7 +7349,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 75,
+        "attackPower": 78,
         "attackSpeedRatio": 0.35,
         "penetrationDefenseRatio": 0.12
       },
@@ -7376,7 +7376,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 49,
+        "attackPower": 52,
         "lifeSteal": 0.1
       },
       "uniqueStats": {},
@@ -7399,7 +7399,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 62,
+        "attackPower": 65,
         "lifeSteal": 0.1
       },
       "uniqueStats": {
@@ -7425,7 +7425,7 @@
       "weaponType": "VFArm",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 66,
+        "attackPower": 69,
         "lifeSteal": 0.15
       },
       "uniqueStats": {},
@@ -11588,8 +11588,8 @@
       "stats": {
         "skillAmp": 40,
         "maxHp": 50,
-        "cooldownReduction": 10,
-        "healerGiveHpHealRatio": 0.05
+        "cooldownReduction": 15,
+        "healerGiveHpHealRatio": 0.04
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -13625,7 +13625,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 30,
-        "maxHp": 200
+        "maxHp": 250
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -15503,7 +15503,7 @@
       "base": {
         "maxHp": 1070,
         "attackPower": 44,
-        "defense": 49,
+        "defense": 50,
         "hpRegen": 1.7,
         "attackSpeed": 0.16,
         "moveSpeed": 3.6
@@ -15511,7 +15511,7 @@
       "growth": {
         "maxHp": 95,
         "attackPower": 4.4,
-        "defense": 3.2,
+        "defense": 3.3,
         "hpRegen": 0.085,
         "attackSpeed": 0
       }
@@ -15818,7 +15818,7 @@
         "OneHandSword"
       ],
       "base": {
-        "maxHp": 980,
+        "maxHp": 940,
         "attackPower": 29,
         "defense": 52,
         "hpRegen": 1.8,
@@ -16144,7 +16144,7 @@
       "growth": {
         "maxHp": 77,
         "attackPower": 4.3,
-        "defense": 2.4999999999999996,
+        "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
       }
@@ -16511,7 +16511,7 @@
       ],
       "base": {
         "maxHp": 960,
-        "attackPower": 33,
+        "attackPower": 35,
         "defense": 53,
         "hpRegen": 1.6,
         "attackSpeed": 0.13,
@@ -17069,7 +17069,7 @@
         "moveSpeed": 3.55
       },
       "growth": {
-        "maxHp": 93,
+        "maxHp": 96,
         "attackPower": 4.6,
         "defense": 3.5,
         "hpRegen": 0.136,
@@ -17105,7 +17105,7 @@
         "Bat"
       ],
       "base": {
-        "maxHp": 1000,
+        "maxHp": 970,
         "attackPower": 35,
         "defense": 50,
         "hpRegen": 2.2,
@@ -17305,7 +17305,7 @@
       "base": {
         "maxHp": 960,
         "attackPower": 39,
-        "defense": 50,
+        "defense": 52,
         "hpRegen": 1.58,
         "attackSpeed": 0.12,
         "moveSpeed": 3.55
