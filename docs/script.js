@@ -346,6 +346,7 @@ let chars = {};
 let charLevel = 1;
 let selectedRoutes = [];
 let generatedRoutes = [];
+let activeTooltipTrigger = null;
 
 const SUBSTATS = [
     { id: 'attackPower', name: { en: 'Attack Power', ko: '공격력' } },
@@ -540,6 +541,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
         });
+        document.addEventListener('pointerdown', (e) => {
+            if (e.pointerType !== 'touch' && !window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+
+            const tappedTrigger = e.target.closest('.item-card, .recommendation-item-icon[data-item]');
+            if (tappedTrigger !== activeTooltipTrigger) hideGlobalTooltip();
+        }, true);
+        document.addEventListener('scroll', () => {
+            if (window.matchMedia('(hover: none), (pointer: coarse)').matches) hideGlobalTooltip();
+        }, { capture: true, passive: true });
         
         // 2. Initialize Grid
         renderMainGrid();
@@ -988,7 +998,7 @@ function renderRecommendationResults() {
 
     container.querySelectorAll('.recommendation-item-icon[data-item]').forEach(icon => {
         icon.addEventListener('mouseenter', (e) => {
-            showGlobalTooltip(icon.dataset.item);
+            showGlobalTooltip(icon.dataset.item, icon);
             moveGlobalTooltip(e);
         });
         icon.addEventListener('mousemove', moveGlobalTooltip);
@@ -1807,7 +1817,7 @@ function createItemCard(name) {
     card.appendChild(img);
 
     card.addEventListener('mouseenter', (e) => {
-        showGlobalTooltip(name);
+        showGlobalTooltip(name, card);
         moveGlobalTooltip(e);
     });
     card.addEventListener('mousemove', (e) => {
@@ -1821,7 +1831,7 @@ function createItemCard(name) {
     return card;
 }
 
-function showGlobalTooltip(name) {
+function showGlobalTooltip(name, trigger = null) {
     const itemData = items[name];
     if (!itemData) return;
     
@@ -1894,6 +1904,7 @@ function showGlobalTooltip(name) {
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
     applyItemImageFallbacks(tooltip);
+    activeTooltipTrigger = trigger;
     tooltip.style.display = 'block';
 }
 
@@ -1952,6 +1963,7 @@ function moveGlobalTooltip(e) {
 function hideGlobalTooltip() {
     const tooltip = document.getElementById('global-tooltip');
     if (tooltip) tooltip.style.display = 'none';
+    activeTooltipTrigger = null;
 }
 
 function toggleSelection(name) {
@@ -2013,7 +2025,8 @@ function updateSelectedPanel() {
 
     if (selectedEpics.size === 0) {
         container.innerHTML = `<p class="empty-msg">${t('clickToAdd')}</p>`;
-        calculateStats();
+        selectedRoutes = [];
+        renderStatComparison();
         return;
     }
 

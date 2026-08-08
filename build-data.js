@@ -282,7 +282,7 @@ function getLeafComponents(itemCode, allItemsMap, l10nEng, visited = new Set()) 
     
     if (item.makeMaterial1 === 0 && item.makeMaterial2 === 0) {
         const engName = l10nEng[`Item/Name/${itemCode}`] || item.name;
-        // For items like Stone/Leather that drop multiple at once, we still only need "1" to fulfill a recipe component in the optimizer
+        // For base items that drop multiple at once, we still only need "1" to fulfill a recipe component in the optimizer.
         return [engName];
     }
     
@@ -415,7 +415,6 @@ async function buildData() {
     const envSpawns = {
         "Stone": ["Dock", "Warehouse", "Pond", "Stream", "Beach", "Uptown", "Alley", "Gas Station", "Hotel", "Police Station", "Fire Station", "Hospital", "Temple", "Archery Range", "Cemetery", "Forest", "Factory", "Chapel", "School", "Barge"],
         "Branch": ["Dock", "Warehouse", "Pond", "Stream", "Beach", "Uptown", "Alley", "Gas Station", "Hotel", "Police Station", "Fire Station", "Hospital", "Temple", "Archery Range", "Cemetery", "Forest", "Factory", "Chapel", "School", "Barge"],
-        "Leather": ["Dock", "Warehouse", "Pond", "Stream", "Beach", "Uptown", "Alley", "Gas Station", "Hotel", "Police Station", "Fire Station", "Hospital", "Temple", "Archery Range", "Cemetery", "Forest", "Factory", "Chapel", "School", "Barge"],
         "Flower": ["Pond", "Stream", "Uptown", "Temple", "Cemetery", "Forest"]
     };
 
