@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "patchVersion": "12.0a",
+    "generatedAt": "2026-08-08T04:24:50.000Z"
+  },
   "items": {
     "Kitchen Knife": {
       "nameKo": "식칼",

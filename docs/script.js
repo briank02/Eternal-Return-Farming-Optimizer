@@ -53,7 +53,9 @@ const DICT = {
         noDrone: "No Drone Needed",
         buildVariant: "Build Variant:",
         searchCharPlaceholder: "Search...",
-        searchItemPlaceholder: "Search item..."
+        searchItemPlaceholder: "Search item...",
+        dataPatch: "Data patch",
+        dataUpdated: "Data updated"
     },
     ko: {
         title: "이터널 리턴 파밍 루트 옵티마이저",
@@ -111,6 +113,9 @@ Object.assign(DICT.ko, {
     minLabel: "최소",
     maxLabel: "최대"
 });
+
+DICT.ko.dataPatch = "패치 버전";
+DICT.ko.dataUpdated = "업데이트 일자";
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
@@ -487,6 +492,35 @@ const BASE_WEAPONS = new Set([
 
 let items = {};
 let mapData = {};
+let dataMeta = {};
+
+function renderDataStatus() {
+    const patchElement = document.getElementById('data-patch');
+    const updatedElement = document.getElementById('data-updated');
+    if (!patchElement || !updatedElement) return;
+
+    patchElement.textContent = `${t('dataPatch')}: ${dataMeta.patchVersion || '-'}`;
+
+    const generatedAt = dataMeta.generatedAt ? new Date(dataMeta.generatedAt) : null;
+    if (!generatedAt || Number.isNaN(generatedAt.getTime())) {
+        updatedElement.textContent = `${t('dataUpdated')}: -`;
+        updatedElement.removeAttribute('datetime');
+        return;
+    }
+
+    const locale = currentLanguage === 'ko' ? 'ko-KR' : 'en-US';
+    const formattedTimestamp = new Intl.DateTimeFormat(locale, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZoneName: 'short'
+    }).format(generatedAt);
+
+    updatedElement.textContent = `${t('dataUpdated')}: ${formattedTimestamp}`;
+    updatedElement.dateTime = dataMeta.generatedAt;
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -496,7 +530,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         items = data.items;
         mapData = data.mapData;
         chars = data.chars;
+        dataMeta = data.meta || {};
         buildDisplayStats();
+        renderDataStatus();
         
         // Removed loading screen logic
 
@@ -524,6 +560,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 currentLanguage = e.target.value;
                 localStorage.setItem('language', currentLanguage);
                 applyTranslations();
+                renderDataStatus();
                 setupFilters();
                 setupRecommendationControls();
                 renderRecommendationPriorityList();

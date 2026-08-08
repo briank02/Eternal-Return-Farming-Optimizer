@@ -120,6 +120,38 @@ header {
     border-right: none;
 }
 
+.data-footer {
+    min-height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-top: 1px solid var(--border-color);
+    background: var(--header-bg);
+    color: var(--header-text);
+    font-size: 0.78rem;
+}
+
+.data-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+}
+
+.data-status > span:not(.data-status-divider),
+.data-status time {
+    white-space: nowrap;
+}
+
+.data-status-divider {
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
 .filter-panel-header {
     gap: 10px;
     flex-wrap: wrap;
@@ -1103,6 +1135,14 @@ body.lang-ko .left-panel > div[data-i18n] {
 
     #calculate-btn {
         min-height: 48px;
+    }
+
+    .data-footer {
+        padding: 8px 10px;
+    }
+
+    .data-status-divider {
+        display: none;
     }
 }
 
