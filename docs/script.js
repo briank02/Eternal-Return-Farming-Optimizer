@@ -131,6 +131,30 @@ function getItemName(name) {
     return name;
 }
 
+function getItemPlaceholderPath(name) {
+    const part = items[name] && items[name].part;
+    return PART_NAMES[part] ? `images/${part}.png` : 'images/Weapon.png';
+}
+
+function applyItemImageFallback(img, name) {
+    if (!img) return;
+    img.onerror = function() {
+        if (this.dataset.placeholderApplied === 'true') {
+            this.style.display = 'none';
+            return;
+        }
+        this.dataset.placeholderApplied = 'true';
+        this.src = getItemPlaceholderPath(name);
+    };
+}
+
+function applyItemImageFallbacks(root) {
+    if (!root) return;
+    root.querySelectorAll('img[data-item-image]').forEach(img => {
+        applyItemImageFallback(img, img.dataset.itemImage);
+    });
+}
+
 function getCharName(name) {
     if (name === "All") return currentLanguage === 'ko' ? "전체" : "ALL";
     if (currentLanguage === 'ko' && chars[name] && chars[name].nameKo) return chars[name].nameKo;
@@ -215,7 +239,7 @@ function buildSelectableStats() {
     };
 
     Object.values(items).forEach(item => {
-        if ((item.type !== 'Epic' && item.type !== 'Legendary') || !equipmentParts.has(item.part)) return;
+        if (item.type !== 'Epic' || !equipmentParts.has(item.part)) return;
         Object.keys(item.stats || {}).forEach(addActualId);
         Object.keys(item.uniqueStats || {}).forEach(addActualId);
         Object.keys(item.statsByLv || {}).forEach(addActualId);
@@ -242,7 +266,7 @@ function buildPassiveSkillOptions() {
     const passiveMap = new Map();
 
     Object.values(items).forEach(item => {
-        if ((item.type !== 'Epic' && item.type !== 'Legendary') || !equipmentParts.has(item.part) || !item.passiveSkill) return;
+        if (item.type !== 'Epic' || !equipmentParts.has(item.part) || !item.passiveSkill) return;
         if (!passiveMap.has(item.passiveSkill.name)) {
             passiveMap.set(item.passiveSkill.name, {
                 id: item.passiveSkill.name,
@@ -936,7 +960,7 @@ function renderRecommendationResults() {
     container.innerHTML = recommendationResults.map((result, index) => {
         const itemIcons = result.items.map(name => `
             <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}">
-                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(getItemName(name))}">
+                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
             </div>
         `).join('');
 
@@ -960,6 +984,7 @@ function renderRecommendationResults() {
     container.querySelectorAll('.recommendation-card').forEach(card => {
         card.addEventListener('click', () => applyRecommendedBuild(Number(card.dataset.index)));
     });
+    applyItemImageFallbacks(container);
 
     container.querySelectorAll('.recommendation-item-icon[data-item]').forEach(icon => {
         icon.addEventListener('mouseenter', (e) => {
@@ -1039,7 +1064,7 @@ function getRecommendationCandidatesBySlot() {
     const echionWeapons = new Set(["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"]);
 
     Object.entries(items).forEach(([name, item]) => {
-        if ((item.type !== "Epic" && item.type !== "Legendary") || !slots[item.part]) return;
+        if (item.type !== "Epic" || !slots[item.part]) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
@@ -1682,7 +1707,7 @@ function renderMainGrid() {
     const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
 
     const epicItems = Object.entries(items).filter(([name, data]) => {
-        if (data.type !== "Epic" && data.type !== "Legendary") return false;
+        if (data.type !== "Epic") return false;
         if (!partOrder[data.part]) return false;
         
         // Item search filtering
@@ -1772,29 +1797,13 @@ function createItemCard(name) {
     card.classList.add('item-card');
     card.dataset.name = name; 
 
-    const textFallback = document.createElement('div');
-    textFallback.innerText = getItemName(name);
-    textFallback.style.fontSize = '0.7rem';
-    textFallback.style.textAlign = 'center';
-    textFallback.style.display = 'none';
-    textFallback.style.width = '100%';
-    textFallback.style.color = '#ccc';
-    textFallback.style.position = 'absolute';
-    textFallback.style.top = '50%';
-    textFallback.style.transform = 'translateY(-50%)';
-    textFallback.style.wordBreak = 'break-all';
-
     const img = document.createElement('img');
     img.src = `images/${name}.png`; 
     img.alt = name;
     img.classList.add('item-icon');
     
-    img.onerror = function() {
-        this.style.display = 'none';
-        textFallback.style.display = 'block';
-    };
+    applyItemImageFallback(img, name);
 
-    card.appendChild(textFallback);
     card.appendChild(img);
 
     card.addEventListener('mouseenter', (e) => {
@@ -1832,7 +1841,7 @@ function showGlobalTooltip(name) {
                 <div class="tooltip-part">${partName}</div>
             </div>
             <div class="tooltip-image-container">
-                <img src="images/${name}.png" alt="${name}">
+                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
             </div>
         </div>
         <div class="tooltip-stats">
@@ -1884,6 +1893,7 @@ function showGlobalTooltip(name) {
     }
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
+    applyItemImageFallbacks(tooltip);
     tooltip.style.display = 'block';
 }
 
@@ -2018,15 +2028,7 @@ function updateSelectedPanel() {
         img.src = `images/${name}.png`;
         img.classList.add('item-icon');
         
-        img.onerror = function() {
-            this.style.display = 'none';
-            div.innerText = name;
-            div.style.fontSize = '0.7rem';
-            div.style.textAlign = 'center';
-            div.style.display = 'flex';
-            div.style.alignItems = 'center';
-            div.style.justifyContent = 'center';
-        };
+        applyItemImageFallback(img, name);
 
         div.appendChild(img);
         div.addEventListener('click', () => toggleSelection(name)); 
@@ -2620,7 +2622,7 @@ function displayResults(routes, container) {
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = sortItemsByBuildSlot(r.variantItems).map(item =>
-            `<img src="images/${item}.png" title="${getItemName(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
+            `<img src="images/${escapeAttribute(item)}.png" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
         let formattedPath = r.path.map((z, idx) => {
@@ -2655,6 +2657,7 @@ function displayResults(routes, container) {
     });
     
     container.innerHTML = html;
+    applyItemImageFallbacks(container);
 
     // Add click listeners for comparison
     const routeCards = container.querySelectorAll('.route-card');

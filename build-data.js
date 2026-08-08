@@ -8,17 +8,23 @@ const API_BASE = 'https://open-api.bser.io';
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
     "Burden: Magnetic Midnight": "충전 - 섬광",
+    "Chasing Needle": "유도 바늘",
     "Debilitation": "부패",
     "Electric Shock": "전자기 충격",
     "Flame Barrier": "불꽃 결계",
+    "Gold Pouch": "금화 주머니",
+    "Gust of Wind - Frostbite": "돌풍 - 한기",
     "Healing Reduction": "치유 감소",
     "Magic Bullet": "마탄",
+    "Plague Butterfly": "역병 나비",
     "Photon Launcher": "포톤 런처",
     "Primordial Hex": "저주",
+    "Punishment": "징벌",
     "Reflection": "리플렉션",
     "Streamlined": "신속",
     "Streamlined: Charge Carrier": "신속 - 플라즈마",
     "Streamlined: Rudra Embodied": "신속 - 루드라의 단검",
+    "Streamlined: Zephyr": "신속 - 산들바람",
     "Swift Strides": "가벼운 발걸음",
     "Vigor": "열정",
     "Vigor-Circulation": "열정 - 순환"
@@ -94,7 +100,15 @@ const ITEM_PASSIVE_SKILLS = {
     "Schrödinger's Box": "Healing Reduction",
     "White Crane Fan": "Primordial Hex",
     "White Rhinos": "Healing Reduction",
-    "SCV": "Healing Reduction"
+    "SCV": "Healing Reduction",
+    "Equilibrium": "Punishment",
+    "Lollipop": "Streamlined: Zephyr",
+    "Field Thorn": "Punishment",
+    "The Hanged Man": "Plague Butterfly",
+    "Chillwind Cuirass": "Gust of Wind - Frostbite",
+    "Dáinsleif - Crimson": "Burden: Magnetic Midnight",
+    "The Star of the Wilds": "Chasing Needle",
+    "Buccaneer Doubloon": "Gold Pouch"
 };
 
 function getPassiveSkill(itemName) {
@@ -118,7 +132,49 @@ const NON_STAT_ITEM_FIELDS = new Set([
     'exchange',
     'modeType',
     'addStateCode',
+    'gadgetEnergyGain',
     'creditValueWhenConvertedToBounty'
+]);
+
+const KNOWN_ITEM_STAT_FIELDS = new Set([
+    'adaptiveForce',
+    'attackPower',
+    'attackRange',
+    'attackSpeedRatio',
+    'cooldownLimit',
+    'cooldownReduction',
+    'criticalStrikeChance',
+    'criticalStrikeDamage',
+    'defense',
+    'healerGiveHpHealRatio',
+    'hpHealedIncreaseRatio',
+    'hpRecover',
+    'hpRegen',
+    'hpRegenRatio',
+    'increaseBasicAttackDamage',
+    'increaseBasicAttackDamageRatio',
+    'lifeSteal',
+    'maxHp',
+    'moveSpeed',
+    'moveSpeedOutOfCombat',
+    'moveSpeedRatio',
+    'normalLifeSteal',
+    'penetrationDefense',
+    'penetrationDefenseRatio',
+    'preventBasicAttackDamaged',
+    'preventBasicAttackDamagedRatio',
+    'preventCriticalStrikeDamaged',
+    'preventSkillDamaged',
+    'preventSkillDamagedRatio',
+    'sightRange',
+    'skillAmp',
+    'skillAmpRatio',
+    'skillLifeSteal',
+    'slowResistRatio',
+    'tacticalCooldownReduction',
+    'tenacity',
+    'ultCooldownReduction',
+    'weaponCooldownReduction'
 ]);
 
 function normalizeUniqueStatKey(key) {
@@ -158,6 +214,16 @@ function extractItemStats(item) {
     return { stats, uniqueStats, statsByLv };
 }
 
+function validateItemStats(itemName, itemStats) {
+    ['stats', 'uniqueStats', 'statsByLv'].forEach(group => {
+        Object.keys(itemStats[group]).forEach(key => {
+            if (!KNOWN_ITEM_STAT_FIELDS.has(key)) {
+                throw new Error(`Unknown item stat field "${key}" on ${itemName}`);
+            }
+        });
+    });
+}
+
 const hardcodedNeighbors = {
     "Alley": ["Gas Station", "Police Station", "Temple"],
     "Temple": ["Alley", "Police Station", "Stream"],
@@ -171,14 +237,15 @@ const hardcodedNeighbors = {
     "School": ["Archery Range", "Gas Station", "Fire Station", "Research Center", "Forest", "Hotel"],
     "Research Center": ["School", "Fire Station", "Forest", "Cemetery"],
     "Cemetery": ["Hospital", "Research Center", "Factory", "Chapel"],
-    "Factory": ["Hospital", "Cemetery", "Chapel", "Dock"],
+    "Factory": ["Hospital", "Cemetery", "Chapel", "Dock", "Barge"],
     "Hotel": ["Archery Range", "School", "Forest", "Beach"],
     "Forest": ["Hotel", "School", "Research Center", "Chapel", "Uptown", "Beach"],
-    "Chapel": ["Forest", "Cemetery", "Factory", "Warehouse", "Uptown"],
+    "Chapel": ["Forest", "Cemetery", "Factory", "Dock", "Warehouse", "Uptown"],
     "Beach": ["Hotel", "Forest", "Uptown"],
     "Uptown": ["Beach", "Forest", "Chapel", "Warehouse"],
     "Warehouse": ["Uptown", "Chapel", "Dock"],
-    "Dock": ["Warehouse", "Factory"]
+    "Dock": ["Warehouse", "Factory", "Chapel", "Barge"],
+    "Barge": ["Dock", "Factory"]
 };
 
 async function fetchFromApi(endpoint) {
@@ -258,7 +325,8 @@ async function buildData() {
     const charsData = {};
     const charList = charsRes.data || [];
     const charAttrsList = charAttrsRes.data || [];
-    const EXCLUDE_CHARS = new Set(["Dummy"]);
+    // The API can preload unreleased characters before their full gameplay data is available.
+    const EXCLUDE_CHARS = new Set(["Dummy", "Lucia", "Seres"]);
     
     charList.forEach(char => {
         const engName = l10nEng[`Character/Name/${char.code}`] || char.name;
@@ -299,6 +367,13 @@ async function buildData() {
             if (!charsData[engName].masteries.includes(attr.mastery)) {
                 charsData[engName].masteries.push(attr.mastery);
             }
+        }
+    });
+
+    Object.entries(charsData).forEach(([name, character]) => {
+        if (Object.keys(character.growth).length === 0 || character.masteries.length === 0) {
+            console.warn(`Skipping incomplete character data: ${name}`);
+            delete charsData[name];
         }
     });
     
@@ -377,6 +452,7 @@ async function buildData() {
         // or just keep their actual grade.
         const type = item.itemGrade; // Common, Uncommon, Rare, Epic, Legendary
         const itemStats = extractItemStats(item);
+        validateItemStats(engName, itemStats);
 
         const itemObj = {
             nameKo: koName,

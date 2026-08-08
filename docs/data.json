@@ -714,6 +714,29 @@
         "Meteorite"
       ]
     },
+    "Equilibrium": {
+      "nameKo": "이퀄리브리엄",
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "TwoHandSword",
+      "passiveSkill": {
+        "name": "Punishment",
+        "nameKo": "징벌"
+      },
+      "stats": {
+        "attackPower": 67,
+        "maxHp": 150,
+        "attackSpeedRatio": 0.3
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Rusty Sword",
+        "Mythril"
+      ]
+    },
     "Twin Blades": {
       "nameKo": "쌍칼",
       "type": "Common",
@@ -721,7 +744,7 @@
       "locations": [
         "Dock",
         "Beach",
-        "Fire Station",
+        "Hospital",
         "Temple"
       ],
       "initialCount": 1,
@@ -812,7 +835,7 @@
         "Twin Blades",
         "Graphite",
         "Lighter",
-        "Chalk"
+        "Ice"
       ]
     },
     "Starsteel Twin Swords": {
@@ -1251,7 +1274,7 @@
         "Hammer",
         "Rubber",
         "Paper",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Peacebringer": {
@@ -1340,10 +1363,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Dock",
         "Fire Station",
         "Forest",
-        "Factory",
-        "School"
+        "Factory"
       ],
       "initialCount": 1,
       "weaponType": "Axe",
@@ -1473,7 +1496,7 @@
         "Hatchet",
         "Branch",
         "Scrap Metal",
-        "Laser Pointer"
+        "Gemstone"
       ]
     },
     "Santa Muerte": {
@@ -1675,10 +1698,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Beach",
+        "Dock",
+        "Fire Station",
         "Temple",
-        "Archery Range",
-        "Factory"
+        "Archery Range"
       ],
       "initialCount": 1,
       "weaponType": "Spear",
@@ -1931,7 +1954,7 @@
         "Short Spear",
         "Scrap Metal",
         "Pickaxe",
-        "Chalk"
+        "Gemstone"
       ]
     },
     "Spear of Longinus": {
@@ -2289,6 +2312,29 @@
         "Meteorite"
       ]
     },
+    "Lollipop": {
+      "nameKo": "롤리팝",
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Bat",
+      "passiveSkill": {
+        "name": "Streamlined: Zephyr",
+        "nameKo": "신속 - 산들바람"
+      },
+      "stats": {
+        "attackPower": 30,
+        "skillAmp": 86,
+        "maxHp": 150
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Stone",
+        "Mythril"
+      ]
+    },
     "Whip": {
       "nameKo": "채찍",
       "type": "Common",
@@ -2578,7 +2624,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather"
+        "Rubber"
       ]
     },
     "Iron Knuckles": {
@@ -2653,7 +2699,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
+        "Rubber",
         "Turtle Shell"
       ]
     },
@@ -2673,7 +2719,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
+        "Rubber",
         "Lighter"
       ]
     },
@@ -2694,7 +2740,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
+        "Rubber",
         "Turtle Shell",
         "Feather"
       ]
@@ -2760,7 +2806,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
+        "Rubber",
         "Lighter",
         "Ice"
       ]
@@ -2785,7 +2831,7 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
+        "Rubber",
         "Turtle Shell",
         "Paper"
       ]
@@ -2832,9 +2878,9 @@
       "statsByLv": {},
       "components": [
         "Cotton Gloves",
-        "Leather",
-        "Lighter",
-        "Chalk"
+        "Rubber",
+        "Glass Bottle",
+        "Stone"
       ]
     },
     "Imperial Silk Gloves": {
@@ -3010,8 +3056,8 @@
       "statsByLv": {},
       "components": [
         "Bamboo",
-        "Branch",
-        "Chalk"
+        "Scrap Metal",
+        "Chemicals"
       ]
     },
     "Tactical Tonfa": {
@@ -3056,8 +3102,8 @@
       "statsByLv": {},
       "components": [
         "Bamboo",
-        "Branch",
-        "Chalk",
+        "Scrap Metal",
+        "Chemicals",
         "Turtle Shell"
       ]
     },
@@ -3100,7 +3146,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Branch",
+        "Patched Leather",
         "Mythril"
       ]
     },
@@ -3303,8 +3349,8 @@
       "statsByLv": {},
       "components": [
         "Baseball",
-        "Gunpowder",
-        "Chalk"
+        "Paper",
+        "Lighter"
       ]
     },
     "Incendiary Bomb": {
@@ -3368,7 +3414,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gunpowder",
+        "Cross",
         "Tree of Life"
       ]
     },
@@ -3412,8 +3458,8 @@
       "statsByLv": {},
       "components": [
         "Baseball",
-        "Gunpowder",
-        "Chalk",
+        "Paper",
+        "Lighter",
         "Chemicals"
       ]
     },
@@ -3620,7 +3666,7 @@
       "components": [
         "Razor",
         "Playing Cards",
-        "Chalk"
+        "Fountain Pen"
       ]
     },
     "Vintage Cards": {
@@ -3696,7 +3742,7 @@
       "components": [
         "Razor",
         "Branch",
-        "Chalk"
+        "Feather"
       ]
     },
     "Cards of Tyranny": {
@@ -3717,7 +3763,7 @@
         "Razor",
         "Playing Cards",
         "Paper",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Plumbata": {
@@ -3760,7 +3806,7 @@
       "components": [
         "Razor",
         "Playing Cards",
-        "Chalk",
+        "Fountain Pen",
         "Paper"
       ]
     },
@@ -3827,7 +3873,7 @@
       "components": [
         "Razor",
         "Branch",
-        "Chalk",
+        "Feather",
         "Chemicals"
       ]
     },
@@ -3853,7 +3899,7 @@
         "Razor",
         "Branch",
         "Scrap Metal",
-        "Chalk"
+        "Plastic"
       ]
     },
     "Wind and Fire Wheels": {
@@ -4358,7 +4404,7 @@
       "components": [
         "Short Crossbow",
         "Branch",
-        "Laser Pointer"
+        "Binoculars"
       ]
     },
     "Heavy Crossbow": {
@@ -4459,7 +4505,7 @@
       "components": [
         "Short Crossbow",
         "Branch",
-        "Laser Pointer",
+        "Binoculars",
         "Rubber"
       ]
     },
@@ -4639,7 +4685,7 @@
       "statsByLv": {},
       "components": [
         "Walther PPK",
-        "Leather"
+        "Gunpowder"
       ]
     },
     "FN57": {
@@ -4657,8 +4703,8 @@
       "statsByLv": {},
       "components": [
         "Walther PPK",
-        "Leather",
-        "Laser Pointer"
+        "Gunpowder",
+        "Binoculars"
       ]
     },
     "Magnum-Anaconda": {
@@ -4736,8 +4782,8 @@
       "statsByLv": {},
       "components": [
         "Walther PPK",
-        "Leather",
-        "Laser Pointer",
+        "Gunpowder",
+        "Binoculars",
         "Feather"
       ]
     },
@@ -4805,7 +4851,7 @@
       "statsByLv": {},
       "components": [
         "Walther PPK",
-        "Leather",
+        "Gunpowder",
         "Fountain Pen",
         "Paper"
       ]
@@ -4891,7 +4937,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Magazine",
+        "Gemstone",
         "Mythril"
       ]
     },
@@ -5032,7 +5078,7 @@
         "Fedorova",
         "Gunpowder",
         "Piano Wire",
-        "Chalk"
+        "Graphite"
       ]
     },
     "Agni": {
@@ -5077,7 +5123,7 @@
         "Fedorova",
         "Gunpowder",
         "Piano Wire",
-        "Laser Pointer"
+        "Binoculars"
       ]
     },
     "XCR": {
@@ -5159,7 +5205,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Magazine",
+        "Gunpowder",
         "Tree of Life"
       ]
     },
@@ -5229,10 +5275,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Pond",
         "Uptown",
         "Police Station",
-        "Fire Station",
-        "Chapel"
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "SniperRifle",
@@ -5259,7 +5305,7 @@
       "statsByLv": {},
       "components": [
         "Long Rifle",
-        "Laser Pointer"
+        "Binoculars"
       ]
     },
     "Harpoon Gun": {
@@ -5319,7 +5365,7 @@
       "statsByLv": {},
       "components": [
         "Long Rifle",
-        "Laser Pointer",
+        "Binoculars",
         "Piano Wire"
       ]
     },
@@ -5362,7 +5408,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Laser Pointer",
+        "Scrap Metal",
         "Mythril"
       ]
     },
@@ -5387,7 +5433,7 @@
         "Long Rifle",
         "Gemstone",
         "Nail",
-        "Laser Pointer"
+        "Binoculars"
       ]
     },
     "Polaris": {
@@ -5407,9 +5453,9 @@
       "statsByLv": {},
       "components": [
         "Long Rifle",
-        "Laser Pointer",
+        "Binoculars",
         "Piano Wire",
-        "Chalk"
+        "Battery"
       ]
     },
     "Gauss Rifle": {
@@ -5430,7 +5476,7 @@
       "statsByLv": {},
       "components": [
         "Long Rifle",
-        "Laser Pointer",
+        "Binoculars",
         "Piano Wire",
         "Paper"
       ]
@@ -5492,7 +5538,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Magazine",
+        "Gunpowder",
         "Meteorite"
       ]
     },
@@ -5912,7 +5958,7 @@
         "Needle",
         "Scrap Metal",
         "Flower",
-        "Laser Pointer"
+        "Battery"
       ]
     },
     "Mistilteinn": {
@@ -6134,6 +6180,29 @@
         "Tree of Life"
       ]
     },
+    "Field Thorn": {
+      "nameKo": "필드 쏜",
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Rapier",
+      "passiveSkill": {
+        "name": "Punishment",
+        "nameKo": "징벌"
+      },
+      "stats": {
+        "attackPower": 32,
+        "skillAmp": 86,
+        "maxHp": 120
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Ice",
+        "Mythril"
+      ]
+    },
     "Starter Guitar": {
       "nameKo": "보급형 기타",
       "type": "Common",
@@ -6227,7 +6296,7 @@
       "components": [
         "Starter Guitar",
         "Gemstone",
-        "Laser Pointer"
+        "Piano Wire"
       ]
     },
     "King-V": {
@@ -6353,7 +6422,7 @@
       "components": [
         "Starter Guitar",
         "Gemstone",
-        "Laser Pointer",
+        "Piano Wire",
         "Cross"
       ]
     },
@@ -6440,7 +6509,7 @@
         "Starter Guitar",
         "Battery",
         "Piano Wire",
-        "Chalk"
+        "Scrap Metal"
       ]
     },
     "Teen Spirit": {
@@ -6581,7 +6650,7 @@
       "statsByLv": {},
       "components": [
         "Lens",
-        "Laser Pointer",
+        "Binoculars",
         "Gunpowder"
       ]
     },
@@ -6622,7 +6691,7 @@
       "statsByLv": {},
       "components": [
         "Lens",
-        "Laser Pointer"
+        "Binoculars"
       ]
     },
     "Mirrorless": {
@@ -6665,7 +6734,7 @@
       "statsByLv": {},
       "components": [
         "Lens",
-        "Laser Pointer",
+        "Binoculars",
         "Fountain Pen",
         "Paper"
       ]
@@ -6687,7 +6756,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Laser Pointer",
+        "Binoculars",
         "Tree of Life"
       ]
     },
@@ -6712,7 +6781,7 @@
       "statsByLv": {},
       "components": [
         "Lens",
-        "Laser Pointer",
+        "Binoculars",
         "Gunpowder",
         "Battery"
       ]
@@ -6800,7 +6869,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Laser Pointer",
+        "Binoculars",
         "Meteorite"
       ]
     },
@@ -6984,8 +7053,7 @@
       },
       "stats": {
         "attackPower": 30,
-        "skillAmp": 70,
-        "cooldownReduction": 10
+        "skillAmp": 81
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -7077,8 +7145,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "skillAmp": 88,
-        "cooldownReduction": 10
+        "skillAmp": 95
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -7148,6 +7215,29 @@
       "components": [
         "Glass Bead",
         "Tree of Life"
+      ]
+    },
+    "The Hanged Man": {
+      "nameKo": "더 행맨",
+      "type": "Legend",
+      "part": "Weapon",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "Arcana",
+      "passiveSkill": {
+        "name": "Plague Butterfly",
+        "nameKo": "역병 나비"
+      },
+      "stats": {
+        "attackPower": 40,
+        "skillAmp": 92,
+        "cooldownReduction": 10
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Glass Bead",
+        "Mythril"
       ]
     },
     "Deathadder": {
@@ -7519,8 +7609,7 @@
       "weaponType": "OneHandSword",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 27,
-        "adaptiveForce": 52,
+        "attackPower": 79,
         "attackSpeedRatio": 0.4,
         "moveSpeedRatio": 0.02,
         "penetrationDefenseRatio": 0.07
@@ -7543,7 +7632,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 13,
-        "adaptiveForce": 57,
+        "skillAmp": 114,
         "moveSpeedRatio": 0.03,
         "penetrationDefenseRatio": 0.08
       },
@@ -7562,10 +7651,12 @@
       "locations": [],
       "initialCount": 1,
       "weaponType": "TwoHandSword",
-      "passiveSkill": null,
+      "passiveSkill": {
+        "name": "Burden: Magnetic Midnight",
+        "nameKo": "충전 - 섬광"
+      },
       "stats": {
-        "attackPower": 20,
-        "adaptiveForce": 50,
+        "attackPower": 82,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -7587,7 +7678,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 22,
-        "adaptiveForce": 62,
+        "skillAmp": 124,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7607,8 +7698,7 @@
       "weaponType": "Hammer",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 50,
-        "adaptiveForce": 52,
+        "attackPower": 102,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7630,7 +7720,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 48,
-        "adaptiveForce": 58,
+        "skillAmp": 116,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7650,8 +7740,7 @@
       "weaponType": "Axe",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 47,
-        "adaptiveForce": 52,
+        "attackPower": 99,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7673,7 +7762,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 50,
-        "adaptiveForce": 57,
+        "skillAmp": 114,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7693,9 +7782,8 @@
       "weaponType": "Spear",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 37,
+        "attackPower": 92,
         "defense": 8,
-        "adaptiveForce": 55,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -7718,7 +7806,7 @@
       "stats": {
         "attackPower": 33,
         "defense": 8,
-        "adaptiveForce": 58,
+        "skillAmp": 116,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7739,7 +7827,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "adaptiveForce": 52,
+        "skillAmp": 104,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7761,7 +7849,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "adaptiveForce": 58,
+        "skillAmp": 116,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.08
       },
@@ -7782,8 +7870,7 @@
       "weaponType": "Glove",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 38,
-        "adaptiveForce": 50,
+        "attackPower": 88,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7805,7 +7892,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 30,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7825,9 +7912,8 @@
       "weaponType": "Tonfa",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 23,
+        "attackPower": 74,
         "defense": 8,
-        "adaptiveForce": 51,
         "attackSpeedRatio": 0.35,
         "penetrationDefenseRatio": 0.07
       },
@@ -7850,7 +7936,7 @@
       "stats": {
         "attackPower": 20,
         "defense": 8,
-        "adaptiveForce": 57,
+        "skillAmp": 114,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7870,8 +7956,7 @@
       "weaponType": "HighAngleFire",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 41,
-        "adaptiveForce": 50,
+        "attackPower": 91,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7893,7 +7978,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "adaptiveForce": 54,
+        "skillAmp": 108,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7913,8 +7998,7 @@
       "weaponType": "DirectFire",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 28,
-        "adaptiveForce": 49,
+        "attackPower": 77,
         "attackSpeedRatio": 0.25,
         "penetrationDefenseRatio": 0.07
       },
@@ -7936,7 +8020,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 30,
-        "adaptiveForce": 57,
+        "skillAmp": 114,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7956,8 +8040,7 @@
       "weaponType": "Bow",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 26,
-        "adaptiveForce": 50,
+        "attackPower": 76,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -7979,7 +8062,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 29,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -7999,8 +8082,7 @@
       "weaponType": "CrossBow",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 41,
-        "adaptiveForce": 51,
+        "attackPower": 92,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -8022,7 +8104,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8042,8 +8124,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 40,
-        "adaptiveForce": 53,
+        "attackPower": 93,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -8065,7 +8146,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "adaptiveForce": 53,
+        "skillAmp": 106,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.08
       },
@@ -8086,8 +8167,7 @@
       "weaponType": "SniperRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 33,
-        "adaptiveForce": 51,
+        "attackPower": 84,
         "attackSpeedRatio": 0.3,
         "sightRange": 1.5,
         "penetrationDefenseRatio": 0.07
@@ -8110,7 +8190,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 22,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "attackSpeedRatio": 0.4,
         "sightRange": 1.5,
         "penetrationDefenseRatio": 0.08
@@ -8132,8 +8212,7 @@
       "weaponType": "Nunchaku",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 33,
-        "adaptiveForce": 56,
+        "attackPower": 89,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -8155,7 +8234,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 30,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8175,8 +8254,7 @@
       "weaponType": "Rapier",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 12,
-        "adaptiveForce": 52,
+        "attackPower": 64,
         "attackSpeedRatio": 0.3,
         "criticalStrikeChance": 0.2,
         "criticalStrikeDamage": 0.1,
@@ -8200,7 +8278,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 5,
-        "adaptiveForce": 58,
+        "skillAmp": 116,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8220,8 +8298,7 @@
       "weaponType": "Guitar",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 28,
-        "adaptiveForce": 47,
+        "attackPower": 75,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -8243,7 +8320,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "adaptiveForce": 55,
+        "skillAmp": 110,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8264,8 +8341,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "skillAmp": 100,
-        "cooldownReduction": 15,
+        "skillAmp": 114,
         "penetrationDefenseRatio": 0.07
       },
       "uniqueStats": {},
@@ -8307,8 +8383,7 @@
       "weaponType": "Pistol",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 36,
-        "adaptiveForce": 50,
+        "attackPower": 86,
         "attackSpeedRatio": 0.35,
         "penetrationDefenseRatio": 0.07
       },
@@ -8330,7 +8405,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 28,
-        "adaptiveForce": 58,
+        "skillAmp": 116,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8350,8 +8425,7 @@
       "weaponType": "Bat",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 49,
-        "adaptiveForce": 53,
+        "attackPower": 102,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -8373,7 +8447,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 55,
-        "adaptiveForce": 57,
+        "skillAmp": 114,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8393,8 +8467,7 @@
       "weaponType": "DualSword",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 22,
-        "adaptiveForce": 50,
+        "attackPower": 72,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.07
       },
@@ -8416,7 +8489,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 16,
-        "adaptiveForce": 56,
+        "skillAmp": 112,
         "penetrationDefenseRatio": 0.08
       },
       "uniqueStats": {},
@@ -8436,8 +8509,7 @@
       "weaponType": "Camera",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 25,
-        "adaptiveForce": 52,
+        "attackPower": 77,
         "attackSpeedRatio": 0.4,
         "cooldownReduction": 10,
         "sightRange": 1,
@@ -8461,7 +8533,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "adaptiveForce": 55,
+        "skillAmp": 110,
         "sightRange": 1,
         "penetrationDefenseRatio": 0.08
       },
@@ -8499,9 +8571,8 @@
       "type": "Common",
       "part": "Head",
       "locations": [
-        "Warehouse",
-        "Uptown",
         "Alley",
+        "Gas Station",
         "Hospital",
         "Archery Range",
         "Forest",
@@ -8542,7 +8613,10 @@
       "type": "Common",
       "part": "Head",
       "locations": [
+        "Dock",
         "Uptown",
+        "Police Station",
+        "Temple",
         "Cemetery",
         "Factory",
         "School"
@@ -8705,7 +8779,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Mask",
         "Scrap Metal",
         "Chemicals"
       ]
@@ -8729,7 +8803,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Cloth",
+        "Hairband",
         "Feather",
         "Flower",
         "Gemstone"
@@ -8826,7 +8900,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Mask",
         "Scrap Metal",
         "Chemicals",
         "Graphite"
@@ -8868,7 +8942,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Mask",
         "Scrap Metal",
         "Chemicals",
         "Feather"
@@ -8943,10 +9017,10 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hat",
+        "Hairband",
+        "Branch",
         "Pickaxe",
-        "Gemstone",
-        "Flower"
+        "Gemstone"
       ]
     },
     "Crusader Helmet": {
@@ -8988,8 +9062,8 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hat",
-        "Scissors",
+        "Hairband",
+        "Branch",
         "Paper",
         "Lighter"
       ]
@@ -9059,7 +9133,7 @@
         "Hairband",
         "Branch",
         "Paper",
-        "Lighter"
+        "Patched Leather"
       ]
     },
     "Fox Mask": {
@@ -9078,10 +9152,10 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
-        "Branch",
-        "Stallion Medal",
-        "Piano Wire"
+        "Mask",
+        "Feather",
+        "Flower",
+        "Gemstone"
       ]
     },
     "Sport Sunglasses": {
@@ -9104,7 +9178,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Mask",
         "Battery",
         "Piano Wire",
         "Scrap Metal"
@@ -9182,7 +9256,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 10,
+        "defense": 8,
         "adaptiveForce": 45,
         "cooldownReduction": 20,
         "moveSpeedRatio": 0.03,
@@ -9304,10 +9378,13 @@
       "locations": [],
       "initialCount": 1,
       "weaponType": "",
-      "passiveSkill": null,
+      "passiveSkill": {
+        "name": "Chasing Needle",
+        "nameKo": "유도 바늘"
+      },
       "stats": {
-        "attackPower": 38,
-        "attackSpeedRatio": 0.46
+        "attackPower": 33,
+        "attackSpeedRatio": 0.4
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -9457,7 +9534,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Binoculars",
+        "Mask",
         "Tree of Life"
       ]
     },
@@ -9499,7 +9576,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Binoculars",
+        "Mask",
         "Meteorite"
       ]
     },
@@ -9532,7 +9609,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 20,
+        "defense": 18,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -9555,7 +9632,7 @@
       "stats": {
         "defense": 15,
         "adaptiveForce": 35,
-        "attackSpeedRatio": 0.3,
+        "attackSpeedRatio": 0.25,
         "lifeSteal": 0.08
       },
       "uniqueStats": {},
@@ -9722,7 +9799,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 33,
-        "attackSpeedRatio": 0.35,
+        "attackSpeedRatio": 0.3,
         "criticalStrikeChance": 0.35
       },
       "uniqueStats": {},
@@ -9764,14 +9841,13 @@
       "stats": {
         "skillAmp": 70,
         "cooldownReduction": 15,
-        "healerGiveHpHealRatio": 0.07
+        "healerGiveHpHealRatio": 0.06
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Thread",
-        "Meteorite",
-        "Tree of Life"
+        "Mask",
+        "Mythril"
       ]
     },
     "Animalistic": {
@@ -9887,7 +9963,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Military Suit": {
@@ -9906,7 +9982,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Branch"
+        "Gunpowder"
       ]
     },
     "Patched Robe": {
@@ -9958,7 +10034,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 25,
-        "skillAmp": 40,
+        "skillAmp": 35,
         "lifeSteal": 0.08
       },
       "uniqueStats": {},
@@ -10004,7 +10080,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Cloth"
+        "Cross"
       ]
     },
     "Rider Jacket": {
@@ -10023,7 +10099,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Chemicals"
       ]
     },
@@ -10042,7 +10118,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Leather",
+        "Patched Leather",
         "Thread"
       ]
     },
@@ -10063,7 +10139,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Ribbon"
       ]
     },
@@ -10124,7 +10200,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Plastic"
       ]
     },
@@ -10149,7 +10225,7 @@
       },
       "components": [
         "Shirt",
-        "Cloth",
+        "Cross",
         "Oil",
         "Bandage"
       ]
@@ -10174,7 +10250,7 @@
       },
       "components": [
         "Shirt",
-        "Leather",
+        "Patched Leather",
         "Thread",
         "Gemstone"
       ]
@@ -10248,7 +10324,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Chemicals",
         "Iron Ball"
       ]
@@ -10271,7 +10347,7 @@
       },
       "components": [
         "Shirt",
-        "Leather",
+        "Patched Leather",
         "Thread",
         "Cross"
       ]
@@ -10297,7 +10373,7 @@
       },
       "components": [
         "Shirt",
-        "Leather",
+        "Patched Leather",
         "Thread",
         "Scissors"
       ]
@@ -10344,7 +10420,7 @@
       },
       "components": [
         "Shirt",
-        "Leather",
+        "Patched Leather",
         "Graphite",
         "Lighter"
       ]
@@ -10369,7 +10445,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Ribbon",
         "Feather"
       ]
@@ -10414,7 +10490,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Plastic",
         "Rubber"
       ]
@@ -10438,7 +10514,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Ribbon",
         "Cloth"
       ]
@@ -10461,7 +10537,7 @@
       },
       "components": [
         "Shirt",
-        "Cloth",
+        "Cross",
         "Stallion Medal",
         "Piano Wire"
       ]
@@ -10509,7 +10585,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Ribbon",
         "Plastic"
       ]
@@ -10533,9 +10609,9 @@
       },
       "components": [
         "Shirt",
-        "Bandage",
-        "Leather",
-        "Cloth"
+        "Gunpowder",
+        "Chemicals",
+        "Bandage"
       ]
     },
     "Uniform": {
@@ -10557,7 +10633,7 @@
       },
       "components": [
         "Shirt",
-        "Branch",
+        "Gunpowder",
         "Fountain Pen",
         "Paper"
       ]
@@ -10657,7 +10733,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 30,
-        "skillAmp": 40,
+        "skillAmp": 35,
         "hpRegenRatio": 1,
         "cooldownReduction": 25
       },
@@ -10703,7 +10779,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 15,
+        "attackPower": 13,
         "defense": 15,
         "attackSpeedRatio": 0.2,
         "lifeSteal": 0.08
@@ -10956,7 +11032,7 @@
         "attackPower": 3
       },
       "components": [
-        "Magazine",
+        "Gunpowder",
         "Meteorite",
         "Tree of Life"
       ]
@@ -10971,14 +11047,15 @@
       "passiveSkill": null,
       "stats": {
         "defense": 25,
-        "cooldownReduction": 10
+        "cooldownReduction": 20
       },
       "uniqueStats": {},
       "statsByLv": {
         "skillAmp": 5
       },
       "components": [
-        "Flower",
+        "Branch",
+        "Meteorite",
         "Tree of Life"
       ]
     },
@@ -11103,7 +11180,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 43,
+        "defense": 41,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -11147,7 +11224,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 20,
+        "attackPower": 18,
         "defense": 20,
         "attackSpeedRatio": 0.15,
         "criticalStrikeChance": 0.35
@@ -11183,15 +11260,40 @@
         "Meteorite"
       ]
     },
+    "Chillwind Cuirass": {
+      "nameKo": "서리바람 흉갑",
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "passiveSkill": {
+        "name": "Gust of Wind - Frostbite",
+        "nameKo": "돌풍 - 한기"
+      },
+      "stats": {
+        "defense": 40,
+        "cooldownReduction": 10
+      },
+      "uniqueStats": {},
+      "statsByLv": {
+        "maxHp": 24
+      },
+      "components": [
+        "Patched Leather",
+        "Meteorite",
+        "Tree of Life"
+      ]
+    },
     "Watch": {
       "nameKo": "손목시계",
       "type": "Common",
       "part": "Arm",
       "locations": [
-        "Dock",
         "Uptown",
         "Gas Station",
         "Police Station",
+        "Fire Station",
         "Hospital",
         "Factory",
         "Barge"
@@ -11211,10 +11313,10 @@
       "part": "Arm",
       "locations": [
         "Dock",
+        "Uptown",
         "Fire Station",
         "Hospital",
         "Forest",
-        "Factory",
         "School",
         "Barge"
       ],
@@ -11263,7 +11365,7 @@
       "statsByLv": {},
       "components": [
         "Turtle Shell",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Squad Leader Armband": {
@@ -11299,7 +11401,7 @@
       "statsByLv": {},
       "components": [
         "Bandage",
-        "Leather"
+        "Rubber"
       ]
     },
     "Broken Watch": {
@@ -11336,7 +11438,7 @@
       "components": [
         "Scrap Metal",
         "Chemicals",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Golden Bracelet": {
@@ -11373,7 +11475,7 @@
       "statsByLv": {},
       "components": [
         "Bandage",
-        "Leather",
+        "Rubber",
         "Scrap Metal"
       ]
     },
@@ -11440,7 +11542,7 @@
       "statsByLv": {},
       "components": [
         "Bandage",
-        "Leather",
+        "Rubber",
         "Scrap Metal",
         "Nail"
       ]
@@ -11508,8 +11610,8 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Turtle Shell",
-        "Leather",
+        "Bandage",
+        "Rubber",
         "Bandage",
         "Gunpowder"
       ]
@@ -11531,7 +11633,7 @@
       "components": [
         "Scrap Metal",
         "Chemicals",
-        "Leather",
+        "Patched Leather",
         "Gemstone"
       ]
     },
@@ -11551,7 +11653,7 @@
       "statsByLv": {},
       "components": [
         "Turtle Shell",
-        "Leather",
+        "Patched Leather",
         "Graphite",
         "Lighter"
       ]
@@ -11617,7 +11719,7 @@
       "statsByLv": {},
       "components": [
         "Turtle Shell",
-        "Leather",
+        "Patched Leather",
         "Battery",
         "Graphite"
       ]
@@ -11788,12 +11890,14 @@
       "locations": [],
       "initialCount": 1,
       "weaponType": "",
-      "passiveSkill": null,
+      "passiveSkill": {
+        "name": "Gold Pouch",
+        "nameKo": "금화 주머니"
+      },
       "stats": {
-        "attackPower": 30,
-        "attackSpeedRatio": 0.3,
-        "cooldownReduction": 20,
-        "slowResistRatio": 0.2
+        "attackPower": 26,
+        "maxHp": 200,
+        "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -11935,7 +12039,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 16,
+        "defense": 15,
         "cooldownReduction": 20
       },
       "uniqueStats": {},
@@ -12016,7 +12120,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 30,
+        "attackPower": 28,
         "attackSpeedRatio": 0.3,
         "penetrationDefenseRatio": 0.2
       },
@@ -12278,7 +12382,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 100,
+        "skillAmp": 95,
         "penetrationDefenseRatio": 0.15
       },
       "uniqueStats": {},
@@ -12361,7 +12465,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 15,
-        "adaptiveForce": 45,
+        "adaptiveForce": 43,
         "cooldownReduction": 20
       },
       "uniqueStats": {},
@@ -12382,7 +12486,7 @@
       "stats": {},
       "uniqueStats": {},
       "statsByLv": {
-        "maxHp": 26
+        "maxHp": 25
       },
       "components": [
         "Turtle Shell",
@@ -12412,7 +12516,7 @@
       "type": "Common",
       "part": "Leg",
       "locations": [
-        "Beach",
+        "Fire Station",
         "Temple",
         "Archery Range",
         "Factory"
@@ -12431,7 +12535,7 @@
       "type": "Common",
       "part": "Leg",
       "locations": [
-        "Uptown",
+        "Dock",
         "Hospital",
         "Temple",
         "Forest"
@@ -12576,7 +12680,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather"
+        "Graphite"
       ]
     },
     "Hiking Boots": {
@@ -12597,9 +12701,9 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Scissors",
-        "Leather",
-        "Cloth"
+        "Graphite",
+        "Oil",
+        "Patched Leather"
       ]
     },
     "Knee Pads": {
@@ -12618,7 +12722,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather",
+        "Thread",
         "Rubber"
       ]
     },
@@ -12640,7 +12744,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather",
+        "Thread",
         "Rubber",
         "Scrap Metal"
       ]
@@ -12662,7 +12766,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather",
+        "Graphite",
         "Oil"
       ]
     },
@@ -12704,7 +12808,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather",
+        "Graphite",
         "Oil",
         "Feather"
       ]
@@ -12817,7 +12921,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Leather",
+        "Graphite",
         "Oil",
         "Nail"
       ]
@@ -12909,8 +13013,8 @@
       "components": [
         "Running Shoes",
         "Thread",
-        "Leather",
-        "Cloth"
+        "Oil",
+        "Bandage"
       ]
     },
     "Gladiator": {
@@ -13008,7 +13112,7 @@
       "stats": {
         "defense": 10,
         "maxHp": 250,
-        "cooldownReduction": 25,
+        "cooldownReduction": 20,
         "moveSpeed": 0.27,
         "tacticalCooldownReduction": 20
       },
@@ -13071,7 +13175,7 @@
       "passiveSkill": null,
       "stats": {
         "adaptiveForce": 25,
-        "attackSpeedRatio": 0.38,
+        "attackSpeedRatio": 0.33,
         "moveSpeed": 0.27
       },
       "uniqueStats": {},
@@ -13275,7 +13379,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 20,
+        "attackPower": 17,
         "attackSpeedRatio": 0.25,
         "criticalStrikeChance": 0.35,
         "moveSpeed": 0.27
@@ -13296,7 +13400,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 50,
+        "skillAmp": 45,
         "cooldownReduction": 10,
         "moveSpeed": 0.27
       },
@@ -13316,7 +13420,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "adaptiveForce": 28,
+        "skillAmp": 50,
         "cooldownReduction": 20,
         "moveSpeed": 0.27
       },
@@ -13360,14 +13464,14 @@
       "stats": {
         "skillAmp": 55,
         "maxHp": 100,
-        "cooldownReduction": 20,
+        "cooldownReduction": 15,
         "healerGiveHpHealRatio": 0.1
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bracelet",
-        "Mythril"
+        "Gemstone",
+        "Tree of Life"
       ]
     },
     "Box": {
@@ -13473,7 +13577,7 @@
         "maxHp": 22
       },
       "components": [
-        "Gemstone",
+        "Glass Bottle",
         "Mythril"
       ]
     },
@@ -13532,7 +13636,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Mask",
+        "Flower",
         "Mythril"
       ]
     },
@@ -13696,7 +13800,7 @@
         "maxHp": 24
       },
       "components": [
-        "Bandage",
+        "Piano Wire",
         "Meteorite",
         "Tree of Life"
       ]
@@ -13712,7 +13816,7 @@
       "stats": {
         "adaptiveForce": 50,
         "attackSpeedRatio": 0.35,
-        "moveSpeedRatio": 0.04
+        "moveSpeedRatio": 0.035
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -13749,8 +13853,8 @@
         "Dock",
         "Uptown",
         "Alley",
-        "Hotel",
         "Fire Station",
+        "Factory",
         "School"
       ],
       "initialCount": 1,
@@ -13851,24 +13955,6 @@
       "uniqueStats": {},
       "statsByLv": {}
     },
-    "Chalk": {
-      "nameKo": "분필",
-      "type": "Common",
-      "part": "Misc",
-      "locations": [
-        "Stream",
-        "Police Station",
-        "Factory",
-        "Chapel",
-        "School"
-      ],
-      "initialCount": 1,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {},
-      "uniqueStats": {},
-      "statsByLv": {}
-    },
     "Nail": {
       "nameKo": "못",
       "type": "Common",
@@ -13877,6 +13963,7 @@
         "Alley",
         "Hotel",
         "Fire Station",
+        "Temple",
         "Archery Range",
         "Factory",
         "Chapel"
@@ -13999,35 +14086,17 @@
       "uniqueStats": {},
       "statsByLv": {}
     },
-    "Laser Pointer": {
-      "nameKo": "레이저 포인터",
-      "type": "Common",
-      "part": "Misc",
-      "locations": [
-        "Gas Station",
-        "Police Station",
-        "Hospital",
-        "Forest",
-        "School"
-      ],
-      "initialCount": 1,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {},
-      "uniqueStats": {},
-      "statsByLv": {}
-    },
     "Stallion Medal": {
       "nameKo": "마패",
       "type": "Common",
       "part": "Misc",
       "locations": [
-        "Dock",
         "Gas Station",
+        "Hotel",
         "Police Station",
         "Temple",
         "Cemetery",
-        "Factory",
+        "School",
         "Barge"
       ],
       "initialCount": 1,
@@ -14089,8 +14158,7 @@
         "Hospital",
         "Temple",
         "Cemetery",
-        "Chapel",
-        "Barge"
+        "Chapel"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -14150,6 +14218,7 @@
         "Fire Station",
         "Archery Range",
         "Forest",
+        "Factory",
         "Chapel"
       ],
       "initialCount": 1,
@@ -14201,8 +14270,8 @@
         "Beach",
         "Alley",
         "Hospital",
-        "Archery Range",
         "Chapel",
+        "School",
         "Barge"
       ],
       "initialCount": 1,
@@ -14411,7 +14480,7 @@
       "statsByLv": {},
       "components": [
         "Paper",
-        "Leather"
+        "Patched Leather"
       ]
     },
     "Ion Battery": {
@@ -14432,19 +14501,24 @@
     },
     "Patched Leather": {
       "nameKo": "덧댄 가죽",
-      "type": "Uncommon",
+      "type": "Common",
       "part": "Misc",
-      "locations": [],
+      "locations": [
+        "Warehouse",
+        "Stream",
+        "Hotel",
+        "Police Station",
+        "Archery Range",
+        "Forest",
+        "Factory",
+        "Chapel"
+      ],
       "initialCount": 1,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {},
       "uniqueStats": {},
-      "statsByLv": {},
-      "components": [
-        "Leather",
-        "Cloth"
-      ]
+      "statsByLv": {}
     },
     "Motor": {
       "nameKo": "모터",
@@ -14509,6 +14583,7 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Uptown",
         "Alley",
         "Fire Station",
         "Cemetery",
@@ -14608,8 +14683,8 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Beach",
         "Gas Station",
-        "Fire Station",
         "Hospital",
         "Cemetery",
         "Factory",
@@ -14715,23 +14790,6 @@
       "uniqueStats": {},
       "statsByLv": {}
     },
-    "Magazine": {
-      "nameKo": "탄창",
-      "type": "Common",
-      "part": "Misc",
-      "locations": [
-        "Hotel",
-        "Police Station",
-        "Temple",
-        "Factory"
-      ],
-      "initialCount": 1,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {},
-      "uniqueStats": {},
-      "statsByLv": {}
-    },
     "Binoculars": {
       "nameKo": "쌍안경",
       "type": "Common",
@@ -14740,7 +14798,8 @@
         "Beach",
         "Police Station",
         "Archery Range",
-        "Forest"
+        "Forest",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -14768,14 +14827,14 @@
     },
     "Flower Liquor": {
       "nameKo": "백일취",
-      "type": "Uncommon",
+      "type": "Rare",
       "part": "Misc",
       "locations": [],
       "initialCount": 3,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 550
+        "hpRecover": 600
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -14847,26 +14906,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 300
-      },
-      "uniqueStats": {},
-      "statsByLv": {}
-    },
-    "Oriental Herb": {
-      "nameKo": "약초",
-      "type": "Common",
-      "part": "Misc",
-      "locations": [
-        "Pond",
-        "Stream",
-        "Temple",
-        "Forest"
-      ],
-      "initialCount": 1,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {
-        "hpRecover": 300
+        "hpRecover": 400
       },
       "uniqueStats": {},
       "statsByLv": {}
@@ -14877,7 +14917,7 @@
       "part": "Misc",
       "locations": [
         "Dock",
-        "Uptown",
+        "Fire Station",
         "Factory",
         "School"
       ],
@@ -14885,39 +14925,21 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 300
+        "hpRecover": 400
       },
       "uniqueStats": {},
       "statsByLv": {}
     },
-    "Orchid": {
-      "nameKo": "난초",
-      "type": "Uncommon",
-      "part": "Misc",
-      "locations": [],
-      "initialCount": 3,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {
-        "hpRecover": 500
-      },
-      "uniqueStats": {},
-      "statsByLv": {},
-      "components": [
-        "Oriental Herb",
-        "Flower"
-      ]
-    },
     "Choco Ice Cream": {
       "nameKo": "초코 아이스크림",
-      "type": "Uncommon",
+      "type": "Rare",
       "part": "Misc",
       "locations": [],
       "initialCount": 3,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 500
+        "hpRecover": 600
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -14965,11 +14987,11 @@
       "type": "Rare",
       "part": "Misc",
       "locations": [],
-      "initialCount": 2,
+      "initialCount": 3,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 500
+        "hpRecover": 600
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -14979,14 +15001,14 @@
     },
     "Breakfast Sandwich": {
       "nameKo": "베이컨 토스트",
-      "type": "Rare",
+      "type": "Epic",
       "part": "Misc",
       "locations": [],
-      "initialCount": 3,
+      "initialCount": 2,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "hpRecover": 600
+        "hpRecover": 750
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -15080,23 +15102,6 @@
         "Chocolate"
       ]
     },
-    "Warm Oriental Concoction": {
-      "nameKo": "탕약",
-      "type": "Rare",
-      "part": "Misc",
-      "locations": [],
-      "initialCount": 3,
-      "weaponType": "",
-      "passiveSkill": null,
-      "stats": {
-        "hpRecover": 600
-      },
-      "uniqueStats": {},
-      "statsByLv": {},
-      "components": [
-        "Oriental Herb"
-      ]
-    },
     "#11 Combo Meal": {
       "nameKo": "일레븐 세트",
       "type": "Legend",
@@ -15120,7 +15125,7 @@
       "type": "Epic",
       "part": "Misc",
       "locations": [],
-      "initialCount": 1,
+      "initialCount": 2,
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
@@ -15224,7 +15229,9 @@
       "nameKo": "항구",
       "neighbors": [
         "Warehouse",
-        "Factory"
+        "Factory",
+        "Chapel",
+        "Barge"
       ],
       "hasHyperloop": false
     },
@@ -15381,7 +15388,8 @@
         "Hospital",
         "Cemetery",
         "Chapel",
-        "Dock"
+        "Dock",
+        "Barge"
       ],
       "hasHyperloop": true
     },
@@ -15391,6 +15399,7 @@
         "Forest",
         "Cemetery",
         "Factory",
+        "Dock",
         "Warehouse",
         "Uptown"
       ],
@@ -15405,6 +15414,14 @@
         "Research Center",
         "Forest",
         "Hotel"
+      ],
+      "hasHyperloop": true
+    },
+    "Barge": {
+      "nameKo": "바지선",
+      "neighbors": [
+        "Dock",
+        "Factory"
       ],
       "hasHyperloop": true
     },
@@ -15818,7 +15835,7 @@
         "OneHandSword"
       ],
       "base": {
-        "maxHp": 940,
+        "maxHp": 980,
         "attackPower": 29,
         "defense": 52,
         "hpRegen": 1.8,
@@ -16024,7 +16041,7 @@
       "base": {
         "maxHp": 950,
         "attackPower": 28,
-        "defense": 49,
+        "defense": 51,
         "hpRegen": 0.75,
         "attackSpeed": 0.14,
         "moveSpeed": 3.4499999999999997
@@ -16045,9 +16062,9 @@
         "Bat"
       ],
       "base": {
-        "maxHp": 1070,
+        "maxHp": 1020,
         "attackPower": 39,
-        "defense": 57,
+        "defense": 54,
         "hpRegen": 1.58,
         "attackSpeed": 0.12,
         "moveSpeed": 3.55
@@ -16452,7 +16469,7 @@
         "moveSpeed": 3.55
       },
       "growth": {
-        "maxHp": 94,
+        "maxHp": 96,
         "attackPower": 5.3,
         "defense": 3.4,
         "hpRegen": 0.077,
@@ -16871,7 +16888,7 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 88,
+        "maxHp": 90,
         "attackPower": 4.1,
         "defense": 3,
         "hpRegen": 0.07,
@@ -16953,13 +16970,13 @@
       "base": {
         "maxHp": 970,
         "attackPower": 35,
-        "defense": 50,
+        "defense": 53,
         "hpRegen": 1.02,
         "attackSpeed": 0.14,
         "moveSpeed": 3.55
       },
       "growth": {
-        "maxHp": 79,
+        "maxHp": 81,
         "attackPower": 4.1,
         "defense": 2.8,
         "hpRegen": 0.06,
