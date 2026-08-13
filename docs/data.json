@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.0a",
-    "generatedAt": "2026-08-08T04:24:50.000Z"
+    "patchVersion": "12.1a",
+    "generatedAt": "2026-08-13T22:10:41.135Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -730,7 +730,7 @@
         "nameKo": "징벌"
       },
       "stats": {
-        "attackPower": 67,
+        "attackPower": 64,
         "maxHp": 150,
         "attackSpeedRatio": 0.3
       },
@@ -2330,7 +2330,7 @@
       "stats": {
         "attackPower": 30,
         "skillAmp": 86,
-        "maxHp": 150
+        "maxHp": 120
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -6197,7 +6197,7 @@
       },
       "stats": {
         "attackPower": 32,
-        "skillAmp": 86,
+        "skillAmp": 82,
         "maxHp": 120
       },
       "uniqueStats": {},
@@ -7149,7 +7149,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "skillAmp": 95
+        "skillAmp": 97
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -7234,7 +7234,7 @@
       },
       "stats": {
         "attackPower": 40,
-        "skillAmp": 92,
+        "skillAmp": 88,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -8345,7 +8345,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "skillAmp": 114,
+        "skillAmp": 117,
         "penetrationDefenseRatio": 0.07
       },
       "uniqueStats": {},
@@ -9986,7 +9986,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Gunpowder"
+        "Branch"
       ]
     },
     "Patched Robe": {
@@ -10103,7 +10103,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Chemicals"
       ]
     },
@@ -10143,7 +10143,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Ribbon"
       ]
     },
@@ -10204,7 +10204,7 @@
       "statsByLv": {},
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Plastic"
       ]
     },
@@ -10328,7 +10328,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Chemicals",
         "Iron Ball"
       ]
@@ -10449,7 +10449,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Ribbon",
         "Feather"
       ]
@@ -10494,7 +10494,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Plastic",
         "Rubber"
       ]
@@ -10518,7 +10518,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Ribbon",
         "Cloth"
       ]
@@ -10589,7 +10589,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Ribbon",
         "Plastic"
       ]
@@ -10613,7 +10613,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Chemicals",
         "Bandage"
       ]
@@ -10637,7 +10637,7 @@
       },
       "components": [
         "Shirt",
-        "Gunpowder",
+        "Branch",
         "Fountain Pen",
         "Paper"
       ]
@@ -14008,7 +14008,8 @@
         "Gas Station",
         "Fire Station",
         "Hospital",
-        "Factory"
+        "Factory",
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -14025,6 +14026,7 @@
         "Dock",
         "Stream",
         "Beach",
+        "Uptown",
         "Gas Station",
         "Fire Station",
         "Factory"
@@ -14656,6 +14658,7 @@
       "locations": [
         "Beach",
         "Gas Station",
+        "Fire Station",
         "Hospital",
         "Cemetery",
         "Factory",
@@ -15545,7 +15548,7 @@
       "growth": {
         "maxHp": 73,
         "attackPower": 4.3,
-        "defense": 2.5,
+        "defense": 2.7,
         "hpRegen": 0.045,
         "attackSpeed": 0
       }
@@ -16123,7 +16126,7 @@
       ],
       "base": {
         "maxHp": 945,
-        "attackPower": 37,
+        "attackPower": 40,
         "defense": 52,
         "hpRegen": 1.35,
         "attackSpeed": 0.12,
@@ -17301,7 +17304,7 @@
       "growth": {
         "maxHp": 92,
         "attackPower": 3.8,
-        "defense": 2.9,
+        "defense": 3.1,
         "hpRegen": 0.135,
         "attackSpeed": 0
       }

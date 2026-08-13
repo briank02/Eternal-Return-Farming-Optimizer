@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.0a';
+const DATA_PATCH_VERSION = '12.1a';
 
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
