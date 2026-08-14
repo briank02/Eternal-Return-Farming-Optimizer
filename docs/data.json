@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.1a",
-    "generatedAt": "2026-08-13T22:10:41.135Z"
+    "patchVersion": "12.1b",
+    "generatedAt": "2026-08-14T15:48:13.484Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -372,9 +372,9 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Warehouse",
         "Temple",
         "Archery Range",
-        "Forest",
         "Chapel"
       ],
       "initialCount": 1,
@@ -2344,7 +2344,7 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Uptown",
+        "Hotel",
         "Archery Range",
         "Cemetery",
         "Chapel"
@@ -5846,8 +5846,8 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Uptown",
         "Hotel",
+        "Police Station",
         "Fire Station",
         "Hospital"
       ],
@@ -6623,9 +6623,9 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Gas Station",
+        "Pond",
         "Hotel",
-        "Temple",
+        "Archery Range",
         "Barge"
       ],
       "initialCount": 1,
@@ -14110,6 +14110,7 @@
         "Gas Station",
         "Hotel",
         "Hospital",
+        "Forest",
         "Factory",
         "Barge"
       ],
@@ -14479,6 +14480,7 @@
       "locations": [
         "Warehouse",
         "Stream",
+        "Gas Station",
         "Hotel",
         "Police Station",
         "Archery Range",
@@ -14680,6 +14682,7 @@
         "Pond",
         "Beach",
         "Police Station",
+        "Temple",
         "Archery Range",
         "Cemetery",
         "School",
@@ -14732,6 +14735,7 @@
         "Warehouse",
         "Stream",
         "Beach",
+        "Uptown",
         "Alley",
         "Fire Station",
         "Cemetery",
@@ -16036,7 +16040,7 @@
         "Bat"
       ],
       "base": {
-        "maxHp": 1020,
+        "maxHp": 980,
         "attackPower": 39,
         "defense": 54,
         "hpRegen": 1.58,
