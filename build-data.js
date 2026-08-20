@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.1b';
+const DATA_PATCH_VERSION = '12.2';
 
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
@@ -327,7 +327,7 @@ async function buildData() {
     const charList = charsRes.data || [];
     const charAttrsList = charAttrsRes.data || [];
     // The API can preload unreleased characters before their full gameplay data is available.
-    const EXCLUDE_CHARS = new Set(["Dummy", "Lucia", "Seres"]);
+    const EXCLUDE_CHARS = new Set(["Dummy", "Seres"]);
     
     charList.forEach(char => {
         const engName = l10nEng[`Character/Name/${char.code}`] || char.name;

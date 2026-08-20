@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.1b",
-    "generatedAt": "2026-08-14T15:48:13.484Z"
+    "patchVersion": "12.2",
+    "generatedAt": "2026-08-20T17:21:48.932Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -5118,7 +5118,7 @@
         "nameKo": "열정"
       },
       "stats": {
-        "attackPower": 61,
+        "attackPower": 63,
         "attackSpeedRatio": 0.2
       },
       "uniqueStats": {},
@@ -5244,7 +5244,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 76,
+        "attackPower": 78,
         "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
@@ -6197,7 +6197,7 @@
       },
       "stats": {
         "attackPower": 32,
-        "skillAmp": 82,
+        "skillAmp": 79,
         "maxHp": 120
       },
       "uniqueStats": {},
@@ -11900,7 +11900,7 @@
       },
       "stats": {
         "attackPower": 26,
-        "maxHp": 200,
+        "maxHp": 220,
         "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
@@ -11941,7 +11941,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 18,
+        "attackPower": 15,
         "attackSpeedRatio": 0.35,
         "criticalStrikeChance": 0.35
       },
@@ -15496,7 +15496,7 @@
         "Bat"
       ],
       "base": {
-        "maxHp": 1070,
+        "maxHp": 1030,
         "attackPower": 44,
         "defense": 50,
         "hpRegen": 1.7,
@@ -15610,7 +15610,7 @@
         "Pistol"
       ],
       "base": {
-        "maxHp": 900,
+        "maxHp": 920,
         "attackPower": 37,
         "defense": 53,
         "hpRegen": 0.75,
@@ -15799,7 +15799,7 @@
         "moveSpeed": 3.4999999999999996
       },
       "growth": {
-        "maxHp": 76,
+        "maxHp": 74,
         "attackPower": 4.9,
         "defense": 2.4,
         "hpRegen": 0.045,
@@ -16868,7 +16868,7 @@
       "growth": {
         "maxHp": 90,
         "attackPower": 4.1,
-        "defense": 3,
+        "defense": 3.2,
         "hpRegen": 0.07,
         "attackSpeed": 0
       }
@@ -16956,7 +16956,7 @@
       "growth": {
         "maxHp": 81,
         "attackPower": 4.1,
-        "defense": 2.8,
+        "defense": 3,
         "hpRegen": 0.06,
         "attackSpeed": 0
       }
@@ -17057,7 +17057,7 @@
       ],
       "base": {
         "maxHp": 960,
-        "attackPower": 42,
+        "attackPower": 40,
         "defense": 51,
         "hpRegen": 2,
         "attackSpeed": 0.12,
@@ -17284,7 +17284,7 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 86,
+        "maxHp": 89,
         "attackPower": 4.3,
         "defense": 3,
         "hpRegen": 0.113,
@@ -17398,6 +17398,28 @@
         "attackPower": 4.4,
         "defense": 3,
         "hpRegen": 0.06,
+        "attackSpeed": 0
+      }
+    },
+    "Lucia": {
+      "code": 90,
+      "nameKo": "루치아",
+      "masteries": [
+        "SniperRifle"
+      ],
+      "base": {
+        "maxHp": 910,
+        "attackPower": 33,
+        "defense": 52,
+        "hpRegen": 1.2,
+        "attackSpeed": 0.2,
+        "moveSpeed": 3.5
+      },
+      "growth": {
+        "maxHp": 81,
+        "attackPower": 4.3,
+        "defense": 2.9,
+        "hpRegen": 0.09,
         "attackSpeed": 0
       }
     }
