@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.2",
-    "generatedAt": "2026-08-20T17:21:48.932Z"
+    "patchVersion": "12.3",
+    "generatedAt": "2026-09-05T04:48:49.139Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -180,8 +180,8 @@
         "nameKo": "열정"
       },
       "stats": {
-        "attackPower": 58,
-        "attackSpeedRatio": 0.3
+        "attackPower": 54,
+        "attackSpeedRatio": 0.25
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -273,7 +273,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 73,
-        "attackSpeedRatio": 0.5,
+        "attackSpeedRatio": 0.4,
         "moveSpeedRatio": 0.02
       },
       "uniqueStats": {},
@@ -5073,7 +5073,7 @@
       },
       "stats": {
         "attackPower": 75,
-        "attackSpeedRatio": 0.2,
+        "attackSpeedRatio": 0.25,
         "normalLifeSteal": 0.08
       },
       "uniqueStats": {},
@@ -5094,7 +5094,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 69,
+        "attackPower": 71,
         "attackSpeedRatio": 0.35
       },
       "uniqueStats": {},
@@ -5119,7 +5119,7 @@
       },
       "stats": {
         "attackPower": 63,
-        "attackSpeedRatio": 0.2
+        "attackSpeedRatio": 0.25
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -5161,7 +5161,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 88,
+        "attackPower": 90,
         "attackSpeedRatio": 0.4
       },
       "uniqueStats": {},
@@ -5244,7 +5244,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 78,
+        "attackPower": 80,
         "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
@@ -6041,7 +6041,7 @@
         "attackSpeedRatio": 0.33,
         "criticalStrikeChance": 0.25,
         "criticalStrikeDamage": 0.07,
-        "moveSpeedRatio": 0.03
+        "moveSpeedRatio": 0.02
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -6192,8 +6192,8 @@
       "initialCount": 1,
       "weaponType": "Rapier",
       "passiveSkill": {
-        "name": "Punishment",
-        "nameKo": "징벌"
+        "name": "Streamlined: Zephyr",
+        "nameKo": "신속 - 산들바람"
       },
       "stats": {
         "attackPower": 32,
@@ -7345,7 +7345,7 @@
         "nameKo": "불꽃 결계"
       },
       "stats": {
-        "attackPower": 52,
+        "attackPower": 50,
         "lifeSteal": 0.1
       },
       "uniqueStats": {},
@@ -8128,7 +8128,7 @@
       "weaponType": "AssaultRifle",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 93,
+        "attackPower": 95,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -9387,7 +9387,7 @@
         "nameKo": "유도 바늘"
       },
       "stats": {
-        "attackPower": 33,
+        "attackPower": 35,
         "attackSpeedRatio": 0.4
       },
       "uniqueStats": {},
@@ -10439,7 +10439,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 10,
-        "defense": 10,
+        "defense": 12,
         "attackSpeedRatio": 0.15,
         "cooldownReduction": 10
       },
@@ -10983,7 +10983,7 @@
       "stats": {
         "attackPower": 12,
         "defense": 20,
-        "cooldownReduction": 10,
+        "cooldownReduction": 15,
         "penetrationDefense": 12
       },
       "uniqueStats": {},
@@ -11827,7 +11827,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 10,
+        "defense": 8,
         "skillAmp": 50,
         "maxHp": 100,
         "cooldownReduction": 5
@@ -12427,7 +12427,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 10,
+        "defense": 8,
         "skillAmp": 55,
         "maxHp": 200,
         "cooldownReduction": 10
@@ -16173,7 +16173,7 @@
         "Camera"
       ],
       "base": {
-        "maxHp": 905,
+        "maxHp": 930,
         "attackPower": 35,
         "defense": 53,
         "hpRegen": 0.9,
@@ -16822,7 +16822,7 @@
         "moveSpeed": 3.5999999999999996
       },
       "growth": {
-        "maxHp": 94,
+        "maxHp": 91,
         "attackPower": 4.6,
         "defense": 3.2,
         "hpRegen": 0.07,
@@ -16991,7 +16991,7 @@
       ],
       "base": {
         "maxHp": 960,
-        "attackPower": 34,
+        "attackPower": 37,
         "defense": 52,
         "hpRegen": 1.02,
         "attackSpeed": 0.14,

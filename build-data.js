@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.2';
+const DATA_PATCH_VERSION = '12.3';
 
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
@@ -104,7 +104,7 @@ const ITEM_PASSIVE_SKILLS = {
     "SCV": "Healing Reduction",
     "Equilibrium": "Punishment",
     "Lollipop": "Streamlined: Zephyr",
-    "Field Thorn": "Punishment",
+    "Field Thorn": "Streamlined: Zephyr",
     "The Hanged Man": "Plague Butterfly",
     "Chillwind Cuirass": "Gust of Wind - Frostbite",
     "Dáinsleif - Crimson": "Burden: Magnetic Midnight",
@@ -489,5 +489,6 @@ buildData().then(data => {
     fs.writeFileSync(path.join(__dirname, 'docs', 'data.json'), JSON.stringify(data, null, 2));
     console.log('Successfully wrote docs/data.json!');
 }).catch(err => {
-    console.error('Error:', err);
+    console.error('Error building data:', err.message);
+    process.exitCode = 1;
 });
