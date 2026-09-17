@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.3';
+const DATA_PATCH_VERSION = '12.4';
 
 const PASSIVE_SKILL_TRANSLATIONS = {
     "Biotic Infusion": "의념",
@@ -101,6 +101,7 @@ const ITEM_PASSIVE_SKILLS = {
     "Schrödinger's Box": "Healing Reduction",
     "White Crane Fan": "Primordial Hex",
     "White Rhinos": "Healing Reduction",
+    "Revenge of Goujian": "Healing Reduction",
     "SCV": "Healing Reduction",
     "Equilibrium": "Punishment",
     "Lollipop": "Streamlined: Zephyr",

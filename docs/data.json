@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.3",
-    "generatedAt": "2026-09-05T04:48:49.139Z"
+    "patchVersion": "12.4",
+    "generatedAt": "2026-09-17T20:28:04.566Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -561,7 +561,7 @@
       "weaponType": "TwoHandSword",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 53,
+        "attackPower": 55,
         "attackSpeedRatio": 0.2
       },
       "uniqueStats": {},
@@ -624,7 +624,7 @@
       "weaponType": "TwoHandSword",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 69,
+        "attackPower": 71,
         "attackSpeedRatio": 0.38,
         "sightRange": 1
       },
@@ -1585,7 +1585,7 @@
       },
       "stats": {
         "attackPower": 78,
-        "attackSpeedRatio": 0.25
+        "attackSpeedRatio": 0.3
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -2409,7 +2409,7 @@
       },
       "stats": {
         "attackPower": 40,
-        "skillAmp": 65,
+        "skillAmp": 68,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -2452,7 +2452,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 40,
-        "skillAmp": 78,
+        "skillAmp": 82,
         "moveSpeedRatio": 0.02
       },
       "uniqueStats": {},
@@ -2874,7 +2874,7 @@
       "weaponType": "Glove",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 59,
+        "attackPower": 60,
         "criticalStrikeChance": 0.2,
         "criticalStrikeDamage": 0.05
       },
@@ -3432,7 +3432,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 76,
-        "attackSpeedRatio": 0.2
+        "attackSpeedRatio": 0.25
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -3869,7 +3869,7 @@
       },
       "stats": {
         "attackPower": 30,
-        "skillAmp": 64,
+        "skillAmp": 66,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -4173,7 +4173,7 @@
       "weaponType": "Bow",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 63,
+        "attackPower": 65,
         "attackSpeedRatio": 0.4,
         "normalLifeSteal": 0.1
       },
@@ -4220,7 +4220,7 @@
       "weaponType": "Bow",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 70,
+        "attackPower": 72,
         "attackSpeedRatio": 0.3,
         "moveSpeedRatio": 0.02
       },
@@ -5181,7 +5181,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 35,
-        "skillAmp": 78,
+        "skillAmp": 82,
         "attackSpeedRatio": 0.25
       },
       "uniqueStats": {},
@@ -5680,7 +5680,7 @@
       },
       "stats": {
         "attackPower": 35,
-        "skillAmp": 66,
+        "skillAmp": 68,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -5927,7 +5927,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "skillAmp": 69,
+        "skillAmp": 71,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -6396,7 +6396,7 @@
       },
       "stats": {
         "attackPower": 42,
-        "skillAmp": 70,
+        "skillAmp": 72,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -6708,7 +6708,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 25,
-        "skillAmp": 77,
+        "skillAmp": 80,
         "sightRange": 1
       },
       "uniqueStats": {},
@@ -6729,7 +6729,7 @@
       "weaponType": "Camera",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 55,
+        "attackPower": 58,
         "attackSpeedRatio": 0.2,
         "cooldownReduction": 15,
         "sightRange": 1
@@ -7660,7 +7660,7 @@
         "nameKo": "충전 - 섬광"
       },
       "stats": {
-        "attackPower": 82,
+        "attackPower": 84,
         "attackSpeedRatio": 0.4,
         "penetrationDefenseRatio": 0.07
       },
@@ -9345,7 +9345,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 80,
+        "skillAmp": 82,
         "cooldownReduction": 15
       },
       "uniqueStats": {},
@@ -9406,7 +9406,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 55,
+        "skillAmp": 57,
         "maxHp": 200,
         "cooldownReduction": 10
       },
@@ -9593,7 +9593,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 80,
+        "skillAmp": 82,
         "cooldownReduction": 20,
         "moveSpeedRatio": 0.03
       },
@@ -10784,7 +10784,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 13,
-        "defense": 15,
+        "defense": 18,
         "attackSpeedRatio": 0.2,
         "lifeSteal": 0.08
       },
@@ -11050,7 +11050,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 25,
+        "defense": 28,
         "cooldownReduction": 20
       },
       "uniqueStats": {},
@@ -11206,7 +11206,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 20,
-        "attackSpeedRatio": 0.3,
+        "attackSpeedRatio": 0.33,
         "criticalStrikeChance": 0.35
       },
       "uniqueStats": {},
@@ -11715,7 +11715,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 20,
+        "attackPower": 22,
         "defense": 10,
         "attackSpeedRatio": 0.25
       },
@@ -11899,7 +11899,7 @@
         "nameKo": "금화 주머니"
       },
       "stats": {
-        "attackPower": 26,
+        "attackPower": 28,
         "maxHp": 220,
         "attackSpeedRatio": 0.3
       },
@@ -12469,7 +12469,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 15,
-        "adaptiveForce": 43,
+        "adaptiveForce": 45,
         "cooldownReduction": 20
       },
       "uniqueStats": {},
@@ -12513,6 +12513,51 @@
       "components": [
         "Graphite",
         "Mythril"
+      ]
+    },
+    "Revenge of Goujian": {
+      "nameKo": "월왕구천",
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "passiveSkill": {
+        "name": "Healing Reduction",
+        "nameKo": "치유 감소"
+      },
+      "stats": {
+        "attackPower": 27,
+        "attackSpeedRatio": 0.3,
+        "criticalStrikeChance": 0.35
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Fountain Pen",
+        "Tree of Life"
+      ]
+    },
+    "Star Fragment": {
+      "nameKo": "별 조각",
+      "type": "Legend",
+      "part": "Arm",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "passiveSkill": null,
+      "stats": {
+        "defense": 10,
+        "skillAmp": 85,
+        "maxHp": 250,
+        "cooldownReduction": 15
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Stone",
+        "Meteorite",
+        "Tree of Life"
       ]
     },
     "Running Shoes": {
@@ -13279,7 +13324,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "attackPower": 25,
+        "attackPower": 23,
         "attackSpeedRatio": 0.2,
         "normalLifeSteal": 0.12,
         "moveSpeed": 0.25
@@ -13404,7 +13449,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 45,
+        "skillAmp": 50,
         "cooldownReduction": 10,
         "moveSpeed": 0.27
       },
@@ -13552,7 +13597,7 @@
       },
       "stats": {
         "defense": 10,
-        "maxHp": 120,
+        "maxHp": 150,
         "cooldownReduction": 15
       },
       "uniqueStats": {},
@@ -13614,7 +13659,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 90
+        "skillAmp": 92
       },
       "uniqueStats": {
         "skillAmpRatio": 0.15
@@ -15527,7 +15572,7 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 79,
+        "maxHp": 76,
         "attackPower": 3.9,
         "defense": 2.6999999999999997,
         "hpRegen": 0.045,
@@ -15573,7 +15618,7 @@
         "moveSpeed": 3.55
       },
       "growth": {
-        "maxHp": 89,
+        "maxHp": 92,
         "attackPower": 5.1,
         "defense": 3.3,
         "hpRegen": 0.09,
@@ -16250,7 +16295,7 @@
       "growth": {
         "maxHp": 90,
         "attackPower": 4.7,
-        "defense": 2.8,
+        "defense": 3,
         "hpRegen": 0.077,
         "attackSpeed": 0
       }
@@ -16976,8 +17021,8 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 75,
-        "attackPower": 4.6,
+        "maxHp": 73,
+        "attackPower": 4.4,
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
@@ -17044,7 +17089,7 @@
       "growth": {
         "maxHp": 73,
         "attackPower": 4.9,
-        "defense": 3.1999999999999997,
+        "defense": 2.9,
         "hpRegen": 0.09,
         "attackSpeed": 0
       }
