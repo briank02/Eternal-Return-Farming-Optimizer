@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.4",
-    "generatedAt": "2026-09-17T20:28:04.566Z"
+    "patchVersion": "12.5",
+    "generatedAt": "2026-10-01T05:43:30.750Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -7346,7 +7346,7 @@
       },
       "stats": {
         "attackPower": 50,
-        "lifeSteal": 0.1
+        "lifeSteal": 0.08
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -7471,7 +7471,7 @@
       "passiveSkill": null,
       "stats": {
         "attackPower": 52,
-        "lifeSteal": 0.1
+        "lifeSteal": 0.08
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -9406,7 +9406,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 57,
+        "skillAmp": 50,
         "maxHp": 200,
         "cooldownReduction": 10
       },
@@ -9843,7 +9843,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 70,
+        "skillAmp": 75,
         "cooldownReduction": 15,
         "healerGiveHpHealRatio": 0.06
       },
@@ -10938,7 +10938,7 @@
       "passiveSkill": null,
       "stats": {
         "defense": 25,
-        "skillAmp": 22
+        "skillAmp": 14
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -12548,8 +12548,8 @@
       "passiveSkill": null,
       "stats": {
         "defense": 10,
-        "skillAmp": 85,
-        "maxHp": 250,
+        "skillAmp": 80,
+        "maxHp": 230,
         "cooldownReduction": 15
       },
       "uniqueStats": {},
@@ -13511,7 +13511,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "skillAmp": 55,
+        "skillAmp": 60,
         "maxHp": 100,
         "cooldownReduction": 15,
         "healerGiveHpHealRatio": 0.1
@@ -13550,7 +13550,7 @@
       "weaponType": "",
       "passiveSkill": null,
       "stats": {
-        "defense": 13,
+        "defense": 11,
         "cooldownReduction": 15
       },
       "uniqueStats": {},
@@ -17089,7 +17089,7 @@
       "growth": {
         "maxHp": 73,
         "attackPower": 4.9,
-        "defense": 2.9,
+        "defense": 2.6,
         "hpRegen": 0.09,
         "attackSpeed": 0
       }
@@ -17219,7 +17219,7 @@
         "moveSpeed": 3.45
       },
       "growth": {
-        "maxHp": 79,
+        "maxHp": 76,
         "attackPower": 4.3,
         "defense": 2.8,
         "hpRegen": 0.06,
@@ -17323,7 +17323,7 @@
       "base": {
         "maxHp": 970,
         "attackPower": 34,
-        "defense": 47,
+        "defense": 50,
         "hpRegen": 1.1,
         "attackSpeed": 0.11,
         "moveSpeed": 3.5
@@ -17465,6 +17465,28 @@
         "attackPower": 4.3,
         "defense": 2.9,
         "hpRegen": 0.09,
+        "attackSpeed": 0
+      }
+    },
+    "Seres": {
+      "code": 91,
+      "nameKo": "세레스",
+      "masteries": [
+        "TwoHandSword"
+      ],
+      "base": {
+        "maxHp": 950,
+        "attackPower": 36,
+        "defense": 49,
+        "hpRegen": 1.4,
+        "attackSpeed": 0.12,
+        "moveSpeed": 3.55
+      },
+      "growth": {
+        "maxHp": 91,
+        "attackPower": 4.8,
+        "defense": 3.3,
+        "hpRegen": 0.12,
         "attackSpeed": 0
       }
     }
