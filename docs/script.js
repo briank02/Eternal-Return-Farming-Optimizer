@@ -10,6 +10,9 @@ const DICT = {
         level: "Level:",
         character: "Test Subject",
         itemPart: "Item Part",
+        rarity: "Rarity",
+        legendary: "Legendary",
+        mythic: "Mythic",
         all: "ALL",
         weaponType: "Weapon Type",
         substats: "Item Stats",
@@ -48,6 +51,21 @@ const DICT = {
         lateGameShellTitle: "Assemble your final build",
         lateGameShellDescription: "Select Legendary and Mythic equipment from the catalog. Your Early build is preserved when you switch workflows.",
         lateGameRouteNote: "Farming-route optimization is available only in Early Game Route mode.",
+        lateBuildSummary: "Final Build Summary",
+        currentBuildStats: "Current Build Stats",
+        buildComparison: "Build Comparison",
+        clearComparison: "Clear",
+        comparisonHelp: "Save a complete build, change your items, then save the second build to compare them.",
+        saveBuildA: "Save as Build A",
+        saveBuildB: "Save as Build B",
+        buildA: "Build A",
+        buildB: "Build B",
+        loadBuild: "Load",
+        comparisonWaiting: "Save two complete builds to compare their stats and passive effects.",
+        incompleteLateBuild: "Fill all five equipment slots to save this build.",
+        noBuildStats: "Add equipment to see total stats and passive effects.",
+        itemsShown: "items shown",
+        noMatchingItems: "No items match the current filters.",
         optimizeRoute: "Run Optimizer",
         optimizeThenCompare: "Optimize a route, then click up to 2 routes below to compare stats.",
         itemStatsComparison: "Item Stats Comparison",
@@ -73,6 +91,9 @@ const DICT = {
         level: "레벨:",
         character: "실험체",
         itemPart: "아이템 부위",
+        rarity: "등급",
+        legendary: "전설",
+        mythic: "신화",
         all: "ALL",
         weaponType: "무기 종류",
         substats: "아이템 스탯",
@@ -93,6 +114,21 @@ const DICT = {
         lateGameShellTitle: "최종 빌드를 구성하세요",
         lateGameShellDescription: "목록에서 전설 및 신화 장비를 선택하세요. 모드를 전환해도 초반 빌드는 유지됩니다.",
         lateGameRouteNote: "파밍 루트 최적화는 초반 파밍 루트 모드에서만 사용할 수 있습니다.",
+        lateBuildSummary: "최종 빌드 요약",
+        currentBuildStats: "현재 빌드 스탯",
+        buildComparison: "빌드 비교",
+        clearComparison: "초기화",
+        comparisonHelp: "완성된 빌드를 저장하고 아이템을 변경한 뒤 두 번째 빌드를 저장하여 비교하세요.",
+        saveBuildA: "빌드 A로 저장",
+        saveBuildB: "빌드 B로 저장",
+        buildA: "빌드 A",
+        buildB: "빌드 B",
+        loadBuild: "불러오기",
+        comparisonWaiting: "완성된 빌드 두 개를 저장하면 스탯과 고유 장착 효과를 비교할 수 있습니다.",
+        incompleteLateBuild: "빌드를 저장하려면 다섯 장비 부위를 모두 채워주세요.",
+        noBuildStats: "장비를 추가하면 전체 스탯과 고유 장착 효과를 확인할 수 있습니다.",
+        itemsShown: "개 아이템",
+        noMatchingItems: "현재 필터와 일치하는 아이템이 없습니다.",
         optimizeRoute: "옵티마이저 실행",
         optimizeThenCompare: "옵티마이저 실행 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
         itemStatsComparison: "아이템 스탯 비교",
@@ -431,6 +467,8 @@ const buildFilterState = {
         search: ''
     }
 };
+const lateRarityFilters = new Set(BUILD_CONFIG[BUILD_TYPES.LATE].grades);
+const lateComparisonBuilds = [null, null];
 let activeBuildType = BUILD_TYPES.EARLY;
 let currentCenterMode = "optimizer";
 let earlyCenterMode = "optimizer";
@@ -520,6 +558,19 @@ function addItemToBuild(itemName, buildType = activeBuildType) {
     }
     build.add(itemName);
     return true;
+}
+
+function getBuildItemForSlot(build, slot) {
+    return Array.from(build).find(name => items[name] && items[name].part === slot) || null;
+}
+
+function isLateBuildComplete(build = lateBuild) {
+    return EQUIPMENT_SLOTS.every(slot => !!getBuildItemForSlot(build, slot));
+}
+
+function createLateBuildSnapshot(build = lateBuild) {
+    if (!isLateBuildComplete(build)) return null;
+    return Object.freeze(sortItemsByBuildSlot(build));
 }
 
 const SUBSTATS = [
@@ -701,12 +752,16 @@ function renderWorkflowShell() {
     });
     const lateGamePanel = document.getElementById('late-game-panel');
     if (lateGamePanel) lateGamePanel.hidden = isEarly;
+    const lateRarityFilterGroup = document.getElementById('late-rarity-filter-group');
+    if (lateRarityFilterGroup) lateRarityFilterGroup.hidden = isEarly;
 
     setTranslatedElement('build-heading', isEarly ? 'yourEarlyBuild' : 'yourLateBuild');
     setTranslatedElement('item-catalog-heading', isEarly ? 'selectEpicItems' : 'selectLateItems');
 
     const itemSearch = document.getElementById('item-search');
     if (itemSearch) itemSearch.value = buildFilterState[activeBuildType].search;
+
+    if (!isEarly) renderLateGamePanel();
 }
 
 function updateWorkflowUrl(buildType) {
@@ -734,6 +789,7 @@ function switchBuildType(buildType, { persist = true, updateUrl = true } = {}) {
     renderMainGrid();
     updateSelectedPanel();
     if (buildType === BUILD_TYPES.EARLY) renderStatComparison();
+    else renderLateGamePanel();
 }
 
 function setupWorkflowSwitch() {
@@ -742,6 +798,46 @@ function setupWorkflowSwitch() {
         button.addEventListener('click', () => switchBuildType(button.dataset.buildType));
         button.dataset.bound = 'true';
     });
+}
+
+function setupLateGameControls() {
+    document.querySelectorAll('.rarity-filter-btn').forEach(button => {
+        const syncButton = () => {
+            const selected = lateRarityFilters.has(button.dataset.grade);
+            button.classList.toggle('active', selected);
+            button.setAttribute('aria-pressed', String(selected));
+        };
+        syncButton();
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => {
+            const grade = button.dataset.grade;
+            if (lateRarityFilters.has(grade)) lateRarityFilters.delete(grade);
+            else lateRarityFilters.add(grade);
+            document.querySelectorAll('.rarity-filter-btn').forEach(rarityButton => {
+                const selected = lateRarityFilters.has(rarityButton.dataset.grade);
+                rarityButton.classList.toggle('active', selected);
+                rarityButton.setAttribute('aria-pressed', String(selected));
+            });
+            renderMainGrid();
+        });
+        button.dataset.bound = 'true';
+    });
+
+    document.querySelectorAll('.late-save-btn').forEach(button => {
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => saveLateComparisonBuild(Number(button.dataset.slot)));
+        button.dataset.bound = 'true';
+    });
+
+    const clearButton = document.getElementById('clear-late-comparison-btn');
+    if (clearButton && clearButton.dataset.bound !== 'true') {
+        clearButton.addEventListener('click', () => {
+            lateComparisonBuilds[0] = null;
+            lateComparisonBuilds[1] = null;
+            renderLateGamePanel();
+        });
+        clearButton.dataset.bound = 'true';
+    }
 }
 
 function renderDataStatus() {
@@ -825,11 +921,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 renderMainGrid();
                 updateSelectedPanel();
                 renderStatComparison();
+                renderLateGamePanel();
             });
         }
 
         // 1. Setup Filters
         setupWorkflowSwitch();
+        setupLateGameControls();
         setupFilters();
         setupModeTabs();
         setupRecommendationControls();
@@ -876,6 +974,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 charLevel = val;
                 renderMainGrid();
                 renderStatComparison();
+                renderLateGamePanel();
                 if (currentCenterMode === "recommendations") {
                     recommendationResults = [];
                     renderRecommendationResults();
@@ -915,6 +1014,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 recommendationResults = [];
                 recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
+                lateRarityFilters.clear();
+                BUILD_CONFIG[BUILD_TYPES.LATE].grades.forEach(grade => lateRarityFilters.add(grade));
+                lateComparisonBuilds[0] = null;
+                lateComparisonBuilds[1] = null;
                 const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
                 if (twoZoneFilter) twoZoneFilter.checked = false;
                 const substatContainer = document.getElementById('substat-filters');
@@ -927,6 +1030,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
                 }
                 setupRecommendationControls();
+                setupLateGameControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
                 renderMainGrid();
@@ -1782,8 +1886,13 @@ function createCompactPlaceholder(text) {
 }
 
 function selectCharacter(charName) {
+    const previousCharacter = currentCharacter;
     currentCharacter = charName || null;
     recommendationResults = [];
+    if (previousCharacter !== currentCharacter) {
+        lateComparisonBuilds[0] = null;
+        lateComparisonBuilds[1] = null;
+    }
     const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
     const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
 
@@ -1821,6 +1930,7 @@ function selectCharacter(charName) {
     }
     renderStatComparison();
     renderRecommendationResults();
+    renderLateGamePanel();
 }
 
 function renderSubstatPicker(container) {
@@ -2025,6 +2135,7 @@ function renderMainGrid() {
 
     const catalogItems = Object.entries(items).filter(([name, data]) => {
         if (!isItemEligibleForBuild(data, activeBuildType)) return false;
+        if (activeBuildType === BUILD_TYPES.LATE && !lateRarityFilters.has(data.type)) return false;
         
         // Item search filtering
         const itemSearchInput = document.getElementById('item-search');
@@ -2106,6 +2217,12 @@ function renderMainGrid() {
         const card = createItemCard(name);
         grid.appendChild(card);
     });
+
+    const count = document.getElementById('catalog-item-count');
+    if (count) count.textContent = `${catalogItems.length} ${t('itemsShown')}`;
+    if (catalogItems.length === 0) {
+        grid.innerHTML = `<p class="empty-msg catalog-empty">${t('noMatchingItems')}</p>`;
+    }
 }
 
 function createItemCard(name) {
@@ -2118,6 +2235,9 @@ function createItemCard(name) {
     card.style.setProperty('--item-card-start', gradeStyle.cardStart);
     card.style.setProperty('--item-card-end', gradeStyle.cardEnd);
     card.classList.toggle('selected', getBuild().has(name));
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${getItemName(name)}, ${TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item.type}`);
 
     const img = document.createElement('img');
     img.src = getItemImagePath(name);
@@ -2140,6 +2260,11 @@ function createItemCard(name) {
     });
 
     card.addEventListener('click', () => toggleSelection(name));
+    card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        toggleSelection(name);
+    });
     return card;
 }
 
@@ -2150,7 +2275,8 @@ function showGlobalTooltip(name, trigger = null) {
     const tooltip = document.getElementById('global-tooltip');
     if (!tooltip) return;
     
-    const typeColor = getItemGradeStyle(itemData.type).color;
+    const gradeStyle = getItemGradeStyle(itemData.type);
+    const typeColor = gradeStyle.color;
     const partName = PART_NAMES[itemData.part] ? PART_NAMES[itemData.part][currentLanguage] : itemData.part;
     const typeName = TYPE_NAMES[itemData.type] ? TYPE_NAMES[itemData.type][currentLanguage] : itemData.type;
     
@@ -2215,6 +2341,9 @@ function showGlobalTooltip(name, trigger = null) {
     }
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
+    tooltip.style.setProperty('--tooltip-start', gradeStyle.cardStart);
+    tooltip.style.setProperty('--tooltip-end', gradeStyle.cardEnd);
+    tooltip.style.setProperty('--tooltip-border', gradeStyle.color);
     applyItemImageFallbacks(tooltip);
     activeTooltipTrigger = trigger;
     tooltip.style.display = 'block';
@@ -2318,7 +2447,15 @@ function updateMainGridVisuals() {
 function updateSelectedPanel({ buildChanged = false } = {}) {
     const container = document.getElementById('selected-item-grid');
     if (!container) return;
-    container.innerHTML = ''; 
+    container.innerHTML = '';
+
+    if (activeBuildType === BUILD_TYPES.LATE) {
+        renderLateBuildSlots(container);
+        renderLateGamePanel();
+        return;
+    }
+
+    container.classList.remove('late-build-grid');
 
     const build = getBuild();
     if (build.size === 0) {
@@ -2357,6 +2494,124 @@ function updateSelectedPanel({ buildChanged = false } = {}) {
         selectedRoutes = [];
         renderStatComparison();
     }
+}
+
+function renderLateBuildSlots(container) {
+    container.classList.add('late-build-grid');
+
+    EQUIPMENT_SLOTS.forEach(slot => {
+        const slotContainer = document.createElement('div');
+        slotContainer.className = 'late-build-slot';
+        slotContainer.dataset.slot = slot;
+
+        const label = document.createElement('span');
+        label.className = 'late-build-slot-label';
+        label.textContent = PART_NAMES[slot][currentLanguage];
+        slotContainer.appendChild(label);
+
+        const itemName = getBuildItemForSlot(lateBuild, slot);
+        if (itemName) {
+            const card = createItemCard(itemName);
+            card.classList.add('late-build-slot-card');
+            card.title = currentLanguage === 'ko' ? '클릭하여 제거' : 'Click to remove';
+            slotContainer.appendChild(card);
+        } else {
+            const emptyButton = document.createElement('button');
+            emptyButton.type = 'button';
+            emptyButton.className = 'late-build-empty-slot';
+            emptyButton.setAttribute('aria-label', `${PART_NAMES[slot][currentLanguage]}: ${t('clickToAddLate')}`);
+            emptyButton.innerHTML = `<img src="images/ui/${slot}.png" alt=""><span>+</span>`;
+            emptyButton.addEventListener('click', () => {
+                const filterButton = document.querySelector(`.filter-row .filter-btn[data-filter="${slot}"]`);
+                if (filterButton) filterButton.click();
+                document.getElementById('item-search')?.focus();
+            });
+            slotContainer.appendChild(emptyButton);
+        }
+
+        container.appendChild(slotContainer);
+    });
+}
+
+function saveLateComparisonBuild(index) {
+    if (index !== 0 && index !== 1) return;
+    const snapshot = createLateBuildSnapshot();
+    if (!snapshot) return;
+    lateComparisonBuilds[index] = snapshot;
+    renderLateGamePanel();
+}
+
+function loadLateComparisonBuild(index) {
+    const snapshot = lateComparisonBuilds[index];
+    if (!snapshot) return;
+    lateBuild.clear();
+    snapshot.forEach(name => addItemToBuild(name, BUILD_TYPES.LATE));
+    updateMainGridVisuals();
+    updateSelectedPanel({ buildChanged: true });
+}
+
+function renderLateSnapshot(snapshot, index) {
+    const label = index === 0 ? t('buildA') : t('buildB');
+    if (!snapshot) {
+        return `<div class="late-snapshot-card empty"><strong>${label}</strong><span>—</span></div>`;
+    }
+
+    const icons = snapshot.map(name => {
+        const item = items[name];
+        const gradeStyle = getItemGradeStyle(item && item.type);
+        return `<div class="late-snapshot-icon" style="--item-card-start:${gradeStyle.cardStart};--item-card-end:${gradeStyle.cardEnd}" title="${escapeAttribute(getItemName(name))}">
+            <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
+        </div>`;
+    }).join('');
+
+    return `<div class="late-snapshot-card">
+        <div class="late-snapshot-head"><strong>${label}</strong><button type="button" class="late-load-btn" data-late-load="${index}">${t('loadBuild')}</button></div>
+        <div class="late-snapshot-items">${icons}</div>
+    </div>`;
+}
+
+function renderLateGamePanel() {
+    const panel = document.getElementById('late-game-panel');
+    if (!panel || activeBuildType !== BUILD_TYPES.LATE) return;
+
+    const filledSlots = EQUIPMENT_SLOTS.filter(slot => !!getBuildItemForSlot(lateBuild, slot)).length;
+    const complete = isLateBuildComplete();
+    const progress = document.getElementById('late-build-progress');
+    if (progress) {
+        progress.textContent = `${filledSlots} / ${EQUIPMENT_SLOTS.length}`;
+        progress.classList.toggle('complete', complete);
+    }
+
+    const currentStats = document.getElementById('late-current-stats');
+    if (currentStats) {
+        currentStats.innerHTML = lateBuild.size
+            ? renderSingleStatColumn(calculateBuildStats(Array.from(lateBuild)))
+            : `<p class="empty-msg">${t('noBuildStats')}</p>`;
+    }
+
+    document.querySelectorAll('.late-save-btn').forEach(button => {
+        button.disabled = !complete;
+        button.title = complete ? '' : t('incompleteLateBuild');
+    });
+
+    const clearButton = document.getElementById('clear-late-comparison-btn');
+    if (clearButton) clearButton.disabled = !lateComparisonBuilds.some(Boolean);
+
+    const output = document.getElementById('late-comparison-output');
+    if (!output) return;
+    const snapshots = lateComparisonBuilds.map((snapshot, index) => renderLateSnapshot(snapshot, index)).join('');
+    const comparison = lateComparisonBuilds.every(Boolean)
+        ? `<div class="late-stat-comparison">${renderComparisonColumns(
+            calculateBuildStats(lateComparisonBuilds[0]),
+            calculateBuildStats(lateComparisonBuilds[1]),
+            [t('buildA'), t('buildB')]
+        )}</div>`
+        : `<p class="empty-msg late-comparison-waiting">${t('comparisonWaiting')}</p>`;
+    output.innerHTML = `<div class="late-snapshot-grid">${snapshots}</div>${comparison}`;
+    applyItemImageFallbacks(output);
+    output.querySelectorAll('[data-late-load]').forEach(button => {
+        button.addEventListener('click', () => loadLateComparisonBuild(Number(button.dataset.lateLoad)));
+    });
 }
 
 // ==========================================
@@ -2591,7 +2846,7 @@ function renderSingleStatColumn(stats) {
     return html;
 }
 
-function renderComparisonColumns(stats1, stats2) {
+function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route2')]) {
     let html = `<div style="flex:1; display:flex; gap:20px;">`;
     
     // Shared portrait
@@ -2635,9 +2890,9 @@ function renderComparisonColumns(stats1, stats2) {
     html += portraitHtml;
     
     html += `<div style="display:flex; justify-content:center; margin-bottom:5px; font-weight:bold; border-bottom:2px solid #ccc;">
-        <span style="flex:1; text-align:right; color:#2980b9;">${t('route1')}</span>
+        <span style="flex:1; text-align:right; color:#2980b9;">${escapeAttribute(labels[0])}</span>
         <span style="flex:1.5;"></span>
-        <span style="flex:1; text-align:left; color:#8e44ad;">${t('route2')}</span>
+        <span style="flex:1; text-align:left; color:#8e44ad;">${escapeAttribute(labels[1])}</span>
     </div>`;
 
     commonStats.forEach(item => html += renderRow(item, true));

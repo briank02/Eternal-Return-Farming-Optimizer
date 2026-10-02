@@ -39,6 +39,9 @@ items = {
     'Legend Blade': { type: 'Legend', part: 'Weapon', weaponType: 'TestSword', stats: { attackPower: 30 } },
     'Mythic Blade': { type: 'Mythic', part: 'Weapon', weaponType: 'TestSword', stats: { attackPower: 40 } },
     'Legend Chest': { type: 'Legend', part: 'Chest', passiveSkill: { name: 'Late Passive' } },
+    'Legend Head': { type: 'Legend', part: 'Head' },
+    'Legend Arm': { type: 'Legend', part: 'Arm' },
+    'Legend Leg': { type: 'Legend', part: 'Leg' },
     'Material': { type: 'Common', part: 'Misc' }
 };
 
@@ -60,6 +63,15 @@ assert.equal(lateBuild.size, 2, 'Late builds allow only one item per equipment s
 assert.equal(lateBuild.has('Legend Blade'), false);
 assert.equal(lateBuild.has('Mythic Blade'), true);
 assert.equal(earlyBuild.size, 2, 'Late selections do not modify the early build');
+assert.equal(isLateBuildComplete(lateBuild), false, 'Partial late builds are not comparison-ready');
+addItemToBuild('Legend Head', BUILD_TYPES.LATE);
+addItemToBuild('Legend Arm', BUILD_TYPES.LATE);
+addItemToBuild('Legend Leg', BUILD_TYPES.LATE);
+assert.equal(isLateBuildComplete(lateBuild), true, 'A late build is complete only when every slot is filled');
+const lateSnapshot = createLateBuildSnapshot(lateBuild);
+assert.deepEqual(Array.from(lateSnapshot), ['Mythic Blade', 'Legend Chest', 'Legend Head', 'Legend Arm', 'Legend Leg']);
+lateBuild.delete('Legend Leg');
+assert.equal(lateSnapshot.includes('Legend Leg'), true, 'Comparison snapshots are independent from later build edits');
 
 buildSelectableStats(BUILD_TYPES.EARLY);
 assert.equal(SELECTABLE_STATS.some(stat => stat.id === 'attackPower'), true);

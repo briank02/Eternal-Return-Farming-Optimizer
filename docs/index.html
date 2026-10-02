@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Farming Route Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=14-workflow-1">
+    <link rel="stylesheet" href="style.css?v=15-late-builder-2">
 </head>
 
 <body>
@@ -79,6 +79,18 @@
                 </div>
             </div>
 
+            <div id="late-rarity-filter-group" hidden>
+                <div class="filter-label" data-i18n="rarity">Rarity</div>
+                <div class="rarity-filter-row" role="group" aria-label="Rarity">
+                    <button type="button" class="rarity-filter-btn legend active" data-grade="Legend" aria-pressed="true">
+                        <span data-i18n="legendary">Legendary</span>
+                    </button>
+                    <button type="button" class="rarity-filter-btn mythic active" data-grade="Mythic" aria-pressed="true">
+                        <span data-i18n="mythic">Mythic</span>
+                    </button>
+                </div>
+            </div>
+
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="weaponType">Weapon Type</div>
             <div id="weapon-subfilters" class="weapon-filter-row" style="margin-bottom:10px;">
                 <!-- Weapon subfilters will be injected here via JS -->
@@ -114,7 +126,10 @@
 
             <div id="optimizer-view" class="mode-view active">
                 <hr style="flex-shrink: 0;">
-                <h2 id="item-catalog-heading" data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
+                <div class="catalog-heading-row">
+                    <h2 id="item-catalog-heading" data-i18n="selectEpicItems">Select Epic Items</h2>
+                    <span id="catalog-item-count" class="catalog-item-count"></span>
+                </div>
                 <div style="margin-bottom: 10px; flex-shrink: 0;">
                     <input type="text" id="item-search" data-i18n-placeholder="searchItemPlaceholder" placeholder="Search item..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
                 </div>
@@ -177,11 +192,33 @@
                 </div>
             </div>
 
-            <div id="late-game-panel" class="late-game-shell" hidden>
-                <div class="late-game-shell-badge" data-i18n="lateGameBuild">Late-Game Build</div>
-                <h2 data-i18n="lateGameShellTitle">Assemble your final build</h2>
-                <p data-i18n="lateGameShellDescription">Select Legendary and Mythic equipment from the catalog. Your Early build is preserved when you switch workflows.</p>
+            <div id="late-game-panel" class="late-game-panel" hidden>
+                <div class="late-game-panel-header">
+                    <div>
+                        <div class="late-game-shell-badge" data-i18n="lateGameBuild">Late-Game Build</div>
+                        <h2 data-i18n="lateBuildSummary">Final Build Summary</h2>
+                    </div>
+                    <span id="late-build-progress" class="late-build-progress">0 / 5</span>
+                </div>
                 <p class="late-game-route-note" data-i18n="lateGameRouteNote">Farming-route optimization is available only in Early Game Route mode.</p>
+
+                <section class="late-summary-section" aria-labelledby="late-current-stats-heading">
+                    <h3 id="late-current-stats-heading" data-i18n="currentBuildStats">Current Build Stats</h3>
+                    <div id="late-current-stats" class="late-current-stats"></div>
+                </section>
+
+                <section class="late-comparison-section" aria-labelledby="late-comparison-heading">
+                    <div class="late-section-heading">
+                        <h3 id="late-comparison-heading" data-i18n="buildComparison">Build Comparison</h3>
+                        <button type="button" id="clear-late-comparison-btn" class="late-secondary-btn" data-i18n="clearComparison">Clear</button>
+                    </div>
+                    <p class="late-comparison-help" data-i18n="comparisonHelp">Save a complete build, change your items, then save the second build to compare them.</p>
+                    <div class="late-comparison-actions">
+                        <button type="button" id="save-late-build-a" class="late-save-btn" data-slot="0" data-i18n="saveBuildA">Save as Build A</button>
+                        <button type="button" id="save-late-build-b" class="late-save-btn" data-slot="1" data-i18n="saveBuildB">Save as Build B</button>
+                    </div>
+                    <div id="late-comparison-output" class="late-comparison-output"></div>
+                </section>
             </div>
         </section>
 
@@ -195,7 +232,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=14-workflow-1"></script>
+    <script src="script.js?v=15-late-builder-2"></script>
 </body>
 
 </html>
