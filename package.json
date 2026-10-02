@@ -9,7 +9,8 @@
     "assets:migrate": "node scripts/migrate-image-assets.js",
     "assets:update": "node scripts/update-image-paths.js",
     "assets:validate": "node scripts/validate-image-assets.js",
-    "test": "npm run assets:validate"
+    "test:build-state": "node scripts/test-build-state.js",
+    "test": "npm run assets:validate && npm run test:build-state"
   },
   "repository": {
     "type": "git",

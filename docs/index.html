@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Farming Route Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=12-mobile-1">
+    <link rel="stylesheet" href="style.css?v=14-workflow-1">
 </head>
 
 <body>
@@ -28,6 +28,13 @@
             <button id="theme-toggle">🌙 / ☀️</button>
         </div>
     </header>
+
+    <nav class="workflow-switch-bar" aria-label="Build workflow">
+        <div class="workflow-switch" role="group" aria-label="Build workflow">
+            <button type="button" class="workflow-btn active" data-build-type="early" aria-pressed="true" data-i18n="earlyGameRoute">Early Game Route</button>
+            <button type="button" class="workflow-btn" data-build-type="late" aria-pressed="false" data-i18n="lateGameBuild">Late-Game Build</button>
+        </div>
+    </nav>
 
     <main class="main-container">
 
@@ -97,7 +104,7 @@
 
             <div class="selection-header" style="flex-shrink: 0;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <h2 style="margin:0;" data-i18n="yourBuild">Your Build</h2>
+                    <h2 id="build-heading" style="margin:0;" data-i18n="yourEarlyBuild">Your Early Build</h2>
                     <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'" data-i18n="resetBuild">Reset Build</button>
                 </div>
                 <div id="selected-item-grid" class="grid-view small-grid">
@@ -107,11 +114,11 @@
 
             <div id="optimizer-view" class="mode-view active">
                 <hr style="flex-shrink: 0;">
-                <h2 data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
+                <h2 id="item-catalog-heading" data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
                 <div style="margin-bottom: 10px; flex-shrink: 0;">
                     <input type="text" id="item-search" data-i18n-placeholder="searchItemPlaceholder" placeholder="Search item..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
                 </div>
-                <div id="epic-item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
+                <div id="item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
             </div>
 
             <div id="recommendations-view" class="mode-view">
@@ -169,6 +176,13 @@
                     <p class="empty-msg" data-i18n="selectRoutesToCompare">Select routes to see stat comparison.</p>
                 </div>
             </div>
+
+            <div id="late-game-panel" class="late-game-shell" hidden>
+                <div class="late-game-shell-badge" data-i18n="lateGameBuild">Late-Game Build</div>
+                <h2 data-i18n="lateGameShellTitle">Assemble your final build</h2>
+                <p data-i18n="lateGameShellDescription">Select Legendary and Mythic equipment from the catalog. Your Early build is preserved when you switch workflows.</p>
+                <p class="late-game-route-note" data-i18n="lateGameRouteNote">Farming-route optimization is available only in Early Game Route mode.</p>
+            </div>
         </section>
 
     </main>
@@ -181,7 +195,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=12-footer-1"></script>
+    <script src="script.js?v=14-workflow-1"></script>
 </body>
 
 </html>

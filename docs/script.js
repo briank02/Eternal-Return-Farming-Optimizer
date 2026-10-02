@@ -14,6 +14,8 @@ const DICT = {
         weaponType: "Weapon Type",
         substats: "Item Stats",
         passiveSkills: "Unique Passives",
+        earlyGameRoute: "Early Game Route",
+        lateGameBuild: "Late-Game Build",
         routeOptimizerTab: "Item Selection",
         recommendationsTab: "Item Recommendations",
         addPriorityStat: "Add priority stat",
@@ -36,9 +38,16 @@ const DICT = {
         resetStats: "Reset",
         searchStatsPlaceholder: "Search stats...",
         yourBuild: "Your Build",
+        yourEarlyBuild: "Your Early Build",
+        yourLateBuild: "Your Late-Game Build",
         resetBuild: "Reset Build",
         clickToAdd: "Click items below to add them to your build.",
+        clickToAddLate: "Choose one Legendary or Mythic item for each equipment slot.",
         selectEpicItems: "Select Epic Items",
+        selectLateItems: "Select Legendary and Mythic Items",
+        lateGameShellTitle: "Assemble your final build",
+        lateGameShellDescription: "Select Legendary and Mythic equipment from the catalog. Your Early build is preserved when you switch workflows.",
+        lateGameRouteNote: "Farming-route optimization is available only in Early Game Route mode.",
         optimizeRoute: "Run Optimizer",
         optimizeThenCompare: "Optimize a route, then click up to 2 routes below to compare stats.",
         itemStatsComparison: "Item Stats Comparison",
@@ -72,9 +81,18 @@ const DICT = {
         resetStats: "초기화",
         searchStatsPlaceholder: "스탯 검색...",
         yourBuild: "내 빌드",
+        yourEarlyBuild: "내 초반 빌드",
+        yourLateBuild: "내 후반 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
+        clickToAddLate: "각 장비 부위에 전설 또는 신화 아이템을 하나씩 선택하세요.",
         selectEpicItems: "영웅 아이템 선택",
+        selectLateItems: "전설 및 신화 아이템 선택",
+        earlyGameRoute: "초반 파밍 루트",
+        lateGameBuild: "후반 빌드",
+        lateGameShellTitle: "최종 빌드를 구성하세요",
+        lateGameShellDescription: "목록에서 전설 및 신화 장비를 선택하세요. 모드를 전환해도 초반 빌드는 유지됩니다.",
+        lateGameRouteNote: "파밍 루트 최적화는 초반 파밍 루트 모드에서만 사용할 수 있습니다.",
         optimizeRoute: "옵티마이저 실행",
         optimizeThenCompare: "옵티마이저 실행 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
         itemStatsComparison: "아이템 스탯 비교",
@@ -210,7 +228,7 @@ function getStatName(id) {
     return STAT_LABELS[id] || { en: prettifyStatId(id), ko: prettifyStatId(id) };
 }
 
-function buildDisplayStats() {
+function buildDisplayStats(buildType = activeBuildType) {
     const orderedIds = [];
     const seen = new Set();
     const addId = (id) => {
@@ -228,8 +246,8 @@ function buildDisplayStats() {
 
     DISPLAY_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
     ITEM_TOOLTIP_STATS = DISPLAY_STATS;
-    buildSelectableStats();
-    buildPassiveSkillOptions();
+    buildSelectableStats(buildType);
+    buildPassiveSkillOptions(buildType);
 }
 
 function getSelectableStats() {
@@ -245,8 +263,7 @@ function sortStatsByCurrentLanguage(stats) {
     });
 }
 
-function buildSelectableStats() {
-    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+function buildSelectableStats(buildType = activeBuildType) {
     const actualIds = new Set();
     const normalizeId = (id) => id === 'moveSpeedRatio' ? 'moveSpeed' : id;
     const addActualId = (id) => {
@@ -256,7 +273,7 @@ function buildSelectableStats() {
     };
 
     Object.values(items).forEach(item => {
-        if (item.type !== 'Epic' || !equipmentParts.has(item.part)) return;
+        if (!isItemEligibleForBuild(item, buildType)) return;
         Object.keys(item.stats || {}).forEach(addActualId);
         Object.keys(item.uniqueStats || {}).forEach(addActualId);
         Object.keys(item.statsByLv || {}).forEach(addActualId);
@@ -278,12 +295,11 @@ function buildSelectableStats() {
     SELECTABLE_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
 }
 
-function buildPassiveSkillOptions() {
-    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+function buildPassiveSkillOptions(buildType = activeBuildType) {
     const passiveMap = new Map();
 
     Object.values(items).forEach(item => {
-        if (item.type !== 'Epic' || !equipmentParts.has(item.part) || !item.passiveSkill) return;
+        if (!isItemEligibleForBuild(item, buildType) || !item.passiveSkill) return;
         if (!passiveMap.has(item.passiveSkill.name)) {
             passiveMap.set(item.passiveSkill.name, {
                 id: item.passiveSkill.name,
@@ -316,7 +332,53 @@ function getWeaponTypeName(api) {
     return weapon ? weapon.name[currentLanguage] : api;
 }
 
-const BUILD_SLOT_ORDER = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
+const BUILD_TYPES = Object.freeze({
+    EARLY: 'early',
+    LATE: 'late'
+});
+
+const EQUIPMENT_SLOTS = Object.freeze(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+const BUILD_SLOT_ORDER = Object.freeze(
+    Object.fromEntries(EQUIPMENT_SLOTS.map((slot, index) => [slot, index + 1]))
+);
+const BUILD_CONFIG = Object.freeze({
+    [BUILD_TYPES.EARLY]: Object.freeze({
+        grades: Object.freeze(['Epic']),
+        selectionMode: 'variants',
+        routeEnabled: true
+    }),
+    [BUILD_TYPES.LATE]: Object.freeze({
+        grades: Object.freeze(['Legend', 'Mythic']),
+        selectionMode: 'single-per-slot',
+        routeEnabled: false
+    })
+});
+
+const ITEM_GRADE_STYLES = Object.freeze({
+    Epic: Object.freeze({ color: '#9b59b6', cardStart: '#302A40', cardEnd: '#511D8C' }),
+    Legend: Object.freeze({ color: '#f1c40f', cardStart: '#493d16', cardEnd: '#8a6810' }),
+    Mythic: Object.freeze({ color: '#e74c3c', cardStart: '#491f25', cardEnd: '#8c1d2a' })
+});
+
+function getBuildConfig(buildType = activeBuildType) {
+    return BUILD_CONFIG[buildType] || BUILD_CONFIG[BUILD_TYPES.EARLY];
+}
+
+function getBuild(buildType = activeBuildType) {
+    return buildsByType[buildType] || earlyBuild;
+}
+
+function isEquipmentItem(item) {
+    return !!item && Object.prototype.hasOwnProperty.call(BUILD_SLOT_ORDER, item.part);
+}
+
+function isItemEligibleForBuild(item, buildType = activeBuildType) {
+    return isEquipmentItem(item) && getBuildConfig(buildType).grades.includes(item.type);
+}
+
+function getItemGradeStyle(grade) {
+    return ITEM_GRADE_STYLES[grade] || ITEM_GRADE_STYLES.Epic;
+}
 
 function sortItemsByBuildSlot(itemNames) {
     return [...itemNames].sort((a, b) => {
@@ -346,24 +408,119 @@ function getItemStatValue(item, statId, level = charLevel) {
     }, 0);
 }
 
-const selectedEpics = new Set();
-let currentMode = "optimizer";
+const earlyBuild = new Set();
+const lateBuild = new Set();
+const buildsByType = Object.freeze({
+    [BUILD_TYPES.EARLY]: earlyBuild,
+    [BUILD_TYPES.LATE]: lateBuild
+});
+const WORKFLOW_STORAGE_KEY = 'workflowMode';
+const buildFilterState = {
+    [BUILD_TYPES.EARLY]: {
+        part: 'All',
+        weapon: 'All',
+        substats: new Set(),
+        passiveSkills: new Set(),
+        search: ''
+    },
+    [BUILD_TYPES.LATE]: {
+        part: 'All',
+        weapon: 'All',
+        substats: new Set(),
+        passiveSkills: new Set(),
+        search: ''
+    }
+};
+let activeBuildType = BUILD_TYPES.EARLY;
+let currentCenterMode = "optimizer";
+let earlyCenterMode = "optimizer";
 let recommendationPriorities = [];
 let recommendationConstraints = {};
 let recommendationResults = [];
 let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
 const recommendationRouteCache = new Map();
-let currentFilter = "All"; // Track active filter
-let currentWeaponFilter = "All";
-let activeSubstats = new Set();
-let activePassiveSkills = new Set();
+let currentFilter = buildFilterState[BUILD_TYPES.EARLY].part;
+let currentWeaponFilter = buildFilterState[BUILD_TYPES.EARLY].weapon;
+let activeSubstats = buildFilterState[BUILD_TYPES.EARLY].substats;
+let activePassiveSkills = buildFilterState[BUILD_TYPES.EARLY].passiveSkills;
 let currentCharacter = null;
 let chars = {};
 let charLevel = 1;
 let selectedRoutes = [];
 let generatedRoutes = [];
 let activeTooltipTrigger = null;
+
+function resolveInitialBuildType(search = '', storedMode = null) {
+    const queryMode = new URLSearchParams(search).get('mode');
+    if (queryMode === BUILD_TYPES.EARLY || queryMode === BUILD_TYPES.LATE) return queryMode;
+    if (storedMode === BUILD_TYPES.EARLY || storedMode === BUILD_TYPES.LATE) return storedMode;
+    return BUILD_TYPES.EARLY;
+}
+
+function saveCurrentBuildFilterState() {
+    const state = buildFilterState[activeBuildType];
+    state.part = currentFilter;
+    state.weapon = currentWeaponFilter;
+    state.substats = activeSubstats;
+    state.passiveSkills = activePassiveSkills;
+    const itemSearch = document.getElementById('item-search');
+    if (itemSearch) state.search = itemSearch.value;
+}
+
+function loadBuildFilterState(buildType) {
+    const state = buildFilterState[buildType];
+    currentFilter = state.part;
+    currentWeaponFilter = state.weapon;
+    activeSubstats = state.substats;
+    activePassiveSkills = state.passiveSkills;
+}
+
+const ECHION_EXCLUSIVE_WEAPONS = new Set([
+    "Black Mamba King",
+    "Deathadder Queen",
+    "Alpha Sidewinder"
+]);
+
+function isItemCompatibleWithCharacter(itemName, characterName = currentCharacter) {
+    const item = items[itemName];
+    if (!item) return false;
+    if (!characterName) return true;
+
+    const character = chars[characterName];
+    if (!character) return false;
+    if (item.part === 'Weapon' && !character.masteries.includes(item.weaponType)) return false;
+    if (itemName === 'Harmony in Full Bloom' && characterName !== 'Priya') return false;
+    if (characterName === 'Priya' && item.part === 'Head' && itemName !== 'Harmony in Full Bloom') return false;
+    if (characterName !== 'Echion' && (ECHION_EXCLUSIVE_WEAPONS.has(itemName) || item.weaponType === 'VFArm')) return false;
+    return true;
+}
+
+function removeIncompatibleBuildItems(buildType, characterName = currentCharacter) {
+    const build = getBuild(buildType);
+    let changed = false;
+    for (const itemName of build) {
+        if (!isItemEligibleForBuild(items[itemName], buildType) || !isItemCompatibleWithCharacter(itemName, characterName)) {
+            build.delete(itemName);
+            changed = true;
+        }
+    }
+    return changed;
+}
+
+function addItemToBuild(itemName, buildType = activeBuildType) {
+    const item = items[itemName];
+    if (!isItemEligibleForBuild(item, buildType) || !isItemCompatibleWithCharacter(itemName)) return false;
+
+    const build = getBuild(buildType);
+    if (getBuildConfig(buildType).selectionMode === 'single-per-slot') {
+        for (const selectedName of build) {
+            if (items[selectedName] && items[selectedName].part === item.part) build.delete(selectedName);
+        }
+    }
+    build.add(itemName);
+    return true;
+}
 
 const SUBSTATS = [
     { id: 'attackPower', name: { en: 'Attack Power', ko: '공격력' } },
@@ -464,7 +621,8 @@ const PART_NAMES = {
 
 const TYPE_NAMES = {
     "Epic": { en: "Epic", ko: "영웅" },
-    "Legendary": { en: "Legendary", ko: "전설" }
+    "Legend": { en: "Legendary", ko: "전설" },
+    "Mythic": { en: "Mythic", ko: "신화" }
 };
 
 const WEAPON_TYPES = [
@@ -506,6 +664,86 @@ let items = {};
 let mapData = {};
 let dataMeta = {};
 
+function setTranslatedElement(id, key) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.dataset.i18n = key;
+    element.textContent = t(key);
+}
+
+function renderCenterMode(mode) {
+    currentCenterMode = mode === 'recommendations' ? 'recommendations' : 'optimizer';
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+        tab.classList.toggle('active', tab.dataset.mode === currentCenterMode);
+    });
+    document.querySelectorAll('.mode-view').forEach(view => {
+        view.classList.toggle('active', view.id === `${currentCenterMode}-view`);
+    });
+}
+
+function renderWorkflowShell() {
+    const isEarly = activeBuildType === BUILD_TYPES.EARLY;
+    document.body.dataset.workflow = activeBuildType;
+
+    document.querySelectorAll('.workflow-btn').forEach(button => {
+        const selected = button.dataset.buildType === activeBuildType;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+    });
+
+    const modeTabs = document.querySelector('.mode-tabs');
+    if (modeTabs) modeTabs.hidden = !isEarly;
+    renderCenterMode(isEarly ? earlyCenterMode : 'optimizer');
+
+    ['calculate-btn', 'route-results-container', 'resizer', 'stat-calculator'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.hidden = !isEarly;
+    });
+    const lateGamePanel = document.getElementById('late-game-panel');
+    if (lateGamePanel) lateGamePanel.hidden = isEarly;
+
+    setTranslatedElement('build-heading', isEarly ? 'yourEarlyBuild' : 'yourLateBuild');
+    setTranslatedElement('item-catalog-heading', isEarly ? 'selectEpicItems' : 'selectLateItems');
+
+    const itemSearch = document.getElementById('item-search');
+    if (itemSearch) itemSearch.value = buildFilterState[activeBuildType].search;
+}
+
+function updateWorkflowUrl(buildType) {
+    const url = new URL(window.location.href);
+    if (buildType === BUILD_TYPES.LATE) url.searchParams.set('mode', BUILD_TYPES.LATE);
+    else url.searchParams.delete('mode');
+    window.history.replaceState({}, '', url);
+}
+
+function switchBuildType(buildType, { persist = true, updateUrl = true } = {}) {
+    if (!BUILD_CONFIG[buildType]) return;
+
+    saveCurrentBuildFilterState();
+    if (activeBuildType === BUILD_TYPES.EARLY) earlyCenterMode = currentCenterMode;
+    activeBuildType = buildType;
+    loadBuildFilterState(buildType);
+
+    if (persist) localStorage.setItem(WORKFLOW_STORAGE_KEY, buildType);
+    if (updateUrl) updateWorkflowUrl(buildType);
+
+    buildDisplayStats(buildType);
+    hideGlobalTooltip();
+    renderWorkflowShell();
+    setupFilters();
+    renderMainGrid();
+    updateSelectedPanel();
+    if (buildType === BUILD_TYPES.EARLY) renderStatComparison();
+}
+
+function setupWorkflowSwitch() {
+    document.querySelectorAll('.workflow-btn').forEach(button => {
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => switchBuildType(button.dataset.buildType));
+        button.dataset.bound = 'true';
+    });
+}
+
 function renderDataStatus() {
     const patchElement = document.getElementById('data-patch');
     const updatedElement = document.getElementById('data-updated');
@@ -543,7 +781,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         mapData = data.mapData;
         chars = data.chars;
         dataMeta = data.meta || {};
-        buildDisplayStats();
+        activeBuildType = resolveInitialBuildType(
+            window.location.search,
+            localStorage.getItem(WORKFLOW_STORAGE_KEY)
+        );
+        loadBuildFilterState(activeBuildType);
+        localStorage.setItem(WORKFLOW_STORAGE_KEY, activeBuildType);
+        updateWorkflowUrl(activeBuildType);
+        buildDisplayStats(activeBuildType);
         renderDataStatus();
         
         // Removed loading screen logic
@@ -584,9 +829,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         // 1. Setup Filters
+        setupWorkflowSwitch();
         setupFilters();
         setupModeTabs();
         setupRecommendationControls();
+        renderWorkflowShell();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
         });
@@ -602,11 +849,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // 2. Initialize Grid
         renderMainGrid();
+        updateSelectedPanel();
 
         // 3. Setup Events
         const itemSearch = document.getElementById('item-search');
         if (itemSearch) {
             itemSearch.addEventListener('input', () => {
+                buildFilterState[activeBuildType].search = itemSearch.value;
                 renderMainGrid();
             });
             setupSearchClearButton(itemSearch);
@@ -614,7 +863,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const calculateBtn = document.getElementById('calculate-btn');
         if (calculateBtn) {
-            calculateBtn.addEventListener('click', calculateAllVariants);
+            calculateBtn.addEventListener('click', calculateEarlyRouteVariants);
         }
 
         const levelInput = document.getElementById('char-level');
@@ -627,7 +876,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 charLevel = val;
                 renderMainGrid();
                 renderStatComparison();
-                if (currentMode === "recommendations") {
+                if (currentCenterMode === "recommendations") {
                     recommendationResults = [];
                     renderRecommendationResults();
                 }
@@ -637,9 +886,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const resetBtn = document.getElementById('reset-build-btn');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
-                selectedEpics.clear();
+                getBuild().clear();
                 updateMainGridVisuals();
-                updateSelectedPanel();
+                updateSelectedPanel({ buildChanged: true });
             });
         }
 
@@ -650,6 +899,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const itemSearch = document.getElementById('item-search');
                 if (itemSearch) {
                     itemSearch.value = '';
+                    buildFilterState[activeBuildType].search = '';
                 }
 
                 // Reset character
@@ -745,10 +995,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function setupFilters() {
     const subfilterContainer = document.getElementById('weapon-subfilters');
+
+    if (currentCharacter && currentWeaponFilter !== 'All') {
+        const masteries = chars[currentCharacter] ? chars[currentCharacter].masteries : [];
+        if (!masteries.includes(currentWeaponFilter)) {
+            currentWeaponFilter = 'All';
+            buildFilterState[activeBuildType].weapon = 'All';
+        }
+    }
     
-    let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
+    let subHtml = `<div class="filter-btn weapon-btn ${currentWeaponFilter === 'All' ? 'active' : ''}" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
     WEAPON_TYPES.forEach(w => {
-        subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
+        subHtml += `<div class="filter-btn weapon-btn ${currentWeaponFilter === w.api ? 'active' : ''}" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
             <img src="${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
         </div>`;
     });
@@ -769,25 +1027,43 @@ function setupFilters() {
 
     const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+        if (btn.dataset.bound === 'true') return;
         btn.addEventListener('click', () => {
             topBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
             currentFilter = btn.dataset.filter;
+            buildFilterState[activeBuildType].part = currentFilter;
             
             // Subfilter container remains always visible now
             renderMainGrid();
         });
+        btn.dataset.bound = 'true';
     });
 
     const subBtns = document.querySelectorAll('#weapon-subfilters .filter-btn');
     const mainWeaponImg = document.querySelector('.filter-btn[data-filter="Weapon"] img');
+
+    if (currentCharacter && chars[currentCharacter]) {
+        const masteries = chars[currentCharacter].masteries;
+        subBtns.forEach(button => {
+            const weaponType = button.dataset.subfilter;
+            button.classList.toggle('disabled', weaponType !== 'All' && !masteries.includes(weaponType));
+        });
+    }
+
+    if (mainWeaponImg) {
+        const selectedWeapon = WEAPON_TYPES.find(weapon => weapon.api === currentWeaponFilter);
+        mainWeaponImg.src = selectedWeapon ? selectedWeapon.img : 'images/ui/Weapon.png';
+    }
 
     subBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             subBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentWeaponFilter = btn.dataset.subfilter;
+            buildFilterState[activeBuildType].weapon = currentWeaponFilter;
             recommendationResults = [];
 
             if (mainWeaponImg) {
@@ -808,19 +1084,19 @@ function setupFilters() {
 }
 
 function setupModeTabs() {
-    const tabs = document.querySelectorAll('.mode-tab');
-    const views = document.querySelectorAll('.mode-view');
-    tabs.forEach(tab => {
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+        if (tab.dataset.bound === 'true') return;
         tab.addEventListener('click', () => {
-            currentMode = tab.dataset.mode || 'optimizer';
-            tabs.forEach(t => t.classList.toggle('active', t === tab));
-            views.forEach(view => view.classList.toggle('active', view.id === `${currentMode}-view`));
-            if (currentMode === 'recommendations') {
+            if (activeBuildType !== BUILD_TYPES.EARLY) return;
+            earlyCenterMode = tab.dataset.mode || 'optimizer';
+            renderCenterMode(earlyCenterMode);
+            if (currentCenterMode === 'recommendations') {
                 setupRecommendationControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
             }
         });
+        tab.dataset.bound = 'true';
     });
 }
 
@@ -1057,7 +1333,7 @@ function renderRecommendationResults() {
 
 function generateRecommendedBuilds() {
     const candidateSlots = getRecommendationCandidatesBySlot();
-    const requiredSlots = ['Weapon', 'Chest', 'Head', 'Arm', 'Leg'];
+    const requiredSlots = EQUIPMENT_SLOTS;
     if (requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) return [];
 
     const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
@@ -1118,19 +1394,16 @@ function generateRecommendedBuilds() {
 }
 
 function getRecommendationCandidatesBySlot() {
-    const slots = { Weapon: [], Chest: [], Head: [], Arm: [], Leg: [] };
+    const slots = Object.fromEntries(EQUIPMENT_SLOTS.map(slot => [slot, []]));
     const masteries = currentCharacter && chars[currentCharacter] ? chars[currentCharacter].masteries : [];
-    const echionWeapons = new Set(["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"]);
 
     Object.entries(items).forEach(([name, item]) => {
-        if (item.type !== "Epic" || !slots[item.part]) return;
+        if (!isItemEligibleForBuild(item, BUILD_TYPES.EARLY)) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
         }
-        if (name === "Harmony in Full Bloom" && currentCharacter !== "Priya") return;
-        if (currentCharacter === "Priya" && item.part === "Head" && name !== "Harmony in Full Bloom") return;
-        if (currentCharacter !== "Echion" && (echionWeapons.has(name) || item.weaponType === "VFArm")) return;
+        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return;
         slots[item.part].push(name);
     });
 
@@ -1150,6 +1423,8 @@ function passesRecommendationPassiveRequirements(itemNames) {
 }
 
 function hasFeasibleRouteWithinZones(itemNames, maxZones) {
+    if (itemNames.some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) return false;
+
     const cacheKey = `${maxZones}|${[...itemNames].sort().join('|')}`;
     if (recommendationRouteCache.has(cacheKey)) return recommendationRouteCache.get(cacheKey);
 
@@ -1161,19 +1436,19 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
         "Harmony in Full Bloom"
     ]);
 
-    itemNames.forEach(epicName => {
-        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
-            items[epicName].components.forEach(mat => {
+    itemNames.forEach(itemName => {
+        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
+            items[itemName].components.forEach(mat => {
                 neededCounts[mat] = (neededCounts[mat] || 0) + 1;
             });
         }
     });
 
     const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
-    itemNames.forEach(epicName => {
-        const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components) {
-            epicData.components.forEach(comp => {
+    itemNames.forEach(itemName => {
+        const itemData = items[itemName];
+        if (itemData && itemData.part === "Weapon" && itemData.components) {
+            itemData.components.forEach(comp => {
                 if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
             });
         }
@@ -1347,8 +1622,8 @@ function applyRecommendedBuild(index) {
     const result = recommendationResults[index];
     if (!result) return;
 
-    selectedEpics.clear();
-    result.items.forEach(name => selectedEpics.add(name));
+    earlyBuild.clear();
+    result.items.forEach(name => earlyBuild.add(name));
     recommendationResults.forEach((entry, entryIndex) => {
         entry.applied = entryIndex === index;
     });
@@ -1513,29 +1788,14 @@ function selectCharacter(charName) {
     const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
 
     if (currentCharacter) {
-        let buildChanged = false;
-        for (const itemName of selectedEpics) {
-            const itemData = items[itemName];
-            if (itemData && itemData.part === "Weapon") {
-                if (!masteries.includes(itemData.weaponType)) {
-                    selectedEpics.delete(itemName);
-                    buildChanged = true;
-                }
-            } else if (itemName === "Harmony in Full Bloom" && currentCharacter !== "Priya") {
-                selectedEpics.delete(itemName);
-                buildChanged = true;
-            } else if (itemData && itemData.part === "Head" && currentCharacter === "Priya" && itemName !== "Harmony in Full Bloom") {
-                selectedEpics.delete(itemName);
-                buildChanged = true;
-            } else if (currentCharacter !== "Echion") {
-                const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-                if (echionWeapons.includes(itemName) || itemData.weaponType === "VFArm") {
-                    selectedEpics.delete(itemName);
-                    buildChanged = true;
-                }
-            }
-        }
-        if (buildChanged) updateSelectedPanel();
+        const buildChanges = Object.fromEntries(
+            Object.values(BUILD_TYPES).map(buildType => [
+                buildType,
+                removeIncompatibleBuildItems(buildType, currentCharacter)
+            ])
+        );
+        if (buildChanges[BUILD_TYPES.EARLY]) selectedRoutes = [];
+        if (Object.values(buildChanges).some(Boolean)) updateSelectedPanel();
     }
 
     let currentWeaponStillValid = currentCharacter === null;
@@ -1759,15 +2019,12 @@ function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {
 }
 
 function renderMainGrid() {
-    const grid = document.getElementById('epic-item-grid');
+    const grid = document.getElementById('item-grid');
     if (!grid) return;
     grid.innerHTML = ''; 
 
-    const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
-
-    const epicItems = Object.entries(items).filter(([name, data]) => {
-        if (data.type !== "Epic") return false;
-        if (!partOrder[data.part]) return false;
+    const catalogItems = Object.entries(items).filter(([name, data]) => {
+        if (!isItemEligibleForBuild(data, activeBuildType)) return false;
         
         // Item search filtering
         const itemSearchInput = document.getElementById('item-search');
@@ -1828,11 +2085,11 @@ function renderMainGrid() {
     const weaponOrderMap = {};
     WEAPON_TYPES.forEach((w, i) => weaponOrderMap[w.api] = i);
 
-    epicItems.sort((a, b) => {
+    catalogItems.sort((a, b) => {
         const dataA = a[1];
         const dataB = b[1];
-        const orderA = partOrder[dataA.part] || 99;
-        const orderB = partOrder[dataB.part] || 99;
+        const orderA = BUILD_SLOT_ORDER[dataA.part] || 99;
+        const orderB = BUILD_SLOT_ORDER[dataB.part] || 99;
         
         if (orderA !== orderB) return orderA - orderB;
         
@@ -1845,16 +2102,22 @@ function renderMainGrid() {
         return a[0].localeCompare(b[0]);
     });
 
-    epicItems.forEach(([name, data]) => {
+    catalogItems.forEach(([name]) => {
         const card = createItemCard(name);
         grid.appendChild(card);
     });
 }
 
 function createItemCard(name) {
+    const item = items[name];
+    const gradeStyle = getItemGradeStyle(item && item.type);
     const card = document.createElement('div');
     card.classList.add('item-card');
-    card.dataset.name = name; 
+    card.dataset.name = name;
+    card.dataset.grade = item ? item.type : '';
+    card.style.setProperty('--item-card-start', gradeStyle.cardStart);
+    card.style.setProperty('--item-card-end', gradeStyle.cardEnd);
+    card.classList.toggle('selected', getBuild().has(name));
 
     const img = document.createElement('img');
     img.src = getItemImagePath(name);
@@ -1887,7 +2150,7 @@ function showGlobalTooltip(name, trigger = null) {
     const tooltip = document.getElementById('global-tooltip');
     if (!tooltip) return;
     
-    const typeColor = '#9b59b6'; 
+    const typeColor = getItemGradeStyle(itemData.type).color;
     const partName = PART_NAMES[itemData.part] ? PART_NAMES[itemData.part][currentLanguage] : itemData.part;
     const typeName = TYPE_NAMES[itemData.type] ? TYPE_NAMES[itemData.type][currentLanguage] : itemData.type;
     
@@ -2016,37 +2279,21 @@ function hideGlobalTooltip() {
 }
 
 function toggleSelection(name) {
-    if (selectedEpics.has(name)) {
-        selectedEpics.delete(name);
+    const build = getBuild();
+    if (build.has(name)) {
+        build.delete(name);
     } else {
         // Unique Selection Logic
-        const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
         if (name === "Harmony in Full Bloom") {
             forceCharacterSelection("Priya");
-        } else if (echionWeapons.includes(name) || items[name].weaponType === "VFArm") {
+        } else if (ECHION_EXCLUSIVE_WEAPONS.has(name) || items[name].weaponType === "VFArm") {
             forceCharacterSelection("Echion");
         }
 
-        // If a character is selected, ensure we don't allow mismatching uniques
-        if (currentCharacter) {
-            if (currentCharacter === "Priya" && items[name].part === "Head" && name !== "Harmony in Full Bloom") {
-                return; // Deselect/block
-            }
-            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") {
-                return;
-            }
-            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) {
-                return;
-            }
-            if (items[name].part === "Weapon" && !chars[currentCharacter].masteries.includes(items[name].weaponType)) {
-                return;
-            }
-        }
-
-        selectedEpics.add(name);
+        if (!addItemToBuild(name)) return;
     }
     updateMainGridVisuals();
-    updateSelectedPanel();
+    updateSelectedPanel({ buildChanged: true });
 }
 
 function forceCharacterSelection(charName) {
@@ -2056,10 +2303,11 @@ function forceCharacterSelection(charName) {
 function updateMainGridVisuals() {
     // We only update visible cards. 
     // Since cards are re-created on filter change, this just handles selection state.
-    const cards = document.querySelectorAll('#epic-item-grid .item-card');
+    const build = getBuild();
+    const cards = document.querySelectorAll('#item-grid .item-card');
     cards.forEach(card => {
         const name = card.dataset.name;
-        if (selectedEpics.has(name)) {
+        if (build.has(name)) {
             card.classList.add('selected');
         } else {
             card.classList.remove('selected');
@@ -2067,24 +2315,32 @@ function updateMainGridVisuals() {
     });
 }
 
-function updateSelectedPanel() {
+function updateSelectedPanel({ buildChanged = false } = {}) {
     const container = document.getElementById('selected-item-grid');
     if (!container) return;
     container.innerHTML = ''; 
 
-    if (selectedEpics.size === 0) {
-        container.innerHTML = `<p class="empty-msg">${t('clickToAdd')}</p>`;
-        selectedRoutes = [];
-        renderStatComparison();
+    const build = getBuild();
+    if (build.size === 0) {
+        const emptyKey = activeBuildType === BUILD_TYPES.LATE ? 'clickToAddLate' : 'clickToAdd';
+        container.innerHTML = `<p class="empty-msg">${t(emptyKey)}</p>`;
+        if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
+            selectedRoutes = [];
+            renderStatComparison();
+        }
         return;
     }
 
-    const sortedEpics = sortItemsByBuildSlot(selectedEpics);
+    const sortedItems = sortItemsByBuildSlot(build);
 
-    sortedEpics.forEach(name => {
+    sortedItems.forEach(name => {
         const div = document.createElement('div');
         div.classList.add('item-card');
         div.title = "Click to remove";
+        const gradeStyle = getItemGradeStyle(items[name] && items[name].type);
+        div.dataset.grade = items[name] ? items[name].type : '';
+        div.style.setProperty('--item-card-start', gradeStyle.cardStart);
+        div.style.setProperty('--item-card-end', gradeStyle.cardEnd);
         
         const img = document.createElement('img');
         img.src = getItemImagePath(name);
@@ -2097,9 +2353,10 @@ function updateSelectedPanel() {
         container.appendChild(div);
     });
     
-    // Reset comparison when build changes
-    selectedRoutes = [];
-    renderStatComparison();
+    if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
+        selectedRoutes = [];
+        renderStatComparison();
+    }
 }
 
 // ==========================================
@@ -2395,12 +2652,12 @@ function renderComparisonColumns(stats1, stats2) {
 // MASTER LOGIC: VARIANT GENERATOR
 // ==========================================
 
-async function calculateAllVariants() {
+async function calculateEarlyRouteVariants() {
     const resultOutput = document.getElementById('result-output');
     resultOutput.innerHTML = t("calculating");
     console.clear();
 
-    if (selectedEpics.size === 0) {
+    if (earlyBuild.size === 0) {
         resultOutput.innerHTML = t("pleaseSelect");
         return;
     }
@@ -2408,7 +2665,8 @@ async function calculateAllVariants() {
     // 1. Group Selected Items by Part
     // e.g. { Weapon: [A, B], Chest: [C], Head: [D, E] }
     const slots = {};
-    selectedEpics.forEach(name => {
+    earlyBuild.forEach(name => {
+        if (!isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY)) return;
         const part = items[name].part;
         if (!slots[part]) slots[part] = [];
         slots[part].push(name);
@@ -2425,7 +2683,7 @@ async function calculateAllVariants() {
     combinations.forEach(combo => {
         // combo is Array of strings: ["WeaponName", "ChestName", ...]
         const buildSet = new Set(combo);
-        const routes = solveSpecificBuild(buildSet);
+        const routes = solveEarlyBuildRoute(buildSet);
         
         // Tag these routes with the specific variant used
         routes.forEach(r => {
@@ -2470,7 +2728,11 @@ function cartesianProduct(arrays) {
 // CORE SOLVER (Solves 1 specific combination)
 // ==========================================
 
-function solveSpecificBuild(buildSet) {
+function solveEarlyBuildRoute(buildSet) {
+    if (Array.from(buildSet).some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) {
+        return [];
+    }
+
     // --- STEP 1: CALCULATE NEEDS VS OWNED ---
     const neededCounts = {};
     const uniqueItemsToIgnore = new Set([
@@ -2480,9 +2742,9 @@ function solveSpecificBuild(buildSet) {
         "Harmony in Full Bloom"
     ]);
 
-    buildSet.forEach(epicName => {
-        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
-            items[epicName].components.forEach(mat => {
+    buildSet.forEach(itemName => {
+        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
+            items[itemName].components.forEach(mat => {
                 neededCounts[mat] = (neededCounts[mat] || 0) + 1;
             });
         }
@@ -2491,10 +2753,10 @@ function solveSpecificBuild(buildSet) {
     const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
 
     // Identify Base Weapon for THIS specific combination
-    buildSet.forEach(epicName => {
-        const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components) {
-            epicData.components.forEach(comp => {
+    buildSet.forEach(itemName => {
+        const itemData = items[itemName];
+        if (itemData && itemData.part === "Weapon" && itemData.components) {
+            itemData.components.forEach(comp => {
                 if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
             });
         }
