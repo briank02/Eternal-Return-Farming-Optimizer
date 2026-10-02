@@ -602,6 +602,70 @@ header {
     padding-right: 4px;
 }
 
+.recommendation-comparison {
+    flex-shrink: 0;
+    margin-bottom: 8px;
+}
+
+.recommendation-comparison > .empty-msg {
+    margin: 0;
+    padding: 7px 10px;
+    border: 1px dashed var(--border-color);
+    border-radius: 6px;
+}
+
+.recommendation-comparison-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--filter-bg);
+    padding: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.recommendation-comparison-head,
+.recommendation-comparison-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 70px 70px minmax(90px, auto);
+    gap: 8px;
+    align-items: center;
+}
+
+.recommendation-comparison-head {
+    color: var(--text-muted);
+    font-size: 0.78em;
+    padding: 0 5px 5px;
+}
+
+.recommendation-comparison-row {
+    border-top: 1px solid var(--border-color);
+    font-size: 0.83em;
+    padding: 5px;
+}
+
+.recommendation-comparison-row strong,
+.recommendation-comparison-head span {
+    text-align: right;
+}
+
+.recommendation-difference {
+    color: var(--text-muted);
+    text-align: right;
+    font-weight: bold;
+}
+
+.recommendation-difference.positive { color: #27ae60; }
+.recommendation-difference.negative { color: #e74c3c; }
+
+.recommendation-applied-message {
+    margin: 0;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: rgba(39, 174, 96, 0.14);
+    color: var(--text-main);
+    font-weight: bold;
+}
+
 .recommendation-card {
     width: 100%;
     border: 1px solid var(--border-color);
@@ -609,13 +673,13 @@ header {
     border-radius: 6px;
     background: var(--bg-main);
     color: var(--text-main);
-    cursor: pointer;
     padding: 10px;
     text-align: left;
 }
 
 .recommendation-card:hover,
-.recommendation-card.selected {
+.recommendation-card.selected,
+.recommendation-card.comparing {
     border-color: #f1c40f;
     box-shadow: 0 0 8px rgba(241, 196, 15, 0.25);
 }
@@ -639,7 +703,7 @@ header {
     height: 42px;
     border-radius: 5px;
     border: 1px solid var(--card-border);
-    background: linear-gradient(to bottom, #302A40, #511D8C);
+    background: linear-gradient(to bottom, var(--recommendation-item-start, #302A40), var(--recommendation-item-end, #511D8C));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -667,6 +731,51 @@ header {
     color: var(--text-main);
     padding: 3px 7px;
     font-size: 0.78em;
+}
+
+.recommendation-reasons {
+    margin-top: 8px;
+    color: var(--text-main);
+    font-size: 0.8em;
+}
+
+.recommendation-reasons ul {
+    margin: 4px 0 0;
+    padding-left: 20px;
+}
+
+.recommendation-reasons li + li {
+    margin-top: 2px;
+}
+
+.recommendation-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 7px;
+    margin-top: 9px;
+}
+
+.recommendation-apply-btn,
+.recommendation-compare-btn {
+    min-height: 34px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background: var(--bg-main);
+    color: var(--text-main);
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.recommendation-apply-btn {
+    border-color: #27ae60;
+    background: #27ae60;
+    color: white;
+}
+
+.recommendation-compare-btn[aria-pressed="true"] {
+    border-color: #f1c40f;
+    background: rgba(241, 196, 15, 0.16);
 }
 
 .grid-view {
@@ -1147,8 +1256,7 @@ body.lang-ko .left-panel > div[data-i18n] {
 }
 
 .late-build-grid {
-    grid-template-columns: repeat(5, minmax(64px, 1fr));
-    gap: 8px;
+    align-items: start;
 }
 
 .late-build-slot {
@@ -1546,6 +1654,26 @@ body.lang-ko .left-panel > div[data-i18n] {
 
     .recommendation-item-row {
         grid-template-columns: repeat(5, minmax(0, 42px));
+    }
+
+    .recommendation-comparison-card {
+        max-height: 210px;
+        overflow-x: auto;
+    }
+
+    .recommendation-comparison-head,
+    .recommendation-comparison-row {
+        min-width: 430px;
+    }
+
+    .recommendation-card-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .recommendation-apply-btn,
+    .recommendation-compare-btn {
+        min-height: 44px;
     }
 
     .recommendation-actions .recommend-primary-btn {

@@ -31,7 +31,17 @@ const DICT = {
         recommendationNeedStats: "Please add at least one priority stat or unique passive.",
         recommendationNoBuilds: "No recommended builds matched the current filters.",
         recommendationScore: "Stat Score: ",
+        recommendationMatch: "Requirement Match: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
+        lateRecommendationApplied: "Late-game build applied.",
+        whyRecommended: "Why this build",
+        compareRecommendation: "Compare",
+        applyRecommendation: "Use build",
+        recommendationCompareHelp: "Select two recommendations to compare their stat differences.",
+        recommendationComparison: "Recommendation comparison",
+        difference: "Difference",
+        matchedPassives: "Required passives",
+        constraintsMet: "stat constraints met",
         onlyTwoZones: "Only show builds with 2 or less zones",
         priorityLabel: "Priority",
         minLabel: "Min",
@@ -166,6 +176,19 @@ Object.assign(DICT.ko, {
     priorityLabel: "우선순위",
     minLabel: "최소",
     maxLabel: "최대"
+});
+
+Object.assign(DICT.ko, {
+    lateRecommendationApplied: "후반 빌드를 적용했습니다.",
+    recommendationMatch: "조건 일치: ",
+    whyRecommended: "추천 이유",
+    compareRecommendation: "비교",
+    applyRecommendation: "빌드 적용",
+    recommendationCompareHelp: "추천 빌드 두 개를 선택하여 스탯 차이를 비교하세요.",
+    recommendationComparison: "추천 빌드 비교",
+    difference: "차이",
+    matchedPassives: "필수 고유 효과",
+    constraintsMet: "개 스탯 조건 충족"
 });
 
 DICT.ko.dataPatch = "패치 버전";
@@ -469,14 +492,34 @@ const buildFilterState = {
 };
 const lateRarityFilters = new Set(BUILD_CONFIG[BUILD_TYPES.LATE].grades);
 const lateComparisonBuilds = [null, null];
+const recommendationStateByType = {
+    [BUILD_TYPES.EARLY]: {
+        priorities: [],
+        constraints: {},
+        results: [],
+        passiveSkills: new Set(),
+        onlyTwoZones: false,
+        comparisonIndices: new Set()
+    },
+    [BUILD_TYPES.LATE]: {
+        priorities: [],
+        constraints: {},
+        results: [],
+        passiveSkills: new Set(),
+        onlyTwoZones: false,
+        comparisonIndices: new Set()
+    }
+};
 let activeBuildType = BUILD_TYPES.EARLY;
 let currentCenterMode = "optimizer";
 let earlyCenterMode = "optimizer";
+let lateCenterMode = "optimizer";
 let recommendationPriorities = [];
 let recommendationConstraints = {};
 let recommendationResults = [];
 let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
+let recommendationComparisonIndices = new Set();
 const recommendationRouteCache = new Map();
 let currentFilter = buildFilterState[BUILD_TYPES.EARLY].part;
 let currentWeaponFilter = buildFilterState[BUILD_TYPES.EARLY].weapon;
@@ -512,6 +555,26 @@ function loadBuildFilterState(buildType) {
     currentWeaponFilter = state.weapon;
     activeSubstats = state.substats;
     activePassiveSkills = state.passiveSkills;
+}
+
+function saveCurrentRecommendationState() {
+    const state = recommendationStateByType[activeBuildType];
+    state.priorities = recommendationPriorities;
+    state.constraints = recommendationConstraints;
+    state.results = recommendationResults;
+    state.passiveSkills = recommendationPassiveSkills;
+    state.onlyTwoZones = recommendationOnlyTwoZones;
+    state.comparisonIndices = recommendationComparisonIndices;
+}
+
+function loadRecommendationState(buildType) {
+    const state = recommendationStateByType[buildType];
+    recommendationPriorities = state.priorities;
+    recommendationConstraints = state.constraints;
+    recommendationResults = state.results;
+    recommendationPassiveSkills = state.passiveSkills;
+    recommendationOnlyTwoZones = state.onlyTwoZones;
+    recommendationComparisonIndices = state.comparisonIndices;
 }
 
 const ECHION_EXCLUSIVE_WEAPONS = new Set([
@@ -743,8 +806,8 @@ function renderWorkflowShell() {
     });
 
     const modeTabs = document.querySelector('.mode-tabs');
-    if (modeTabs) modeTabs.hidden = !isEarly;
-    renderCenterMode(isEarly ? earlyCenterMode : 'optimizer');
+    if (modeTabs) modeTabs.hidden = false;
+    renderCenterMode(isEarly ? earlyCenterMode : lateCenterMode);
 
     ['calculate-btn', 'route-results-container', 'resizer', 'stat-calculator'].forEach(id => {
         const element = document.getElementById(id);
@@ -754,6 +817,8 @@ function renderWorkflowShell() {
     if (lateGamePanel) lateGamePanel.hidden = isEarly;
     const lateRarityFilterGroup = document.getElementById('late-rarity-filter-group');
     if (lateRarityFilterGroup) lateRarityFilterGroup.hidden = isEarly;
+    const routeFilter = document.querySelector('.recommendation-route-filter');
+    if (routeFilter) routeFilter.hidden = !isEarly;
 
     setTranslatedElement('build-heading', isEarly ? 'yourEarlyBuild' : 'yourLateBuild');
     setTranslatedElement('item-catalog-heading', isEarly ? 'selectEpicItems' : 'selectLateItems');
@@ -775,9 +840,12 @@ function switchBuildType(buildType, { persist = true, updateUrl = true } = {}) {
     if (!BUILD_CONFIG[buildType]) return;
 
     saveCurrentBuildFilterState();
+    saveCurrentRecommendationState();
     if (activeBuildType === BUILD_TYPES.EARLY) earlyCenterMode = currentCenterMode;
+    else lateCenterMode = currentCenterMode;
     activeBuildType = buildType;
     loadBuildFilterState(buildType);
+    loadRecommendationState(buildType);
 
     if (persist) localStorage.setItem(WORKFLOW_STORAGE_KEY, buildType);
     if (updateUrl) updateWorkflowUrl(buildType);
@@ -786,6 +854,9 @@ function switchBuildType(buildType, { persist = true, updateUrl = true } = {}) {
     hideGlobalTooltip();
     renderWorkflowShell();
     setupFilters();
+    setupRecommendationControls();
+    renderRecommendationPriorityList();
+    renderRecommendationResults();
     renderMainGrid();
     updateSelectedPanel();
     if (buildType === BUILD_TYPES.EARLY) renderStatComparison();
@@ -818,6 +889,11 @@ function setupLateGameControls() {
                 rarityButton.classList.toggle('active', selected);
                 rarityButton.setAttribute('aria-pressed', String(selected));
             });
+            if (activeBuildType === BUILD_TYPES.LATE) {
+                recommendationResults = [];
+                recommendationComparisonIndices.clear();
+                renderRecommendationResults();
+            }
             renderMainGrid();
         });
         button.dataset.bound = 'true';
@@ -882,6 +958,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             localStorage.getItem(WORKFLOW_STORAGE_KEY)
         );
         loadBuildFilterState(activeBuildType);
+        loadRecommendationState(activeBuildType);
         localStorage.setItem(WORKFLOW_STORAGE_KEY, activeBuildType);
         updateWorkflowUrl(activeBuildType);
         buildDisplayStats(activeBuildType);
@@ -977,6 +1054,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 renderLateGamePanel();
                 if (currentCenterMode === "recommendations") {
                     recommendationResults = [];
+                    recommendationComparisonIndices.clear();
                     renderRecommendationResults();
                 }
             });
@@ -1012,6 +1090,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 recommendationPriorities = [];
                 recommendationConstraints = {};
                 recommendationResults = [];
+                recommendationComparisonIndices.clear();
                 recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
                 lateRarityFilters.clear();
@@ -1169,6 +1248,7 @@ function setupFilters() {
             currentWeaponFilter = btn.dataset.subfilter;
             buildFilterState[activeBuildType].weapon = currentWeaponFilter;
             recommendationResults = [];
+            recommendationComparisonIndices.clear();
 
             if (mainWeaponImg) {
                 if (currentWeaponFilter === "All") {
@@ -1191,9 +1271,10 @@ function setupModeTabs() {
     document.querySelectorAll('.mode-tab').forEach(tab => {
         if (tab.dataset.bound === 'true') return;
         tab.addEventListener('click', () => {
-            if (activeBuildType !== BUILD_TYPES.EARLY) return;
-            earlyCenterMode = tab.dataset.mode || 'optimizer';
-            renderCenterMode(earlyCenterMode);
+            const nextMode = tab.dataset.mode || 'optimizer';
+            if (activeBuildType === BUILD_TYPES.EARLY) earlyCenterMode = nextMode;
+            else lateCenterMode = nextMode;
+            renderCenterMode(nextMode);
             if (currentCenterMode === 'recommendations') {
                 setupRecommendationControls();
                 renderRecommendationPriorityList();
@@ -1247,6 +1328,7 @@ function setupRecommendationControls() {
             twoZoneFilter.addEventListener('change', () => {
                 recommendationOnlyTwoZones = twoZoneFilter.checked;
                 recommendationResults = [];
+                recommendationComparisonIndices.clear();
                 renderRecommendationResults();
             });
             twoZoneFilter.dataset.bound = 'true';
@@ -1261,6 +1343,7 @@ function setupRecommendationControls() {
             showReset: false,
             onChange: () => {
                 recommendationResults = [];
+                recommendationComparisonIndices.clear();
                 renderRecommendationResults();
             }
         });
@@ -1285,7 +1368,10 @@ function renderRecommendationStatOptions(container, term = '') {
         btn.addEventListener('click', () => {
             recommendationPriorities.push(stat.id);
             if (!recommendationConstraints[stat.id]) recommendationConstraints[stat.id] = { min: '', max: '' };
+            recommendationResults = [];
+            recommendationComparisonIndices.clear();
             renderRecommendationPriorityList();
+            renderRecommendationResults();
             renderRecommendationStatOptions(container, '');
             const search = document.getElementById('recommendation-stat-search');
             if (search) {
@@ -1333,6 +1419,9 @@ function renderRecommendationPriorityList() {
             const bound = input.dataset.bound;
             if (!recommendationConstraints[statId]) recommendationConstraints[statId] = { min: '', max: '' };
             recommendationConstraints[statId][bound] = input.value;
+            recommendationResults = [];
+            recommendationComparisonIndices.clear();
+            renderRecommendationResults();
         });
     });
 
@@ -1352,8 +1441,11 @@ function renderRecommendationPriorityList() {
                 [recommendationPriorities[index + 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index + 1]];
             }
 
+            recommendationResults = [];
+            recommendationComparisonIndices.clear();
             renderRecommendationPriorityList();
             setupRecommendationControls();
+            renderRecommendationResults();
         });
     });
 }
@@ -1372,7 +1464,8 @@ function recommendBuilds() {
         return;
     }
 
-    const results = generateRecommendedBuilds();
+    recommendationComparisonIndices.clear();
+    const results = generateRecommendedBuilds(activeBuildType);
     recommendationResults = results;
     if (results.length === 0) {
         renderRecommendationMessage(t('recommendationNoBuilds'));
@@ -1384,11 +1477,14 @@ function recommendBuilds() {
 function renderRecommendationMessage(message) {
     const container = document.getElementById('recommendation-results');
     if (container) container.innerHTML = getRecommendationMessage(message);
+    renderRecommendationComparison();
 }
 
 function renderRecommendationResults() {
     const container = document.getElementById('recommendation-results');
     if (!container) return;
+
+    renderRecommendationComparison();
 
     if (recommendationResults.length === 0) {
         container.innerHTML = getRecommendationMessage(t('recommendationSelectCharacter'));
@@ -1397,31 +1493,56 @@ function renderRecommendationResults() {
 
     const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
     container.innerHTML = recommendationResults.map((result, index) => {
-        const itemIcons = result.items.map(name => `
-            <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}">
+        const itemIcons = result.items.map(name => {
+            const gradeStyle = getItemGradeStyle(items[name] && items[name].type);
+            return `
+            <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}" style="--recommendation-item-start:${gradeStyle.cardStart};--recommendation-item-end:${gradeStyle.cardEnd}">
                 <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
 
         const statHighlights = recommendationPriorities.map(statId => {
             const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
             return `<span class="recommendation-stat-chip">${stat.name[currentLanguage]} ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</span>`;
         }).join('');
 
+        const passiveReasons = result.passives
+            .filter(passive => recommendationPassiveSkills.has(passive.name))
+            .map(passive => getPassiveSkillName(passive))
+            .join(', ');
+        const constraintCount = recommendationPriorities.filter(statId => {
+            const constraint = recommendationConstraints[statId] || {};
+            return constraint.min !== '' || constraint.max !== '';
+        }).length;
+        const reasonRows = recommendationPriorities.slice(0, 3).map((statId, priorityIndex) => {
+            const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
+            return `<li><strong>#${priorityIndex + 1} ${stat.name[currentLanguage]}</strong>: ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</li>`;
+        });
+        if (constraintCount > 0) reasonRows.push(`<li>${constraintCount} ${t('constraintsMet')}</li>`);
+        if (passiveReasons) reasonRows.push(`<li><strong>${t('matchedPassives')}:</strong> ${escapeAttribute(passiveReasons)}</li>`);
+
         return `
-            <button type="button" class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
+            <article class="recommendation-card ${result.applied ? 'selected' : ''} ${recommendationComparisonIndices.has(index) ? 'comparing' : ''}" data-index="${index}">
                 <div class="recommendation-card-head">
-                    <strong>${t('recommendationScore')} ${Math.round(result.score * 100)}%</strong>
+                    <strong>${t(recommendationPriorities.length ? 'recommendationScore' : 'recommendationMatch')} ${Math.round(result.score * 100)}%</strong>
                     <span>${result.weaponType ? getWeaponTypeName(result.weaponType) : ''}</span>
                 </div>
                 <div class="recommendation-item-row">${itemIcons}</div>
                 <div class="recommendation-stat-row">${statHighlights}</div>
-            </button>
+                <div class="recommendation-reasons"><strong>${t('whyRecommended')}</strong><ul>${reasonRows.join('')}</ul></div>
+                <div class="recommendation-card-actions">
+                    <button type="button" class="recommendation-apply-btn" data-recommendation-apply="${index}">${t('applyRecommendation')}</button>
+                    <button type="button" class="recommendation-compare-btn" data-recommendation-compare="${index}" aria-pressed="${recommendationComparisonIndices.has(index)}">${t('compareRecommendation')}</button>
+                </div>
+            </article>
         `;
     }).join('');
 
-    container.querySelectorAll('.recommendation-card').forEach(card => {
-        card.addEventListener('click', () => applyRecommendedBuild(Number(card.dataset.index)));
+    container.querySelectorAll('[data-recommendation-apply]').forEach(button => {
+        button.addEventListener('click', () => applyRecommendedBuild(Number(button.dataset.recommendationApply)));
+    });
+    container.querySelectorAll('[data-recommendation-compare]').forEach(button => {
+        button.addEventListener('click', () => toggleRecommendationComparison(Number(button.dataset.recommendationCompare)));
     });
     applyItemImageFallbacks(container);
 
@@ -1435,18 +1556,78 @@ function renderRecommendationResults() {
     });
 }
 
-function generateRecommendedBuilds() {
-    const candidateSlots = getRecommendationCandidatesBySlot();
+function toggleRecommendationComparison(index) {
+    if (recommendationComparisonIndices.has(index)) {
+        recommendationComparisonIndices.delete(index);
+    } else {
+        if (recommendationComparisonIndices.size >= 2) {
+            const oldestIndex = recommendationComparisonIndices.values().next().value;
+            recommendationComparisonIndices.delete(oldestIndex);
+        }
+        recommendationComparisonIndices.add(index);
+    }
+    renderRecommendationResults();
+}
+
+function renderRecommendationComparison() {
+    const container = document.getElementById('recommendation-comparison');
+    if (!container) return;
+    const selected = Array.from(recommendationComparisonIndices)
+        .map(index => ({ index, result: recommendationResults[index] }))
+        .filter(entry => entry.result);
+
+    if (selected.length !== 2) {
+        container.innerHTML = `<p class="empty-msg">${t('recommendationCompareHelp')}</p>`;
+        return;
+    }
+
+    const [left, right] = selected;
+    const statIds = recommendationPriorities.length
+        ? recommendationPriorities
+        : DISPLAY_STATS.map(stat => stat.id).filter(statId => {
+            return getNumericRecommendationStat(left.result.stats, statId) !== 0 || getNumericRecommendationStat(right.result.stats, statId) !== 0;
+        });
+    const statById = new Map(DISPLAY_STATS.map(stat => [stat.id, stat]));
+    const rows = statIds.map(statId => {
+        const label = (statById.get(statId) || { name: getStatName(statId) }).name[currentLanguage];
+        const leftValue = getNumericRecommendationStat(left.result.stats, statId);
+        const rightValue = getNumericRecommendationStat(right.result.stats, statId);
+        const difference = rightValue - leftValue;
+        const formattedDifference = `${difference > 0 ? '+' : ''}${formatRecommendationStatValue(statId, difference)}`;
+        return `<div class="recommendation-comparison-row">
+            <span>${label}</span>
+            <strong>${formatRecommendationStatValue(statId, left.result.stats[statId] || 0)}</strong>
+            <strong>${formatRecommendationStatValue(statId, right.result.stats[statId] || 0)}</strong>
+            <span class="recommendation-difference ${difference > 0 ? 'positive' : difference < 0 ? 'negative' : ''}">${formattedDifference}</span>
+        </div>`;
+    }).join('');
+    const passiveComparison = renderPassiveSkillComparison(left.result.passives, right.result.passives);
+
+    container.innerHTML = `<section class="recommendation-comparison-card" aria-label="${t('recommendationComparison')}">
+        <div class="recommendation-comparison-head">
+            <strong>${t('recommendationComparison')}</strong>
+            <span>A</span><span>B</span><span>${t('difference')} (B − A)</span>
+        </div>
+        ${rows}${passiveComparison}
+    </section>`;
+}
+
+function generateRecommendedBuilds(buildType = activeBuildType) {
+    const candidateSlots = getRecommendationCandidatesBySlot(buildType);
     const requiredSlots = EQUIPMENT_SLOTS;
     if (requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) return [];
 
     const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
+    const hasMaximumConstraint = recommendationPriorities.some(statId => {
+        const constraint = recommendationConstraints[statId] || {};
+        return parseRecommendationBound(statId, constraint.max) !== null;
+    });
     const slotCandidates = {};
     requiredSlots.forEach(slot => {
         const ranked = candidateSlots[slot]
             .map(name => ({ name, score: scoreItemForRecommendation(name, itemNormalizers) }))
             .sort((a, b) => b.score - a.score);
-        const candidateNames = new Set(ranked.slice(0, 24).map(entry => entry.name));
+        const candidateNames = new Set((hasMaximumConstraint ? ranked : ranked.slice(0, 24)).map(entry => entry.name));
         ranked.forEach(entry => {
             if (itemHasSelectedRecommendationPassive(entry.name)) candidateNames.add(entry.name);
         });
@@ -1459,9 +1640,11 @@ function generateRecommendedBuilds() {
         beam.forEach(partial => {
             slotCandidates[slot].forEach(name => {
                 const itemsForBuild = [...partial.items, name];
+                if (hasMaximumConstraint && !passesRecommendationPartialMaximumConstraints(itemsForBuild)) return;
                 expanded.push({
                     items: itemsForBuild,
-                    roughScore: partial.roughScore + scoreItemForRecommendation(name, itemNormalizers)
+                    roughScore: partial.roughScore + scoreItemForRecommendation(name, itemNormalizers) +
+                        (itemHasSelectedRecommendationPassive(name) ? 1 : 0)
                 });
             });
         });
@@ -1472,7 +1655,12 @@ function generateRecommendedBuilds() {
     const finalCandidates = beam
         .map(build => {
             const stats = calculateItemOnlyBuildStats(build.items);
-            return { ...build, stats, weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : '' };
+            return {
+                ...build,
+                stats,
+                passives: getEffectivePassiveSkills(build.items),
+                weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : ''
+            };
         })
         .filter(build => passesRecommendationConstraints(build.stats) && passesRecommendationPassiveRequirements(build.items));
 
@@ -1486,23 +1674,24 @@ function generateRecommendedBuilds() {
     let scoredCandidates = finalCandidates
         .map(build => ({
             ...build,
-            score: scoreStatsForRecommendation(build.stats, finalNormalizers)
+            score: recommendationPriorities.length ? scoreStatsForRecommendation(build.stats, finalNormalizers) : 1
         }))
         .sort((a, b) => b.score - a.score);
 
-    if (recommendationOnlyTwoZones) {
+    if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones) {
         scoredCandidates = scoredCandidates.filter(build => hasFeasibleRouteWithinZones(build.items, 2));
     }
 
     return scoredCandidates.slice(0, 20);
 }
 
-function getRecommendationCandidatesBySlot() {
+function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
     const slots = Object.fromEntries(EQUIPMENT_SLOTS.map(slot => [slot, []]));
     const masteries = currentCharacter && chars[currentCharacter] ? chars[currentCharacter].masteries : [];
 
     Object.entries(items).forEach(([name, item]) => {
-        if (!isItemEligibleForBuild(item, BUILD_TYPES.EARLY)) return;
+        if (!isItemEligibleForBuild(item, buildType)) return;
+        if (buildType === BUILD_TYPES.LATE && !lateRarityFilters.has(item.type)) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
@@ -1672,6 +1861,15 @@ function passesRecommendationConstraints(stats) {
     });
 }
 
+function passesRecommendationPartialMaximumConstraints(itemNames) {
+    const stats = calculateItemOnlyBuildStats(itemNames);
+    return recommendationPriorities.every(statId => {
+        const constraint = recommendationConstraints[statId] || {};
+        const max = parseRecommendationBound(statId, constraint.max);
+        return max === null || getNumericRecommendationStat(stats, statId) <= max;
+    });
+}
+
 function calculateItemOnlyBuildStats(itemNames, level = charLevel) {
     const totalStats = {};
     DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
@@ -1726,20 +1924,30 @@ function applyRecommendedBuild(index) {
     const result = recommendationResults[index];
     if (!result) return;
 
-    earlyBuild.clear();
-    result.items.forEach(name => earlyBuild.add(name));
+    const build = getBuild(activeBuildType);
+    build.clear();
+    result.items.forEach(name => addItemToBuild(name, activeBuildType));
     recommendationResults.forEach((entry, entryIndex) => {
         entry.applied = entryIndex === index;
     });
-    selectedRoutes = [];
-    generatedRoutes = [];
+    if (activeBuildType === BUILD_TYPES.EARLY) {
+        selectedRoutes = [];
+        generatedRoutes = [];
+    }
 
     updateMainGridVisuals();
     updateSelectedPanel();
     renderRecommendationResults();
 
-    const resultOutput = document.getElementById('result-output');
-    if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
+    if (activeBuildType === BUILD_TYPES.EARLY) {
+        const resultOutput = document.getElementById('result-output');
+        if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
+    } else {
+        const comparison = document.getElementById('recommendation-comparison');
+        if (comparison && recommendationComparisonIndices.size !== 2) {
+            comparison.innerHTML = `<p class="recommendation-applied-message">${t('lateRecommendationApplied')}</p>`;
+        }
+    }
 }
 
 function closeCompactSelects(except = null) {
@@ -1889,6 +2097,7 @@ function selectCharacter(charName) {
     const previousCharacter = currentCharacter;
     currentCharacter = charName || null;
     recommendationResults = [];
+    recommendationComparisonIndices.clear();
     if (previousCharacter !== currentCharacter) {
         lateComparisonBuilds[0] = null;
         lateComparisonBuilds[1] = null;
