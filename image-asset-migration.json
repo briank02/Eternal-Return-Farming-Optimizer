@@ -1,0 +1,347 @@
+{
+  "moved": 798,
+  "corrections": [
+    {
+      "from": "Long_Sword",
+      "to": "Long Sword",
+      "classification": "weapon:TwoHandSword"
+    },
+    {
+      "from": "Reaper_s Scythe",
+      "to": "Reaper's Scythe",
+      "classification": "weapon:Axe"
+    },
+    {
+      "from": "Deadly Butterfly",
+      "to": "Black Butterfly",
+      "classification": "weapon:DualSword"
+    },
+    {
+      "from": "Lioigor Zahr",
+      "to": "Lloigor & Zahr",
+      "classification": "weapon:DualSword"
+    },
+    {
+      "from": "Twin Swords",
+      "to": "Twin Blades",
+      "classification": "weapon:DualSword"
+    },
+    {
+      "from": "Devil_s Marksman",
+      "to": "Devil's Marksman",
+      "classification": "weapon:Pistol"
+    },
+    {
+      "from": "Stempede",
+      "to": "Stampede",
+      "classification": "weapon:Pistol"
+    },
+    {
+      "from": "Rapier",
+      "to": "Fencing Rapier",
+      "classification": "weapon:Rapier"
+    },
+    {
+      "from": "Eighteen Foor Spear",
+      "to": "Eighteen Foot Spear",
+      "classification": "weapon:Spear"
+    },
+    {
+      "from": "Shapened Spear",
+      "to": "Sharpened Spear",
+      "classification": "weapon:Spear"
+    },
+    {
+      "from": "Vulture_s Eye",
+      "to": "Vulture's Eye",
+      "classification": "weapon:Bat"
+    },
+    {
+      "from": "David_s Sling",
+      "to": "David's Sling",
+      "classification": "weapon:HighAngleFire"
+    },
+    {
+      "from": "Imugi_s Pearl",
+      "to": "Imugi's Pearl",
+      "classification": "weapon:HighAngleFire"
+    },
+    {
+      "from": "Jebe_s Altered Bow",
+      "to": "Jebe's Altered Bow",
+      "classification": "weapon:Bow"
+    },
+    {
+      "from": "Buddha_s Palm",
+      "to": "Buddha's Palm",
+      "classification": "weapon:Glove"
+    },
+    {
+      "from": "Imperial Skil Gloves",
+      "to": "Imperial Silk Gloves",
+      "classification": "weapon:Glove"
+    },
+    {
+      "from": "Ryuku Tonfa",
+      "to": "Ryukyu Tonfa",
+      "classification": "weapon:Tonfa"
+    },
+    {
+      "from": "Heaven_s Door",
+      "to": "Heaven's Door",
+      "classification": "weapon:Guitar"
+    },
+    {
+      "from": "Wild Horst",
+      "to": "Teen Spirit",
+      "classification": "weapon:Guitar"
+    },
+    {
+      "from": "Cathod Lash",
+      "to": "Cathode Lash",
+      "classification": "weapon:Whip"
+    },
+    {
+      "from": "Polaroid Camera",
+      "to": "Instant Camera",
+      "classification": "weapon:Camera"
+    },
+    {
+      "from": "The Hang Man",
+      "to": "The Hanged Man",
+      "classification": "weapon:Arcana"
+    },
+    {
+      "from": "Alpha Siderwinder ML",
+      "to": "Alpha Sidewinder ML",
+      "classification": "weapon:VFArm"
+    },
+    {
+      "from": "Black",
+      "to": "Black Mamba",
+      "classification": "weapon:VFArm"
+    },
+    {
+      "from": "Deathadder Queen FC_",
+      "to": "Deathadder Queen FC",
+      "classification": "weapon:VFArm"
+    },
+    {
+      "from": "Amazoness_Armor",
+      "to": "Amazoness Armor",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Beautiful Garnment",
+      "to": "Beautiful Garment",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Butler_s Suit",
+      "to": "Butler's Suit",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Commander_s Armor",
+      "to": "Commander's Armor",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Doctor_s Gown",
+      "to": "Doctor's Gown",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Ghost Bride_s Dress",
+      "to": "Ghost Bride's Dress",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Miltary Suit",
+      "to": "Military Suit",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Mithril Armor",
+      "to": "Mythril Armor",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Mithril Crop",
+      "to": "Mythril Crop",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Monk_s Robe",
+      "to": "Monk's Robe",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Rocker_s Jacket",
+      "to": "Rocker's Jacket",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "The General_s Robe",
+      "to": "The General's Robe",
+      "classification": "armor:Chest"
+    },
+    {
+      "from": "Astronaut_s Helmet",
+      "to": "Astronaut's Helmet",
+      "classification": "armor:Head"
+    },
+    {
+      "from": "Dwarf_s Helmet",
+      "to": "Dwarf's Helmet",
+      "classification": "armor:Head"
+    },
+    {
+      "from": "Mithril Helm",
+      "to": "Mythril Helm",
+      "classification": "armor:Head"
+    },
+    {
+      "from": "Sultan_s Turban",
+      "to": "Sultan's Turban",
+      "classification": "armor:Head"
+    },
+    {
+      "from": "Tactical_Visor",
+      "to": "Tactical Visor",
+      "classification": "armor:Head"
+    },
+    {
+      "from": "Centipede_s Pauldron",
+      "to": "Centipede's Pauldron",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Mithril Shield",
+      "to": "Mythril Shield",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Pharaoh_s Artifact",
+      "to": "Pharaoh's Artifact",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Psyche_s Blade",
+      "to": "Psyche's Blade",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Schrödinger_s Box",
+      "to": "Schrödinger's Box",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Vital Sign Censor",
+      "to": "Vital Sign Sensor",
+      "classification": "armor:Arm"
+    },
+    {
+      "from": "Mithril Boots",
+      "to": "Mythril Boots",
+      "classification": "armor:Leg"
+    },
+    {
+      "from": "SCV (Self-Controlled Vehicle)",
+      "to": "SCV",
+      "classification": "armor:Leg"
+    },
+    {
+      "from": "Slipper",
+      "to": "Slippers",
+      "classification": "armor:Leg"
+    },
+    {
+      "from": "Mithril",
+      "to": "Mythril",
+      "classification": "material"
+    },
+    {
+      "from": "Shaman_s Bronze",
+      "to": "Shaman's Bronze",
+      "classification": "material"
+    },
+    {
+      "from": "Thumbnail",
+      "to": "thumbnail",
+      "classification": "ui"
+    },
+    {
+      "from": "Dual Sword",
+      "to": "Dual Swords",
+      "classification": "weapon-type-icon"
+    },
+    {
+      "from": "Twohanded Sword",
+      "to": "Two-Handed Sword",
+      "classification": "weapon-type-icon"
+    }
+  ],
+  "unassigned": [
+    {
+      "name": "Viper",
+      "classification": "weapon:VFArm"
+    },
+    {
+      "name": "Crown of Buds",
+      "classification": "armor:Head"
+    },
+    {
+      "name": "Chalk",
+      "classification": "material"
+    },
+    {
+      "name": "Crimson Shard",
+      "classification": "material"
+    },
+    {
+      "name": "Dawnlight Shard",
+      "classification": "material"
+    },
+    {
+      "name": "Force Core",
+      "classification": "material"
+    },
+    {
+      "name": "Gem of Evolution",
+      "classification": "material"
+    },
+    {
+      "name": "Laser Pointer",
+      "classification": "material"
+    },
+    {
+      "name": "Leather",
+      "classification": "material"
+    },
+    {
+      "name": "Magazine",
+      "classification": "material"
+    },
+    {
+      "name": "Meteorite",
+      "classification": "material"
+    },
+    {
+      "name": "Mythril",
+      "classification": "material"
+    },
+    {
+      "name": "Tac. Skill Module",
+      "classification": "material"
+    },
+    {
+      "name": "Tree of Life",
+      "classification": "material"
+    },
+    {
+      "name": "VF Blood Sample",
+      "classification": "material"
+    }
+  ]
+}

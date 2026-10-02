@@ -136,9 +136,21 @@ function getItemName(name) {
     return name;
 }
 
+function getItemImagePath(name) {
+    return items[name] && items[name].image
+        ? items[name].image
+        : getItemPlaceholderPath(name);
+}
+
+function getCharacterImagePath(name) {
+    return chars[name] && chars[name].image
+        ? chars[name].image
+        : `images/characters/${name}.png`;
+}
+
 function getItemPlaceholderPath(name) {
     const part = items[name] && items[name].part;
-    return PART_NAMES[part] ? `images/${part}.png` : 'images/Weapon.png';
+    return PART_NAMES[part] ? `images/ui/${part}.png` : 'images/ui/Weapon.png';
 }
 
 function applyItemImageFallback(img, name) {
@@ -456,29 +468,29 @@ const TYPE_NAMES = {
 };
 
 const WEAPON_TYPES = [
-    { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "01. Glove.png" },
-    { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "02. Tonfa.png" },
-    { api: "Bat", name: { en: "Bat", ko: "방망이" }, img: "03. Bat.png" },
-    { api: "Hammer", name: { en: "Hammer", ko: "망치" }, img: "04. Hammer.png" },
-    { api: "Whip", name: { en: "Whip", ko: "채찍" }, img: "05. Whip.png" },
-    { api: "HighAngleFire", name: { en: "Throw", ko: "투척" }, img: "06. Throwing.png" },
-    { api: "DirectFire", name: { en: "Shuriken", ko: "암기" }, img: "07. Shuriken.png" },
-    { api: "Bow", name: { en: "Bow", ko: "활" }, img: "08. Bow.png" },
-    { api: "CrossBow", name: { en: "Crossbow", ko: "석궁" }, img: "09. Crossbow.png" },
-    { api: "Pistol", name: { en: "Pistol", ko: "권총" }, img: "10. Pistol.png" },
-    { api: "AssaultRifle", name: { en: "Assault Rifle", ko: "돌격 소총" }, img: "11. Assault Rifle.png" },
-    { api: "SniperRifle", name: { en: "Sniper Rifle", ko: "저격총" }, img: "12. Sniper Rifle.png" },
-    { api: "Axe", name: { en: "Axe", ko: "도끼" }, img: "13. Axe.png" },
-    { api: "OneHandSword", name: { en: "Dagger", ko: "단검" }, img: "14. Dagger.png" },
-    { api: "TwoHandSword", name: { en: "Two-Handed Sword", ko: "양손검" }, img: "15. Twohanded Sword.png" },
-    { api: "DualSword", name: { en: "Dual Swords", ko: "쌍검" }, img: "16. Dual Sword.png" },
-    { api: "Spear", name: { en: "Spear", ko: "창" }, img: "17. Spear.png" },
-    { api: "Nunchaku", name: { en: "Nunchaku", ko: "쌍절곤" }, img: "18. Nunchaku.png" },
-    { api: "Rapier", name: { en: "Rapier", ko: "레이피어" }, img: "19. Rapier.png" },
-    { api: "Guitar", name: { en: "Guitar", ko: "기타" }, img: "20. Guitar.png" },
-    { api: "Camera", name: { en: "Camera", ko: "카메라" }, img: "21. Camera.png" },
-    { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "22. Arcana.png" },
-    { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "23. VF Prosthetic.png" }
+    { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "images/ui/weapon-types/Glove.png" },
+    { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "images/ui/weapon-types/Tonfa.png" },
+    { api: "Bat", name: { en: "Bat", ko: "방망이" }, img: "images/ui/weapon-types/Bat.png" },
+    { api: "Hammer", name: { en: "Hammer", ko: "망치" }, img: "images/ui/weapon-types/Hammer.png" },
+    { api: "Whip", name: { en: "Whip", ko: "채찍" }, img: "images/ui/weapon-types/Whip.png" },
+    { api: "HighAngleFire", name: { en: "Throw", ko: "투척" }, img: "images/ui/weapon-types/Throwing.png" },
+    { api: "DirectFire", name: { en: "Shuriken", ko: "암기" }, img: "images/ui/weapon-types/Shuriken.png" },
+    { api: "Bow", name: { en: "Bow", ko: "활" }, img: "images/ui/weapon-types/Bow.png" },
+    { api: "CrossBow", name: { en: "Crossbow", ko: "석궁" }, img: "images/ui/weapon-types/Crossbow.png" },
+    { api: "Pistol", name: { en: "Pistol", ko: "권총" }, img: "images/ui/weapon-types/Pistol.png" },
+    { api: "AssaultRifle", name: { en: "Assault Rifle", ko: "돌격 소총" }, img: "images/ui/weapon-types/Assault Rifle.png" },
+    { api: "SniperRifle", name: { en: "Sniper Rifle", ko: "저격총" }, img: "images/ui/weapon-types/Sniper Rifle.png" },
+    { api: "Axe", name: { en: "Axe", ko: "도끼" }, img: "images/ui/weapon-types/Axe.png" },
+    { api: "OneHandSword", name: { en: "Dagger", ko: "단검" }, img: "images/ui/weapon-types/Dagger.png" },
+    { api: "TwoHandSword", name: { en: "Two-Handed Sword", ko: "양손검" }, img: "images/ui/weapon-types/Two-Handed Sword.png" },
+    { api: "DualSword", name: { en: "Dual Swords", ko: "쌍검" }, img: "images/ui/weapon-types/Dual Swords.png" },
+    { api: "Spear", name: { en: "Spear", ko: "창" }, img: "images/ui/weapon-types/Spear.png" },
+    { api: "Nunchaku", name: { en: "Nunchaku", ko: "쌍절곤" }, img: "images/ui/weapon-types/Nunchaku.png" },
+    { api: "Rapier", name: { en: "Rapier", ko: "레이피어" }, img: "images/ui/weapon-types/Rapier.png" },
+    { api: "Guitar", name: { en: "Guitar", ko: "기타" }, img: "images/ui/weapon-types/Guitar.png" },
+    { api: "Camera", name: { en: "Camera", ko: "카메라" }, img: "images/ui/weapon-types/Camera.png" },
+    { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "images/ui/weapon-types/Arcana.png" },
+    { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "images/ui/weapon-types/VF Prosthetic.png" }
 ];
 
 // HARDCODED BASE WEAPONS
@@ -737,7 +749,7 @@ function setupFilters() {
     let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
     WEAPON_TYPES.forEach(w => {
         subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
-            <img src="images/${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
+            <img src="${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
         </div>`;
     });
     if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
@@ -780,7 +792,7 @@ function setupFilters() {
 
             if (mainWeaponImg) {
                 if (currentWeaponFilter === "All") {
-                    mainWeaponImg.src = "images/Weapon.png";
+                    mainWeaponImg.src = "images/ui/Weapon.png";
                 } else {
                     const clickedImg = btn.querySelector('img');
                     if (clickedImg) {
@@ -1007,7 +1019,7 @@ function renderRecommendationResults() {
     container.innerHTML = recommendationResults.map((result, index) => {
         const itemIcons = result.items.map(name => `
             <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}">
-                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
             </div>
         `).join('');
 
@@ -1404,8 +1416,8 @@ function getSortedCharacterNames() {
 function renderCharacterPicker(container) {
     const selectedLabel = currentCharacter ? getCharName(currentCharacter) : t('selectCharacter');
     const avatarHtml = currentCharacter
-        ? `<img class="compact-avatar" src="images/${currentCharacter}.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
-        : `<img class="compact-avatar" src="images/CharacterSelect.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
+        ? `<img class="compact-avatar" src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
+        : `<img class="compact-avatar" src="images/ui/CharacterSelect.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
 
     container.innerHTML = `
         <div class="compact-select" id="character-select">
@@ -1462,7 +1474,7 @@ function renderCharacterOptions(container, term = '') {
         if (option.value) {
             const img = document.createElement('img');
             img.className = 'compact-avatar';
-            img.src = `images/${option.value}.png`;
+            img.src = getCharacterImagePath(option.value);
             img.alt = option.label;
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
@@ -1471,7 +1483,7 @@ function renderCharacterOptions(container, term = '') {
         } else {
             const img = document.createElement('img');
             img.className = 'compact-avatar';
-            img.src = 'images/CharacterSelect.png';
+            img.src = 'images/ui/CharacterSelect.png';
             img.alt = option.label;
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
@@ -1845,7 +1857,7 @@ function createItemCard(name) {
     card.dataset.name = name; 
 
     const img = document.createElement('img');
-    img.src = `images/${name}.png`; 
+    img.src = getItemImagePath(name);
     img.alt = name;
     img.classList.add('item-icon');
     
@@ -1888,7 +1900,7 @@ function showGlobalTooltip(name, trigger = null) {
                 <div class="tooltip-part">${partName}</div>
             </div>
             <div class="tooltip-image-container">
-                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
             </div>
         </div>
         <div class="tooltip-stats">
@@ -2075,7 +2087,7 @@ function updateSelectedPanel() {
         div.title = "Click to remove";
         
         const img = document.createElement('img');
-        img.src = `images/${name}.png`;
+        img.src = getItemImagePath(name);
         img.classList.add('item-icon');
         
         applyItemImageFallback(img, name);
@@ -2302,7 +2314,7 @@ function renderSingleStatColumn(stats) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; position:relative; width:100%;">
                 <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin:0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.75em; padding:2px 6px; border-radius:8px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -2331,7 +2343,7 @@ function renderComparisonColumns(stats1, stats2) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; width:100%; position:relative;">
                 <div style="width:50px; height:50px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin: 0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.65em; padding:2px 5px; border-radius:6px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -2672,7 +2684,7 @@ function displayResults(routes, container) {
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = sortItemsByBuildSlot(r.variantItems).map(item =>
-            `<img src="images/${escapeAttribute(item)}.png" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
+            `<img src="${escapeAttribute(getItemImagePath(item))}" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
         let formattedPath = r.path.map((z, idx) => {

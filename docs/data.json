@@ -21,7 +21,8 @@
         "attackPower": 4
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/dagger/Kitchen Knife.png"
     },
     "Army Knife": {
       "nameKo": "군용 나이프",
@@ -39,7 +40,8 @@
       "components": [
         "Kitchen Knife",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Army Knife.png"
     },
     "Scalpel": {
       "nameKo": "메스",
@@ -57,7 +59,8 @@
       "components": [
         "Kitchen Knife",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Scalpel.png"
     },
     "Rose Knife": {
       "nameKo": "장미칼",
@@ -77,7 +80,8 @@
         "Kitchen Knife",
         "Branch",
         "Flower"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Rose Knife.png"
     },
     "Swiss Army Knife": {
       "nameKo": "스위스 아미 나이프",
@@ -97,7 +101,8 @@
         "Kitchen Knife",
         "Fountain Pen",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Swiss Army Knife.png"
     },
     "Carapace Katar": {
       "nameKo": "카라페이스 카타르",
@@ -117,7 +122,8 @@
         "Kitchen Knife",
         "Branch",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Carapace Katar.png"
     },
     "Carnwennan": {
       "nameKo": "카른웬난",
@@ -143,7 +149,8 @@
         "Branch",
         "Flower",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Carnwennan.png"
     },
     "Mount Slicer": {
       "nameKo": "파산검",
@@ -166,7 +173,8 @@
         "Branch",
         "Flower",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Mount Slicer.png"
     },
     "Vibroblade": {
       "nameKo": "초진동나이프",
@@ -190,7 +198,8 @@
         "Fountain Pen",
         "Battery",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Vibroblade.png"
     },
     "Damascus Steel Thorn": {
       "nameKo": "다마스커스 가시",
@@ -215,7 +224,8 @@
         "Fountain Pen",
         "Scissors",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Damascus Steel Thorn.png"
     },
     "Maharaja": {
       "nameKo": "마하라자",
@@ -239,7 +249,8 @@
         "Branch",
         "Rubber",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Maharaja.png"
     },
     "Highlander Dirk": {
       "nameKo": "하이랜더 더크",
@@ -261,7 +272,8 @@
         "Fountain Pen",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Highlander Dirk.png"
     },
     "Fragarach": {
       "nameKo": "프라가라흐",
@@ -281,7 +293,8 @@
       "components": [
         "Kitchen Knife",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Fragarach.png"
     },
     "Eclipse": {
       "nameKo": "월식",
@@ -302,7 +315,8 @@
       "components": [
         "Kitchen Knife",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Eclipse.png"
     },
     "Soul Reaper": {
       "nameKo": "소울 리퍼",
@@ -322,7 +336,8 @@
       "components": [
         "Kitchen Knife",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Soul Reaper.png"
     },
     "Scarlet Dagger": {
       "nameKo": "비색 단검",
@@ -345,7 +360,8 @@
       "components": [
         "Kitchen Knife",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Scarlet Dagger.png"
     },
     "Malice": {
       "nameKo": "악의",
@@ -365,7 +381,8 @@
       "components": [
         "Nail",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Malice.png"
     },
     "Rusty Sword": {
       "nameKo": "녹슨 검",
@@ -384,7 +401,8 @@
         "attackPower": 11
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/two-handed-sword/Rusty Sword.png"
     },
     "Long Sword": {
       "nameKo": "장검",
@@ -402,7 +420,8 @@
       "components": [
         "Rusty Sword",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Long Sword.png"
     },
     "Katana": {
       "nameKo": "일본도",
@@ -421,7 +440,8 @@
         "Rusty Sword",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Katana.png"
     },
     "Bastard Sword": {
       "nameKo": "바스타드 소드",
@@ -440,7 +460,8 @@
         "Rusty Sword",
         "Oil",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Bastard Sword.png"
     },
     "Jewel Sword": {
       "nameKo": "보검",
@@ -460,7 +481,8 @@
         "Rusty Sword",
         "Oil",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Jewel Sword.png"
     },
     "Thuận Thiên": {
       "nameKo": "뚜언 띠엔",
@@ -482,7 +504,8 @@
         "Oil",
         "Scrap Metal",
         "Turtle Shell"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Thuận Thiên.png"
     },
     "Arondight": {
       "nameKo": "아론다이트",
@@ -506,7 +529,8 @@
         "Oil",
         "Gemstone",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Arondight.png"
     },
     "Excalibur": {
       "nameKo": "엑스칼리버",
@@ -529,7 +553,8 @@
         "Oil",
         "Scrap Metal",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Excalibur.png"
     },
     "Plasma Sword": {
       "nameKo": "플라즈마 소드",
@@ -550,7 +575,8 @@
         "Oil",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Plasma Sword.png"
     },
     "Laevateinn": {
       "nameKo": "레바테인",
@@ -569,7 +595,8 @@
       "components": [
         "Rusty Sword",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Laevateinn.png"
     },
     "Monohoshizao": {
       "nameKo": "모노호시자오",
@@ -591,7 +618,8 @@
         "Scrap Metal",
         "Chemicals",
         "Pickaxe"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Monohoshizao.png"
     },
     "Hovud": {
       "nameKo": "호푸어드",
@@ -613,7 +641,8 @@
         "Oil",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Hovud.png"
     },
     "Aurora Longsword": {
       "nameKo": "빛의 검",
@@ -633,7 +662,8 @@
       "components": [
         "Rusty Sword",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Aurora Longsword.png"
     },
     "Arcane Edge": {
       "nameKo": "아케인 엣지",
@@ -655,7 +685,8 @@
         "Oil",
         "Scrap Metal",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Arcane Edge.png"
     },
     "Dáinsleif": {
       "nameKo": "다인슬라이프",
@@ -677,7 +708,8 @@
       "components": [
         "Rusty Sword",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Dáinsleif.png"
     },
     "Almas": {
       "nameKo": "알마스",
@@ -697,7 +729,8 @@
       "components": [
         "Ice",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Almas.png"
     },
     "Chained Nightmare": {
       "nameKo": "하데스 엣지",
@@ -716,7 +749,8 @@
       "components": [
         "Scrap Metal",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Chained Nightmare.png"
     },
     "Equilibrium": {
       "nameKo": "이퀄리브리엄",
@@ -739,7 +773,8 @@
       "components": [
         "Rusty Sword",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Equilibrium.png"
     },
     "Twin Blades": {
       "nameKo": "쌍칼",
@@ -758,7 +793,8 @@
         "attackPower": 8
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/dual-swords/Twin Blades.png"
     },
     "Wrought Swords": {
       "nameKo": "조잡한 쌍검",
@@ -776,7 +812,8 @@
       "components": [
         "Twin Blades",
         "Pickaxe"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Wrought Swords.png"
     },
     "Pocket Aces": {
       "nameKo": "쌍둥이 검",
@@ -795,7 +832,8 @@
         "Twin Blades",
         "Pickaxe",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Pocket Aces.png"
     },
     "Florentine": {
       "nameKo": "피렌체식 쌍검",
@@ -815,7 +853,8 @@
         "Twin Blades",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Florentine.png"
     },
     "Divine Dual Swords": {
       "nameKo": "이천일류",
@@ -840,7 +879,8 @@
         "Graphite",
         "Lighter",
         "Ice"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Divine Dual Swords.png"
     },
     "Starsteel Twin Swords": {
       "nameKo": "자웅일대검",
@@ -860,7 +900,8 @@
       "components": [
         "Twin Blades",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Starsteel Twin Swords.png"
     },
     "Asura": {
       "nameKo": "아수라",
@@ -883,7 +924,8 @@
         "Graphite",
         "Lighter",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Asura.png"
     },
     "Black Butterfly": {
       "nameKo": "검은 나비",
@@ -907,7 +949,8 @@
         "Pickaxe",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Black Butterfly.png"
     },
     "Dioscuri": {
       "nameKo": "디오스쿠로이",
@@ -928,7 +971,8 @@
         "Pickaxe",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Dioscuri.png"
     },
     "Lloigor & Zahr": {
       "nameKo": "로이거 차르",
@@ -948,7 +992,8 @@
       "components": [
         "Scissors",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Lloigor & Zahr.png"
     },
     "Spring and Autumn": {
       "nameKo": "간장과 막야",
@@ -967,7 +1012,8 @@
       "components": [
         "Twin Blades",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Spring and Autumn.png"
     },
     "Phantom Blade": {
       "nameKo": "환영도",
@@ -989,7 +1035,8 @@
       "components": [
         "Twin Blades",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Phantom Blade.png"
     },
     "Thanatos": {
       "nameKo": "타나토스",
@@ -1009,7 +1056,8 @@
       "components": [
         "Scissors",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Thanatos.png"
     },
     "Hook Swords": {
       "nameKo": "훅소드",
@@ -1031,7 +1079,8 @@
         "Pickaxe",
         "Scrap Metal",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Hook Swords.png"
     },
     "Death's Sickles": {
       "nameKo": "죽음의 발걸음",
@@ -1051,7 +1100,8 @@
       "components": [
         "Twin Blades",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Death's Sickles.png"
     },
     "Hammer": {
       "nameKo": "망치",
@@ -1070,7 +1120,8 @@
         "attackPower": 16
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/hammer/Hammer.png"
     },
     "Warhammer": {
       "nameKo": "워해머",
@@ -1088,7 +1139,8 @@
       "components": [
         "Hammer",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Warhammer.png"
     },
     "Morning Star": {
       "nameKo": "모닝 스타",
@@ -1107,7 +1159,8 @@
         "Hammer",
         "Nail",
         "Iron Ball"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Morning Star.png"
     },
     "Black Stag Hammer": {
       "nameKo": "사슴 망치",
@@ -1125,7 +1178,8 @@
       "components": [
         "Hammer",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Black Stag Hammer.png"
     },
     "Forged Destiny": {
       "nameKo": "운명의 망치",
@@ -1145,7 +1199,8 @@
         "Hammer",
         "Rubber",
         "Playing Cards"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Forged Destiny.png"
     },
     "Fang Mace": {
       "nameKo": "낭아봉",
@@ -1167,7 +1222,8 @@
         "Nail",
         "Iron Ball",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Fang Mace.png"
     },
     "Hammer of Dagda": {
       "nameKo": "다그다의 망치",
@@ -1189,7 +1245,8 @@
         "Nail",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Hammer of Dagda.png"
     },
     "Hammer of Thor": {
       "nameKo": "토르의 망치",
@@ -1210,7 +1267,8 @@
         "Rubber",
         "Playing Cards",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Hammer of Thor.png"
     },
     "Evening Star": {
       "nameKo": "개밥바라기",
@@ -1230,7 +1288,8 @@
       "components": [
         "Hammer",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Evening Star.png"
     },
     "Weight of the World": {
       "nameKo": "천근추",
@@ -1254,7 +1313,8 @@
         "Rubber",
         "Playing Cards",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Weight of the World.png"
     },
     "Bookmaster": {
       "nameKo": "아는 것이 힘",
@@ -1279,7 +1339,8 @@
         "Rubber",
         "Paper",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Bookmaster.png"
     },
     "Peacebringer": {
       "nameKo": "피스브링어",
@@ -1301,7 +1362,8 @@
       "components": [
         "Hammer",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Peacebringer.png"
     },
     "Squeaky Hammer": {
       "nameKo": "뿅망치",
@@ -1321,7 +1383,8 @@
       "components": [
         "Hammer",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Squeaky Hammer.png"
     },
     "Doomsday": {
       "nameKo": "둠스데이",
@@ -1341,7 +1404,8 @@
       "components": [
         "Iron Ball",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Doomsday.png"
     },
     "Leviathan": {
       "nameKo": "레비아탄",
@@ -1360,7 +1424,8 @@
       "components": [
         "Hammer",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Leviathan.png"
     },
     "Hatchet": {
       "nameKo": "손도끼",
@@ -1379,7 +1444,8 @@
         "attackPower": 18
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/axe/Hatchet.png"
     },
     "Chain Scythe": {
       "nameKo": "사슬 낫",
@@ -1399,7 +1465,8 @@
       "components": [
         "Hatchet",
         "Thread"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Chain Scythe.png"
     },
     "Battle Axe": {
       "nameKo": "전투 도끼",
@@ -1417,7 +1484,8 @@
       "components": [
         "Hatchet",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Battle Axe.png"
     },
     "Light Hatchet": {
       "nameKo": "경량화 도끼",
@@ -1436,7 +1504,8 @@
         "Hatchet",
         "Branch",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Light Hatchet.png"
     },
     "Reaper's Scythe": {
       "nameKo": "사신의 낫",
@@ -1457,7 +1526,8 @@
         "Hatchet",
         "Thread",
         "Pickaxe"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Reaper's Scythe.png"
     },
     "Gigantic Axe": {
       "nameKo": "대부",
@@ -1476,7 +1546,8 @@
         "Hatchet",
         "Branch",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Gigantic Axe.png"
     },
     "Beam Axe": {
       "nameKo": "빔 엑스",
@@ -1501,7 +1572,8 @@
         "Branch",
         "Scrap Metal",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Beam Axe.png"
     },
     "Santa Muerte": {
       "nameKo": "산타 무에르테",
@@ -1524,7 +1596,8 @@
         "Thread",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Santa Muerte.png"
     },
     "Scythe": {
       "nameKo": "스퀴테",
@@ -1548,7 +1621,8 @@
         "Thread",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Scythe.png"
     },
     "Parashu": {
       "nameKo": "파라슈",
@@ -1570,7 +1644,8 @@
         "Branch",
         "Feather",
         "Playing Cards"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Parashu.png"
     },
     "Harpe": {
       "nameKo": "하르페",
@@ -1594,7 +1669,8 @@
         "Thread",
         "Pickaxe",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Harpe.png"
     },
     "The Juggernaut": {
       "nameKo": "저거너트",
@@ -1614,7 +1690,8 @@
       "components": [
         "Hatchet",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/The Juggernaut.png"
     },
     "Axe of Pangu": {
       "nameKo": "반고부",
@@ -1634,7 +1711,8 @@
       "components": [
         "Hatchet",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Axe of Pangu.png"
     },
     "Paradise Lost": {
       "nameKo": "낙원의 낫",
@@ -1654,7 +1732,8 @@
       "components": [
         "Pickaxe",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Paradise Lost.png"
     },
     "Scarlet Scythe": {
       "nameKo": "진홍빛 낫",
@@ -1676,7 +1755,8 @@
       "components": [
         "Hatchet",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Scarlet Scythe.png"
     },
     "Nephleon": {
       "nameKo": "네플리온",
@@ -1695,7 +1775,8 @@
       "components": [
         "Pickaxe",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Nephleon.png"
     },
     "Short Spear": {
       "nameKo": "단창",
@@ -1714,7 +1795,8 @@
         "attackPower": 15
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/spear/Short Spear.png"
     },
     "Bamboo Spear": {
       "nameKo": "죽창",
@@ -1732,7 +1814,8 @@
       "components": [
         "Short Spear",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Bamboo Spear.png"
     },
     "Bident": {
       "nameKo": "바이던트",
@@ -1751,7 +1834,8 @@
         "Short Spear",
         "Branch",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Bident.png"
     },
     "Pike": {
       "nameKo": "파이크",
@@ -1769,7 +1853,8 @@
       "components": [
         "Short Spear",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Pike.png"
     },
     "Halberd": {
       "nameKo": "도끼창",
@@ -1788,7 +1873,8 @@
         "Short Spear",
         "Scrap Metal",
         "Pickaxe"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Halberd.png"
     },
     "Sharpened Spear": {
       "nameKo": "강창",
@@ -1808,7 +1894,8 @@
         "Short Spear",
         "Branch",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Sharpened Spear.png"
     },
     "Gentian Silver Gun": {
       "nameKo": "애각창",
@@ -1828,7 +1915,8 @@
       "components": [
         "Short Spear",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Gentian Silver Gun.png"
     },
     "Eighteen Foot Spear": {
       "nameKo": "장팔사모",
@@ -1850,7 +1938,8 @@
         "Scrap Metal",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Eighteen Foot Spear.png"
     },
     "Cosmic Bident": {
       "nameKo": "코스믹 바이던트",
@@ -1871,7 +1960,8 @@
       "components": [
         "Short Spear",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Cosmic Bident.png"
     },
     "Lance of Poseidon": {
       "nameKo": "트리아이나",
@@ -1894,7 +1984,8 @@
         "Branch",
         "Nail",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Lance of Poseidon.png"
     },
     "Blazing Lance": {
       "nameKo": "화첨창",
@@ -1913,7 +2004,8 @@
       "components": [
         "Short Spear",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Blazing Lance.png"
     },
     "Fangtian Huaji": {
       "nameKo": "방천화극",
@@ -1938,7 +2030,8 @@
         "Branch",
         "Feather",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Fangtian Huaji.png"
     },
     "Dragon Guandao": {
       "nameKo": "청룡언월도",
@@ -1959,7 +2052,8 @@
         "Scrap Metal",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Dragon Guandao.png"
     },
     "Spear of Longinus": {
       "nameKo": "롱기누스의 창",
@@ -1982,7 +2076,8 @@
       "components": [
         "Short Spear",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Spear of Longinus.png"
     },
     "Star Hunter": {
       "nameKo": "별 사냥꾼",
@@ -2002,7 +2097,8 @@
       "components": [
         "Fountain Pen",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Star Hunter.png"
     },
     "Short Rod": {
       "nameKo": "단봉",
@@ -2021,7 +2117,8 @@
         "attackPower": 15
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/bat/Short Rod.png"
     },
     "Long Rod": {
       "nameKo": "장봉",
@@ -2039,7 +2136,8 @@
       "components": [
         "Short Rod",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Long Rod.png"
     },
     "Goblin Bat": {
       "nameKo": "도깨비 방망이",
@@ -2058,7 +2156,8 @@
         "Short Rod",
         "Branch",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Goblin Bat.png"
     },
     "Umbrella": {
       "nameKo": "우산",
@@ -2078,7 +2177,8 @@
         "Short Rod",
         "Branch",
         "Cloth"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Umbrella.png"
     },
     "Iron Pipe": {
       "nameKo": "쇠파이프",
@@ -2096,7 +2196,8 @@
       "components": [
         "Short Rod",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Iron Pipe.png"
     },
     "Statue of Soteria": {
       "nameKo": "구원의 여신상",
@@ -2118,7 +2219,8 @@
         "Scrap Metal",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Statue of Soteria.png"
     },
     "Mallet": {
       "nameKo": "타구봉",
@@ -2142,7 +2244,8 @@
         "Branch",
         "Nail",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Mallet.png"
     },
     "Spy Umbrella": {
       "nameKo": "스파이의 우산",
@@ -2164,7 +2267,8 @@
         "Branch",
         "Cloth",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Spy Umbrella.png"
     },
     "Magic Stick": {
       "nameKo": "마법봉",
@@ -2185,7 +2289,8 @@
       "components": [
         "Ribbon",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Magic Stick.png"
     },
     "Vajra": {
       "nameKo": "금강저",
@@ -2208,7 +2313,8 @@
         "Scrap Metal",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Vajra.png"
     },
     "Pakua Chang": {
       "nameKo": "팔괘장",
@@ -2232,7 +2338,8 @@
         "Scrap Metal",
         "Stallion Medal",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Pakua Chang.png"
     },
     "Monkey King Bar": {
       "nameKo": "여의봉",
@@ -2253,7 +2360,8 @@
       "components": [
         "Short Rod",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Monkey King Bar.png"
     },
     "Ghost Hand": {
       "nameKo": "터럭손 방망이",
@@ -2272,7 +2380,8 @@
       "components": [
         "Short Rod",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Ghost Hand.png"
     },
     "Rod of Heart": {
       "nameKo": "로드 오브 하트",
@@ -2294,7 +2403,8 @@
       "components": [
         "Short Rod",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Rod of Heart.png"
     },
     "Vulture's Eye": {
       "nameKo": "시체매",
@@ -2314,7 +2424,8 @@
       "components": [
         "Short Rod",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Vulture's Eye.png"
     },
     "Lollipop": {
       "nameKo": "롤리팝",
@@ -2337,7 +2448,8 @@
       "components": [
         "Stone",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Lollipop.png"
     },
     "Whip": {
       "nameKo": "채찍",
@@ -2356,7 +2468,8 @@
         "attackPower": 12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/whip/Whip.png"
     },
     "Rope Cuffs": {
       "nameKo": "오랏줄",
@@ -2375,7 +2488,8 @@
       "components": [
         "Whip",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Rope Cuffs.png"
     },
     "Bullwhip": {
       "nameKo": "철편",
@@ -2394,7 +2508,8 @@
       "components": [
         "Whip",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Bullwhip.png"
     },
     "Thunder Whip": {
       "nameKo": "뇌룡편",
@@ -2419,7 +2534,8 @@
         "Stallion Medal",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Thunder Whip.png"
     },
     "Lightning Whip": {
       "nameKo": "벽력편",
@@ -2440,7 +2556,8 @@
         "Whip",
         "Nail",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Lightning Whip.png"
     },
     "Gleipnir": {
       "nameKo": "글레이프니르",
@@ -2462,7 +2579,8 @@
         "Stallion Medal",
         "Oil",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Gleipnir.png"
     },
     "Plasma Whip": {
       "nameKo": "플라즈마 윕",
@@ -2484,7 +2602,8 @@
         "Nail",
         "Battery",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Plasma Whip.png"
     },
     "Cathode Lash": {
       "nameKo": "캐소드라쉬",
@@ -2509,7 +2628,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Cathode Lash.png"
     },
     "Ouranos": {
       "nameKo": "우라누스",
@@ -2529,7 +2649,8 @@
       "components": [
         "Whip",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Ouranos.png"
     },
     "Bloody Nine Tails": {
       "nameKo": "혈화구절편",
@@ -2551,7 +2672,8 @@
       "components": [
         "Whip",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Bloody Nine Tails.png"
     },
     "Sword of Scales": {
       "nameKo": "사복검",
@@ -2572,7 +2694,8 @@
       "components": [
         "Whip",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Sword of Scales.png"
     },
     "The Whip of Fate": {
       "nameKo": "운명의 고리",
@@ -2592,7 +2715,8 @@
       "components": [
         "Whip",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/The Whip of Fate.png"
     },
     "Cotton Gloves": {
       "nameKo": "목장갑",
@@ -2611,7 +2735,8 @@
         "attackPower": 7
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/glove/Cotton Gloves.png"
     },
     "Leather Gloves": {
       "nameKo": "글러브",
@@ -2629,7 +2754,8 @@
       "components": [
         "Cotton Gloves",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Leather Gloves.png"
     },
     "Iron Knuckles": {
       "nameKo": "아이언 너클",
@@ -2647,7 +2773,8 @@
       "components": [
         "Cotton Gloves",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Iron Knuckles.png"
     },
     "Gauntlet": {
       "nameKo": "건틀릿",
@@ -2666,7 +2793,8 @@
         "Cotton Gloves",
         "Scrap Metal",
         "Cloth"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Gauntlet.png"
     },
     "Wing Knuckles": {
       "nameKo": "윙 너클",
@@ -2685,7 +2813,8 @@
         "Cotton Gloves",
         "Scrap Metal",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Wing Knuckles.png"
     },
     "Bone Gauntlet": {
       "nameKo": "귀골 장갑",
@@ -2705,7 +2834,8 @@
         "Cotton Gloves",
         "Rubber",
         "Turtle Shell"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Bone Gauntlet.png"
     },
     "Phoenix Gloves": {
       "nameKo": "회단 장갑",
@@ -2725,7 +2855,8 @@
         "Cotton Gloves",
         "Rubber",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Phoenix Gloves.png"
     },
     "One Inch Punch": {
       "nameKo": "단영촌천투",
@@ -2747,7 +2878,8 @@
         "Rubber",
         "Turtle Shell",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/One Inch Punch.png"
     },
     "Divine Fist": {
       "nameKo": "디바인 피스트",
@@ -2769,7 +2901,8 @@
         "Scrap Metal",
         "Cloth",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Divine Fist.png"
     },
     "Bloodwing Knuckles": {
       "nameKo": "블러드윙 너클",
@@ -2791,7 +2924,8 @@
         "Scrap Metal",
         "Feather",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Bloodwing Knuckles.png"
     },
     "Frost Petal Hand": {
       "nameKo": "빙화현옥수",
@@ -2813,7 +2947,8 @@
         "Rubber",
         "Lighter",
         "Ice"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Frost Petal Hand.png"
     },
     "Buddha's Palm": {
       "nameKo": "여래수투",
@@ -2838,7 +2973,8 @@
         "Rubber",
         "Turtle Shell",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Buddha's Palm.png"
     },
     "Brasil Gauntlet": {
       "nameKo": "브레이질 건틀릿",
@@ -2863,7 +2999,8 @@
         "Scrap Metal",
         "Cloth",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Brasil Gauntlet.png"
     },
     "White Claw Punch": {
       "nameKo": "소수",
@@ -2885,7 +3022,8 @@
         "Rubber",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/White Claw Punch.png"
     },
     "Imperial Silk Gloves": {
       "nameKo": "천잠장갑",
@@ -2905,7 +3043,8 @@
       "components": [
         "Thread",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Imperial Silk Gloves.png"
     },
     "Mark of the Phoenix": {
       "nameKo": "주작자문",
@@ -2924,7 +3063,8 @@
       "components": [
         "Leather",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Mark of the Phoenix.png"
     },
     "Permafrost": {
       "nameKo": "프로스트팽",
@@ -2944,7 +3084,8 @@
       "components": [
         "Cotton Gloves",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Permafrost.png"
     },
     "Bloody Hand": {
       "nameKo": "블러디 핸즈",
@@ -2966,7 +3107,8 @@
       "components": [
         "Cotton Gloves",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Bloody Hand.png"
     },
     "Iron Fist": {
       "nameKo": "아이언 피스트",
@@ -2986,7 +3128,8 @@
       "components": [
         "Cotton Gloves",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Iron Fist.png"
     },
     "Bamboo": {
       "nameKo": "대나무",
@@ -3005,7 +3148,8 @@
         "attackPower": 12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/tonfa/Bamboo.png"
     },
     "Wooden Tonfa": {
       "nameKo": "톤파",
@@ -3023,7 +3167,8 @@
       "components": [
         "Bamboo",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Wooden Tonfa.png"
     },
     "Police Baton": {
       "nameKo": "경찰봉",
@@ -3042,7 +3187,8 @@
         "Bamboo",
         "Branch",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Police Baton.png"
     },
     "Ryukyu Tonfa": {
       "nameKo": "류큐톤파",
@@ -3062,7 +3208,8 @@
         "Bamboo",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Ryukyu Tonfa.png"
     },
     "Tactical Tonfa": {
       "nameKo": "택티컬 톤파",
@@ -3084,7 +3231,8 @@
         "Branch",
         "Stallion Medal",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Tactical Tonfa.png"
     },
     "Mai Sok": {
       "nameKo": "마이쏙",
@@ -3109,7 +3257,8 @@
         "Scrap Metal",
         "Chemicals",
         "Turtle Shell"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Mai Sok.png"
     },
     "Plasma Tonfa": {
       "nameKo": "플라즈마 톤파",
@@ -3132,7 +3281,8 @@
         "Branch",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Plasma Tonfa.png"
     },
     "Windrunner": {
       "nameKo": "윈드러너",
@@ -3152,7 +3302,8 @@
       "components": [
         "Patched Leather",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Windrunner.png"
     },
     "Holster Tonfa": {
       "nameKo": "홀스터 톤파",
@@ -3174,7 +3325,8 @@
         "Branch",
         "Stallion Medal",
         "Watch"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Holster Tonfa.png"
     },
     "Obsidian Jitte": {
       "nameKo": "흑요석 짓테",
@@ -3195,7 +3347,8 @@
       "components": [
         "Bamboo",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Obsidian Jitte.png"
     },
     "Frozen Echo": {
       "nameKo": "만년한파",
@@ -3216,7 +3369,8 @@
       "components": [
         "Bamboo",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Frozen Echo.png"
     },
     "Blade Tonfa": {
       "nameKo": "칼날 톤파",
@@ -3239,7 +3393,8 @@
       "components": [
         "Bamboo",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Blade Tonfa.png"
     },
     "Mantis Tonfa": {
       "nameKo": "맨티스 톤파",
@@ -3259,7 +3414,8 @@
       "components": [
         "Bamboo",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Mantis Tonfa.png"
     },
     "Baseball": {
       "nameKo": "야구공",
@@ -3278,7 +3434,8 @@
         "attackPower": 12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/throw/Baseball.png"
     },
     "Grenade": {
       "nameKo": "수류탄",
@@ -3296,7 +3453,8 @@
       "components": [
         "Baseball",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Grenade.png"
     },
     "Sling": {
       "nameKo": "슬링",
@@ -3317,7 +3475,8 @@
         "Baseball",
         "Fountain Pen",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Sling.png"
     },
     "Autographed Baseball": {
       "nameKo": "싸인볼",
@@ -3335,7 +3494,8 @@
       "components": [
         "Baseball",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Autographed Baseball.png"
     },
     "Flour Bomb": {
       "nameKo": "밀가루 폭탄",
@@ -3355,7 +3515,8 @@
         "Baseball",
         "Paper",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Flour Bomb.png"
     },
     "Incendiary Bomb": {
       "nameKo": "소이탄",
@@ -3381,7 +3542,8 @@
         "Gunpowder",
         "Battery",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Incendiary Bomb.png"
     },
     "Ball Lightning": {
       "nameKo": "볼 라이트닝",
@@ -3401,7 +3563,8 @@
         "Baseball",
         "Gunpowder",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Ball Lightning.png"
     },
     "Grenade of Antioch": {
       "nameKo": "안티오크의 수류탄",
@@ -3420,7 +3583,8 @@
       "components": [
         "Cross",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Grenade of Antioch.png"
     },
     "David's Sling": {
       "nameKo": "다비드슬링",
@@ -3441,7 +3605,8 @@
         "Fountain Pen",
         "Rubber",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/David's Sling.png"
     },
     "Smoke Bomb": {
       "nameKo": "연막탄",
@@ -3465,7 +3630,8 @@
         "Paper",
         "Lighter",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Smoke Bomb.png"
     },
     "Ruthenium Marble": {
       "nameKo": "루테늄 구슬",
@@ -3487,7 +3653,8 @@
         "Fountain Pen",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Ruthenium Marble.png"
     },
     "Fireball": {
       "nameKo": "파이어 볼",
@@ -3508,7 +3675,8 @@
       "components": [
         "Baseball",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Fireball.png"
     },
     "Dyadic Prism": {
       "nameKo": "프리즘 볼",
@@ -3527,7 +3695,8 @@
       "components": [
         "Battery",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Dyadic Prism.png"
     },
     "Astrapē": {
       "nameKo": "아스트라페",
@@ -3546,7 +3715,8 @@
       "components": [
         "Baseball",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Astrapē.png"
     },
     "Sticky Bomb": {
       "nameKo": "점착폭탄",
@@ -3571,7 +3741,8 @@
         "Gunpowder",
         "Battery",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Sticky Bomb.png"
     },
     "Imugi's Pearl": {
       "nameKo": "여의주",
@@ -3592,7 +3763,8 @@
       "components": [
         "Baseball",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Imugi's Pearl.png"
     },
     "Chaser": {
       "nameKo": "체이서",
@@ -3614,7 +3786,8 @@
       "components": [
         "Baseball",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Chaser.png"
     },
     "Razor": {
       "nameKo": "면도칼",
@@ -3633,7 +3806,8 @@
         "attackPower": 11
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/shuriken/Razor.png"
     },
     "Dart": {
       "nameKo": "다트",
@@ -3651,7 +3825,8 @@
       "components": [
         "Razor",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Dart.png"
     },
     "Charm": {
       "nameKo": "부적",
@@ -3671,7 +3846,8 @@
         "Razor",
         "Playing Cards",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Charm.png"
     },
     "Vintage Cards": {
       "nameKo": "빈티지 카드",
@@ -3690,7 +3866,8 @@
       "components": [
         "Razor",
         "Playing Cards"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Vintage Cards.png"
     },
     "Throwing Stars": {
       "nameKo": "표창",
@@ -3708,7 +3885,8 @@
       "components": [
         "Razor",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Throwing Stars.png"
     },
     "Chakram": {
       "nameKo": "챠크람",
@@ -3727,7 +3905,8 @@
         "Razor",
         "Piano Wire",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Chakram.png"
     },
     "Willow Leaf Spike": {
       "nameKo": "유엽비도",
@@ -3747,7 +3926,8 @@
         "Razor",
         "Branch",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Willow Leaf Spike.png"
     },
     "Cards of Tyranny": {
       "nameKo": "미치광이왕의 카드",
@@ -3768,7 +3948,8 @@
         "Playing Cards",
         "Paper",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Cards of Tyranny.png"
     },
     "Plumbata": {
       "nameKo": "플럼바타",
@@ -3788,7 +3969,8 @@
         "Razor",
         "Branch",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Plumbata.png"
     },
     "Mystic Jade Charm": {
       "nameKo": "옥전결",
@@ -3812,7 +3994,8 @@
         "Playing Cards",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Mystic Jade Charm.png"
     },
     "Fuhma Shuriken": {
       "nameKo": "풍마 수리검",
@@ -3834,7 +4017,8 @@
         "Piano Wire",
         "Stallion Medal",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Fuhma Shuriken.png"
     },
     "Frost Venom Dart": {
       "nameKo": "빙백은침",
@@ -3854,7 +4038,8 @@
       "components": [
         "Razor",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Frost Venom Dart.png"
     },
     "Azure Dagger": {
       "nameKo": "푸른색 단도",
@@ -3879,7 +4064,8 @@
         "Branch",
         "Feather",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Azure Dagger.png"
     },
     "Flechette": {
       "nameKo": "플레솃",
@@ -3904,7 +4090,8 @@
         "Branch",
         "Scrap Metal",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Flechette.png"
     },
     "Wind and Fire Wheels": {
       "nameKo": "건곤권",
@@ -3924,7 +4111,8 @@
       "components": [
         "Razor",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Wind and Fire Wheels.png"
     },
     "Death Rune": {
       "nameKo": "생사부",
@@ -3943,7 +4131,8 @@
       "components": [
         "Playing Cards",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Death Rune.png"
     },
     "Sudarsana": {
       "nameKo": "수다르사나",
@@ -3962,7 +4151,8 @@
       "components": [
         "Razor",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Sudarsana.png"
     },
     "Petal Torrent": {
       "nameKo": "만천화우",
@@ -3981,7 +4171,8 @@
       "components": [
         "Nail",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Petal Torrent.png"
     },
     "Black Lotus Shuriken": {
       "nameKo": "흑련비표",
@@ -4003,7 +4194,8 @@
       "components": [
         "Razor",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Black Lotus Shuriken.png"
     },
     "Bow": {
       "nameKo": "양궁",
@@ -4022,7 +4214,8 @@
         "attackPower": 11
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/bow/Bow.png"
     },
     "Wooden Bow": {
       "nameKo": "목궁",
@@ -4040,7 +4233,8 @@
       "components": [
         "Bow",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Wooden Bow.png"
     },
     "Longbow": {
       "nameKo": "장궁",
@@ -4058,7 +4252,8 @@
       "components": [
         "Bow",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Longbow.png"
     },
     "Composite Bow": {
       "nameKo": "컴포지트 보우",
@@ -4077,7 +4272,8 @@
         "Bow",
         "Piano Wire",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Composite Bow.png"
     },
     "Strong Bow": {
       "nameKo": "강궁",
@@ -4096,7 +4292,8 @@
         "Bow",
         "Piano Wire",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Strong Bow.png"
     },
     "Mighty Bow": {
       "nameKo": "벽력궁",
@@ -4115,7 +4312,8 @@
         "Bow",
         "Rubber",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Mighty Bow.png"
     },
     "Ancient Bolt": {
       "nameKo": "편전",
@@ -4139,7 +4337,8 @@
         "Piano Wire",
         "Oil",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Ancient Bolt.png"
     },
     "Golden-Ratio Bow": {
       "nameKo": "골든래쇼 보우",
@@ -4162,7 +4361,8 @@
         "Piano Wire",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Golden-Ratio Bow.png"
     },
     "Twinbow": {
       "nameKo": "트윈보우",
@@ -4184,7 +4384,8 @@
         "Piano Wire",
         "Nail",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Twinbow.png"
     },
     "Elemental Bow": {
       "nameKo": "엘리멘탈 보우",
@@ -4209,7 +4410,8 @@
         "Rubber",
         "Stallion Medal",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Elemental Bow.png"
     },
     "Jebe's Altered Bow": {
       "nameKo": "제베의 활",
@@ -4231,7 +4433,8 @@
         "Rubber",
         "Gunpowder",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Jebe's Altered Bow.png"
     },
     "Failnaught": {
       "nameKo": "페일노트",
@@ -4253,7 +4456,8 @@
       "components": [
         "Bow",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Failnaught.png"
     },
     "Argyrotoxus": {
       "nameKo": "아르기로톡소스",
@@ -4274,7 +4478,8 @@
       "components": [
         "Bow",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Argyrotoxus.png"
     },
     "Crimson Bow": {
       "nameKo": "적궁백시",
@@ -4293,7 +4498,8 @@
       "components": [
         "Bow",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Crimson Bow.png"
     },
     "Artemis": {
       "nameKo": "아르테미스",
@@ -4313,7 +4519,8 @@
       "components": [
         "Bow",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Artemis.png"
     },
     "Eagle Eye": {
       "nameKo": "이글 아이",
@@ -4334,7 +4541,8 @@
       "components": [
         "Rubber",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Eagle Eye.png"
     },
     "Short Crossbow": {
       "nameKo": "석궁",
@@ -4353,7 +4561,8 @@
         "attackPower": 12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/crossbow/Short Crossbow.png"
     },
     "Long Crossbow": {
       "nameKo": "쇠뇌",
@@ -4371,7 +4580,8 @@
       "components": [
         "Short Crossbow",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Long Crossbow.png"
     },
     "Crossbow": {
       "nameKo": "크로스보우",
@@ -4389,7 +4599,8 @@
       "components": [
         "Short Crossbow",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Crossbow.png"
     },
     "Laser Crossbow": {
       "nameKo": "저격궁",
@@ -4409,7 +4620,8 @@
         "Short Crossbow",
         "Branch",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Laser Crossbow.png"
     },
     "Heavy Crossbow": {
       "nameKo": "헤비 크로스보우",
@@ -4428,7 +4640,8 @@
         "Short Crossbow",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Heavy Crossbow.png"
     },
     "Steel Bow": {
       "nameKo": "철궁",
@@ -4447,7 +4660,8 @@
         "Short Crossbow",
         "Branch",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Steel Bow.png"
     },
     "The Legend of The General": {
       "nameKo": "대황",
@@ -4468,7 +4682,8 @@
         "Piano Wire",
         "Scrap Metal",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/The Legend of The General.png"
     },
     "Ballista": {
       "nameKo": "발리스타",
@@ -4490,7 +4705,8 @@
         "Piano Wire",
         "Scrap Metal",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Ballista.png"
     },
     "Sniper Crossbow": {
       "nameKo": "저격 크로스보우",
@@ -4511,7 +4727,8 @@
         "Branch",
         "Binoculars",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Sniper Crossbow.png"
     },
     "The Golden Ghost": {
       "nameKo": "영광금귀신기노",
@@ -4531,7 +4748,8 @@
       "components": [
         "Short Crossbow",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/The Golden Ghost.png"
     },
     "Poisoned Crossbow": {
       "nameKo": "포이즌드 크로스보우",
@@ -4555,7 +4773,8 @@
         "Branch",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Poisoned Crossbow.png"
     },
     "Sharanga": {
       "nameKo": "샤릉가",
@@ -4574,7 +4793,8 @@
       "components": [
         "Short Crossbow",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Sharanga.png"
     },
     "Blood Half Moon": {
       "nameKo": "혈색반월",
@@ -4596,7 +4816,8 @@
       "components": [
         "Short Crossbow",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Blood Half Moon.png"
     },
     "Tempest": {
       "nameKo": "템페스트",
@@ -4615,7 +4836,8 @@
       "components": [
         "Short Crossbow",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Tempest.png"
     },
     "Phantom Bolt": {
       "nameKo": "팬텀 볼트",
@@ -4634,7 +4856,8 @@
       "components": [
         "Piano Wire",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Phantom Bolt.png"
     },
     "Walther PPK": {
       "nameKo": "발터 PPK",
@@ -4653,7 +4876,8 @@
         "attackPower": 14
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/pistol/Walther PPK.png"
     },
     "Magnum-Python": {
       "nameKo": "매그넘-파이선",
@@ -4672,7 +4896,8 @@
       "components": [
         "Walther PPK",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Magnum-Python.png"
     },
     "Beretta M92F": {
       "nameKo": "베레타 M92F",
@@ -4690,7 +4915,8 @@
       "components": [
         "Walther PPK",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Beretta M92F.png"
     },
     "FN57": {
       "nameKo": "FN57",
@@ -4709,7 +4935,8 @@
         "Walther PPK",
         "Gunpowder",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/FN57.png"
     },
     "Magnum-Anaconda": {
       "nameKo": "매그넘-아나콘다",
@@ -4729,7 +4956,8 @@
         "Walther PPK",
         "Oil",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Magnum-Anaconda.png"
     },
     "Derringer": {
       "nameKo": "데린저",
@@ -4748,7 +4976,8 @@
         "Walther PPK",
         "Piano Wire",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Derringer.png"
     },
     "Devil's Marksman": {
       "nameKo": "마탄의 사수",
@@ -4767,7 +4996,8 @@
       "components": [
         "Walther PPK",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Devil's Marksman.png"
     },
     "Elegance": {
       "nameKo": "엘레강스",
@@ -4789,7 +5019,8 @@
         "Gunpowder",
         "Binoculars",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Elegance.png"
     },
     "Electron Blaster": {
       "nameKo": "일렉트론 블라스터",
@@ -4811,7 +5042,8 @@
         "Oil",
         "Fountain Pen",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Electron Blaster.png"
     },
     "Magnum-Boa": {
       "nameKo": "매그넘-보아",
@@ -4834,7 +5066,8 @@
         "Oil",
         "Fountain Pen",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Magnum-Boa.png"
     },
     "Glock 48": {
       "nameKo": "글록 48",
@@ -4858,7 +5091,8 @@
         "Gunpowder",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Glock 48.png"
     },
     "Stampede": {
       "nameKo": "스탬피드",
@@ -4882,7 +5116,8 @@
         "Piano Wire",
         "Plastic",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Stampede.png"
     },
     "Molten Malachite": {
       "nameKo": "플라즈마 건",
@@ -4901,7 +5136,8 @@
       "components": [
         "Walther PPK",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Molten Malachite.png"
     },
     "Kelte": {
       "nameKo": "악켈테",
@@ -4922,7 +5158,8 @@
       "components": [
         "Walther PPK",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Kelte.png"
     },
     "Altair": {
       "nameKo": "알타이르",
@@ -4943,7 +5180,8 @@
       "components": [
         "Gemstone",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/Altair.png"
     },
     "High Noon": {
       "nameKo": "하이 눈",
@@ -4965,7 +5203,8 @@
       "components": [
         "Walther PPK",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/High Noon.png"
     },
     "Fedorova": {
       "nameKo": "페도로프 자동소총",
@@ -4984,7 +5223,8 @@
         "attackPower": 11
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/assault-rifle/Fedorova.png"
     },
     "STG-44": {
       "nameKo": "STG-44",
@@ -5002,7 +5242,8 @@
       "components": [
         "Fedorova",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/STG-44.png"
     },
     "AK-47": {
       "nameKo": "AK-47",
@@ -5021,7 +5262,8 @@
         "Fedorova",
         "Gunpowder",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/AK-47.png"
     },
     "M16A1": {
       "nameKo": "M16A1",
@@ -5039,7 +5281,8 @@
       "components": [
         "Fedorova",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/M16A1.png"
     },
     "Gatling Gun": {
       "nameKo": "개틀링 건",
@@ -5058,7 +5301,8 @@
       "components": [
         "Fedorova",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Gatling Gun.png"
     },
     "Type 95": {
       "nameKo": "95식 자동 소총",
@@ -5083,7 +5327,8 @@
         "Gunpowder",
         "Piano Wire",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Type 95.png"
     },
     "Agni": {
       "nameKo": "아그니",
@@ -5104,7 +5349,8 @@
         "Plastic",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Agni.png"
     },
     "AK-12": {
       "nameKo": "AK-12",
@@ -5128,7 +5374,8 @@
         "Gunpowder",
         "Piano Wire",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/AK-12.png"
     },
     "XCR": {
       "nameKo": "XCR",
@@ -5150,7 +5397,8 @@
         "Rubber",
         "Paper",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/XCR.png"
     },
     "Judgement": {
       "nameKo": "저지먼트",
@@ -5169,7 +5417,8 @@
       "components": [
         "Fedorova",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Judgement.png"
     },
     "Gold Rush": {
       "nameKo": "골드 러시",
@@ -5191,7 +5440,8 @@
         "Plastic",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Gold Rush.png"
     },
     "Black Widow": {
       "nameKo": "피안화",
@@ -5211,7 +5461,8 @@
       "components": [
         "Gunpowder",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Black Widow.png"
     },
     "Hellfire": {
       "nameKo": "헬파이어",
@@ -5233,7 +5484,8 @@
       "components": [
         "Fedorova",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Hellfire.png"
     },
     "Endeavor AX": {
       "nameKo": "엔데버 AX",
@@ -5252,7 +5504,8 @@
       "components": [
         "Fedorova",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Endeavor AX.png"
     },
     "Valkyrie": {
       "nameKo": "발키리",
@@ -5272,7 +5525,8 @@
       "components": [
         "Gunpowder",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Valkyrie.png"
     },
     "Long Rifle": {
       "nameKo": "화승총",
@@ -5291,7 +5545,8 @@
         "attackPower": 22
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/sniper-rifle/Long Rifle.png"
     },
     "Springfield": {
       "nameKo": "스프링필드",
@@ -5310,7 +5565,8 @@
       "components": [
         "Long Rifle",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Springfield.png"
     },
     "Harpoon Gun": {
       "nameKo": "하푼건",
@@ -5330,7 +5586,8 @@
         "Long Rifle",
         "Gemstone",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Harpoon Gun.png"
     },
     "Golden Rifle": {
       "nameKo": "금교전",
@@ -5350,7 +5607,8 @@
       "components": [
         "Long Rifle",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Golden Rifle.png"
     },
     "Railgun": {
       "nameKo": "레일건",
@@ -5371,7 +5629,8 @@
         "Long Rifle",
         "Binoculars",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Railgun.png"
     },
     "Tac-50": {
       "nameKo": "Tac-50",
@@ -5393,7 +5652,8 @@
         "Gemstone",
         "Nail",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Tac-50.png"
     },
     "Intervention": {
       "nameKo": "인터벤션",
@@ -5414,7 +5674,8 @@
       "components": [
         "Scrap Metal",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Intervention.png"
     },
     "NTW-20": {
       "nameKo": "NTW-20",
@@ -5438,7 +5699,8 @@
         "Gemstone",
         "Nail",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/NTW-20.png"
     },
     "Polaris": {
       "nameKo": "폴라리스",
@@ -5460,7 +5722,8 @@
         "Binoculars",
         "Piano Wire",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Polaris.png"
     },
     "Gauss Rifle": {
       "nameKo": "가우스 라이플",
@@ -5483,7 +5746,8 @@
         "Binoculars",
         "Piano Wire",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Gauss Rifle.png"
     },
     "The Deadly Ray": {
       "nameKo": "사사성광",
@@ -5505,7 +5769,8 @@
       "components": [
         "Long Rifle",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/The Deadly Ray.png"
     },
     "Blackfire Cannon": {
       "nameKo": "현자총통",
@@ -5523,7 +5788,8 @@
       "components": [
         "Long Rifle",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Blackfire Cannon.png"
     },
     "Andromeda": {
       "nameKo": "안드로메다",
@@ -5544,7 +5810,8 @@
       "components": [
         "Gunpowder",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Andromeda.png"
     },
     "Widow Maker": {
       "nameKo": "위도우 메이커",
@@ -5567,7 +5834,8 @@
       "components": [
         "Long Rifle",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Widow Maker.png"
     },
     "Dead Eye": {
       "nameKo": "데드 아이",
@@ -5588,7 +5856,8 @@
       "components": [
         "Long Rifle",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Dead Eye.png"
     },
     "Steel Chain": {
       "nameKo": "쇠사슬",
@@ -5607,7 +5876,8 @@
         "attackPower": 13
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/nunchaku/Steel Chain.png"
     },
     "Nunchaku": {
       "nameKo": "눈차크",
@@ -5625,7 +5895,8 @@
       "components": [
         "Steel Chain",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Nunchaku.png"
     },
     "Sharper": {
       "nameKo": "샤퍼",
@@ -5646,7 +5917,8 @@
         "Plastic",
         "Piano Wire",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Sharper.png"
     },
     "Bleeder": {
       "nameKo": "블리더",
@@ -5665,7 +5937,8 @@
         "Steel Chain",
         "Plastic",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Bleeder.png"
     },
     "The Smiting Dragon": {
       "nameKo": "대소반룡곤",
@@ -5690,7 +5963,8 @@
         "Plastic",
         "Nail",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/The Smiting Dragon.png"
     },
     "Vibro Nunchaku": {
       "nameKo": "초진동눈차크",
@@ -5714,7 +5988,8 @@
         "Plastic",
         "Nail",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Vibro Nunchaku.png"
     },
     "Cerberus": {
       "nameKo": "케르베로스",
@@ -5734,7 +6009,8 @@
       "components": [
         "Steel Chain",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Cerberus.png"
     },
     "Blue 3": {
       "nameKo": "블루3",
@@ -5759,7 +6035,8 @@
         "Plastic",
         "Chemicals",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Blue 3.png"
     },
     "Hydra": {
       "nameKo": "히드라",
@@ -5781,7 +6058,8 @@
       "components": [
         "Steel Chain",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Hydra.png"
     },
     "Crimson Red Lovers": {
       "nameKo": "비익련리",
@@ -5801,7 +6079,8 @@
       "components": [
         "Steel Chain",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Crimson Red Lovers.png"
     },
     "Geryon": {
       "nameKo": "게리온",
@@ -5820,7 +6099,8 @@
       "components": [
         "Steel Chain",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Geryon.png"
     },
     "Neon Chain": {
       "nameKo": "네온 체인",
@@ -5839,7 +6119,8 @@
       "components": [
         "Battery",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Neon Chain.png"
     },
     "Needle": {
       "nameKo": "바늘",
@@ -5858,7 +6139,8 @@
         "attackPower": 5
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/rapier/Needle.png"
     },
     "Fencing Rapier": {
       "nameKo": "레이피어",
@@ -5876,7 +6158,8 @@
       "components": [
         "Needle",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Fencing Rapier.png"
     },
     "Blooming": {
       "nameKo": "블루밍",
@@ -5896,7 +6179,8 @@
         "Needle",
         "Scrap Metal",
         "Flower"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Blooming.png"
     },
     "Estoc": {
       "nameKo": "에스톡",
@@ -5915,7 +6199,8 @@
         "Needle",
         "Scrap Metal",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Estoc.png"
     },
     "Sword of Justice": {
       "nameKo": "활빈검",
@@ -5937,7 +6222,8 @@
         "Scrap Metal",
         "Flower",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Sword of Justice.png"
     },
     "Durendal Mk2": {
       "nameKo": "듀랜달 Mk2",
@@ -5963,7 +6249,8 @@
         "Scrap Metal",
         "Flower",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Durendal Mk2.png"
     },
     "Mistilteinn": {
       "nameKo": "미스틸테인",
@@ -5984,7 +6271,8 @@
       "components": [
         "Branch",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Mistilteinn.png"
     },
     "Volticletto": {
       "nameKo": "볼틱레토",
@@ -6006,7 +6294,8 @@
         "Scrap Metal",
         "Battery",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Volticletto.png"
     },
     "Meteor Claymore": {
       "nameKo": "유성검",
@@ -6026,7 +6315,8 @@
       "components": [
         "Needle",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Meteor Claymore.png"
     },
     "Joyeuse": {
       "nameKo": "주와이외즈",
@@ -6048,7 +6338,8 @@
       "components": [
         "Needle",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Joyeuse.png"
     },
     "Red Panther": {
       "nameKo": "레드 팬서",
@@ -6073,7 +6364,8 @@
         "Scrap Metal",
         "Oil",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Red Panther.png"
     },
     "Esprit": {
       "nameKo": "에스프리",
@@ -6097,7 +6389,8 @@
         "Scrap Metal",
         "Oil",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Esprit.png"
     },
     "Flamberge": {
       "nameKo": "플랑베르주",
@@ -6119,7 +6412,8 @@
         "Scrap Metal",
         "Piano Wire",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Flamberge.png"
     },
     "Eye of Argos": {
       "nameKo": "아르고스의 눈",
@@ -6139,7 +6433,8 @@
       "components": [
         "Branch",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Eye of Argos.png"
     },
     "Nosferatu": {
       "nameKo": "노스페라투",
@@ -6162,7 +6457,8 @@
       "components": [
         "Needle",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Nosferatu.png"
     },
     "Gear Helix": {
       "nameKo": "기어헬릭스",
@@ -6182,7 +6478,8 @@
       "components": [
         "Needle",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Gear Helix.png"
     },
     "Field Thorn": {
       "nameKo": "필드 쏜",
@@ -6205,7 +6502,8 @@
       "components": [
         "Ice",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Field Thorn.png"
     },
     "Starter Guitar": {
       "nameKo": "보급형 기타",
@@ -6224,7 +6522,8 @@
         "attackPower": 5
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/guitar/Starter Guitar.png"
     },
     "Golden Bridge": {
       "nameKo": "골든 브릿지",
@@ -6243,7 +6542,8 @@
       "components": [
         "Starter Guitar",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Golden Bridge.png"
     },
     "Single Coil Pickup": {
       "nameKo": "싱글 픽업",
@@ -6261,7 +6561,8 @@
       "components": [
         "Starter Guitar",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Single Coil Pickup.png"
     },
     "Ruby Special": {
       "nameKo": "루비 스페셜",
@@ -6281,7 +6582,8 @@
         "Starter Guitar",
         "Gemstone",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Ruby Special.png"
     },
     "Humbucker Pickup": {
       "nameKo": "험버커 픽업",
@@ -6301,7 +6603,8 @@
         "Starter Guitar",
         "Gemstone",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Humbucker Pickup.png"
     },
     "King-V": {
       "nameKo": "King-V",
@@ -6321,7 +6624,8 @@
         "Starter Guitar",
         "Gemstone",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/King-V.png"
     },
     "Nocaster": {
       "nameKo": "노캐스터",
@@ -6342,7 +6646,8 @@
         "Starter Guitar",
         "Battery",
         "Fountain Pen"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Nocaster.png"
     },
     "Superstrat": {
       "nameKo": "슈퍼스트랫",
@@ -6361,7 +6666,8 @@
         "Starter Guitar",
         "Battery",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Superstrat.png"
     },
     "Wild Horse": {
       "nameKo": "야생마",
@@ -6381,7 +6687,8 @@
         "Starter Guitar",
         "Battery",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Wild Horse.png"
     },
     "Bohemian": {
       "nameKo": "보헤미안",
@@ -6406,7 +6713,8 @@
         "Gemstone",
         "Lighter",
         "Playing Cards"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Bohemian.png"
     },
     "Stairway to Heaven": {
       "nameKo": "천국의 계단",
@@ -6428,7 +6736,8 @@
         "Gemstone",
         "Piano Wire",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Stairway to Heaven.png"
     },
     "Purple Haze": {
       "nameKo": "퍼플 헤이즈",
@@ -6449,7 +6758,8 @@
         "Gemstone",
         "Scissors",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Purple Haze.png"
     },
     "Satisfaction": {
       "nameKo": "새티스팩션",
@@ -6471,7 +6781,8 @@
         "Battery",
         "Fountain Pen",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Satisfaction.png"
     },
     "Wonderful Tonight": {
       "nameKo": "원더풀 투나잇",
@@ -6490,7 +6801,8 @@
       "components": [
         "Starter Guitar",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Wonderful Tonight.png"
     },
     "The Wall": {
       "nameKo": "더 월",
@@ -6514,7 +6826,8 @@
         "Battery",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/The Wall.png"
     },
     "Teen Spirit": {
       "nameKo": "틴 스피릿",
@@ -6535,7 +6848,8 @@
         "Battery",
         "Oil",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Teen Spirit.png"
     },
     "Cpt. Pepper": {
       "nameKo": "캡틴 페퍼",
@@ -6555,7 +6869,8 @@
       "components": [
         "Starter Guitar",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Cpt. Pepper.png"
     },
     "Heartbreaker": {
       "nameKo": "하트 브레이커",
@@ -6577,7 +6892,8 @@
       "components": [
         "Starter Guitar",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Heartbreaker.png"
     },
     "Heaven's Door": {
       "nameKo": "헤븐즈 도어",
@@ -6596,7 +6912,8 @@
       "components": [
         "Piano Wire",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Heaven's Door.png"
     },
     "Free Bird": {
       "nameKo": "프리 버드",
@@ -6616,7 +6933,8 @@
       "components": [
         "Starter Guitar",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Free Bird.png"
     },
     "Lens": {
       "nameKo": "렌즈",
@@ -6636,7 +6954,8 @@
         "sightRange": 0.5
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/camera/Lens.png"
     },
     "Pistol Camera": {
       "nameKo": "카메라 건",
@@ -6656,7 +6975,8 @@
         "Lens",
         "Binoculars",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Pistol Camera.png"
     },
     "Compact Camera": {
       "nameKo": "컴팩트 카메라",
@@ -6677,7 +6997,8 @@
         "Battery",
         "Graphite",
         "Lens"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Compact Camera.png"
     },
     "Rangefinder": {
       "nameKo": "레인지파인더",
@@ -6696,7 +7017,8 @@
       "components": [
         "Lens",
         "Binoculars"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Rangefinder.png"
     },
     "Mirrorless": {
       "nameKo": "미러리스",
@@ -6718,7 +7040,8 @@
         "Graphite",
         "Lens",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Mirrorless.png"
     },
     "Laser Designator": {
       "nameKo": "컴파운드 사이트",
@@ -6741,7 +7064,8 @@
         "Binoculars",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Laser Designator.png"
     },
     "Cannon Camera": {
       "nameKo": "카메라 캐논",
@@ -6762,7 +7086,8 @@
       "components": [
         "Binoculars",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Cannon Camera.png"
     },
     "V.I.C.G": {
       "nameKo": "V.I.C.G",
@@ -6788,7 +7113,8 @@
         "Binoculars",
         "Gunpowder",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/V.I.C.G.png"
     },
     "Instant Camera": {
       "nameKo": "폴라로이드 카메라",
@@ -6811,7 +7137,8 @@
         "Graphite",
         "Lens",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Instant Camera.png"
     },
     "Ultraviolet": {
       "nameKo": "울트라비전",
@@ -6831,7 +7158,8 @@
       "components": [
         "Lens",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Ultraviolet.png"
     },
     "Vision Flex": {
       "nameKo": "비전 플렉스",
@@ -6854,7 +7182,8 @@
       "components": [
         "Lens",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Vision Flex.png"
     },
     "On Air": {
       "nameKo": "온 에어",
@@ -6875,7 +7204,8 @@
       "components": [
         "Binoculars",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/On Air.png"
     },
     "Triple Focus": {
       "nameKo": "트리플 포커스",
@@ -6896,7 +7226,8 @@
       "components": [
         "Lens",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Triple Focus.png"
     },
     "Glass Bead": {
       "nameKo": "유리구슬",
@@ -6917,7 +7248,8 @@
         "cooldownReduction": 5
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/weapons/arcana/Glass Bead.png"
     },
     "Mirror Core": {
       "nameKo": "거울구슬",
@@ -6937,7 +7269,8 @@
       "components": [
         "Glass Bead",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Mirror Core.png"
     },
     "Frigid Pearl": {
       "nameKo": "얼음구슬",
@@ -6957,7 +7290,8 @@
       "components": [
         "Glass Bead",
         "Ice"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Frigid Pearl.png"
     },
     "Staff of Reliance": {
       "nameKo": "의지의 지팡이",
@@ -6978,7 +7312,8 @@
         "Glass Bead",
         "Oil",
         "Pickaxe"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Staff of Reliance.png"
     },
     "Sensibility": {
       "nameKo": "감정의 컵",
@@ -7000,7 +7335,8 @@
         "Glass Bead",
         "Oil",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Sensibility.png"
     },
     "Frigid Pearl Blade": {
       "nameKo": "이성의 칼",
@@ -7021,7 +7357,8 @@
         "Glass Bead",
         "Ice",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Frigid Pearl Blade.png"
     },
     "Possession Pentacle": {
       "nameKo": "소유의 펜타클",
@@ -7042,7 +7379,8 @@
         "Glass Bead",
         "Ice",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Possession Pentacle.png"
     },
     "The Hermit": {
       "nameKo": "은둔자",
@@ -7066,7 +7404,8 @@
         "Oil",
         "Pickaxe",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Hermit.png"
     },
     "The Hierophant": {
       "nameKo": "운명의 수레바퀴",
@@ -7092,7 +7431,8 @@
         "Ice",
         "Nail",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Hierophant.png"
     },
     "Temperance": {
       "nameKo": "절제",
@@ -7115,7 +7455,8 @@
         "Oil",
         "Cross",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/Temperance.png"
     },
     "The Star": {
       "nameKo": "더 스타",
@@ -7137,7 +7478,8 @@
         "Ice",
         "Stallion Medal",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Star.png"
     },
     "The Moon": {
       "nameKo": "더 문",
@@ -7156,7 +7498,8 @@
       "components": [
         "Glass Bead",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Moon.png"
     },
     "The Empress": {
       "nameKo": "여제",
@@ -7176,7 +7519,8 @@
       "components": [
         "Stone",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Empress.png"
     },
     "The Death": {
       "nameKo": "더 데스",
@@ -7198,7 +7542,8 @@
       "components": [
         "Glass Bead",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Death.png"
     },
     "The Sun": {
       "nameKo": "더 썬",
@@ -7219,7 +7564,8 @@
       "components": [
         "Glass Bead",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Sun.png"
     },
     "The Hanged Man": {
       "nameKo": "더 행맨",
@@ -7242,7 +7588,8 @@
       "components": [
         "Glass Bead",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Hanged Man.png"
     },
     "Deathadder": {
       "nameKo": "데스애더",
@@ -7263,7 +7610,8 @@
       "components": [
         "Viper",
         "Call of Cadmus Lv2"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Deathadder.png"
     },
     "Black Mamba": {
       "nameKo": "블랙맘바",
@@ -7284,7 +7632,8 @@
       "components": [
         "Viper",
         "Call of Cadmus Lv2"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Black Mamba.png"
     },
     "Sidewinder": {
       "nameKo": "사이드와인더",
@@ -7304,7 +7653,8 @@
       "components": [
         "Viper",
         "Call of Cadmus Lv2"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Sidewinder.png"
     },
     "Deathadder Queen": {
       "nameKo": "데스애더퀸",
@@ -7331,7 +7681,8 @@
         "Viper",
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Deathadder Queen.png"
     },
     "Black Mamba King": {
       "nameKo": "블랙맘바킹",
@@ -7356,7 +7707,8 @@
         "Viper",
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Black Mamba King.png"
     },
     "Alpha Sidewinder": {
       "nameKo": "슈퍼사이드와인더",
@@ -7380,7 +7732,8 @@
         "Viper",
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Alpha Sidewinder.png"
     },
     "Deathadder Queen MT": {
       "nameKo": "데스애더퀸-MT",
@@ -7405,7 +7758,8 @@
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Deathadder Queen MT.png"
     },
     "Deathadder Queen FC": {
       "nameKo": "데스애더퀸-FC",
@@ -7432,7 +7786,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Deathadder Queen FC.png"
     },
     "Deathadder Queen VBS": {
       "nameKo": "데스애더퀸-VBS",
@@ -7459,7 +7814,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Deathadder Queen VBS.png"
     },
     "Black Mamba King TL": {
       "nameKo": "블랙맘바킹-TL",
@@ -7482,7 +7838,8 @@
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Black Mamba King TL.png"
     },
     "Black Mamba King FC": {
       "nameKo": "블랙맘바킹-FC",
@@ -7508,7 +7865,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Black Mamba King FC.png"
     },
     "Black Mamba King VBS": {
       "nameKo": "블랙맘바킹-VBS",
@@ -7532,7 +7890,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Black Mamba King VBS.png"
     },
     "Alpha Sidewinder ML": {
       "nameKo": "슈퍼사이드와인더-ML",
@@ -7554,7 +7913,8 @@
         "Call of Cadmus Lv2",
         "Call of Cadmus Lv3",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Alpha Sidewinder ML.png"
     },
     "Alpha Sidewinder FC": {
       "nameKo": "슈퍼사이드와인더-FC",
@@ -7579,7 +7939,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Alpha Sidewinder FC.png"
     },
     "Alpha Sidewinder VBS": {
       "nameKo": "슈퍼사이드와인더-VBS",
@@ -7602,7 +7963,8 @@
         "Call of Cadmus Lv3",
         "Gem of Evolution",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/weapons/vf-prosthetic/Alpha Sidewinder VBS.png"
     },
     "Scarlet Dagger - Crimson": {
       "nameKo": "비색 단검-진홍",
@@ -7624,7 +7986,8 @@
         "Kitchen Knife",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Scarlet Dagger.png"
     },
     "Scarlet Dagger - Dawn": {
       "nameKo": "비색 단검-새벽",
@@ -7646,7 +8009,8 @@
         "Kitchen Knife",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/dagger/Scarlet Dagger.png"
     },
     "Dáinsleif - Crimson": {
       "nameKo": "다인슬라이프-진홍",
@@ -7670,7 +8034,8 @@
         "Rusty Sword",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Dáinsleif.png"
     },
     "Dáinsleif - Dawn": {
       "nameKo": "다인슬라이프-새벽",
@@ -7691,7 +8056,8 @@
         "Rusty Sword",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/two-handed-sword/Dáinsleif.png"
     },
     "Peacebringer - Crimson": {
       "nameKo": "피스브링어-진홍",
@@ -7712,7 +8078,8 @@
         "Hammer",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Peacebringer.png"
     },
     "Peacebringer - Dawn": {
       "nameKo": "피스브링어-새벽",
@@ -7733,7 +8100,8 @@
         "Hammer",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/hammer/Peacebringer.png"
     },
     "Scarlet Scythe - Crimson": {
       "nameKo": "진홍빛 낫-진홍",
@@ -7754,7 +8122,8 @@
         "Hatchet",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Scarlet Scythe.png"
     },
     "Scarlet Scythe - Dawn": {
       "nameKo": "진홍빛 낫-새벽",
@@ -7775,7 +8144,8 @@
         "Hatchet",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/axe/Scarlet Scythe.png"
     },
     "Spear of Longinus - Crimson": {
       "nameKo": "롱기누스의 창-진홍",
@@ -7797,7 +8167,8 @@
         "Short Spear",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Spear of Longinus.png"
     },
     "Spear of Longinus - Dawn": {
       "nameKo": "롱기누스의 창-새벽",
@@ -7819,7 +8190,8 @@
         "Short Spear",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/spear/Spear of Longinus.png"
     },
     "Bloody Nine Tails - Crimson": {
       "nameKo": "혈화구절편-진홍",
@@ -7841,7 +8213,8 @@
         "Whip",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Bloody Nine Tails.png"
     },
     "Bloody Nine Tails - Dawn": {
       "nameKo": "혈화구절편-새벽",
@@ -7863,7 +8236,8 @@
         "Whip",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/whip/Bloody Nine Tails.png"
     },
     "Bloody Hand - Crimson": {
       "nameKo": "블러디 핸즈-진홍",
@@ -7884,7 +8258,8 @@
         "Cotton Gloves",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Bloody Hand.png"
     },
     "Bloody Hand - Dawn": {
       "nameKo": "블러디 핸즈-새벽",
@@ -7905,7 +8280,8 @@
         "Cotton Gloves",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/glove/Bloody Hand.png"
     },
     "Blade Tonfa - Crimson": {
       "nameKo": "칼날 톤파-진홍",
@@ -7927,7 +8303,8 @@
         "Bamboo",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Blade Tonfa.png"
     },
     "Blade Tonfa - Dawn": {
       "nameKo": "칼날 톤파-새벽",
@@ -7949,7 +8326,8 @@
         "Bamboo",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/tonfa/Blade Tonfa.png"
     },
     "Chaser - Crimson": {
       "nameKo": "체이서-진홍",
@@ -7970,7 +8348,8 @@
         "Baseball",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Chaser.png"
     },
     "Chaser - Dawn": {
       "nameKo": "체이서-새벽",
@@ -7991,7 +8370,8 @@
         "Baseball",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/throw/Chaser.png"
     },
     "Black Lotus Shuriken - Crimson": {
       "nameKo": "흑련비표-진홍",
@@ -8012,7 +8392,8 @@
         "Razor",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Black Lotus Shuriken.png"
     },
     "Black Lotus Shuriken - Dawn": {
       "nameKo": "흑련비표-새벽",
@@ -8033,7 +8414,8 @@
         "Razor",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/shuriken/Black Lotus Shuriken.png"
     },
     "Failnaught - Crimson": {
       "nameKo": "페일노트-진홍",
@@ -8054,7 +8436,8 @@
         "Bow",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Failnaught.png"
     },
     "Failnaught - Dawn": {
       "nameKo": "페일노트-새벽",
@@ -8075,7 +8458,8 @@
         "Bow",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/bow/Failnaught.png"
     },
     "Blood Half Moon - Crimson": {
       "nameKo": "혈색반월-진홍",
@@ -8096,7 +8480,8 @@
         "Short Crossbow",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Blood Half Moon.png"
     },
     "Blood Half Moon - Dawn": {
       "nameKo": "혈색반월-새벽",
@@ -8117,7 +8502,8 @@
         "Short Crossbow",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/crossbow/Blood Half Moon.png"
     },
     "Hellfire - Crimson": {
       "nameKo": "헬파이어-진홍",
@@ -8138,7 +8524,8 @@
         "Fedorova",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Hellfire.png"
     },
     "Hellfire - Dawn": {
       "nameKo": "헬파이어-새벽",
@@ -8160,7 +8547,8 @@
         "Fedorova",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/assault-rifle/Hellfire.png"
     },
     "Widow Maker - Crimson": {
       "nameKo": "위도우 메이커-진홍",
@@ -8182,7 +8570,8 @@
         "Long Rifle",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Widow Maker.png"
     },
     "Widow Maker - Dawn": {
       "nameKo": "위도우 메이커-새벽",
@@ -8205,7 +8594,8 @@
         "Long Rifle",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/sniper-rifle/Widow Maker.png"
     },
     "Hydra - Crimson": {
       "nameKo": "히드라-진홍",
@@ -8226,7 +8616,8 @@
         "Steel Chain",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Hydra.png"
     },
     "Hydra - Dawn": {
       "nameKo": "히드라-새벽",
@@ -8247,7 +8638,8 @@
         "Steel Chain",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/nunchaku/Hydra.png"
     },
     "Nosferatu - Crimson": {
       "nameKo": "노스페라투-진홍",
@@ -8270,7 +8662,8 @@
         "Needle",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Nosferatu.png"
     },
     "Nosferatu - Dawn": {
       "nameKo": "노스페라투-새벽",
@@ -8291,7 +8684,8 @@
         "Needle",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/rapier/Nosferatu.png"
     },
     "Heartbreaker - Crimson": {
       "nameKo": "하트 브레이커-진홍",
@@ -8312,7 +8706,8 @@
         "Starter Guitar",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Heartbreaker.png"
     },
     "Heartbreaker - Dawn": {
       "nameKo": "하트 브레이커-새벽",
@@ -8333,7 +8728,8 @@
         "Starter Guitar",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/guitar/Heartbreaker.png"
     },
     "The Death - Crimson": {
       "nameKo": "더 데스-진홍",
@@ -8354,7 +8750,8 @@
         "Glass Bead",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Death.png"
     },
     "The Death - Dawn": {
       "nameKo": "더 데스-새벽",
@@ -8376,7 +8773,8 @@
         "Glass Bead",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/arcana/The Death.png"
     },
     "High Noon - Crimson": {
       "nameKo": "하이 눈-진홍",
@@ -8397,7 +8795,8 @@
         "Walther PPK",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/High Noon.png"
     },
     "High Noon - Dawn": {
       "nameKo": "하이 눈-새벽",
@@ -8418,7 +8817,8 @@
         "Walther PPK",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/pistol/High Noon.png"
     },
     "Rod of Heart - Crimson": {
       "nameKo": "로드 오브 하트-진홍",
@@ -8439,7 +8839,8 @@
         "Short Rod",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Rod of Heart.png"
     },
     "Rod of Heart - Dawn": {
       "nameKo": "로드 오브 하트-새벽",
@@ -8460,7 +8861,8 @@
         "Short Rod",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/bat/Rod of Heart.png"
     },
     "Phantom Blade - Crimson": {
       "nameKo": "환영도-진홍",
@@ -8481,7 +8883,8 @@
         "Twin Blades",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Phantom Blade.png"
     },
     "Phantom Blade - Dawn": {
       "nameKo": "환영도-새벽",
@@ -8502,7 +8905,8 @@
         "Twin Blades",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/dual-swords/Phantom Blade.png"
     },
     "Vision Flex - Crimson": {
       "nameKo": "비전 플렉스-진홍",
@@ -8525,7 +8929,8 @@
         "Lens",
         "VF Blood Sample",
         "Crimson Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Vision Flex.png"
     },
     "Vision Flex - Dawn": {
       "nameKo": "비전 플렉스-새벽",
@@ -8547,7 +8952,8 @@
         "Lens",
         "VF Blood Sample",
         "Dawnlight Shard"
-      ]
+      ],
+      "image": "images/equipment/weapons/camera/Vision Flex.png"
     },
     "Hairband": {
       "nameKo": "머리띠",
@@ -8568,7 +8974,8 @@
         "defense": 1
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/head/Hairband.png"
     },
     "Hat": {
       "nameKo": "모자",
@@ -8589,7 +8996,8 @@
         "defense": 2
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/head/Hat.png"
     },
     "Bike Helmet": {
       "nameKo": "자전거 헬멧",
@@ -8610,7 +9018,8 @@
         "maxHp": 30
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/head/Bike Helmet.png"
     },
     "Mask": {
       "nameKo": "가면",
@@ -8632,7 +9041,8 @@
         "maxHp": 20
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/head/Mask.png"
     },
     "Circlet": {
       "nameKo": "머리테",
@@ -8650,7 +9060,8 @@
       "components": [
         "Hairband",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/head/Circlet.png"
     },
     "Beret": {
       "nameKo": "베레모",
@@ -8669,7 +9080,8 @@
       "components": [
         "Hat",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/head/Beret.png"
     },
     "Chain Coif": {
       "nameKo": "사슬 코이프",
@@ -8687,7 +9099,8 @@
       "components": [
         "Hat",
         "Thread"
-      ]
+      ],
+      "image": "images/equipment/head/Chain Coif.png"
     },
     "Safety Helmet": {
       "nameKo": "안전모",
@@ -8705,7 +9118,8 @@
       "components": [
         "Bike Helmet",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/head/Safety Helmet.png"
     },
     "Ballistic Helmet": {
       "nameKo": "방탄모",
@@ -8726,7 +9140,8 @@
         "Hat",
         "Scissors",
         "Bike Helmet"
-      ]
+      ],
+      "image": "images/equipment/head/Ballistic Helmet.png"
     },
     "Fire Helmet": {
       "nameKo": "소방 헬멧",
@@ -8745,7 +9160,8 @@
         "Bike Helmet",
         "Stone",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/head/Fire Helmet.png"
     },
     "Crown": {
       "nameKo": "왕관",
@@ -8766,7 +9182,8 @@
         "Hat",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/Crown.png"
     },
     "Close Helm": {
       "nameKo": "투구",
@@ -8786,7 +9203,8 @@
         "Mask",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/head/Close Helm.png"
     },
     "Virtuous Outlaw": {
       "nameKo": "로빈",
@@ -8811,7 +9229,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/Virtuous Outlaw.png"
     },
     "Crystal Tiara": {
       "nameKo": "수정 티아라",
@@ -8836,7 +9255,8 @@
         "Branch",
         "Lighter",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/Crystal Tiara.png"
     },
     "Motorcycle Helmet": {
       "nameKo": "오토바이 헬멧",
@@ -8861,7 +9281,8 @@
         "Battery",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/head/Motorcycle Helmet.png"
     },
     "Tactical OPS Helmet": {
       "nameKo": "전술-OPS 헬멧",
@@ -8886,7 +9307,8 @@
         "Scissors",
         "Bike Helmet",
         "Battery"
-      ]
+      ],
+      "image": "images/equipment/head/Tactical OPS Helmet.png"
     },
     "Helm of Banneret": {
       "nameKo": "기사단장의 투구",
@@ -8908,7 +9330,8 @@
         "Scrap Metal",
         "Chemicals",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/head/Helm of Banneret.png"
     },
     "Imperial Crown": {
       "nameKo": "제국 왕관",
@@ -8929,7 +9352,8 @@
         "Pickaxe",
         "Gemstone",
         "Ribbon"
-      ]
+      ],
+      "image": "images/equipment/head/Imperial Crown.png"
     },
     "Imperial Burgonet": {
       "nameKo": "황실 부르고넷",
@@ -8950,7 +9374,8 @@
         "Scrap Metal",
         "Chemicals",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/head/Imperial Burgonet.png"
     },
     "Mohawk Headgear": {
       "nameKo": "모호크 헬멧",
@@ -8975,7 +9400,8 @@
         "Stone",
         "Plastic",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/head/Mohawk Headgear.png"
     },
     "Vigilante": {
       "nameKo": "비질란테",
@@ -9000,7 +9426,8 @@
         "Stone",
         "Plastic",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/head/Vigilante.png"
     },
     "Diadem": {
       "nameKo": "다이아뎀",
@@ -9025,7 +9452,8 @@
         "Branch",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/Diadem.png"
     },
     "Crusader Helmet": {
       "nameKo": "성기사의 투구",
@@ -9046,7 +9474,8 @@
       "components": [
         "Cross",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/Crusader Helmet.png"
     },
     "Cowboy Hat": {
       "nameKo": "카우보이 모자",
@@ -9070,7 +9499,8 @@
         "Branch",
         "Paper",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/head/Cowboy Hat.png"
     },
     "Plasma Helmet": {
       "nameKo": "플라즈마 투구",
@@ -9092,7 +9522,8 @@
         "Thread",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/head/Plasma Helmet.png"
     },
     "Welding Helmet": {
       "nameKo": "용접 마스크",
@@ -9114,7 +9545,8 @@
         "Scissors",
         "Bike Helmet",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/head/Welding Helmet.png"
     },
     "White Witch Hat": {
       "nameKo": "마녀 모자",
@@ -9138,7 +9570,8 @@
         "Branch",
         "Paper",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/head/White Witch Hat.png"
     },
     "Fox Mask": {
       "nameKo": "여우 가면",
@@ -9160,7 +9593,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/Fox Mask.png"
     },
     "Sport Sunglasses": {
       "nameKo": "스포츠 선글라스",
@@ -9186,7 +9620,8 @@
         "Battery",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/head/Sport Sunglasses.png"
     },
     "The Sailor": {
       "nameKo": "마린 햇",
@@ -9208,7 +9643,8 @@
         "Scissors",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/head/The Sailor.png"
     },
     "Mythril Helm": {
       "nameKo": "미스릴 투구",
@@ -9229,7 +9665,8 @@
       "components": [
         "Bike Helmet",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/Mythril Helm.png"
     },
     "Laurel Wreath": {
       "nameKo": "월계관",
@@ -9249,7 +9686,8 @@
       "components": [
         "Hairband",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Laurel Wreath.png"
     },
     "Chinese Opera Mask": {
       "nameKo": "변검",
@@ -9271,7 +9709,8 @@
       "components": [
         "Mask",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/head/Chinese Opera Mask.png"
     },
     "Elysian Halo": {
       "nameKo": "천사의 고리",
@@ -9291,7 +9730,8 @@
         "Hairband",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Elysian Halo.png"
     },
     "Fallen Pegasus": {
       "nameKo": "빛의 증표",
@@ -9312,7 +9752,8 @@
       "components": [
         "Hairband",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/Fallen Pegasus.png"
     },
     "Persona": {
       "nameKo": "페르소나",
@@ -9334,7 +9775,8 @@
         "Mask",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Persona.png"
     },
     "Sultan's Turban": {
       "nameKo": "예언자의 터번",
@@ -9353,7 +9795,8 @@
       "components": [
         "Hat",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Sultan's Turban.png"
     },
     "Racing Helmet": {
       "nameKo": "레이싱 헬멧",
@@ -9373,7 +9816,8 @@
       "components": [
         "Plastic",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/Racing Helmet.png"
     },
     "The Star of the Wilds": {
       "nameKo": "황야의 별",
@@ -9395,7 +9839,8 @@
       "components": [
         "Hat",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/The Star of the Wilds.png"
     },
     "Astronaut's Helmet": {
       "nameKo": "우주 비행사의 헬멧",
@@ -9415,7 +9860,8 @@
       "components": [
         "Plastic",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/Astronaut's Helmet.png"
     },
     "Dwarf's Helmet": {
       "nameKo": "드워프의 투구",
@@ -9436,7 +9882,8 @@
       "components": [
         "Scrap Metal",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Dwarf's Helmet.png"
     },
     "Twilight": {
       "nameKo": "트와일라잇",
@@ -9456,7 +9903,8 @@
       "components": [
         "Ribbon",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/Twilight.png"
     },
     "Blue Flames": {
       "nameKo": "스파크 실드",
@@ -9477,7 +9925,8 @@
       "components": [
         "Plastic",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Blue Flames.png"
     },
     "Bunny Hat": {
       "nameKo": "바니햇",
@@ -9499,7 +9948,8 @@
         "Ribbon",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Bunny Hat.png"
     },
     "Legatus": {
       "nameKo": "레가투스",
@@ -9520,7 +9970,8 @@
         "Hat",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Legatus.png"
     },
     "Tactical Visor": {
       "nameKo": "택티컬 바이저",
@@ -9540,7 +9991,8 @@
       "components": [
         "Mask",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Tactical Visor.png"
     },
     "Fencing Mask": {
       "nameKo": "앙 가르드",
@@ -9561,7 +10013,8 @@
         "Bike Helmet",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Fencing Mask.png"
     },
     "Smart Glasses": {
       "nameKo": "인사이트",
@@ -9582,7 +10035,8 @@
       "components": [
         "Mask",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/Smart Glasses.png"
     },
     "Kundala": {
       "nameKo": "쿤달라",
@@ -9602,7 +10056,8 @@
       "components": [
         "Gemstone",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/Kundala.png"
     },
     "Viking Helmet": {
       "nameKo": "발할라의 투구",
@@ -9623,7 +10078,8 @@
       "components": [
         "Hat",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/head/Viking Helmet.png"
     },
     "Eyeshield": {
       "nameKo": "아이실드",
@@ -9644,7 +10100,8 @@
       "components": [
         "Bike Helmet",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/head/Eyeshield.png"
     },
     "David Headphones": {
       "nameKo": "다비드 헤드폰",
@@ -9665,7 +10122,8 @@
       "components": [
         "Hairband",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/David Headphones.png"
     },
     "Tactical Goggles": {
       "nameKo": "전술 고글",
@@ -9686,7 +10144,8 @@
       "components": [
         "Rubber",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Tactical Goggles.png"
     },
     "The Captain": {
       "nameKo": "캡틴 햇",
@@ -9707,7 +10166,8 @@
       "components": [
         "Feather",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/The Captain.png"
     },
     "Black Veil": {
       "nameKo": "검은 베일",
@@ -9728,7 +10188,8 @@
         "Graphite",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Black Veil.png"
     },
     "Garland of Petals": {
       "nameKo": "싱그러운 꽃잎",
@@ -9747,7 +10208,8 @@
       "components": [
         "Crown of Buds",
         "Nature's Call Lv 2"
-      ]
+      ],
+      "image": "images/equipment/head/Garland of Petals.png"
     },
     "Harmony in Full Bloom": {
       "nameKo": "만개하는 선율",
@@ -9767,7 +10229,8 @@
         "Crown of Buds",
         "Nature's Call Lv 2",
         "Nature's Call Lv 3"
-      ]
+      ],
+      "image": "images/equipment/head/Harmony in Full Bloom.png"
     },
     "Celestial Echo": {
       "nameKo": "천상의 메아리",
@@ -9791,7 +10254,8 @@
         "Nature's Call Lv 2",
         "Nature's Call Lv 3",
         "Gem of Evolution"
-      ]
+      ],
+      "image": "images/equipment/head/Celestial Echo.png"
     },
     "Featherfall": {
       "nameKo": "페더폴",
@@ -9811,7 +10275,8 @@
       "components": [
         "Feather",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/head/Featherfall.png"
     },
     "Demon Mask": {
       "nameKo": "오니 가면",
@@ -9832,7 +10297,8 @@
         "Gemstone",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Demon Mask.png"
     },
     "White Mitre": {
       "nameKo": "백야의 관",
@@ -9852,7 +10318,8 @@
       "components": [
         "Mask",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/White Mitre.png"
     },
     "Animalistic": {
       "nameKo": "야생의 허기",
@@ -9873,7 +10340,8 @@
         "Lighter",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Animalistic.png"
     },
     "Windbreaker": {
       "nameKo": "바람막이",
@@ -9893,7 +10361,8 @@
         "defense": 3
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/chest/Windbreaker.png"
     },
     "Shirt": {
       "nameKo": "셔츠",
@@ -9912,7 +10381,8 @@
         "defense": 9
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/chest/Shirt.png"
     },
     "Monk's Robe": {
       "nameKo": "승복",
@@ -9931,7 +10401,8 @@
         "defense": 9
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/chest/Monk's Robe.png"
     },
     "Wetsuit": {
       "nameKo": "전신 수영복",
@@ -9950,7 +10421,8 @@
         "defense": 9
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/chest/Wetsuit.png"
     },
     "Leather Armor": {
       "nameKo": "가죽 갑옷",
@@ -9968,7 +10440,8 @@
       "components": [
         "Shirt",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/chest/Leather Armor.png"
     },
     "Military Suit": {
       "nameKo": "군복",
@@ -9987,7 +10460,8 @@
       "components": [
         "Shirt",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/chest/Military Suit.png"
     },
     "Patched Robe": {
       "nameKo": "덧댄 로브",
@@ -10007,7 +10481,8 @@
       "components": [
         "Shirt",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/chest/Patched Robe.png"
     },
     "Dress": {
       "nameKo": "드레스",
@@ -10026,7 +10501,8 @@
       "components": [
         "Shirt",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/chest/Dress.png"
     },
     "Bikini": {
       "nameKo": "비키니",
@@ -10048,7 +10524,8 @@
       "components": [
         "Wetsuit",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/chest/Bikini.png"
     },
     "Diving Suit": {
       "nameKo": "잠수복",
@@ -10066,7 +10543,8 @@
       "components": [
         "Shirt",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/chest/Diving Suit.png"
     },
     "Deacon Robes": {
       "nameKo": "사제복",
@@ -10085,7 +10563,8 @@
       "components": [
         "Shirt",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/chest/Deacon Robes.png"
     },
     "Rider Jacket": {
       "nameKo": "라이더 자켓",
@@ -10105,7 +10584,8 @@
         "Shirt",
         "Branch",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/chest/Rider Jacket.png"
     },
     "Chain Armor": {
       "nameKo": "사슬 갑옷",
@@ -10124,7 +10604,8 @@
         "Shirt",
         "Patched Leather",
         "Thread"
-      ]
+      ],
+      "image": "images/equipment/chest/Chain Armor.png"
     },
     "Suit": {
       "nameKo": "정장",
@@ -10145,7 +10626,8 @@
         "Shirt",
         "Branch",
         "Ribbon"
-      ]
+      ],
+      "image": "images/equipment/chest/Suit.png"
     },
     "Qipao": {
       "nameKo": "치파오",
@@ -10165,7 +10647,8 @@
         "Shirt",
         "Scissors",
         "Cloth"
-      ]
+      ],
+      "image": "images/equipment/chest/Qipao.png"
     },
     "Hanbok": {
       "nameKo": "한복",
@@ -10186,7 +10669,8 @@
         "Shirt",
         "Bandage",
         "Flower"
-      ]
+      ],
+      "image": "images/equipment/chest/Hanbok.png"
     },
     "Bulletproof Vest": {
       "nameKo": "방탄조끼",
@@ -10206,7 +10690,8 @@
         "Shirt",
         "Branch",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/chest/Bulletproof Vest.png"
     },
     "Cardinal Robes": {
       "nameKo": "고위 사제복",
@@ -10232,7 +10717,8 @@
         "Cross",
         "Oil",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/chest/Cardinal Robes.png"
     },
     "Sunset Armor": {
       "nameKo": "석양의 갑옷",
@@ -10257,7 +10743,8 @@
         "Patched Leather",
         "Thread",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/chest/Sunset Armor.png"
     },
     "Covert Agent Uniform": {
       "nameKo": "어사의",
@@ -10281,7 +10768,8 @@
         "Bandage",
         "Flower",
         "Stallion Medal"
-      ]
+      ],
+      "image": "images/equipment/chest/Covert Agent Uniform.png"
     },
     "Optical Camouflage Suit": {
       "nameKo": "광학미채 슈트",
@@ -10305,7 +10793,8 @@
         "Rubber",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/chest/Optical Camouflage Suit.png"
     },
     "Rocker's Jacket": {
       "nameKo": "락커의 자켓",
@@ -10331,7 +10820,8 @@
         "Branch",
         "Chemicals",
         "Iron Ball"
-      ]
+      ],
+      "image": "images/equipment/chest/Rocker's Jacket.png"
     },
     "Crusader Armor": {
       "nameKo": "성기사의 갑옷",
@@ -10354,7 +10844,8 @@
         "Patched Leather",
         "Thread",
         "Cross"
-      ]
+      ],
+      "image": "images/equipment/chest/Crusader Armor.png"
     },
     "Amazoness Armor": {
       "nameKo": "아마조네스 아머",
@@ -10380,7 +10871,8 @@
         "Patched Leather",
         "Thread",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/chest/Amazoness Armor.png"
     },
     "Dragon Dobok": {
       "nameKo": "용의 도복",
@@ -10404,7 +10896,8 @@
         "Scissors",
         "Cloth",
         "Turtle Shell"
-      ]
+      ],
+      "image": "images/equipment/chest/Dragon Dobok.png"
     },
     "Commander's Armor": {
       "nameKo": "지휘관의 갑옷",
@@ -10427,7 +10920,8 @@
         "Patched Leather",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/chest/Commander's Armor.png"
     },
     "Butler's Suit": {
       "nameKo": "집사복",
@@ -10452,7 +10946,8 @@
         "Branch",
         "Ribbon",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/chest/Butler's Suit.png"
     },
     "Battle Suit": {
       "nameKo": "배틀 슈트",
@@ -10473,7 +10968,8 @@
       "components": [
         "Shirt",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Battle Suit.png"
     },
     "EOD Suit": {
       "nameKo": "EOD 슈트",
@@ -10497,7 +10993,8 @@
         "Branch",
         "Plastic",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/chest/EOD Suit.png"
     },
     "Tuxedo": {
       "nameKo": "턱시도",
@@ -10521,7 +11018,8 @@
         "Branch",
         "Ribbon",
         "Cloth"
-      ]
+      ],
+      "image": "images/equipment/chest/Tuxedo.png"
     },
     "High Priest Robes": {
       "nameKo": "제사장의 예복",
@@ -10544,7 +11042,8 @@
         "Cross",
         "Stallion Medal",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/chest/High Priest Robes.png"
     },
     "Changpao": {
       "nameKo": "창파오",
@@ -10568,7 +11067,8 @@
         "Scissors",
         "Cloth",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/chest/Changpao.png"
     },
     "Turnout Coat": {
       "nameKo": "방화복",
@@ -10592,7 +11092,8 @@
         "Branch",
         "Ribbon",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/chest/Turnout Coat.png"
     },
     "Doctor's Gown": {
       "nameKo": "백색 가운",
@@ -10616,7 +11117,8 @@
         "Branch",
         "Chemicals",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/chest/Doctor's Gown.png"
     },
     "Uniform": {
       "nameKo": "교복",
@@ -10640,7 +11142,8 @@
         "Branch",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/chest/Uniform.png"
     },
     "Mythril Armor": {
       "nameKo": "미스릴 갑옷",
@@ -10661,7 +11164,8 @@
       "components": [
         "Shirt",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/chest/Mythril Armor.png"
     },
     "Blazing Dress": {
       "nameKo": "불꽃 드레스",
@@ -10682,7 +11186,8 @@
       "components": [
         "Lighter",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Blazing Dress.png"
     },
     "Mythril Crop": {
       "nameKo": "미스릴 크롭",
@@ -10703,7 +11208,8 @@
       "components": [
         "Wetsuit",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/chest/Mythril Crop.png"
     },
     "Kabana": {
       "nameKo": "카바나",
@@ -10725,7 +11231,8 @@
       "components": [
         "Monk's Robe",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Kabana.png"
     },
     "Queen of Hearts": {
       "nameKo": "퀸 오브 하트",
@@ -10748,7 +11255,8 @@
       "components": [
         "Playing Cards",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/chest/Queen of Hearts.png"
     },
     "Holy Orders": {
       "nameKo": "성법의",
@@ -10772,7 +11280,8 @@
         "Cross",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Holy Orders.png"
     },
     "Burgundy 47": {
       "nameKo": "버건디 47",
@@ -10795,7 +11304,8 @@
       "components": [
         "Windbreaker",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/chest/Burgundy 47.png"
     },
     "Áo Dài": {
       "nameKo": "아오자이",
@@ -10818,7 +11328,8 @@
         "Cloth",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Áo Dài.png"
     },
     "Phantom Jacket": {
       "nameKo": "팬텀 자켓",
@@ -10839,7 +11350,8 @@
       "components": [
         "Windbreaker",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Phantom Jacket.png"
     },
     "Guardian Suit": {
       "nameKo": "가디언 슈트",
@@ -10860,7 +11372,8 @@
         "Wetsuit",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Guardian Suit.png"
     },
     "Elegant Gown": {
       "nameKo": "진은 드레스",
@@ -10882,7 +11395,8 @@
       "components": [
         "Cloth",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/chest/Elegant Gown.png"
     },
     "Beautiful Garment": {
       "nameKo": "선녀강림",
@@ -10904,7 +11418,8 @@
       "components": [
         "Cloth",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Beautiful Garment.png"
     },
     "Specter": {
       "nameKo": "고스트",
@@ -10926,7 +11441,8 @@
       "components": [
         "Wetsuit",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Specter.png"
     },
     "Blood Cloak": {
       "nameKo": "핏빛 망토",
@@ -10947,7 +11463,8 @@
       "components": [
         "Monk's Robe",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Blood Cloak.png"
     },
     "Omertà": {
       "nameKo": "오메르타",
@@ -10970,7 +11487,8 @@
         "Windbreaker",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Omertà.png"
     },
     "Shooting Star Jacket": {
       "nameKo": "슈팅스타 자켓",
@@ -10993,7 +11511,8 @@
       "components": [
         "Windbreaker",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Shooting Star Jacket.png"
     },
     "Couturier": {
       "nameKo": "쿠튀리에",
@@ -11016,7 +11535,8 @@
         "Scissors",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Couturier.png"
     },
     "Tactical Armor": {
       "nameKo": "택티컬 아머",
@@ -11039,7 +11559,8 @@
         "Gunpowder",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Tactical Armor.png"
     },
     "Elf Dress": {
       "nameKo": "엘프 드레스",
@@ -11061,7 +11582,8 @@
         "Branch",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Elf Dress.png"
     },
     "Titan Armor": {
       "nameKo": "타이탄 아머",
@@ -11083,7 +11605,8 @@
       "components": [
         "Shirt",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Titan Armor.png"
     },
     "Ghillie Suit": {
       "nameKo": "길리 슈트",
@@ -11105,7 +11628,8 @@
       "components": [
         "Wetsuit",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Ghillie Suit.png"
     },
     "Spectral Jacket": {
       "nameKo": "스펙터",
@@ -11127,7 +11651,8 @@
         "Leather",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Spectral Jacket.png"
     },
     "Wisdom Robes": {
       "nameKo": "현자의 로브",
@@ -11150,7 +11675,8 @@
       "components": [
         "Monk's Robe",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/chest/Wisdom Robes.png"
     },
     "Inquisitor": {
       "nameKo": "이단심판관",
@@ -11173,7 +11699,8 @@
         "Shirt",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Inquisitor.png"
     },
     "Black Flame Dragon": {
       "nameKo": "흑염룡의 갑주",
@@ -11194,7 +11721,8 @@
       "components": [
         "Lighter",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/chest/Black Flame Dragon.png"
     },
     "The General's Robe": {
       "nameKo": "화령장",
@@ -11217,7 +11745,8 @@
         "Flower",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/The General's Robe.png"
     },
     "Red Star": {
       "nameKo": "붉은 별빛",
@@ -11240,7 +11769,8 @@
       "components": [
         "Shirt",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/chest/Red Star.png"
     },
     "Rebel With A Cause": {
       "nameKo": "반역의 의지",
@@ -11262,7 +11792,8 @@
       "components": [
         "Leather",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/chest/Rebel With A Cause.png"
     },
     "Chillwind Cuirass": {
       "nameKo": "서리바람 흉갑",
@@ -11287,7 +11818,8 @@
         "Patched Leather",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Chillwind Cuirass.png"
     },
     "Watch": {
       "nameKo": "손목시계",
@@ -11309,7 +11841,8 @@
         "attackSpeedRatio": 0.08
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/arm/Watch.png"
     },
     "Bandage": {
       "nameKo": "붕대",
@@ -11331,7 +11864,8 @@
         "hpRegenRatio": 0.2
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/arm/Bandage.png"
     },
     "Bracelet": {
       "nameKo": "팔찌",
@@ -11352,7 +11886,8 @@
         "defense": 2
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/arm/Bracelet.png"
     },
     "Leather Shield": {
       "nameKo": "가죽 방패",
@@ -11370,7 +11905,8 @@
       "components": [
         "Turtle Shell",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/arm/Leather Shield.png"
     },
     "Squad Leader Armband": {
       "nameKo": "분대장 완장",
@@ -11388,7 +11924,8 @@
       "components": [
         "Bandage",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/arm/Squad Leader Armband.png"
     },
     "Bracer": {
       "nameKo": "브레이서",
@@ -11406,7 +11943,8 @@
       "components": [
         "Bandage",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/arm/Bracer.png"
     },
     "Broken Watch": {
       "nameKo": "고장난 시계",
@@ -11424,7 +11962,8 @@
       "components": [
         "Watch",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/arm/Broken Watch.png"
     },
     "Sheath": {
       "nameKo": "검집",
@@ -11443,7 +11982,8 @@
         "Scrap Metal",
         "Chemicals",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/arm/Sheath.png"
     },
     "Golden Bracelet": {
       "nameKo": "금팔찌",
@@ -11462,7 +12002,8 @@
         "Bracelet",
         "Pickaxe",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/Golden Bracelet.png"
     },
     "Bazuband": {
       "nameKo": "바주반드",
@@ -11481,7 +12022,8 @@
         "Bandage",
         "Rubber",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/arm/Bazuband.png"
     },
     "Crimson Bracelet": {
       "nameKo": "진홍 팔찌",
@@ -11500,7 +12042,8 @@
         "Bracelet",
         "Lighter",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/Crimson Bracelet.png"
     },
     "Corrupting Touch": {
       "nameKo": "포이즌드",
@@ -11524,7 +12067,8 @@
         "Bandage",
         "Chemicals",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/arm/Corrupting Touch.png"
     },
     "Sword Stopper": {
       "nameKo": "소드 스토퍼",
@@ -11549,7 +12093,8 @@
         "Rubber",
         "Scrap Metal",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/arm/Sword Stopper.png"
     },
     "Draupnir": {
       "nameKo": "드라우프니르",
@@ -11569,7 +12114,8 @@
         "Pickaxe",
         "Gemstone",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/arm/Draupnir.png"
     },
     "Vital Sign Sensor": {
       "nameKo": "바이탈 센서",
@@ -11593,7 +12139,8 @@
         "Chemicals",
         "Battery",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/arm/Vital Sign Sensor.png"
     },
     "Creed of the Knight": {
       "nameKo": "기사의 신조",
@@ -11618,7 +12165,8 @@
         "Rubber",
         "Bandage",
         "Gunpowder"
-      ]
+      ],
+      "image": "images/equipment/arm/Creed of the Knight.png"
     },
     "Sheath of Shah Jahan": {
       "nameKo": "샤자한의 검집",
@@ -11639,7 +12187,8 @@
         "Chemicals",
         "Patched Leather",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/Sheath of Shah Jahan.png"
     },
     "Burnished Aegis": {
       "nameKo": "아이기스",
@@ -11660,7 +12209,8 @@
         "Patched Leather",
         "Graphite",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/arm/Burnished Aegis.png"
     },
     "Tindalos Band": {
       "nameKo": "틴달로스의 팔찌",
@@ -11681,7 +12231,8 @@
         "Lighter",
         "Gemstone",
         "Watch"
-      ]
+      ],
+      "image": "images/equipment/arm/Tindalos Band.png"
     },
     "Nightingale": {
       "nameKo": "나이팅게일",
@@ -11704,7 +12255,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/Nightingale.png"
     },
     "Plasma Arc": {
       "nameKo": "플라즈마 아크",
@@ -11726,7 +12278,8 @@
         "Patched Leather",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/arm/Plasma Arc.png"
     },
     "Smart Band": {
       "nameKo": "스마트 밴드",
@@ -11748,7 +12301,8 @@
         "Battery",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/arm/Smart Band.png"
     },
     "Minuteman Armband": {
       "nameKo": "미닛맨의 표식",
@@ -11770,7 +12324,8 @@
         "Gunpowder",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/arm/Minuteman Armband.png"
     },
     "Sports Watch": {
       "nameKo": "스포츠 시계",
@@ -11794,7 +12349,8 @@
         "Chemicals",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/arm/Sports Watch.png"
     },
     "Laced Quiver": {
       "nameKo": "궁기병의 화살통",
@@ -11816,7 +12372,8 @@
         "Branch",
         "Oil",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/arm/Laced Quiver.png"
     },
     "Veritas Lux Mea": {
       "nameKo": "진리는 나의 빛",
@@ -11839,7 +12396,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/Veritas Lux Mea.png"
     },
     "White Crane Fan": {
       "nameKo": "백우선",
@@ -11863,7 +12421,8 @@
         "Feather",
         "Flower",
         "Gemstone"
-      ]
+      ],
+      "image": "images/equipment/arm/White Crane Fan.png"
     },
     "Jolly Roger": {
       "nameKo": "해적 깃발",
@@ -11885,7 +12444,8 @@
         "Bandage",
         "Scrap Metal",
         "Chemicals"
-      ]
+      ],
+      "image": "images/equipment/arm/Jolly Roger.png"
     },
     "Buccaneer Doubloon": {
       "nameKo": "해적의 증표",
@@ -11908,7 +12468,8 @@
       "components": [
         "Graphite",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Buccaneer Doubloon.png"
     },
     "Mythril Shield": {
       "nameKo": "미스릴 방패",
@@ -11930,7 +12491,8 @@
       "components": [
         "Turtle Shell",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Mythril Shield.png"
     },
     "Cube Watch": {
       "nameKo": "큐브 워치",
@@ -11950,7 +12512,8 @@
       "components": [
         "Watch",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Cube Watch.png"
     },
     "Tellurian Timepiece": {
       "nameKo": "텔루리안 타임피스",
@@ -11970,7 +12533,8 @@
         "Watch",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Tellurian Timepiece.png"
     },
     "Bracelet of Skadi": {
       "nameKo": "스카디의 팔찌",
@@ -11989,7 +12553,8 @@
       "components": [
         "Bracelet",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Bracelet of Skadi.png"
     },
     "Radar": {
       "nameKo": "레이더",
@@ -12010,7 +12575,8 @@
         "Battery",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Radar.png"
     },
     "Auto-arms": {
       "nameKo": "오토-암즈",
@@ -12032,7 +12598,8 @@
         "Plastic",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Auto-arms.png"
     },
     "Prominence": {
       "nameKo": "프로미넌스",
@@ -12053,7 +12620,8 @@
       "components": [
         "Bracelet",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/arm/Prominence.png"
     },
     "Centipede's Pauldron": {
       "nameKo": "가시지네 견갑",
@@ -12074,7 +12642,8 @@
       "components": [
         "Bandage",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Centipede's Pauldron.png"
     },
     "Tindalos Monarch": {
       "nameKo": "틴달로스의 군주",
@@ -12093,7 +12662,8 @@
       "components": [
         "Watch",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Tindalos Monarch.png"
     },
     "Shield of Kings": {
       "nameKo": "샤를마뉴의 방패",
@@ -12113,7 +12683,8 @@
       "components": [
         "Turtle Shell",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Shield of Kings.png"
     },
     "Bloodripper": {
       "nameKo": "혈사조",
@@ -12133,7 +12704,8 @@
       "components": [
         "Chemicals",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/arm/Bloodripper.png"
     },
     "Dragon Scale": {
       "nameKo": "용의 비늘",
@@ -12153,7 +12725,8 @@
         "Turtle Shell",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Dragon Scale.png"
     },
     "Chain of Thorns": {
       "nameKo": "서슬가시 체인",
@@ -12173,7 +12746,8 @@
       "components": [
         "Piano Wire",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Chain of Thorns.png"
     },
     "Nightmare Nails": {
       "nameKo": "아흐라만의 손길",
@@ -12192,7 +12766,8 @@
       "components": [
         "Chemicals",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Nightmare Nails.png"
     },
     "Helix": {
       "nameKo": "헬릭스",
@@ -12213,7 +12788,8 @@
         "Scrap Metal",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Helix.png"
     },
     "Mythril Armband": {
       "nameKo": "미스릴 완장",
@@ -12233,7 +12809,8 @@
       "components": [
         "Bandage",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Mythril Armband.png"
     },
     "Psyche's Blade": {
       "nameKo": "프시케의 칼날",
@@ -12254,7 +12831,8 @@
         "Ice",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Psyche's Blade.png"
     },
     "Burning Heart": {
       "nameKo": "하트 온 파이어",
@@ -12275,7 +12853,8 @@
       "components": [
         "Iron Ball",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Burning Heart.png"
     },
     "Emerald Tablet": {
       "nameKo": "에메랄드 타블렛",
@@ -12295,7 +12874,8 @@
         "Paper",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Emerald Tablet.png"
     },
     "Solar System Miniature": {
       "nameKo": "미니어쳐 솔라 시스템",
@@ -12316,7 +12896,8 @@
         "Iron Ball",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Solar System Miniature.png"
     },
     "Eye of Horus": {
       "nameKo": "호루스의 눈",
@@ -12335,7 +12916,8 @@
       "components": [
         "Stallion Medal",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Eye of Horus.png"
     },
     "Mythril Quiver": {
       "nameKo": "미스릴 퀴버",
@@ -12355,7 +12937,8 @@
       "components": [
         "Feather",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Mythril Quiver.png"
     },
     "Sultan Adorned": {
       "nameKo": "살라딘의 화살통",
@@ -12375,7 +12958,8 @@
       "components": [
         "Feather",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Sultan Adorned.png"
     },
     "Necronomicon": {
       "nameKo": "네크로노미콘",
@@ -12394,7 +12978,8 @@
       "components": [
         "Paper",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/arm/Necronomicon.png"
     },
     "Dice of Destiny": {
       "nameKo": "운명의 주사위",
@@ -12416,7 +13001,8 @@
         "Playing Cards",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Dice of Destiny.png"
     },
     "Lunar Embrace": {
       "nameKo": "요명월",
@@ -12437,7 +13023,8 @@
       "components": [
         "Iron Ball",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Lunar Embrace.png"
     },
     "Sanguine Gunbai": {
       "nameKo": "파초선",
@@ -12457,7 +13044,8 @@
         "Feather",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Sanguine Gunbai.png"
     },
     "Nova Shield": {
       "nameKo": "노바 실드",
@@ -12477,7 +13065,8 @@
       "components": [
         "Bandage",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/arm/Nova Shield.png"
     },
     "Fáfnir": {
       "nameKo": "파프니르",
@@ -12495,7 +13084,8 @@
       "components": [
         "Turtle Shell",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/arm/Fáfnir.png"
     },
     "Totem": {
       "nameKo": "오르비스",
@@ -12513,7 +13103,8 @@
       "components": [
         "Graphite",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Totem.png"
     },
     "Revenge of Goujian": {
       "nameKo": "월왕구천",
@@ -12536,7 +13127,8 @@
       "components": [
         "Fountain Pen",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Revenge of Goujian.png"
     },
     "Star Fragment": {
       "nameKo": "별 조각",
@@ -12558,7 +13150,8 @@
         "Stone",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Star Fragment.png"
     },
     "Running Shoes": {
       "nameKo": "운동화",
@@ -12577,7 +13170,8 @@
         "moveSpeed": 0.12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/leg/Running Shoes.png"
     },
     "Tights": {
       "nameKo": "타이즈",
@@ -12596,7 +13190,8 @@
         "moveSpeed": 0.12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/leg/Tights.png"
     },
     "Slippers": {
       "nameKo": "슬리퍼",
@@ -12615,7 +13210,8 @@
         "moveSpeed": 0.12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/leg/Slippers.png"
     },
     "Chain Leggings": {
       "nameKo": "체인 레깅스",
@@ -12634,7 +13230,8 @@
       "components": [
         "Running Shoes",
         "Thread"
-      ]
+      ],
+      "image": "images/equipment/leg/Chain Leggings.png"
     },
     "High Heels": {
       "nameKo": "하이힐",
@@ -12653,7 +13250,8 @@
       "components": [
         "Running Shoes",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/leg/High Heels.png"
     },
     "Heelys": {
       "nameKo": "힐리스",
@@ -12673,7 +13271,8 @@
       "components": [
         "Running Shoes",
         "Iron Ball"
-      ]
+      ],
+      "image": "images/equipment/leg/Heelys.png"
     },
     "Clogs": {
       "nameKo": "나막신",
@@ -12692,7 +13291,8 @@
         "moveSpeed": 0.12
       },
       "uniqueStats": {},
-      "statsByLv": {}
+      "statsByLv": {},
+      "image": "images/equipment/leg/Clogs.png"
     },
     "Repaired Slippers": {
       "nameKo": "덧댄 슬리퍼",
@@ -12711,7 +13311,8 @@
       "components": [
         "Running Shoes",
         "Scissors"
-      ]
+      ],
+      "image": "images/equipment/leg/Repaired Slippers.png"
     },
     "Boots": {
       "nameKo": "부츠",
@@ -12730,7 +13331,8 @@
       "components": [
         "Running Shoes",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/leg/Boots.png"
     },
     "Hiking Boots": {
       "nameKo": "등산화",
@@ -12753,7 +13355,8 @@
         "Graphite",
         "Oil",
         "Patched Leather"
-      ]
+      ],
+      "image": "images/equipment/leg/Hiking Boots.png"
     },
     "Knee Pads": {
       "nameKo": "무릎 보호대",
@@ -12773,7 +13376,8 @@
         "Running Shoes",
         "Thread",
         "Rubber"
-      ]
+      ],
+      "image": "images/equipment/leg/Knee Pads.png"
     },
     "Steel Knee Pads": {
       "nameKo": "강철 무릎 보호대",
@@ -12796,7 +13400,8 @@
         "Thread",
         "Rubber",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/leg/Steel Knee Pads.png"
     },
     "Combat Boots": {
       "nameKo": "전투화",
@@ -12817,7 +13422,8 @@
         "Running Shoes",
         "Graphite",
         "Oil"
-      ]
+      ],
+      "image": "images/equipment/leg/Combat Boots.png"
     },
     "Glacier Crampons": {
       "nameKo": "아이젠",
@@ -12838,7 +13444,8 @@
         "Scissors",
         "Piano Wire",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/leg/Glacier Crampons.png"
     },
     "Feather Boots": {
       "nameKo": "경량화 부츠",
@@ -12860,7 +13467,8 @@
         "Graphite",
         "Oil",
         "Feather"
-      ]
+      ],
+      "image": "images/equipment/leg/Feather Boots.png"
     },
     "Maverick Runner": {
       "nameKo": "매버릭 러너",
@@ -12883,7 +13491,8 @@
         "Iron Ball",
         "Fountain Pen",
         "Paper"
-      ]
+      ],
+      "image": "images/equipment/leg/Maverick Runner.png"
     },
     "Straitjacket Sneakers": {
       "nameKo": "풍화륜",
@@ -12905,7 +13514,8 @@
         "Scissors",
         "Paper",
         "Lighter"
-      ]
+      ],
+      "image": "images/equipment/leg/Straitjacket Sneakers.png"
     },
     "Bucephalus": {
       "nameKo": "부케팔로스",
@@ -12927,7 +13537,8 @@
         "Nail",
         "Glass Bottle",
         "Stone"
-      ]
+      ],
+      "image": "images/equipment/leg/Bucephalus.png"
     },
     "EOD Boots": {
       "nameKo": "EOD 부츠",
@@ -12948,7 +13559,8 @@
       "components": [
         "Clogs",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/EOD Boots.png"
     },
     "White Rhinos": {
       "nameKo": "클링온 부츠",
@@ -12973,7 +13585,8 @@
         "Graphite",
         "Oil",
         "Nail"
-      ]
+      ],
+      "image": "images/equipment/leg/White Rhinos.png"
     },
     "Tachyon Brace": {
       "nameKo": "타키온 브레이스",
@@ -12995,7 +13608,8 @@
         "Battery",
         "Piano Wire",
         "Scrap Metal"
-      ]
+      ],
+      "image": "images/equipment/leg/Tachyon Brace.png"
     },
     "SCV": {
       "nameKo": "SCV",
@@ -13019,7 +13633,8 @@
         "Iron Ball",
         "Battery",
         "Piano Wire"
-      ]
+      ],
+      "image": "images/equipment/leg/SCV.png"
     },
     "Stellar Steps": {
       "nameKo": "스텔라 스텝",
@@ -13042,7 +13657,8 @@
         "Nail",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/leg/Stellar Steps.png"
     },
     "Cowboy Boots": {
       "nameKo": "카우보이 부츠",
@@ -13064,7 +13680,8 @@
         "Thread",
         "Oil",
         "Bandage"
-      ]
+      ],
+      "image": "images/equipment/leg/Cowboy Boots.png"
     },
     "Gladiator": {
       "nameKo": "글레디에이터",
@@ -13086,7 +13703,8 @@
         "Thread",
         "Piano Wire",
         "Plastic"
-      ]
+      ],
+      "image": "images/equipment/leg/Gladiator.png"
     },
     "Delta Red": {
       "nameKo": "델타 레드",
@@ -13108,7 +13726,8 @@
         "Iron Ball",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/leg/Delta Red.png"
     },
     "Mythril Boots": {
       "nameKo": "미스릴 부츠",
@@ -13128,7 +13747,8 @@
       "components": [
         "Running Shoes",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/leg/Mythril Boots.png"
     },
     "Glacial Shoes": {
       "nameKo": "글레이셜 슈즈",
@@ -13148,7 +13768,8 @@
       "components": [
         "Slippers",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Glacial Shoes.png"
     },
     "Taproot": {
       "nameKo": "탭루트",
@@ -13170,7 +13791,8 @@
       "components": [
         "Clogs",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/leg/Taproot.png"
     },
     "Iron Maiden": {
       "nameKo": "아이언 메이든",
@@ -13189,7 +13811,8 @@
       "components": [
         "Slippers",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/Iron Maiden.png"
     },
     "Boots of Hermes": {
       "nameKo": "헤르메스의 부츠",
@@ -13212,7 +13835,8 @@
         "Clogs",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Boots of Hermes.png"
     },
     "Red Shoes": {
       "nameKo": "분홍신",
@@ -13232,7 +13856,8 @@
       "components": [
         "Running Shoes",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/leg/Red Shoes.png"
     },
     "Blade Boots": {
       "nameKo": "블레이드 부츠",
@@ -13253,7 +13878,8 @@
       "components": [
         "Nail",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/Blade Boots.png"
     },
     "Alexander": {
       "nameKo": "알렉산드로스",
@@ -13273,7 +13899,8 @@
       "components": [
         "Tights",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Alexander.png"
     },
     "Legs of Steel": {
       "nameKo": "칼날 다리",
@@ -13293,7 +13920,8 @@
       "components": [
         "Slippers",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/leg/Legs of Steel.png"
     },
     "Wild Walkers": {
       "nameKo": "와일드 워커",
@@ -13313,7 +13941,8 @@
       "components": [
         "Clogs",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Wild Walkers.png"
     },
     "Galaxy Steps": {
       "nameKo": "갤럭시 스텝",
@@ -13334,7 +13963,8 @@
       "components": [
         "Running Shoes",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/Galaxy Steps.png"
     },
     "Mirage Lace-Ups": {
       "nameKo": "미라지 워커",
@@ -13355,7 +13985,8 @@
       "components": [
         "Ice",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/Mirage Lace-Ups.png"
     },
     "Racing Boots": {
       "nameKo": "레이싱 부츠",
@@ -13375,7 +14006,8 @@
       "components": [
         "Tights",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/leg/Racing Boots.png"
     },
     "Killer Heels": {
       "nameKo": "킬힐",
@@ -13396,7 +14028,8 @@
         "Slippers",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Killer Heels.png"
     },
     "Space Boots": {
       "nameKo": "스페이스 부츠",
@@ -13417,7 +14050,8 @@
       "components": [
         "Clogs",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/leg/Space Boots.png"
     },
     "Eldian Boots": {
       "nameKo": "엘디안 부츠",
@@ -13438,7 +14072,8 @@
       "components": [
         "Tights",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/leg/Eldian Boots.png"
     },
     "Rose Steps": {
       "nameKo": "로즈 스텝",
@@ -13458,7 +14093,8 @@
       "components": [
         "Gemstone",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/leg/Rose Steps.png"
     },
     "Pixie Boots": {
       "nameKo": "픽시 부츠",
@@ -13478,7 +14114,8 @@
       "components": [
         "Slippers",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/leg/Pixie Boots.png"
     },
     "Tactical Shoes": {
       "nameKo": "택티컬 슈즈",
@@ -13500,7 +14137,8 @@
         "Running Shoes",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/leg/Tactical Shoes.png"
     },
     "Claddagh Ring": {
       "nameKo": "클라다 반지",
@@ -13521,7 +14159,8 @@
       "components": [
         "Gemstone",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Claddagh Ring.png"
     },
     "Box": {
       "nameKo": "상자",
@@ -13539,7 +14178,8 @@
       "components": [
         "Cloth",
         "Branch"
-      ]
+      ],
+      "image": "images/equipment/arm/Box.png"
     },
     "Smash Totem": {
       "nameKo": "토템",
@@ -13560,7 +14200,8 @@
       "components": [
         "Bandage",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/arm/Smash Totem.png"
     },
     "Music Box": {
       "nameKo": "오르골",
@@ -13582,7 +14223,8 @@
         "Branch",
         "Battery",
         "Graphite"
-      ]
+      ],
+      "image": "images/equipment/arm/Music Box.png"
     },
     "Schrödinger's Box": {
       "nameKo": "슈뢰딩거의 상자",
@@ -13607,7 +14249,8 @@
         "Branch",
         "Chemicals",
         "Glass Bottle"
-      ]
+      ],
+      "image": "images/equipment/arm/Schrödinger's Box.png"
     },
     "Magic Lamp": {
       "nameKo": "요술램프",
@@ -13628,7 +14271,8 @@
       "components": [
         "Glass Bottle",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Magic Lamp.png"
     },
     "Moonlight Pendant": {
       "nameKo": "달빛 펜던트",
@@ -13648,7 +14292,8 @@
       "components": [
         "Thread",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/arm/Moonlight Pendant.png"
     },
     "Pharaoh's Artifact": {
       "nameKo": "임세티",
@@ -13668,7 +14313,8 @@
       "components": [
         "Stallion Medal",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/arm/Pharaoh's Artifact.png"
     },
     "The Dragon’s Fury": {
       "nameKo": "천룡잠",
@@ -13687,7 +14333,8 @@
       "components": [
         "Flower",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/The Dragon’s Fury.png"
     },
     "GPNVG": {
       "nameKo": "쿼드 아이",
@@ -13707,7 +14354,8 @@
       "components": [
         "Binoculars",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/GPNVG.png"
     },
     "The Black Death": {
       "nameKo": "검은 죽음",
@@ -13727,7 +14375,8 @@
       "components": [
         "Hat",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/The Black Death.png"
     },
     "Cyberstalker": {
       "nameKo": "사이버 스토커",
@@ -13747,7 +14396,8 @@
       "components": [
         "Battery",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/head/Cyberstalker.png"
     },
     "Blaster Helmet": {
       "nameKo": "블래스터 헬멧",
@@ -13766,7 +14416,8 @@
       "components": [
         "Bike Helmet",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/head/Blaster Helmet.png"
     },
     "The Revenant": {
       "nameKo": "레버넌트",
@@ -13788,7 +14439,8 @@
         "Monk's Robe",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/The Revenant.png"
     },
     "Commander Headset": {
       "nameKo": "커맨더 헤드셋",
@@ -13809,7 +14461,8 @@
       "components": [
         "Bike Helmet",
         "Meteorite"
-      ]
+      ],
+      "image": "images/equipment/head/Commander Headset.png"
     },
     "Racing Suit": {
       "nameKo": "레이싱 슈트",
@@ -13831,7 +14484,8 @@
       "components": [
         "Windbreaker",
         "Mythril"
-      ]
+      ],
+      "image": "images/equipment/chest/Racing Suit.png"
     },
     "Ghost Bride's Dress": {
       "nameKo": "유령 신부의 드레스",
@@ -13852,7 +14506,8 @@
         "Piano Wire",
         "Meteorite",
         "Tree of Life"
-      ]
+      ],
+      "image": "images/equipment/chest/Ghost Bride's Dress.png"
     },
     "Blood Crown": {
       "nameKo": "핏빛 왕관",
@@ -13872,7 +14527,8 @@
       "components": [
         "Hairband",
         "VF Blood Sample"
-      ]
+      ],
+      "image": "images/equipment/head/Blood Crown.png"
     },
     "Scissors": {
       "nameKo": "가위",
@@ -15483,7 +16139,8 @@
         "defense": 2.9999999999999996,
         "hpRegen": 0.077,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Jackie.png"
     },
     "Aya": {
       "code": 2,
@@ -15507,7 +16164,8 @@
         "defense": 2.3,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Aya.png"
     },
     "Fiora": {
       "code": 3,
@@ -15531,7 +16189,8 @@
         "defense": 3.7,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Fiora.png"
     },
     "Magnus": {
       "code": 4,
@@ -15554,7 +16213,8 @@
         "defense": 3.3,
         "hpRegen": 0.085,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Magnus.png"
     },
     "Zahir": {
       "code": 5,
@@ -15577,7 +16237,8 @@
         "defense": 2.6999999999999997,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Zahir.png"
     },
     "Nadine": {
       "code": 6,
@@ -15600,7 +16261,8 @@
         "defense": 2.7,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Nadine.png"
     },
     "Hyunwoo": {
       "code": 7,
@@ -15623,7 +16285,8 @@
         "defense": 3.3,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Hyunwoo.png"
     },
     "Hart": {
       "code": 8,
@@ -15645,7 +16308,8 @@
         "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Hart.png"
     },
     "Isol": {
       "code": 9,
@@ -15668,7 +16332,8 @@
         "defense": 2.6,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Isol.png"
     },
     "Li Dailin": {
       "code": 10,
@@ -15691,7 +16356,8 @@
         "defense": 3.3,
         "hpRegen": 0.158,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Li Dailin.png"
     },
     "Yuki": {
       "code": 11,
@@ -15714,7 +16380,8 @@
         "defense": 3.2,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Yuki.png"
     },
     "Hyejin": {
       "code": 12,
@@ -15737,7 +16404,8 @@
         "defense": 2.8,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Hyejin.png"
     },
     "Xiukai": {
       "code": 13,
@@ -15760,7 +16428,8 @@
         "defense": 3.4,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Xiukai.png"
     },
     "Chiara": {
       "code": 14,
@@ -15782,7 +16451,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Chiara.png"
     },
     "Sissela": {
       "code": 15,
@@ -15805,7 +16475,8 @@
         "defense": 2.4,
         "hpRegen": 0.03,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Sissela.png"
     },
     "Silvia": {
       "code": 16,
@@ -15827,7 +16498,8 @@
         "defense": 3.0999999999999996,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Silvia.png"
     },
     "Adriana": {
       "code": 17,
@@ -15849,7 +16521,8 @@
         "defense": 2.4,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Adriana.png"
     },
     "Shoichi": {
       "code": 18,
@@ -15871,7 +16544,8 @@
         "defense": 3.5,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Shoichi.png"
     },
     "Emma": {
       "code": 19,
@@ -15894,7 +16568,8 @@
         "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Emma.png"
     },
     "Lenox": {
       "code": 20,
@@ -15916,7 +16591,8 @@
         "defense": 3.2,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Lenox.png"
     },
     "Rozzi": {
       "code": 21,
@@ -15938,7 +16614,8 @@
         "defense": 2.8,
         "hpRegen": 0.03,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Rozzi.png"
     },
     "Luke": {
       "code": 22,
@@ -15960,7 +16637,8 @@
         "defense": 3.1,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Luke.png"
     },
     "Cathy": {
       "code": 23,
@@ -15983,7 +16661,8 @@
         "defense": 3.1999999999999997,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Cathy.png"
     },
     "Adela": {
       "code": 24,
@@ -16006,7 +16685,8 @@
         "defense": 2.4,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Adela.png"
     },
     "Bernice": {
       "code": 25,
@@ -16028,7 +16708,8 @@
         "defense": 3.1,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Bernice.png"
     },
     "Barbara": {
       "code": 26,
@@ -16050,7 +16731,8 @@
         "defense": 3.2,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Barbara.png"
     },
     "Alex": {
       "code": 27,
@@ -16075,7 +16757,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Alex.png"
     },
     "Sua": {
       "code": 28,
@@ -16098,7 +16781,8 @@
         "defense": 3.3,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Sua.png"
     },
     "Leon": {
       "code": 29,
@@ -16121,7 +16805,8 @@
         "defense": 3.1999999999999997,
         "hpRegen": 0.158,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Leon.png"
     },
     "Eleven": {
       "code": 30,
@@ -16143,7 +16828,8 @@
         "defense": 2.6999999999999997,
         "hpRegen": 0.105,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Eleven.png"
     },
     "Rio": {
       "code": 31,
@@ -16165,7 +16851,8 @@
         "defense": 2.6,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Rio.png"
     },
     "William": {
       "code": 32,
@@ -16187,7 +16874,8 @@
         "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/William.png"
     },
     "Nicky": {
       "code": 33,
@@ -16209,7 +16897,8 @@
         "defense": 3.5,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Nicky.png"
     },
     "Nathapon": {
       "code": 34,
@@ -16231,7 +16920,8 @@
         "defense": 2.9,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Nathapon.png"
     },
     "Jan": {
       "code": 35,
@@ -16254,7 +16944,8 @@
         "defense": 3.6,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Jan.png"
     },
     "Eva": {
       "code": 36,
@@ -16276,7 +16967,8 @@
         "defense": 2.8,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Eva.png"
     },
     "Daniel": {
       "code": 37,
@@ -16298,7 +16990,8 @@
         "defense": 3,
         "hpRegen": 0.077,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Daniel.png"
     },
     "Jenny": {
       "code": 38,
@@ -16320,7 +17013,8 @@
         "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Jenny.png"
     },
     "Camilo": {
       "code": 39,
@@ -16343,7 +17037,8 @@
         "defense": 3.0999999999999996,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Camilo.png"
     },
     "Chloe": {
       "code": 40,
@@ -16365,7 +17060,8 @@
         "defense": 2.7,
         "hpRegen": 0.075,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Chloe.png"
     },
     "Johann": {
       "code": 41,
@@ -16387,7 +17083,8 @@
         "defense": 2.7,
         "hpRegen": 0.075,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Johann.png"
     },
     "Bianca": {
       "code": 42,
@@ -16409,7 +17106,8 @@
         "defense": 2.8,
         "hpRegen": 0.03,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Bianca.png"
     },
     "Celine": {
       "code": 43,
@@ -16431,7 +17129,8 @@
         "defense": 2.8,
         "hpRegen": 0.045,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Celine.png"
     },
     "Echion": {
       "code": 44,
@@ -16453,7 +17152,8 @@
         "defense": 3.2,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Echion.png"
     },
     "Mai": {
       "code": 45,
@@ -16475,7 +17175,8 @@
         "defense": 3.2,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Mai.png"
     },
     "Aiden": {
       "code": 46,
@@ -16497,7 +17198,8 @@
         "defense": 3.4,
         "hpRegen": 0.077,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Aiden.png"
     },
     "Laura": {
       "code": 47,
@@ -16519,7 +17221,8 @@
         "defense": 3.1,
         "hpRegen": 0.077,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Laura.png"
     },
     "Tia": {
       "code": 48,
@@ -16541,7 +17244,8 @@
         "defense": 2.9999999999999996,
         "hpRegen": 0.068,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Tia.png"
     },
     "Felix": {
       "code": 49,
@@ -16563,7 +17267,8 @@
         "defense": 3,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Felix.png"
     },
     "Elena": {
       "code": 50,
@@ -16585,7 +17290,8 @@
         "defense": 3.3,
         "hpRegen": 0.051,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Elena.png"
     },
     "Priya": {
       "code": 51,
@@ -16607,7 +17313,8 @@
         "defense": 2.8,
         "hpRegen": 0.05,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Priya.png"
     },
     "Adina": {
       "code": 52,
@@ -16629,7 +17336,8 @@
         "defense": 2.6,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Adina.png"
     },
     "Markus": {
       "code": 53,
@@ -16652,7 +17360,8 @@
         "defense": 3.3,
         "hpRegen": 0.136,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Markus.png"
     },
     "Karla": {
       "code": 54,
@@ -16674,7 +17383,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Karla.png"
     },
     "Estelle": {
       "code": 55,
@@ -16696,7 +17406,8 @@
         "defense": 3,
         "hpRegen": 0.099,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Estelle.png"
     },
     "Piolo": {
       "code": 56,
@@ -16718,7 +17429,8 @@
         "defense": 3.3,
         "hpRegen": 0.12,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Piolo.png"
     },
     "Martina": {
       "code": 57,
@@ -16740,7 +17452,8 @@
         "defense": 2.8,
         "hpRegen": 0.1,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Martina.png"
     },
     "Haze": {
       "code": 58,
@@ -16762,7 +17475,8 @@
         "defense": 2.5999999999999996,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Haze.png"
     },
     "Isaac": {
       "code": 59,
@@ -16784,7 +17498,8 @@
         "defense": 3.1,
         "hpRegen": 0.12,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Isaac.png"
     },
     "Tazia": {
       "code": 60,
@@ -16806,7 +17521,8 @@
         "defense": 2.9,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Tazia.png"
     },
     "Irem": {
       "code": 61,
@@ -16828,7 +17544,8 @@
         "defense": 3.0999999999999996,
         "hpRegen": 0.08,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Irem.png"
     },
     "Theodore": {
       "code": 62,
@@ -16850,7 +17567,8 @@
         "defense": 3.1999999999999997,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Theodore.png"
     },
     "Ly Anh": {
       "code": 63,
@@ -16872,7 +17590,8 @@
         "defense": 3.2,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Ly Anh.png"
     },
     "Vanya": {
       "code": 64,
@@ -16894,7 +17613,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Vanya.png"
     },
     "Debi & Marlene": {
       "code": 65,
@@ -16916,7 +17636,8 @@
         "defense": 3.2,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Debi & Marlene.png"
     },
     "Arda": {
       "code": 66,
@@ -16938,7 +17659,8 @@
         "defense": 2.7,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Arda.png"
     },
     "Abigail": {
       "code": 67,
@@ -16960,7 +17682,8 @@
         "defense": 3.0999999999999996,
         "hpRegen": 0.08,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Abigail.png"
     },
     "Alonso": {
       "code": 68,
@@ -16982,7 +17705,8 @@
         "defense": 3.4,
         "hpRegen": 0.12,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Alonso.png"
     },
     "Leni": {
       "code": 69,
@@ -17004,7 +17728,8 @@
         "defense": 3,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Leni.png"
     },
     "Tsubame": {
       "code": 70,
@@ -17026,7 +17751,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Tsubame.png"
     },
     "Kenneth": {
       "code": 71,
@@ -17048,7 +17774,8 @@
         "defense": 2.6999999999999997,
         "hpRegen": 0.136,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Kenneth.png"
     },
     "Katja": {
       "code": 72,
@@ -17070,7 +17797,8 @@
         "defense": 2.6999999999999997,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Katja.png"
     },
     "Charlotte": {
       "code": 73,
@@ -17092,7 +17820,8 @@
         "defense": 2.6,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Charlotte.png"
     },
     "Darko": {
       "code": 74,
@@ -17114,7 +17843,8 @@
         "defense": 3.5,
         "hpRegen": 0.136,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Darko.png"
     },
     "Lenore": {
       "code": 75,
@@ -17136,7 +17866,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Lenore.png"
     },
     "Garnet": {
       "code": 76,
@@ -17158,7 +17889,8 @@
         "defense": 3.1,
         "hpRegen": 0.136,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Garnet.png"
     },
     "Yumin": {
       "code": 77,
@@ -17180,7 +17912,8 @@
         "defense": 2.8,
         "hpRegen": 0.08,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Yumin.png"
     },
     "Hisui": {
       "code": 78,
@@ -17202,7 +17935,8 @@
         "defense": 3.7,
         "hpRegen": 0.07,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Hisui.png"
     },
     "Justyna": {
       "code": 79,
@@ -17224,7 +17958,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Justyna.png"
     },
     "Istvan": {
       "code": 80,
@@ -17246,7 +17981,8 @@
         "defense": 3.2,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Istvan.png"
     },
     "NiaH": {
       "code": 81,
@@ -17268,7 +18004,8 @@
         "defense": 2.7,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/NiaH.png"
     },
     "Xuelin": {
       "code": 82,
@@ -17290,7 +18027,8 @@
         "defense": 3,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Xuelin.png"
     },
     "Henry": {
       "code": 83,
@@ -17312,7 +18050,8 @@
         "defense": 2.8,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Henry.png"
     },
     "Blair": {
       "code": 84,
@@ -17334,7 +18073,8 @@
         "defense": 3,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Blair.png"
     },
     "Mirka": {
       "code": 85,
@@ -17356,7 +18096,8 @@
         "defense": 3.1,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Mirka.png"
     },
     "Fenrir": {
       "code": 86,
@@ -17378,7 +18119,8 @@
         "defense": 3.3,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Fenrir.png"
     },
     "Coraline": {
       "code": 87,
@@ -17400,7 +18142,8 @@
         "defense": 3,
         "hpRegen": 0.113,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Coraline.png"
     },
     "Bihyung": {
       "code": 88,
@@ -17422,7 +18165,8 @@
         "defense": 2.9,
         "hpRegen": 0.135,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Bihyung.png"
     },
     "Craver": {
       "code": 89,
@@ -17444,7 +18188,8 @@
         "defense": 3,
         "hpRegen": 0.06,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Craver.png"
     },
     "Lucia": {
       "code": 90,
@@ -17466,7 +18211,8 @@
         "defense": 2.9,
         "hpRegen": 0.09,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Lucia.png"
     },
     "Seres": {
       "code": 91,
@@ -17488,7 +18234,8 @@
         "defense": 3.3,
         "hpRegen": 0.12,
         "attackSpeed": 0
-      }
+      },
+      "image": "images/characters/Seres.png"
     }
   }
 }

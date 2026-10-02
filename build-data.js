@@ -2,6 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const { getCharacterImagePath, getItemImagePath } = require('./image-paths');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
 const DATA_PATCH_VERSION = '12.5';
@@ -337,6 +338,7 @@ async function buildData() {
         charsData[engName] = {
             code: char.code,
             nameKo: koName,
+            image: getCharacterImagePath(engName),
             masteries: [],
             base: {
                 maxHp: char.maxHp || 0,
@@ -467,6 +469,9 @@ async function buildData() {
             uniqueStats: itemStats.uniqueStats,
             statsByLv: itemStats.statsByLv
         };
+
+        const imagePath = getItemImagePath(engName, partType, item.weaponType || "");
+        if (imagePath) itemObj.image = imagePath;
 
         if (!isBaseItem) {
             itemObj.components = getLeafComponents(item.code, allItemsMap, l10nEng);

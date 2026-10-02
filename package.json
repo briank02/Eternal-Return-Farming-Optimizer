@@ -5,7 +5,11 @@
   "main": "data.js",
   "scripts": {
     "start": "npx serve docs",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:data": "node build-data.js && node scripts/update-image-paths.js",
+    "assets:migrate": "node scripts/migrate-image-assets.js",
+    "assets:update": "node scripts/update-image-paths.js",
+    "assets:validate": "node scripts/validate-image-assets.js",
+    "test": "npm run assets:validate"
   },
   "repository": {
     "type": "git",
