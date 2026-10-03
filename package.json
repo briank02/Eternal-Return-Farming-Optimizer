@@ -1,5 +1,5 @@
 {
-  "name": "eternal-return-farming-optimizer",
+  "name": "eternal-return-build-optimizer",
   "version": "1.0.0",
   "description": "",
   "main": "data.js",
@@ -9,6 +9,7 @@
     "assets:migrate": "node scripts/migrate-image-assets.js",
     "assets:update": "node scripts/update-image-paths.js",
     "assets:validate": "node scripts/validate-image-assets.js",
+    "assets:validate:remote": "node scripts/validate-deployed-site.js",
     "benchmark:recommendations": "node scripts/benchmark-recommendations.js",
     "test:build-state": "node scripts/test-build-state.js",
     "test": "npm run assets:validate && npm run test:build-state"

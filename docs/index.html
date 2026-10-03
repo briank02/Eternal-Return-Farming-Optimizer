@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternal Return Farming Route Optimizer</title>
+    <title>Eternal Return Build Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=25-large-material-icon">
+    <link rel="stylesheet" href="style.css?v=33-filter-menu-overflow">
 </head>
 
 <body>
@@ -17,15 +17,16 @@
         </div>
 
         <div class="header-center">
-            <h1 data-i18n="title">Eternal Return Farming Route Optimizer</h1>
+            <h1 data-i18n="title">Eternal Return Build Optimizer</h1>
         </div>
 
         <div class="header-right">
-            <select id="language-select">
+            <label class="visually-hidden" for="language-select" data-i18n="languageLabel">Language</label>
+            <select id="language-select" aria-label="Language">
                 <option value="en">English</option>
                 <option value="ko">한국어</option>
             </select>
-            <button id="theme-toggle">🌙 / ☀️</button>
+            <button type="button" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">🌙 / ☀️</button>
         </div>
     </header>
 
@@ -36,7 +37,12 @@
         </div>
     </nav>
 
-    <main class="main-container">
+    <div id="app-status" class="app-status" role="status" aria-live="polite">
+        <span class="app-status-spinner" aria-hidden="true"></span>
+        <span id="app-status-message" data-i18n="loadingData">Loading item and character data…</span>
+    </div>
+
+    <main class="main-container" aria-busy="true">
 
         <section class="panel left-panel">
             <div class="filter-panel-header" style="display:flex; justify-content:space-between; align-items:center;">
@@ -59,43 +65,43 @@
             <!-- Main Parts Filter -->
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="itemPart">Item Part</div>
             <div class="filter-row" style="margin-bottom:10px;">
-                <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;" data-i18n="all">
+                <button type="button" class="filter-btn active" data-filter="All" title="Show All" aria-pressed="true" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;" data-i18n="all">
                     ALL
-                </div>
-                <div class="filter-btn" data-filter="Weapon" title="Weapon">
-                    <img src="images/ui/Weapon.png" alt="Weapon" onerror="this.style.display='none'; this.parentElement.innerText='Weapon'">
-                </div>
-                <div class="filter-btn" data-filter="Chest" title="Chest">
-                    <img src="images/ui/Chest.png" alt="Chest" onerror="this.style.display='none'; this.parentElement.innerText='Chest'">
-                </div>
-                <div class="filter-btn" data-filter="Head" title="Head">
-                    <img src="images/ui/Head.png" alt="Head" onerror="this.style.display='none'; this.parentElement.innerText='Head'">
-                </div>
-                <div class="filter-btn" data-filter="Arm" title="Arm">
-                    <img src="images/ui/Arm.png" alt="Arm" onerror="this.style.display='none'; this.parentElement.innerText='Arm'">
-                </div>
-                <div class="filter-btn" data-filter="Leg" title="Leg">
-                    <img src="images/ui/Leg.png" alt="Leg" onerror="this.style.display='none'; this.parentElement.innerText='Leg'">
-                </div>
+                </button>
+                <button type="button" class="filter-btn" data-filter="Weapon" title="Weapon" aria-pressed="false">
+                    <img src="images/ui/Weapon.png" alt="Weapon" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Weapon'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Chest" title="Chest" aria-pressed="false">
+                    <img src="images/ui/Chest.png" alt="Chest" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Chest'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Head" title="Head" aria-pressed="false">
+                    <img src="images/ui/Head.png" alt="Head" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Head'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Arm" title="Arm" aria-pressed="false">
+                    <img src="images/ui/Arm.png" alt="Arm" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Arm'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Leg" title="Leg" aria-pressed="false">
+                    <img src="images/ui/Leg.png" alt="Leg" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Leg'">
+                </button>
             </div>
 
             <div id="late-resource-filter-group" hidden>
                 <div class="filter-label" data-i18n="highTierMaterial">High-tier Material</div>
                 <div class="resource-filter-row" role="group" aria-label="High-tier Material">
                     <button type="button" class="resource-filter-btn active" data-resource="Meteorite" aria-pressed="true" aria-label="Meteorite" title="Meteorite">
-                        <img src="images/materials/Meteorite.png" alt="">
+                        <img src="images/materials/Meteorite.png" alt="" loading="lazy" decoding="async">
                     </button>
                     <button type="button" class="resource-filter-btn active" data-resource="Tree of Life" aria-pressed="true" aria-label="Tree of Life" title="Tree of Life">
-                        <img src="images/materials/Tree of Life.png" alt="">
+                        <img src="images/materials/Tree of Life.png" alt="" loading="lazy" decoding="async">
                     </button>
                     <button type="button" class="resource-filter-btn active" data-resource="Mythril" aria-pressed="true" aria-label="Mythril" title="Mythril">
-                        <img src="images/materials/Mythril.png" alt="">
+                        <img src="images/materials/Mythril.png" alt="" loading="lazy" decoding="async">
                     </button>
                     <button type="button" class="resource-filter-btn active" data-resource="Force Core" aria-pressed="true" aria-label="Force Core" title="Force Core">
-                        <img src="images/materials/Force Core.png" alt="">
+                        <img src="images/materials/Force Core.png" alt="" loading="lazy" decoding="async">
                     </button>
                     <button type="button" class="resource-filter-btn active" data-resource="VF Blood Sample" aria-pressed="true" aria-label="VF Blood Sample" title="VF Blood Sample">
-                        <img src="images/materials/VF Blood Sample.png" alt="">
+                        <img src="images/materials/VF Blood Sample.png" alt="" loading="lazy" decoding="async">
                     </button>
                 </div>
             </div>
@@ -259,7 +265,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=26-partial-comparison"></script>
+    <script src="script.js?v=31-release-verification"></script>
 </body>
 
 </html>

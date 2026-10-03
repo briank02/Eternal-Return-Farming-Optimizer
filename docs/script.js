@@ -4,7 +4,7 @@
 
 const DICT = {
     en: {
-        title: "Eternal Return Farming Route Optimizer",
+        title: "Eternal Return Build Optimizer",
         filters: "Filters",
         resetAll: "Reset All",
         level: "Level:",
@@ -17,13 +17,14 @@ const DICT = {
         weaponType: "Weapon Type",
         substats: "Item Stats",
         passiveSkills: "Unique Passives",
-        earlyGameRoute: "Early Game Route",
-        lateGameBuild: "Late-Game Build",
+        buildWorkflow: "Build workflow",
+        earlyGameRoute: "Early Game Build/Route",
+        lateGameBuild: "Late Game Build",
         routeOptimizerTab: "Item Selection",
         recommendationsTab: "Item Recommendations",
         addPriorityStat: "Add weighted stat",
         addPassiveSkill: "Add unique passive",
-        requirePassiveSkill: "Require unique passive",
+        requirePassiveSkill: "Required unique passives",
         requiredPassiveSkills: "Required unique passives",
         searchPassiveSkillsPlaceholder: "Search unique passives...",
         recommendBuilds: "Recommend Builds",
@@ -34,9 +35,7 @@ const DICT = {
         recommendationScore: "Stat Score: ",
         recommendationMatch: "Requirement Match: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
-        lateRecommendationApplied: "Late-game build applied.",
-        whyRecommended: "Why this build",
-        compareRecommendation: "Compare",
+        lateRecommendationApplied: "Late game build applied.",
         applyRecommendation: "Use build",
         recommendationCompareHelp: "Select two recommendations to compare their stat differences.",
         recommendationComparison: "Recommendation comparison",
@@ -48,10 +47,10 @@ const DICT = {
         weightLabel: "Weight",
         automaticWeights: "Weight automatically by order",
         weightHelp: "Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.",
-        highTierMaterial: "High-tier Material",
+        highTierMaterial: "Epic Material",
         hideRecommendationFilters: "Hide recommendation filters",
         showRecommendationFilters: "Show recommendation filters",
-        buildCreditLimit: "Build credit limit (optional)",
+        buildCreditLimit: "Build credit limit",
         minCredits: "Min credits",
         maxCredits: "Max credits",
         credits: "Credits",
@@ -98,16 +97,26 @@ const DICT = {
         route1: "Route 1",
         route2: "Route 2",
         topRoutes: "<h3>Top Optimized Routes: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: Hyperloop not needed)</span></h3>",
+        showMoreRoutes: "Show more routes",
+        showFewerRoutes: "Show fewer routes",
         needDrone: "Need Drone: <strong>",
         noDrone: "No Drone Needed",
         buildVariant: "Build Variant:",
         searchCharPlaceholder: "Search...",
         searchItemPlaceholder: "Search item...",
+        languageLabel: "Language",
+        switchToDarkTheme: "Switch to dark theme",
+        switchToLightTheme: "Switch to light theme",
+        loadingData: "Loading item and character data…",
+        dataLoadError: "The optimizer data could not be loaded. Refresh the page to try again.",
+        addItem: "Add item",
+        removeItem: "Remove item",
+        selectRoute: "Select route for comparison",
         dataPatch: "Data patch",
         dataUpdated: "Data updated"
     },
     ko: {
-        title: "이터널 리턴 파밍 루트 옵티마이저",
+        title: "이터널 리턴 빌드 옵티마이저",
         filters: "필터",
         resetAll: "전체 초기화",
         level: "레벨:",
@@ -124,14 +133,15 @@ const DICT = {
         resetStats: "초기화",
         searchStatsPlaceholder: "스탯 검색...",
         yourBuild: "내 빌드",
-        yourEarlyBuild: "내 초반 빌드",
-        yourLateBuild: "내 후반 빌드",
+        yourEarlyBuild: "초반 빌드",
+        yourLateBuild: "후반 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
         clickToAddLate: "각 장비 부위에 전설 또는 신화 아이템을 하나씩 선택하세요.",
         selectEpicItems: "영웅 아이템 선택",
         selectLateItems: "전설 및 신화 아이템 선택",
-        earlyGameRoute: "초반 파밍 루트",
+        buildWorkflow: "빌드 방식",
+        earlyGameRoute: "초반 빌드/루트",
         lateGameBuild: "후반 빌드",
         lateGameShellTitle: "최종 빌드를 구성하세요",
         lateGameShellDescription: "목록에서 전설 및 신화 장비를 선택하세요. 모드를 전환해도 초반 빌드는 유지됩니다.",
@@ -161,11 +171,21 @@ const DICT = {
         route1: "루트 1",
         route2: "루트 2",
         topRoutes: "<h3>최적화 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
+        showMoreRoutes: "루트 더 보기",
+        showFewerRoutes: "루트 접기",
         needDrone: "드론 필요: <strong>",
         noDrone: "드론 필요 없음",
         buildVariant: "빌드 변형:",
         searchCharPlaceholder: "실험체 검색...",
-        searchItemPlaceholder: "아이템 검색..."
+        searchItemPlaceholder: "아이템 검색...",
+        languageLabel: "언어",
+        switchToDarkTheme: "어두운 테마로 전환",
+        switchToLightTheme: "밝은 테마로 전환",
+        loadingData: "아이템 및 실험체 데이터를 불러오는 중…",
+        dataLoadError: "옵티마이저 데이터를 불러오지 못했습니다. 페이지를 새로고침하여 다시 시도하세요.",
+        addItem: "아이템 추가",
+        removeItem: "아이템 제거",
+        selectRoute: "비교할 루트 선택"
     }
 };
 
@@ -189,11 +209,11 @@ Object.assign(DICT.ko, {
     priorityLabel: "우선순위",
     weightLabel: "가중치",
     automaticWeights: "순서에 따라 가중치 자동 설정",
-    weightHelp: "자동 설정은 기하급수 감소(1, 0.68, 0.46…)를 사용합니다. 직접 입력하려면 끄고 0부터 1 사이의 상대 가중치를 설정하세요.",
-    highTierMaterial: "고급 재료",
+    weightHelp: "자동 설정은 기하급수적 감소(1, 0.68, 0.46…)를 사용합니다. 직접 입력하려면 끄고 0부터 1 사이의 상대 가중치를 설정하세요.",
+    highTierMaterial: "영웅 재료",
     hideRecommendationFilters: "추천 필터 접기",
     showRecommendationFilters: "추천 필터 펼치기",
-    buildCreditLimit: "빌드 크레딧 제한 (선택)",
+    buildCreditLimit: "빌드 크레딧 제한",
     minCredits: "최소 크레딧",
     maxCredits: "최대 크레딧",
     credits: "크레딧",
@@ -300,6 +320,8 @@ function getItemPlaceholderPath(name) {
 
 function applyItemImageFallback(img, name) {
     if (!img) return;
+    img.loading = 'lazy';
+    img.decoding = 'async';
     img.onerror = function() {
         if (this.dataset.placeholderApplied === 'true') {
             this.style.display = 'none';
@@ -324,6 +346,7 @@ function getCharName(name) {
 }
 
 function applyTranslations() {
+    document.documentElement.lang = currentLanguage === 'ko' ? 'ko' : 'en';
     document.body.classList.remove('lang-en', 'lang-ko');
     document.body.classList.add('lang-' + currentLanguage);
     
@@ -338,8 +361,41 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n-placeholder');
         if (DICT[currentLanguage][key]) {
             el.setAttribute('placeholder', DICT[currentLanguage][key]);
+            el.setAttribute('aria-label', DICT[currentLanguage][key]);
         }
     });
+
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) languageSelect.setAttribute('aria-label', t('languageLabel'));
+    document.querySelectorAll('.workflow-switch-bar, .workflow-switch').forEach(element => {
+        element.setAttribute('aria-label', t('buildWorkflow'));
+    });
+    const resourceFilterGroup = document.querySelector('.resource-filter-row');
+    if (resourceFilterGroup) resourceFilterGroup.setAttribute('aria-label', t('highTierMaterial'));
+    syncThemeControl();
+}
+
+function syncThemeControl() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+    const isDark = document.body.classList.contains('dark-mode');
+    const label = t(isDark ? 'switchToLightTheme' : 'switchToDarkTheme');
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.title = label;
+}
+
+function setAppStatus(state) {
+    const status = document.getElementById('app-status');
+    const message = document.getElementById('app-status-message');
+    const main = document.querySelector('main');
+    if (!status || !message) return;
+
+    status.dataset.state = state;
+    status.hidden = state === 'ready';
+    status.setAttribute('role', state === 'error' ? 'alert' : 'status');
+    message.textContent = t(state === 'error' ? 'dataLoadError' : 'loadingData');
+    if (main) main.setAttribute('aria-busy', String(state === 'loading'));
 }
 
 function prettifyStatId(id) {
@@ -996,7 +1052,9 @@ function setTranslatedElement(id, key) {
 function renderCenterMode(mode) {
     currentCenterMode = mode === 'recommendations' ? 'recommendations' : 'optimizer';
     document.querySelectorAll('.mode-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.mode === currentCenterMode);
+        const selected = tab.dataset.mode === currentCenterMode;
+        tab.classList.toggle('active', selected);
+        tab.setAttribute('aria-pressed', String(selected));
     });
     document.querySelectorAll('.mode-view').forEach(view => {
         view.classList.toggle('active', view.id === `${currentCenterMode}-view`);
@@ -1159,9 +1217,57 @@ function renderDataStatus() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            syncThemeControl();
+        });
+    }
+
+    const langSelect = document.getElementById('language-select');
+    if (langSelect) {
+        langSelect.value = currentLanguage;
+        langSelect.addEventListener('change', (event) => {
+            currentLanguage = event.target.value;
+            localStorage.setItem('language', currentLanguage);
+            applyTranslations();
+
+            const loadState = document.getElementById('app-status')?.dataset.state || 'loading';
+            if (loadState !== 'ready') {
+                setAppStatus(loadState);
+                return;
+            }
+
+            renderDataStatus();
+            setupFilters();
+            setupLateGameControls();
+            setupRecommendationControls();
+            renderRecommendationPriorityList();
+            renderRecommendationResults();
+            renderMainGrid();
+            updateSelectedPanel();
+            renderStatComparison();
+            renderLateGamePanel();
+        });
+    }
+
+    applyTranslations();
+    setAppStatus('loading');
+
     try {
         const res = await fetch('data.json');
+        if (!res.ok) throw new Error(`Data request failed with status ${res.status}`);
         const data = await res.json();
+        if (!data || !data.items || !data.mapData || !data.chars) {
+            throw new Error('Data response is missing required optimizer fields');
+        }
         
         items = data.items;
         mapData = data.mapData;
@@ -1178,45 +1284,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         buildDisplayStats(activeBuildType);
         renderDataStatus();
         
-        // Removed loading screen logic
-
-        // Initialize Theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Setup Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            });
-        }
-
-        // Setup Language Toggle
-        const langSelect = document.getElementById('language-select');
-        if (langSelect) {
-            langSelect.value = currentLanguage;
-            applyTranslations(); // initial apply
-            langSelect.addEventListener('change', (e) => {
-                currentLanguage = e.target.value;
-                localStorage.setItem('language', currentLanguage);
-                applyTranslations();
-                renderDataStatus();
-                setupFilters();
-                setupLateGameControls();
-                setupRecommendationControls();
-                renderRecommendationPriorityList();
-                renderRecommendationResults();
-                renderMainGrid();
-                updateSelectedPanel();
-                renderStatComparison();
-                renderLateGamePanel();
-            });
-        }
-
         // 1. Setup Filters
         setupWorkflowSwitch();
         setupLateGameControls();
@@ -1393,9 +1460,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
         }
+        setAppStatus('ready');
     } catch (e) {
         console.error("Failed to load API data", e);
-        console.error("Error loading data.");
+        setAppStatus('error');
     }
 });
 
@@ -1414,11 +1482,12 @@ function setupFilters() {
         }
     }
     
-    let subHtml = `<div class="filter-btn weapon-btn ${currentWeaponFilter === 'All' ? 'active' : ''}" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
+    let subHtml = `<button type="button" class="filter-btn weapon-btn ${currentWeaponFilter === 'All' ? 'active' : ''}" data-subfilter="All" title="${t('all')}" aria-pressed="${currentWeaponFilter === 'All'}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</button>`;
     WEAPON_TYPES.forEach(w => {
-        subHtml += `<div class="filter-btn weapon-btn ${currentWeaponFilter === w.api ? 'active' : ''}" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
-            <img src="${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
-        </div>`;
+        const selected = currentWeaponFilter === w.api;
+        subHtml += `<button type="button" class="filter-btn weapon-btn ${selected ? 'active' : ''}" data-subfilter="${escapeAttribute(w.api)}" title="${escapeAttribute(w.name[currentLanguage])}" aria-pressed="${selected}">
+            <img src="${escapeAttribute(w.img)}" alt="${escapeAttribute(w.name[currentLanguage])}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='?'">
+        </button>`;
     });
     if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
 
@@ -1437,11 +1506,24 @@ function setupFilters() {
 
     const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+        const selected = btn.dataset.filter === currentFilter;
+        const label = btn.dataset.filter === 'All'
+            ? t('all')
+            : (PART_NAMES[btn.dataset.filter]?.[currentLanguage] || btn.dataset.filter);
+        btn.classList.toggle('active', selected);
+        btn.setAttribute('aria-pressed', String(selected));
+        btn.setAttribute('aria-label', label);
+        btn.title = label;
+        const image = btn.querySelector('img');
+        if (image) image.alt = label;
         if (btn.dataset.bound === 'true') return;
         btn.addEventListener('click', () => {
-            topBtns.forEach(b => b.classList.remove('active'));
+            topBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             
             currentFilter = btn.dataset.filter;
             buildFilterState[activeBuildType].part = currentFilter;
@@ -1459,7 +1541,9 @@ function setupFilters() {
         const masteries = chars[currentCharacter].masteries;
         subBtns.forEach(button => {
             const weaponType = button.dataset.subfilter;
-            button.classList.toggle('disabled', weaponType !== 'All' && !masteries.includes(weaponType));
+            const disabled = weaponType !== 'All' && !masteries.includes(weaponType);
+            button.classList.toggle('disabled', disabled);
+            button.disabled = disabled;
         });
     }
 
@@ -1470,8 +1554,12 @@ function setupFilters() {
 
     subBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            subBtns.forEach(b => b.classList.remove('active'));
+            subBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             currentWeaponFilter = btn.dataset.subfilter;
             buildFilterState[activeBuildType].weapon = currentWeaponFilter;
             recommendationResults = [];
@@ -1687,7 +1775,7 @@ function renderRecommendationPriorityList() {
                 <div class="priority-name">${stat.name[currentLanguage]}</div>
                 <label class="priority-weight-field">
                     <span>${t('weightLabel')}</span>
-                    <input type="number" class="priority-weight-input" value="${weight}" min="0" max="1" step="0.01" inputmode="decimal" ${recommendationAutomaticWeights ? 'disabled' : ''} aria-label="${escapeAttribute(`${stat.name[currentLanguage]} ${t('weightLabel')}`)}">
+                    <input type="number" class="priority-weight-input" value="${weight}" min="0" max="1" step="0.01" inputmode="decimal" placeholder="${t('weightLabel')}" ${recommendationAutomaticWeights ? 'disabled' : ''} aria-label="${escapeAttribute(`${stat.name[currentLanguage]} ${t('weightLabel')}`)}">
                 </label>
                 <input type="number" class="priority-bound-input" data-bound="min" value="${constraints.min}" placeholder="${t('minLabel')}" step="any">
                 <input type="number" class="priority-bound-input" data-bound="max" value="${constraints.max}" placeholder="${t('maxLabel')}" step="any">
@@ -1800,7 +1888,7 @@ function renderRecommendationResults() {
             const gradeStyle = getItemGradeStyle(items[name] && items[name].type);
             return `
             <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}" style="--recommendation-item-start:${gradeStyle.cardStart};--recommendation-item-end:${gradeStyle.cardEnd}">
-                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
             </div>`;
         }).join('');
 
@@ -2538,8 +2626,8 @@ function getSortedCharacterNames() {
 function renderCharacterPicker(container) {
     const selectedLabel = currentCharacter ? getCharName(currentCharacter) : t('selectCharacter');
     const avatarHtml = currentCharacter
-        ? `<img class="compact-avatar" src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
-        : `<img class="compact-avatar" src="images/ui/CharacterSelect.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
+        ? `<img class="compact-avatar" src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(selectedLabel)}" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
+        : `<img class="compact-avatar" src="images/ui/CharacterSelect.png" alt="${escapeAttribute(selectedLabel)}" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
 
     container.innerHTML = `
         <div class="compact-select" id="character-select">
@@ -2549,7 +2637,7 @@ function renderCharacterPicker(container) {
                 <span class="compact-select-arrow">▾</span>
             </button>
             <div class="compact-select-menu">
-                <input type="text" id="char-search" class="compact-select-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="${t('searchCharPlaceholder')}">
+                <input type="text" id="char-search" class="compact-select-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="${t('searchCharPlaceholder')}" aria-label="${t('searchCharPlaceholder')}">
                 <div id="char-options" class="compact-options"></div>
             </div>
         </div>
@@ -2597,6 +2685,8 @@ function renderCharacterOptions(container, term = '') {
             img.className = 'compact-avatar';
             img.src = getCharacterImagePath(option.value);
             img.alt = option.label;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
             };
@@ -2606,6 +2696,8 @@ function renderCharacterOptions(container, term = '') {
             img.className = 'compact-avatar';
             img.src = 'images/ui/CharacterSelect.png';
             img.alt = option.label;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
             };
@@ -2692,7 +2784,7 @@ function renderSubstatPicker(container) {
                 <span class="compact-select-arrow">▾</span>
             </button>
             <div class="compact-select-menu">
-                <input type="text" id="stat-search" class="compact-select-search" placeholder="${currentLanguage === 'ko' ? '스탯 검색...' : 'Search stats...'}">
+                <input type="text" id="stat-search" class="compact-select-search" data-i18n-placeholder="searchStatsPlaceholder" placeholder="${t('searchStatsPlaceholder')}" aria-label="${t('searchStatsPlaceholder')}">
                 <div id="stat-options" class="compact-options"></div>
             </div>
         </div>
@@ -2791,7 +2883,7 @@ function renderPassiveSkillPicker(container, selectedSet, {
                     <span class="compact-select-arrow">▾</span>
                 </button>
                 <div class="compact-select-menu">
-                    <input type="text" id="${prefix}-search" class="compact-select-search" placeholder="${t('searchPassiveSkillsPlaceholder')}">
+                    <input type="text" id="${prefix}-search" class="compact-select-search" data-i18n-placeholder="searchPassiveSkillsPlaceholder" placeholder="${t('searchPassiveSkillsPlaceholder')}" aria-label="${t('searchPassiveSkillsPlaceholder')}">
                     <div id="${prefix}-options" class="compact-options"></div>
                 </div>
             </div>
@@ -2941,21 +3033,23 @@ function renderMainGrid() {
 function createItemCard(name) {
     const item = items[name];
     const gradeStyle = getItemGradeStyle(item && item.type);
-    const card = document.createElement('div');
+    const card = document.createElement('button');
+    card.type = 'button';
     card.classList.add('item-card');
     card.dataset.name = name;
     card.dataset.grade = item ? item.type : '';
     card.style.setProperty('--item-card-start', gradeStyle.cardStart);
     card.style.setProperty('--item-card-end', gradeStyle.cardEnd);
     applyMythicWeaponVariantIndicator(card, name, item);
-    card.classList.toggle('selected', getBuild().has(name));
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `${getItemName(name)}, ${TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item.type}`);
+    const selected = getBuild().has(name);
+    const typeName = TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item.type;
+    card.classList.toggle('selected', selected);
+    card.setAttribute('aria-pressed', String(selected));
+    card.setAttribute('aria-label', `${t(selected ? 'removeItem' : 'addItem')}: ${getItemName(name)}, ${typeName}`);
 
     const img = document.createElement('img');
     img.src = getItemImagePath(name);
-    img.alt = name;
+    img.alt = getItemName(name);
     img.classList.add('item-icon');
     
     applyItemImageFallback(img, name);
@@ -2974,11 +3068,6 @@ function createItemCard(name) {
     });
 
     card.addEventListener('click', () => toggleSelection(name));
-    card.addEventListener('keydown', (event) => {
-        if (event.key !== 'Enter' && event.key !== ' ') return;
-        event.preventDefault();
-        toggleSelection(name);
-    });
     return card;
 }
 
@@ -2997,7 +3086,7 @@ function showGlobalTooltip(name, trigger = null) {
     const materialIcons = highTierMaterials.map(material => {
         const config = HIGH_TIER_MATERIALS[material];
         const label = `${getHighTierMaterialName(material)} · ${config.price} ${t('credits')}`;
-        return `<img src="${escapeAttribute(config.image)}" alt="${escapeAttribute(label)}" title="${escapeAttribute(label)}">`;
+        return `<img src="${escapeAttribute(config.image)}" alt="${escapeAttribute(label)}" title="${escapeAttribute(label)}" loading="lazy" decoding="async">`;
     }).join('');
     
     let tooltipHtml = `
@@ -3014,7 +3103,7 @@ function showGlobalTooltip(name, trigger = null) {
                 </div>
             </div>
             <div class="tooltip-image-container">
-                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
             </div>
         </div>
         <div class="tooltip-stats">
@@ -3173,11 +3262,12 @@ function updateMainGridVisuals() {
     const cards = document.querySelectorAll('#item-grid .item-card');
     cards.forEach(card => {
         const name = card.dataset.name;
-        if (build.has(name)) {
-            card.classList.add('selected');
-        } else {
-            card.classList.remove('selected');
-        }
+        const selected = build.has(name);
+        const item = items[name];
+        const typeName = item && TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item?.type || '';
+        card.classList.toggle('selected', selected);
+        card.setAttribute('aria-pressed', String(selected));
+        card.setAttribute('aria-label', `${t(selected ? 'removeItem' : 'addItem')}: ${getItemName(name)}, ${typeName}`);
     });
 }
 
@@ -3208,23 +3298,10 @@ function updateSelectedPanel({ buildChanged = false } = {}) {
     const sortedItems = sortItemsByBuildSlot(build);
 
     sortedItems.forEach(name => {
-        const div = document.createElement('div');
-        div.classList.add('item-card');
-        div.title = "Click to remove";
-        const gradeStyle = getItemGradeStyle(items[name] && items[name].type);
-        div.dataset.grade = items[name] ? items[name].type : '';
-        div.style.setProperty('--item-card-start', gradeStyle.cardStart);
-        div.style.setProperty('--item-card-end', gradeStyle.cardEnd);
-        
-        const img = document.createElement('img');
-        img.src = getItemImagePath(name);
-        img.classList.add('item-icon');
-        
-        applyItemImageFallback(img, name);
-
-        div.appendChild(img);
-        div.addEventListener('click', () => toggleSelection(name)); 
-        container.appendChild(div);
+        const card = createItemCard(name);
+        card.classList.add('selected-build-card');
+        card.title = `${t('removeItem')}: ${getItemName(name)}`;
+        container.appendChild(card);
     });
     
     if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
@@ -3257,7 +3334,7 @@ function renderLateBuildSlots(container) {
             emptyButton.type = 'button';
             emptyButton.className = 'late-build-empty-slot';
             emptyButton.setAttribute('aria-label', `${PART_NAMES[slot][currentLanguage]}: ${t('clickToAddLate')}`);
-            emptyButton.innerHTML = `<img src="images/ui/${slot}.png" alt=""><span>+</span>`;
+            emptyButton.innerHTML = `<img src="images/ui/${slot}.png" alt="" loading="lazy" decoding="async"><span>+</span>`;
             emptyButton.addEventListener('click', () => {
                 const filterButton = document.querySelector(`.filter-row .filter-btn[data-filter="${slot}"]`);
                 if (filterButton) filterButton.click();
@@ -3297,7 +3374,7 @@ function renderLateSnapshot(snapshot, index) {
         const item = items[name];
         const gradeStyle = getItemGradeStyle(item && item.type);
         return `<div class="late-snapshot-icon" data-item="${escapeAttribute(name)}" tabindex="0" aria-label="${escapeAttribute(getItemName(name))}" style="--item-card-start:${gradeStyle.cardStart};--item-card-end:${gradeStyle.cardEnd}" title="${escapeAttribute(getItemName(name))}">
-            <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
+            <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
         </div>`;
     }).join('');
     return `<div class="late-snapshot-card">
@@ -3586,7 +3663,7 @@ function renderSingleStatColumn(stats, { creditCost = null } = {}) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; position:relative; width:100%;">
                 <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin:0 auto;">
-                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(getCharName(currentCharacter))}" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.75em; padding:2px 6px; border-radius:8px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -3628,7 +3705,7 @@ function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; width:100%; position:relative;">
                 <div style="width:50px; height:50px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin: 0 auto;">
-                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(getCharName(currentCharacter))}" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.65em; padding:2px 5px; border-radius:6px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -3964,6 +4041,7 @@ function getPermutations(arr) {
 
 function displayResults(routes, container) {
     const topRoutes = routes.slice(0, 10); // Show top 10 now since we have variants
+    const mobilePreviewCount = 3;
     
     let html = `${t('topRoutes')}`;
     
@@ -3985,7 +4063,7 @@ function displayResults(routes, container) {
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = sortItemsByBuildSlot(r.variantItems).map(item =>
-            `<img src="${escapeAttribute(getItemImagePath(item))}" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
+            `<img src="${escapeAttribute(getItemImagePath(item))}" alt="${escapeAttribute(getItemName(item))}" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" loading="lazy" decoding="async" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
         let formattedPath = r.path.map((z, idx) => {
@@ -4000,7 +4078,7 @@ function displayResults(routes, container) {
         });
 
         html += `
-        <div class="route-card" data-index="${index}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
+        <button type="button" class="route-card${index >= mobilePreviewCount ? ' mobile-route-extra' : ''}" data-index="${index}" aria-pressed="false" aria-label="${escapeAttribute(`${t('selectRoute')}: ${formattedPath.join(' → ')}`)}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
             
             <div style="margin-bottom: 5px; font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center;">
                 <strong style="margin-right:5px;">${t('buildVariant')}</strong> ${variantSummary}
@@ -4016,11 +4094,27 @@ function displayResults(routes, container) {
             <div style="font-size:0.85em; margin-top:4px; padding-left: 5px;">
                 ${droneHtml}
             </div>
-        </div>`;
+        </button>`;
     });
+
+    if (topRoutes.length > mobilePreviewCount) {
+        html += `<button type="button" class="route-show-more" aria-expanded="false">${t('showMoreRoutes')} (${topRoutes.length - mobilePreviewCount})</button>`;
+    }
     
+    container.classList.remove('routes-expanded');
     container.innerHTML = html;
     applyItemImageFallbacks(container);
+
+    const showMoreButton = container.querySelector('.route-show-more');
+    if (showMoreButton) {
+        showMoreButton.addEventListener('click', () => {
+            const expanded = container.classList.toggle('routes-expanded');
+            showMoreButton.setAttribute('aria-expanded', String(expanded));
+            showMoreButton.textContent = expanded
+                ? t('showFewerRoutes')
+                : `${t('showMoreRoutes')} (${topRoutes.length - mobilePreviewCount})`;
+        });
+    }
 
     // Add click listeners for comparison
     const routeCards = container.querySelectorAll('.route-card');
@@ -4031,33 +4125,25 @@ function displayResults(routes, container) {
             
             const existingIdx = selectedRoutes.findIndex(sr => sr === route);
             if (existingIdx !== -1) {
-                // Deselect
                 selectedRoutes.splice(existingIdx, 1);
-                card.style.boxShadow = 'none';
-                card.style.borderColor = '#ddd';
             } else {
                 if (selectedRoutes.length >= 2) {
-                    // Remove first
-                    const removedRoute = selectedRoutes.shift();
-                    const removedIdx = generatedRoutes.indexOf(removedRoute);
-                    if (removedIdx !== -1) {
-                        const rCard = container.querySelector(`.route-card[data-index="${removedIdx}"]`);
-                        if (rCard) { rCard.style.boxShadow = 'none'; rCard.style.borderColor = '#ddd'; }
-                    }
+                    selectedRoutes.shift();
                 }
                 selectedRoutes.push(route);
             }
-            
-            // Apply styles to currently selected
-            selectedRoutes.forEach((sr, i) => {
-                const srIdx = generatedRoutes.indexOf(sr);
-                if (srIdx !== -1) {
-                    const rCard = container.querySelector(`.route-card[data-index="${srIdx}"]`);
-                    if (rCard) {
-                        rCard.style.boxShadow = '0 0 8px ' + (i === 0 ? 'rgba(41, 128, 185, 0.6)' : 'rgba(142, 68, 173, 0.6)');
-                        rCard.style.borderColor = (i === 0 ? '#2980b9' : '#8e44ad');
-                    }
-                }
+
+            routeCards.forEach(routeCard => {
+                const routeIndex = Number(routeCard.dataset.index);
+                const comparisonIndex = selectedRoutes.indexOf(generatedRoutes[routeIndex]);
+                const selected = comparisonIndex !== -1;
+                routeCard.setAttribute('aria-pressed', String(selected));
+                routeCard.style.boxShadow = selected
+                    ? `0 0 8px ${comparisonIndex === 0 ? 'rgba(41, 128, 185, 0.6)' : 'rgba(142, 68, 173, 0.6)'}`
+                    : 'none';
+                routeCard.style.borderColor = selected
+                    ? (comparisonIndex === 0 ? '#2980b9' : '#8e44ad')
+                    : 'var(--route-card-border)';
             });
 
             renderStatComparison();
