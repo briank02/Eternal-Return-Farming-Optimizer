@@ -10,9 +10,6 @@ const DICT = {
         level: "Level:",
         character: "Test Subject",
         itemPart: "Item Part",
-        rarity: "Rarity",
-        legendary: "Legendary",
-        mythic: "Mythic",
         all: "ALL",
         weaponType: "Weapon Type",
         substats: "Item Stats",
@@ -35,15 +32,8 @@ const DICT = {
         recommendationScore: "Stat Score: ",
         recommendationMatch: "Requirement Match: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
-        lateRecommendationApplied: "Late game build applied.",
         applyRecommendation: "Use build",
-        recommendationCompareHelp: "Select two recommendations to compare their stat differences.",
-        recommendationComparison: "Recommendation comparison",
-        difference: "Difference",
-        matchedPassives: "Required passives",
-        constraintsMet: "stat constraints met",
         onlyTwoZones: "Only show builds with 2 or less zones",
-        priorityLabel: "Priority",
         weightLabel: "Weight",
         automaticWeights: "Weight automatically by order",
         weightHelp: "Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.",
@@ -61,7 +51,6 @@ const DICT = {
         addStat: "Add stat",
         resetStats: "Reset",
         searchStatsPlaceholder: "Search stats...",
-        yourBuild: "Your Build",
         yourEarlyBuild: "Your Early Build",
         yourLateBuild: "Your Late-Game Build",
         resetBuild: "Reset Build",
@@ -69,8 +58,6 @@ const DICT = {
         clickToAddLate: "Choose one Legendary or Mythic item for each equipment slot.",
         selectEpicItems: "Select Epic Items",
         selectLateItems: "Select Legendary and Mythic Items",
-        lateGameShellTitle: "Assemble your final build",
-        lateGameShellDescription: "Select Legendary and Mythic equipment from the catalog. Your Early build is preserved when you switch workflows.",
         lateGameRouteNote: "Farming-route optimization is available only in Early Game Route mode.",
         lateBuildSummary: "Final Build Summary",
         currentBuildStats: "Current Build Stats",
@@ -122,9 +109,6 @@ const DICT = {
         level: "레벨:",
         character: "실험체",
         itemPart: "아이템 부위",
-        rarity: "등급",
-        legendary: "전설",
-        mythic: "신화",
         all: "ALL",
         weaponType: "무기 종류",
         substats: "아이템 스탯",
@@ -132,7 +116,6 @@ const DICT = {
         addStat: "스탯 추가",
         resetStats: "초기화",
         searchStatsPlaceholder: "스탯 검색...",
-        yourBuild: "내 빌드",
         yourEarlyBuild: "초반 빌드",
         yourLateBuild: "후반 빌드",
         resetBuild: "빌드 초기화",
@@ -143,8 +126,6 @@ const DICT = {
         buildWorkflow: "빌드 방식",
         earlyGameRoute: "초반 빌드/루트",
         lateGameBuild: "후반 빌드",
-        lateGameShellTitle: "최종 빌드를 구성하세요",
-        lateGameShellDescription: "목록에서 전설 및 신화 장비를 선택하세요. 모드를 전환해도 초반 빌드는 유지됩니다.",
         lateGameRouteNote: "파밍 루트 최적화는 초반 파밍 루트 모드에서만 사용할 수 있습니다.",
         lateBuildSummary: "최종 빌드 요약",
         currentBuildStats: "현재 빌드 스탯",
@@ -199,14 +180,15 @@ Object.assign(DICT.ko, {
     recommendationNeedStats: "가중치가 0보다 큰 스탯, 스탯 조건 또는 필수 고유 효과를 추가해주세요.",
     recommendationNoBuilds: "현재 필터를 충족하는 추천 빌드가 없습니다.",
     recommendationScore: "스탯 점수: ",
+    recommendationMatch: "조건 일치: ",
     recommendationApplied: "빌드가 적용되었습니다. '옵티마이저 실행' 버튼을 눌러 파밍 루트를 찾으세요.",
+    applyRecommendation: "빌드 적용",
     onlyTwoZones: "2구역 이하 빌드만 보기",
     passiveSkills: "고유 장착 효과",
     addPassiveSkill: "고유 장착 효과 추가",
     requirePassiveSkill: "필수 고유 효과 추가",
     requiredPassiveSkills: "필수 고유 장착 효과",
     searchPassiveSkillsPlaceholder: "고유 장착 효과 검색...",
-    priorityLabel: "우선순위",
     weightLabel: "가중치",
     automaticWeights: "순서에 따라 가중치 자동 설정",
     weightHelp: "자동 설정은 기하급수적 감소(1, 0.68, 0.46…)를 사용합니다. 직접 입력하려면 끄고 0부터 1 사이의 상대 가중치를 설정하세요.",
@@ -220,19 +202,6 @@ Object.assign(DICT.ko, {
     totalCredits: "총 크레딧",
     minLabel: "최소",
     maxLabel: "최대"
-});
-
-Object.assign(DICT.ko, {
-    lateRecommendationApplied: "후반 빌드를 적용했습니다.",
-    recommendationMatch: "조건 일치: ",
-    whyRecommended: "추천 이유",
-    compareRecommendation: "비교",
-    applyRecommendation: "빌드 적용",
-    recommendationCompareHelp: "추천 빌드 두 개를 선택하여 스탯 차이를 비교하세요.",
-    recommendationComparison: "추천 빌드 비교",
-    difference: "차이",
-    matchedPassives: "필수 고유 효과",
-    constraintsMet: "개 스탯 조건 충족"
 });
 
 DICT.ko.dataPatch = "패치 버전";
@@ -508,10 +477,6 @@ function getPassiveSkillOptions() {
     });
 }
 
-function getPassiveSkillOptionById(id) {
-    return PASSIVE_SKILL_OPTIONS.find(option => option.id === id) || { id, name: id, nameKo: id };
-}
-
 function getWeaponTypeName(api) {
     const weapon = WEAPON_TYPES.find(w => w.api === api);
     return weapon ? weapon.name[currentLanguage] : api;
@@ -728,8 +693,7 @@ const recommendationStateByType = {
         passiveSkills: new Set(),
         onlyTwoZones: false,
         creditMin: '',
-        creditMax: '',
-        comparisonIndices: new Set()
+        creditMax: ''
     },
     [BUILD_TYPES.LATE]: {
         priorities: [],
@@ -740,8 +704,7 @@ const recommendationStateByType = {
         passiveSkills: new Set(),
         onlyTwoZones: false,
         creditMin: '',
-        creditMax: '',
-        comparisonIndices: new Set()
+        creditMax: ''
     }
 };
 let activeBuildType = BUILD_TYPES.EARLY;
@@ -757,7 +720,6 @@ let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
 let recommendationCreditMin = '';
 let recommendationCreditMax = '';
-let recommendationComparisonIndices = new Set();
 const recommendationFiltersCollapsedByType = {
     [BUILD_TYPES.EARLY]: false,
     [BUILD_TYPES.LATE]: false
@@ -812,7 +774,6 @@ function saveCurrentRecommendationState() {
     state.onlyTwoZones = recommendationOnlyTwoZones;
     state.creditMin = recommendationCreditMin;
     state.creditMax = recommendationCreditMax;
-    state.comparisonIndices = recommendationComparisonIndices;
 }
 
 function loadRecommendationState(buildType) {
@@ -826,7 +787,6 @@ function loadRecommendationState(buildType) {
     recommendationOnlyTwoZones = state.onlyTwoZones;
     recommendationCreditMin = state.creditMin;
     recommendationCreditMax = state.creditMax;
-    recommendationComparisonIndices = state.comparisonIndices;
 }
 
 const ECHION_EXCLUSIVE_WEAPONS = new Set([
@@ -1163,7 +1123,6 @@ function setupLateGameControls() {
             });
             if (activeBuildType === BUILD_TYPES.LATE) {
                 recommendationResults = [];
-                recommendationComparisonIndices.clear();
                 renderRecommendationResults();
             }
             renderMainGrid();
@@ -1336,7 +1295,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 renderLateGamePanel();
                 if (currentCenterMode === "recommendations") {
                     recommendationResults = [];
-                    recommendationComparisonIndices.clear();
                     renderRecommendationResults();
                 }
             });
@@ -1374,7 +1332,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 recommendationAutomaticWeights = true;
                 recommendationConstraints = {};
                 recommendationResults = [];
-                recommendationComparisonIndices.clear();
                 recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
                 recommendationCreditMin = '';
@@ -1563,7 +1520,6 @@ function setupFilters() {
             currentWeaponFilter = btn.dataset.subfilter;
             buildFilterState[activeBuildType].weapon = currentWeaponFilter;
             recommendationResults = [];
-            recommendationComparisonIndices.clear();
 
             if (mainWeaponImg) {
                 if (currentWeaponFilter === "All") {
@@ -1680,7 +1636,6 @@ function setupRecommendationControls() {
             twoZoneFilter.addEventListener('change', () => {
                 recommendationOnlyTwoZones = twoZoneFilter.checked;
                 recommendationResults = [];
-                recommendationComparisonIndices.clear();
                 renderRecommendationResults();
             });
             twoZoneFilter.dataset.bound = 'true';
@@ -1694,7 +1649,6 @@ function setupRecommendationControls() {
                 recommendationAutomaticWeights = autoWeight.checked;
                 if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
                 recommendationResults = [];
-                recommendationComparisonIndices.clear();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
             });
@@ -1711,7 +1665,6 @@ function setupRecommendationControls() {
             showReset: false,
             onChange: () => {
                 recommendationResults = [];
-                recommendationComparisonIndices.clear();
                 renderRecommendationResults();
             }
         });
@@ -1737,7 +1690,6 @@ function renderRecommendationStatOptions(container, term = '') {
             if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
             if (!recommendationConstraints[stat.id]) recommendationConstraints[stat.id] = { min: '', max: '' };
             recommendationResults = [];
-            recommendationComparisonIndices.clear();
             renderRecommendationPriorityList();
             renderRecommendationResults();
             renderRecommendationStatOptions(container, '');
@@ -1791,7 +1743,6 @@ function renderRecommendationPriorityList() {
             const statId = input.closest('.recommendation-priority-row').dataset.stat;
             recommendationWeights[statId] = normalizeRecommendationWeight(input.value);
             recommendationResults = [];
-            recommendationComparisonIndices.clear();
             renderRecommendationResults();
         });
         input.addEventListener('change', () => {
@@ -1809,7 +1760,6 @@ function renderRecommendationPriorityList() {
             if (!recommendationConstraints[statId]) recommendationConstraints[statId] = { min: '', max: '' };
             recommendationConstraints[statId][bound] = input.value;
             recommendationResults = [];
-            recommendationComparisonIndices.clear();
             renderRecommendationResults();
         });
     });
@@ -1833,7 +1783,6 @@ function renderRecommendationPriorityList() {
             if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
 
             recommendationResults = [];
-            recommendationComparisonIndices.clear();
             renderRecommendationPriorityList();
             setupRecommendationControls();
             renderRecommendationResults();
@@ -1855,7 +1804,6 @@ function recommendBuilds() {
         return;
     }
 
-    recommendationComparisonIndices.clear();
     const results = generateRecommendedBuilds(activeBuildType);
     recommendationResults = results;
     if (results.length === 0) {
@@ -1868,14 +1816,11 @@ function recommendBuilds() {
 function renderRecommendationMessage(message) {
     const container = document.getElementById('recommendation-results');
     if (container) container.innerHTML = getRecommendationMessage(message);
-    renderRecommendationComparison();
 }
 
 function renderRecommendationResults() {
     const container = document.getElementById('recommendation-results');
     if (!container) return;
-
-    renderRecommendationComparison();
 
     if (recommendationResults.length === 0) {
         container.innerHTML = getRecommendationMessage(t('recommendationSelectCharacter'));
@@ -1927,62 +1872,6 @@ function renderRecommendationResults() {
         icon.addEventListener('mousemove', moveGlobalTooltip);
         icon.addEventListener('mouseleave', hideGlobalTooltip);
     });
-}
-
-function toggleRecommendationComparison(index) {
-    if (recommendationComparisonIndices.has(index)) {
-        recommendationComparisonIndices.delete(index);
-    } else {
-        if (recommendationComparisonIndices.size >= 2) {
-            const oldestIndex = recommendationComparisonIndices.values().next().value;
-            recommendationComparisonIndices.delete(oldestIndex);
-        }
-        recommendationComparisonIndices.add(index);
-    }
-    renderRecommendationResults();
-}
-
-function renderRecommendationComparison() {
-    const container = document.getElementById('recommendation-comparison');
-    if (!container) return;
-    const selected = Array.from(recommendationComparisonIndices)
-        .map(index => ({ index, result: recommendationResults[index] }))
-        .filter(entry => entry.result);
-
-    if (selected.length !== 2) {
-        container.innerHTML = `<p class="empty-msg">${t('recommendationCompareHelp')}</p>`;
-        return;
-    }
-
-    const [left, right] = selected;
-    const statIds = recommendationPriorities.length
-        ? recommendationPriorities
-        : DISPLAY_STATS.map(stat => stat.id).filter(statId => {
-            return getNumericRecommendationStat(left.result.stats, statId) !== 0 || getNumericRecommendationStat(right.result.stats, statId) !== 0;
-        });
-    const statById = new Map(DISPLAY_STATS.map(stat => [stat.id, stat]));
-    const rows = statIds.map(statId => {
-        const label = (statById.get(statId) || { name: getStatName(statId) }).name[currentLanguage];
-        const leftValue = getNumericRecommendationStat(left.result.stats, statId);
-        const rightValue = getNumericRecommendationStat(right.result.stats, statId);
-        const difference = rightValue - leftValue;
-        const formattedDifference = `${difference > 0 ? '+' : ''}${formatRecommendationStatValue(statId, difference)}`;
-        return `<div class="recommendation-comparison-row">
-            <span>${label}</span>
-            <strong>${formatRecommendationStatValue(statId, left.result.stats[statId] || 0)}</strong>
-            <strong>${formatRecommendationStatValue(statId, right.result.stats[statId] || 0)}</strong>
-            <span class="recommendation-difference ${difference > 0 ? 'positive' : difference < 0 ? 'negative' : ''}">${formattedDifference}</span>
-        </div>`;
-    }).join('');
-    const passiveComparison = renderPassiveSkillComparison(left.result.passives, right.result.passives);
-
-    container.innerHTML = `<section class="recommendation-comparison-card" aria-label="${t('recommendationComparison')}">
-        <div class="recommendation-comparison-head">
-            <strong>${t('recommendationComparison')}</strong>
-            <span>A</span><span>B</span><span>${t('difference')} (B − A)</span>
-        </div>
-        ${rows}${passiveComparison}
-    </section>`;
 }
 
 function generateRecommendedBuilds(buildType = activeBuildType) {
@@ -2565,11 +2454,6 @@ function applyRecommendedBuild(index) {
     if (activeBuildType === BUILD_TYPES.EARLY) {
         const resultOutput = document.getElementById('result-output');
         if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
-    } else {
-        const comparison = document.getElementById('recommendation-comparison');
-        if (comparison && recommendationComparisonIndices.size !== 2) {
-            comparison.innerHTML = `<p class="recommendation-applied-message">${t('lateRecommendationApplied')}</p>`;
-        }
     }
 }
 
@@ -2723,7 +2607,6 @@ function selectCharacter(charName) {
     const previousCharacter = currentCharacter;
     currentCharacter = charName || null;
     recommendationResults = [];
-    recommendationComparisonIndices.clear();
     if (previousCharacter !== currentCharacter) {
         lateComparisonBuilds[0] = null;
         lateComparisonBuilds[1] = null;
