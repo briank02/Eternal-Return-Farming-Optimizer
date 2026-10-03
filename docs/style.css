@@ -683,6 +683,10 @@ body.dark-mode .app-status[data-state="error"] {
     flex-direction: column;
     gap: 6px;
     margin-top: 8px;
+    max-height: clamp(150px, 28vh, 300px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 4px;
 }
 
 .recommendation-actions {
@@ -693,12 +697,14 @@ body.dark-mode .app-status[data-state="error"] {
 
 .recommendation-priority-row {
     display: grid;
-    grid-template-columns: minmax(120px, 1fr) 116px 80px 80px 30px 30px 30px;
+    grid-template-columns: minmax(0, 1fr) minmax(84px, 116px) repeat(2, minmax(64px, 80px)) repeat(3, 30px);
     gap: 6px;
     align-items: center;
 }
 
 .priority-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
     font-weight: bold;
     font-size: 0.88em;
 }
@@ -1330,6 +1336,22 @@ body.lang-ko .left-panel > div[data-i18n] {
     border-radius: 8px;
 }
 
+body[data-workflow="late"] .selection-header {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+body[data-workflow="late"] .selection-header > div:first-child {
+    margin-bottom: 6px !important;
+}
+
+body[data-workflow="late"] .late-build-grid {
+    grid-template-columns: repeat(5, minmax(0, 64px));
+    justify-content: center;
+    gap: 6px;
+    padding: 4px;
+}
+
 .late-build-grid {
     align-items: start;
 }
@@ -1503,6 +1525,58 @@ body.lang-ko .left-panel > div[data-i18n] {
 .tooltip-stat {
     color: #2ecc71;
     margin-bottom: 3px;
+}
+
+@media (min-width: 961px) and (max-width: 1300px) {
+    .recommendation-priority-row {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        grid-template-rows: auto auto;
+    }
+
+    .recommendation-priority-row .priority-name {
+        grid-column: 1 / span 3;
+        grid-row: 1;
+    }
+
+    .recommendation-priority-row .priority-weight-field {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+    }
+
+    .recommendation-priority-row .priority-weight-field > span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .recommendation-priority-row .priority-bound-input[data-bound="min"] {
+        grid-column: 3 / span 2;
+        grid-row: 2;
+    }
+
+    .recommendation-priority-row .priority-bound-input[data-bound="max"] {
+        grid-column: 5 / span 2;
+        grid-row: 2;
+    }
+
+    .recommendation-priority-row .priority-order-btn[data-action="up"] {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .recommendation-priority-row .priority-order-btn[data-action="down"] {
+        grid-column: 5;
+        grid-row: 1;
+    }
+
+    .recommendation-priority-row .priority-remove-btn {
+        grid-column: 6;
+        grid-row: 1;
+    }
 }
 
 @media (max-width: 960px) {
@@ -1730,6 +1804,10 @@ body.lang-ko .left-panel > div[data-i18n] {
         padding: 12px;
     }
 
+    body[data-workflow="late"] .late-build-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
     .late-game-panel-header {
         align-items: flex-start;
     }
@@ -1742,25 +1820,25 @@ body.lang-ko .left-panel > div[data-i18n] {
         grid-template-columns: 1fr;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row {
+    .recommendation-priority-row {
         grid-template-columns: repeat(6, minmax(0, 1fr));
         grid-template-rows: auto auto;
         gap: 6px;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-name {
+    .recommendation-priority-row .priority-name {
         grid-column: 1 / span 3;
         grid-row: 1;
         min-width: 0;
         overflow-wrap: anywhere;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-weight-field {
+    .recommendation-priority-row .priority-weight-field {
         grid-column: 1 / span 2;
         grid-row: 2;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-weight-field > span {
+    .recommendation-priority-row .priority-weight-field > span {
         position: absolute;
         width: 1px;
         height: 1px;
@@ -1770,27 +1848,27 @@ body.lang-ko .left-panel > div[data-i18n] {
         white-space: nowrap;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-bound-input[data-bound="min"] {
+    .recommendation-priority-row .priority-bound-input[data-bound="min"] {
         grid-column: 3 / span 2;
         grid-row: 2;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-bound-input[data-bound="max"] {
+    .recommendation-priority-row .priority-bound-input[data-bound="max"] {
         grid-column: 5 / span 2;
         grid-row: 2;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-order-btn[data-action="up"] {
+    .recommendation-priority-row .priority-order-btn[data-action="up"] {
         grid-column: 4;
         grid-row: 1;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-order-btn[data-action="down"] {
+    .recommendation-priority-row .priority-order-btn[data-action="down"] {
         grid-column: 5;
         grid-row: 1;
     }
 
-    body[data-workflow="early"] .recommendation-priority-row .priority-remove-btn {
+    .recommendation-priority-row .priority-remove-btn {
         grid-column: 6;
         grid-row: 1;
     }

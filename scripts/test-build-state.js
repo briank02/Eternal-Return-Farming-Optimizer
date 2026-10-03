@@ -150,6 +150,26 @@ assert.equal(PASSIVE_SKILL_OPTIONS.some(skill => skill.id === 'Second Late Passi
 assert.deepEqual(getItemPassiveSkills({ passiveSkill: { name: 'Legacy Passive' } }), [{ name: 'Legacy Passive' }],
     'Legacy singular passive data remains readable during migration');
 
+items['Level Scaling Chest'] = {
+    type: 'Legend',
+    part: 'Chest',
+    stats: { attackPower: 5 },
+    statsByLv: { attackPower: 3 }
+};
+DISPLAY_STATS = [{ id: 'attackPower', name: getStatName('attackPower') }];
+charLevel = 10;
+currentCharacter = null;
+assert.equal(getItemStatValue(items['Level Scaling Chest'], 'attackPower'), 35,
+    'Item filtering includes the selected level in stats-per-level values');
+assert.equal(getItemRecommendationStatParts('Level Scaling Chest', 'attackPower').additive, 35,
+    'Recommendation search bounds include stats-per-level values');
+assert.equal(calculateItemOnlyBuildStats(['Level Scaling Chest']).attackPower, 35,
+    'Recommendation result totals include stats-per-level values');
+assert.equal(calculateBuildStats(['Level Scaling Chest']).attackPower, 35,
+    'Displayed build totals include stats-per-level values');
+delete items['Level Scaling Chest'];
+charLevel = 1;
+
 assert.equal(solveEarlyBuildRoute(new Set(['Legend Blade'])).length, 0,
     'The route solver must reject late-game equipment');
 assert.equal(hasFeasibleRouteWithinZones(['Mythic Blade'], 2), false,
