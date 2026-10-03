@@ -21,14 +21,15 @@ const DICT = {
         lateGameBuild: "Late-Game Build",
         routeOptimizerTab: "Item Selection",
         recommendationsTab: "Item Recommendations",
-        addPriorityStat: "Add priority stat",
+        addPriorityStat: "Add weighted stat",
         addPassiveSkill: "Add unique passive",
-        desiredPassiveSkills: "Desired unique passives",
+        requirePassiveSkill: "Require unique passive",
+        requiredPassiveSkills: "Required unique passives",
         searchPassiveSkillsPlaceholder: "Search unique passives...",
         recommendBuilds: "Recommend Builds",
-        recommendationSelectCharacter: "Select a character and add priority stats in order of importance to get recommend builds.",
+        recommendationSelectCharacter: "Select a character and add weighted stats or required passives to get recommended builds.",
         recommendationNeedCharacter: "Please select a character first.",
-        recommendationNeedStats: "Please add at least one priority stat or unique passive.",
+        recommendationNeedStats: "Add a stat with weight above 0, a stat constraint, or a required passive.",
         recommendationNoBuilds: "No recommended builds matched the current filters.",
         recommendationScore: "Stat Score: ",
         recommendationMatch: "Requirement Match: ",
@@ -44,6 +45,17 @@ const DICT = {
         constraintsMet: "stat constraints met",
         onlyTwoZones: "Only show builds with 2 or less zones",
         priorityLabel: "Priority",
+        weightLabel: "Weight",
+        automaticWeights: "Weight automatically by order",
+        weightHelp: "Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.",
+        highTierMaterial: "High-tier Material",
+        hideRecommendationFilters: "Hide recommendation filters",
+        showRecommendationFilters: "Show recommendation filters",
+        buildCreditLimit: "Build credit limit (optional)",
+        minCredits: "Min credits",
+        maxCredits: "Max credits",
+        credits: "Credits",
+        totalCredits: "Total Credits",
         minLabel: "Min",
         maxLabel: "Max",
         selectCharacter: "Select Character",
@@ -65,14 +77,14 @@ const DICT = {
         currentBuildStats: "Current Build Stats",
         buildComparison: "Build Comparison",
         clearComparison: "Clear",
-        comparisonHelp: "Save a complete build, change your items, then save the second build to compare them.",
+        comparisonHelp: "Save any build with at least one item, change your items, then save the second build to compare them.",
         saveBuildA: "Save as Build A",
         saveBuildB: "Save as Build B",
         buildA: "Build A",
         buildB: "Build B",
         loadBuild: "Load",
-        comparisonWaiting: "Save two complete builds to compare their stats and passive effects.",
-        incompleteLateBuild: "Fill all five equipment slots to save this build.",
+        comparisonWaiting: "Save two builds to compare their stats and passive effects.",
+        incompleteLateBuild: "Select at least one item to save this build.",
         noBuildStats: "Add equipment to see total stats and passive effects.",
         itemsShown: "items shown",
         noMatchingItems: "No items match the current filters.",
@@ -128,14 +140,14 @@ const DICT = {
         currentBuildStats: "현재 빌드 스탯",
         buildComparison: "빌드 비교",
         clearComparison: "초기화",
-        comparisonHelp: "완성된 빌드를 저장하고 아이템을 변경한 뒤 두 번째 빌드를 저장하여 비교하세요.",
+        comparisonHelp: "아이템이 하나 이상인 빌드를 저장하고 아이템을 변경한 뒤 두 번째 빌드를 저장하여 비교하세요.",
         saveBuildA: "빌드 A로 저장",
         saveBuildB: "빌드 B로 저장",
         buildA: "빌드 A",
         buildB: "빌드 B",
         loadBuild: "불러오기",
-        comparisonWaiting: "완성된 빌드 두 개를 저장하면 스탯과 고유 장착 효과를 비교할 수 있습니다.",
-        incompleteLateBuild: "빌드를 저장하려면 다섯 장비 부위를 모두 채워주세요.",
+        comparisonWaiting: "빌드 두 개를 저장하면 스탯과 고유 장착 효과를 비교할 수 있습니다.",
+        incompleteLateBuild: "빌드를 저장하려면 아이템을 하나 이상 선택해주세요.",
         noBuildStats: "장비를 추가하면 전체 스탯과 고유 장착 효과를 확인할 수 있습니다.",
         itemsShown: "개 아이템",
         noMatchingItems: "현재 필터와 일치하는 아이템이 없습니다.",
@@ -160,20 +172,32 @@ const DICT = {
 Object.assign(DICT.ko, {
     routeOptimizerTab: "아이템 선택",
     recommendationsTab: "아이템 추천",
-    addPriorityStat: "선호 스탯 추가",
+    addPriorityStat: "가중치 스탯 추가",
     recommendBuilds: "빌드 추천",
-    recommendationSelectCharacter: "실험체를 선택하고, 선호 스탯을 중요도 순서로 추가한 뒤 빌드를 추천받으세요.",
+    recommendationSelectCharacter: "실험체를 선택하고 가중치 스탯이나 필수 고유 효과를 추가한 뒤 빌드를 추천받으세요.",
     recommendationNeedCharacter: "실험체를 먼저 선택해주세요.",
-    recommendationNeedStats: "선호 스탯이나 고유 장착 효과를 하나 이상 추가해주세요.",
+    recommendationNeedStats: "가중치가 0보다 큰 스탯, 스탯 조건 또는 필수 고유 효과를 추가해주세요.",
     recommendationNoBuilds: "현재 필터를 충족하는 추천 빌드가 없습니다.",
     recommendationScore: "스탯 점수: ",
     recommendationApplied: "빌드가 적용되었습니다. '옵티마이저 실행' 버튼을 눌러 파밍 루트를 찾으세요.",
     onlyTwoZones: "2구역 이하 빌드만 보기",
     passiveSkills: "고유 장착 효과",
     addPassiveSkill: "고유 장착 효과 추가",
-    desiredPassiveSkills: "선호 고유 장착 효과",
+    requirePassiveSkill: "필수 고유 효과 추가",
+    requiredPassiveSkills: "필수 고유 장착 효과",
     searchPassiveSkillsPlaceholder: "고유 장착 효과 검색...",
     priorityLabel: "우선순위",
+    weightLabel: "가중치",
+    automaticWeights: "순서에 따라 가중치 자동 설정",
+    weightHelp: "자동 설정은 기하급수 감소(1, 0.68, 0.46…)를 사용합니다. 직접 입력하려면 끄고 0부터 1 사이의 상대 가중치를 설정하세요.",
+    highTierMaterial: "고급 재료",
+    hideRecommendationFilters: "추천 필터 접기",
+    showRecommendationFilters: "추천 필터 펼치기",
+    buildCreditLimit: "빌드 크레딧 제한 (선택)",
+    minCredits: "최소 크레딧",
+    maxCredits: "최대 크레딧",
+    credits: "크레딧",
+    totalCredits: "총 크레딧",
     minLabel: "최소",
     maxLabel: "최대"
 });
@@ -206,6 +230,50 @@ function escapeAttribute(value) {
         .replace(/"/g, '&quot;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
+}
+
+const KOREAN_INITIAL_CONSONANTS = Object.freeze([
+    'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ',
+    'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+]);
+
+function normalizeSearchText(value) {
+    return String(value ?? '')
+        .normalize('NFC')
+        .toLocaleLowerCase()
+        .replace(/[\s\p{P}\p{S}]+/gu, '');
+}
+
+function getKoreanInitials(value) {
+    return Array.from(normalizeSearchText(value)).map(character => {
+        const codePoint = character.codePointAt(0);
+        if (codePoint < 0xAC00 || codePoint > 0xD7A3) return character;
+        return KOREAN_INITIAL_CONSONANTS[Math.floor((codePoint - 0xAC00) / 588)];
+    }).join('');
+}
+
+function isOrderedSubsequence(query, candidate) {
+    let queryIndex = 0;
+    for (const character of candidate) {
+        if (character === query[queryIndex]) queryIndex += 1;
+        if (queryIndex === query.length) return true;
+    }
+    return query.length === 0;
+}
+
+function matchesSearchTerm(term, ...candidateValues) {
+    const query = normalizeSearchText(term);
+    if (!query) return true;
+
+    return candidateValues.some(value => {
+        if (value === null || value === undefined) return false;
+        const candidate = normalizeSearchText(value);
+        const koreanInitials = getKoreanInitials(value);
+        return candidate.includes(query) ||
+            isOrderedSubsequence(query, candidate) ||
+            koreanInitials.includes(query) ||
+            isOrderedSubsequence(query, koreanInitials);
+    });
 }
 
 function getItemName(name) {
@@ -358,14 +426,16 @@ function buildPassiveSkillOptions(buildType = activeBuildType) {
     const passiveMap = new Map();
 
     Object.values(items).forEach(item => {
-        if (!isItemEligibleForBuild(item, buildType) || !item.passiveSkill) return;
-        if (!passiveMap.has(item.passiveSkill.name)) {
-            passiveMap.set(item.passiveSkill.name, {
-                id: item.passiveSkill.name,
-                name: item.passiveSkill.name,
-                nameKo: item.passiveSkill.nameKo || item.passiveSkill.name
-            });
-        }
+        if (!isItemEligibleForBuild(item, buildType)) return;
+        getItemPassiveSkills(item).forEach(passiveSkill => {
+            if (!passiveMap.has(passiveSkill.name)) {
+                passiveMap.set(passiveSkill.name, {
+                    id: passiveSkill.name,
+                    name: passiveSkill.name,
+                    nameKo: passiveSkill.nameKo || passiveSkill.name
+                });
+            }
+        });
     });
 
     PASSIVE_SKILL_OPTIONS = Array.from(passiveMap.values());
@@ -418,6 +488,28 @@ const ITEM_GRADE_STYLES = Object.freeze({
     Legend: Object.freeze({ color: '#f1c40f', cardStart: '#493d16', cardEnd: '#8a6810' }),
     Mythic: Object.freeze({ color: '#e74c3c', cardStart: '#491f25', cardEnd: '#8c1d2a' })
 });
+const LATE_GRADE_ORDER = Object.freeze({ Legend: 0, Mythic: 1 });
+
+const MYTHIC_WEAPON_VARIANT_STYLES = Object.freeze({
+    Dawn: Object.freeze({ className: 'dawn', color: '#3867ff' }),
+    Crimson: Object.freeze({ className: 'crimson', color: '#e33f4f' })
+});
+
+const HIGH_TIER_MATERIALS = Object.freeze({
+    Meteorite: Object.freeze({ price: 200, image: 'images/materials/Meteorite.png', nameKo: '운석' }),
+    'Tree of Life': Object.freeze({ price: 200, image: 'images/materials/Tree of Life.png', nameKo: '생명의 나무' }),
+    Mythril: Object.freeze({ price: 250, image: 'images/materials/Mythril.png', nameKo: '미스릴' }),
+    'Force Core': Object.freeze({ price: 350, image: 'images/materials/Force Core.png', nameKo: '포스 코어' }),
+    'VF Blood Sample': Object.freeze({ price: 500, image: 'images/materials/VF Blood Sample.png', nameKo: 'VF 혈액 샘플' })
+});
+
+const SPECIAL_ITEM_RESOURCE_SUFFIXES = Object.freeze({
+    MT: 'Meteorite',
+    TL: 'Tree of Life',
+    ML: 'Mythril',
+    FC: 'Force Core',
+    VBS: 'VF Blood Sample'
+});
 
 function getBuildConfig(buildType = activeBuildType) {
     return BUILD_CONFIG[buildType] || BUILD_CONFIG[BUILD_TYPES.EARLY];
@@ -437,6 +529,83 @@ function isItemEligibleForBuild(item, buildType = activeBuildType) {
 
 function getItemGradeStyle(grade) {
     return ITEM_GRADE_STYLES[grade] || ITEM_GRADE_STYLES.Epic;
+}
+
+function getMythicWeaponVariant(name, item = items[name]) {
+    if (!item || item.type !== 'Mythic' || item.part !== 'Weapon') return null;
+    return Object.keys(MYTHIC_WEAPON_VARIANT_STYLES).find(variant => name.endsWith(` - ${variant}`)) || null;
+}
+
+function applyMythicWeaponVariantIndicator(element, name, item = items[name]) {
+    const variant = getMythicWeaponVariant(name, item);
+    element.classList.remove('item-variant', 'item-variant-dawn', 'item-variant-crimson');
+
+    if (!variant) {
+        element.style.removeProperty('--item-variant-accent');
+        delete element.dataset.itemVariant;
+        return null;
+    }
+
+    const variantStyle = MYTHIC_WEAPON_VARIANT_STYLES[variant];
+    element.classList.add('item-variant', `item-variant-${variantStyle.className}`);
+    element.style.setProperty('--item-variant-accent', variantStyle.color);
+    element.dataset.itemVariant = variantStyle.className;
+    return variant;
+}
+
+function getHighTierMaterialsForItem(name, item = items[name]) {
+    if (!item) return [];
+    const components = new Set(item.components || []);
+    const suffix = Object.keys(SPECIAL_ITEM_RESOURCE_SUFFIXES).find(value => name.endsWith(` ${value}`));
+    if (suffix) return [SPECIAL_ITEM_RESOURCE_SUFFIXES[suffix]];
+
+    if (components.has('Force Core') || (components.has('Meteorite') && components.has('Tree of Life'))) {
+        return ['Force Core'];
+    }
+    return Object.keys(HIGH_TIER_MATERIALS).filter(material => components.has(material));
+}
+
+function getItemCreditCost(name, item = items[name]) {
+    return getHighTierMaterialsForItem(name, item)
+        .reduce((total, material) => total + HIGH_TIER_MATERIALS[material].price, 0);
+}
+
+function getBuildCreditCost(itemNames) {
+    return Array.from(itemNames || []).reduce((total, name) => total + getItemCreditCost(name), 0);
+}
+
+function getHighTierMaterialName(material) {
+    const config = HIGH_TIER_MATERIALS[material];
+    return currentLanguage === 'ko' && config ? config.nameKo : material;
+}
+
+function itemMatchesLateResourceFilters(name, item = items[name]) {
+    const materials = getHighTierMaterialsForItem(name, item);
+    if (materials.length === 0) return true;
+    return materials.some(material => lateResourceFilters.has(material));
+}
+
+function compareCatalogItems(a, b) {
+    const [nameA, dataA] = a;
+    const [nameB, dataB] = b;
+    const orderA = BUILD_SLOT_ORDER[dataA.part] || 99;
+    const orderB = BUILD_SLOT_ORDER[dataB.part] || 99;
+
+    if (orderA !== orderB) return orderA - orderB;
+
+    if (dataA.part === 'Weapon' && dataB.part === 'Weapon') {
+        const weaponDifference = (WEAPON_TYPE_ORDER[dataA.weaponType] ?? 99) -
+            (WEAPON_TYPE_ORDER[dataB.weaponType] ?? 99);
+        if (weaponDifference !== 0) return weaponDifference;
+    }
+
+    if (activeBuildType === BUILD_TYPES.LATE) {
+        const gradeDifference = (LATE_GRADE_ORDER[dataA.type] ?? 99) -
+            (LATE_GRADE_ORDER[dataB.type] ?? 99);
+        if (gradeDifference !== 0) return gradeDifference;
+    }
+
+    return getItemName(nameA).localeCompare(getItemName(nameB), currentLanguage === 'ko' ? 'ko' : 'en');
 }
 
 function sortItemsByBuildSlot(itemNames) {
@@ -491,22 +660,31 @@ const buildFilterState = {
     }
 };
 const lateRarityFilters = new Set(BUILD_CONFIG[BUILD_TYPES.LATE].grades);
+const lateResourceFilters = new Set(Object.keys(HIGH_TIER_MATERIALS));
 const lateComparisonBuilds = [null, null];
 const recommendationStateByType = {
     [BUILD_TYPES.EARLY]: {
         priorities: [],
+        weights: {},
+        automaticWeights: true,
         constraints: {},
         results: [],
         passiveSkills: new Set(),
         onlyTwoZones: false,
+        creditMin: '',
+        creditMax: '',
         comparisonIndices: new Set()
     },
     [BUILD_TYPES.LATE]: {
         priorities: [],
+        weights: {},
+        automaticWeights: true,
         constraints: {},
         results: [],
         passiveSkills: new Set(),
         onlyTwoZones: false,
+        creditMin: '',
+        creditMax: '',
         comparisonIndices: new Set()
     }
 };
@@ -515,12 +693,22 @@ let currentCenterMode = "optimizer";
 let earlyCenterMode = "optimizer";
 let lateCenterMode = "optimizer";
 let recommendationPriorities = [];
+let recommendationWeights = {};
+let recommendationAutomaticWeights = true;
 let recommendationConstraints = {};
 let recommendationResults = [];
 let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
+let recommendationCreditMin = '';
+let recommendationCreditMax = '';
 let recommendationComparisonIndices = new Set();
+const recommendationFiltersCollapsedByType = {
+    [BUILD_TYPES.EARLY]: false,
+    [BUILD_TYPES.LATE]: false
+};
 const recommendationRouteCache = new Map();
+const RECOMMENDATION_RESULT_LIMIT = 20;
+let lastRecommendationSearchMetrics = null;
 let currentFilter = buildFilterState[BUILD_TYPES.EARLY].part;
 let currentWeaponFilter = buildFilterState[BUILD_TYPES.EARLY].weapon;
 let activeSubstats = buildFilterState[BUILD_TYPES.EARLY].substats;
@@ -560,20 +748,28 @@ function loadBuildFilterState(buildType) {
 function saveCurrentRecommendationState() {
     const state = recommendationStateByType[activeBuildType];
     state.priorities = recommendationPriorities;
+    state.weights = recommendationWeights;
+    state.automaticWeights = recommendationAutomaticWeights;
     state.constraints = recommendationConstraints;
     state.results = recommendationResults;
     state.passiveSkills = recommendationPassiveSkills;
     state.onlyTwoZones = recommendationOnlyTwoZones;
+    state.creditMin = recommendationCreditMin;
+    state.creditMax = recommendationCreditMax;
     state.comparisonIndices = recommendationComparisonIndices;
 }
 
 function loadRecommendationState(buildType) {
     const state = recommendationStateByType[buildType];
     recommendationPriorities = state.priorities;
+    recommendationWeights = state.weights;
+    recommendationAutomaticWeights = state.automaticWeights;
     recommendationConstraints = state.constraints;
     recommendationResults = state.results;
     recommendationPassiveSkills = state.passiveSkills;
     recommendationOnlyTwoZones = state.onlyTwoZones;
+    recommendationCreditMin = state.creditMin;
+    recommendationCreditMax = state.creditMax;
     recommendationComparisonIndices = state.comparisonIndices;
 }
 
@@ -581,6 +777,11 @@ const ECHION_EXCLUSIVE_WEAPONS = new Set([
     "Black Mamba King",
     "Deathadder Queen",
     "Alpha Sidewinder"
+]);
+
+const PRIYA_EXCLUSIVE_HEAD_ITEMS = new Set([
+    "Harmony in Full Bloom",
+    "Celestial Echo"
 ]);
 
 function isItemCompatibleWithCharacter(itemName, characterName = currentCharacter) {
@@ -591,8 +792,8 @@ function isItemCompatibleWithCharacter(itemName, characterName = currentCharacte
     const character = chars[characterName];
     if (!character) return false;
     if (item.part === 'Weapon' && !character.masteries.includes(item.weaponType)) return false;
-    if (itemName === 'Harmony in Full Bloom' && characterName !== 'Priya') return false;
-    if (characterName === 'Priya' && item.part === 'Head' && itemName !== 'Harmony in Full Bloom') return false;
+    if (PRIYA_EXCLUSIVE_HEAD_ITEMS.has(itemName) && characterName !== 'Priya') return false;
+    if (characterName === 'Priya' && item.part === 'Head' && !PRIYA_EXCLUSIVE_HEAD_ITEMS.has(itemName)) return false;
     if (characterName !== 'Echion' && (ECHION_EXCLUSIVE_WEAPONS.has(itemName) || item.weaponType === 'VFArm')) return false;
     return true;
 }
@@ -631,8 +832,12 @@ function isLateBuildComplete(build = lateBuild) {
     return EQUIPMENT_SLOTS.every(slot => !!getBuildItemForSlot(build, slot));
 }
 
+function canSaveLateComparisonBuild(build = lateBuild) {
+    return build.size > 0;
+}
+
 function createLateBuildSnapshot(build = lateBuild) {
-    if (!isLateBuildComplete(build)) return null;
+    if (!canSaveLateComparisonBuild(build)) return null;
     return Object.freeze(sortItemsByBuildSlot(build));
 }
 
@@ -764,6 +969,9 @@ const WEAPON_TYPES = [
     { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "images/ui/weapon-types/Arcana.png" },
     { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "images/ui/weapon-types/VF Prosthetic.png" }
 ];
+const WEAPON_TYPE_ORDER = Object.freeze(
+    Object.fromEntries(WEAPON_TYPES.map((weapon, index) => [weapon.api, index]))
+);
 
 // HARDCODED BASE WEAPONS
 const BASE_WEAPONS = new Set([
@@ -815,10 +1023,12 @@ function renderWorkflowShell() {
     });
     const lateGamePanel = document.getElementById('late-game-panel');
     if (lateGamePanel) lateGamePanel.hidden = isEarly;
-    const lateRarityFilterGroup = document.getElementById('late-rarity-filter-group');
-    if (lateRarityFilterGroup) lateRarityFilterGroup.hidden = isEarly;
+    const lateResourceFilterGroup = document.getElementById('late-resource-filter-group');
+    if (lateResourceFilterGroup) lateResourceFilterGroup.hidden = isEarly;
     const routeFilter = document.querySelector('.recommendation-route-filter');
     if (routeFilter) routeFilter.hidden = !isEarly;
+    const creditFilter = document.getElementById('recommendation-credit-filter');
+    if (creditFilter) creditFilter.hidden = isEarly;
 
     setTranslatedElement('build-heading', isEarly ? 'yourEarlyBuild' : 'yourLateBuild');
     setTranslatedElement('item-catalog-heading', isEarly ? 'selectEpicItems' : 'selectLateItems');
@@ -872,22 +1082,26 @@ function setupWorkflowSwitch() {
 }
 
 function setupLateGameControls() {
-    document.querySelectorAll('.rarity-filter-btn').forEach(button => {
+    document.querySelectorAll('.resource-filter-btn').forEach(button => {
         const syncButton = () => {
-            const selected = lateRarityFilters.has(button.dataset.grade);
+            const resource = button.dataset.resource;
+            const selected = lateResourceFilters.has(button.dataset.resource);
+            const label = `${getHighTierMaterialName(resource)} · ${HIGH_TIER_MATERIALS[resource].price} ${t('credits')}`;
             button.classList.toggle('active', selected);
             button.setAttribute('aria-pressed', String(selected));
+            button.setAttribute('aria-label', label);
+            button.title = label;
         };
         syncButton();
         if (button.dataset.bound === 'true') return;
         button.addEventListener('click', () => {
-            const grade = button.dataset.grade;
-            if (lateRarityFilters.has(grade)) lateRarityFilters.delete(grade);
-            else lateRarityFilters.add(grade);
-            document.querySelectorAll('.rarity-filter-btn').forEach(rarityButton => {
-                const selected = lateRarityFilters.has(rarityButton.dataset.grade);
-                rarityButton.classList.toggle('active', selected);
-                rarityButton.setAttribute('aria-pressed', String(selected));
+            const resource = button.dataset.resource;
+            if (lateResourceFilters.has(resource)) lateResourceFilters.delete(resource);
+            else lateResourceFilters.add(resource);
+            document.querySelectorAll('.resource-filter-btn').forEach(resourceButton => {
+                const selected = lateResourceFilters.has(resourceButton.dataset.resource);
+                resourceButton.classList.toggle('active', selected);
+                resourceButton.setAttribute('aria-pressed', String(selected));
             });
             if (activeBuildType === BUILD_TYPES.LATE) {
                 recommendationResults = [];
@@ -992,6 +1206,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 applyTranslations();
                 renderDataStatus();
                 setupFilters();
+                setupLateGameControls();
                 setupRecommendationControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
@@ -1015,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.addEventListener('pointerdown', (e) => {
             if (e.pointerType !== 'touch' && !window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
-            const tappedTrigger = e.target.closest('.item-card, .recommendation-item-icon[data-item]');
+            const tappedTrigger = e.target.closest('.item-card, .recommendation-item-icon[data-item], .late-snapshot-icon[data-item]');
             if (tappedTrigger !== activeTooltipTrigger) hideGlobalTooltip();
         }, true);
         document.addEventListener('scroll', () => {
@@ -1088,17 +1303,29 @@ document.addEventListener('DOMContentLoaded', async () => {
                 activeSubstats.clear();
                 activePassiveSkills.clear();
                 recommendationPriorities = [];
+                recommendationWeights = {};
+                recommendationAutomaticWeights = true;
                 recommendationConstraints = {};
                 recommendationResults = [];
                 recommendationComparisonIndices.clear();
                 recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
+                recommendationCreditMin = '';
+                recommendationCreditMax = '';
                 lateRarityFilters.clear();
                 BUILD_CONFIG[BUILD_TYPES.LATE].grades.forEach(grade => lateRarityFilters.add(grade));
+                lateResourceFilters.clear();
+                Object.keys(HIGH_TIER_MATERIALS).forEach(material => lateResourceFilters.add(material));
                 lateComparisonBuilds[0] = null;
                 lateComparisonBuilds[1] = null;
                 const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
                 if (twoZoneFilter) twoZoneFilter.checked = false;
+                const autoWeight = document.getElementById('recommendation-auto-weight');
+                if (autoWeight) autoWeight.checked = true;
+                const creditMinInput = document.getElementById('recommendation-credit-min');
+                const creditMaxInput = document.getElementById('recommendation-credit-max');
+                if (creditMinInput) creditMinInput.value = '';
+                if (creditMaxInput) creditMaxInput.value = '';
                 const substatContainer = document.getElementById('substat-filters');
                 if (substatContainer) renderSubstatPicker(substatContainer);
                 const passiveSkillContainer = document.getElementById('passive-skill-filters');
@@ -1292,12 +1519,49 @@ function setupRecommendationControls() {
     const options = document.getElementById('recommendation-stat-options');
     const recommendBtn = document.getElementById('recommend-builds-btn');
     const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+    const autoWeight = document.getElementById('recommendation-auto-weight');
     const passivePicker = document.getElementById('recommendation-passive-picker');
+    const filterToggle = document.getElementById('recommendation-filter-toggle');
+    const recommendationControls = document.querySelector('.recommendation-controls');
+    const creditMinInput = document.getElementById('recommendation-credit-min');
+    const creditMaxInput = document.getElementById('recommendation-credit-max');
 
     if (!select || !toggle || !search || !options) return;
 
     const renderOptions = () => renderRecommendationStatOptions(options, search.value);
     renderOptions();
+
+    if (filterToggle && recommendationControls) {
+        const syncCollapsedState = () => {
+            const collapsed = recommendationFiltersCollapsedByType[activeBuildType];
+            recommendationControls.classList.toggle('collapsed', collapsed);
+            filterToggle.setAttribute('aria-expanded', String(!collapsed));
+            filterToggle.querySelector('span').textContent = t(collapsed ? 'showRecommendationFilters' : 'hideRecommendationFilters');
+            const icon = filterToggle.querySelector('.recommendation-filter-toggle-icon');
+            if (icon) icon.textContent = collapsed ? '▾' : '▴';
+        };
+        syncCollapsedState();
+        if (filterToggle.dataset.bound !== 'true') {
+            filterToggle.addEventListener('click', () => {
+                recommendationFiltersCollapsedByType[activeBuildType] = !recommendationFiltersCollapsedByType[activeBuildType];
+                syncCollapsedState();
+            });
+            filterToggle.dataset.bound = 'true';
+        }
+    }
+
+    [[creditMinInput, 'min'], [creditMaxInput, 'max']].forEach(([input, bound]) => {
+        if (!input) return;
+        input.value = bound === 'min' ? recommendationCreditMin : recommendationCreditMax;
+        if (input.dataset.bound === 'true') return;
+        input.addEventListener('input', () => {
+            if (bound === 'min') recommendationCreditMin = input.value;
+            else recommendationCreditMax = input.value;
+            recommendationResults = [];
+            renderRecommendationResults();
+        });
+        input.dataset.bound = 'true';
+    });
 
     if (toggle.dataset.bound !== 'true') {
         toggle.addEventListener('click', () => {
@@ -1335,10 +1599,26 @@ function setupRecommendationControls() {
         }
     }
 
+    if (autoWeight) {
+        autoWeight.checked = recommendationAutomaticWeights;
+        if (autoWeight.dataset.bound !== 'true') {
+            autoWeight.addEventListener('change', () => {
+                recommendationAutomaticWeights = autoWeight.checked;
+                if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
+                recommendationResults = [];
+                recommendationComparisonIndices.clear();
+                renderRecommendationPriorityList();
+                renderRecommendationResults();
+            });
+            autoWeight.dataset.bound = 'true';
+        }
+    }
+
     if (passivePicker) {
         renderPassiveSkillPicker(passivePicker, recommendationPassiveSkills, {
             prefix: 'recommendation-passive-skill',
-            labelKey: 'desiredPassiveSkills',
+            labelKey: 'requiredPassiveSkills',
+            addLabelKey: 'requirePassiveSkill',
             labelBeforePills: true,
             showReset: false,
             onChange: () => {
@@ -1351,12 +1631,10 @@ function setupRecommendationControls() {
 }
 
 function renderRecommendationStatOptions(container, term = '') {
-    const normalizedTerm = term.trim().toLowerCase();
     const selected = new Set(recommendationPriorities);
     const statOptions = getSelectableStats().filter(stat => {
-        const label = stat.name[currentLanguage] || stat.name.en;
         return !selected.has(stat.id) &&
-            (!normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+            matchesSearchTerm(term, stat.id, stat.name.en, stat.name.ko);
     });
 
     container.innerHTML = '';
@@ -1367,6 +1645,8 @@ function renderRecommendationStatOptions(container, term = '') {
         btn.innerHTML = `<span class="stat-option-check"></span><span>${stat.name[currentLanguage]}</span>`;
         btn.addEventListener('click', () => {
             recommendationPriorities.push(stat.id);
+            recommendationWeights[stat.id] = 1;
+            if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
             if (!recommendationConstraints[stat.id]) recommendationConstraints[stat.id] = { min: '', max: '' };
             recommendationResults = [];
             recommendationComparisonIndices.clear();
@@ -1396,22 +1676,43 @@ function renderRecommendationPriorityList() {
         return;
     }
 
+    if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
     const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
     container.innerHTML = recommendationPriorities.map((statId, index) => {
         const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
         const constraints = recommendationConstraints[statId] || { min: '', max: '' };
+        const weight = getRecommendationWeight(statId);
         return `
             <div class="recommendation-priority-row" data-stat="${statId}">
-                <div class="priority-rank">${index + 1}</div>
                 <div class="priority-name">${stat.name[currentLanguage]}</div>
+                <label class="priority-weight-field">
+                    <span>${t('weightLabel')}</span>
+                    <input type="number" class="priority-weight-input" value="${weight}" min="0" max="1" step="0.01" inputmode="decimal" ${recommendationAutomaticWeights ? 'disabled' : ''} aria-label="${escapeAttribute(`${stat.name[currentLanguage]} ${t('weightLabel')}`)}">
+                </label>
                 <input type="number" class="priority-bound-input" data-bound="min" value="${constraints.min}" placeholder="${t('minLabel')}" step="any">
                 <input type="number" class="priority-bound-input" data-bound="max" value="${constraints.max}" placeholder="${t('maxLabel')}" step="any">
-                <button type="button" class="priority-order-btn" data-action="up" ${index === 0 ? 'disabled' : ''}>↑</button>
-                <button type="button" class="priority-order-btn" data-action="down" ${index === recommendationPriorities.length - 1 ? 'disabled' : ''}>↓</button>
-                <button type="button" class="priority-remove-btn" data-action="remove">×</button>
+                <button type="button" class="priority-order-btn" data-action="up" ${index === 0 ? 'disabled' : ''} aria-label="Move ${escapeAttribute(stat.name[currentLanguage])} up">↑</button>
+                <button type="button" class="priority-order-btn" data-action="down" ${index === recommendationPriorities.length - 1 ? 'disabled' : ''} aria-label="Move ${escapeAttribute(stat.name[currentLanguage])} down">↓</button>
+                <button type="button" class="priority-remove-btn" data-action="remove" aria-label="${escapeAttribute(`Remove ${stat.name[currentLanguage]}`)}">×</button>
             </div>
         `;
     }).join('');
+
+    container.querySelectorAll('.priority-weight-input').forEach(input => {
+        input.addEventListener('input', () => {
+            const statId = input.closest('.recommendation-priority-row').dataset.stat;
+            recommendationWeights[statId] = normalizeRecommendationWeight(input.value);
+            recommendationResults = [];
+            recommendationComparisonIndices.clear();
+            renderRecommendationResults();
+        });
+        input.addEventListener('change', () => {
+            const statId = input.closest('.recommendation-priority-row').dataset.stat;
+            const weight = normalizeRecommendationWeight(input.value);
+            recommendationWeights[statId] = weight;
+            input.value = String(weight);
+        });
+    });
 
     container.querySelectorAll('.priority-bound-input').forEach(input => {
         input.addEventListener('input', () => {
@@ -1430,16 +1731,18 @@ function renderRecommendationPriorityList() {
             const row = btn.closest('.recommendation-priority-row');
             const statId = row.dataset.stat;
             const index = recommendationPriorities.indexOf(statId);
-            const action = btn.dataset.action;
-
-            if (action === 'remove') {
+            if (btn.dataset.action === 'remove') {
                 recommendationPriorities.splice(index, 1);
+                delete recommendationWeights[statId];
                 delete recommendationConstraints[statId];
-            } else if (action === 'up' && index > 0) {
-                [recommendationPriorities[index - 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index - 1]];
-            } else if (action === 'down' && index < recommendationPriorities.length - 1) {
-                [recommendationPriorities[index + 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index + 1]];
+            } else if (btn.dataset.action === 'up' && index > 0) {
+                [recommendationPriorities[index - 1], recommendationPriorities[index]] =
+                    [recommendationPriorities[index], recommendationPriorities[index - 1]];
+            } else if (btn.dataset.action === 'down' && index < recommendationPriorities.length - 1) {
+                [recommendationPriorities[index + 1], recommendationPriorities[index]] =
+                    [recommendationPriorities[index], recommendationPriorities[index + 1]];
             }
+            if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
 
             recommendationResults = [];
             recommendationComparisonIndices.clear();
@@ -1459,7 +1762,7 @@ function recommendBuilds() {
         renderRecommendationMessage(t('recommendationNeedCharacter'));
         return;
     }
-    if (recommendationPriorities.length === 0 && recommendationPassiveSkills.size === 0) {
+    if (!hasRecommendationCriteria()) {
         renderRecommendationMessage(t('recommendationNeedStats'));
         return;
     }
@@ -1505,34 +1808,18 @@ function renderRecommendationResults() {
             const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
             return `<span class="recommendation-stat-chip">${stat.name[currentLanguage]} ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</span>`;
         }).join('');
-
-        const passiveReasons = result.passives
-            .filter(passive => recommendationPassiveSkills.has(passive.name))
-            .map(passive => getPassiveSkillName(passive))
-            .join(', ');
-        const constraintCount = recommendationPriorities.filter(statId => {
-            const constraint = recommendationConstraints[statId] || {};
-            return constraint.min !== '' || constraint.max !== '';
-        }).length;
-        const reasonRows = recommendationPriorities.slice(0, 3).map((statId, priorityIndex) => {
-            const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
-            return `<li><strong>#${priorityIndex + 1} ${stat.name[currentLanguage]}</strong>: ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</li>`;
-        });
-        if (constraintCount > 0) reasonRows.push(`<li>${constraintCount} ${t('constraintsMet')}</li>`);
-        if (passiveReasons) reasonRows.push(`<li><strong>${t('matchedPassives')}:</strong> ${escapeAttribute(passiveReasons)}</li>`);
+        const creditCost = result.credit ?? getBuildCreditCost(result.items);
 
         return `
-            <article class="recommendation-card ${result.applied ? 'selected' : ''} ${recommendationComparisonIndices.has(index) ? 'comparing' : ''}" data-index="${index}">
+            <article class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
                 <div class="recommendation-card-head">
-                    <strong>${t(recommendationPriorities.length ? 'recommendationScore' : 'recommendationMatch')} ${Math.round(result.score * 100)}%</strong>
-                    <span>${result.weaponType ? getWeaponTypeName(result.weaponType) : ''}</span>
+                    <strong>${t(hasPositiveRecommendationWeight() ? 'recommendationScore' : 'recommendationMatch')} ${Math.round(result.score * 100)}%</strong>
+                    <span class="recommendation-card-meta">${result.weaponType ? `${getWeaponTypeName(result.weaponType)} · ` : ''}${creditCost} ${t('credits')}</span>
                 </div>
                 <div class="recommendation-item-row">${itemIcons}</div>
                 <div class="recommendation-stat-row">${statHighlights}</div>
-                <div class="recommendation-reasons"><strong>${t('whyRecommended')}</strong><ul>${reasonRows.join('')}</ul></div>
                 <div class="recommendation-card-actions">
                     <button type="button" class="recommendation-apply-btn" data-recommendation-apply="${index}">${t('applyRecommendation')}</button>
-                    <button type="button" class="recommendation-compare-btn" data-recommendation-compare="${index}" aria-pressed="${recommendationComparisonIndices.has(index)}">${t('compareRecommendation')}</button>
                 </div>
             </article>
         `;
@@ -1541,12 +1828,10 @@ function renderRecommendationResults() {
     container.querySelectorAll('[data-recommendation-apply]').forEach(button => {
         button.addEventListener('click', () => applyRecommendedBuild(Number(button.dataset.recommendationApply)));
     });
-    container.querySelectorAll('[data-recommendation-compare]').forEach(button => {
-        button.addEventListener('click', () => toggleRecommendationComparison(Number(button.dataset.recommendationCompare)));
-    });
     applyItemImageFallbacks(container);
 
     container.querySelectorAll('.recommendation-item-icon[data-item]').forEach(icon => {
+        applyMythicWeaponVariantIndicator(icon, icon.dataset.item);
         icon.addEventListener('mouseenter', (e) => {
             showGlobalTooltip(icon.dataset.item, icon);
             moveGlobalTooltip(e);
@@ -1613,76 +1898,294 @@ function renderRecommendationComparison() {
 }
 
 function generateRecommendedBuilds(buildType = activeBuildType) {
+    const startedAt = Date.now();
     const candidateSlots = getRecommendationCandidatesBySlot(buildType);
     const requiredSlots = EQUIPMENT_SLOTS;
-    if (requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) return [];
+    const allowPartialBuilds = buildType === BUILD_TYPES.LATE && hasActiveRecommendationCreditLimit();
+    const candidateCombinationCount = requiredSlots.reduce((count, slot) => {
+        const candidateCount = (candidateSlots[slot] && candidateSlots[slot].length) || 0;
+        return count * (candidateCount + (allowPartialBuilds ? 1 : 0));
+    }, 1);
+    const metrics = {
+        algorithm: 'branch-and-bound',
+        exact: true,
+        candidateCombinationCount,
+        visitedNodes: 0,
+        completedBuilds: 0,
+        prunedByScore: 0,
+        prunedByConstraints: 0,
+        prunedByCredits: 0,
+        prunedByPassives: 0,
+        prunedByRoute: 0,
+        elapsedMs: 0,
+        resultCount: 0
+    };
 
-    const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
-    const hasMaximumConstraint = recommendationPriorities.some(statId => {
-        const constraint = recommendationConstraints[statId] || {};
-        return parseRecommendationBound(statId, constraint.max) !== null;
-    });
-    const slotCandidates = {};
-    requiredSlots.forEach(slot => {
-        const ranked = candidateSlots[slot]
-            .map(name => ({ name, score: scoreItemForRecommendation(name, itemNormalizers) }))
-            .sort((a, b) => b.score - a.score);
-        const candidateNames = new Set((hasMaximumConstraint ? ranked : ranked.slice(0, 24)).map(entry => entry.name));
-        ranked.forEach(entry => {
-            if (itemHasSelectedRecommendationPassive(entry.name)) candidateNames.add(entry.name);
-        });
-        slotCandidates[slot] = Array.from(candidateNames);
-    });
-
-    let beam = [{ items: [], roughScore: 0 }];
-    requiredSlots.forEach(slot => {
-        const expanded = [];
-        beam.forEach(partial => {
-            slotCandidates[slot].forEach(name => {
-                const itemsForBuild = [...partial.items, name];
-                if (hasMaximumConstraint && !passesRecommendationPartialMaximumConstraints(itemsForBuild)) return;
-                expanded.push({
-                    items: itemsForBuild,
-                    roughScore: partial.roughScore + scoreItemForRecommendation(name, itemNormalizers) +
-                        (itemHasSelectedRecommendationPassive(name) ? 1 : 0)
-                });
-            });
-        });
-        expanded.sort((a, b) => b.roughScore - a.roughScore);
-        beam = expanded.slice(0, 250);
-    });
-
-    const finalCandidates = beam
-        .map(build => {
-            const stats = calculateItemOnlyBuildStats(build.items);
-            return {
-                ...build,
-                stats,
-                passives: getEffectivePassiveSkills(build.items),
-                weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : ''
-            };
-        })
-        .filter(build => passesRecommendationConstraints(build.stats) && passesRecommendationPassiveRequirements(build.items));
-
-    if (finalCandidates.length === 0) return [];
-
-    const finalNormalizers = {};
-    recommendationPriorities.forEach(statId => {
-        finalNormalizers[statId] = Math.max(...finalCandidates.map(build => getNumericRecommendationStat(build.stats, statId)), 0.0001);
-    });
-
-    let scoredCandidates = finalCandidates
-        .map(build => ({
-            ...build,
-            score: recommendationPriorities.length ? scoreStatsForRecommendation(build.stats, finalNormalizers) : 1
-        }))
-        .sort((a, b) => b.score - a.score);
-
-    if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones) {
-        scoredCandidates = scoredCandidates.filter(build => hasFeasibleRouteWithinZones(build.items, 2));
+    if (!allowPartialBuilds && requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) {
+        metrics.elapsedMs = Date.now() - startedAt;
+        lastRecommendationSearchMetrics = metrics;
+        return [];
     }
 
-    return scoredCandidates.slice(0, 20);
+    const model = createRecommendationSearchModel(candidateSlots, allowPartialBuilds);
+    const topResults = [];
+    const selectedBySlot = {};
+    const passiveCounts = new Map();
+    const state = {
+        additive: new Array(recommendationPriorities.length).fill(0),
+        uniquePrimary: new Array(recommendationPriorities.length).fill(0),
+        uniqueSecondary: new Array(recommendationPriorities.length).fill(0),
+        credit: 0
+    };
+    const previousPrimary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+    const previousSecondary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+
+    function visit(depth) {
+        metrics.visitedNodes++;
+        const bounds = getRecommendationSearchBounds(model, state, depth);
+
+        if (!bounds.constraintsFeasible) {
+            metrics.prunedByConstraints++;
+            return;
+        }
+        if (!bounds.creditFeasible) {
+            metrics.prunedByCredits++;
+            return;
+        }
+        if (!recommendationPassivesRemainFeasible(model, passiveCounts, depth)) {
+            metrics.prunedByPassives++;
+            return;
+        }
+        if (topResults.length === RECOMMENDATION_RESULT_LIMIT &&
+            bounds.upperScore <= topResults[topResults.length - 1].score + 1e-12) {
+            metrics.prunedByScore++;
+            return;
+        }
+
+        if (depth === model.searchSlots.length) {
+            metrics.completedBuilds++;
+            const itemNames = EQUIPMENT_SLOTS.map(slot => selectedBySlot[slot]).filter(Boolean);
+            if (itemNames.length === 0 || !passesRecommendationCreditLimit(state.credit)) return;
+            const stats = calculateItemOnlyBuildStats(itemNames);
+            if (!passesRecommendationConstraints(stats) || !passesRecommendationPassiveRequirements(itemNames)) return;
+            if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones &&
+                !hasFeasibleRouteWithinZones(itemNames, 2)) {
+                metrics.prunedByRoute++;
+                return;
+            }
+
+            const weaponName = selectedBySlot.Weapon;
+            insertRecommendedBuild(topResults, {
+                items: itemNames,
+                stats,
+                passives: getEffectivePassiveSkills(itemNames),
+                credit: state.credit,
+                weaponType: items[weaponName] ? items[weaponName].weaponType : '',
+                score: hasPositiveRecommendationWeight()
+                    ? scoreStatsForRecommendation(stats, model.normalizers)
+                    : 1
+            });
+            return;
+        }
+
+        const slot = model.searchSlots[depth];
+        model.candidatesBySlot[slot].forEach(candidate => {
+            if (candidate.name) selectedBySlot[slot] = candidate.name;
+            else delete selectedBySlot[slot];
+            candidate.passiveNames.forEach(passiveName => {
+                passiveCounts.set(passiveName, (passiveCounts.get(passiveName) || 0) + 1);
+            });
+            state.credit += candidate.credit;
+
+            candidate.parts.forEach((part, index) => {
+                previousPrimary[depth][index] = state.uniquePrimary[index];
+                previousSecondary[depth][index] = state.uniqueSecondary[index];
+                state.additive[index] += part.additive;
+                state.uniquePrimary[index] = Math.max(state.uniquePrimary[index], part.uniquePrimary);
+                state.uniqueSecondary[index] = Math.max(state.uniqueSecondary[index], part.uniqueSecondary);
+            });
+            visit(depth + 1);
+
+            candidate.parts.forEach((part, index) => {
+                state.additive[index] -= part.additive;
+                state.uniquePrimary[index] = previousPrimary[depth][index];
+                state.uniqueSecondary[index] = previousSecondary[depth][index];
+            });
+            state.credit -= candidate.credit;
+            candidate.passiveNames.forEach(passiveName => {
+                const nextCount = passiveCounts.get(passiveName) - 1;
+                if (nextCount > 0) passiveCounts.set(passiveName, nextCount);
+                else passiveCounts.delete(passiveName);
+            });
+            delete selectedBySlot[slot];
+        });
+    }
+
+    visit(0);
+    metrics.elapsedMs = Date.now() - startedAt;
+    metrics.resultCount = topResults.length;
+    lastRecommendationSearchMetrics = metrics;
+    return topResults;
+}
+
+function getItemRecommendationStatParts(itemName, statId, level = charLevel) {
+    const item = items[itemName] || {};
+    const regularStats = item.stats || {};
+    const levelStats = item.statsByLv || {};
+    const uniqueStats = item.uniqueStats || {};
+
+    if (statId === 'moveSpeed') {
+        return {
+            additive: (Number(regularStats.moveSpeed) || 0) + (Number(levelStats.moveSpeed) || 0) * level +
+                ((Number(regularStats.moveSpeedRatio) || 0) + (Number(levelStats.moveSpeedRatio) || 0) * level) * 10,
+            uniquePrimary: Number(uniqueStats.moveSpeed) || 0,
+            uniqueSecondary: (Number(uniqueStats.moveSpeedRatio) || 0) * 10
+        };
+    }
+
+    return {
+        additive: (Number(regularStats[statId]) || 0) + (Number(levelStats[statId]) || 0) * level,
+        uniquePrimary: Number(uniqueStats[statId]) || 0,
+        uniqueSecondary: 0
+    };
+}
+
+function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = false) {
+    const searchSlots = [...EQUIPMENT_SLOTS].sort((a, b) => {
+        const countDifference = candidateSlots[a].length - candidateSlots[b].length;
+        return countDifference || BUILD_SLOT_ORDER[a] - BUILD_SLOT_ORDER[b];
+    });
+    const candidatesBySlot = {};
+
+    searchSlots.forEach(slot => {
+        const candidateNames = allowPartialBuilds ? [...candidateSlots[slot], null] : candidateSlots[slot];
+        candidatesBySlot[slot] = candidateNames.map(name => {
+            return {
+                name,
+                passiveNames: getItemPassiveSkills(items[name]).map(passiveSkill => passiveSkill.name),
+                credit: name ? getItemCreditCost(name) : 0,
+                parts: recommendationPriorities.map(statId => getItemRecommendationStatParts(name, statId))
+            };
+        });
+    });
+
+    const priorityCount = recommendationPriorities.length;
+    const suffixAdditive = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixMinimumAdditive = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixUniquePrimary = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixUniqueSecondary = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixPassives = Array.from({ length: searchSlots.length + 1 }, () => new Set());
+    const suffixMaximumCredit = new Array(searchSlots.length + 1).fill(0);
+
+    for (let depth = searchSlots.length - 1; depth >= 0; depth--) {
+        const candidates = candidatesBySlot[searchSlots[depth]];
+        for (let index = 0; index < priorityCount; index++) {
+            suffixAdditive[depth][index] = suffixAdditive[depth + 1][index] +
+                Math.max(...candidates.map(candidate => candidate.parts[index].additive), 0);
+            suffixMinimumAdditive[depth][index] = suffixMinimumAdditive[depth + 1][index] +
+                Math.min(...candidates.map(candidate => candidate.parts[index].additive), 0);
+            suffixUniquePrimary[depth][index] = Math.max(
+                suffixUniquePrimary[depth + 1][index],
+                ...candidates.map(candidate => candidate.parts[index].uniquePrimary),
+                0
+            );
+            suffixUniqueSecondary[depth][index] = Math.max(
+                suffixUniqueSecondary[depth + 1][index],
+                ...candidates.map(candidate => candidate.parts[index].uniqueSecondary),
+                0
+            );
+        }
+        suffixPassives[depth] = new Set(suffixPassives[depth + 1]);
+        candidates.forEach(candidate => {
+            candidate.passiveNames.forEach(passiveName => suffixPassives[depth].add(passiveName));
+        });
+        suffixMaximumCredit[depth] = suffixMaximumCredit[depth + 1] +
+            Math.max(...candidates.map(candidate => candidate.credit), 0);
+    }
+
+    const normalizers = {};
+    recommendationPriorities.forEach((statId, index) => {
+        normalizers[statId] = Math.max(
+            suffixAdditive[0][index] + suffixUniquePrimary[0][index] + suffixUniqueSecondary[0][index],
+            0.0001
+        );
+    });
+
+    searchSlots.forEach(slot => {
+        candidatesBySlot[slot].forEach(candidate => {
+            const stats = {};
+            recommendationPriorities.forEach((statId, index) => {
+                stats[statId] = candidate.parts[index].additive + candidate.parts[index].uniquePrimary +
+                    candidate.parts[index].uniqueSecondary;
+            });
+            candidate.searchScore = scoreStatsForRecommendation(stats, normalizers) +
+                (itemHasSelectedRecommendationPassive(candidate.name) ? 1 : 0);
+        });
+        candidatesBySlot[slot].sort((a, b) => b.searchScore - a.searchScore ||
+            (a.name || '').localeCompare(b.name || ''));
+    });
+
+    return {
+        searchSlots,
+        candidatesBySlot,
+        suffixAdditive,
+        suffixMinimumAdditive,
+        suffixUniquePrimary,
+        suffixUniqueSecondary,
+        suffixPassives,
+        suffixMaximumCredit,
+        normalizers
+    };
+}
+
+function getRecommendationSearchBounds(model, state, depth) {
+    const upperValues = new Array(recommendationPriorities.length).fill(0);
+    let constraintsFeasible = true;
+
+    recommendationPriorities.forEach((statId, index) => {
+        const upperValue = state.additive[index] + model.suffixAdditive[depth][index] +
+            Math.max(state.uniquePrimary[index], model.suffixUniquePrimary[depth][index]) +
+            Math.max(state.uniqueSecondary[index], model.suffixUniqueSecondary[depth][index]);
+        const lowerValue = state.additive[index] + model.suffixMinimumAdditive[depth][index] +
+            state.uniquePrimary[index] + state.uniqueSecondary[index];
+        upperValues[index] = upperValue;
+
+        const constraint = recommendationConstraints[statId] || {};
+        const min = parseRecommendationBound(statId, constraint.min);
+        const max = parseRecommendationBound(statId, constraint.max);
+        if ((min !== null && upperValue < min) || (max !== null && lowerValue > max)) {
+            constraintsFeasible = false;
+        }
+    });
+
+    const upperStats = {};
+    recommendationPriorities.forEach((statId, index) => upperStats[statId] = upperValues[index]);
+    const creditBounds = getRecommendationCreditBounds();
+    const creditFeasible = (creditBounds.max === null || state.credit <= creditBounds.max) &&
+        (creditBounds.min === null || state.credit + model.suffixMaximumCredit[depth] >= creditBounds.min);
+    return {
+        constraintsFeasible,
+        creditFeasible,
+        upperScore: hasPositiveRecommendationWeight()
+            ? scoreStatsForRecommendation(upperStats, model.normalizers)
+            : 1
+    };
+}
+
+function recommendationPassivesRemainFeasible(model, passiveCounts, depth) {
+    return Array.from(recommendationPassiveSkills).every(passiveName => {
+        return passiveCounts.has(passiveName) || model.suffixPassives[depth].has(passiveName);
+    });
+}
+
+function insertRecommendedBuild(results, build) {
+    results.push(build);
+    results.sort((a, b) => {
+        const scoreDifference = b.score - a.score;
+        if (Math.abs(scoreDifference) > 1e-12) return scoreDifference;
+        return a.items.join('\u0000').localeCompare(b.items.join('\u0000'));
+    });
+    if (results.length > RECOMMENDATION_RESULT_LIMIT) results.pop();
 }
 
 function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
@@ -1692,6 +2195,7 @@ function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
     Object.entries(items).forEach(([name, item]) => {
         if (!isItemEligibleForBuild(item, buildType)) return;
         if (buildType === BUILD_TYPES.LATE && !lateRarityFilters.has(item.type)) return;
+        if (buildType === BUILD_TYPES.LATE && !itemMatchesLateResourceFilters(name, item)) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
@@ -1705,8 +2209,8 @@ function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
 
 function itemHasSelectedRecommendationPassive(itemName) {
     if (recommendationPassiveSkills.size === 0) return false;
-    const passiveSkill = items[itemName] && items[itemName].passiveSkill;
-    return !!passiveSkill && recommendationPassiveSkills.has(passiveSkill.name);
+    return getItemPassiveSkills(items[itemName])
+        .some(passiveSkill => recommendationPassiveSkills.has(passiveSkill.name));
 }
 
 function passesRecommendationPassiveRequirements(itemNames) {
@@ -1810,32 +2314,72 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
     return result;
 }
 
-function getItemNormalizers(itemNames) {
-    const normalizers = {};
-    recommendationPriorities.forEach(statId => normalizers[statId] = 0.0001);
-    itemNames.forEach(name => {
-        const stats = calculateItemOnlyBuildStats([name]);
-        recommendationPriorities.forEach(statId => {
-            normalizers[statId] = Math.max(normalizers[statId], getNumericRecommendationStat(stats, statId));
-        });
+function normalizeRecommendationWeight(value) {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return 0;
+    return Math.min(1, Math.max(0, parsed));
+}
+
+function getAutomaticRecommendationWeight(index) {
+    return Number(Math.pow(0.68, index).toFixed(4));
+}
+
+function applyAutomaticRecommendationWeights() {
+    recommendationPriorities.forEach((statId, index) => {
+        recommendationWeights[statId] = getAutomaticRecommendationWeight(index);
     });
-    return normalizers;
 }
 
-function getPriorityWeight(index) {
-    return Math.pow(0.68, index);
+function getRecommendationWeight(statId) {
+    if (!Object.prototype.hasOwnProperty.call(recommendationWeights, statId)) {
+        const index = recommendationPriorities.indexOf(statId);
+        return recommendationAutomaticWeights && index >= 0 ? getAutomaticRecommendationWeight(index) : 1;
+    }
+    return normalizeRecommendationWeight(recommendationWeights[statId]);
 }
 
-function scoreItemForRecommendation(name, normalizers) {
-    const stats = calculateItemOnlyBuildStats([name]);
-    return scoreStatsForRecommendation(stats, normalizers);
+function hasPositiveRecommendationWeight() {
+    return recommendationPriorities.some(statId => getRecommendationWeight(statId) > 0);
+}
+
+function parseCreditBound(value) {
+    if (value === '' || value === null || value === undefined) return null;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.max(0, parsed) : null;
+}
+
+function getRecommendationCreditBounds() {
+    return {
+        min: parseCreditBound(recommendationCreditMin),
+        max: parseCreditBound(recommendationCreditMax)
+    };
+}
+
+function hasActiveRecommendationCreditLimit() {
+    const bounds = getRecommendationCreditBounds();
+    return bounds.min !== null || bounds.max !== null;
+}
+
+function passesRecommendationCreditLimit(credit) {
+    const bounds = getRecommendationCreditBounds();
+    return (bounds.min === null || credit >= bounds.min) &&
+        (bounds.max === null || credit <= bounds.max);
+}
+
+function hasRecommendationCriteria() {
+    if (recommendationPassiveSkills.size > 0 || hasPositiveRecommendationWeight()) return true;
+    return recommendationPriorities.some(statId => {
+        const constraint = recommendationConstraints[statId] || {};
+        return parseRecommendationBound(statId, constraint.min) !== null ||
+            parseRecommendationBound(statId, constraint.max) !== null;
+    });
 }
 
 function scoreStatsForRecommendation(stats, normalizers) {
     let weightedScore = 0;
     let totalWeight = 0;
-    recommendationPriorities.forEach((statId, index) => {
-        const weight = getPriorityWeight(index);
+    recommendationPriorities.forEach(statId => {
+        const weight = getRecommendationWeight(statId);
         weightedScore += weight * (getNumericRecommendationStat(stats, statId) / (normalizers[statId] || 1));
         totalWeight += weight;
     });
@@ -1858,15 +2402,6 @@ function passesRecommendationConstraints(stats) {
         if (min !== null && value < min) return false;
         if (max !== null && value > max) return false;
         return true;
-    });
-}
-
-function passesRecommendationPartialMaximumConstraints(itemNames) {
-    const stats = calculateItemOnlyBuildStats(itemNames);
-    return recommendationPriorities.every(statId => {
-        const constraint = recommendationConstraints[statId] || {};
-        const max = parseRecommendationBound(statId, constraint.max);
-        return max === null || getNumericRecommendationStat(stats, statId) <= max;
     });
 }
 
@@ -2042,13 +2577,12 @@ function renderCharacterPicker(container) {
 }
 
 function renderCharacterOptions(container, term = '') {
-    const normalizedTerm = term.trim().toLowerCase();
     const optionData = [
         { value: null, label: t('selectCharacter') },
         ...getSortedCharacterNames().map(name => ({ value: name, label: getCharName(name) }))
     ].filter(option => {
-        if (!normalizedTerm || option.value === null) return true;
-        return option.value.toLowerCase().includes(normalizedTerm) || option.label.toLowerCase().includes(normalizedTerm);
+        if (!term.trim() || option.value === null) return true;
+        return matchesSearchTerm(term, option.value, option.label, chars[option.value]?.nameKo);
     });
 
     container.innerHTML = '';
@@ -2208,10 +2742,8 @@ function renderSubstatPicker(container) {
 }
 
 function renderSubstatOptions(container, term = '', pickerContainer) {
-    const normalizedTerm = term.trim().toLowerCase();
     const statOptions = getSelectableStats().filter(stat => {
-        const label = stat.name[currentLanguage];
-        return !normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm);
+        return matchesSearchTerm(term, stat.id, stat.name.en, stat.name.ko);
     });
 
     container.innerHTML = '';
@@ -2231,7 +2763,14 @@ function renderSubstatOptions(container, term = '', pickerContainer) {
     });
 }
 
-function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, labelKey = '', labelBeforePills = false, showReset = true }) {
+function renderPassiveSkillPicker(container, selectedSet, {
+    prefix,
+    onChange,
+    labelKey = '',
+    addLabelKey = 'addPassiveSkill',
+    labelBeforePills = false,
+    showReset = true
+}) {
     const selectedOptions = getPassiveSkillOptions().filter(option => selectedSet.has(option.id));
     const pillsHtml = selectedOptions.length
         ? selectedOptions.map(option => `<span class="stat-pill passive-skill-pill" data-passive="${escapeAttribute(option.id)}">${getPassiveSkillOptionName(option)} <button type="button" aria-label="Remove ${escapeAttribute(getPassiveSkillOptionName(option))}">×</button></span>`).join('')
@@ -2239,7 +2778,7 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
     const resetHtml = showReset
         ? `<button type="button" class="stat-reset-btn" id="${prefix}-reset" ${selectedSet.size ? '' : 'disabled'}>${t('resetStats')}</button>`
         : '';
-    const pickerOptions = { prefix, onChange, labelKey, labelBeforePills, showReset };
+    const pickerOptions = { prefix, onChange, labelKey, addLabelKey, labelBeforePills, showReset };
     const labelHtml = labelKey
         ? `<div class="recommendation-block-label">${t(labelKey)}</div>`
         : '';
@@ -2248,7 +2787,7 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
         <div class="stat-picker-row">
             <div class="compact-select" id="${prefix}-select">
                 <button type="button" class="compact-select-toggle" id="${prefix}-toggle">
-                    <span>${t('addPassiveSkill')}</span>
+                    <span>${t(addLabelKey)}</span>
                     <span class="compact-select-arrow">▾</span>
                 </button>
                 <div class="compact-select-menu">
@@ -2261,7 +2800,7 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
     `;
 
     container.innerHTML = labelBeforePills
-        ? `${pickerRow}${labelHtml}${pillsSection}`
+        ? `${labelHtml}${pickerRow}${pillsSection}`
         : `${pillsSection}${pickerRow}${labelHtml}`;
 
     const select = container.querySelector(`#${prefix}-select`);
@@ -2312,11 +2851,9 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
 }
 
 function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {
-    const normalizedTerm = term.trim().toLowerCase();
     const options = getPassiveSkillOptions().filter(option => {
-        const label = getPassiveSkillOptionName(option);
         return !selectedSet.has(option.id) &&
-            (!normalizedTerm || option.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+            matchesSearchTerm(term, option.id, option.name, option.nameKo);
     });
 
     container.innerHTML = '';
@@ -2345,14 +2882,12 @@ function renderMainGrid() {
     const catalogItems = Object.entries(items).filter(([name, data]) => {
         if (!isItemEligibleForBuild(data, activeBuildType)) return false;
         if (activeBuildType === BUILD_TYPES.LATE && !lateRarityFilters.has(data.type)) return false;
+        if (activeBuildType === BUILD_TYPES.LATE && !itemMatchesLateResourceFilters(name, data)) return false;
         
         // Item search filtering
         const itemSearchInput = document.getElementById('item-search');
-        if (itemSearchInput && itemSearchInput.value) {
-            const term = itemSearchInput.value.toLowerCase();
-            const nameEn = name.toLowerCase();
-            const nameKo = getItemName(name).toLowerCase();
-            if (!nameEn.includes(term) && !nameKo.includes(term)) return false;
+        if (itemSearchInput && !matchesSearchTerm(itemSearchInput.value, name, data.nameKo)) {
+            return false;
         }
         
         // Substat filtering (including level scaling)
@@ -2364,24 +2899,11 @@ function renderMainGrid() {
         }
 
         if (activePassiveSkills.size > 0) {
-            if (!data.passiveSkill || !activePassiveSkills.has(data.passiveSkill.name)) return false;
+            if (!getItemPassiveSkills(data).some(passiveSkill => activePassiveSkills.has(passiveSkill.name))) return false;
         }
 
-        // Character mastery & unique items filtering
-        if (currentCharacter) {
-            if (data.part === "Weapon") {
-                const masteries = chars[currentCharacter].masteries;
-                if (!masteries.includes(data.weaponType)) return false;
-            }
-            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") return false;
-            if (currentCharacter === "Priya" && data.part === "Head" && name !== "Harmony in Full Bloom") return false;
-            
-            const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) return false;
-        } else {
-            // No character selected: you can't see Echion/Priya exclusive items to avoid confusion, 
-            // OR we let them see it. The prompt says: "If the character is not selected, let them choose whatever."
-        }
+        // Character mastery and character-exclusive equipment filtering
+        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return false;
 
         // If currentFilter is "All", we only filter out other weapons
         if (currentFilter === "All") {
@@ -2402,25 +2924,7 @@ function renderMainGrid() {
         return true;
     });
 
-    const weaponOrderMap = {};
-    WEAPON_TYPES.forEach((w, i) => weaponOrderMap[w.api] = i);
-
-    catalogItems.sort((a, b) => {
-        const dataA = a[1];
-        const dataB = b[1];
-        const orderA = BUILD_SLOT_ORDER[dataA.part] || 99;
-        const orderB = BUILD_SLOT_ORDER[dataB.part] || 99;
-        
-        if (orderA !== orderB) return orderA - orderB;
-        
-        if (dataA.part === "Weapon" && dataA.weaponType && dataB.weaponType) {
-             const wA = weaponOrderMap[dataA.weaponType] ?? 99;
-             const wB = weaponOrderMap[dataB.weaponType] ?? 99;
-             if (wA !== wB) return wA - wB;
-        }
-        
-        return a[0].localeCompare(b[0]);
-    });
+    catalogItems.sort(compareCatalogItems);
 
     catalogItems.forEach(([name]) => {
         const card = createItemCard(name);
@@ -2443,6 +2947,7 @@ function createItemCard(name) {
     card.dataset.grade = item ? item.type : '';
     card.style.setProperty('--item-card-start', gradeStyle.cardStart);
     card.style.setProperty('--item-card-end', gradeStyle.cardEnd);
+    applyMythicWeaponVariantIndicator(card, name, item);
     card.classList.toggle('selected', getBuild().has(name));
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
@@ -2488,14 +2993,25 @@ function showGlobalTooltip(name, trigger = null) {
     const typeColor = gradeStyle.color;
     const partName = PART_NAMES[itemData.part] ? PART_NAMES[itemData.part][currentLanguage] : itemData.part;
     const typeName = TYPE_NAMES[itemData.type] ? TYPE_NAMES[itemData.type][currentLanguage] : itemData.type;
+    const highTierMaterials = getHighTierMaterialsForItem(name, itemData);
+    const materialIcons = highTierMaterials.map(material => {
+        const config = HIGH_TIER_MATERIALS[material];
+        const label = `${getHighTierMaterialName(material)} · ${config.price} ${t('credits')}`;
+        return `<img src="${escapeAttribute(config.image)}" alt="${escapeAttribute(label)}" title="${escapeAttribute(label)}">`;
+    }).join('');
     
     let tooltipHtml = `
         <div class="tooltip-header">
             <div class="tooltip-highlight" style="background-color: ${typeColor};"></div>
             <div class="tooltip-header-info">
                 <div class="tooltip-name">${getItemName(name)}</div>
-                <div class="tooltip-type" style="color: ${typeColor};">${typeName}</div>
-                <div class="tooltip-part">${partName}</div>
+                <div class="tooltip-meta-row">
+                    <div>
+                        <div class="tooltip-type" style="color: ${typeColor};">${typeName}</div>
+                        <div class="tooltip-part">${partName}</div>
+                    </div>
+                    ${materialIcons ? `<div class="tooltip-resource-list">${materialIcons}</div>` : ''}
+                </div>
             </div>
             <div class="tooltip-image-container">
                 <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
@@ -2545,14 +3061,15 @@ function showGlobalTooltip(name, trigger = null) {
         });
         tooltipHtml += uniqueTooltipHtml;
     }
-    if (itemData.passiveSkill) {
-        tooltipHtml += renderPassiveSkillLine(itemData.passiveSkill);
-    }
+    getItemPassiveSkills(itemData).forEach(passiveSkill => {
+        tooltipHtml += renderPassiveSkillLine(passiveSkill);
+    });
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
     tooltip.style.setProperty('--tooltip-start', gradeStyle.cardStart);
     tooltip.style.setProperty('--tooltip-end', gradeStyle.cardEnd);
     tooltip.style.setProperty('--tooltip-border', gradeStyle.color);
+    applyMythicWeaponVariantIndicator(tooltip, name, itemData);
     applyItemImageFallbacks(tooltip);
     activeTooltipTrigger = trigger;
     tooltip.style.display = 'block';
@@ -2572,13 +3089,18 @@ function getPassiveSkillName(passiveSkill) {
     return currentLanguage === 'ko' ? (passiveSkill.nameKo || passiveSkill.name) : passiveSkill.name;
 }
 
+function getItemPassiveSkills(item) {
+    if (!item) return [];
+    if (Array.isArray(item.passiveSkills)) return item.passiveSkills;
+    return item.passiveSkill ? [item.passiveSkill] : [];
+}
+
 function getEffectivePassiveSkills(itemNames) {
     const passiveMap = new Map();
     itemNames.forEach(name => {
-        const passiveSkill = items[name] && items[name].passiveSkill;
-        if (passiveSkill && !passiveMap.has(passiveSkill.name)) {
-            passiveMap.set(passiveSkill.name, passiveSkill);
-        }
+        getItemPassiveSkills(items[name]).forEach(passiveSkill => {
+            if (!passiveMap.has(passiveSkill.name)) passiveMap.set(passiveSkill.name, passiveSkill);
+        });
     });
 
     const locale = currentLanguage === 'ko' ? 'ko' : 'en';
@@ -2605,6 +3127,12 @@ function moveGlobalTooltip(e) {
     if (y + rect.height > window.innerHeight) {
         y = window.innerHeight - rect.height - 15;
     }
+
+    const viewportMargin = 8;
+    const maxX = Math.max(viewportMargin, window.innerWidth - rect.width - viewportMargin);
+    const maxY = Math.max(viewportMargin, window.innerHeight - rect.height - viewportMargin);
+    x = Math.min(Math.max(viewportMargin, x), maxX);
+    y = Math.min(Math.max(viewportMargin, y), maxY);
     
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
@@ -2622,7 +3150,7 @@ function toggleSelection(name) {
         build.delete(name);
     } else {
         // Unique Selection Logic
-        if (name === "Harmony in Full Bloom") {
+        if (PRIYA_EXCLUSIVE_HEAD_ITEMS.has(name)) {
             forceCharacterSelection("Priya");
         } else if (ECHION_EXCLUSIVE_WEAPONS.has(name) || items[name].weaponType === "VFArm") {
             forceCharacterSelection("Echion");
@@ -2768,11 +3296,10 @@ function renderLateSnapshot(snapshot, index) {
     const icons = snapshot.map(name => {
         const item = items[name];
         const gradeStyle = getItemGradeStyle(item && item.type);
-        return `<div class="late-snapshot-icon" style="--item-card-start:${gradeStyle.cardStart};--item-card-end:${gradeStyle.cardEnd}" title="${escapeAttribute(getItemName(name))}">
+        return `<div class="late-snapshot-icon" data-item="${escapeAttribute(name)}" tabindex="0" aria-label="${escapeAttribute(getItemName(name))}" style="--item-card-start:${gradeStyle.cardStart};--item-card-end:${gradeStyle.cardEnd}" title="${escapeAttribute(getItemName(name))}">
             <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
         </div>`;
     }).join('');
-
     return `<div class="late-snapshot-card">
         <div class="late-snapshot-head"><strong>${label}</strong><button type="button" class="late-load-btn" data-late-load="${index}">${t('loadBuild')}</button></div>
         <div class="late-snapshot-items">${icons}</div>
@@ -2794,13 +3321,16 @@ function renderLateGamePanel() {
     const currentStats = document.getElementById('late-current-stats');
     if (currentStats) {
         currentStats.innerHTML = lateBuild.size
-            ? renderSingleStatColumn(calculateBuildStats(Array.from(lateBuild)))
+            ? renderSingleStatColumn(calculateBuildStats(Array.from(lateBuild)), {
+                creditCost: getBuildCreditCost(lateBuild)
+            })
             : `<p class="empty-msg">${t('noBuildStats')}</p>`;
     }
 
+    const canSaveComparison = canSaveLateComparisonBuild();
     document.querySelectorAll('.late-save-btn').forEach(button => {
-        button.disabled = !complete;
-        button.title = complete ? '' : t('incompleteLateBuild');
+        button.disabled = !canSaveComparison;
+        button.title = canSaveComparison ? '' : t('incompleteLateBuild');
     });
 
     const clearButton = document.getElementById('clear-late-comparison-btn');
@@ -2813,11 +3343,32 @@ function renderLateGamePanel() {
         ? `<div class="late-stat-comparison">${renderComparisonColumns(
             calculateBuildStats(lateComparisonBuilds[0]),
             calculateBuildStats(lateComparisonBuilds[1]),
-            [t('buildA'), t('buildB')]
+            [t('buildA'), t('buildB')],
+            {
+                creditCosts: [
+                    getBuildCreditCost(lateComparisonBuilds[0]),
+                    getBuildCreditCost(lateComparisonBuilds[1])
+                ]
+            }
         )}</div>`
         : `<p class="empty-msg late-comparison-waiting">${t('comparisonWaiting')}</p>`;
     output.innerHTML = `<div class="late-snapshot-grid">${snapshots}</div>${comparison}`;
     applyItemImageFallbacks(output);
+    output.querySelectorAll('.late-snapshot-icon[data-item]').forEach(icon => {
+        applyMythicWeaponVariantIndicator(icon, icon.dataset.item);
+        icon.addEventListener('mouseenter', (event) => {
+            showGlobalTooltip(icon.dataset.item, icon);
+            moveGlobalTooltip(event);
+        });
+        icon.addEventListener('mousemove', moveGlobalTooltip);
+        icon.addEventListener('mouseleave', hideGlobalTooltip);
+        icon.addEventListener('focus', () => {
+            const rect = icon.getBoundingClientRect();
+            showGlobalTooltip(icon.dataset.item, icon);
+            moveGlobalTooltip({ clientX: rect.right, clientY: rect.top });
+        });
+        icon.addEventListener('blur', hideGlobalTooltip);
+    });
     output.querySelectorAll('[data-late-load]').forEach(button => {
         button.addEventListener('click', () => loadLateComparisonBuild(Number(button.dataset.lateLoad)));
     });
@@ -3028,7 +3579,7 @@ function renderPassiveSkillComparison(passiveSkills1 = [], passiveSkills2 = []) 
     return html;
 }
 
-function renderSingleStatColumn(stats) {
+function renderSingleStatColumn(stats, { creditCost = null } = {}) {
     let html = `<div style="flex:1;">`;
     let portraitHtml = '';
     if (currentCharacter) {
@@ -3041,6 +3592,13 @@ function renderSingleStatColumn(stats) {
             </div>`;
     }
     html += portraitHtml;
+
+    if (creditCost !== null) {
+        html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed var(--border-color);">
+            <span>${t('totalCredits')}</span>
+            <strong style="color:var(--text-main);">${creditCost} ${t('credits')}</strong>
+        </div>`;
+    }
 
     DISPLAY_STATS.forEach(s => {
         if (!isZeroStatValue(stats[s.id]) && stats[s.id] > 0) {
@@ -3055,7 +3613,13 @@ function renderSingleStatColumn(stats) {
     return html;
 }
 
-function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route2')]) {
+function getComparisonValueColors(value1, value2, lowerIsBetter = false) {
+    if (value1 === value2) return ['var(--text-main)', 'var(--text-main)'];
+    const leftIsBetter = lowerIsBetter ? value1 < value2 : value1 > value2;
+    return leftIsBetter ? ['#27ae60', '#e74c3c'] : ['#e74c3c', '#27ae60'];
+}
+
+function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route2')], { creditCosts = null } = {}) {
     let html = `<div style="flex:1; display:flex; gap:20px;">`;
     
     // Shared portrait
@@ -3085,8 +3649,9 @@ function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route
     });
 
     const renderRow = (item, isCommon) => {
-        const color1 = isCommon ? 'var(--text-main)' : (item.v1 > item.v2 ? '#27ae60' : '#e74c3c');
-        const color2 = isCommon ? 'var(--text-main)' : (item.v2 > item.v1 ? '#27ae60' : '#e74c3c');
+        const [color1, color2] = isCommon
+            ? ['var(--text-main)', 'var(--text-main)']
+            : getComparisonValueColors(item.v1, item.v2);
         return `
         <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
             <div style="flex:1; text-align:right; font-weight:bold; color:${color1};">${item.v1 > 0 ? formatStatValue(item.id, item.v1) : '-'}</div>
@@ -3103,6 +3668,16 @@ function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route
         <span style="flex:1.5;"></span>
         <span style="flex:1; text-align:left; color:#8e44ad;">${escapeAttribute(labels[1])}</span>
     </div>`;
+
+    if (creditCosts) {
+        const [leftCredits, rightCredits] = creditCosts;
+        const [leftColor, rightColor] = getComparisonValueColors(leftCredits, rightCredits, true);
+        html += `<div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
+            <div style="flex:1; text-align:right; font-weight:bold; color:${leftColor};">${leftCredits}</div>
+            <div style="flex:1.5; text-align:center; color:var(--text-muted); font-size:0.9em;">${t('totalCredits')}</div>
+            <div style="flex:1; text-align:left; font-weight:bold; color:${rightColor};">${rightCredits}</div>
+        </div>`;
+    }
 
     commonStats.forEach(item => html += renderRow(item, true));
     diffStats.forEach(item => html += renderRow(item, false));
