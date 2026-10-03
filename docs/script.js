@@ -4,7 +4,7 @@
 
 const DICT = {
     en: {
-        title: "Eternal Return Farming Route Optimizer",
+        title: "Eternal Return Build Optimizer",
         filters: "Filters",
         resetAll: "Reset All",
         level: "Level:",
@@ -14,31 +14,66 @@ const DICT = {
         weaponType: "Weapon Type",
         substats: "Item Stats",
         passiveSkills: "Unique Passives",
+        buildWorkflow: "Build workflow",
+        earlyGameRoute: "Early Game Build/Route",
+        lateGameBuild: "Late Game Build",
         routeOptimizerTab: "Item Selection",
         recommendationsTab: "Item Recommendations",
-        addPriorityStat: "Add priority stat",
+        addPriorityStat: "Add weighted stat",
         addPassiveSkill: "Add unique passive",
-        desiredPassiveSkills: "Desired unique passives",
+        requirePassiveSkill: "Required unique passives",
+        requiredPassiveSkills: "Required unique passives",
         searchPassiveSkillsPlaceholder: "Search unique passives...",
         recommendBuilds: "Recommend Builds",
-        recommendationSelectCharacter: "Select a character and add priority stats in order of importance to get recommend builds.",
+        recommendationSelectCharacter: "Select a character and add weighted stats or required passives to get recommended builds.",
         recommendationNeedCharacter: "Please select a character first.",
-        recommendationNeedStats: "Please add at least one priority stat or unique passive.",
+        recommendationNeedStats: "Add a stat with weight above 0, a stat constraint, or a required passive.",
         recommendationNoBuilds: "No recommended builds matched the current filters.",
         recommendationScore: "Stat Score: ",
+        recommendationMatch: "Requirement Match: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
+        applyRecommendation: "Use build",
         onlyTwoZones: "Only show builds with 2 or less zones",
-        priorityLabel: "Priority",
+        weightLabel: "Weight",
+        automaticWeights: "Weight automatically by order",
+        weightHelp: "Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.",
+        highTierMaterial: "Epic Material",
+        hideRecommendationFilters: "Hide recommendation filters",
+        showRecommendationFilters: "Show recommendation filters",
+        buildCreditLimit: "Build credit limit",
+        minCredits: "Min credits",
+        maxCredits: "Max credits",
+        credits: "Credits",
+        totalCredits: "Total Credits",
         minLabel: "Min",
         maxLabel: "Max",
         selectCharacter: "Select Character",
         addStat: "Add stat",
         resetStats: "Reset",
         searchStatsPlaceholder: "Search stats...",
-        yourBuild: "Your Build",
+        yourEarlyBuild: "Your Early Build",
+        yourLateBuild: "Your Late-Game Build",
         resetBuild: "Reset Build",
         clickToAdd: "Click items below to add them to your build.",
+        clickToAddLate: "Choose one Legendary or Mythic item for each equipment slot.",
         selectEpicItems: "Select Epic Items",
+        selectLateItems: "Select Legendary and Mythic Items",
+        lateGameRouteNote: "Farming-route optimization is available only in Early Game Route mode.",
+        lateBuildSummary: "Final Build Summary",
+        currentBuildStats: "Current Build Stats",
+        buildComparison: "Build Comparison",
+        clearComparison: "Clear",
+        comparisonHelp: "Save any build with at least one item, change your items, then save the second build to compare them.",
+        saveBuildA: "Save as Build A",
+        saveBuildB: "Save as Build B",
+        buildA: "Build A",
+        buildB: "Build B",
+        loadBuild: "Load",
+        comparisonWaiting: "Save two builds to compare their stats and passive effects.",
+        incompleteLateBuild: "Select at least one item to save this build.",
+        noBuildStats: "Add equipment to see total stats and passive effects.",
+        itemsShown: "items shown",
+        noMatchingItems: "No items match the current filters.",
         optimizeRoute: "Run Optimizer",
         optimizeThenCompare: "Optimize a route, then click up to 2 routes below to compare stats.",
         itemStatsComparison: "Item Stats Comparison",
@@ -49,16 +84,26 @@ const DICT = {
         route1: "Route 1",
         route2: "Route 2",
         topRoutes: "<h3>Top Optimized Routes: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: Hyperloop not needed)</span></h3>",
+        showMoreRoutes: "Show more routes",
+        showFewerRoutes: "Show fewer routes",
         needDrone: "Need Drone: <strong>",
         noDrone: "No Drone Needed",
         buildVariant: "Build Variant:",
         searchCharPlaceholder: "Search...",
         searchItemPlaceholder: "Search item...",
+        languageLabel: "Language",
+        switchToDarkTheme: "Switch to dark theme",
+        switchToLightTheme: "Switch to light theme",
+        loadingData: "Loading item and character data…",
+        dataLoadError: "The optimizer data could not be loaded. Refresh the page to try again.",
+        addItem: "Add item",
+        removeItem: "Remove item",
+        selectRoute: "Select route for comparison",
         dataPatch: "Data patch",
         dataUpdated: "Data updated"
     },
     ko: {
-        title: "이터널 리턴 파밍 루트 옵티마이저",
+        title: "이터널 리턴 빌드 옵티마이저",
         filters: "필터",
         resetAll: "전체 초기화",
         level: "레벨:",
@@ -71,10 +116,32 @@ const DICT = {
         addStat: "스탯 추가",
         resetStats: "초기화",
         searchStatsPlaceholder: "스탯 검색...",
-        yourBuild: "내 빌드",
+        yourEarlyBuild: "초반 빌드",
+        yourLateBuild: "후반 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
+        clickToAddLate: "각 장비 부위에 전설 또는 신화 아이템을 하나씩 선택하세요.",
         selectEpicItems: "영웅 아이템 선택",
+        selectLateItems: "전설 및 신화 아이템 선택",
+        buildWorkflow: "빌드 방식",
+        earlyGameRoute: "초반 빌드/루트",
+        lateGameBuild: "후반 빌드",
+        lateGameRouteNote: "파밍 루트 최적화는 초반 파밍 루트 모드에서만 사용할 수 있습니다.",
+        lateBuildSummary: "최종 빌드 요약",
+        currentBuildStats: "현재 빌드 스탯",
+        buildComparison: "빌드 비교",
+        clearComparison: "초기화",
+        comparisonHelp: "아이템이 하나 이상인 빌드를 저장하고 아이템을 변경한 뒤 두 번째 빌드를 저장하여 비교하세요.",
+        saveBuildA: "빌드 A로 저장",
+        saveBuildB: "빌드 B로 저장",
+        buildA: "빌드 A",
+        buildB: "빌드 B",
+        loadBuild: "불러오기",
+        comparisonWaiting: "빌드 두 개를 저장하면 스탯과 고유 장착 효과를 비교할 수 있습니다.",
+        incompleteLateBuild: "빌드를 저장하려면 아이템을 하나 이상 선택해주세요.",
+        noBuildStats: "장비를 추가하면 전체 스탯과 고유 장착 효과를 확인할 수 있습니다.",
+        itemsShown: "개 아이템",
+        noMatchingItems: "현재 필터와 일치하는 아이템이 없습니다.",
         optimizeRoute: "옵티마이저 실행",
         optimizeThenCompare: "옵티마이저 실행 후, 루트를 최대 2개까지 선택하여 스탯을 비교하세요.",
         itemStatsComparison: "아이템 스탯 비교",
@@ -85,31 +152,54 @@ const DICT = {
         route1: "루트 1",
         route2: "루트 2",
         topRoutes: "<h3>최적화 루트 TOP: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: 하이퍼루프 필요 X)</span></h3>",
+        showMoreRoutes: "루트 더 보기",
+        showFewerRoutes: "루트 접기",
         needDrone: "드론 필요: <strong>",
         noDrone: "드론 필요 없음",
         buildVariant: "빌드 변형:",
         searchCharPlaceholder: "실험체 검색...",
-        searchItemPlaceholder: "아이템 검색..."
+        searchItemPlaceholder: "아이템 검색...",
+        languageLabel: "언어",
+        switchToDarkTheme: "어두운 테마로 전환",
+        switchToLightTheme: "밝은 테마로 전환",
+        loadingData: "아이템 및 실험체 데이터를 불러오는 중…",
+        dataLoadError: "옵티마이저 데이터를 불러오지 못했습니다. 페이지를 새로고침하여 다시 시도하세요.",
+        addItem: "아이템 추가",
+        removeItem: "아이템 제거",
+        selectRoute: "비교할 루트 선택"
     }
 };
 
 Object.assign(DICT.ko, {
     routeOptimizerTab: "아이템 선택",
     recommendationsTab: "아이템 추천",
-    addPriorityStat: "선호 스탯 추가",
+    addPriorityStat: "가중치 스탯 추가",
     recommendBuilds: "빌드 추천",
-    recommendationSelectCharacter: "실험체를 선택하고, 선호 스탯을 중요도 순서로 추가한 뒤 빌드를 추천받으세요.",
+    recommendationSelectCharacter: "실험체를 선택하고 가중치 스탯이나 필수 고유 효과를 추가한 뒤 빌드를 추천받으세요.",
     recommendationNeedCharacter: "실험체를 먼저 선택해주세요.",
-    recommendationNeedStats: "선호 스탯이나 고유 장착 효과를 하나 이상 추가해주세요.",
+    recommendationNeedStats: "가중치가 0보다 큰 스탯, 스탯 조건 또는 필수 고유 효과를 추가해주세요.",
     recommendationNoBuilds: "현재 필터를 충족하는 추천 빌드가 없습니다.",
     recommendationScore: "스탯 점수: ",
+    recommendationMatch: "조건 일치: ",
     recommendationApplied: "빌드가 적용되었습니다. '옵티마이저 실행' 버튼을 눌러 파밍 루트를 찾으세요.",
+    applyRecommendation: "빌드 적용",
     onlyTwoZones: "2구역 이하 빌드만 보기",
     passiveSkills: "고유 장착 효과",
     addPassiveSkill: "고유 장착 효과 추가",
-    desiredPassiveSkills: "선호 고유 장착 효과",
+    requirePassiveSkill: "필수 고유 효과 추가",
+    requiredPassiveSkills: "필수 고유 장착 효과",
     searchPassiveSkillsPlaceholder: "고유 장착 효과 검색...",
-    priorityLabel: "우선순위",
+    weightLabel: "가중치",
+    automaticWeights: "순서에 따라 가중치 자동 설정",
+    weightHelp: "자동 설정은 기하급수적 감소(1, 0.68, 0.46…)를 사용합니다. 직접 입력하려면 끄고 0부터 1 사이의 상대 가중치를 설정하세요.",
+    highTierMaterial: "영웅 재료",
+    hideRecommendationFilters: "추천 필터 접기",
+    showRecommendationFilters: "추천 필터 펼치기",
+    buildCreditLimit: "빌드 크레딧 제한",
+    minCredits: "최소 크레딧",
+    maxCredits: "최대 크레딧",
+    credits: "크레딧",
+    totalCredits: "총 크레딧",
     minLabel: "최소",
     maxLabel: "최대"
 });
@@ -131,18 +221,76 @@ function escapeAttribute(value) {
         .replace(/>/g, '&gt;');
 }
 
+const KOREAN_INITIAL_CONSONANTS = Object.freeze([
+    'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ',
+    'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+]);
+
+function normalizeSearchText(value) {
+    return String(value ?? '')
+        .normalize('NFC')
+        .toLocaleLowerCase()
+        .replace(/[\s\p{P}\p{S}]+/gu, '');
+}
+
+function getKoreanInitials(value) {
+    return Array.from(normalizeSearchText(value)).map(character => {
+        const codePoint = character.codePointAt(0);
+        if (codePoint < 0xAC00 || codePoint > 0xD7A3) return character;
+        return KOREAN_INITIAL_CONSONANTS[Math.floor((codePoint - 0xAC00) / 588)];
+    }).join('');
+}
+
+function isOrderedSubsequence(query, candidate) {
+    let queryIndex = 0;
+    for (const character of candidate) {
+        if (character === query[queryIndex]) queryIndex += 1;
+        if (queryIndex === query.length) return true;
+    }
+    return query.length === 0;
+}
+
+function matchesSearchTerm(term, ...candidateValues) {
+    const query = normalizeSearchText(term);
+    if (!query) return true;
+
+    return candidateValues.some(value => {
+        if (value === null || value === undefined) return false;
+        const candidate = normalizeSearchText(value);
+        const koreanInitials = getKoreanInitials(value);
+        return candidate.includes(query) ||
+            isOrderedSubsequence(query, candidate) ||
+            koreanInitials.includes(query) ||
+            isOrderedSubsequence(query, koreanInitials);
+    });
+}
+
 function getItemName(name) {
     if (currentLanguage === 'ko' && items[name] && items[name].nameKo) return items[name].nameKo;
     return name;
 }
 
+function getItemImagePath(name) {
+    return items[name] && items[name].image
+        ? items[name].image
+        : getItemPlaceholderPath(name);
+}
+
+function getCharacterImagePath(name) {
+    return chars[name] && chars[name].image
+        ? chars[name].image
+        : `images/characters/${name}.png`;
+}
+
 function getItemPlaceholderPath(name) {
     const part = items[name] && items[name].part;
-    return PART_NAMES[part] ? `images/${part}.png` : 'images/Weapon.png';
+    return PART_NAMES[part] ? `images/ui/${part}.png` : 'images/ui/Weapon.png';
 }
 
 function applyItemImageFallback(img, name) {
     if (!img) return;
+    img.loading = 'lazy';
+    img.decoding = 'async';
     img.onerror = function() {
         if (this.dataset.placeholderApplied === 'true') {
             this.style.display = 'none';
@@ -167,6 +315,7 @@ function getCharName(name) {
 }
 
 function applyTranslations() {
+    document.documentElement.lang = currentLanguage === 'ko' ? 'ko' : 'en';
     document.body.classList.remove('lang-en', 'lang-ko');
     document.body.classList.add('lang-' + currentLanguage);
     
@@ -181,8 +330,41 @@ function applyTranslations() {
         const key = el.getAttribute('data-i18n-placeholder');
         if (DICT[currentLanguage][key]) {
             el.setAttribute('placeholder', DICT[currentLanguage][key]);
+            el.setAttribute('aria-label', DICT[currentLanguage][key]);
         }
     });
+
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) languageSelect.setAttribute('aria-label', t('languageLabel'));
+    document.querySelectorAll('.workflow-switch-bar, .workflow-switch').forEach(element => {
+        element.setAttribute('aria-label', t('buildWorkflow'));
+    });
+    const resourceFilterGroup = document.querySelector('.resource-filter-row');
+    if (resourceFilterGroup) resourceFilterGroup.setAttribute('aria-label', t('highTierMaterial'));
+    syncThemeControl();
+}
+
+function syncThemeControl() {
+    const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+    const isDark = document.body.classList.contains('dark-mode');
+    const label = t(isDark ? 'switchToLightTheme' : 'switchToDarkTheme');
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.setAttribute('aria-pressed', String(isDark));
+    themeToggle.title = label;
+}
+
+function setAppStatus(state) {
+    const status = document.getElementById('app-status');
+    const message = document.getElementById('app-status-message');
+    const main = document.querySelector('main');
+    if (!status || !message) return;
+
+    status.dataset.state = state;
+    status.hidden = state === 'ready';
+    status.setAttribute('role', state === 'error' ? 'alert' : 'status');
+    message.textContent = t(state === 'error' ? 'dataLoadError' : 'loadingData');
+    if (main) main.setAttribute('aria-busy', String(state === 'loading'));
 }
 
 function prettifyStatId(id) {
@@ -198,7 +380,7 @@ function getStatName(id) {
     return STAT_LABELS[id] || { en: prettifyStatId(id), ko: prettifyStatId(id) };
 }
 
-function buildDisplayStats() {
+function buildDisplayStats(buildType = activeBuildType) {
     const orderedIds = [];
     const seen = new Set();
     const addId = (id) => {
@@ -216,8 +398,8 @@ function buildDisplayStats() {
 
     DISPLAY_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
     ITEM_TOOLTIP_STATS = DISPLAY_STATS;
-    buildSelectableStats();
-    buildPassiveSkillOptions();
+    buildSelectableStats(buildType);
+    buildPassiveSkillOptions(buildType);
 }
 
 function getSelectableStats() {
@@ -233,8 +415,7 @@ function sortStatsByCurrentLanguage(stats) {
     });
 }
 
-function buildSelectableStats() {
-    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+function buildSelectableStats(buildType = activeBuildType) {
     const actualIds = new Set();
     const normalizeId = (id) => id === 'moveSpeedRatio' ? 'moveSpeed' : id;
     const addActualId = (id) => {
@@ -244,7 +425,7 @@ function buildSelectableStats() {
     };
 
     Object.values(items).forEach(item => {
-        if (item.type !== 'Epic' || !equipmentParts.has(item.part)) return;
+        if (!isItemEligibleForBuild(item, buildType)) return;
         Object.keys(item.stats || {}).forEach(addActualId);
         Object.keys(item.uniqueStats || {}).forEach(addActualId);
         Object.keys(item.statsByLv || {}).forEach(addActualId);
@@ -266,19 +447,20 @@ function buildSelectableStats() {
     SELECTABLE_STATS = orderedIds.map(id => ({ id, name: getStatName(id) }));
 }
 
-function buildPassiveSkillOptions() {
-    const equipmentParts = new Set(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+function buildPassiveSkillOptions(buildType = activeBuildType) {
     const passiveMap = new Map();
 
     Object.values(items).forEach(item => {
-        if (item.type !== 'Epic' || !equipmentParts.has(item.part) || !item.passiveSkill) return;
-        if (!passiveMap.has(item.passiveSkill.name)) {
-            passiveMap.set(item.passiveSkill.name, {
-                id: item.passiveSkill.name,
-                name: item.passiveSkill.name,
-                nameKo: item.passiveSkill.nameKo || item.passiveSkill.name
-            });
-        }
+        if (!isItemEligibleForBuild(item, buildType)) return;
+        getItemPassiveSkills(item).forEach(passiveSkill => {
+            if (!passiveMap.has(passiveSkill.name)) {
+                passiveMap.set(passiveSkill.name, {
+                    id: passiveSkill.name,
+                    name: passiveSkill.name,
+                    nameKo: passiveSkill.nameKo || passiveSkill.name
+                });
+            }
+        });
     });
 
     PASSIVE_SKILL_OPTIONS = Array.from(passiveMap.values());
@@ -295,16 +477,157 @@ function getPassiveSkillOptions() {
     });
 }
 
-function getPassiveSkillOptionById(id) {
-    return PASSIVE_SKILL_OPTIONS.find(option => option.id === id) || { id, name: id, nameKo: id };
-}
-
 function getWeaponTypeName(api) {
     const weapon = WEAPON_TYPES.find(w => w.api === api);
     return weapon ? weapon.name[currentLanguage] : api;
 }
 
-const BUILD_SLOT_ORDER = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
+const BUILD_TYPES = Object.freeze({
+    EARLY: 'early',
+    LATE: 'late'
+});
+
+const EQUIPMENT_SLOTS = Object.freeze(['Weapon', 'Chest', 'Head', 'Arm', 'Leg']);
+const BUILD_SLOT_ORDER = Object.freeze(
+    Object.fromEntries(EQUIPMENT_SLOTS.map((slot, index) => [slot, index + 1]))
+);
+const BUILD_CONFIG = Object.freeze({
+    [BUILD_TYPES.EARLY]: Object.freeze({
+        grades: Object.freeze(['Epic']),
+        selectionMode: 'variants',
+        routeEnabled: true
+    }),
+    [BUILD_TYPES.LATE]: Object.freeze({
+        grades: Object.freeze(['Legend', 'Mythic']),
+        selectionMode: 'single-per-slot',
+        routeEnabled: false
+    })
+});
+
+const ITEM_GRADE_STYLES = Object.freeze({
+    Epic: Object.freeze({ color: '#9b59b6', cardStart: '#302A40', cardEnd: '#511D8C' }),
+    Legend: Object.freeze({ color: '#f1c40f', cardStart: '#493d16', cardEnd: '#8a6810' }),
+    Mythic: Object.freeze({ color: '#e74c3c', cardStart: '#491f25', cardEnd: '#8c1d2a' })
+});
+const LATE_GRADE_ORDER = Object.freeze({ Legend: 0, Mythic: 1 });
+
+const MYTHIC_WEAPON_VARIANT_STYLES = Object.freeze({
+    Dawn: Object.freeze({ className: 'dawn', color: '#3867ff' }),
+    Crimson: Object.freeze({ className: 'crimson', color: '#e33f4f' })
+});
+
+const HIGH_TIER_MATERIALS = Object.freeze({
+    Meteorite: Object.freeze({ price: 200, image: 'images/materials/Meteorite.png', nameKo: '운석' }),
+    'Tree of Life': Object.freeze({ price: 200, image: 'images/materials/Tree of Life.png', nameKo: '생명의 나무' }),
+    Mythril: Object.freeze({ price: 250, image: 'images/materials/Mythril.png', nameKo: '미스릴' }),
+    'Force Core': Object.freeze({ price: 350, image: 'images/materials/Force Core.png', nameKo: '포스 코어' }),
+    'VF Blood Sample': Object.freeze({ price: 500, image: 'images/materials/VF Blood Sample.png', nameKo: 'VF 혈액 샘플' })
+});
+
+const SPECIAL_ITEM_RESOURCE_SUFFIXES = Object.freeze({
+    MT: 'Meteorite',
+    TL: 'Tree of Life',
+    ML: 'Mythril',
+    FC: 'Force Core',
+    VBS: 'VF Blood Sample'
+});
+
+function getBuildConfig(buildType = activeBuildType) {
+    return BUILD_CONFIG[buildType] || BUILD_CONFIG[BUILD_TYPES.EARLY];
+}
+
+function getBuild(buildType = activeBuildType) {
+    return buildsByType[buildType] || earlyBuild;
+}
+
+function isEquipmentItem(item) {
+    return !!item && Object.prototype.hasOwnProperty.call(BUILD_SLOT_ORDER, item.part);
+}
+
+function isItemEligibleForBuild(item, buildType = activeBuildType) {
+    return isEquipmentItem(item) && getBuildConfig(buildType).grades.includes(item.type);
+}
+
+function getItemGradeStyle(grade) {
+    return ITEM_GRADE_STYLES[grade] || ITEM_GRADE_STYLES.Epic;
+}
+
+function getMythicWeaponVariant(name, item = items[name]) {
+    if (!item || item.type !== 'Mythic' || item.part !== 'Weapon') return null;
+    return Object.keys(MYTHIC_WEAPON_VARIANT_STYLES).find(variant => name.endsWith(` - ${variant}`)) || null;
+}
+
+function applyMythicWeaponVariantIndicator(element, name, item = items[name]) {
+    const variant = getMythicWeaponVariant(name, item);
+    element.classList.remove('item-variant', 'item-variant-dawn', 'item-variant-crimson');
+
+    if (!variant) {
+        element.style.removeProperty('--item-variant-accent');
+        delete element.dataset.itemVariant;
+        return null;
+    }
+
+    const variantStyle = MYTHIC_WEAPON_VARIANT_STYLES[variant];
+    element.classList.add('item-variant', `item-variant-${variantStyle.className}`);
+    element.style.setProperty('--item-variant-accent', variantStyle.color);
+    element.dataset.itemVariant = variantStyle.className;
+    return variant;
+}
+
+function getHighTierMaterialsForItem(name, item = items[name]) {
+    if (!item) return [];
+    const components = new Set(item.components || []);
+    const suffix = Object.keys(SPECIAL_ITEM_RESOURCE_SUFFIXES).find(value => name.endsWith(` ${value}`));
+    if (suffix) return [SPECIAL_ITEM_RESOURCE_SUFFIXES[suffix]];
+
+    if (components.has('Force Core') || (components.has('Meteorite') && components.has('Tree of Life'))) {
+        return ['Force Core'];
+    }
+    return Object.keys(HIGH_TIER_MATERIALS).filter(material => components.has(material));
+}
+
+function getItemCreditCost(name, item = items[name]) {
+    return getHighTierMaterialsForItem(name, item)
+        .reduce((total, material) => total + HIGH_TIER_MATERIALS[material].price, 0);
+}
+
+function getBuildCreditCost(itemNames) {
+    return Array.from(itemNames || []).reduce((total, name) => total + getItemCreditCost(name), 0);
+}
+
+function getHighTierMaterialName(material) {
+    const config = HIGH_TIER_MATERIALS[material];
+    return currentLanguage === 'ko' && config ? config.nameKo : material;
+}
+
+function itemMatchesLateResourceFilters(name, item = items[name]) {
+    const materials = getHighTierMaterialsForItem(name, item);
+    if (materials.length === 0) return true;
+    return materials.some(material => lateResourceFilters.has(material));
+}
+
+function compareCatalogItems(a, b) {
+    const [nameA, dataA] = a;
+    const [nameB, dataB] = b;
+    const orderA = BUILD_SLOT_ORDER[dataA.part] || 99;
+    const orderB = BUILD_SLOT_ORDER[dataB.part] || 99;
+
+    if (orderA !== orderB) return orderA - orderB;
+
+    if (dataA.part === 'Weapon' && dataB.part === 'Weapon') {
+        const weaponDifference = (WEAPON_TYPE_ORDER[dataA.weaponType] ?? 99) -
+            (WEAPON_TYPE_ORDER[dataB.weaponType] ?? 99);
+        if (weaponDifference !== 0) return weaponDifference;
+    }
+
+    if (activeBuildType === BUILD_TYPES.LATE) {
+        const gradeDifference = (LATE_GRADE_ORDER[dataA.type] ?? 99) -
+            (LATE_GRADE_ORDER[dataB.type] ?? 99);
+        if (gradeDifference !== 0) return gradeDifference;
+    }
+
+    return getItemName(nameA).localeCompare(getItemName(nameB), currentLanguage === 'ko' ? 'ko' : 'en');
+}
 
 function sortItemsByBuildSlot(itemNames) {
     return [...itemNames].sort((a, b) => {
@@ -334,24 +657,205 @@ function getItemStatValue(item, statId, level = charLevel) {
     }, 0);
 }
 
-const selectedEpics = new Set();
-let currentMode = "optimizer";
+const earlyBuild = new Set();
+const lateBuild = new Set();
+const buildsByType = Object.freeze({
+    [BUILD_TYPES.EARLY]: earlyBuild,
+    [BUILD_TYPES.LATE]: lateBuild
+});
+const WORKFLOW_STORAGE_KEY = 'workflowMode';
+const buildFilterState = {
+    [BUILD_TYPES.EARLY]: {
+        part: 'All',
+        weapon: 'All',
+        substats: new Set(),
+        passiveSkills: new Set(),
+        search: ''
+    },
+    [BUILD_TYPES.LATE]: {
+        part: 'All',
+        weapon: 'All',
+        substats: new Set(),
+        passiveSkills: new Set(),
+        search: ''
+    }
+};
+const lateRarityFilters = new Set(BUILD_CONFIG[BUILD_TYPES.LATE].grades);
+const lateResourceFilters = new Set(Object.keys(HIGH_TIER_MATERIALS));
+const lateComparisonBuilds = [null, null];
+const recommendationStateByType = {
+    [BUILD_TYPES.EARLY]: {
+        priorities: [],
+        weights: {},
+        automaticWeights: true,
+        constraints: {},
+        results: [],
+        passiveSkills: new Set(),
+        onlyTwoZones: false,
+        creditMin: '',
+        creditMax: ''
+    },
+    [BUILD_TYPES.LATE]: {
+        priorities: [],
+        weights: {},
+        automaticWeights: true,
+        constraints: {},
+        results: [],
+        passiveSkills: new Set(),
+        onlyTwoZones: false,
+        creditMin: '',
+        creditMax: ''
+    }
+};
+let activeBuildType = BUILD_TYPES.EARLY;
+let currentCenterMode = "optimizer";
+let earlyCenterMode = "optimizer";
+let lateCenterMode = "optimizer";
 let recommendationPriorities = [];
+let recommendationWeights = {};
+let recommendationAutomaticWeights = true;
 let recommendationConstraints = {};
 let recommendationResults = [];
 let recommendationPassiveSkills = new Set();
 let recommendationOnlyTwoZones = false;
+let recommendationCreditMin = '';
+let recommendationCreditMax = '';
+const recommendationFiltersCollapsedByType = {
+    [BUILD_TYPES.EARLY]: false,
+    [BUILD_TYPES.LATE]: false
+};
 const recommendationRouteCache = new Map();
-let currentFilter = "All"; // Track active filter
-let currentWeaponFilter = "All";
-let activeSubstats = new Set();
-let activePassiveSkills = new Set();
+const RECOMMENDATION_RESULT_LIMIT = 20;
+let lastRecommendationSearchMetrics = null;
+let currentFilter = buildFilterState[BUILD_TYPES.EARLY].part;
+let currentWeaponFilter = buildFilterState[BUILD_TYPES.EARLY].weapon;
+let activeSubstats = buildFilterState[BUILD_TYPES.EARLY].substats;
+let activePassiveSkills = buildFilterState[BUILD_TYPES.EARLY].passiveSkills;
 let currentCharacter = null;
 let chars = {};
 let charLevel = 1;
 let selectedRoutes = [];
 let generatedRoutes = [];
 let activeTooltipTrigger = null;
+
+function resolveInitialBuildType(search = '', storedMode = null) {
+    const queryMode = new URLSearchParams(search).get('mode');
+    if (queryMode === BUILD_TYPES.EARLY || queryMode === BUILD_TYPES.LATE) return queryMode;
+    if (storedMode === BUILD_TYPES.EARLY || storedMode === BUILD_TYPES.LATE) return storedMode;
+    return BUILD_TYPES.EARLY;
+}
+
+function saveCurrentBuildFilterState() {
+    const state = buildFilterState[activeBuildType];
+    state.part = currentFilter;
+    state.weapon = currentWeaponFilter;
+    state.substats = activeSubstats;
+    state.passiveSkills = activePassiveSkills;
+    const itemSearch = document.getElementById('item-search');
+    if (itemSearch) state.search = itemSearch.value;
+}
+
+function loadBuildFilterState(buildType) {
+    const state = buildFilterState[buildType];
+    currentFilter = state.part;
+    currentWeaponFilter = state.weapon;
+    activeSubstats = state.substats;
+    activePassiveSkills = state.passiveSkills;
+}
+
+function saveCurrentRecommendationState() {
+    const state = recommendationStateByType[activeBuildType];
+    state.priorities = recommendationPriorities;
+    state.weights = recommendationWeights;
+    state.automaticWeights = recommendationAutomaticWeights;
+    state.constraints = recommendationConstraints;
+    state.results = recommendationResults;
+    state.passiveSkills = recommendationPassiveSkills;
+    state.onlyTwoZones = recommendationOnlyTwoZones;
+    state.creditMin = recommendationCreditMin;
+    state.creditMax = recommendationCreditMax;
+}
+
+function loadRecommendationState(buildType) {
+    const state = recommendationStateByType[buildType];
+    recommendationPriorities = state.priorities;
+    recommendationWeights = state.weights;
+    recommendationAutomaticWeights = state.automaticWeights;
+    recommendationConstraints = state.constraints;
+    recommendationResults = state.results;
+    recommendationPassiveSkills = state.passiveSkills;
+    recommendationOnlyTwoZones = state.onlyTwoZones;
+    recommendationCreditMin = state.creditMin;
+    recommendationCreditMax = state.creditMax;
+}
+
+const ECHION_EXCLUSIVE_WEAPONS = new Set([
+    "Black Mamba King",
+    "Deathadder Queen",
+    "Alpha Sidewinder"
+]);
+
+const PRIYA_EXCLUSIVE_HEAD_ITEMS = new Set([
+    "Harmony in Full Bloom",
+    "Celestial Echo"
+]);
+
+function isItemCompatibleWithCharacter(itemName, characterName = currentCharacter) {
+    const item = items[itemName];
+    if (!item) return false;
+    if (!characterName) return true;
+
+    const character = chars[characterName];
+    if (!character) return false;
+    if (item.part === 'Weapon' && !character.masteries.includes(item.weaponType)) return false;
+    if (PRIYA_EXCLUSIVE_HEAD_ITEMS.has(itemName) && characterName !== 'Priya') return false;
+    if (characterName === 'Priya' && item.part === 'Head' && !PRIYA_EXCLUSIVE_HEAD_ITEMS.has(itemName)) return false;
+    if (characterName !== 'Echion' && (ECHION_EXCLUSIVE_WEAPONS.has(itemName) || item.weaponType === 'VFArm')) return false;
+    return true;
+}
+
+function removeIncompatibleBuildItems(buildType, characterName = currentCharacter) {
+    const build = getBuild(buildType);
+    let changed = false;
+    for (const itemName of build) {
+        if (!isItemEligibleForBuild(items[itemName], buildType) || !isItemCompatibleWithCharacter(itemName, characterName)) {
+            build.delete(itemName);
+            changed = true;
+        }
+    }
+    return changed;
+}
+
+function addItemToBuild(itemName, buildType = activeBuildType) {
+    const item = items[itemName];
+    if (!isItemEligibleForBuild(item, buildType) || !isItemCompatibleWithCharacter(itemName)) return false;
+
+    const build = getBuild(buildType);
+    if (getBuildConfig(buildType).selectionMode === 'single-per-slot') {
+        for (const selectedName of build) {
+            if (items[selectedName] && items[selectedName].part === item.part) build.delete(selectedName);
+        }
+    }
+    build.add(itemName);
+    return true;
+}
+
+function getBuildItemForSlot(build, slot) {
+    return Array.from(build).find(name => items[name] && items[name].part === slot) || null;
+}
+
+function isLateBuildComplete(build = lateBuild) {
+    return EQUIPMENT_SLOTS.every(slot => !!getBuildItemForSlot(build, slot));
+}
+
+function canSaveLateComparisonBuild(build = lateBuild) {
+    return build.size > 0;
+}
+
+function createLateBuildSnapshot(build = lateBuild) {
+    if (!canSaveLateComparisonBuild(build)) return null;
+    return Object.freeze(sortItemsByBuildSlot(build));
+}
 
 const SUBSTATS = [
     { id: 'attackPower', name: { en: 'Attack Power', ko: '공격력' } },
@@ -452,34 +956,38 @@ const PART_NAMES = {
 
 const TYPE_NAMES = {
     "Epic": { en: "Epic", ko: "영웅" },
-    "Legendary": { en: "Legendary", ko: "전설" }
+    "Legend": { en: "Legendary", ko: "전설" },
+    "Mythic": { en: "Mythic", ko: "신화" }
 };
 
 const WEAPON_TYPES = [
-    { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "01. Glove.png" },
-    { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "02. Tonfa.png" },
-    { api: "Bat", name: { en: "Bat", ko: "방망이" }, img: "03. Bat.png" },
-    { api: "Hammer", name: { en: "Hammer", ko: "망치" }, img: "04. Hammer.png" },
-    { api: "Whip", name: { en: "Whip", ko: "채찍" }, img: "05. Whip.png" },
-    { api: "HighAngleFire", name: { en: "Throw", ko: "투척" }, img: "06. Throwing.png" },
-    { api: "DirectFire", name: { en: "Shuriken", ko: "암기" }, img: "07. Shuriken.png" },
-    { api: "Bow", name: { en: "Bow", ko: "활" }, img: "08. Bow.png" },
-    { api: "CrossBow", name: { en: "Crossbow", ko: "석궁" }, img: "09. Crossbow.png" },
-    { api: "Pistol", name: { en: "Pistol", ko: "권총" }, img: "10. Pistol.png" },
-    { api: "AssaultRifle", name: { en: "Assault Rifle", ko: "돌격 소총" }, img: "11. Assault Rifle.png" },
-    { api: "SniperRifle", name: { en: "Sniper Rifle", ko: "저격총" }, img: "12. Sniper Rifle.png" },
-    { api: "Axe", name: { en: "Axe", ko: "도끼" }, img: "13. Axe.png" },
-    { api: "OneHandSword", name: { en: "Dagger", ko: "단검" }, img: "14. Dagger.png" },
-    { api: "TwoHandSword", name: { en: "Two-Handed Sword", ko: "양손검" }, img: "15. Twohanded Sword.png" },
-    { api: "DualSword", name: { en: "Dual Swords", ko: "쌍검" }, img: "16. Dual Sword.png" },
-    { api: "Spear", name: { en: "Spear", ko: "창" }, img: "17. Spear.png" },
-    { api: "Nunchaku", name: { en: "Nunchaku", ko: "쌍절곤" }, img: "18. Nunchaku.png" },
-    { api: "Rapier", name: { en: "Rapier", ko: "레이피어" }, img: "19. Rapier.png" },
-    { api: "Guitar", name: { en: "Guitar", ko: "기타" }, img: "20. Guitar.png" },
-    { api: "Camera", name: { en: "Camera", ko: "카메라" }, img: "21. Camera.png" },
-    { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "22. Arcana.png" },
-    { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "23. VF Prosthetic.png" }
+    { api: "Glove", name: { en: "Glove", ko: "글러브" }, img: "images/ui/weapon-types/Glove.png" },
+    { api: "Tonfa", name: { en: "Tonfa", ko: "톤파" }, img: "images/ui/weapon-types/Tonfa.png" },
+    { api: "Bat", name: { en: "Bat", ko: "방망이" }, img: "images/ui/weapon-types/Bat.png" },
+    { api: "Hammer", name: { en: "Hammer", ko: "망치" }, img: "images/ui/weapon-types/Hammer.png" },
+    { api: "Whip", name: { en: "Whip", ko: "채찍" }, img: "images/ui/weapon-types/Whip.png" },
+    { api: "HighAngleFire", name: { en: "Throw", ko: "투척" }, img: "images/ui/weapon-types/Throwing.png" },
+    { api: "DirectFire", name: { en: "Shuriken", ko: "암기" }, img: "images/ui/weapon-types/Shuriken.png" },
+    { api: "Bow", name: { en: "Bow", ko: "활" }, img: "images/ui/weapon-types/Bow.png" },
+    { api: "CrossBow", name: { en: "Crossbow", ko: "석궁" }, img: "images/ui/weapon-types/Crossbow.png" },
+    { api: "Pistol", name: { en: "Pistol", ko: "권총" }, img: "images/ui/weapon-types/Pistol.png" },
+    { api: "AssaultRifle", name: { en: "Assault Rifle", ko: "돌격 소총" }, img: "images/ui/weapon-types/Assault Rifle.png" },
+    { api: "SniperRifle", name: { en: "Sniper Rifle", ko: "저격총" }, img: "images/ui/weapon-types/Sniper Rifle.png" },
+    { api: "Axe", name: { en: "Axe", ko: "도끼" }, img: "images/ui/weapon-types/Axe.png" },
+    { api: "OneHandSword", name: { en: "Dagger", ko: "단검" }, img: "images/ui/weapon-types/Dagger.png" },
+    { api: "TwoHandSword", name: { en: "Two-Handed Sword", ko: "양손검" }, img: "images/ui/weapon-types/Two-Handed Sword.png" },
+    { api: "DualSword", name: { en: "Dual Swords", ko: "쌍검" }, img: "images/ui/weapon-types/Dual Swords.png" },
+    { api: "Spear", name: { en: "Spear", ko: "창" }, img: "images/ui/weapon-types/Spear.png" },
+    { api: "Nunchaku", name: { en: "Nunchaku", ko: "쌍절곤" }, img: "images/ui/weapon-types/Nunchaku.png" },
+    { api: "Rapier", name: { en: "Rapier", ko: "레이피어" }, img: "images/ui/weapon-types/Rapier.png" },
+    { api: "Guitar", name: { en: "Guitar", ko: "기타" }, img: "images/ui/weapon-types/Guitar.png" },
+    { api: "Camera", name: { en: "Camera", ko: "카메라" }, img: "images/ui/weapon-types/Camera.png" },
+    { api: "Arcana", name: { en: "Arcana", ko: "아르카나" }, img: "images/ui/weapon-types/Arcana.png" },
+    { api: "VFArm", name: { en: "VF Prosthetic", ko: "VF의수" }, img: "images/ui/weapon-types/VF Prosthetic.png" }
 ];
+const WEAPON_TYPE_ORDER = Object.freeze(
+    Object.fromEntries(WEAPON_TYPES.map((weapon, index) => [weapon.api, index]))
+);
 
 // HARDCODED BASE WEAPONS
 const BASE_WEAPONS = new Set([
@@ -493,6 +1001,151 @@ const BASE_WEAPONS = new Set([
 let items = {};
 let mapData = {};
 let dataMeta = {};
+
+function setTranslatedElement(id, key) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.dataset.i18n = key;
+    element.textContent = t(key);
+}
+
+function renderCenterMode(mode) {
+    currentCenterMode = mode === 'recommendations' ? 'recommendations' : 'optimizer';
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+        const selected = tab.dataset.mode === currentCenterMode;
+        tab.classList.toggle('active', selected);
+        tab.setAttribute('aria-pressed', String(selected));
+    });
+    document.querySelectorAll('.mode-view').forEach(view => {
+        view.classList.toggle('active', view.id === `${currentCenterMode}-view`);
+    });
+}
+
+function renderWorkflowShell() {
+    const isEarly = activeBuildType === BUILD_TYPES.EARLY;
+    document.body.dataset.workflow = activeBuildType;
+
+    document.querySelectorAll('.workflow-btn').forEach(button => {
+        const selected = button.dataset.buildType === activeBuildType;
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+    });
+
+    const modeTabs = document.querySelector('.mode-tabs');
+    if (modeTabs) modeTabs.hidden = false;
+    renderCenterMode(isEarly ? earlyCenterMode : lateCenterMode);
+
+    ['calculate-btn', 'route-results-container', 'resizer', 'stat-calculator'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) element.hidden = !isEarly;
+    });
+    const lateGamePanel = document.getElementById('late-game-panel');
+    if (lateGamePanel) lateGamePanel.hidden = isEarly;
+    const lateResourceFilterGroup = document.getElementById('late-resource-filter-group');
+    if (lateResourceFilterGroup) lateResourceFilterGroup.hidden = isEarly;
+    const routeFilter = document.querySelector('.recommendation-route-filter');
+    if (routeFilter) routeFilter.hidden = !isEarly;
+    const creditFilter = document.getElementById('recommendation-credit-filter');
+    if (creditFilter) creditFilter.hidden = isEarly;
+
+    setTranslatedElement('build-heading', isEarly ? 'yourEarlyBuild' : 'yourLateBuild');
+    setTranslatedElement('item-catalog-heading', isEarly ? 'selectEpicItems' : 'selectLateItems');
+
+    const itemSearch = document.getElementById('item-search');
+    if (itemSearch) itemSearch.value = buildFilterState[activeBuildType].search;
+
+    if (!isEarly) renderLateGamePanel();
+}
+
+function updateWorkflowUrl(buildType) {
+    const url = new URL(window.location.href);
+    if (buildType === BUILD_TYPES.LATE) url.searchParams.set('mode', BUILD_TYPES.LATE);
+    else url.searchParams.delete('mode');
+    window.history.replaceState({}, '', url);
+}
+
+function switchBuildType(buildType, { persist = true, updateUrl = true } = {}) {
+    if (!BUILD_CONFIG[buildType]) return;
+
+    saveCurrentBuildFilterState();
+    saveCurrentRecommendationState();
+    if (activeBuildType === BUILD_TYPES.EARLY) earlyCenterMode = currentCenterMode;
+    else lateCenterMode = currentCenterMode;
+    activeBuildType = buildType;
+    loadBuildFilterState(buildType);
+    loadRecommendationState(buildType);
+
+    if (persist) localStorage.setItem(WORKFLOW_STORAGE_KEY, buildType);
+    if (updateUrl) updateWorkflowUrl(buildType);
+
+    buildDisplayStats(buildType);
+    hideGlobalTooltip();
+    renderWorkflowShell();
+    setupFilters();
+    setupRecommendationControls();
+    renderRecommendationPriorityList();
+    renderRecommendationResults();
+    renderMainGrid();
+    updateSelectedPanel();
+    if (buildType === BUILD_TYPES.EARLY) renderStatComparison();
+    else renderLateGamePanel();
+}
+
+function setupWorkflowSwitch() {
+    document.querySelectorAll('.workflow-btn').forEach(button => {
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => switchBuildType(button.dataset.buildType));
+        button.dataset.bound = 'true';
+    });
+}
+
+function setupLateGameControls() {
+    document.querySelectorAll('.resource-filter-btn').forEach(button => {
+        const syncButton = () => {
+            const resource = button.dataset.resource;
+            const selected = lateResourceFilters.has(button.dataset.resource);
+            const label = `${getHighTierMaterialName(resource)} · ${HIGH_TIER_MATERIALS[resource].price} ${t('credits')}`;
+            button.classList.toggle('active', selected);
+            button.setAttribute('aria-pressed', String(selected));
+            button.setAttribute('aria-label', label);
+            button.title = label;
+        };
+        syncButton();
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => {
+            const resource = button.dataset.resource;
+            if (lateResourceFilters.has(resource)) lateResourceFilters.delete(resource);
+            else lateResourceFilters.add(resource);
+            document.querySelectorAll('.resource-filter-btn').forEach(resourceButton => {
+                const selected = lateResourceFilters.has(resourceButton.dataset.resource);
+                resourceButton.classList.toggle('active', selected);
+                resourceButton.setAttribute('aria-pressed', String(selected));
+            });
+            if (activeBuildType === BUILD_TYPES.LATE) {
+                recommendationResults = [];
+                renderRecommendationResults();
+            }
+            renderMainGrid();
+        });
+        button.dataset.bound = 'true';
+    });
+
+    document.querySelectorAll('.late-save-btn').forEach(button => {
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => saveLateComparisonBuild(Number(button.dataset.slot)));
+        button.dataset.bound = 'true';
+    });
+
+    const clearButton = document.getElementById('clear-late-comparison-btn');
+    if (clearButton && clearButton.dataset.bound !== 'true') {
+        clearButton.addEventListener('click', () => {
+            lateComparisonBuilds[0] = null;
+            lateComparisonBuilds[1] = null;
+            renderLateGamePanel();
+        });
+        clearButton.dataset.bound = 'true';
+    }
+}
 
 function renderDataStatus() {
     const patchElement = document.getElementById('data-patch');
@@ -523,65 +1176,87 @@ function renderDataStatus() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            syncThemeControl();
+        });
+    }
+
+    const langSelect = document.getElementById('language-select');
+    if (langSelect) {
+        langSelect.value = currentLanguage;
+        langSelect.addEventListener('change', (event) => {
+            currentLanguage = event.target.value;
+            localStorage.setItem('language', currentLanguage);
+            applyTranslations();
+
+            const loadState = document.getElementById('app-status')?.dataset.state || 'loading';
+            if (loadState !== 'ready') {
+                setAppStatus(loadState);
+                return;
+            }
+
+            renderDataStatus();
+            setupFilters();
+            setupLateGameControls();
+            setupRecommendationControls();
+            renderRecommendationPriorityList();
+            renderRecommendationResults();
+            renderMainGrid();
+            updateSelectedPanel();
+            renderStatComparison();
+            renderLateGamePanel();
+        });
+    }
+
+    applyTranslations();
+    setAppStatus('loading');
+
     try {
         const res = await fetch('data.json');
+        if (!res.ok) throw new Error(`Data request failed with status ${res.status}`);
         const data = await res.json();
+        if (!data || !data.items || !data.mapData || !data.chars) {
+            throw new Error('Data response is missing required optimizer fields');
+        }
         
         items = data.items;
         mapData = data.mapData;
         chars = data.chars;
         dataMeta = data.meta || {};
-        buildDisplayStats();
+        activeBuildType = resolveInitialBuildType(
+            window.location.search,
+            localStorage.getItem(WORKFLOW_STORAGE_KEY)
+        );
+        loadBuildFilterState(activeBuildType);
+        loadRecommendationState(activeBuildType);
+        localStorage.setItem(WORKFLOW_STORAGE_KEY, activeBuildType);
+        updateWorkflowUrl(activeBuildType);
+        buildDisplayStats(activeBuildType);
         renderDataStatus();
         
-        // Removed loading screen logic
-
-        // Initialize Theme
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Setup Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDark = document.body.classList.contains('dark-mode');
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            });
-        }
-
-        // Setup Language Toggle
-        const langSelect = document.getElementById('language-select');
-        if (langSelect) {
-            langSelect.value = currentLanguage;
-            applyTranslations(); // initial apply
-            langSelect.addEventListener('change', (e) => {
-                currentLanguage = e.target.value;
-                localStorage.setItem('language', currentLanguage);
-                applyTranslations();
-                renderDataStatus();
-                setupFilters();
-                setupRecommendationControls();
-                renderRecommendationPriorityList();
-                renderRecommendationResults();
-                renderMainGrid();
-                updateSelectedPanel();
-                renderStatComparison();
-            });
-        }
-
         // 1. Setup Filters
+        setupWorkflowSwitch();
+        setupLateGameControls();
         setupFilters();
         setupModeTabs();
         setupRecommendationControls();
+        renderWorkflowShell();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
         });
         document.addEventListener('pointerdown', (e) => {
             if (e.pointerType !== 'touch' && !window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
-            const tappedTrigger = e.target.closest('.item-card, .recommendation-item-icon[data-item]');
+            const tappedTrigger = e.target.closest('.item-card, .recommendation-item-icon[data-item], .late-snapshot-icon[data-item]');
             if (tappedTrigger !== activeTooltipTrigger) hideGlobalTooltip();
         }, true);
         document.addEventListener('scroll', () => {
@@ -590,11 +1265,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // 2. Initialize Grid
         renderMainGrid();
+        updateSelectedPanel();
 
         // 3. Setup Events
         const itemSearch = document.getElementById('item-search');
         if (itemSearch) {
             itemSearch.addEventListener('input', () => {
+                buildFilterState[activeBuildType].search = itemSearch.value;
                 renderMainGrid();
             });
             setupSearchClearButton(itemSearch);
@@ -602,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const calculateBtn = document.getElementById('calculate-btn');
         if (calculateBtn) {
-            calculateBtn.addEventListener('click', calculateAllVariants);
+            calculateBtn.addEventListener('click', calculateEarlyRouteVariants);
         }
 
         const levelInput = document.getElementById('char-level');
@@ -615,7 +1292,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 charLevel = val;
                 renderMainGrid();
                 renderStatComparison();
-                if (currentMode === "recommendations") {
+                renderLateGamePanel();
+                if (currentCenterMode === "recommendations") {
                     recommendationResults = [];
                     renderRecommendationResults();
                 }
@@ -625,9 +1303,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         const resetBtn = document.getElementById('reset-build-btn');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
-                selectedEpics.clear();
+                getBuild().clear();
                 updateMainGridVisuals();
-                updateSelectedPanel();
+                updateSelectedPanel({ buildChanged: true });
             });
         }
 
@@ -638,6 +1316,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const itemSearch = document.getElementById('item-search');
                 if (itemSearch) {
                     itemSearch.value = '';
+                    buildFilterState[activeBuildType].search = '';
                 }
 
                 // Reset character
@@ -649,12 +1328,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                 activeSubstats.clear();
                 activePassiveSkills.clear();
                 recommendationPriorities = [];
+                recommendationWeights = {};
+                recommendationAutomaticWeights = true;
                 recommendationConstraints = {};
                 recommendationResults = [];
                 recommendationPassiveSkills.clear();
                 recommendationOnlyTwoZones = false;
+                recommendationCreditMin = '';
+                recommendationCreditMax = '';
+                lateRarityFilters.clear();
+                BUILD_CONFIG[BUILD_TYPES.LATE].grades.forEach(grade => lateRarityFilters.add(grade));
+                lateResourceFilters.clear();
+                Object.keys(HIGH_TIER_MATERIALS).forEach(material => lateResourceFilters.add(material));
+                lateComparisonBuilds[0] = null;
+                lateComparisonBuilds[1] = null;
                 const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
                 if (twoZoneFilter) twoZoneFilter.checked = false;
+                const autoWeight = document.getElementById('recommendation-auto-weight');
+                if (autoWeight) autoWeight.checked = true;
+                const creditMinInput = document.getElementById('recommendation-credit-min');
+                const creditMaxInput = document.getElementById('recommendation-credit-max');
+                if (creditMinInput) creditMinInput.value = '';
+                if (creditMaxInput) creditMaxInput.value = '';
                 const substatContainer = document.getElementById('substat-filters');
                 if (substatContainer) renderSubstatPicker(substatContainer);
                 const passiveSkillContainer = document.getElementById('passive-skill-filters');
@@ -665,6 +1360,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     });
                 }
                 setupRecommendationControls();
+                setupLateGameControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
                 renderMainGrid();
@@ -721,9 +1417,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
         }
+        setAppStatus('ready');
     } catch (e) {
         console.error("Failed to load API data", e);
-        console.error("Error loading data.");
+        setAppStatus('error');
     }
 });
 
@@ -733,12 +1430,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function setupFilters() {
     const subfilterContainer = document.getElementById('weapon-subfilters');
+
+    if (currentCharacter && currentWeaponFilter !== 'All') {
+        const masteries = chars[currentCharacter] ? chars[currentCharacter].masteries : [];
+        if (!masteries.includes(currentWeaponFilter)) {
+            currentWeaponFilter = 'All';
+            buildFilterState[activeBuildType].weapon = 'All';
+        }
+    }
     
-    let subHtml = `<div class="filter-btn weapon-btn active" data-subfilter="All" title="${t('all')}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</div>`;
+    let subHtml = `<button type="button" class="filter-btn weapon-btn ${currentWeaponFilter === 'All' ? 'active' : ''}" data-subfilter="All" title="${t('all')}" aria-pressed="${currentWeaponFilter === 'All'}" style="color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:0.8em;">${t('all')}</button>`;
     WEAPON_TYPES.forEach(w => {
-        subHtml += `<div class="filter-btn weapon-btn" data-subfilter="${w.api}" title="${w.name[currentLanguage]}">
-            <img src="images/${w.img}" alt="${w.name[currentLanguage]}" onerror="this.style.display='none'; this.parentElement.innerText='?'">
-        </div>`;
+        const selected = currentWeaponFilter === w.api;
+        subHtml += `<button type="button" class="filter-btn weapon-btn ${selected ? 'active' : ''}" data-subfilter="${escapeAttribute(w.api)}" title="${escapeAttribute(w.name[currentLanguage])}" aria-pressed="${selected}">
+            <img src="${escapeAttribute(w.img)}" alt="${escapeAttribute(w.name[currentLanguage])}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='?'">
+        </button>`;
     });
     if (subfilterContainer) subfilterContainer.innerHTML = subHtml;
 
@@ -757,30 +1463,67 @@ function setupFilters() {
 
     const topBtns = document.querySelectorAll('.filter-row:not(#weapon-subfilters):not(.character-row):not(.substat-row) > .filter-btn');
     topBtns.forEach(btn => {
+        const selected = btn.dataset.filter === currentFilter;
+        const label = btn.dataset.filter === 'All'
+            ? t('all')
+            : (PART_NAMES[btn.dataset.filter]?.[currentLanguage] || btn.dataset.filter);
+        btn.classList.toggle('active', selected);
+        btn.setAttribute('aria-pressed', String(selected));
+        btn.setAttribute('aria-label', label);
+        btn.title = label;
+        const image = btn.querySelector('img');
+        if (image) image.alt = label;
+        if (btn.dataset.bound === 'true') return;
         btn.addEventListener('click', () => {
-            topBtns.forEach(b => b.classList.remove('active'));
+            topBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             
             currentFilter = btn.dataset.filter;
+            buildFilterState[activeBuildType].part = currentFilter;
             
             // Subfilter container remains always visible now
             renderMainGrid();
         });
+        btn.dataset.bound = 'true';
     });
 
     const subBtns = document.querySelectorAll('#weapon-subfilters .filter-btn');
     const mainWeaponImg = document.querySelector('.filter-btn[data-filter="Weapon"] img');
 
+    if (currentCharacter && chars[currentCharacter]) {
+        const masteries = chars[currentCharacter].masteries;
+        subBtns.forEach(button => {
+            const weaponType = button.dataset.subfilter;
+            const disabled = weaponType !== 'All' && !masteries.includes(weaponType);
+            button.classList.toggle('disabled', disabled);
+            button.disabled = disabled;
+        });
+    }
+
+    if (mainWeaponImg) {
+        const selectedWeapon = WEAPON_TYPES.find(weapon => weapon.api === currentWeaponFilter);
+        mainWeaponImg.src = selectedWeapon ? selectedWeapon.img : 'images/ui/Weapon.png';
+    }
+
     subBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            subBtns.forEach(b => b.classList.remove('active'));
+            subBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             currentWeaponFilter = btn.dataset.subfilter;
+            buildFilterState[activeBuildType].weapon = currentWeaponFilter;
             recommendationResults = [];
 
             if (mainWeaponImg) {
                 if (currentWeaponFilter === "All") {
-                    mainWeaponImg.src = "images/Weapon.png";
+                    mainWeaponImg.src = "images/ui/Weapon.png";
                 } else {
                     const clickedImg = btn.querySelector('img');
                     if (clickedImg) {
@@ -796,19 +1539,20 @@ function setupFilters() {
 }
 
 function setupModeTabs() {
-    const tabs = document.querySelectorAll('.mode-tab');
-    const views = document.querySelectorAll('.mode-view');
-    tabs.forEach(tab => {
+    document.querySelectorAll('.mode-tab').forEach(tab => {
+        if (tab.dataset.bound === 'true') return;
         tab.addEventListener('click', () => {
-            currentMode = tab.dataset.mode || 'optimizer';
-            tabs.forEach(t => t.classList.toggle('active', t === tab));
-            views.forEach(view => view.classList.toggle('active', view.id === `${currentMode}-view`));
-            if (currentMode === 'recommendations') {
+            const nextMode = tab.dataset.mode || 'optimizer';
+            if (activeBuildType === BUILD_TYPES.EARLY) earlyCenterMode = nextMode;
+            else lateCenterMode = nextMode;
+            renderCenterMode(nextMode);
+            if (currentCenterMode === 'recommendations') {
                 setupRecommendationControls();
                 renderRecommendationPriorityList();
                 renderRecommendationResults();
             }
         });
+        tab.dataset.bound = 'true';
     });
 }
 
@@ -819,12 +1563,49 @@ function setupRecommendationControls() {
     const options = document.getElementById('recommendation-stat-options');
     const recommendBtn = document.getElementById('recommend-builds-btn');
     const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+    const autoWeight = document.getElementById('recommendation-auto-weight');
     const passivePicker = document.getElementById('recommendation-passive-picker');
+    const filterToggle = document.getElementById('recommendation-filter-toggle');
+    const recommendationControls = document.querySelector('.recommendation-controls');
+    const creditMinInput = document.getElementById('recommendation-credit-min');
+    const creditMaxInput = document.getElementById('recommendation-credit-max');
 
     if (!select || !toggle || !search || !options) return;
 
     const renderOptions = () => renderRecommendationStatOptions(options, search.value);
     renderOptions();
+
+    if (filterToggle && recommendationControls) {
+        const syncCollapsedState = () => {
+            const collapsed = recommendationFiltersCollapsedByType[activeBuildType];
+            recommendationControls.classList.toggle('collapsed', collapsed);
+            filterToggle.setAttribute('aria-expanded', String(!collapsed));
+            filterToggle.querySelector('span').textContent = t(collapsed ? 'showRecommendationFilters' : 'hideRecommendationFilters');
+            const icon = filterToggle.querySelector('.recommendation-filter-toggle-icon');
+            if (icon) icon.textContent = collapsed ? '▾' : '▴';
+        };
+        syncCollapsedState();
+        if (filterToggle.dataset.bound !== 'true') {
+            filterToggle.addEventListener('click', () => {
+                recommendationFiltersCollapsedByType[activeBuildType] = !recommendationFiltersCollapsedByType[activeBuildType];
+                syncCollapsedState();
+            });
+            filterToggle.dataset.bound = 'true';
+        }
+    }
+
+    [[creditMinInput, 'min'], [creditMaxInput, 'max']].forEach(([input, bound]) => {
+        if (!input) return;
+        input.value = bound === 'min' ? recommendationCreditMin : recommendationCreditMax;
+        if (input.dataset.bound === 'true') return;
+        input.addEventListener('input', () => {
+            if (bound === 'min') recommendationCreditMin = input.value;
+            else recommendationCreditMax = input.value;
+            recommendationResults = [];
+            renderRecommendationResults();
+        });
+        input.dataset.bound = 'true';
+    });
 
     if (toggle.dataset.bound !== 'true') {
         toggle.addEventListener('click', () => {
@@ -861,10 +1642,25 @@ function setupRecommendationControls() {
         }
     }
 
+    if (autoWeight) {
+        autoWeight.checked = recommendationAutomaticWeights;
+        if (autoWeight.dataset.bound !== 'true') {
+            autoWeight.addEventListener('change', () => {
+                recommendationAutomaticWeights = autoWeight.checked;
+                if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
+                recommendationResults = [];
+                renderRecommendationPriorityList();
+                renderRecommendationResults();
+            });
+            autoWeight.dataset.bound = 'true';
+        }
+    }
+
     if (passivePicker) {
         renderPassiveSkillPicker(passivePicker, recommendationPassiveSkills, {
             prefix: 'recommendation-passive-skill',
-            labelKey: 'desiredPassiveSkills',
+            labelKey: 'requiredPassiveSkills',
+            addLabelKey: 'requirePassiveSkill',
             labelBeforePills: true,
             showReset: false,
             onChange: () => {
@@ -876,12 +1672,10 @@ function setupRecommendationControls() {
 }
 
 function renderRecommendationStatOptions(container, term = '') {
-    const normalizedTerm = term.trim().toLowerCase();
     const selected = new Set(recommendationPriorities);
     const statOptions = getSelectableStats().filter(stat => {
-        const label = stat.name[currentLanguage] || stat.name.en;
         return !selected.has(stat.id) &&
-            (!normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+            matchesSearchTerm(term, stat.id, stat.name.en, stat.name.ko);
     });
 
     container.innerHTML = '';
@@ -892,8 +1686,12 @@ function renderRecommendationStatOptions(container, term = '') {
         btn.innerHTML = `<span class="stat-option-check"></span><span>${stat.name[currentLanguage]}</span>`;
         btn.addEventListener('click', () => {
             recommendationPriorities.push(stat.id);
+            recommendationWeights[stat.id] = 1;
+            if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
             if (!recommendationConstraints[stat.id]) recommendationConstraints[stat.id] = { min: '', max: '' };
+            recommendationResults = [];
             renderRecommendationPriorityList();
+            renderRecommendationResults();
             renderRecommendationStatOptions(container, '');
             const search = document.getElementById('recommendation-stat-search');
             if (search) {
@@ -918,22 +1716,42 @@ function renderRecommendationPriorityList() {
         return;
     }
 
+    if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
     const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
     container.innerHTML = recommendationPriorities.map((statId, index) => {
         const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
         const constraints = recommendationConstraints[statId] || { min: '', max: '' };
+        const weight = getRecommendationWeight(statId);
         return `
             <div class="recommendation-priority-row" data-stat="${statId}">
-                <div class="priority-rank">${index + 1}</div>
                 <div class="priority-name">${stat.name[currentLanguage]}</div>
+                <label class="priority-weight-field">
+                    <span>${t('weightLabel')}</span>
+                    <input type="number" class="priority-weight-input" value="${weight}" min="0" max="1" step="0.01" inputmode="decimal" placeholder="${t('weightLabel')}" ${recommendationAutomaticWeights ? 'disabled' : ''} aria-label="${escapeAttribute(`${stat.name[currentLanguage]} ${t('weightLabel')}`)}">
+                </label>
                 <input type="number" class="priority-bound-input" data-bound="min" value="${constraints.min}" placeholder="${t('minLabel')}" step="any">
                 <input type="number" class="priority-bound-input" data-bound="max" value="${constraints.max}" placeholder="${t('maxLabel')}" step="any">
-                <button type="button" class="priority-order-btn" data-action="up" ${index === 0 ? 'disabled' : ''}>↑</button>
-                <button type="button" class="priority-order-btn" data-action="down" ${index === recommendationPriorities.length - 1 ? 'disabled' : ''}>↓</button>
-                <button type="button" class="priority-remove-btn" data-action="remove">×</button>
+                <button type="button" class="priority-order-btn" data-action="up" ${index === 0 ? 'disabled' : ''} aria-label="Move ${escapeAttribute(stat.name[currentLanguage])} up">↑</button>
+                <button type="button" class="priority-order-btn" data-action="down" ${index === recommendationPriorities.length - 1 ? 'disabled' : ''} aria-label="Move ${escapeAttribute(stat.name[currentLanguage])} down">↓</button>
+                <button type="button" class="priority-remove-btn" data-action="remove" aria-label="${escapeAttribute(`Remove ${stat.name[currentLanguage]}`)}">×</button>
             </div>
         `;
     }).join('');
+
+    container.querySelectorAll('.priority-weight-input').forEach(input => {
+        input.addEventListener('input', () => {
+            const statId = input.closest('.recommendation-priority-row').dataset.stat;
+            recommendationWeights[statId] = normalizeRecommendationWeight(input.value);
+            recommendationResults = [];
+            renderRecommendationResults();
+        });
+        input.addEventListener('change', () => {
+            const statId = input.closest('.recommendation-priority-row').dataset.stat;
+            const weight = normalizeRecommendationWeight(input.value);
+            recommendationWeights[statId] = weight;
+            input.value = String(weight);
+        });
+    });
 
     container.querySelectorAll('.priority-bound-input').forEach(input => {
         input.addEventListener('input', () => {
@@ -941,6 +1759,8 @@ function renderRecommendationPriorityList() {
             const bound = input.dataset.bound;
             if (!recommendationConstraints[statId]) recommendationConstraints[statId] = { min: '', max: '' };
             recommendationConstraints[statId][bound] = input.value;
+            recommendationResults = [];
+            renderRecommendationResults();
         });
     });
 
@@ -949,19 +1769,23 @@ function renderRecommendationPriorityList() {
             const row = btn.closest('.recommendation-priority-row');
             const statId = row.dataset.stat;
             const index = recommendationPriorities.indexOf(statId);
-            const action = btn.dataset.action;
-
-            if (action === 'remove') {
+            if (btn.dataset.action === 'remove') {
                 recommendationPriorities.splice(index, 1);
+                delete recommendationWeights[statId];
                 delete recommendationConstraints[statId];
-            } else if (action === 'up' && index > 0) {
-                [recommendationPriorities[index - 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index - 1]];
-            } else if (action === 'down' && index < recommendationPriorities.length - 1) {
-                [recommendationPriorities[index + 1], recommendationPriorities[index]] = [recommendationPriorities[index], recommendationPriorities[index + 1]];
+            } else if (btn.dataset.action === 'up' && index > 0) {
+                [recommendationPriorities[index - 1], recommendationPriorities[index]] =
+                    [recommendationPriorities[index], recommendationPriorities[index - 1]];
+            } else if (btn.dataset.action === 'down' && index < recommendationPriorities.length - 1) {
+                [recommendationPriorities[index + 1], recommendationPriorities[index]] =
+                    [recommendationPriorities[index], recommendationPriorities[index + 1]];
             }
+            if (recommendationAutomaticWeights) applyAutomaticRecommendationWeights();
 
+            recommendationResults = [];
             renderRecommendationPriorityList();
             setupRecommendationControls();
+            renderRecommendationResults();
         });
     });
 }
@@ -975,12 +1799,12 @@ function recommendBuilds() {
         renderRecommendationMessage(t('recommendationNeedCharacter'));
         return;
     }
-    if (recommendationPriorities.length === 0 && recommendationPassiveSkills.size === 0) {
+    if (!hasRecommendationCriteria()) {
         renderRecommendationMessage(t('recommendationNeedStats'));
         return;
     }
 
-    const results = generateRecommendedBuilds();
+    const results = generateRecommendedBuilds(activeBuildType);
     recommendationResults = results;
     if (results.length === 0) {
         renderRecommendationMessage(t('recommendationNoBuilds'));
@@ -1005,35 +1829,42 @@ function renderRecommendationResults() {
 
     const statById = new Map(getSelectableStats().map(stat => [stat.id, stat]));
     container.innerHTML = recommendationResults.map((result, index) => {
-        const itemIcons = result.items.map(name => `
-            <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}">
-                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}">
-            </div>
-        `).join('');
+        const itemIcons = result.items.map(name => {
+            const gradeStyle = getItemGradeStyle(items[name] && items[name].type);
+            return `
+            <div class="recommendation-item-icon" data-item="${escapeAttribute(name)}" title="${escapeAttribute(getItemName(name))}" style="--recommendation-item-start:${gradeStyle.cardStart};--recommendation-item-end:${gradeStyle.cardEnd}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
+            </div>`;
+        }).join('');
 
         const statHighlights = recommendationPriorities.map(statId => {
             const stat = statById.get(statId) || { id: statId, name: getStatName(statId) };
             return `<span class="recommendation-stat-chip">${stat.name[currentLanguage]} ${formatRecommendationStatValue(statId, result.stats[statId] || 0)}</span>`;
         }).join('');
+        const creditCost = result.credit ?? getBuildCreditCost(result.items);
 
         return `
-            <button type="button" class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
+            <article class="recommendation-card ${result.applied ? 'selected' : ''}" data-index="${index}">
                 <div class="recommendation-card-head">
-                    <strong>${t('recommendationScore')} ${Math.round(result.score * 100)}%</strong>
-                    <span>${result.weaponType ? getWeaponTypeName(result.weaponType) : ''}</span>
+                    <strong>${t(hasPositiveRecommendationWeight() ? 'recommendationScore' : 'recommendationMatch')} ${Math.round(result.score * 100)}%</strong>
+                    <span class="recommendation-card-meta">${result.weaponType ? `${getWeaponTypeName(result.weaponType)} · ` : ''}${creditCost} ${t('credits')}</span>
                 </div>
                 <div class="recommendation-item-row">${itemIcons}</div>
                 <div class="recommendation-stat-row">${statHighlights}</div>
-            </button>
+                <div class="recommendation-card-actions">
+                    <button type="button" class="recommendation-apply-btn" data-recommendation-apply="${index}">${t('applyRecommendation')}</button>
+                </div>
+            </article>
         `;
     }).join('');
 
-    container.querySelectorAll('.recommendation-card').forEach(card => {
-        card.addEventListener('click', () => applyRecommendedBuild(Number(card.dataset.index)));
+    container.querySelectorAll('[data-recommendation-apply]').forEach(button => {
+        button.addEventListener('click', () => applyRecommendedBuild(Number(button.dataset.recommendationApply)));
     });
     applyItemImageFallbacks(container);
 
     container.querySelectorAll('.recommendation-item-icon[data-item]').forEach(icon => {
+        applyMythicWeaponVariantIndicator(icon, icon.dataset.item);
         icon.addEventListener('mouseenter', (e) => {
             showGlobalTooltip(icon.dataset.item, icon);
             moveGlobalTooltip(e);
@@ -1043,82 +1874,310 @@ function renderRecommendationResults() {
     });
 }
 
-function generateRecommendedBuilds() {
-    const candidateSlots = getRecommendationCandidatesBySlot();
-    const requiredSlots = ['Weapon', 'Chest', 'Head', 'Arm', 'Leg'];
-    if (requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) return [];
+function generateRecommendedBuilds(buildType = activeBuildType) {
+    const startedAt = Date.now();
+    const candidateSlots = getRecommendationCandidatesBySlot(buildType);
+    const requiredSlots = EQUIPMENT_SLOTS;
+    const allowPartialBuilds = buildType === BUILD_TYPES.LATE && hasActiveRecommendationCreditLimit();
+    const candidateCombinationCount = requiredSlots.reduce((count, slot) => {
+        const candidateCount = (candidateSlots[slot] && candidateSlots[slot].length) || 0;
+        return count * (candidateCount + (allowPartialBuilds ? 1 : 0));
+    }, 1);
+    const metrics = {
+        algorithm: 'branch-and-bound',
+        exact: true,
+        candidateCombinationCount,
+        visitedNodes: 0,
+        completedBuilds: 0,
+        prunedByScore: 0,
+        prunedByConstraints: 0,
+        prunedByCredits: 0,
+        prunedByPassives: 0,
+        prunedByRoute: 0,
+        elapsedMs: 0,
+        resultCount: 0
+    };
 
-    const itemNormalizers = getItemNormalizers(Object.values(candidateSlots).flat());
-    const slotCandidates = {};
-    requiredSlots.forEach(slot => {
-        const ranked = candidateSlots[slot]
-            .map(name => ({ name, score: scoreItemForRecommendation(name, itemNormalizers) }))
-            .sort((a, b) => b.score - a.score);
-        const candidateNames = new Set(ranked.slice(0, 24).map(entry => entry.name));
-        ranked.forEach(entry => {
-            if (itemHasSelectedRecommendationPassive(entry.name)) candidateNames.add(entry.name);
-        });
-        slotCandidates[slot] = Array.from(candidateNames);
-    });
-
-    let beam = [{ items: [], roughScore: 0 }];
-    requiredSlots.forEach(slot => {
-        const expanded = [];
-        beam.forEach(partial => {
-            slotCandidates[slot].forEach(name => {
-                const itemsForBuild = [...partial.items, name];
-                expanded.push({
-                    items: itemsForBuild,
-                    roughScore: partial.roughScore + scoreItemForRecommendation(name, itemNormalizers)
-                });
-            });
-        });
-        expanded.sort((a, b) => b.roughScore - a.roughScore);
-        beam = expanded.slice(0, 250);
-    });
-
-    const finalCandidates = beam
-        .map(build => {
-            const stats = calculateItemOnlyBuildStats(build.items);
-            return { ...build, stats, weaponType: items[build.items[0]] ? items[build.items[0]].weaponType : '' };
-        })
-        .filter(build => passesRecommendationConstraints(build.stats) && passesRecommendationPassiveRequirements(build.items));
-
-    if (finalCandidates.length === 0) return [];
-
-    const finalNormalizers = {};
-    recommendationPriorities.forEach(statId => {
-        finalNormalizers[statId] = Math.max(...finalCandidates.map(build => getNumericRecommendationStat(build.stats, statId)), 0.0001);
-    });
-
-    let scoredCandidates = finalCandidates
-        .map(build => ({
-            ...build,
-            score: scoreStatsForRecommendation(build.stats, finalNormalizers)
-        }))
-        .sort((a, b) => b.score - a.score);
-
-    if (recommendationOnlyTwoZones) {
-        scoredCandidates = scoredCandidates.filter(build => hasFeasibleRouteWithinZones(build.items, 2));
+    if (!allowPartialBuilds && requiredSlots.some(slot => !candidateSlots[slot] || candidateSlots[slot].length === 0)) {
+        metrics.elapsedMs = Date.now() - startedAt;
+        lastRecommendationSearchMetrics = metrics;
+        return [];
     }
 
-    return scoredCandidates.slice(0, 20);
+    const model = createRecommendationSearchModel(candidateSlots, allowPartialBuilds);
+    const topResults = [];
+    const selectedBySlot = {};
+    const passiveCounts = new Map();
+    const state = {
+        additive: new Array(recommendationPriorities.length).fill(0),
+        uniquePrimary: new Array(recommendationPriorities.length).fill(0),
+        uniqueSecondary: new Array(recommendationPriorities.length).fill(0),
+        credit: 0
+    };
+    const previousPrimary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+    const previousSecondary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+
+    function visit(depth) {
+        metrics.visitedNodes++;
+        const bounds = getRecommendationSearchBounds(model, state, depth);
+
+        if (!bounds.constraintsFeasible) {
+            metrics.prunedByConstraints++;
+            return;
+        }
+        if (!bounds.creditFeasible) {
+            metrics.prunedByCredits++;
+            return;
+        }
+        if (!recommendationPassivesRemainFeasible(model, passiveCounts, depth)) {
+            metrics.prunedByPassives++;
+            return;
+        }
+        if (topResults.length === RECOMMENDATION_RESULT_LIMIT &&
+            bounds.upperScore <= topResults[topResults.length - 1].score + 1e-12) {
+            metrics.prunedByScore++;
+            return;
+        }
+
+        if (depth === model.searchSlots.length) {
+            metrics.completedBuilds++;
+            const itemNames = EQUIPMENT_SLOTS.map(slot => selectedBySlot[slot]).filter(Boolean);
+            if (itemNames.length === 0 || !passesRecommendationCreditLimit(state.credit)) return;
+            const stats = calculateItemOnlyBuildStats(itemNames);
+            if (!passesRecommendationConstraints(stats) || !passesRecommendationPassiveRequirements(itemNames)) return;
+            if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones &&
+                !hasFeasibleRouteWithinZones(itemNames, 2)) {
+                metrics.prunedByRoute++;
+                return;
+            }
+
+            const weaponName = selectedBySlot.Weapon;
+            insertRecommendedBuild(topResults, {
+                items: itemNames,
+                stats,
+                passives: getEffectivePassiveSkills(itemNames),
+                credit: state.credit,
+                weaponType: items[weaponName] ? items[weaponName].weaponType : '',
+                score: hasPositiveRecommendationWeight()
+                    ? scoreStatsForRecommendation(stats, model.normalizers)
+                    : 1
+            });
+            return;
+        }
+
+        const slot = model.searchSlots[depth];
+        model.candidatesBySlot[slot].forEach(candidate => {
+            if (candidate.name) selectedBySlot[slot] = candidate.name;
+            else delete selectedBySlot[slot];
+            candidate.passiveNames.forEach(passiveName => {
+                passiveCounts.set(passiveName, (passiveCounts.get(passiveName) || 0) + 1);
+            });
+            state.credit += candidate.credit;
+
+            candidate.parts.forEach((part, index) => {
+                previousPrimary[depth][index] = state.uniquePrimary[index];
+                previousSecondary[depth][index] = state.uniqueSecondary[index];
+                state.additive[index] += part.additive;
+                state.uniquePrimary[index] = Math.max(state.uniquePrimary[index], part.uniquePrimary);
+                state.uniqueSecondary[index] = Math.max(state.uniqueSecondary[index], part.uniqueSecondary);
+            });
+            visit(depth + 1);
+
+            candidate.parts.forEach((part, index) => {
+                state.additive[index] -= part.additive;
+                state.uniquePrimary[index] = previousPrimary[depth][index];
+                state.uniqueSecondary[index] = previousSecondary[depth][index];
+            });
+            state.credit -= candidate.credit;
+            candidate.passiveNames.forEach(passiveName => {
+                const nextCount = passiveCounts.get(passiveName) - 1;
+                if (nextCount > 0) passiveCounts.set(passiveName, nextCount);
+                else passiveCounts.delete(passiveName);
+            });
+            delete selectedBySlot[slot];
+        });
+    }
+
+    visit(0);
+    metrics.elapsedMs = Date.now() - startedAt;
+    metrics.resultCount = topResults.length;
+    lastRecommendationSearchMetrics = metrics;
+    return topResults;
 }
 
-function getRecommendationCandidatesBySlot() {
-    const slots = { Weapon: [], Chest: [], Head: [], Arm: [], Leg: [] };
+function getItemRecommendationStatParts(itemName, statId, level = charLevel) {
+    const item = items[itemName] || {};
+    const regularStats = item.stats || {};
+    const levelStats = item.statsByLv || {};
+    const uniqueStats = item.uniqueStats || {};
+
+    if (statId === 'moveSpeed') {
+        return {
+            additive: (Number(regularStats.moveSpeed) || 0) + (Number(levelStats.moveSpeed) || 0) * level +
+                ((Number(regularStats.moveSpeedRatio) || 0) + (Number(levelStats.moveSpeedRatio) || 0) * level) * 10,
+            uniquePrimary: Number(uniqueStats.moveSpeed) || 0,
+            uniqueSecondary: (Number(uniqueStats.moveSpeedRatio) || 0) * 10
+        };
+    }
+
+    return {
+        additive: (Number(regularStats[statId]) || 0) + (Number(levelStats[statId]) || 0) * level,
+        uniquePrimary: Number(uniqueStats[statId]) || 0,
+        uniqueSecondary: 0
+    };
+}
+
+function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = false) {
+    const searchSlots = [...EQUIPMENT_SLOTS].sort((a, b) => {
+        const countDifference = candidateSlots[a].length - candidateSlots[b].length;
+        return countDifference || BUILD_SLOT_ORDER[a] - BUILD_SLOT_ORDER[b];
+    });
+    const candidatesBySlot = {};
+
+    searchSlots.forEach(slot => {
+        const candidateNames = allowPartialBuilds ? [...candidateSlots[slot], null] : candidateSlots[slot];
+        candidatesBySlot[slot] = candidateNames.map(name => {
+            return {
+                name,
+                passiveNames: getItemPassiveSkills(items[name]).map(passiveSkill => passiveSkill.name),
+                credit: name ? getItemCreditCost(name) : 0,
+                parts: recommendationPriorities.map(statId => getItemRecommendationStatParts(name, statId))
+            };
+        });
+    });
+
+    const priorityCount = recommendationPriorities.length;
+    const suffixAdditive = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixMinimumAdditive = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixUniquePrimary = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixUniqueSecondary = Array.from({ length: searchSlots.length + 1 }, () => new Array(priorityCount).fill(0));
+    const suffixPassives = Array.from({ length: searchSlots.length + 1 }, () => new Set());
+    const suffixMaximumCredit = new Array(searchSlots.length + 1).fill(0);
+
+    for (let depth = searchSlots.length - 1; depth >= 0; depth--) {
+        const candidates = candidatesBySlot[searchSlots[depth]];
+        for (let index = 0; index < priorityCount; index++) {
+            suffixAdditive[depth][index] = suffixAdditive[depth + 1][index] +
+                Math.max(...candidates.map(candidate => candidate.parts[index].additive), 0);
+            suffixMinimumAdditive[depth][index] = suffixMinimumAdditive[depth + 1][index] +
+                Math.min(...candidates.map(candidate => candidate.parts[index].additive), 0);
+            suffixUniquePrimary[depth][index] = Math.max(
+                suffixUniquePrimary[depth + 1][index],
+                ...candidates.map(candidate => candidate.parts[index].uniquePrimary),
+                0
+            );
+            suffixUniqueSecondary[depth][index] = Math.max(
+                suffixUniqueSecondary[depth + 1][index],
+                ...candidates.map(candidate => candidate.parts[index].uniqueSecondary),
+                0
+            );
+        }
+        suffixPassives[depth] = new Set(suffixPassives[depth + 1]);
+        candidates.forEach(candidate => {
+            candidate.passiveNames.forEach(passiveName => suffixPassives[depth].add(passiveName));
+        });
+        suffixMaximumCredit[depth] = suffixMaximumCredit[depth + 1] +
+            Math.max(...candidates.map(candidate => candidate.credit), 0);
+    }
+
+    const normalizers = {};
+    recommendationPriorities.forEach((statId, index) => {
+        normalizers[statId] = Math.max(
+            suffixAdditive[0][index] + suffixUniquePrimary[0][index] + suffixUniqueSecondary[0][index],
+            0.0001
+        );
+    });
+
+    searchSlots.forEach(slot => {
+        candidatesBySlot[slot].forEach(candidate => {
+            const stats = {};
+            recommendationPriorities.forEach((statId, index) => {
+                stats[statId] = candidate.parts[index].additive + candidate.parts[index].uniquePrimary +
+                    candidate.parts[index].uniqueSecondary;
+            });
+            candidate.searchScore = scoreStatsForRecommendation(stats, normalizers) +
+                (itemHasSelectedRecommendationPassive(candidate.name) ? 1 : 0);
+        });
+        candidatesBySlot[slot].sort((a, b) => b.searchScore - a.searchScore ||
+            (a.name || '').localeCompare(b.name || ''));
+    });
+
+    return {
+        searchSlots,
+        candidatesBySlot,
+        suffixAdditive,
+        suffixMinimumAdditive,
+        suffixUniquePrimary,
+        suffixUniqueSecondary,
+        suffixPassives,
+        suffixMaximumCredit,
+        normalizers
+    };
+}
+
+function getRecommendationSearchBounds(model, state, depth) {
+    const upperValues = new Array(recommendationPriorities.length).fill(0);
+    let constraintsFeasible = true;
+
+    recommendationPriorities.forEach((statId, index) => {
+        const upperValue = state.additive[index] + model.suffixAdditive[depth][index] +
+            Math.max(state.uniquePrimary[index], model.suffixUniquePrimary[depth][index]) +
+            Math.max(state.uniqueSecondary[index], model.suffixUniqueSecondary[depth][index]);
+        const lowerValue = state.additive[index] + model.suffixMinimumAdditive[depth][index] +
+            state.uniquePrimary[index] + state.uniqueSecondary[index];
+        upperValues[index] = upperValue;
+
+        const constraint = recommendationConstraints[statId] || {};
+        const min = parseRecommendationBound(statId, constraint.min);
+        const max = parseRecommendationBound(statId, constraint.max);
+        if ((min !== null && upperValue < min) || (max !== null && lowerValue > max)) {
+            constraintsFeasible = false;
+        }
+    });
+
+    const upperStats = {};
+    recommendationPriorities.forEach((statId, index) => upperStats[statId] = upperValues[index]);
+    const creditBounds = getRecommendationCreditBounds();
+    const creditFeasible = (creditBounds.max === null || state.credit <= creditBounds.max) &&
+        (creditBounds.min === null || state.credit + model.suffixMaximumCredit[depth] >= creditBounds.min);
+    return {
+        constraintsFeasible,
+        creditFeasible,
+        upperScore: hasPositiveRecommendationWeight()
+            ? scoreStatsForRecommendation(upperStats, model.normalizers)
+            : 1
+    };
+}
+
+function recommendationPassivesRemainFeasible(model, passiveCounts, depth) {
+    return Array.from(recommendationPassiveSkills).every(passiveName => {
+        return passiveCounts.has(passiveName) || model.suffixPassives[depth].has(passiveName);
+    });
+}
+
+function insertRecommendedBuild(results, build) {
+    results.push(build);
+    results.sort((a, b) => {
+        const scoreDifference = b.score - a.score;
+        if (Math.abs(scoreDifference) > 1e-12) return scoreDifference;
+        return a.items.join('\u0000').localeCompare(b.items.join('\u0000'));
+    });
+    if (results.length > RECOMMENDATION_RESULT_LIMIT) results.pop();
+}
+
+function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
+    const slots = Object.fromEntries(EQUIPMENT_SLOTS.map(slot => [slot, []]));
     const masteries = currentCharacter && chars[currentCharacter] ? chars[currentCharacter].masteries : [];
-    const echionWeapons = new Set(["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"]);
 
     Object.entries(items).forEach(([name, item]) => {
-        if (item.type !== "Epic" || !slots[item.part]) return;
+        if (!isItemEligibleForBuild(item, buildType)) return;
+        if (buildType === BUILD_TYPES.LATE && !lateRarityFilters.has(item.type)) return;
+        if (buildType === BUILD_TYPES.LATE && !itemMatchesLateResourceFilters(name, item)) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
         }
-        if (name === "Harmony in Full Bloom" && currentCharacter !== "Priya") return;
-        if (currentCharacter === "Priya" && item.part === "Head" && name !== "Harmony in Full Bloom") return;
-        if (currentCharacter !== "Echion" && (echionWeapons.has(name) || item.weaponType === "VFArm")) return;
+        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return;
         slots[item.part].push(name);
     });
 
@@ -1127,8 +2186,8 @@ function getRecommendationCandidatesBySlot() {
 
 function itemHasSelectedRecommendationPassive(itemName) {
     if (recommendationPassiveSkills.size === 0) return false;
-    const passiveSkill = items[itemName] && items[itemName].passiveSkill;
-    return !!passiveSkill && recommendationPassiveSkills.has(passiveSkill.name);
+    return getItemPassiveSkills(items[itemName])
+        .some(passiveSkill => recommendationPassiveSkills.has(passiveSkill.name));
 }
 
 function passesRecommendationPassiveRequirements(itemNames) {
@@ -1138,6 +2197,8 @@ function passesRecommendationPassiveRequirements(itemNames) {
 }
 
 function hasFeasibleRouteWithinZones(itemNames, maxZones) {
+    if (itemNames.some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) return false;
+
     const cacheKey = `${maxZones}|${[...itemNames].sort().join('|')}`;
     if (recommendationRouteCache.has(cacheKey)) return recommendationRouteCache.get(cacheKey);
 
@@ -1149,19 +2210,19 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
         "Harmony in Full Bloom"
     ]);
 
-    itemNames.forEach(epicName => {
-        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
-            items[epicName].components.forEach(mat => {
+    itemNames.forEach(itemName => {
+        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
+            items[itemName].components.forEach(mat => {
                 neededCounts[mat] = (neededCounts[mat] || 0) + 1;
             });
         }
     });
 
     const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
-    itemNames.forEach(epicName => {
-        const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components) {
-            epicData.components.forEach(comp => {
+    itemNames.forEach(itemName => {
+        const itemData = items[itemName];
+        if (itemData && itemData.part === "Weapon" && itemData.components) {
+            itemData.components.forEach(comp => {
                 if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
             });
         }
@@ -1230,32 +2291,72 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
     return result;
 }
 
-function getItemNormalizers(itemNames) {
-    const normalizers = {};
-    recommendationPriorities.forEach(statId => normalizers[statId] = 0.0001);
-    itemNames.forEach(name => {
-        const stats = calculateItemOnlyBuildStats([name]);
-        recommendationPriorities.forEach(statId => {
-            normalizers[statId] = Math.max(normalizers[statId], getNumericRecommendationStat(stats, statId));
-        });
+function normalizeRecommendationWeight(value) {
+    const parsed = Number(value);
+    if (!Number.isFinite(parsed)) return 0;
+    return Math.min(1, Math.max(0, parsed));
+}
+
+function getAutomaticRecommendationWeight(index) {
+    return Number(Math.pow(0.68, index).toFixed(4));
+}
+
+function applyAutomaticRecommendationWeights() {
+    recommendationPriorities.forEach((statId, index) => {
+        recommendationWeights[statId] = getAutomaticRecommendationWeight(index);
     });
-    return normalizers;
 }
 
-function getPriorityWeight(index) {
-    return Math.pow(0.68, index);
+function getRecommendationWeight(statId) {
+    if (!Object.prototype.hasOwnProperty.call(recommendationWeights, statId)) {
+        const index = recommendationPriorities.indexOf(statId);
+        return recommendationAutomaticWeights && index >= 0 ? getAutomaticRecommendationWeight(index) : 1;
+    }
+    return normalizeRecommendationWeight(recommendationWeights[statId]);
 }
 
-function scoreItemForRecommendation(name, normalizers) {
-    const stats = calculateItemOnlyBuildStats([name]);
-    return scoreStatsForRecommendation(stats, normalizers);
+function hasPositiveRecommendationWeight() {
+    return recommendationPriorities.some(statId => getRecommendationWeight(statId) > 0);
+}
+
+function parseCreditBound(value) {
+    if (value === '' || value === null || value === undefined) return null;
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? Math.max(0, parsed) : null;
+}
+
+function getRecommendationCreditBounds() {
+    return {
+        min: parseCreditBound(recommendationCreditMin),
+        max: parseCreditBound(recommendationCreditMax)
+    };
+}
+
+function hasActiveRecommendationCreditLimit() {
+    const bounds = getRecommendationCreditBounds();
+    return bounds.min !== null || bounds.max !== null;
+}
+
+function passesRecommendationCreditLimit(credit) {
+    const bounds = getRecommendationCreditBounds();
+    return (bounds.min === null || credit >= bounds.min) &&
+        (bounds.max === null || credit <= bounds.max);
+}
+
+function hasRecommendationCriteria() {
+    if (recommendationPassiveSkills.size > 0 || hasPositiveRecommendationWeight()) return true;
+    return recommendationPriorities.some(statId => {
+        const constraint = recommendationConstraints[statId] || {};
+        return parseRecommendationBound(statId, constraint.min) !== null ||
+            parseRecommendationBound(statId, constraint.max) !== null;
+    });
 }
 
 function scoreStatsForRecommendation(stats, normalizers) {
     let weightedScore = 0;
     let totalWeight = 0;
-    recommendationPriorities.forEach((statId, index) => {
-        const weight = getPriorityWeight(index);
+    recommendationPriorities.forEach(statId => {
+        const weight = getRecommendationWeight(statId);
         weightedScore += weight * (getNumericRecommendationStat(stats, statId) / (normalizers[statId] || 1));
         totalWeight += weight;
     });
@@ -1335,20 +2436,25 @@ function applyRecommendedBuild(index) {
     const result = recommendationResults[index];
     if (!result) return;
 
-    selectedEpics.clear();
-    result.items.forEach(name => selectedEpics.add(name));
+    const build = getBuild(activeBuildType);
+    build.clear();
+    result.items.forEach(name => addItemToBuild(name, activeBuildType));
     recommendationResults.forEach((entry, entryIndex) => {
         entry.applied = entryIndex === index;
     });
-    selectedRoutes = [];
-    generatedRoutes = [];
+    if (activeBuildType === BUILD_TYPES.EARLY) {
+        selectedRoutes = [];
+        generatedRoutes = [];
+    }
 
     updateMainGridVisuals();
     updateSelectedPanel();
     renderRecommendationResults();
 
-    const resultOutput = document.getElementById('result-output');
-    if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
+    if (activeBuildType === BUILD_TYPES.EARLY) {
+        const resultOutput = document.getElementById('result-output');
+        if (resultOutput) resultOutput.innerHTML = `<p class="empty-msg">${t('recommendationApplied')}</p>`;
+    }
 }
 
 function closeCompactSelects(except = null) {
@@ -1404,8 +2510,8 @@ function getSortedCharacterNames() {
 function renderCharacterPicker(container) {
     const selectedLabel = currentCharacter ? getCharName(currentCharacter) : t('selectCharacter');
     const avatarHtml = currentCharacter
-        ? `<img class="compact-avatar" src="images/${currentCharacter}.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
-        : `<img class="compact-avatar" src="images/CharacterSelect.png" alt="${selectedLabel}" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
+        ? `<img class="compact-avatar" src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(selectedLabel)}" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`
+        : `<img class="compact-avatar" src="images/ui/CharacterSelect.png" alt="${escapeAttribute(selectedLabel)}" loading="lazy" decoding="async" onerror="this.outerHTML='<span class=\\'compact-avatar placeholder\\'>?</span>'">`;
 
     container.innerHTML = `
         <div class="compact-select" id="character-select">
@@ -1415,7 +2521,7 @@ function renderCharacterPicker(container) {
                 <span class="compact-select-arrow">▾</span>
             </button>
             <div class="compact-select-menu">
-                <input type="text" id="char-search" class="compact-select-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="${t('searchCharPlaceholder')}">
+                <input type="text" id="char-search" class="compact-select-search" data-i18n-placeholder="searchCharPlaceholder" placeholder="${t('searchCharPlaceholder')}" aria-label="${t('searchCharPlaceholder')}">
                 <div id="char-options" class="compact-options"></div>
             </div>
         </div>
@@ -1443,13 +2549,12 @@ function renderCharacterPicker(container) {
 }
 
 function renderCharacterOptions(container, term = '') {
-    const normalizedTerm = term.trim().toLowerCase();
     const optionData = [
         { value: null, label: t('selectCharacter') },
         ...getSortedCharacterNames().map(name => ({ value: name, label: getCharName(name) }))
     ].filter(option => {
-        if (!normalizedTerm || option.value === null) return true;
-        return option.value.toLowerCase().includes(normalizedTerm) || option.label.toLowerCase().includes(normalizedTerm);
+        if (!term.trim() || option.value === null) return true;
+        return matchesSearchTerm(term, option.value, option.label, chars[option.value]?.nameKo);
     });
 
     container.innerHTML = '';
@@ -1462,8 +2567,10 @@ function renderCharacterOptions(container, term = '') {
         if (option.value) {
             const img = document.createElement('img');
             img.className = 'compact-avatar';
-            img.src = `images/${option.value}.png`;
+            img.src = getCharacterImagePath(option.value);
             img.alt = option.label;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
             };
@@ -1471,8 +2578,10 @@ function renderCharacterOptions(container, term = '') {
         } else {
             const img = document.createElement('img');
             img.className = 'compact-avatar';
-            img.src = 'images/CharacterSelect.png';
+            img.src = 'images/ui/CharacterSelect.png';
             img.alt = option.label;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.onerror = function() {
                 this.replaceWith(createCompactPlaceholder('?'));
             };
@@ -1495,35 +2604,25 @@ function createCompactPlaceholder(text) {
 }
 
 function selectCharacter(charName) {
+    const previousCharacter = currentCharacter;
     currentCharacter = charName || null;
     recommendationResults = [];
+    if (previousCharacter !== currentCharacter) {
+        lateComparisonBuilds[0] = null;
+        lateComparisonBuilds[1] = null;
+    }
     const masteries = currentCharacter ? chars[currentCharacter].masteries : null;
     const weaponBtns = document.querySelectorAll('#weapon-subfilters .weapon-btn[data-subfilter]');
 
     if (currentCharacter) {
-        let buildChanged = false;
-        for (const itemName of selectedEpics) {
-            const itemData = items[itemName];
-            if (itemData && itemData.part === "Weapon") {
-                if (!masteries.includes(itemData.weaponType)) {
-                    selectedEpics.delete(itemName);
-                    buildChanged = true;
-                }
-            } else if (itemName === "Harmony in Full Bloom" && currentCharacter !== "Priya") {
-                selectedEpics.delete(itemName);
-                buildChanged = true;
-            } else if (itemData && itemData.part === "Head" && currentCharacter === "Priya" && itemName !== "Harmony in Full Bloom") {
-                selectedEpics.delete(itemName);
-                buildChanged = true;
-            } else if (currentCharacter !== "Echion") {
-                const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-                if (echionWeapons.includes(itemName) || itemData.weaponType === "VFArm") {
-                    selectedEpics.delete(itemName);
-                    buildChanged = true;
-                }
-            }
-        }
-        if (buildChanged) updateSelectedPanel();
+        const buildChanges = Object.fromEntries(
+            Object.values(BUILD_TYPES).map(buildType => [
+                buildType,
+                removeIncompatibleBuildItems(buildType, currentCharacter)
+            ])
+        );
+        if (buildChanges[BUILD_TYPES.EARLY]) selectedRoutes = [];
+        if (Object.values(buildChanges).some(Boolean)) updateSelectedPanel();
     }
 
     let currentWeaponStillValid = currentCharacter === null;
@@ -1549,6 +2648,7 @@ function selectCharacter(charName) {
     }
     renderStatComparison();
     renderRecommendationResults();
+    renderLateGamePanel();
 }
 
 function renderSubstatPicker(container) {
@@ -1567,7 +2667,7 @@ function renderSubstatPicker(container) {
                 <span class="compact-select-arrow">▾</span>
             </button>
             <div class="compact-select-menu">
-                <input type="text" id="stat-search" class="compact-select-search" placeholder="${currentLanguage === 'ko' ? '스탯 검색...' : 'Search stats...'}">
+                <input type="text" id="stat-search" class="compact-select-search" data-i18n-placeholder="searchStatsPlaceholder" placeholder="${t('searchStatsPlaceholder')}" aria-label="${t('searchStatsPlaceholder')}">
                 <div id="stat-options" class="compact-options"></div>
             </div>
         </div>
@@ -1617,10 +2717,8 @@ function renderSubstatPicker(container) {
 }
 
 function renderSubstatOptions(container, term = '', pickerContainer) {
-    const normalizedTerm = term.trim().toLowerCase();
     const statOptions = getSelectableStats().filter(stat => {
-        const label = stat.name[currentLanguage];
-        return !normalizedTerm || stat.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm);
+        return matchesSearchTerm(term, stat.id, stat.name.en, stat.name.ko);
     });
 
     container.innerHTML = '';
@@ -1640,7 +2738,14 @@ function renderSubstatOptions(container, term = '', pickerContainer) {
     });
 }
 
-function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, labelKey = '', labelBeforePills = false, showReset = true }) {
+function renderPassiveSkillPicker(container, selectedSet, {
+    prefix,
+    onChange,
+    labelKey = '',
+    addLabelKey = 'addPassiveSkill',
+    labelBeforePills = false,
+    showReset = true
+}) {
     const selectedOptions = getPassiveSkillOptions().filter(option => selectedSet.has(option.id));
     const pillsHtml = selectedOptions.length
         ? selectedOptions.map(option => `<span class="stat-pill passive-skill-pill" data-passive="${escapeAttribute(option.id)}">${getPassiveSkillOptionName(option)} <button type="button" aria-label="Remove ${escapeAttribute(getPassiveSkillOptionName(option))}">×</button></span>`).join('')
@@ -1648,7 +2753,7 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
     const resetHtml = showReset
         ? `<button type="button" class="stat-reset-btn" id="${prefix}-reset" ${selectedSet.size ? '' : 'disabled'}>${t('resetStats')}</button>`
         : '';
-    const pickerOptions = { prefix, onChange, labelKey, labelBeforePills, showReset };
+    const pickerOptions = { prefix, onChange, labelKey, addLabelKey, labelBeforePills, showReset };
     const labelHtml = labelKey
         ? `<div class="recommendation-block-label">${t(labelKey)}</div>`
         : '';
@@ -1657,11 +2762,11 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
         <div class="stat-picker-row">
             <div class="compact-select" id="${prefix}-select">
                 <button type="button" class="compact-select-toggle" id="${prefix}-toggle">
-                    <span>${t('addPassiveSkill')}</span>
+                    <span>${t(addLabelKey)}</span>
                     <span class="compact-select-arrow">▾</span>
                 </button>
                 <div class="compact-select-menu">
-                    <input type="text" id="${prefix}-search" class="compact-select-search" placeholder="${t('searchPassiveSkillsPlaceholder')}">
+                    <input type="text" id="${prefix}-search" class="compact-select-search" data-i18n-placeholder="searchPassiveSkillsPlaceholder" placeholder="${t('searchPassiveSkillsPlaceholder')}" aria-label="${t('searchPassiveSkillsPlaceholder')}">
                     <div id="${prefix}-options" class="compact-options"></div>
                 </div>
             </div>
@@ -1670,7 +2775,7 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
     `;
 
     container.innerHTML = labelBeforePills
-        ? `${pickerRow}${labelHtml}${pillsSection}`
+        ? `${labelHtml}${pickerRow}${pillsSection}`
         : `${pillsSection}${pickerRow}${labelHtml}`;
 
     const select = container.querySelector(`#${prefix}-select`);
@@ -1721,11 +2826,9 @@ function renderPassiveSkillPicker(container, selectedSet, { prefix, onChange, la
 }
 
 function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {
-    const normalizedTerm = term.trim().toLowerCase();
     const options = getPassiveSkillOptions().filter(option => {
-        const label = getPassiveSkillOptionName(option);
         return !selectedSet.has(option.id) &&
-            (!normalizedTerm || option.id.toLowerCase().includes(normalizedTerm) || label.toLowerCase().includes(normalizedTerm));
+            matchesSearchTerm(term, option.id, option.name, option.nameKo);
     });
 
     container.innerHTML = '';
@@ -1747,23 +2850,19 @@ function renderPassiveSkillOptions(container, term, selectedSet, onSelect) {
 }
 
 function renderMainGrid() {
-    const grid = document.getElementById('epic-item-grid');
+    const grid = document.getElementById('item-grid');
     if (!grid) return;
     grid.innerHTML = ''; 
 
-    const partOrder = { "Weapon": 1, "Chest": 2, "Head": 3, "Arm": 4, "Leg": 5 };
-
-    const epicItems = Object.entries(items).filter(([name, data]) => {
-        if (data.type !== "Epic") return false;
-        if (!partOrder[data.part]) return false;
+    const catalogItems = Object.entries(items).filter(([name, data]) => {
+        if (!isItemEligibleForBuild(data, activeBuildType)) return false;
+        if (activeBuildType === BUILD_TYPES.LATE && !lateRarityFilters.has(data.type)) return false;
+        if (activeBuildType === BUILD_TYPES.LATE && !itemMatchesLateResourceFilters(name, data)) return false;
         
         // Item search filtering
         const itemSearchInput = document.getElementById('item-search');
-        if (itemSearchInput && itemSearchInput.value) {
-            const term = itemSearchInput.value.toLowerCase();
-            const nameEn = name.toLowerCase();
-            const nameKo = getItemName(name).toLowerCase();
-            if (!nameEn.includes(term) && !nameKo.includes(term)) return false;
+        if (itemSearchInput && !matchesSearchTerm(itemSearchInput.value, name, data.nameKo)) {
+            return false;
         }
         
         // Substat filtering (including level scaling)
@@ -1775,24 +2874,11 @@ function renderMainGrid() {
         }
 
         if (activePassiveSkills.size > 0) {
-            if (!data.passiveSkill || !activePassiveSkills.has(data.passiveSkill.name)) return false;
+            if (!getItemPassiveSkills(data).some(passiveSkill => activePassiveSkills.has(passiveSkill.name))) return false;
         }
 
-        // Character mastery & unique items filtering
-        if (currentCharacter) {
-            if (data.part === "Weapon") {
-                const masteries = chars[currentCharacter].masteries;
-                if (!masteries.includes(data.weaponType)) return false;
-            }
-            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") return false;
-            if (currentCharacter === "Priya" && data.part === "Head" && name !== "Harmony in Full Bloom") return false;
-            
-            const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) return false;
-        } else {
-            // No character selected: you can't see Echion/Priya exclusive items to avoid confusion, 
-            // OR we let them see it. The prompt says: "If the character is not selected, let them choose whatever."
-        }
+        // Character mastery and character-exclusive equipment filtering
+        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return false;
 
         // If currentFilter is "All", we only filter out other weapons
         if (currentFilter === "All") {
@@ -1813,40 +2899,40 @@ function renderMainGrid() {
         return true;
     });
 
-    const weaponOrderMap = {};
-    WEAPON_TYPES.forEach((w, i) => weaponOrderMap[w.api] = i);
+    catalogItems.sort(compareCatalogItems);
 
-    epicItems.sort((a, b) => {
-        const dataA = a[1];
-        const dataB = b[1];
-        const orderA = partOrder[dataA.part] || 99;
-        const orderB = partOrder[dataB.part] || 99;
-        
-        if (orderA !== orderB) return orderA - orderB;
-        
-        if (dataA.part === "Weapon" && dataA.weaponType && dataB.weaponType) {
-             const wA = weaponOrderMap[dataA.weaponType] ?? 99;
-             const wB = weaponOrderMap[dataB.weaponType] ?? 99;
-             if (wA !== wB) return wA - wB;
-        }
-        
-        return a[0].localeCompare(b[0]);
-    });
-
-    epicItems.forEach(([name, data]) => {
+    catalogItems.forEach(([name]) => {
         const card = createItemCard(name);
         grid.appendChild(card);
     });
+
+    const count = document.getElementById('catalog-item-count');
+    if (count) count.textContent = `${catalogItems.length} ${t('itemsShown')}`;
+    if (catalogItems.length === 0) {
+        grid.innerHTML = `<p class="empty-msg catalog-empty">${t('noMatchingItems')}</p>`;
+    }
 }
 
 function createItemCard(name) {
-    const card = document.createElement('div');
+    const item = items[name];
+    const gradeStyle = getItemGradeStyle(item && item.type);
+    const card = document.createElement('button');
+    card.type = 'button';
     card.classList.add('item-card');
-    card.dataset.name = name; 
+    card.dataset.name = name;
+    card.dataset.grade = item ? item.type : '';
+    card.style.setProperty('--item-card-start', gradeStyle.cardStart);
+    card.style.setProperty('--item-card-end', gradeStyle.cardEnd);
+    applyMythicWeaponVariantIndicator(card, name, item);
+    const selected = getBuild().has(name);
+    const typeName = TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item.type;
+    card.classList.toggle('selected', selected);
+    card.setAttribute('aria-pressed', String(selected));
+    card.setAttribute('aria-label', `${t(selected ? 'removeItem' : 'addItem')}: ${getItemName(name)}, ${typeName}`);
 
     const img = document.createElement('img');
-    img.src = `images/${name}.png`; 
-    img.alt = name;
+    img.src = getItemImagePath(name);
+    img.alt = getItemName(name);
     img.classList.add('item-icon');
     
     applyItemImageFallback(img, name);
@@ -1875,20 +2961,32 @@ function showGlobalTooltip(name, trigger = null) {
     const tooltip = document.getElementById('global-tooltip');
     if (!tooltip) return;
     
-    const typeColor = '#9b59b6'; 
+    const gradeStyle = getItemGradeStyle(itemData.type);
+    const typeColor = gradeStyle.color;
     const partName = PART_NAMES[itemData.part] ? PART_NAMES[itemData.part][currentLanguage] : itemData.part;
     const typeName = TYPE_NAMES[itemData.type] ? TYPE_NAMES[itemData.type][currentLanguage] : itemData.type;
+    const highTierMaterials = getHighTierMaterialsForItem(name, itemData);
+    const materialIcons = highTierMaterials.map(material => {
+        const config = HIGH_TIER_MATERIALS[material];
+        const label = `${getHighTierMaterialName(material)} · ${config.price} ${t('credits')}`;
+        return `<img src="${escapeAttribute(config.image)}" alt="${escapeAttribute(label)}" title="${escapeAttribute(label)}" loading="lazy" decoding="async">`;
+    }).join('');
     
     let tooltipHtml = `
         <div class="tooltip-header">
             <div class="tooltip-highlight" style="background-color: ${typeColor};"></div>
             <div class="tooltip-header-info">
                 <div class="tooltip-name">${getItemName(name)}</div>
-                <div class="tooltip-type" style="color: ${typeColor};">${typeName}</div>
-                <div class="tooltip-part">${partName}</div>
+                <div class="tooltip-meta-row">
+                    <div>
+                        <div class="tooltip-type" style="color: ${typeColor};">${typeName}</div>
+                        <div class="tooltip-part">${partName}</div>
+                    </div>
+                    ${materialIcons ? `<div class="tooltip-resource-list">${materialIcons}</div>` : ''}
+                </div>
             </div>
             <div class="tooltip-image-container">
-                <img src="images/${escapeAttribute(name)}.png" alt="${escapeAttribute(name)}" data-item-image="${escapeAttribute(name)}">
+                <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
             </div>
         </div>
         <div class="tooltip-stats">
@@ -1935,11 +3033,15 @@ function showGlobalTooltip(name, trigger = null) {
         });
         tooltipHtml += uniqueTooltipHtml;
     }
-    if (itemData.passiveSkill) {
-        tooltipHtml += renderPassiveSkillLine(itemData.passiveSkill);
-    }
+    getItemPassiveSkills(itemData).forEach(passiveSkill => {
+        tooltipHtml += renderPassiveSkillLine(passiveSkill);
+    });
     tooltipHtml += `</div>`;
     tooltip.innerHTML = tooltipHtml;
+    tooltip.style.setProperty('--tooltip-start', gradeStyle.cardStart);
+    tooltip.style.setProperty('--tooltip-end', gradeStyle.cardEnd);
+    tooltip.style.setProperty('--tooltip-border', gradeStyle.color);
+    applyMythicWeaponVariantIndicator(tooltip, name, itemData);
     applyItemImageFallbacks(tooltip);
     activeTooltipTrigger = trigger;
     tooltip.style.display = 'block';
@@ -1959,13 +3061,18 @@ function getPassiveSkillName(passiveSkill) {
     return currentLanguage === 'ko' ? (passiveSkill.nameKo || passiveSkill.name) : passiveSkill.name;
 }
 
+function getItemPassiveSkills(item) {
+    if (!item) return [];
+    if (Array.isArray(item.passiveSkills)) return item.passiveSkills;
+    return item.passiveSkill ? [item.passiveSkill] : [];
+}
+
 function getEffectivePassiveSkills(itemNames) {
     const passiveMap = new Map();
     itemNames.forEach(name => {
-        const passiveSkill = items[name] && items[name].passiveSkill;
-        if (passiveSkill && !passiveMap.has(passiveSkill.name)) {
-            passiveMap.set(passiveSkill.name, passiveSkill);
-        }
+        getItemPassiveSkills(items[name]).forEach(passiveSkill => {
+            if (!passiveMap.has(passiveSkill.name)) passiveMap.set(passiveSkill.name, passiveSkill);
+        });
     });
 
     const locale = currentLanguage === 'ko' ? 'ko' : 'en';
@@ -1992,6 +3099,12 @@ function moveGlobalTooltip(e) {
     if (y + rect.height > window.innerHeight) {
         y = window.innerHeight - rect.height - 15;
     }
+
+    const viewportMargin = 8;
+    const maxX = Math.max(viewportMargin, window.innerWidth - rect.width - viewportMargin);
+    const maxY = Math.max(viewportMargin, window.innerHeight - rect.height - viewportMargin);
+    x = Math.min(Math.max(viewportMargin, x), maxX);
+    y = Math.min(Math.max(viewportMargin, y), maxY);
     
     tooltip.style.left = x + 'px';
     tooltip.style.top = y + 'px';
@@ -2004,37 +3117,21 @@ function hideGlobalTooltip() {
 }
 
 function toggleSelection(name) {
-    if (selectedEpics.has(name)) {
-        selectedEpics.delete(name);
+    const build = getBuild();
+    if (build.has(name)) {
+        build.delete(name);
     } else {
         // Unique Selection Logic
-        const echionWeapons = ["Black Mamba King", "Deathadder Queen", "Alpha Sidewinder"];
-        if (name === "Harmony in Full Bloom") {
+        if (PRIYA_EXCLUSIVE_HEAD_ITEMS.has(name)) {
             forceCharacterSelection("Priya");
-        } else if (echionWeapons.includes(name) || items[name].weaponType === "VFArm") {
+        } else if (ECHION_EXCLUSIVE_WEAPONS.has(name) || items[name].weaponType === "VFArm") {
             forceCharacterSelection("Echion");
         }
 
-        // If a character is selected, ensure we don't allow mismatching uniques
-        if (currentCharacter) {
-            if (currentCharacter === "Priya" && items[name].part === "Head" && name !== "Harmony in Full Bloom") {
-                return; // Deselect/block
-            }
-            if (currentCharacter !== "Priya" && name === "Harmony in Full Bloom") {
-                return;
-            }
-            if (currentCharacter !== "Echion" && echionWeapons.includes(name)) {
-                return;
-            }
-            if (items[name].part === "Weapon" && !chars[currentCharacter].masteries.includes(items[name].weaponType)) {
-                return;
-            }
-        }
-
-        selectedEpics.add(name);
+        if (!addItemToBuild(name)) return;
     }
     updateMainGridVisuals();
-    updateSelectedPanel();
+    updateSelectedPanel({ buildChanged: true });
 }
 
 function forceCharacterSelection(charName) {
@@ -2044,50 +3141,197 @@ function forceCharacterSelection(charName) {
 function updateMainGridVisuals() {
     // We only update visible cards. 
     // Since cards are re-created on filter change, this just handles selection state.
-    const cards = document.querySelectorAll('#epic-item-grid .item-card');
+    const build = getBuild();
+    const cards = document.querySelectorAll('#item-grid .item-card');
     cards.forEach(card => {
         const name = card.dataset.name;
-        if (selectedEpics.has(name)) {
-            card.classList.add('selected');
-        } else {
-            card.classList.remove('selected');
-        }
+        const selected = build.has(name);
+        const item = items[name];
+        const typeName = item && TYPE_NAMES[item.type] ? TYPE_NAMES[item.type][currentLanguage] : item?.type || '';
+        card.classList.toggle('selected', selected);
+        card.setAttribute('aria-pressed', String(selected));
+        card.setAttribute('aria-label', `${t(selected ? 'removeItem' : 'addItem')}: ${getItemName(name)}, ${typeName}`);
     });
 }
 
-function updateSelectedPanel() {
+function updateSelectedPanel({ buildChanged = false } = {}) {
     const container = document.getElementById('selected-item-grid');
     if (!container) return;
-    container.innerHTML = ''; 
+    container.innerHTML = '';
 
-    if (selectedEpics.size === 0) {
-        container.innerHTML = `<p class="empty-msg">${t('clickToAdd')}</p>`;
-        selectedRoutes = [];
-        renderStatComparison();
+    if (activeBuildType === BUILD_TYPES.LATE) {
+        renderLateBuildSlots(container);
+        renderLateGamePanel();
         return;
     }
 
-    const sortedEpics = sortItemsByBuildSlot(selectedEpics);
+    container.classList.remove('late-build-grid');
 
-    sortedEpics.forEach(name => {
-        const div = document.createElement('div');
-        div.classList.add('item-card');
-        div.title = "Click to remove";
-        
-        const img = document.createElement('img');
-        img.src = `images/${name}.png`;
-        img.classList.add('item-icon');
-        
-        applyItemImageFallback(img, name);
+    const build = getBuild();
+    if (build.size === 0) {
+        const emptyKey = activeBuildType === BUILD_TYPES.LATE ? 'clickToAddLate' : 'clickToAdd';
+        container.innerHTML = `<p class="empty-msg">${t(emptyKey)}</p>`;
+        if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
+            selectedRoutes = [];
+            renderStatComparison();
+        }
+        return;
+    }
 
-        div.appendChild(img);
-        div.addEventListener('click', () => toggleSelection(name)); 
-        container.appendChild(div);
+    const sortedItems = sortItemsByBuildSlot(build);
+
+    sortedItems.forEach(name => {
+        const card = createItemCard(name);
+        card.classList.add('selected-build-card');
+        card.title = `${t('removeItem')}: ${getItemName(name)}`;
+        container.appendChild(card);
     });
     
-    // Reset comparison when build changes
-    selectedRoutes = [];
-    renderStatComparison();
+    if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
+        selectedRoutes = [];
+        renderStatComparison();
+    }
+}
+
+function renderLateBuildSlots(container) {
+    container.classList.add('late-build-grid');
+
+    EQUIPMENT_SLOTS.forEach(slot => {
+        const slotContainer = document.createElement('div');
+        slotContainer.className = 'late-build-slot';
+        slotContainer.dataset.slot = slot;
+
+        const label = document.createElement('span');
+        label.className = 'late-build-slot-label';
+        label.textContent = PART_NAMES[slot][currentLanguage];
+        slotContainer.appendChild(label);
+
+        const itemName = getBuildItemForSlot(lateBuild, slot);
+        if (itemName) {
+            const card = createItemCard(itemName);
+            card.classList.add('late-build-slot-card');
+            card.title = currentLanguage === 'ko' ? '클릭하여 제거' : 'Click to remove';
+            slotContainer.appendChild(card);
+        } else {
+            const emptyButton = document.createElement('button');
+            emptyButton.type = 'button';
+            emptyButton.className = 'late-build-empty-slot';
+            emptyButton.setAttribute('aria-label', `${PART_NAMES[slot][currentLanguage]}: ${t('clickToAddLate')}`);
+            emptyButton.innerHTML = `<img src="images/ui/${slot}.png" alt="" loading="lazy" decoding="async"><span>+</span>`;
+            emptyButton.addEventListener('click', () => {
+                const filterButton = document.querySelector(`.filter-row .filter-btn[data-filter="${slot}"]`);
+                if (filterButton) filterButton.click();
+                document.getElementById('item-search')?.focus();
+            });
+            slotContainer.appendChild(emptyButton);
+        }
+
+        container.appendChild(slotContainer);
+    });
+}
+
+function saveLateComparisonBuild(index) {
+    if (index !== 0 && index !== 1) return;
+    const snapshot = createLateBuildSnapshot();
+    if (!snapshot) return;
+    lateComparisonBuilds[index] = snapshot;
+    renderLateGamePanel();
+}
+
+function loadLateComparisonBuild(index) {
+    const snapshot = lateComparisonBuilds[index];
+    if (!snapshot) return;
+    lateBuild.clear();
+    snapshot.forEach(name => addItemToBuild(name, BUILD_TYPES.LATE));
+    updateMainGridVisuals();
+    updateSelectedPanel({ buildChanged: true });
+}
+
+function renderLateSnapshot(snapshot, index) {
+    const label = index === 0 ? t('buildA') : t('buildB');
+    if (!snapshot) {
+        return `<div class="late-snapshot-card empty"><strong>${label}</strong><span>—</span></div>`;
+    }
+
+    const icons = snapshot.map(name => {
+        const item = items[name];
+        const gradeStyle = getItemGradeStyle(item && item.type);
+        return `<div class="late-snapshot-icon" data-item="${escapeAttribute(name)}" tabindex="0" aria-label="${escapeAttribute(getItemName(name))}" style="--item-card-start:${gradeStyle.cardStart};--item-card-end:${gradeStyle.cardEnd}" title="${escapeAttribute(getItemName(name))}">
+            <img src="${escapeAttribute(getItemImagePath(name))}" alt="${escapeAttribute(getItemName(name))}" data-item-image="${escapeAttribute(name)}" loading="lazy" decoding="async">
+        </div>`;
+    }).join('');
+    return `<div class="late-snapshot-card">
+        <div class="late-snapshot-head"><strong>${label}</strong><button type="button" class="late-load-btn" data-late-load="${index}">${t('loadBuild')}</button></div>
+        <div class="late-snapshot-items">${icons}</div>
+    </div>`;
+}
+
+function renderLateGamePanel() {
+    const panel = document.getElementById('late-game-panel');
+    if (!panel || activeBuildType !== BUILD_TYPES.LATE) return;
+
+    const filledSlots = EQUIPMENT_SLOTS.filter(slot => !!getBuildItemForSlot(lateBuild, slot)).length;
+    const complete = isLateBuildComplete();
+    const progress = document.getElementById('late-build-progress');
+    if (progress) {
+        progress.textContent = `${filledSlots} / ${EQUIPMENT_SLOTS.length}`;
+        progress.classList.toggle('complete', complete);
+    }
+
+    const currentStats = document.getElementById('late-current-stats');
+    if (currentStats) {
+        currentStats.innerHTML = lateBuild.size
+            ? renderSingleStatColumn(calculateBuildStats(Array.from(lateBuild)), {
+                creditCost: getBuildCreditCost(lateBuild)
+            })
+            : `<p class="empty-msg">${t('noBuildStats')}</p>`;
+    }
+
+    const canSaveComparison = canSaveLateComparisonBuild();
+    document.querySelectorAll('.late-save-btn').forEach(button => {
+        button.disabled = !canSaveComparison;
+        button.title = canSaveComparison ? '' : t('incompleteLateBuild');
+    });
+
+    const clearButton = document.getElementById('clear-late-comparison-btn');
+    if (clearButton) clearButton.disabled = !lateComparisonBuilds.some(Boolean);
+
+    const output = document.getElementById('late-comparison-output');
+    if (!output) return;
+    const snapshots = lateComparisonBuilds.map((snapshot, index) => renderLateSnapshot(snapshot, index)).join('');
+    const comparison = lateComparisonBuilds.every(Boolean)
+        ? `<div class="late-stat-comparison">${renderComparisonColumns(
+            calculateBuildStats(lateComparisonBuilds[0]),
+            calculateBuildStats(lateComparisonBuilds[1]),
+            [t('buildA'), t('buildB')],
+            {
+                creditCosts: [
+                    getBuildCreditCost(lateComparisonBuilds[0]),
+                    getBuildCreditCost(lateComparisonBuilds[1])
+                ]
+            }
+        )}</div>`
+        : `<p class="empty-msg late-comparison-waiting">${t('comparisonWaiting')}</p>`;
+    output.innerHTML = `<div class="late-snapshot-grid">${snapshots}</div>${comparison}`;
+    applyItemImageFallbacks(output);
+    output.querySelectorAll('.late-snapshot-icon[data-item]').forEach(icon => {
+        applyMythicWeaponVariantIndicator(icon, icon.dataset.item);
+        icon.addEventListener('mouseenter', (event) => {
+            showGlobalTooltip(icon.dataset.item, icon);
+            moveGlobalTooltip(event);
+        });
+        icon.addEventListener('mousemove', moveGlobalTooltip);
+        icon.addEventListener('mouseleave', hideGlobalTooltip);
+        icon.addEventListener('focus', () => {
+            const rect = icon.getBoundingClientRect();
+            showGlobalTooltip(icon.dataset.item, icon);
+            moveGlobalTooltip({ clientX: rect.right, clientY: rect.top });
+        });
+        icon.addEventListener('blur', hideGlobalTooltip);
+    });
+    output.querySelectorAll('[data-late-load]').forEach(button => {
+        button.addEventListener('click', () => loadLateComparisonBuild(Number(button.dataset.lateLoad)));
+    });
 }
 
 // ==========================================
@@ -2295,19 +3539,26 @@ function renderPassiveSkillComparison(passiveSkills1 = [], passiveSkills2 = []) 
     return html;
 }
 
-function renderSingleStatColumn(stats) {
+function renderSingleStatColumn(stats, { creditCost = null } = {}) {
     let html = `<div style="flex:1;">`;
     let portraitHtml = '';
     if (currentCharacter) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; position:relative; width:100%;">
                 <div style="width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin:0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(getCharName(currentCharacter))}" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.7em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.75em; padding:2px 6px; border-radius:8px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
     }
     html += portraitHtml;
+
+    if (creditCost !== null) {
+        html += `<div style="display:flex; justify-content:space-between; padding:2px 0; border-bottom:1px dashed var(--border-color);">
+            <span>${t('totalCredits')}</span>
+            <strong style="color:var(--text-main);">${creditCost} ${t('credits')}</strong>
+        </div>`;
+    }
 
     DISPLAY_STATS.forEach(s => {
         if (!isZeroStatValue(stats[s.id]) && stats[s.id] > 0) {
@@ -2322,7 +3573,13 @@ function renderSingleStatColumn(stats) {
     return html;
 }
 
-function renderComparisonColumns(stats1, stats2) {
+function getComparisonValueColors(value1, value2, lowerIsBetter = false) {
+    if (value1 === value2) return ['var(--text-main)', 'var(--text-main)'];
+    const leftIsBetter = lowerIsBetter ? value1 < value2 : value1 > value2;
+    return leftIsBetter ? ['#27ae60', '#e74c3c'] : ['#e74c3c', '#27ae60'];
+}
+
+function renderComparisonColumns(stats1, stats2, labels = [t('route1'), t('route2')], { creditCosts = null } = {}) {
     let html = `<div style="flex:1; display:flex; gap:20px;">`;
     
     // Shared portrait
@@ -2331,7 +3588,7 @@ function renderComparisonColumns(stats1, stats2) {
         portraitHtml = `
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom:15px; width:100%; position:relative;">
                 <div style="width:50px; height:50px; border-radius:50%; overflow:hidden; border:2px solid #ccc; margin: 0 auto;">
-                    <img src="images/${currentCharacter}.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
+                    <img src="${escapeAttribute(getCharacterImagePath(currentCharacter))}" alt="${escapeAttribute(getCharName(currentCharacter))}" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.6em;\\'>${getCharName(currentCharacter)}</div>'">
                 </div>
                 <div style="position:absolute; bottom:-5px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.85); color:white; font-size:0.65em; padding:2px 5px; border-radius:6px; font-weight:bold; border:1px solid #555;">Lv.${charLevel}</div>
             </div>`;
@@ -2352,8 +3609,9 @@ function renderComparisonColumns(stats1, stats2) {
     });
 
     const renderRow = (item, isCommon) => {
-        const color1 = isCommon ? 'var(--text-main)' : (item.v1 > item.v2 ? '#27ae60' : '#e74c3c');
-        const color2 = isCommon ? 'var(--text-main)' : (item.v2 > item.v1 ? '#27ae60' : '#e74c3c');
+        const [color1, color2] = isCommon
+            ? ['var(--text-main)', 'var(--text-main)']
+            : getComparisonValueColors(item.v1, item.v2);
         return `
         <div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
             <div style="flex:1; text-align:right; font-weight:bold; color:${color1};">${item.v1 > 0 ? formatStatValue(item.id, item.v1) : '-'}</div>
@@ -2366,10 +3624,20 @@ function renderComparisonColumns(stats1, stats2) {
     html += portraitHtml;
     
     html += `<div style="display:flex; justify-content:center; margin-bottom:5px; font-weight:bold; border-bottom:2px solid #ccc;">
-        <span style="flex:1; text-align:right; color:#2980b9;">${t('route1')}</span>
+        <span style="flex:1; text-align:right; color:#2980b9;">${escapeAttribute(labels[0])}</span>
         <span style="flex:1.5;"></span>
-        <span style="flex:1; text-align:left; color:#8e44ad;">${t('route2')}</span>
+        <span style="flex:1; text-align:left; color:#8e44ad;">${escapeAttribute(labels[1])}</span>
     </div>`;
+
+    if (creditCosts) {
+        const [leftCredits, rightCredits] = creditCosts;
+        const [leftColor, rightColor] = getComparisonValueColors(leftCredits, rightCredits, true);
+        html += `<div style="display:flex; align-items:center; padding:3px 0; border-bottom:1px dashed var(--border-color); font-size:0.85em;">
+            <div style="flex:1; text-align:right; font-weight:bold; color:${leftColor};">${leftCredits}</div>
+            <div style="flex:1.5; text-align:center; color:var(--text-muted); font-size:0.9em;">${t('totalCredits')}</div>
+            <div style="flex:1; text-align:left; font-weight:bold; color:${rightColor};">${rightCredits}</div>
+        </div>`;
+    }
 
     commonStats.forEach(item => html += renderRow(item, true));
     diffStats.forEach(item => html += renderRow(item, false));
@@ -2383,12 +3651,12 @@ function renderComparisonColumns(stats1, stats2) {
 // MASTER LOGIC: VARIANT GENERATOR
 // ==========================================
 
-async function calculateAllVariants() {
+async function calculateEarlyRouteVariants() {
     const resultOutput = document.getElementById('result-output');
     resultOutput.innerHTML = t("calculating");
     console.clear();
 
-    if (selectedEpics.size === 0) {
+    if (earlyBuild.size === 0) {
         resultOutput.innerHTML = t("pleaseSelect");
         return;
     }
@@ -2396,7 +3664,8 @@ async function calculateAllVariants() {
     // 1. Group Selected Items by Part
     // e.g. { Weapon: [A, B], Chest: [C], Head: [D, E] }
     const slots = {};
-    selectedEpics.forEach(name => {
+    earlyBuild.forEach(name => {
+        if (!isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY)) return;
         const part = items[name].part;
         if (!slots[part]) slots[part] = [];
         slots[part].push(name);
@@ -2413,7 +3682,7 @@ async function calculateAllVariants() {
     combinations.forEach(combo => {
         // combo is Array of strings: ["WeaponName", "ChestName", ...]
         const buildSet = new Set(combo);
-        const routes = solveSpecificBuild(buildSet);
+        const routes = solveEarlyBuildRoute(buildSet);
         
         // Tag these routes with the specific variant used
         routes.forEach(r => {
@@ -2458,7 +3727,11 @@ function cartesianProduct(arrays) {
 // CORE SOLVER (Solves 1 specific combination)
 // ==========================================
 
-function solveSpecificBuild(buildSet) {
+function solveEarlyBuildRoute(buildSet) {
+    if (Array.from(buildSet).some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) {
+        return [];
+    }
+
     // --- STEP 1: CALCULATE NEEDS VS OWNED ---
     const neededCounts = {};
     const uniqueItemsToIgnore = new Set([
@@ -2468,9 +3741,9 @@ function solveSpecificBuild(buildSet) {
         "Harmony in Full Bloom"
     ]);
 
-    buildSet.forEach(epicName => {
-        if (!uniqueItemsToIgnore.has(epicName) && items[epicName] && items[epicName].components) {
-            items[epicName].components.forEach(mat => {
+    buildSet.forEach(itemName => {
+        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
+            items[itemName].components.forEach(mat => {
                 neededCounts[mat] = (neededCounts[mat] || 0) + 1;
             });
         }
@@ -2479,10 +3752,10 @@ function solveSpecificBuild(buildSet) {
     const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
 
     // Identify Base Weapon for THIS specific combination
-    buildSet.forEach(epicName => {
-        const epicData = items[epicName];
-        if (epicData && epicData.part === "Weapon" && epicData.components) {
-            epicData.components.forEach(comp => {
+    buildSet.forEach(itemName => {
+        const itemData = items[itemName];
+        if (itemData && itemData.part === "Weapon" && itemData.components) {
+            itemData.components.forEach(comp => {
                 if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
             });
         }
@@ -2651,6 +3924,7 @@ function getPermutations(arr) {
 
 function displayResults(routes, container) {
     const topRoutes = routes.slice(0, 10); // Show top 10 now since we have variants
+    const mobilePreviewCount = 3;
     
     let html = `${t('topRoutes')}`;
     
@@ -2672,7 +3946,7 @@ function displayResults(routes, container) {
         // Create a summary of the variant (Build) used for this route
         // This is crucial if they selected 2 different weapons
         const variantSummary = sortItemsByBuildSlot(r.variantItems).map(item =>
-            `<img src="images/${escapeAttribute(item)}.png" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
+            `<img src="${escapeAttribute(getItemImagePath(item))}" alt="${escapeAttribute(getItemName(item))}" title="${escapeAttribute(getItemName(item))}" data-item-image="${escapeAttribute(item)}" loading="lazy" decoding="async" style="width:30px; height:30px; object-fit:contain; vertical-align:middle; border:1px solid var(--border-color); border-radius:3px; margin-right:2px;">`
         ).join('');
 
         let formattedPath = r.path.map((z, idx) => {
@@ -2687,7 +3961,7 @@ function displayResults(routes, container) {
         });
 
         html += `
-        <div class="route-card" data-index="${index}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
+        <button type="button" class="route-card${index >= mobilePreviewCount ? ' mobile-route-extra' : ''}" data-index="${index}" aria-pressed="false" aria-label="${escapeAttribute(`${t('selectRoute')}: ${formattedPath.join(' → ')}`)}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
             
             <div style="margin-bottom: 5px; font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center;">
                 <strong style="margin-right:5px;">${t('buildVariant')}</strong> ${variantSummary}
@@ -2703,11 +3977,27 @@ function displayResults(routes, container) {
             <div style="font-size:0.85em; margin-top:4px; padding-left: 5px;">
                 ${droneHtml}
             </div>
-        </div>`;
+        </button>`;
     });
+
+    if (topRoutes.length > mobilePreviewCount) {
+        html += `<button type="button" class="route-show-more" aria-expanded="false">${t('showMoreRoutes')} (${topRoutes.length - mobilePreviewCount})</button>`;
+    }
     
+    container.classList.remove('routes-expanded');
     container.innerHTML = html;
     applyItemImageFallbacks(container);
+
+    const showMoreButton = container.querySelector('.route-show-more');
+    if (showMoreButton) {
+        showMoreButton.addEventListener('click', () => {
+            const expanded = container.classList.toggle('routes-expanded');
+            showMoreButton.setAttribute('aria-expanded', String(expanded));
+            showMoreButton.textContent = expanded
+                ? t('showFewerRoutes')
+                : `${t('showMoreRoutes')} (${topRoutes.length - mobilePreviewCount})`;
+        });
+    }
 
     // Add click listeners for comparison
     const routeCards = container.querySelectorAll('.route-card');
@@ -2718,33 +4008,25 @@ function displayResults(routes, container) {
             
             const existingIdx = selectedRoutes.findIndex(sr => sr === route);
             if (existingIdx !== -1) {
-                // Deselect
                 selectedRoutes.splice(existingIdx, 1);
-                card.style.boxShadow = 'none';
-                card.style.borderColor = '#ddd';
             } else {
                 if (selectedRoutes.length >= 2) {
-                    // Remove first
-                    const removedRoute = selectedRoutes.shift();
-                    const removedIdx = generatedRoutes.indexOf(removedRoute);
-                    if (removedIdx !== -1) {
-                        const rCard = container.querySelector(`.route-card[data-index="${removedIdx}"]`);
-                        if (rCard) { rCard.style.boxShadow = 'none'; rCard.style.borderColor = '#ddd'; }
-                    }
+                    selectedRoutes.shift();
                 }
                 selectedRoutes.push(route);
             }
-            
-            // Apply styles to currently selected
-            selectedRoutes.forEach((sr, i) => {
-                const srIdx = generatedRoutes.indexOf(sr);
-                if (srIdx !== -1) {
-                    const rCard = container.querySelector(`.route-card[data-index="${srIdx}"]`);
-                    if (rCard) {
-                        rCard.style.boxShadow = '0 0 8px ' + (i === 0 ? 'rgba(41, 128, 185, 0.6)' : 'rgba(142, 68, 173, 0.6)');
-                        rCard.style.borderColor = (i === 0 ? '#2980b9' : '#8e44ad');
-                    }
-                }
+
+            routeCards.forEach(routeCard => {
+                const routeIndex = Number(routeCard.dataset.index);
+                const comparisonIndex = selectedRoutes.indexOf(generatedRoutes[routeIndex]);
+                const selected = comparisonIndex !== -1;
+                routeCard.setAttribute('aria-pressed', String(selected));
+                routeCard.style.boxShadow = selected
+                    ? `0 0 8px ${comparisonIndex === 0 ? 'rgba(41, 128, 185, 0.6)' : 'rgba(142, 68, 173, 0.6)'}`
+                    : 'none';
+                routeCard.style.borderColor = selected
+                    ? (comparisonIndex === 0 ? '#2980b9' : '#8e44ad')
+                    : 'var(--route-card-border)';
             });
 
             renderStatComparison();

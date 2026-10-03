@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eternal Return Farming Route Optimizer</title>
+    <title>Eternal Return Build Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=12-mobile-1">
+    <link rel="stylesheet" href="style.css?v=33-filter-menu-overflow">
 </head>
 
 <body>
@@ -17,19 +17,32 @@
         </div>
 
         <div class="header-center">
-            <h1 data-i18n="title">Eternal Return Farming Route Optimizer</h1>
+            <h1 data-i18n="title">Eternal Return Build Optimizer</h1>
         </div>
 
         <div class="header-right">
-            <select id="language-select">
+            <label class="visually-hidden" for="language-select" data-i18n="languageLabel">Language</label>
+            <select id="language-select" aria-label="Language">
                 <option value="en">English</option>
                 <option value="ko">한국어</option>
             </select>
-            <button id="theme-toggle">🌙 / ☀️</button>
+            <button type="button" id="theme-toggle" aria-label="Switch to dark theme" aria-pressed="false">🌙 / ☀️</button>
         </div>
     </header>
 
-    <main class="main-container">
+    <nav class="workflow-switch-bar" aria-label="Build workflow">
+        <div class="workflow-switch" role="group" aria-label="Build workflow">
+            <button type="button" class="workflow-btn active" data-build-type="early" aria-pressed="true" data-i18n="earlyGameRoute">Early Game Route</button>
+            <button type="button" class="workflow-btn" data-build-type="late" aria-pressed="false" data-i18n="lateGameBuild">Late-Game Build</button>
+        </div>
+    </nav>
+
+    <div id="app-status" class="app-status" role="status" aria-live="polite">
+        <span class="app-status-spinner" aria-hidden="true"></span>
+        <span id="app-status-message" data-i18n="loadingData">Loading item and character data…</span>
+    </div>
+
+    <main class="main-container" aria-busy="true">
 
         <section class="panel left-panel">
             <div class="filter-panel-header" style="display:flex; justify-content:space-between; align-items:center;">
@@ -52,23 +65,44 @@
             <!-- Main Parts Filter -->
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="itemPart">Item Part</div>
             <div class="filter-row" style="margin-bottom:10px;">
-                <div class="filter-btn active" data-filter="All" title="Show All" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;" data-i18n="all">
+                <button type="button" class="filter-btn active" data-filter="All" title="Show All" aria-pressed="true" style="display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:1.2em;" data-i18n="all">
                     ALL
-                </div>
-                <div class="filter-btn" data-filter="Weapon" title="Weapon">
-                    <img src="images/Weapon.png" alt="Weapon" onerror="this.style.display='none'; this.parentElement.innerText='Weapon'">
-                </div>
-                <div class="filter-btn" data-filter="Chest" title="Chest">
-                    <img src="images/Chest.png" alt="Chest" onerror="this.style.display='none'; this.parentElement.innerText='Chest'">
-                </div>
-                <div class="filter-btn" data-filter="Head" title="Head">
-                    <img src="images/Head.png" alt="Head" onerror="this.style.display='none'; this.parentElement.innerText='Head'">
-                </div>
-                <div class="filter-btn" data-filter="Arm" title="Arm">
-                    <img src="images/Arm.png" alt="Arm" onerror="this.style.display='none'; this.parentElement.innerText='Arm'">
-                </div>
-                <div class="filter-btn" data-filter="Leg" title="Leg">
-                    <img src="images/Leg.png" alt="Leg" onerror="this.style.display='none'; this.parentElement.innerText='Leg'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Weapon" title="Weapon" aria-pressed="false">
+                    <img src="images/ui/Weapon.png" alt="Weapon" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Weapon'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Chest" title="Chest" aria-pressed="false">
+                    <img src="images/ui/Chest.png" alt="Chest" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Chest'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Head" title="Head" aria-pressed="false">
+                    <img src="images/ui/Head.png" alt="Head" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Head'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Arm" title="Arm" aria-pressed="false">
+                    <img src="images/ui/Arm.png" alt="Arm" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Arm'">
+                </button>
+                <button type="button" class="filter-btn" data-filter="Leg" title="Leg" aria-pressed="false">
+                    <img src="images/ui/Leg.png" alt="Leg" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.innerText='Leg'">
+                </button>
+            </div>
+
+            <div id="late-resource-filter-group" hidden>
+                <div class="filter-label" data-i18n="highTierMaterial">High-tier Material</div>
+                <div class="resource-filter-row" role="group" aria-label="High-tier Material">
+                    <button type="button" class="resource-filter-btn active" data-resource="Meteorite" aria-pressed="true" aria-label="Meteorite" title="Meteorite">
+                        <img src="images/materials/Meteorite.png" alt="" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="resource-filter-btn active" data-resource="Tree of Life" aria-pressed="true" aria-label="Tree of Life" title="Tree of Life">
+                        <img src="images/materials/Tree of Life.png" alt="" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="resource-filter-btn active" data-resource="Mythril" aria-pressed="true" aria-label="Mythril" title="Mythril">
+                        <img src="images/materials/Mythril.png" alt="" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="resource-filter-btn active" data-resource="Force Core" aria-pressed="true" aria-label="Force Core" title="Force Core">
+                        <img src="images/materials/Force Core.png" alt="" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="resource-filter-btn active" data-resource="VF Blood Sample" aria-pressed="true" aria-label="VF Blood Sample" title="VF Blood Sample">
+                        <img src="images/materials/VF Blood Sample.png" alt="" loading="lazy" decoding="async">
+                    </button>
                 </div>
             </div>
 
@@ -84,7 +118,7 @@
             </div>
 
             <div style="font-weight:bold; font-size:0.9em; color:#555; margin-bottom:5px;" data-i18n="passiveSkills">Passive Skills</div>
-            <div id="passive-skill-filters" class="passive-skill-row" style="margin-bottom:10px;">
+            <div id="passive-skill-filters" style="margin-bottom:10px;">
                 <!-- Injected via JS -->
             </div>
         </section>
@@ -97,7 +131,7 @@
 
             <div class="selection-header" style="flex-shrink: 0;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                    <h2 style="margin:0;" data-i18n="yourBuild">Your Build</h2>
+                    <h2 id="build-heading" style="margin:0;" data-i18n="yourEarlyBuild">Your Early Build</h2>
                     <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'" data-i18n="resetBuild">Reset Build</button>
                 </div>
                 <div id="selected-item-grid" class="grid-view small-grid">
@@ -107,39 +141,60 @@
 
             <div id="optimizer-view" class="mode-view active">
                 <hr style="flex-shrink: 0;">
-                <h2 data-i18n="selectEpicItems" style="margin-bottom: 5px; flex-shrink: 0;">Select Epic Items</h2>
+                <div class="catalog-heading-row">
+                    <h2 id="item-catalog-heading" data-i18n="selectEpicItems">Select Epic Items</h2>
+                    <span id="catalog-item-count" class="catalog-item-count"></span>
+                </div>
                 <div style="margin-bottom: 10px; flex-shrink: 0;">
                     <input type="text" id="item-search" data-i18n-placeholder="searchItemPlaceholder" placeholder="Search item..." style="padding:5px; width:100%; border:1px solid var(--border-color); border-radius:4px; background:var(--bg-main); color:var(--text-main);">
                 </div>
-                <div id="epic-item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
+                <div id="item-grid" class="grid-view" style="flex: 1; overflow-y: auto; min-height: 0;"></div>
             </div>
 
             <div id="recommendations-view" class="mode-view">
                 <div class="recommendation-controls">
-                    <div class="recommendation-toolbar">
-                        <div class="recommendation-stat-picker">
-                            <div class="compact-select" id="recommendation-stat-select">
-                                <button type="button" class="compact-select-toggle" id="recommendation-stat-toggle">
-                                    <span data-i18n="addPriorityStat">Add priority stat</span>
-                                    <span class="compact-select-arrow">▾</span>
-                                </button>
-                                <div class="compact-select-menu">
-                                    <input type="text" id="recommendation-stat-search" class="compact-select-search" data-i18n-placeholder="searchStatsPlaceholder" placeholder="Search stats...">
-                                    <div id="recommendation-stat-options" class="compact-options"></div>
+                    <button type="button" id="recommendation-filter-toggle" class="recommendation-filter-toggle" aria-expanded="true">
+                        <span data-i18n="hideRecommendationFilters">Hide recommendation filters</span>
+                        <span class="recommendation-filter-toggle-icon" aria-hidden="true">▴</span>
+                    </button>
+                    <div class="recommendation-controls-body">
+                        <div class="recommendation-toolbar">
+                            <div class="recommendation-stat-picker">
+                                <div class="compact-select" id="recommendation-stat-select">
+                                    <button type="button" class="compact-select-toggle" id="recommendation-stat-toggle">
+                                        <span data-i18n="addPriorityStat">Add priority stat</span>
+                                        <span class="compact-select-arrow">▾</span>
+                                    </button>
+                                    <div class="compact-select-menu">
+                                        <input type="text" id="recommendation-stat-search" class="compact-select-search" data-i18n-placeholder="searchStatsPlaceholder" placeholder="Search stats...">
+                                        <div id="recommendation-stat-options" class="compact-options"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="recommendation-passive-block">
-                        <div id="recommendation-passive-picker"></div>
-                    </div>
-                    <label class="recommendation-route-filter">
-                        <input type="checkbox" id="recommend-two-zone-filter">
-                        <span data-i18n="onlyTwoZones">Only show builds with 2 or less zones</span>
-                    </label>
-                    <div id="recommendation-priority-list" class="recommendation-priority-list"></div>
-                    <div class="recommendation-actions">
-                        <button type="button" id="recommend-builds-btn" class="recommend-primary-btn" data-i18n="recommendBuilds">Recommend Builds</button>
+                        <label class="recommendation-auto-weight">
+                            <input type="checkbox" id="recommendation-auto-weight" checked>
+                            <span data-i18n="automaticWeights">Weight automatically by order</span>
+                        </label>
+                        <p class="recommendation-weight-help" data-i18n="weightHelp">Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.</p>
+                        <div class="recommendation-passive-block">
+                            <div id="recommendation-passive-picker"></div>
+                        </div>
+                        <div id="recommendation-credit-filter" class="recommendation-credit-filter" hidden>
+                            <div class="recommendation-block-label" data-i18n="buildCreditLimit">Build credit limit (optional)</div>
+                            <div class="recommendation-credit-inputs">
+                                <label><span data-i18n="minCredits">Min credits</span><input type="number" id="recommendation-credit-min" min="0" step="50" inputmode="numeric" placeholder="0"></label>
+                                <label><span data-i18n="maxCredits">Max credits</span><input type="number" id="recommendation-credit-max" min="0" step="50" inputmode="numeric" placeholder="∞"></label>
+                            </div>
+                        </div>
+                        <label class="recommendation-route-filter">
+                            <input type="checkbox" id="recommend-two-zone-filter">
+                            <span data-i18n="onlyTwoZones">Only show builds with 2 or less zones</span>
+                        </label>
+                        <div id="recommendation-priority-list" class="recommendation-priority-list"></div>
+                        <div class="recommendation-actions">
+                            <button type="button" id="recommend-builds-btn" class="recommend-primary-btn" data-i18n="recommendBuilds">Recommend Builds</button>
+                        </div>
                     </div>
                 </div>
                 <div id="recommendation-results" class="recommendation-results">
@@ -169,6 +224,35 @@
                     <p class="empty-msg" data-i18n="selectRoutesToCompare">Select routes to see stat comparison.</p>
                 </div>
             </div>
+
+            <div id="late-game-panel" class="late-game-panel" hidden>
+                <div class="late-game-panel-header">
+                    <div>
+                        <div class="late-game-shell-badge" data-i18n="lateGameBuild">Late-Game Build</div>
+                        <h2 data-i18n="lateBuildSummary">Final Build Summary</h2>
+                    </div>
+                    <span id="late-build-progress" class="late-build-progress">0 / 5</span>
+                </div>
+                <p class="late-game-route-note" data-i18n="lateGameRouteNote">Farming-route optimization is available only in Early Game Route mode.</p>
+
+                <section class="late-summary-section" aria-labelledby="late-current-stats-heading">
+                    <h3 id="late-current-stats-heading" data-i18n="currentBuildStats">Current Build Stats</h3>
+                    <div id="late-current-stats" class="late-current-stats"></div>
+                </section>
+
+                <section class="late-comparison-section" aria-labelledby="late-comparison-heading">
+                    <div class="late-section-heading">
+                        <h3 id="late-comparison-heading" data-i18n="buildComparison">Build Comparison</h3>
+                        <button type="button" id="clear-late-comparison-btn" class="late-secondary-btn" data-i18n="clearComparison">Clear</button>
+                    </div>
+                    <p class="late-comparison-help" data-i18n="comparisonHelp">Save a complete build, change your items, then save the second build to compare them.</p>
+                    <div class="late-comparison-actions">
+                        <button type="button" id="save-late-build-a" class="late-save-btn" data-slot="0" data-i18n="saveBuildA">Save as Build A</button>
+                        <button type="button" id="save-late-build-b" class="late-save-btn" data-slot="1" data-i18n="saveBuildB">Save as Build B</button>
+                    </div>
+                    <div id="late-comparison-output" class="late-comparison-output"></div>
+                </section>
+            </div>
         </section>
 
     </main>
@@ -181,7 +265,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=12-footer-1"></script>
+    <script src="script.js?v=31-release-verification"></script>
 </body>
 
 </html>

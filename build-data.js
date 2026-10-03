@@ -2,124 +2,15 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const { getCharacterImagePath, getItemImagePath } = require('./image-paths');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
 const DATA_PATCH_VERSION = '12.5';
 
-const PASSIVE_SKILL_TRANSLATIONS = {
-    "Biotic Infusion": "의념",
-    "Burden: Magnetic Midnight": "충전 - 섬광",
-    "Chasing Needle": "유도 바늘",
-    "Debilitation": "부패",
-    "Electric Shock": "전자기 충격",
-    "Flame Barrier": "불꽃 결계",
-    "Gold Pouch": "금화 주머니",
-    "Gust of Wind - Frostbite": "돌풍 - 한기",
-    "Healing Reduction": "치유 감소",
-    "Magic Bullet": "마탄",
-    "Plague Butterfly": "역병 나비",
-    "Photon Launcher": "포톤 런처",
-    "Primordial Hex": "저주",
-    "Punishment": "징벌",
-    "Reflection": "리플렉션",
-    "Streamlined": "신속",
-    "Streamlined: Charge Carrier": "신속 - 플라즈마",
-    "Streamlined: Rudra Embodied": "신속 - 루드라의 단검",
-    "Streamlined: Zephyr": "신속 - 산들바람",
-    "Swift Strides": "가벼운 발걸음",
-    "Vigor": "열정",
-    "Vigor-Circulation": "열정 - 순환"
-};
+const ITEM_PASSIVE_SKILLS = require('./item-passives.json');
 
-const ITEM_PASSIVE_SKILLS = {
-    "Buddha's Palm": "Primordial Hex",
-    "Brasil Gauntlet": "Vigor",
-    "Mai Sok": "Primordial Hex",
-    "Pakua Chang": "Primordial Hex",
-    "Mallet": "Healing Reduction",
-    "Weight of the World": "Burden: Magnetic Midnight",
-    "Bookmaster": "Healing Reduction",
-    "Thunder Whip": "Healing Reduction",
-    "Cathode Lash": "Streamlined: Charge Carrier",
-    "Incendiary Bomb": "Healing Reduction",
-    "Smoke Bomb": "Vigor",
-    "Sticky Bomb": "Burden: Magnetic Midnight",
-    "Mystic Jade Charm": "Primordial Hex",
-    "Azure Dagger": "Healing Reduction",
-    "Flechette": "Vigor",
-    "Ancient Bolt": "Vigor",
-    "Elemental Bow": "Primordial Hex",
-    "Poisoned Crossbow": "Healing Reduction",
-    "Glock 48": "Vigor",
-    "Stampede": "Magic Bullet",
-    "Type 95": "Healing Reduction",
-    "AK-12": "Vigor",
-    "Beam Axe": "Healing Reduction",
-    "Scythe": "Burden: Magnetic Midnight",
-    "Harpe": "Swift Strides",
-    "Carnwennan": "Burden: Magnetic Midnight",
-    "Vibroblade": "Vigor",
-    "Damascus Steel Thorn": "Healing Reduction",
-    "Maharaja": "Streamlined: Rudra Embodied",
-    "Arondight": "Vigor",
-    "Divine Dual Swords": "Healing Reduction",
-    "Black Butterfly": "Primordial Hex",
-    "Fangtian Huaji": "Healing Reduction",
-    "The Smiting Dragon": "Healing Reduction",
-    "Vibro Nunchaku": "Vigor",
-    "Blue 3": "Healing Reduction",
-    "Esprit": "Streamlined",
-    "Red Panther": "Healing Reduction",
-    "Durendal Mk2": "Burden: Magnetic Midnight",
-    "Bohemian": "Healing Reduction",
-    "The Wall": "Vigor",
-    "V.I.C.G": "Biotic Infusion",
-    "The Hermit": "Primordial Hex",
-    "The Hierophant": "Healing Reduction",
-    "Deathadder Queen": "Biotic Infusion",
-    "Black Mamba King": "Flame Barrier",
-    "Alpha Sidewinder": "Swift Strides",
-    "Cardinal Robes": "Healing Reduction",
-    "Sunset Armor": "Flame Barrier",
-    "Rocker's Jacket": "Healing Reduction",
-    "Amazoness Armor": "Streamlined",
-    "Virtuous Outlaw": "Swift Strides",
-    "Crystal Tiara": "Healing Reduction",
-    "Motorcycle Helmet": "Photon Launcher",
-    "Mohawk Headgear": "Reflection",
-    "Tactical OPS Helmet": "Electric Shock",
-    "Vigilante": "Debilitation",
-    "Diadem": "Healing Reduction",
-    "Cowboy Hat": "Healing Reduction",
-    "Sport Sunglasses": "Healing Reduction",
-    "White Witch Hat": "Healing Reduction",
-    "Corrupting Touch": "Healing Reduction",
-    "Sword Stopper": "Reflection",
-    "Creed of the Knight": "Healing Reduction",
-    "Vital Sign Sensor": "Photon Launcher",
-    "Sports Watch": "Vigor-Circulation",
-    "Schrödinger's Box": "Healing Reduction",
-    "White Crane Fan": "Primordial Hex",
-    "White Rhinos": "Healing Reduction",
-    "Revenge of Goujian": "Healing Reduction",
-    "SCV": "Healing Reduction",
-    "Equilibrium": "Punishment",
-    "Lollipop": "Streamlined: Zephyr",
-    "Field Thorn": "Streamlined: Zephyr",
-    "The Hanged Man": "Plague Butterfly",
-    "Chillwind Cuirass": "Gust of Wind - Frostbite",
-    "Dáinsleif - Crimson": "Burden: Magnetic Midnight",
-    "The Star of the Wilds": "Chasing Needle",
-    "Buccaneer Doubloon": "Gold Pouch"
-};
-
-function getPassiveSkill(itemName) {
-    const name = ITEM_PASSIVE_SKILLS[itemName];
-    if (!name) return null;
-    return {
-        name,
-        nameKo: PASSIVE_SKILL_TRANSLATIONS[name] || name
-    };
+function getPassiveSkills(itemName) {
+    return (ITEM_PASSIVE_SKILLS[itemName] || []).map(passive => ({ ...passive }));
 }
 
 const NON_STAT_ITEM_FIELDS = new Set([
@@ -275,15 +166,26 @@ async function fetchL10n(language) {
     return l10n;
 }
 
+const HIGH_TIER_MATERIAL_NAMES = new Set([
+    'Meteorite',
+    'Tree of Life',
+    'Mythril',
+    'Force Core',
+    'VF Blood Sample'
+]);
+
 function getLeafComponents(itemCode, allItemsMap, l10nEng, visited = new Set()) {
     if (visited.has(itemCode)) return [];
     visited.add(itemCode);
 
     const item = allItemsMap[itemCode];
     if (!item) return [];
+    const engName = l10nEng[`Item/Name/${itemCode}`] || item.name;
+
+    // Preserve premium resources as recipe leaves so the client can display and price them.
+    if (HIGH_TIER_MATERIAL_NAMES.has(engName)) return [engName];
     
     if (item.makeMaterial1 === 0 && item.makeMaterial2 === 0) {
-        const engName = l10nEng[`Item/Name/${itemCode}`] || item.name;
         // For base items that drop multiple at once, we still only need "1" to fulfill a recipe component in the optimizer.
         return [engName];
     }
@@ -337,6 +239,7 @@ async function buildData() {
         charsData[engName] = {
             code: char.code,
             nameKo: koName,
+            image: getCharacterImagePath(engName),
             masteries: [],
             base: {
                 maxHp: char.maxHp || 0,
@@ -462,11 +365,14 @@ async function buildData() {
             locations: spawns,
             initialCount: item.initialCount || 1,
             weaponType: item.weaponType || "",
-            passiveSkill: getPassiveSkill(engName),
+            passiveSkills: getPassiveSkills(engName),
             stats: itemStats.stats,
             uniqueStats: itemStats.uniqueStats,
             statsByLv: itemStats.statsByLv
         };
+
+        const imagePath = getItemImagePath(engName, partType, item.weaponType || "");
+        if (imagePath) itemObj.image = imagePath;
 
         if (!isBaseItem) {
             itemObj.components = getLeafComponents(item.code, allItemsMap, l10nEng);

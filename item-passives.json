@@ -1,0 +1,1984 @@
+{
+  "Cardinal Robes": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Sunset Armor": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Rocker's Jacket": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Amazoness Armor": [
+    {
+      "name": "Streamlined",
+      "nameKo": "신속"
+    }
+  ],
+  "Mythril Armor": [
+    {
+      "name": "Blaze Up - Endurance",
+      "nameKo": "예열 - 인내"
+    }
+  ],
+  "Battle Suit": [
+    {
+      "name": "Gap",
+      "nameKo": "간격"
+    }
+  ],
+  "Blazing Dress": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Mythril Crop": [
+    {
+      "name": "Guard Punch",
+      "nameKo": "가드 펀치"
+    }
+  ],
+  "Kabana": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Áo Dài": [
+    {
+      "name": "Deferral",
+      "nameKo": "유예"
+    }
+  ],
+  "Phantom Jacket": [
+    {
+      "name": "Blaze Up - Outburst",
+      "nameKo": "예열 - 격앙"
+    }
+  ],
+  "Guardian Suit": [
+    {
+      "name": "Vanguard",
+      "nameKo": "선봉장"
+    }
+  ],
+  "Elegant Gown": [
+    {
+      "name": "Convergence",
+      "nameKo": "응집"
+    }
+  ],
+  "Beautiful Garment": [
+    {
+      "name": "Blaze Up - Enhanced",
+      "nameKo": "예열 - 강화"
+    }
+  ],
+  "Specter": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Blood Cloak": [
+    {
+      "name": "Debilitation",
+      "nameKo": "부패"
+    }
+  ],
+  "Omertà": [
+    {
+      "name": "Rebellion",
+      "nameKo": "반항"
+    }
+  ],
+  "Shooting Star Jacket": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Couturier": [
+    {
+      "name": "Blaze Up - Amplified",
+      "nameKo": "예열 - 증강"
+    }
+  ],
+  "Tactical Armor": [
+    {
+      "name": "Verdict",
+      "nameKo": "선고"
+    }
+  ],
+  "Elf Dress": [
+    {
+      "name": "Empowerment",
+      "nameKo": "격려"
+    }
+  ],
+  "Titan Armor": [
+    {
+      "name": "Electric Shock",
+      "nameKo": "전자기 충격"
+    }
+  ],
+  "The Revenant": [
+    {
+      "name": "Gust of Wind",
+      "nameKo": "돌풍"
+    }
+  ],
+  "Racing Suit": [
+    {
+      "name": "Quickstep",
+      "nameKo": "현란함"
+    }
+  ],
+  "Ghost Bride's Dress": [
+    {
+      "name": "Debilitating Fog",
+      "nameKo": "쇠약의 안개"
+    }
+  ],
+  "Ghillie Suit": [
+    {
+      "name": "Blaze Up",
+      "nameKo": "예열"
+    }
+  ],
+  "Spectral Jacket": [
+    {
+      "name": "Gust of Wind - Rally",
+      "nameKo": "돌풍 - 결집"
+    }
+  ],
+  "Wisdom Robes": [
+    {
+      "name": "Awakening",
+      "nameKo": "각성"
+    }
+  ],
+  "Inquisitor": [
+    {
+      "name": "Dimensional Rift",
+      "nameKo": "차원 균열"
+    }
+  ],
+  "The General's Robe": [
+    {
+      "name": "Ultra Focus",
+      "nameKo": "초집중"
+    }
+  ],
+  "Rebel With A Cause": [
+    {
+      "name": "Iteration",
+      "nameKo": "반복 기동"
+    }
+  ],
+  "Chillwind Cuirass": [
+    {
+      "name": "Gust of Wind - Frostbite",
+      "nameKo": "돌풍 - 한기"
+    }
+  ],
+  "Red Star": [
+    {
+      "name": "Blaze Up",
+      "nameKo": "예열"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Bikini": [
+    {
+      "name": "Tranquility",
+      "nameKo": "명경지수"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Queen of Hearts": [
+    {
+      "name": "Convergence",
+      "nameKo": "응집"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Burgundy 47": [
+    {
+      "name": "Second Wind: Blood Pact",
+      "nameKo": "세컨드 윈드 - 핏빛 계약"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Black Flame Dragon": [
+    {
+      "name": "Heart of Fire",
+      "nameKo": "겁화의 심장"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Virtuous Outlaw": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Crystal Tiara": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Motorcycle Helmet": [
+    {
+      "name": "Photon Launcher",
+      "nameKo": "포톤 런처"
+    }
+  ],
+  "Tactical OPS Helmet": [
+    {
+      "name": "Electric Shock",
+      "nameKo": "전자기 충격"
+    }
+  ],
+  "Mohawk Headgear": [
+    {
+      "name": "Reflection",
+      "nameKo": "리플렉션"
+    }
+  ],
+  "Vigilante": [
+    {
+      "name": "Debilitation",
+      "nameKo": "부패"
+    }
+  ],
+  "Diadem": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Cowboy Hat": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "White Witch Hat": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Sport Sunglasses": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Mythril Helm": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Laurel Wreath": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Tactical Goggles": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Elysian Halo": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Fallen Pegasus": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Sultan's Turban": [
+    {
+      "name": "Iteration",
+      "nameKo": "반복 기동"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Racing Helmet": [
+    {
+      "name": "Photon Launcher",
+      "nameKo": "포톤 런처"
+    }
+  ],
+  "The Star of the Wilds": [
+    {
+      "name": "Chasing Needle",
+      "nameKo": "유도 바늘"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Astronaut's Helmet": [
+    {
+      "name": "Debilitation",
+      "nameKo": "부패"
+    }
+  ],
+  "Dwarf's Helmet": [
+    {
+      "name": "Reflection",
+      "nameKo": "리플렉션"
+    }
+  ],
+  "Twilight": [
+    {
+      "name": "Taser Gun - Surge",
+      "nameKo": "테이저 건 - 도약"
+    }
+  ],
+  "GPNVG": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    }
+  ],
+  "The Black Death": [
+    {
+      "name": "Spot On",
+      "nameKo": "명중"
+    }
+  ],
+  "Cyberstalker": [
+    {
+      "name": "Taser Gun",
+      "nameKo": "테이저 건"
+    }
+  ],
+  "Blaster Helmet": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Commander Headset": [
+    {
+      "name": "Targeting Pod",
+      "nameKo": "타겟팅 포드"
+    }
+  ],
+  "Blue Flames": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Bunny Hat": [
+    {
+      "name": "Security Protocol",
+      "nameKo": "보호 프로토콜"
+    }
+  ],
+  "Legatus": [
+    {
+      "name": "Combat Instinct",
+      "nameKo": "개시"
+    }
+  ],
+  "Fencing Mask": [
+    {
+      "name": "Blaze Up - Amplified",
+      "nameKo": "예열 - 증강"
+    }
+  ],
+  "Smart Glasses": [
+    {
+      "name": "Master",
+      "nameKo": "달인"
+    }
+  ],
+  "David Headphones": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "The Captain": [
+    {
+      "name": "Crushing Blow",
+      "nameKo": "파쇄타"
+    }
+  ],
+  "Black Veil": [
+    {
+      "name": "Blaze of Glory",
+      "nameKo": "광휘"
+    }
+  ],
+  "Demon Mask": [
+    {
+      "name": "Two Sides",
+      "nameKo": "두 개의 가면"
+    }
+  ],
+  "White Mitre": [
+    {
+      "name": "Prayer for the Dead",
+      "nameKo": "죽음을 위한 기도"
+    }
+  ],
+  "Animalistic": [
+    {
+      "name": "Predation",
+      "nameKo": "포식"
+    }
+  ],
+  "Tactical Visor": [
+    {
+      "name": "Electric Shock",
+      "nameKo": "전자기 충격"
+    }
+  ],
+  "The Dragon’s Fury": [
+    {
+      "name": "Pulverization",
+      "nameKo": "분쇄"
+    }
+  ],
+  "Chinese Opera Mask": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Viking Helmet": [
+    {
+      "name": "Crushing Blow",
+      "nameKo": "파쇄타"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Eyeshield": [
+    {
+      "name": "Quickstep",
+      "nameKo": "현란함"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Blood Crown": [
+    {
+      "name": "Combat Instinct",
+      "nameKo": "개시"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Featherfall": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Corrupting Touch": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Sword Stopper": [
+    {
+      "name": "Reflection",
+      "nameKo": "리플렉션"
+    }
+  ],
+  "Vital Sign Sensor": [
+    {
+      "name": "Photon Launcher",
+      "nameKo": "포톤 런처"
+    }
+  ],
+  "Creed of the Knight": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Sports Watch": [
+    {
+      "name": "Vigor - Circulation",
+      "nameKo": "열정 - 순환"
+    }
+  ],
+  "White Crane Fan": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Schrödinger's Box": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Mythril Shield": [
+    {
+      "name": "Streamlined",
+      "nameKo": "신속"
+    }
+  ],
+  "Cube Watch": [
+    {
+      "name": "Time Edge",
+      "nameKo": "타임 엣지"
+    }
+  ],
+  "Tellurian Timepiece": [
+    {
+      "name": "Vigor - Circulation",
+      "nameKo": "열정 - 순환"
+    }
+  ],
+  "Bracelet of Skadi": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Radar": [
+    {
+      "name": "Photon Launcher",
+      "nameKo": "포톤 런처"
+    }
+  ],
+  "Centipede's Pauldron": [
+    {
+      "name": "Reflection",
+      "nameKo": "리플렉션"
+    }
+  ],
+  "Shield of Kings": [
+    {
+      "name": "Heavyweight",
+      "nameKo": "묵직함"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Chain of Thorns": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Nightmare Nails": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Helix": [
+    {
+      "name": "Pulverization",
+      "nameKo": "분쇄"
+    }
+  ],
+  "Mythril Armband": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Revenge of Goujian": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Buccaneer Doubloon": [
+    {
+      "name": "Gold Pouch",
+      "nameKo": "금화 주머니"
+    }
+  ],
+  "Moonlight Pendant": [
+    {
+      "name": "Quickstep",
+      "nameKo": "현란함"
+    }
+  ],
+  "Lunar Embrace": [
+    {
+      "name": "Master",
+      "nameKo": "달인"
+    }
+  ],
+  "Mythril Quiver": [
+    {
+      "name": "Punishment: Tracking",
+      "nameKo": "징벌 - 추적"
+    }
+  ],
+  "Sultan Adorned": [
+    {
+      "name": "Vigor - Rush",
+      "nameKo": "열정 - 환희"
+    }
+  ],
+  "Sanguine Gunbai": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Totem": [
+    {
+      "name": "Mana Seed",
+      "nameKo": "마력 씨앗"
+    }
+  ],
+  "Eye of Horus": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Emerald Tablet": [
+    {
+      "name": "Streamlined",
+      "nameKo": "신속"
+    }
+  ],
+  "Magic Lamp": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Solar System Miniature": [
+    {
+      "name": "Second Wind: Colossal",
+      "nameKo": "세컨드 윈드 - 거인"
+    }
+  ],
+  "Burning Heart": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Smash Totem": [
+    {
+      "name": "Crushing Blow",
+      "nameKo": "파쇄타"
+    }
+  ],
+  "Psyche's Blade": [
+    {
+      "name": "Thunder Ruling",
+      "nameKo": "뇌명 집행"
+    }
+  ],
+  "Prominence": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Bloodripper": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Nova Shield": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Fáfnir": [
+    {
+      "name": "Fafnir's Scales",
+      "nameKo": "파프니르의 비늘"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Necronomicon": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "White Rhinos": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "SCV": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Mythril Boots": [
+    {
+      "name": "Resonance",
+      "nameKo": "후속타"
+    }
+  ],
+  "EOD Boots": [
+    {
+      "name": "Turbulence",
+      "nameKo": "격동"
+    }
+  ],
+  "Blade Boots": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Legs of Steel": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Wild Walkers": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Tactical Shoes": [
+    {
+      "name": "Tailwind",
+      "nameKo": "순풍"
+    }
+  ],
+  "Taproot": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Red Shoes": [
+    {
+      "name": "Vitality Strike",
+      "nameKo": "재생의 일격"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Eldian Boots": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Rose Steps": [
+    {
+      "name": "Awakening",
+      "nameKo": "각성"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Pixie Boots": [
+    {
+      "name": "Tailwind",
+      "nameKo": "순풍"
+    },
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Buddha's Palm": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Brasil Gauntlet": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Imperial Silk Gloves": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Mark of the Phoenix": [
+    {
+      "name": "Smolder",
+      "nameKo": "발화"
+    }
+  ],
+  "Permafrost": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Iron Fist": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Bloody Hand - Crimson": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Bloody Hand - Dawn": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Mai Sok": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Windrunner": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Obsidian Jitte": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Frozen Echo": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Mantis Tonfa": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Blade Tonfa - Crimson": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Blade Tonfa - Dawn": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Pakua Chang": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Mallet": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Monkey King Bar": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Ghost Hand": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Vulture's Eye": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Lollipop": [
+    {
+      "name": "Streamlined: Zephyr",
+      "nameKo": "신속 - 산들바람"
+    }
+  ],
+  "Rod of Heart - Crimson": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Rod of Heart - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Weight of the World": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Bookmaster": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Evening Star": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Squeaky Hammer": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Doomsday": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Leviathan": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Peacebringer - Crimson": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Peacebringer - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Thunder Whip": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Cathode Lash": [
+    {
+      "name": "Streamlined: Charge Carrier",
+      "nameKo": "신속 - 플라즈마"
+    }
+  ],
+  "Ouranos": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Sword of Scales": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "The Whip of Fate": [
+    {
+      "name": "Streamlined: Zephyr",
+      "nameKo": "신속 - 산들바람"
+    }
+  ],
+  "Bloody Nine Tails - Crimson": [
+    {
+      "name": "Streamlined: Zephyr",
+      "nameKo": "신속 - 산들바람"
+    }
+  ],
+  "Bloody Nine Tails - Dawn": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Incendiary Bomb": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Smoke Bomb": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Sticky Bomb": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Grenade of Antioch": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Fireball": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Dyadic Prism": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Astrapē": [
+    {
+      "name": "Spirit Harvest",
+      "nameKo": "영혼 수확"
+    }
+  ],
+  "Imugi's Pearl": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Chaser - Crimson": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Chaser - Dawn": [
+    {
+      "name": "Spirit Harvest",
+      "nameKo": "영혼 수확"
+    }
+  ],
+  "Mystic Jade Charm": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Azure Dagger": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Flechette": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Frost Venom Dart": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Wind and Fire Wheels": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Death Rune": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Sudarsana": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Petal Torrent": [
+    {
+      "name": "In Full Bloom",
+      "nameKo": "만개"
+    }
+  ],
+  "Black Lotus Shuriken - Crimson": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Black Lotus Shuriken - Dawn": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Ancient Bolt": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Elemental Bow": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Artemis": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Argyrotoxus": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Crimson Bow": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Failnaught - Crimson": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Failnaught - Dawn": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Poisoned Crossbow": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "The Golden Ghost": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Sharanga": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    }
+  ],
+  "Phantom Bolt": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Blood Half Moon - Crimson": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    }
+  ],
+  "Blood Half Moon - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Glock 48": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Stampede": [
+    {
+      "name": "Magic Bullet",
+      "nameKo": "마탄"
+    }
+  ],
+  "Devil's Marksman": [
+    {
+      "name": "Magic Bullet",
+      "nameKo": "마탄"
+    }
+  ],
+  "Molten Malachite": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Altair": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "High Noon - Crimson": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "High Noon - Dawn": [
+    {
+      "name": "Magic Bullet",
+      "nameKo": "마탄"
+    }
+  ],
+  "Type 95": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "AK-12": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Judgement": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    }
+  ],
+  "Black Widow": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Endeavor AX": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Valkyrie": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Hellfire - Crimson": [
+    {
+      "name": "Extended Fury",
+      "nameKo": "연장 총열"
+    }
+  ],
+  "Hellfire - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Blackfire Cannon": [
+    {
+      "name": "Burden: Lead Shell",
+      "nameKo": "충전 - 철환"
+    }
+  ],
+  "Dead Eye": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Widow Maker - Crimson": [
+    {
+      "name": "Burden: Lead Shell",
+      "nameKo": "충전 - 철환"
+    }
+  ],
+  "Widow Maker - Dawn": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Beam Axe": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Scythe": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Harpe": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "The Juggernaut": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Axe of Pangu": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Paradise Lost": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Nephleon": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Scarlet Scythe - Crimson": [
+    {
+      "name": "Critical Blow",
+      "nameKo": "크리티컬 블로우"
+    }
+  ],
+  "Scarlet Scythe - Dawn": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Carnwennan": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Vibroblade": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Damascus Steel Thorn": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Maharaja": [
+    {
+      "name": "Streamlined: Rudra Embodied",
+      "nameKo": "신속 - 루드라의 단검"
+    }
+  ],
+  "Fragarach": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Eclipse": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Soul Reaper": [
+    {
+      "name": "Streamlined: Rudra Embodied",
+      "nameKo": "신속 - 루드라의 단검"
+    }
+  ],
+  "Malice": [
+    {
+      "name": "Brute Enforcer",
+      "nameKo": "집행자"
+    }
+  ],
+  "Scarlet Dagger - Crimson": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Scarlet Dagger - Dawn": [
+    {
+      "name": "Brute Enforcer",
+      "nameKo": "집행자"
+    }
+  ],
+  "Arondight": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Laevateinn": [
+    {
+      "name": "Smolder",
+      "nameKo": "발화"
+    }
+  ],
+  "Aurora Longsword": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Almas": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Chained Nightmare": [
+    {
+      "name": "Spirit Harvest",
+      "nameKo": "영혼 수확"
+    }
+  ],
+  "Equilibrium": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Dáinsleif - Crimson": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Dáinsleif - Dawn": [
+    {
+      "name": "Spirit Harvest",
+      "nameKo": "영혼 수확"
+    }
+  ],
+  "Divine Dual Swords": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Black Butterfly": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "Starsteel Twin Swords": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Lloigor & Zahr": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Spring and Autumn": [
+    {
+      "name": "Quickstep",
+      "nameKo": "현란함"
+    }
+  ],
+  "Thanatos": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Phantom Blade - Crimson": [
+    {
+      "name": "Quickstep",
+      "nameKo": "현란함"
+    }
+  ],
+  "Phantom Blade - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Fangtian Huaji": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Gentian Silver Gun": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Cosmic Bident": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Blazing Lance": [
+    {
+      "name": "Smolder",
+      "nameKo": "발화"
+    }
+  ],
+  "Star Hunter": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "Spear of Longinus - Crimson": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Spear of Longinus - Dawn": [
+    {
+      "name": "Punishment",
+      "nameKo": "징벌"
+    }
+  ],
+  "The Smiting Dragon": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Vibro Nunchaku": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Blue 3": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Cerberus": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Crimson Red Lovers": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Geryon": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Neon Chain": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Hydra - Crimson": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Hydra - Dawn": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Durendal Mk2": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Red Panther": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Esprit": [
+    {
+      "name": "Streamlined",
+      "nameKo": "신속"
+    }
+  ],
+  "Mistilteinn": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Meteor Claymore": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Eye of Argos": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Gear Helix": [
+    {
+      "name": "Master",
+      "nameKo": "달인"
+    }
+  ],
+  "Field Thorn": [
+    {
+      "name": "Streamlined: Zephyr",
+      "nameKo": "신속 - 산들바람"
+    }
+  ],
+  "Nosferatu - Crimson": [
+    {
+      "name": "Burden: Magnetic Midnight",
+      "nameKo": "충전 - 섬광"
+    }
+  ],
+  "Nosferatu - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Bohemian": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "The Wall": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Wonderful Tonight": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Cpt. Pepper": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Heaven's Door": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "Heartbreaker - Crimson": [
+    {
+      "name": "Vigor",
+      "nameKo": "열정"
+    }
+  ],
+  "Heartbreaker - Dawn": [
+    {
+      "name": "Cataclasm",
+      "nameKo": "파열"
+    }
+  ],
+  "V.I.C.G": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Cannon Camera": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Ultraviolet": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Triple Focus": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "Vision Flex - Crimson": [
+    {
+      "name": "Echoing Strike",
+      "nameKo": "블래스터 탄환"
+    }
+  ],
+  "Vision Flex - Dawn": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "The Hermit": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "The Hierophant": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "The Moon": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "The Empress": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "The Hanged Man": [
+    {
+      "name": "Plague Butterfly",
+      "nameKo": "역병 나비"
+    }
+  ],
+  "The Death - Crimson": [
+    {
+      "name": "Primordial Hex",
+      "nameKo": "저주"
+    }
+  ],
+  "The Death - Dawn": [
+    {
+      "name": "Lich's Grasp",
+      "nameKo": "한파"
+    }
+  ],
+  "Deathadder Queen": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    }
+  ],
+  "Black Mamba King": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Alpha Sidewinder": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    }
+  ],
+  "Deathadder Queen MT": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    },
+    {
+      "name": "Necrosis",
+      "nameKo": "독사의 맹독"
+    }
+  ],
+  "Deathadder Queen FC": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    },
+    {
+      "name": "Necrosis",
+      "nameKo": "독사의 맹독"
+    }
+  ],
+  "Black Mamba King TL": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Black Mamba King FC": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Alpha Sidewinder ML": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    },
+    {
+      "name": "VF Control Enhancement",
+      "nameKo": "VF제어 강화"
+    }
+  ],
+  "Alpha Sidewinder FC": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    },
+    {
+      "name": "VF Control Enhancement",
+      "nameKo": "VF제어 강화"
+    }
+  ],
+  "Deathadder Queen VBS": [
+    {
+      "name": "Biotic Infusion",
+      "nameKo": "의념"
+    },
+    {
+      "name": "Necrosis",
+      "nameKo": "독사의 맹독"
+    }
+  ],
+  "Black Mamba King VBS": [
+    {
+      "name": "Flame Barrier",
+      "nameKo": "불꽃 결계"
+    }
+  ],
+  "Alpha Sidewinder VBS": [
+    {
+      "name": "Swift Strides",
+      "nameKo": "가벼운 발걸음"
+    },
+    {
+      "name": "VF Control Enhancement",
+      "nameKo": "VF제어 강화"
+    }
+  ]
+}
