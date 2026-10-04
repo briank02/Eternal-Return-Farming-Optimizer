@@ -31,6 +31,11 @@ assert.equal(resolveInitialBuildType('?mode=late', BUILD_TYPES.EARLY), BUILD_TYP
 assert.equal(resolveInitialBuildType('?mode=early', BUILD_TYPES.LATE), BUILD_TYPES.EARLY);
 assert.equal(resolveInitialBuildType('', BUILD_TYPES.LATE), BUILD_TYPES.LATE);
 assert.equal(resolveInitialBuildType('?mode=unsupported', 'unsupported'), BUILD_TYPES.EARLY);
+assert.equal(STAT_LABELS.adaptiveForce.ko, '맞춤형 능력치');
+assert.equal(Object.values(fixtureData.chars).every(character =>
+    character.masteries.every(mastery =>
+        ['attackPower', 'skillAmp'].includes(character.adaptiveStatByMastery?.[mastery])
+    )), true, 'Every production character and weapon combination has an Adaptive Force target');
 assert.equal(Object.keys(HIGH_TIER_MATERIALS).every(material => lateResourceFilters.has(material)), true,
     'Every high-tier material filter starts enabled');
 assert.equal(itemMatchesLateResourceFilters('VF Item', { components: ['VF Blood Sample'] }), true);
@@ -169,6 +174,46 @@ assert.equal(calculateBuildStats(['Level Scaling Chest']).attackPower, 35,
     'Displayed build totals include stats-per-level values');
 delete items['Level Scaling Chest'];
 charLevel = 1;
+
+items['Adaptive AP Weapon'] = {
+    type: 'Legend', part: 'Weapon', weaponType: 'TestSword', stats: { adaptiveForce: 10 }
+};
+items['Adaptive Skill Weapon'] = {
+    type: 'Legend', part: 'Weapon', weaponType: 'TestStaff', stats: { adaptiveForce: 10 }
+};
+items['Adaptive Head'] = {
+    type: 'Legend', part: 'Head', stats: { adaptiveForce: 5 }
+};
+chars = {
+    Tester: {
+        masteries: ['TestSword', 'TestStaff'],
+        adaptiveStatByMastery: { TestSword: 'attackPower', TestStaff: 'skillAmp' },
+        base: {},
+        growth: {}
+    }
+};
+DISPLAY_STATS = ['attackPower', 'adaptiveForce', 'skillAmp'].map(id => ({ id, name: getStatName(id) }));
+currentCharacter = null;
+assert.equal(calculateItemOnlyBuildStats(['Adaptive AP Weapon', 'Adaptive Head']).adaptiveForce, 15,
+    'Preview-card totals keep Adaptive Force as a raw stat');
+assert.equal(calculateBuildStats(['Adaptive AP Weapon', 'Adaptive Head']).adaptiveForce, 15,
+    'Build totals keep Adaptive Force unresolved when no character is selected');
+currentCharacter = 'Tester';
+let adaptiveBuildStats = calculateBuildStats(['Adaptive AP Weapon', 'Adaptive Head']);
+assert.equal(adaptiveBuildStats.attackPower, 15,
+    'Attack-focused character and weapon combinations convert Adaptive Force to Attack Power');
+assert.equal(adaptiveBuildStats.adaptiveForce, 0);
+adaptiveBuildStats = calculateBuildStats(['Adaptive Skill Weapon', 'Adaptive Head']);
+assert.equal(adaptiveBuildStats.skillAmp, 30,
+    'Skill-focused character and weapon combinations convert Adaptive Force to twice as much Skill Amp');
+assert.equal(adaptiveBuildStats.adaptiveForce, 0);
+adaptiveBuildStats = calculateBuildStats(['Adaptive Head']);
+assert.equal(adaptiveBuildStats.adaptiveForce, 5,
+    'Mixed-focus characters keep Adaptive Force unresolved until their weapon is known');
+delete items['Adaptive AP Weapon'];
+delete items['Adaptive Skill Weapon'];
+delete items['Adaptive Head'];
+currentCharacter = null;
 
 assert.equal(solveEarlyBuildRoute(new Set(['Legend Blade'])).length, 0,
     'The route solver must reject late-game equipment');

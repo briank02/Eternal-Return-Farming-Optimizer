@@ -203,7 +203,7 @@ function getLeafComponents(itemCode, allItemsMap, l10nEng, visited = new Set()) 
 async function buildData() {
     console.log('Fetching data from ER API...');
     
-    const [l10nEng, l10nKo, wRes, aRes, mRes, cRes, areaRes, spawnRes, charsRes, charAttrsRes, charLevelsRes] = await Promise.all([
+    const [l10nEng, l10nKo, wRes, aRes, mRes, cRes, areaRes, spawnRes, charsRes, charAttrsRes, charLevelsRes, masteryStatsRes] = await Promise.all([
         fetchL10n('English'),
         fetchL10n('Korean'),
         fetchFromApi('/v2/data/ItemWeapon'),
@@ -214,7 +214,8 @@ async function buildData() {
         fetchFromApi('/v2/data/ItemSpawn'),
         fetchFromApi('/v2/data/Character'),
         fetchFromApi('/v2/data/CharacterAttributes'),
-        fetchFromApi('/v2/data/CharacterLevelUpStat')
+        fetchFromApi('/v2/data/CharacterLevelUpStat'),
+        fetchFromApi('/v2/data/MasteryStat')
     ]);
 
     const allItemsList = [
@@ -229,6 +230,7 @@ async function buildData() {
     const charsData = {};
     const charList = charsRes.data || [];
     const charAttrsList = charAttrsRes.data || [];
+    const masteryStatsList = masteryStatsRes.data || [];
     // The API can preload unreleased characters before their full gameplay data is available.
     const EXCLUDE_CHARS = new Set(["Dummy"]);
     
@@ -241,6 +243,7 @@ async function buildData() {
             nameKo: koName,
             image: getCharacterImagePath(engName),
             masteries: [],
+            adaptiveStatByMastery: {},
             base: {
                 maxHp: char.maxHp || 0,
                 attackPower: char.attackPower || 0,
@@ -275,10 +278,31 @@ async function buildData() {
         }
     });
 
+    const adaptiveTargetByMainTag = {
+        Main_Attack: 'attackPower',
+        Main_Skill: 'skillAmp'
+    };
+    masteryStatsList.forEach(stat => {
+        const adaptiveStat = adaptiveTargetByMainTag[stat.favoriteMainTag];
+        if (!adaptiveStat) return;
+        const engName = l10nEng[`Character/Name/${stat.characterCode}`] || stat.character;
+        if (charsData[engName] && stat.type && stat.type !== 'None') {
+            charsData[engName].adaptiveStatByMastery[stat.type] = adaptiveStat;
+        }
+    });
+
     Object.entries(charsData).forEach(([name, character]) => {
         if (Object.keys(character.growth).length === 0 || character.masteries.length === 0) {
             console.warn(`Skipping incomplete character data: ${name}`);
             delete charsData[name];
+            return;
+        }
+
+        const unmappedMasteries = character.masteries.filter(
+            mastery => !character.adaptiveStatByMastery[mastery]
+        );
+        if (unmappedMasteries.length > 0) {
+            throw new Error(`Missing Adaptive Force mapping for ${name}: ${unmappedMasteries.join(', ')}`);
         }
     });
     

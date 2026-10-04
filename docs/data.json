@@ -17570,7 +17570,13 @@
         "hpRegen": 0.077,
         "attackSpeed": 0
       },
-      "image": "images/characters/Jackie.png"
+      "image": "images/characters/Jackie.png",
+      "adaptiveStatByMastery": {
+        "Axe": "attackPower",
+        "OneHandSword": "attackPower",
+        "TwoHandSword": "attackPower",
+        "DualSword": "attackPower"
+      }
     },
     "Aya": {
       "code": 2,
@@ -17595,7 +17601,12 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Aya.png"
+      "image": "images/characters/Aya.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp",
+        "AssaultRifle": "attackPower",
+        "SniperRifle": "skillAmp"
+      }
     },
     "Fiora": {
       "code": 3,
@@ -17620,7 +17631,12 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Fiora.png"
+      "image": "images/characters/Fiora.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "skillAmp",
+        "Spear": "skillAmp",
+        "Rapier": "skillAmp"
+      }
     },
     "Magnus": {
       "code": 4,
@@ -17644,7 +17660,11 @@
         "hpRegen": 0.085,
         "attackSpeed": 0
       },
-      "image": "images/characters/Magnus.png"
+      "image": "images/characters/Magnus.png",
+      "adaptiveStatByMastery": {
+        "Hammer": "skillAmp",
+        "Bat": "attackPower"
+      }
     },
     "Zahir": {
       "code": 5,
@@ -17668,7 +17688,11 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Zahir.png"
+      "image": "images/characters/Zahir.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp",
+        "DirectFire": "skillAmp"
+      }
     },
     "Nadine": {
       "code": 6,
@@ -17692,7 +17716,11 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Nadine.png"
+      "image": "images/characters/Nadine.png",
+      "adaptiveStatByMastery": {
+        "Bow": "skillAmp",
+        "CrossBow": "attackPower"
+      }
     },
     "Hyunwoo": {
       "code": 7,
@@ -17716,7 +17744,11 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Hyunwoo.png"
+      "image": "images/characters/Hyunwoo.png",
+      "adaptiveStatByMastery": {
+        "Glove": "attackPower",
+        "Tonfa": "skillAmp"
+      }
     },
     "Hart": {
       "code": 8,
@@ -17739,7 +17771,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Hart.png"
+      "image": "images/characters/Hart.png",
+      "adaptiveStatByMastery": {
+        "Guitar": "attackPower"
+      }
     },
     "Isol": {
       "code": 9,
@@ -17763,7 +17798,11 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Isol.png"
+      "image": "images/characters/Isol.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp",
+        "AssaultRifle": "attackPower"
+      }
     },
     "Li Dailin": {
       "code": 10,
@@ -17787,7 +17826,11 @@
         "hpRegen": 0.158,
         "attackSpeed": 0
       },
-      "image": "images/characters/Li Dailin.png"
+      "image": "images/characters/Li Dailin.png",
+      "adaptiveStatByMastery": {
+        "Glove": "attackPower",
+        "Nunchaku": "attackPower"
+      }
     },
     "Yuki": {
       "code": 11,
@@ -17811,7 +17854,11 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Yuki.png"
+      "image": "images/characters/Yuki.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "attackPower",
+        "DualSword": "attackPower"
+      }
     },
     "Hyejin": {
       "code": 12,
@@ -17835,7 +17882,11 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Hyejin.png"
+      "image": "images/characters/Hyejin.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "skillAmp",
+        "Bow": "skillAmp"
+      }
     },
     "Xiukai": {
       "code": 13,
@@ -17859,7 +17910,11 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Xiukai.png"
+      "image": "images/characters/Xiukai.png",
+      "adaptiveStatByMastery": {
+        "OneHandSword": "skillAmp",
+        "Spear": "skillAmp"
+      }
     },
     "Chiara": {
       "code": 14,
@@ -17882,7 +17937,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Chiara.png"
+      "image": "images/characters/Chiara.png",
+      "adaptiveStatByMastery": {
+        "Rapier": "skillAmp"
+      }
     },
     "Sissela": {
       "code": 15,
@@ -17906,7 +17964,11 @@
         "hpRegen": 0.03,
         "attackSpeed": 0
       },
-      "image": "images/characters/Sissela.png"
+      "image": "images/characters/Sissela.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp",
+        "DirectFire": "skillAmp"
+      }
     },
     "Silvia": {
       "code": 16,
@@ -17929,7 +17991,10 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Silvia.png"
+      "image": "images/characters/Silvia.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Adriana": {
       "code": 17,
@@ -17952,7 +18017,10 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Adriana.png"
+      "image": "images/characters/Adriana.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp"
+      }
     },
     "Shoichi": {
       "code": 18,
@@ -17975,7 +18043,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Shoichi.png"
+      "image": "images/characters/Shoichi.png",
+      "adaptiveStatByMastery": {
+        "OneHandSword": "skillAmp"
+      }
     },
     "Emma": {
       "code": 19,
@@ -17999,7 +18070,11 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Emma.png"
+      "image": "images/characters/Emma.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "skillAmp",
+        "Arcana": "skillAmp"
+      }
     },
     "Lenox": {
       "code": 20,
@@ -18022,7 +18097,10 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Lenox.png"
+      "image": "images/characters/Lenox.png",
+      "adaptiveStatByMastery": {
+        "Whip": "skillAmp"
+      }
     },
     "Rozzi": {
       "code": 21,
@@ -18045,7 +18123,10 @@
         "hpRegen": 0.03,
         "attackSpeed": 0
       },
-      "image": "images/characters/Rozzi.png"
+      "image": "images/characters/Rozzi.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "attackPower"
+      }
     },
     "Luke": {
       "code": 22,
@@ -18068,7 +18149,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Luke.png"
+      "image": "images/characters/Luke.png",
+      "adaptiveStatByMastery": {
+        "Bat": "attackPower"
+      }
     },
     "Cathy": {
       "code": 23,
@@ -18092,7 +18176,11 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Cathy.png"
+      "image": "images/characters/Cathy.png",
+      "adaptiveStatByMastery": {
+        "OneHandSword": "skillAmp",
+        "DualSword": "skillAmp"
+      }
     },
     "Adela": {
       "code": 24,
@@ -18116,7 +18204,11 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Adela.png"
+      "image": "images/characters/Adela.png",
+      "adaptiveStatByMastery": {
+        "Bat": "skillAmp",
+        "Rapier": "skillAmp"
+      }
     },
     "Bernice": {
       "code": 25,
@@ -18139,7 +18231,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Bernice.png"
+      "image": "images/characters/Bernice.png",
+      "adaptiveStatByMastery": {
+        "SniperRifle": "attackPower"
+      }
     },
     "Barbara": {
       "code": 26,
@@ -18162,7 +18257,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Barbara.png"
+      "image": "images/characters/Barbara.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Alex": {
       "code": 27,
@@ -18188,7 +18286,13 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Alex.png"
+      "image": "images/characters/Alex.png",
+      "adaptiveStatByMastery": {
+        "Tonfa": "attackPower",
+        "TwoHandSword": "attackPower",
+        "DirectFire": "attackPower",
+        "Pistol": "attackPower"
+      }
     },
     "Sua": {
       "code": 28,
@@ -18212,7 +18316,11 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Sua.png"
+      "image": "images/characters/Sua.png",
+      "adaptiveStatByMastery": {
+        "Hammer": "skillAmp",
+        "Bat": "skillAmp"
+      }
     },
     "Leon": {
       "code": 29,
@@ -18236,7 +18344,11 @@
         "hpRegen": 0.158,
         "attackSpeed": 0
       },
-      "image": "images/characters/Leon.png"
+      "image": "images/characters/Leon.png",
+      "adaptiveStatByMastery": {
+        "Glove": "skillAmp",
+        "Tonfa": "skillAmp"
+      }
     },
     "Eleven": {
       "code": 30,
@@ -18259,7 +18371,10 @@
         "hpRegen": 0.105,
         "attackSpeed": 0
       },
-      "image": "images/characters/Eleven.png"
+      "image": "images/characters/Eleven.png",
+      "adaptiveStatByMastery": {
+        "Hammer": "attackPower"
+      }
     },
     "Rio": {
       "code": 31,
@@ -18282,7 +18397,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Rio.png"
+      "image": "images/characters/Rio.png",
+      "adaptiveStatByMastery": {
+        "Bow": "attackPower"
+      }
     },
     "William": {
       "code": 32,
@@ -18305,7 +18423,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/William.png"
+      "image": "images/characters/William.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "attackPower"
+      }
     },
     "Nicky": {
       "code": 33,
@@ -18328,7 +18449,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Nicky.png"
+      "image": "images/characters/Nicky.png",
+      "adaptiveStatByMastery": {
+        "Glove": "skillAmp"
+      }
     },
     "Nathapon": {
       "code": 34,
@@ -18351,7 +18475,10 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Nathapon.png"
+      "image": "images/characters/Nathapon.png",
+      "adaptiveStatByMastery": {
+        "Camera": "skillAmp"
+      }
     },
     "Jan": {
       "code": 35,
@@ -18375,7 +18502,11 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Jan.png"
+      "image": "images/characters/Jan.png",
+      "adaptiveStatByMastery": {
+        "Glove": "attackPower",
+        "Tonfa": "skillAmp"
+      }
     },
     "Eva": {
       "code": 36,
@@ -18398,7 +18529,10 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Eva.png"
+      "image": "images/characters/Eva.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp"
+      }
     },
     "Daniel": {
       "code": 37,
@@ -18421,7 +18555,10 @@
         "hpRegen": 0.077,
         "attackSpeed": 0
       },
-      "image": "images/characters/Daniel.png"
+      "image": "images/characters/Daniel.png",
+      "adaptiveStatByMastery": {
+        "OneHandSword": "attackPower"
+      }
     },
     "Jenny": {
       "code": 38,
@@ -18444,7 +18581,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Jenny.png"
+      "image": "images/characters/Jenny.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Camilo": {
       "code": 39,
@@ -18468,7 +18608,11 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Camilo.png"
+      "image": "images/characters/Camilo.png",
+      "adaptiveStatByMastery": {
+        "DualSword": "attackPower",
+        "Rapier": "attackPower"
+      }
     },
     "Chloe": {
       "code": 40,
@@ -18491,7 +18635,10 @@
         "hpRegen": 0.075,
         "attackSpeed": 0
       },
-      "image": "images/characters/Chloe.png"
+      "image": "images/characters/Chloe.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "attackPower"
+      }
     },
     "Johann": {
       "code": 41,
@@ -18514,7 +18661,10 @@
         "hpRegen": 0.075,
         "attackSpeed": 0
       },
-      "image": "images/characters/Johann.png"
+      "image": "images/characters/Johann.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Bianca": {
       "code": 42,
@@ -18537,7 +18687,10 @@
         "hpRegen": 0.03,
         "attackSpeed": 0
       },
-      "image": "images/characters/Bianca.png"
+      "image": "images/characters/Bianca.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Celine": {
       "code": 43,
@@ -18560,7 +18713,10 @@
         "hpRegen": 0.045,
         "attackSpeed": 0
       },
-      "image": "images/characters/Celine.png"
+      "image": "images/characters/Celine.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp"
+      }
     },
     "Echion": {
       "code": 44,
@@ -18583,7 +18739,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Echion.png"
+      "image": "images/characters/Echion.png",
+      "adaptiveStatByMastery": {
+        "VFArm": "attackPower"
+      }
     },
     "Mai": {
       "code": 45,
@@ -18606,7 +18765,10 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Mai.png"
+      "image": "images/characters/Mai.png",
+      "adaptiveStatByMastery": {
+        "Whip": "skillAmp"
+      }
     },
     "Aiden": {
       "code": 46,
@@ -18629,7 +18791,10 @@
         "hpRegen": 0.077,
         "attackSpeed": 0
       },
-      "image": "images/characters/Aiden.png"
+      "image": "images/characters/Aiden.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "attackPower"
+      }
     },
     "Laura": {
       "code": 47,
@@ -18652,7 +18817,10 @@
         "hpRegen": 0.077,
         "attackSpeed": 0
       },
-      "image": "images/characters/Laura.png"
+      "image": "images/characters/Laura.png",
+      "adaptiveStatByMastery": {
+        "Whip": "skillAmp"
+      }
     },
     "Tia": {
       "code": 48,
@@ -18675,7 +18843,10 @@
         "hpRegen": 0.068,
         "attackSpeed": 0
       },
-      "image": "images/characters/Tia.png"
+      "image": "images/characters/Tia.png",
+      "adaptiveStatByMastery": {
+        "Bat": "skillAmp"
+      }
     },
     "Felix": {
       "code": 49,
@@ -18698,7 +18869,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Felix.png"
+      "image": "images/characters/Felix.png",
+      "adaptiveStatByMastery": {
+        "Spear": "attackPower"
+      }
     },
     "Elena": {
       "code": 50,
@@ -18721,7 +18895,10 @@
         "hpRegen": 0.051,
         "attackSpeed": 0
       },
-      "image": "images/characters/Elena.png"
+      "image": "images/characters/Elena.png",
+      "adaptiveStatByMastery": {
+        "Rapier": "skillAmp"
+      }
     },
     "Priya": {
       "code": 51,
@@ -18744,7 +18921,10 @@
         "hpRegen": 0.05,
         "attackSpeed": 0
       },
-      "image": "images/characters/Priya.png"
+      "image": "images/characters/Priya.png",
+      "adaptiveStatByMastery": {
+        "Guitar": "skillAmp"
+      }
     },
     "Adina": {
       "code": 52,
@@ -18767,7 +18947,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Adina.png"
+      "image": "images/characters/Adina.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Markus": {
       "code": 53,
@@ -18791,7 +18974,11 @@
         "hpRegen": 0.136,
         "attackSpeed": 0
       },
-      "image": "images/characters/Markus.png"
+      "image": "images/characters/Markus.png",
+      "adaptiveStatByMastery": {
+        "Hammer": "attackPower",
+        "Axe": "attackPower"
+      }
     },
     "Karla": {
       "code": 54,
@@ -18814,7 +19001,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Karla.png"
+      "image": "images/characters/Karla.png",
+      "adaptiveStatByMastery": {
+        "CrossBow": "skillAmp"
+      }
     },
     "Estelle": {
       "code": 55,
@@ -18837,7 +19027,10 @@
         "hpRegen": 0.099,
         "attackSpeed": 0
       },
-      "image": "images/characters/Estelle.png"
+      "image": "images/characters/Estelle.png",
+      "adaptiveStatByMastery": {
+        "Axe": "skillAmp"
+      }
     },
     "Piolo": {
       "code": 56,
@@ -18860,7 +19053,10 @@
         "hpRegen": 0.12,
         "attackSpeed": 0
       },
-      "image": "images/characters/Piolo.png"
+      "image": "images/characters/Piolo.png",
+      "adaptiveStatByMastery": {
+        "Nunchaku": "skillAmp"
+      }
     },
     "Martina": {
       "code": 57,
@@ -18883,7 +19079,10 @@
         "hpRegen": 0.1,
         "attackSpeed": 0
       },
-      "image": "images/characters/Martina.png"
+      "image": "images/characters/Martina.png",
+      "adaptiveStatByMastery": {
+        "Camera": "attackPower"
+      }
     },
     "Haze": {
       "code": 58,
@@ -18906,7 +19105,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Haze.png"
+      "image": "images/characters/Haze.png",
+      "adaptiveStatByMastery": {
+        "AssaultRifle": "skillAmp"
+      }
     },
     "Isaac": {
       "code": 59,
@@ -18929,7 +19131,10 @@
         "hpRegen": 0.12,
         "attackSpeed": 0
       },
-      "image": "images/characters/Isaac.png"
+      "image": "images/characters/Isaac.png",
+      "adaptiveStatByMastery": {
+        "Tonfa": "attackPower"
+      }
     },
     "Tazia": {
       "code": 60,
@@ -18952,7 +19157,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Tazia.png"
+      "image": "images/characters/Tazia.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "skillAmp"
+      }
     },
     "Irem": {
       "code": 61,
@@ -18975,7 +19183,10 @@
         "hpRegen": 0.08,
         "attackSpeed": 0
       },
-      "image": "images/characters/Irem.png"
+      "image": "images/characters/Irem.png",
+      "adaptiveStatByMastery": {
+        "HighAngleFire": "skillAmp"
+      }
     },
     "Theodore": {
       "code": 62,
@@ -18998,7 +19209,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Theodore.png"
+      "image": "images/characters/Theodore.png",
+      "adaptiveStatByMastery": {
+        "SniperRifle": "skillAmp"
+      }
     },
     "Ly Anh": {
       "code": 63,
@@ -19021,7 +19235,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Ly Anh.png"
+      "image": "images/characters/Ly Anh.png",
+      "adaptiveStatByMastery": {
+        "OneHandSword": "attackPower"
+      }
     },
     "Vanya": {
       "code": 64,
@@ -19044,7 +19261,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Vanya.png"
+      "image": "images/characters/Vanya.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Debi & Marlene": {
       "code": 65,
@@ -19067,7 +19287,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Debi & Marlene.png"
+      "image": "images/characters/Debi & Marlene.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "attackPower"
+      }
     },
     "Arda": {
       "code": 66,
@@ -19090,7 +19313,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Arda.png"
+      "image": "images/characters/Arda.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Abigail": {
       "code": 67,
@@ -19113,7 +19339,10 @@
         "hpRegen": 0.08,
         "attackSpeed": 0
       },
-      "image": "images/characters/Abigail.png"
+      "image": "images/characters/Abigail.png",
+      "adaptiveStatByMastery": {
+        "Axe": "skillAmp"
+      }
     },
     "Alonso": {
       "code": 68,
@@ -19136,7 +19365,10 @@
         "hpRegen": 0.12,
         "attackSpeed": 0
       },
-      "image": "images/characters/Alonso.png"
+      "image": "images/characters/Alonso.png",
+      "adaptiveStatByMastery": {
+        "Glove": "skillAmp"
+      }
     },
     "Leni": {
       "code": 69,
@@ -19159,7 +19391,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Leni.png"
+      "image": "images/characters/Leni.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Tsubame": {
       "code": 70,
@@ -19182,7 +19417,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Tsubame.png"
+      "image": "images/characters/Tsubame.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "attackPower"
+      }
     },
     "Kenneth": {
       "code": 71,
@@ -19205,7 +19443,10 @@
         "hpRegen": 0.136,
         "attackSpeed": 0
       },
-      "image": "images/characters/Kenneth.png"
+      "image": "images/characters/Kenneth.png",
+      "adaptiveStatByMastery": {
+        "Axe": "attackPower"
+      }
     },
     "Katja": {
       "code": 72,
@@ -19228,7 +19469,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Katja.png"
+      "image": "images/characters/Katja.png",
+      "adaptiveStatByMastery": {
+        "SniperRifle": "attackPower"
+      }
     },
     "Charlotte": {
       "code": 73,
@@ -19251,7 +19495,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Charlotte.png"
+      "image": "images/characters/Charlotte.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Darko": {
       "code": 74,
@@ -19274,7 +19521,10 @@
         "hpRegen": 0.136,
         "attackSpeed": 0
       },
-      "image": "images/characters/Darko.png"
+      "image": "images/characters/Darko.png",
+      "adaptiveStatByMastery": {
+        "Bat": "attackPower"
+      }
     },
     "Lenore": {
       "code": 75,
@@ -19297,7 +19547,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Lenore.png"
+      "image": "images/characters/Lenore.png",
+      "adaptiveStatByMastery": {
+        "Guitar": "skillAmp"
+      }
     },
     "Garnet": {
       "code": 76,
@@ -19320,7 +19573,10 @@
         "hpRegen": 0.136,
         "attackSpeed": 0
       },
-      "image": "images/characters/Garnet.png"
+      "image": "images/characters/Garnet.png",
+      "adaptiveStatByMastery": {
+        "Bat": "skillAmp"
+      }
     },
     "Yumin": {
       "code": 77,
@@ -19343,7 +19599,10 @@
         "hpRegen": 0.08,
         "attackSpeed": 0
       },
-      "image": "images/characters/Yumin.png"
+      "image": "images/characters/Yumin.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Hisui": {
       "code": 78,
@@ -19366,7 +19625,10 @@
         "hpRegen": 0.07,
         "attackSpeed": 0
       },
-      "image": "images/characters/Hisui.png"
+      "image": "images/characters/Hisui.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "attackPower"
+      }
     },
     "Justyna": {
       "code": 79,
@@ -19389,7 +19651,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Justyna.png"
+      "image": "images/characters/Justyna.png",
+      "adaptiveStatByMastery": {
+        "CrossBow": "skillAmp"
+      }
     },
     "Istvan": {
       "code": 80,
@@ -19412,7 +19677,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Istvan.png"
+      "image": "images/characters/Istvan.png",
+      "adaptiveStatByMastery": {
+        "Spear": "attackPower"
+      }
     },
     "NiaH": {
       "code": 81,
@@ -19435,7 +19703,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/NiaH.png"
+      "image": "images/characters/NiaH.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Xuelin": {
       "code": 82,
@@ -19458,7 +19729,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Xuelin.png"
+      "image": "images/characters/Xuelin.png",
+      "adaptiveStatByMastery": {
+        "Rapier": "attackPower"
+      }
     },
     "Henry": {
       "code": 83,
@@ -19481,7 +19755,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Henry.png"
+      "image": "images/characters/Henry.png",
+      "adaptiveStatByMastery": {
+        "DirectFire": "skillAmp"
+      }
     },
     "Blair": {
       "code": 84,
@@ -19504,7 +19781,10 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Blair.png"
+      "image": "images/characters/Blair.png",
+      "adaptiveStatByMastery": {
+        "DualSword": "attackPower"
+      }
     },
     "Mirka": {
       "code": 85,
@@ -19527,7 +19807,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Mirka.png"
+      "image": "images/characters/Mirka.png",
+      "adaptiveStatByMastery": {
+        "Hammer": "skillAmp"
+      }
     },
     "Fenrir": {
       "code": 86,
@@ -19550,7 +19833,10 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Fenrir.png"
+      "image": "images/characters/Fenrir.png",
+      "adaptiveStatByMastery": {
+        "Glove": "attackPower"
+      }
     },
     "Coraline": {
       "code": 87,
@@ -19573,7 +19859,10 @@
         "hpRegen": 0.113,
         "attackSpeed": 0
       },
-      "image": "images/characters/Coraline.png"
+      "image": "images/characters/Coraline.png",
+      "adaptiveStatByMastery": {
+        "Arcana": "skillAmp"
+      }
     },
     "Bihyung": {
       "code": 88,
@@ -19596,7 +19885,10 @@
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
-      "image": "images/characters/Bihyung.png"
+      "image": "images/characters/Bihyung.png",
+      "adaptiveStatByMastery": {
+        "Bat": "attackPower"
+      }
     },
     "Craver": {
       "code": 89,
@@ -19619,7 +19911,10 @@
         "hpRegen": 0.06,
         "attackSpeed": 0
       },
-      "image": "images/characters/Craver.png"
+      "image": "images/characters/Craver.png",
+      "adaptiveStatByMastery": {
+        "Pistol": "skillAmp"
+      }
     },
     "Lucia": {
       "code": 90,
@@ -19642,7 +19937,10 @@
         "hpRegen": 0.09,
         "attackSpeed": 0
       },
-      "image": "images/characters/Lucia.png"
+      "image": "images/characters/Lucia.png",
+      "adaptiveStatByMastery": {
+        "SniperRifle": "skillAmp"
+      }
     },
     "Seres": {
       "code": 91,
@@ -19665,7 +19963,10 @@
         "hpRegen": 0.12,
         "attackSpeed": 0
       },
-      "image": "images/characters/Seres.png"
+      "image": "images/characters/Seres.png",
+      "adaptiveStatByMastery": {
+        "TwoHandSword": "skillAmp"
+      }
     }
   }
 }

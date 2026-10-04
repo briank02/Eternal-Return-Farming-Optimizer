@@ -882,7 +882,7 @@ let SELECTABLE_STATS = [];
 let PASSIVE_SKILL_OPTIONS = [];
 
 const STAT_LABELS = {
-    adaptiveForce: { en: 'Adaptive Force', ko: '적응형 능력치' },
+    adaptiveForce: { en: 'Adaptive Force', ko: '맞춤형 능력치' },
     attackPower: { en: 'Attack Power', ko: '공격력' },
     attackSpeedRatio: { en: 'Attack Speed', ko: '공격 속도' },
     criticalStrikeChance: { en: 'Critical Strike Chance', ko: '치명타 확률' },
@@ -3362,6 +3362,36 @@ function renderStatComparison() {
     }
 }
 
+function getAdaptiveForceTarget(itemNames) {
+    if (!currentCharacter || !chars[currentCharacter]) return null;
+
+    const mapping = chars[currentCharacter].adaptiveStatByMastery || {};
+    const weaponTypes = new Set(
+        itemNames
+            .map(name => items[name])
+            .filter(item => item && item.part === 'Weapon' && item.weaponType)
+            .map(item => item.weaponType)
+    );
+
+    if (weaponTypes.size === 1) {
+        const [weaponType] = weaponTypes;
+        if (mapping[weaponType]) return mapping[weaponType];
+    }
+
+    const mappedTargets = new Set(Object.values(mapping));
+    return mappedTargets.size === 1 ? mappedTargets.values().next().value : null;
+}
+
+function resolveAdaptiveForce(totalStats, itemNames) {
+    const adaptiveForce = totalStats.adaptiveForce || 0;
+    const targetStat = getAdaptiveForceTarget(itemNames);
+    if (!adaptiveForce || !targetStat) return;
+
+    if (totalStats[targetStat] === undefined) totalStats[targetStat] = 0;
+    totalStats[targetStat] += targetStat === 'skillAmp' ? adaptiveForce * 2 : adaptiveForce;
+    totalStats.adaptiveForce = 0;
+}
+
 function calculateBuildStats(itemNames) {
     const totalStats = {};
     DISPLAY_STATS.forEach(s => totalStats[s.id] = 0);
@@ -3421,6 +3451,8 @@ function calculateBuildStats(itemNames) {
     Object.keys(uniqueMaxStats).forEach(key => {
         totalStats[key] += uniqueMaxStats[key];
     });
+
+    resolveAdaptiveForce(totalStats, itemNames);
 
     let msFlat = totalStats.moveSpeed - baseMoveSpeed;
     let msPct = totalStats.moveSpeedRatio;
