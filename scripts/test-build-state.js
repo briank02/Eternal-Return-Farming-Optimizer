@@ -221,6 +221,54 @@ assert.equal(hasFeasibleRouteWithinZones(['Mythic Blade'], 2), false,
     'Route feasibility checks must remain Early-only');
 
 items = {
+    'A Skill Staff': {
+        type: 'Legend', part: 'Weapon', weaponType: 'TestStaff', stats: { adaptiveForce: 1 }
+    },
+    'Z Attack Sword': {
+        type: 'Legend', part: 'Weapon', weaponType: 'TestSword', stats: { adaptiveForce: 1 }
+    },
+    'Adaptive Head': { type: 'Legend', part: 'Head', stats: { adaptiveForce: 9 } },
+    'Blank Chest': { type: 'Legend', part: 'Chest', stats: {} },
+    'Blank Arm': { type: 'Legend', part: 'Arm', stats: {} },
+    'Blank Leg': { type: 'Legend', part: 'Leg', stats: {} }
+};
+chars = {
+    Tester: {
+        masteries: ['TestSword', 'TestStaff'],
+        adaptiveStatByMastery: { TestSword: 'attackPower', TestStaff: 'skillAmp' },
+        base: {},
+        growth: {}
+    }
+};
+currentCharacter = 'Tester';
+currentWeaponFilter = 'All';
+activeBuildType = BUILD_TYPES.LATE;
+lateRarityFilters.clear();
+lateRarityFilters.add('Legend');
+recommendationAutomaticWeights = false;
+recommendationConstraints = {};
+recommendationPassiveSkills = new Set();
+recommendationCreditMin = '';
+recommendationCreditMax = '';
+DISPLAY_STATS = ['attackPower', 'adaptiveForce', 'skillAmp'].map(id => ({ id, name: getStatName(id) }));
+
+recommendationPriorities = ['attackPower'];
+recommendationWeights = { attackPower: 1 };
+let adaptiveRecommendations = generateRecommendedBuilds(BUILD_TYPES.LATE);
+assert.equal(adaptiveRecommendations[0].items.includes('Z Attack Sword'), true,
+    'Attack Power recommendations rank Adaptive Force as Attack Power for the selected weapon');
+assert.equal(adaptiveRecommendations[0].stats.attackPower, 10);
+assert.equal(adaptiveRecommendations[0].stats.adaptiveForce, 0);
+
+recommendationPriorities = ['skillAmp'];
+recommendationWeights = { skillAmp: 1 };
+adaptiveRecommendations = generateRecommendedBuilds(BUILD_TYPES.LATE);
+assert.equal(adaptiveRecommendations[0].items.includes('A Skill Staff'), true,
+    'Skill Amp recommendations rank Adaptive Force as twice as much Skill Amp for the selected weapon');
+assert.equal(adaptiveRecommendations[0].stats.skillAmp, 20);
+assert.equal(adaptiveRecommendations[0].stats.adaptiveForce, 0);
+
+items = {
     'Legend Weapon': { type: 'Legend', part: 'Weapon', weaponType: 'TestSword', stats: { attackPower: 10 } },
     'Legend Chest': {
         type: 'Legend',
@@ -350,7 +398,7 @@ const exactModel = createRecommendationSearchModel(exactCandidateSlots);
 const exhaustiveBuilds = [];
 function enumerateRecommendationBuilds(depth, selectedItems) {
     if (depth === EQUIPMENT_SLOTS.length) {
-        const stats = calculateItemOnlyBuildStats(selectedItems);
+        const stats = calculateRecommendationBuildStats(selectedItems);
         if (!passesRecommendationConstraints(stats) || !passesRecommendationPassiveRequirements(selectedItems)) return;
         exhaustiveBuilds.push({
             items: [...selectedItems],

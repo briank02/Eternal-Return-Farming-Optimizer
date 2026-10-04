@@ -1910,12 +1910,17 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
     const passiveCounts = new Map();
     const state = {
         additive: new Array(recommendationPriorities.length).fill(0),
+        minimumAdditive: new Array(recommendationPriorities.length).fill(0),
         uniquePrimary: new Array(recommendationPriorities.length).fill(0),
         uniqueSecondary: new Array(recommendationPriorities.length).fill(0),
+        minimumUniquePrimary: new Array(recommendationPriorities.length).fill(0),
+        minimumUniqueSecondary: new Array(recommendationPriorities.length).fill(0),
         credit: 0
     };
     const previousPrimary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
     const previousSecondary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+    const previousMinimumPrimary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
+    const previousMinimumSecondary = model.searchSlots.map(() => new Array(recommendationPriorities.length).fill(0));
 
     function visit(depth) {
         metrics.visitedNodes++;
@@ -1943,7 +1948,7 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
             metrics.completedBuilds++;
             const itemNames = EQUIPMENT_SLOTS.map(slot => selectedBySlot[slot]).filter(Boolean);
             if (itemNames.length === 0 || !passesRecommendationCreditLimit(state.credit)) return;
-            const stats = calculateItemOnlyBuildStats(itemNames);
+            const stats = calculateRecommendationBuildStats(itemNames);
             if (!passesRecommendationConstraints(stats) || !passesRecommendationPassiveRequirements(itemNames)) return;
             if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones &&
                 !hasFeasibleRouteWithinZones(itemNames, 2)) {
@@ -1977,16 +1982,28 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
             candidate.parts.forEach((part, index) => {
                 previousPrimary[depth][index] = state.uniquePrimary[index];
                 previousSecondary[depth][index] = state.uniqueSecondary[index];
+                previousMinimumPrimary[depth][index] = state.minimumUniquePrimary[index];
+                previousMinimumSecondary[depth][index] = state.minimumUniqueSecondary[index];
                 state.additive[index] += part.additive;
+                state.minimumAdditive[index] += part.minimumAdditive;
                 state.uniquePrimary[index] = Math.max(state.uniquePrimary[index], part.uniquePrimary);
                 state.uniqueSecondary[index] = Math.max(state.uniqueSecondary[index], part.uniqueSecondary);
+                state.minimumUniquePrimary[index] = Math.max(
+                    state.minimumUniquePrimary[index], part.minimumUniquePrimary
+                );
+                state.minimumUniqueSecondary[index] = Math.max(
+                    state.minimumUniqueSecondary[index], part.minimumUniqueSecondary
+                );
             });
             visit(depth + 1);
 
             candidate.parts.forEach((part, index) => {
                 state.additive[index] -= part.additive;
+                state.minimumAdditive[index] -= part.minimumAdditive;
                 state.uniquePrimary[index] = previousPrimary[depth][index];
                 state.uniqueSecondary[index] = previousSecondary[depth][index];
+                state.minimumUniquePrimary[index] = previousMinimumPrimary[depth][index];
+                state.minimumUniqueSecondary[index] = previousMinimumSecondary[depth][index];
             });
             state.credit -= candidate.credit;
             candidate.passiveNames.forEach(passiveName => {
@@ -2005,7 +2022,7 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
     return topResults;
 }
 
-function getItemRecommendationStatParts(itemName, statId, level = charLevel) {
+function getRawItemRecommendationStatParts(itemName, statId, level = charLevel) {
     const item = items[itemName] || {};
     const regularStats = item.stats || {};
     const levelStats = item.statsByLv || {};
@@ -2027,12 +2044,58 @@ function getItemRecommendationStatParts(itemName, statId, level = charLevel) {
     };
 }
 
+function getRecommendationAdaptiveContext(candidateSlots, allowPartialBuilds) {
+    if (!currentCharacter || !chars[currentCharacter]) {
+        return { possibleTargets: new Set(), guaranteedTarget: null };
+    }
+
+    const mapping = chars[currentCharacter].adaptiveStatByMastery || {};
+    const weaponTargets = (candidateSlots.Weapon || [])
+        .map(name => items[name] && mapping[items[name].weaponType]);
+    const possibleTargets = new Set(weaponTargets.filter(Boolean));
+    const characterTargets = new Set(Object.values(mapping));
+    const characterWideTarget = characterTargets.size === 1
+        ? characterTargets.values().next().value
+        : null;
+    if (characterWideTarget) possibleTargets.add(characterWideTarget);
+
+    const candidateWideTarget = weaponTargets.length > 0 && weaponTargets.every(target =>
+        target && target === weaponTargets[0]
+    ) ? weaponTargets[0] : null;
+    const guaranteedTarget = characterWideTarget || (!allowPartialBuilds ? candidateWideTarget : null);
+    return { possibleTargets, guaranteedTarget };
+}
+
+function getItemRecommendationStatParts(itemName, statId, level = charLevel, adaptiveContext = null) {
+    const directParts = getRawItemRecommendationStatParts(itemName, statId, level);
+    const targetStat = statId === 'attackPower' || statId === 'skillAmp' ? statId : null;
+    const possibleTargets = adaptiveContext && adaptiveContext.possibleTargets;
+    const canReceiveAdaptiveForce = targetStat && possibleTargets && possibleTargets.has(targetStat);
+    const guaranteedAdaptiveForce = canReceiveAdaptiveForce && adaptiveContext.guaranteedTarget === targetStat;
+    const multiplier = targetStat === 'skillAmp' ? 2 : 1;
+    const adaptiveParts = targetStat
+        ? getRawItemRecommendationStatParts(itemName, 'adaptiveForce', level)
+        : { additive: 0, uniquePrimary: 0, uniqueSecondary: 0 };
+
+    return {
+        additive: directParts.additive + (canReceiveAdaptiveForce ? adaptiveParts.additive * multiplier : 0),
+        minimumAdditive: directParts.additive + (guaranteedAdaptiveForce ? adaptiveParts.additive * multiplier : 0),
+        uniquePrimary: directParts.uniquePrimary,
+        minimumUniquePrimary: directParts.uniquePrimary,
+        uniqueSecondary: directParts.uniqueSecondary +
+            (canReceiveAdaptiveForce ? adaptiveParts.uniquePrimary * multiplier : 0),
+        minimumUniqueSecondary: directParts.uniqueSecondary +
+            (guaranteedAdaptiveForce ? adaptiveParts.uniquePrimary * multiplier : 0)
+    };
+}
+
 function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = false) {
     const searchSlots = [...EQUIPMENT_SLOTS].sort((a, b) => {
         const countDifference = candidateSlots[a].length - candidateSlots[b].length;
         return countDifference || BUILD_SLOT_ORDER[a] - BUILD_SLOT_ORDER[b];
     });
     const candidatesBySlot = {};
+    const adaptiveContext = getRecommendationAdaptiveContext(candidateSlots, allowPartialBuilds);
 
     searchSlots.forEach(slot => {
         const candidateNames = allowPartialBuilds ? [...candidateSlots[slot], null] : candidateSlots[slot];
@@ -2041,7 +2104,9 @@ function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = fa
                 name,
                 passiveNames: getItemPassiveSkills(items[name]).map(passiveSkill => passiveSkill.name),
                 credit: name ? getItemCreditCost(name) : 0,
-                parts: recommendationPriorities.map(statId => getItemRecommendationStatParts(name, statId))
+                parts: recommendationPriorities.map(statId =>
+                    getItemRecommendationStatParts(name, statId, charLevel, adaptiveContext)
+                )
             };
         });
     });
@@ -2060,7 +2125,7 @@ function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = fa
             suffixAdditive[depth][index] = suffixAdditive[depth + 1][index] +
                 Math.max(...candidates.map(candidate => candidate.parts[index].additive), 0);
             suffixMinimumAdditive[depth][index] = suffixMinimumAdditive[depth + 1][index] +
-                Math.min(...candidates.map(candidate => candidate.parts[index].additive), 0);
+                Math.min(...candidates.map(candidate => candidate.parts[index].minimumAdditive), 0);
             suffixUniquePrimary[depth][index] = Math.max(
                 suffixUniquePrimary[depth + 1][index],
                 ...candidates.map(candidate => candidate.parts[index].uniquePrimary),
@@ -2123,8 +2188,8 @@ function getRecommendationSearchBounds(model, state, depth) {
         const upperValue = state.additive[index] + model.suffixAdditive[depth][index] +
             Math.max(state.uniquePrimary[index], model.suffixUniquePrimary[depth][index]) +
             Math.max(state.uniqueSecondary[index], model.suffixUniqueSecondary[depth][index]);
-        const lowerValue = state.additive[index] + model.suffixMinimumAdditive[depth][index] +
-            state.uniquePrimary[index] + state.uniqueSecondary[index];
+        const lowerValue = state.minimumAdditive[index] + model.suffixMinimumAdditive[depth][index] +
+            state.minimumUniquePrimary[index] + state.minimumUniqueSecondary[index];
         upperValues[index] = upperValue;
 
         const constraint = recommendationConstraints[statId] || {};
@@ -2418,6 +2483,12 @@ function calculateItemOnlyBuildStats(itemNames, level = charLevel) {
         toString: function() { return formatMovementSpeedValue(this.flat, this.percent); }
     };
 
+    return totalStats;
+}
+
+function calculateRecommendationBuildStats(itemNames, level = charLevel) {
+    const totalStats = calculateItemOnlyBuildStats(itemNames, level);
+    resolveAdaptiveForce(totalStats, itemNames);
     return totalStats;
 }
 
