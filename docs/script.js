@@ -120,9 +120,9 @@ const DICT = {
         yourLateBuild: "후반 빌드",
         resetBuild: "빌드 초기화",
         clickToAdd: "아래 아이템을 클릭하여 빌드에 추가하세요.",
-        clickToAddLate: "각 장비 부위에 전설 또는 신화 아이템을 하나씩 선택하세요.",
+        clickToAddLate: "각 장비 부위에 전설 또는 초월 아이템을 하나씩 선택하세요.",
         selectEpicItems: "영웅 아이템 선택",
-        selectLateItems: "전설 및 신화 아이템 선택",
+        selectLateItems: "전설 및 초월 아이템 선택",
         buildWorkflow: "빌드 방식",
         earlyGameRoute: "초반 빌드/루트",
         lateGameBuild: "후반 빌드",
@@ -957,7 +957,7 @@ const PART_NAMES = {
 const TYPE_NAMES = {
     "Epic": { en: "Epic", ko: "영웅" },
     "Legend": { en: "Legendary", ko: "전설" },
-    "Mythic": { en: "Mythic", ko: "신화" }
+    "Mythic": { en: "Mythic", ko: "초월" }
 };
 
 const WEAPON_TYPES = [
