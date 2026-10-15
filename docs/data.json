@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.5",
-    "generatedAt": "2026-10-01T05:43:30.750Z"
+    "patchVersion": "12.6",
+    "generatedAt": "2026-10-15T07:10:20.999Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -10545,8 +10545,7 @@
       "statsByLv": {},
       "components": [
         "Hairband",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Elysian Halo.png",
       "passiveSkills": [
@@ -10600,8 +10599,7 @@
       "statsByLv": {},
       "components": [
         "Mask",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Persona.png",
       "passiveSkills": []
@@ -10670,7 +10668,7 @@
       "weaponType": "",
       "stats": {
         "attackPower": 35,
-        "attackSpeedRatio": 0.4
+        "attackSpeedRatio": 0.42
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -10813,8 +10811,7 @@
       },
       "components": [
         "Ribbon",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Bunny Hat.png",
       "passiveSkills": [
@@ -10840,8 +10837,7 @@
       "statsByLv": {},
       "components": [
         "Hat",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Legatus.png",
       "passiveSkills": [
@@ -10859,7 +10855,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "maxHp": 220,
+        "maxHp": 250,
         "attackSpeedRatio": 0.38,
         "cooldownReduction": 20
       },
@@ -10893,8 +10889,7 @@
       "statsByLv": {},
       "components": [
         "Bike Helmet",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Fencing Mask.png",
       "passiveSkills": [
@@ -11111,8 +11106,7 @@
       "statsByLv": {},
       "components": [
         "Graphite",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Black Veil.png",
       "passiveSkills": [
@@ -11234,8 +11228,7 @@
       "statsByLv": {},
       "components": [
         "Gemstone",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Demon Mask.png",
       "passiveSkills": [
@@ -11287,8 +11280,7 @@
       },
       "components": [
         "Lighter",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/head/Animalistic.png",
       "passiveSkills": [
@@ -12283,8 +12275,7 @@
       },
       "components": [
         "Cross",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Holy Orders.png",
       "passiveSkills": []
@@ -12340,8 +12331,7 @@
       },
       "components": [
         "Cloth",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Áo Dài.png",
       "passiveSkills": [
@@ -12394,8 +12384,7 @@
       },
       "components": [
         "Wetsuit",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Guardian Suit.png",
       "passiveSkills": [
@@ -12443,7 +12432,7 @@
       "stats": {
         "attackPower": 10,
         "defense": 20,
-        "attackSpeedRatio": 0.4
+        "attackSpeedRatio": 0.42
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -12534,8 +12523,7 @@
       },
       "components": [
         "Windbreaker",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Omertà.png",
       "passiveSkills": [
@@ -12592,8 +12580,7 @@
       },
       "components": [
         "Scissors",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Couturier.png",
       "passiveSkills": [
@@ -12621,8 +12608,7 @@
       },
       "components": [
         "Gunpowder",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Tactical Armor.png",
       "passiveSkills": [
@@ -12649,8 +12635,7 @@
       },
       "components": [
         "Branch",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Elf Dress.png",
       "passiveSkills": [
@@ -12733,8 +12718,7 @@
       },
       "components": [
         "Leather",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Spectral Jacket.png",
       "passiveSkills": [
@@ -12791,8 +12775,7 @@
       },
       "components": [
         "Shirt",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Inquisitor.png",
       "passiveSkills": [
@@ -12851,8 +12834,7 @@
       },
       "components": [
         "Flower",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/The General's Robe.png",
       "passiveSkills": [
@@ -12940,8 +12922,7 @@
       },
       "components": [
         "Patched Leather",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Chillwind Cuirass.png",
       "passiveSkills": [
@@ -13651,9 +13632,10 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 15,
+        "attackPower": 10,
         "attackSpeedRatio": 0.35,
-        "criticalStrikeChance": 0.35
+        "criticalStrikeChance": 0.35,
+        "criticalStrikeDamage": 0.04
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -13684,8 +13666,7 @@
       "statsByLv": {},
       "components": [
         "Watch",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Tellurian Timepiece.png",
       "passiveSkills": [
@@ -13736,8 +13717,7 @@
       "statsByLv": {},
       "components": [
         "Battery",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Radar.png",
       "passiveSkills": [
@@ -13764,8 +13744,7 @@
       "statsByLv": {},
       "components": [
         "Plastic",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Auto-arms.png",
       "passiveSkills": []
@@ -13919,8 +13898,7 @@
       "statsByLv": {},
       "components": [
         "Turtle Shell",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Dragon Scale.png",
       "passiveSkills": []
@@ -13985,15 +13963,14 @@
       "weaponType": "",
       "stats": {
         "attackPower": 25,
-        "defense": 20,
+        "defense": 22,
         "cooldownReduction": 15
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
         "Scrap Metal",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Helix.png",
       "passiveSkills": [
@@ -14045,8 +14022,7 @@
       "statsByLv": {},
       "components": [
         "Ice",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Psyche's Blade.png",
       "passiveSkills": [
@@ -14091,15 +14067,14 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 85,
+        "skillAmp": 88,
         "cooldownReduction": 20
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
         "Paper",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Emerald Tablet.png",
       "passiveSkills": [
@@ -14125,8 +14100,7 @@
       },
       "components": [
         "Iron Ball",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Solar System Miniature.png",
       "passiveSkills": [
@@ -14169,7 +14143,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 30,
+        "attackPower": 33,
         "attackSpeedRatio": 0.3,
         "moveSpeedRatio": 0.015
       },
@@ -14255,8 +14229,7 @@
       "statsByLv": {},
       "components": [
         "Playing Cards",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Dice of Destiny.png",
       "passiveSkills": []
@@ -14303,8 +14276,7 @@
       "statsByLv": {},
       "components": [
         "Feather",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Sanguine Gunbai.png",
       "passiveSkills": [
@@ -14427,7 +14399,7 @@
       "weaponType": "",
       "stats": {
         "defense": 10,
-        "skillAmp": 80,
+        "skillAmp": 77,
         "maxHp": 230,
         "cooldownReduction": 15
       },
@@ -14435,8 +14407,7 @@
       "statsByLv": {},
       "components": [
         "Stone",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/arm/Star Fragment.png",
       "passiveSkills": []
@@ -15139,8 +15110,7 @@
       "statsByLv": {},
       "components": [
         "Clogs",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/leg/Boots of Hermes.png",
       "passiveSkills": []
@@ -15327,7 +15297,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackSpeedRatio": 0.26,
+        "attackSpeedRatio": 0.28,
         "criticalStrikeChance": 0.33,
         "moveSpeed": 0.25
       },
@@ -15356,8 +15326,7 @@
       "statsByLv": {},
       "components": [
         "Slippers",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/leg/Killer Heels.png",
       "passiveSkills": []
@@ -15392,7 +15361,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 17,
+        "attackPower": 18,
         "attackSpeedRatio": 0.25,
         "criticalStrikeChance": 0.35,
         "moveSpeed": 0.27
@@ -15488,8 +15457,7 @@
       "statsByLv": {},
       "components": [
         "Running Shoes",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/leg/Tactical Shoes.png",
       "passiveSkills": [
@@ -15549,7 +15517,7 @@
       "weaponType": "",
       "stats": {
         "defense": 11,
-        "cooldownReduction": 15
+        "cooldownReduction": 10
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -15837,8 +15805,7 @@
       },
       "components": [
         "Monk's Robe",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/The Revenant.png",
       "passiveSkills": [
@@ -15919,8 +15886,7 @@
       },
       "components": [
         "Piano Wire",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "image": "images/equipment/chest/Ghost Bride's Dress.png",
       "passiveSkills": [
@@ -17327,8 +17293,7 @@
       "statsByLv": {},
       "components": [
         "Water",
-        "Meteorite",
-        "Tree of Life"
+        "Force Core"
       ],
       "passiveSkills": []
     }
@@ -17906,7 +17871,7 @@
       "growth": {
         "maxHp": 90,
         "attackPower": 4.5,
-        "defense": 3.4,
+        "defense": 3.2,
         "hpRegen": 0.135,
         "attackSpeed": 0
       },
@@ -18805,7 +18770,7 @@
       "base": {
         "maxHp": 960,
         "attackPower": 28,
-        "defense": 51,
+        "defense": 52,
         "hpRegen": 1.28,
         "attackSpeed": 0.12,
         "moveSpeed": 3.5

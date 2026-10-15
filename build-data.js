@@ -5,7 +5,7 @@ const axios = require('axios');
 const { getCharacterImagePath, getItemImagePath } = require('./image-paths');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.5';
+const DATA_PATCH_VERSION = '12.6';
 
 const ITEM_PASSIVE_SKILLS = require('./item-passives.json');
 
@@ -241,9 +241,7 @@ async function buildData() {
         charsData[engName] = {
             code: char.code,
             nameKo: koName,
-            image: getCharacterImagePath(engName),
             masteries: [],
-            adaptiveStatByMastery: {},
             base: {
                 maxHp: char.maxHp || 0,
                 attackPower: char.attackPower || 0,
@@ -252,7 +250,9 @@ async function buildData() {
                 attackSpeed: char.attackSpeed || 0,
                 moveSpeed: char.moveSpeed || 0
             },
-            growth: {}
+            growth: {},
+            image: getCharacterImagePath(engName),
+            adaptiveStatByMastery: {}
         };
     });
     
@@ -389,7 +389,6 @@ async function buildData() {
             locations: spawns,
             initialCount: item.initialCount || 1,
             weaponType: item.weaponType || "",
-            passiveSkills: getPassiveSkills(engName),
             stats: itemStats.stats,
             uniqueStats: itemStats.uniqueStats,
             statsByLv: itemStats.statsByLv
@@ -401,6 +400,8 @@ async function buildData() {
         if (!isBaseItem) {
             itemObj.components = getLeafComponents(item.code, allItemsMap, l10nEng);
         }
+
+        itemObj.passiveSkills = getPassiveSkills(engName);
 
         itemsData[engName] = itemObj;
     });
