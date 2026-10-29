@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.6",
-    "generatedAt": "2026-10-15T07:10:20.999Z"
+    "patchVersion": "12.7",
+    "generatedAt": "2026-10-29T04:47:14.815Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -13913,7 +13913,7 @@
       "stats": {
         "attackPower": 35,
         "cooldownReduction": 20,
-        "penetrationDefense": 12
+        "penetrationDefense": 13
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -18183,7 +18183,7 @@
       ],
       "base": {
         "maxHp": 940,
-        "attackPower": 37,
+        "attackPower": 40,
         "defense": 52,
         "hpRegen": 0.75,
         "attackSpeed": 0.2,
@@ -18348,7 +18348,7 @@
         "Bow"
       ],
       "base": {
-        "maxHp": 930,
+        "maxHp": 900,
         "attackPower": 33,
         "defense": 51,
         "hpRegen": 1.2,
@@ -18856,7 +18856,7 @@
       "growth": {
         "maxHp": 92,
         "attackPower": 4.4,
-        "defense": 3.3,
+        "defense": 3.2,
         "hpRegen": 0.051,
         "attackSpeed": 0
       },
@@ -19194,7 +19194,7 @@
         "moveSpeed": 3.5999999999999996
       },
       "growth": {
-        "maxHp": 91,
+        "maxHp": 88,
         "attackPower": 4.6,
         "defense": 3.2,
         "hpRegen": 0.07,
@@ -19714,7 +19714,7 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 78,
+        "maxHp": 75,
         "attackPower": 4.4,
         "defense": 2.8,
         "hpRegen": 0.06,

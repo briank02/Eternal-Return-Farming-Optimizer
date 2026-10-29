@@ -5,7 +5,7 @@ const axios = require('axios');
 const { getCharacterImagePath, getItemImagePath } = require('./image-paths');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.6';
+const DATA_PATCH_VERSION = '12.7';
 
 const ITEM_PASSIVE_SKILLS = require('./item-passives.json');
 
@@ -394,12 +394,12 @@ async function buildData() {
             statsByLv: itemStats.statsByLv
         };
 
-        const imagePath = getItemImagePath(engName, partType, item.weaponType || "");
-        if (imagePath) itemObj.image = imagePath;
-
         if (!isBaseItem) {
             itemObj.components = getLeafComponents(item.code, allItemsMap, l10nEng);
         }
+
+        const imagePath = getItemImagePath(engName, partType, item.weaponType || "");
+        if (imagePath) itemObj.image = imagePath;
 
         itemObj.passiveSkills = getPassiveSkills(engName);
 
