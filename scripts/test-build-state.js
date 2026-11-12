@@ -5,6 +5,8 @@ const vm = require('node:vm');
 
 const scriptPath = path.join(__dirname, '..', 'docs', 'script.js');
 const source = fs.readFileSync(scriptPath, 'utf8');
+const shareExportPath = path.join(__dirname, '..', 'docs', 'share-export.js');
+const shareExportSource = fs.readFileSync(shareExportPath, 'utf8');
 const fixtureData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'docs', 'data.json'), 'utf8'));
 
 const context = {
@@ -13,6 +15,11 @@ const context = {
     fixtureData,
     URL,
     URLSearchParams,
+    TextEncoder,
+    TextDecoder,
+    Uint8Array,
+    btoa,
+    atob,
     localStorage: {
         getItem() { return null; },
         setItem() {}
@@ -38,6 +45,28 @@ assert.equal(resolveInitialBuildType('?mode=late', BUILD_TYPES.EARLY), BUILD_TYP
 assert.equal(resolveInitialBuildType('?mode=early', BUILD_TYPES.LATE), BUILD_TYPES.EARLY);
 assert.equal(resolveInitialBuildType('', BUILD_TYPES.LATE), BUILD_TYPES.LATE);
 assert.equal(resolveInitialBuildType('?mode=unsupported', 'unsupported'), BUILD_TYPES.EARLY);
+const shareSnapshotFixture = {
+    v: SHARE_SNAPSHOT_VERSION,
+    p: '12.7',
+    m: BUILD_TYPES.EARLY,
+    l: 20,
+    c: { n: 'Aya', c: 4 },
+    i: [{ n: 'Fáfnir', c: 42 }],
+    r: { p: ['Forest', 'Chapel'], d: ['Battery'], t: 4 }
+};
+const encodedShareFixture = encodeShareSnapshot(shareSnapshotFixture);
+assert.deepEqual(decodeShareSnapshot(encodedShareFixture), shareSnapshotFixture,
+    'Share snapshots round-trip Unicode names through Base64URL');
+assert.equal(decodeShareSnapshot('not-valid-json'), null, 'Malformed build links are rejected');
+assert.equal(validateShareSnapshot({ ...shareSnapshotFixture, v: 999 }), false,
+    'Unknown share snapshot versions are rejected');
+const shareLinkFixture = createShareLink(shareSnapshotFixture, 'https://example.com/app/?test=1');
+assert.equal(new URL(shareLinkFixture).searchParams.get('mode'), BUILD_TYPES.EARLY);
+assert.deepEqual(getSharedSnapshotFromLocation({ hash: new URL(shareLinkFixture).hash }), shareSnapshotFixture,
+    'A generated link restores its complete snapshot');
+assert.equal(resolveShareReference({ n: 'Old Name', c: 42 }, {
+    'Renamed Item': { code: 42 }
+}), 'Renamed Item', 'Stable API codes survive an item rename');
 assert.equal(STAT_LABELS.adaptiveForce.ko, '맞춤형 능력치');
 assert.equal(Object.values(fixtureData.chars).every(character =>
     character.masteries.every(mastery =>
@@ -580,5 +609,5 @@ for (const slot of EQUIPMENT_SLOTS) {
 }
 `;
 
-vm.runInNewContext(`${source}\n${assertions}`, context, { filename: scriptPath });
+vm.runInNewContext(`${source}\n${shareExportSource}\n${assertions}`, context, { filename: scriptPath });
 console.log('Validated early/late build state, recommendation constraints, rarity modes, passives, and route isolation.');

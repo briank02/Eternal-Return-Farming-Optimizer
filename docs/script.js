@@ -58,6 +58,30 @@ const DICT = {
         noRuleItems: "None",
         noMatchingRuleItems: "No matching items",
         incompatibleLocksRemoved: "incompatible locked item(s) removed",
+        shareEarlyRoute: "Share Route",
+        shareLateBuild: "Share Build",
+        shareExport: "Share / Export",
+        shareExportTitle: "Build Preview",
+        routeToExport: "Route to export",
+        copyLink: "Copy Link",
+        copyImage: "Copy Image",
+        downloadImage: "Download Image",
+        closeShareExport: "Close share dialog",
+        shareNeedRoute: "Run the optimizer before sharing an Early Game route.",
+        shareNeedBuild: "Add at least one item before sharing this build.",
+        renderingPreview: "Rendering preview...",
+        linkCopied: "Build link copied.",
+        imageCopied: "Build image copied.",
+        imageDownloaded: "Build image downloaded.",
+        copyImageUnsupported: "Image copying is not supported by this browser. Download the image instead.",
+        shareExportFailed: "The export could not be created.",
+        sharedBuildLoaded: "Shared build loaded.",
+        sharedPatchWarning: "This build was created for patch {patch}; current data is patch {current}.",
+        sharedItemsMissing: "{count} shared item(s) are unavailable in the current data.",
+        emptySlot: "Empty",
+        noCharacter: "No Test Subject",
+        routeLabel: "Route",
+        droneMaterials: "Drone materials",
         buildCreditLimit: "Build credit limit",
         minCredits: "Min credits",
         maxCredits: "Max credits",
@@ -228,9 +252,9 @@ Object.assign(DICT.ko, {
 DICT.ko.dataPatch = "패치 버전";
 DICT.ko.dataUpdated = "업데이트 일자";
 
-DICT.ko.viewMap = "지도 보기";
-DICT.ko.routeMap = "경로 지도";
-DICT.ko.closeRouteMap = "경로 지도 닫기";
+DICT.ko.viewMap = "루트 보기";
+DICT.ko.routeMap = "루트";
+DICT.ko.closeRouteMap = "맵 닫기";
 DICT.ko.itemRules = "아이템 규칙";
 DICT.ko.editItemRules = "아이템 규칙 편집";
 DICT.ko.itemRulesHelp = "반드시 포함할 아이템을 잠그고 추천에서 제외할 아이템을 선택하세요.";
@@ -249,6 +273,30 @@ DICT.ko.noItemRules = "아이템 규칙 없음";
 DICT.ko.noRuleItems = "없음";
 DICT.ko.noMatchingRuleItems = "일치하는 아이템 없음";
 DICT.ko.incompatibleLocksRemoved = "개의 호환되지 않는 잠긴 아이템이 제거되었습니다";
+DICT.ko.shareEarlyRoute = "루트 공유";
+DICT.ko.shareLateBuild = "빌드 공유";
+DICT.ko.shareExport = "공유";
+DICT.ko.shareExportTitle = "빌드 미리보기";
+DICT.ko.routeToExport = "공유할 루트";
+DICT.ko.copyLink = "링크 복사";
+DICT.ko.copyImage = "이미지 복사";
+DICT.ko.downloadImage = "이미지 다운로드";
+DICT.ko.closeShareExport = "공유 창 닫기";
+DICT.ko.shareNeedRoute = "초반 루트를 공유하려면 먼저 최적화를 실행하세요.";
+DICT.ko.shareNeedBuild = "공유하려면 아이템을 하나 이상 선택하세요.";
+DICT.ko.renderingPreview = "미리보기를 만드는 중...";
+DICT.ko.linkCopied = "빌드 링크를 복사했습니다.";
+DICT.ko.imageCopied = "빌드 이미지를 복사했습니다.";
+DICT.ko.imageDownloaded = "빌드 이미지를 다운로드했습니다.";
+DICT.ko.copyImageUnsupported = "이 브라우저에서는 이미지 복사를 지원하지 않습니다. 이미지를 다운로드하세요.";
+DICT.ko.shareExportFailed = "내보내기를 만들 수 없습니다.";
+DICT.ko.sharedBuildLoaded = "공유된 빌드를 불러왔습니다.";
+DICT.ko.sharedPatchWarning = "이 빌드는 {patch} 패치에서 생성되었습니다. 현재 데이터는 {current} 패치입니다.";
+DICT.ko.sharedItemsMissing = "공유된 아이템 {count}개를 현재 데이터에서 찾을 수 없습니다.";
+DICT.ko.emptySlot = "비어 있음";
+DICT.ko.noCharacter = "실험체 없음";
+DICT.ko.routeLabel = "루트";
+DICT.ko.droneMaterials = "드론 재료";
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
@@ -387,6 +435,7 @@ function applyTranslations() {
     const closeItemRules = document.getElementById('close-recommendation-item-rules');
     if (closeItemRules) closeItemRules.setAttribute('aria-label', t('closeItemRules'));
     syncRouteMapDialogTranslations();
+    if (typeof syncShareExportTranslations === 'function') syncShareExportTranslations();
     renderRecommendationItemRulesSummary();
     const itemRulesDialog = document.getElementById('recommendation-item-rules-dialog');
     if (itemRulesDialog?.open) renderRecommendationItemRulesDialog();
@@ -1346,7 +1395,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         mapData = data.mapData;
         chars = data.chars;
         dataMeta = data.meta || {};
-        activeBuildType = resolveInitialBuildType(
+        const sharedBuildMode = typeof getSharedBuildModeFromUrl === 'function'
+            ? getSharedBuildModeFromUrl(window.location)
+            : null;
+        activeBuildType = sharedBuildMode || resolveInitialBuildType(
             window.location.search,
             localStorage.getItem(WORKFLOW_STORAGE_KEY)
         );
@@ -1355,6 +1407,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         localStorage.setItem(WORKFLOW_STORAGE_KEY, activeBuildType);
         updateWorkflowUrl(activeBuildType);
         buildDisplayStats(activeBuildType);
+        if (typeof restoreSharedBuildFromUrl === 'function') restoreSharedBuildFromUrl(window.location);
         renderDataStatus();
         
         // 1. Setup Filters
@@ -1365,6 +1418,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         setupRecommendationControls();
         setupRouteMapDialog();
         setupRecommendationItemRulesDialog();
+        if (typeof setupShareExport === 'function') setupShareExport();
         renderWorkflowShell();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
@@ -1382,6 +1436,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 2. Initialize Grid
         renderMainGrid();
         updateSelectedPanel();
+        if (typeof renderRestoredSharedBuild === 'function') renderRestoredSharedBuild();
 
         // 3. Setup Events
         const itemSearch = document.getElementById('item-search');
@@ -3061,7 +3116,9 @@ function selectCharacter(charName) {
             ])
         );
         if (buildChanges[BUILD_TYPES.EARLY]) selectedRoutes = [];
-        if (Object.values(buildChanges).some(Boolean)) updateSelectedPanel();
+        if (Object.values(buildChanges).some(Boolean)) updateSelectedPanel({
+            buildChanged: !!buildChanges[activeBuildType]
+        });
     }
 
     let currentWeaponStillValid = currentCharacter === null;
@@ -3599,6 +3656,7 @@ function updateMainGridVisuals() {
 function updateSelectedPanel({ buildChanged = false } = {}) {
     const container = document.getElementById('selected-item-grid');
     if (!container) return;
+    if (typeof syncShareExportButton === 'function') syncShareExportButton();
     container.innerHTML = '';
 
     if (activeBuildType === BUILD_TYPES.LATE) {
@@ -3615,7 +3673,11 @@ function updateSelectedPanel({ buildChanged = false } = {}) {
         container.innerHTML = `<p class="empty-msg">${t(emptyKey)}</p>`;
         if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
             selectedRoutes = [];
+            generatedRoutes = [];
             renderStatComparison();
+            const output = document.getElementById('result-output');
+            if (output) output.innerHTML = `<p class="empty-msg">${t('optimizeThenCompare')}</p>`;
+            if (typeof syncShareExportButton === 'function') syncShareExportButton();
         }
         return;
     }
@@ -3631,7 +3693,11 @@ function updateSelectedPanel({ buildChanged = false } = {}) {
     
     if (buildChanged && activeBuildType === BUILD_TYPES.EARLY) {
         selectedRoutes = [];
+        generatedRoutes = [];
         renderStatComparison();
+        const output = document.getElementById('result-output');
+        if (output) output.innerHTML = `<p class="empty-msg">${t('optimizeThenCompare')}</p>`;
+        if (typeof syncShareExportButton === 'function') syncShareExportButton();
     }
 }
 
@@ -4536,6 +4602,7 @@ function displayResults(routes, container) {
     let html = `${t('topRoutes')}`;
     
     generatedRoutes = topRoutes;
+    if (typeof syncShareExportButton === 'function') syncShareExportButton();
 
     topRoutes.forEach((r, index) => {
         let tierLabel = "";
