@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Build Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=34-recommendation-layout">
+    <link rel="stylesheet" href="style.css?v=36-map-fit">
 </head>
 
 <body>
@@ -257,6 +257,14 @@
 
     </main>
 
+    <dialog id="route-map-dialog" class="route-map-dialog" aria-labelledby="route-map-title">
+        <div class="route-map-header">
+            <h2 id="route-map-title" data-i18n="routeMap">Route Map</h2>
+            <button type="button" id="close-route-map" class="route-map-close" aria-label="Close route map">&times;</button>
+        </div>
+        <div id="route-map-content" class="route-map-content"></div>
+    </dialog>
+
     <footer class="data-footer" aria-label="Data status">
         <div class="data-status">
             <span id="data-patch"></span>
@@ -265,7 +273,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=31-release-verification"></script>
+    <script src="script.js?v=33-map-fit"></script>
 </body>
 
 </html>

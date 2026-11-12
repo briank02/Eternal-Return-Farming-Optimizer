@@ -27,6 +27,13 @@ assert.equal(BUILD_CONFIG[BUILD_TYPES.EARLY].grades.join(','), 'Epic');
 assert.equal(BUILD_CONFIG[BUILD_TYPES.LATE].grades.join(','), 'Legend,Mythic');
 assert.equal(BUILD_CONFIG[BUILD_TYPES.EARLY].routeEnabled, true);
 assert.equal(BUILD_CONFIG[BUILD_TYPES.LATE].routeEnabled, false);
+assert.equal(Object.keys(ZONE_COORDINATES).length, Object.keys(fixtureData.mapData).length,
+    'Every map area has one route-map coordinate');
+assert.deepEqual(Object.keys(ZONE_COORDINATES).sort(), Object.keys(fixtureData.mapData).sort(),
+    'Route-map coordinates match the production map areas');
+assert.equal(Object.values(ZONE_COORDINATES).every(point =>
+    point.x >= 0 && point.x <= ROUTE_MAP_WIDTH && point.y >= 0 && point.y <= ROUTE_MAP_HEIGHT
+), true, 'Every route-map coordinate is inside the source image bounds');
 assert.equal(resolveInitialBuildType('?mode=late', BUILD_TYPES.EARLY), BUILD_TYPES.LATE);
 assert.equal(resolveInitialBuildType('?mode=early', BUILD_TYPES.LATE), BUILD_TYPES.EARLY);
 assert.equal(resolveInitialBuildType('', BUILD_TYPES.LATE), BUILD_TYPES.LATE);

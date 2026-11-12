@@ -86,6 +86,9 @@ const DICT = {
         topRoutes: "<h3>Top Optimized Routes: <span style='font-size:0.6em; font-weight:normal; color:var(--text-muted);'>(*: Hyperloop not needed)</span></h3>",
         showMoreRoutes: "Show more routes",
         showFewerRoutes: "Show fewer routes",
+        viewMap: "View Map",
+        routeMap: "Route Map",
+        closeRouteMap: "Close route map",
         needDrone: "Need Drone: <strong>",
         noDrone: "No Drone Needed",
         buildVariant: "Build Variant:",
@@ -206,6 +209,10 @@ Object.assign(DICT.ko, {
 
 DICT.ko.dataPatch = "패치 버전";
 DICT.ko.dataUpdated = "업데이트 일자";
+
+DICT.ko.viewMap = "지도 보기";
+DICT.ko.routeMap = "경로 지도";
+DICT.ko.closeRouteMap = "경로 지도 닫기";
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
@@ -341,6 +348,7 @@ function applyTranslations() {
     });
     const resourceFilterGroup = document.querySelector('.resource-filter-row');
     if (resourceFilterGroup) resourceFilterGroup.setAttribute('aria-label', t('highTierMaterial'));
+    syncRouteMapDialogTranslations();
     syncThemeControl();
 }
 
@@ -1249,6 +1257,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         setupFilters();
         setupModeTabs();
         setupRecommendationControls();
+        setupRouteMapDialog();
         renderWorkflowShell();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
@@ -4025,6 +4034,139 @@ function getPermutations(arr) {
 // DISPLAY
 // ==========================================
 
+const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
+const ROUTE_MAP_WIDTH = 772;
+const ROUTE_MAP_HEIGHT = 1000;
+const ZONE_COORDINATES = Object.freeze({
+    "Alley": Object.freeze({ x: 400, y: 100 }),
+    "Temple": Object.freeze({ x: 633, y: 248 }),
+    "Gas Station": Object.freeze({ x: 304, y: 170 }),
+    "Police Station": Object.freeze({ x: 493, y: 236 }),
+    "Stream": Object.freeze({ x: 606, y: 390 }),
+    "Hospital": Object.freeze({ x: 665, y: 520 }),
+    "Fire Station": Object.freeze({ x: 417, y: 315 }),
+    "Pond": Object.freeze({ x: 513, y: 439 }),
+    "Archery Range": Object.freeze({ x: 174, y: 242 }),
+    "School": Object.freeze({ x: 274, y: 324 }),
+    "Research Center": Object.freeze({ x: 364, y: 460 }),
+    "Cemetery": Object.freeze({ x: 492, y: 574 }),
+    "Factory": Object.freeze({ x: 617, y: 724 }),
+    "Hotel": Object.freeze({ x: 117, y: 409 }),
+    "Forest": Object.freeze({ x: 286, y: 550 }),
+    "Chapel": Object.freeze({ x: 436, y: 678 }),
+    "Beach": Object.freeze({ x: 117, y: 566 }),
+    "Uptown": Object.freeze({ x: 237, y: 688 }),
+    "Warehouse": Object.freeze({ x: 345, y: 782 }),
+    "Dock": Object.freeze({ x: 443, y: 828 }),
+    "Barge": Object.freeze({ x: 514, y: 883 })
+});
+let activeRouteMap = null;
+
+function getLocalizedZoneName(zone) {
+    return currentLanguage === 'ko' && mapData[zone] && mapData[zone].nameKo
+        ? mapData[zone].nameKo
+        : zone;
+}
+
+function createRouteMapSvg(route) {
+    const svg = document.createElementNS(SVG_NAMESPACE, 'svg');
+    const localizedPath = route.path.map(getLocalizedZoneName);
+    const accessibleLabel = `${t('routeMap')}: ${localizedPath.join(' → ')}`;
+    svg.classList.add('route-map-svg');
+    svg.setAttribute('viewBox', `0 0 ${ROUTE_MAP_WIDTH} ${ROUTE_MAP_HEIGHT}`);
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', accessibleLabel);
+
+    const title = document.createElementNS(SVG_NAMESPACE, 'title');
+    title.textContent = accessibleLabel;
+    svg.appendChild(title);
+
+    const mapImage = document.createElementNS(SVG_NAMESPACE, 'image');
+    mapImage.setAttribute('href', 'images/ui/Map.png');
+    mapImage.setAttribute('width', String(ROUTE_MAP_WIDTH));
+    mapImage.setAttribute('height', String(ROUTE_MAP_HEIGHT));
+    svg.appendChild(mapImage);
+
+    const points = route.path.map(zone => ZONE_COORDINATES[zone]).filter(Boolean);
+    if (points.length > 1) {
+        const routeLine = document.createElementNS(SVG_NAMESPACE, 'polyline');
+        routeLine.classList.add('route-map-line');
+        routeLine.setAttribute('points', points.map(point => `${point.x},${point.y}`).join(' '));
+        svg.appendChild(routeLine);
+    }
+
+    points.forEach((point, index) => {
+        const marker = document.createElementNS(SVG_NAMESPACE, 'g');
+        marker.classList.add('route-map-marker');
+        marker.setAttribute('transform', `translate(${point.x} ${point.y})`);
+
+        const circle = document.createElementNS(SVG_NAMESPACE, 'circle');
+        circle.setAttribute('r', '18');
+        marker.appendChild(circle);
+
+        const number = document.createElementNS(SVG_NAMESPACE, 'text');
+        number.setAttribute('x', '0');
+        number.setAttribute('y', '0');
+        number.setAttribute('dy', '0.35em');
+        number.textContent = String(index + 1);
+        marker.appendChild(number);
+
+        svg.appendChild(marker);
+    });
+
+    return svg;
+}
+
+function renderRouteMapDialog(route) {
+    const title = document.getElementById('route-map-title');
+    const content = document.getElementById('route-map-content');
+    if (!title || !content || !route) return;
+
+    const localizedPath = route.path.map(getLocalizedZoneName);
+    title.textContent = `${t('routeMap')}: ${localizedPath.join(' → ')}`;
+    content.replaceChildren(createRouteMapSvg(route));
+}
+
+function openRouteMap(route) {
+    const dialog = document.getElementById('route-map-dialog');
+    if (!dialog || !route) return;
+
+    activeRouteMap = route;
+    renderRouteMapDialog(route);
+    if (!dialog.open) dialog.showModal();
+}
+
+function syncRouteMapDialogTranslations() {
+    const dialog = document.getElementById('route-map-dialog');
+    const closeButton = document.getElementById('close-route-map');
+    const title = document.getElementById('route-map-title');
+    if (closeButton) {
+        closeButton.setAttribute('aria-label', t('closeRouteMap'));
+        closeButton.title = t('closeRouteMap');
+    }
+    if (dialog && dialog.open && activeRouteMap) renderRouteMapDialog(activeRouteMap);
+    else if (title) title.textContent = t('routeMap');
+}
+
+function setupRouteMapDialog() {
+    const dialog = document.getElementById('route-map-dialog');
+    const closeButton = document.getElementById('close-route-map');
+    if (!dialog || !closeButton || dialog.dataset.bound === 'true') return;
+
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+        const bounds = dialog.getBoundingClientRect();
+        const clickedBackdrop = event.clientX < bounds.left || event.clientX > bounds.right ||
+            event.clientY < bounds.top || event.clientY > bounds.bottom;
+        if (clickedBackdrop) dialog.close();
+    });
+    dialog.addEventListener('close', () => {
+        activeRouteMap = null;
+    });
+    dialog.dataset.bound = 'true';
+    syncRouteMapDialogTranslations();
+}
+
 function displayResults(routes, container) {
     const topRoutes = routes.slice(0, 10); // Show top 10 now since we have variants
     const mobilePreviewCount = 3;
@@ -4064,7 +4206,8 @@ function displayResults(routes, container) {
         });
 
         html += `
-        <button type="button" class="route-card${index >= mobilePreviewCount ? ' mobile-route-extra' : ''}" data-index="${index}" aria-pressed="false" aria-label="${escapeAttribute(`${t('selectRoute')}: ${formattedPath.join(' → ')}`)}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; margin: 8px 0; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
+        <div class="route-result-row${index >= mobilePreviewCount ? ' mobile-route-extra' : ''}">
+        <button type="button" class="route-card" data-index="${index}" aria-pressed="false" aria-label="${escapeAttribute(`${t('selectRoute')}: ${formattedPath.join(' → ')}`)}" style="background: var(--route-card-bg); border:1px solid var(--route-card-border); border-left: 5px solid ${getColorForTier(r.tier)}; padding: 12px; border-radius: 4px; cursor:pointer; transition:all 0.2s;">
             
             <div style="margin-bottom: 5px; font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center;">
                 <strong style="margin-right:5px;">${t('buildVariant')}</strong> ${variantSummary}
@@ -4080,7 +4223,9 @@ function displayResults(routes, container) {
             <div style="font-size:0.85em; margin-top:4px; padding-left: 5px;">
                 ${droneHtml}
             </div>
-        </button>`;
+        </button>
+        <button type="button" class="route-view-map-btn" data-index="${index}" aria-label="${escapeAttribute(`${t('viewMap')}: ${formattedPath.join(' → ')}`)}">${t('viewMap')}</button>
+        </div>`;
     });
 
     if (topRoutes.length > mobilePreviewCount) {
@@ -4133,6 +4278,13 @@ function displayResults(routes, container) {
             });
 
             renderStatComparison();
+        });
+    });
+
+    container.querySelectorAll('.route-view-map-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const route = generatedRoutes[Number(button.dataset.index)];
+            openRouteMap(route);
         });
     });
 }

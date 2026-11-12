@@ -11,6 +11,7 @@ const requiredUiImages = [
     'images/ui/Chest.png',
     'images/ui/Head.png',
     'images/ui/Leg.png',
+    'images/ui/Map.png',
     'images/ui/Weapon.png'
 ];
 
