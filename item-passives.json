@@ -11,12 +11,7 @@
       "nameKo": "불꽃 결계"
     }
   ],
-  "Rocker's Jacket": [
-    {
-      "name": "Healing Reduction",
-      "nameKo": "치유 감소"
-    }
-  ],
+  "Rocker's Jacket": [],
   "Amazoness Armor": [
     {
       "name": "Streamlined",
@@ -85,8 +80,8 @@
   ],
   "Specter": [
     {
-      "name": "Healing Reduction",
-      "nameKo": "치유 감소"
+      "name": "Lock On",
+      "nameKo": "포착"
     }
   ],
   "Blood Cloak": [
@@ -103,8 +98,8 @@
   ],
   "Shooting Star Jacket": [
     {
-      "name": "Healing Reduction",
-      "nameKo": "치유 감소"
+      "name": "Laceration",
+      "nameKo": "자상"
     }
   ],
   "Couturier": [
@@ -561,8 +556,8 @@
   ],
   "White Crane Fan": [
     {
-      "name": "Primordial Hex",
-      "nameKo": "저주"
+      "name": "Streamlined",
+      "nameKo": "신속"
     }
   ],
   "Schrödinger's Box": [
@@ -625,8 +620,8 @@
   ],
   "Nightmare Nails": [
     {
-      "name": "Healing Reduction",
-      "nameKo": "치유 감소"
+      "name": "Whittle",
+      "nameKo": "깎아내기"
     }
   ],
   "Helix": [
@@ -643,8 +638,8 @@
   ],
   "Revenge of Goujian": [
     {
-      "name": "Healing Reduction",
-      "nameKo": "치유 감소"
+      "name": "Keep Your Distance",
+      "nameKo": "간극"
     }
   ],
   "Buccaneer Doubloon": [
@@ -679,8 +674,8 @@
   ],
   "Sanguine Gunbai": [
     {
-      "name": "Primordial Hex",
-      "nameKo": "저주"
+      "name": "Streamlined",
+      "nameKo": "신속"
     }
   ],
   "Totem": [
@@ -697,8 +692,8 @@
   ],
   "Emerald Tablet": [
     {
-      "name": "Streamlined",
-      "nameKo": "신속"
+      "name": "Overload",
+      "nameKo": "과부하"
     }
   ],
   "Magic Lamp": [
@@ -751,6 +746,10 @@
     {
       "name": "Healing Reduction",
       "nameKo": "치유 감소"
+    },
+    {
+      "name": "Whittle",
+      "nameKo": "깎아내기"
     }
   ],
   "Fáfnir": [
@@ -1979,6 +1978,48 @@
     {
       "name": "VF Control Enhancement",
       "nameKo": "VF제어 강화"
+    }
+  ],
+  "Generator": [
+    {
+      "name": "Full Throttle",
+      "nameKo": "풀 가동"
+    }
+  ],
+  "Optical Camouflage Suit": [
+    {
+      "name": "Healing Reduction",
+      "nameKo": "치유 감소"
+    }
+  ],
+  "The King's Helmet": [
+    {
+      "name": "Chain Strike",
+      "nameKo": "연격"
+    }
+  ],
+  "Crusader Helmet": [
+    {
+      "name": "Guardian Protocol",
+      "nameKo": "수호자 프로토콜"
+    }
+  ],
+  "Claddagh Ring": [
+    {
+      "name": "Bond",
+      "nameKo": "유대"
+    }
+  ],
+  "Ivory Steps": [
+    {
+      "name": "Quick Reflexes",
+      "nameKo": "기민한 대처"
+    }
+  ],
+  "Mirage Lace-Ups": [
+    {
+      "name": "Hone",
+      "nameKo": "연마"
     }
   ]
 }

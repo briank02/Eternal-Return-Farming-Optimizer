@@ -1,7 +1,7 @@
 {
   "meta": {
-    "patchVersion": "12.7",
-    "generatedAt": "2026-10-29T04:47:14.815Z"
+    "patchVersion": "13.0",
+    "generatedAt": "2026-11-12T02:47:14.463Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -12,7 +12,7 @@
         "Dock",
         "Uptown",
         "Hotel",
-        "School"
+        "Factory"
       ],
       "initialCount": 1,
       "weaponType": "OneHandSword",
@@ -325,7 +325,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Kitchen Knife",
+        "Nail",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/dagger/Eclipse.webp",
@@ -417,9 +417,9 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Warehouse",
         "Temple",
         "Archery Range",
+        "Cemetery",
         "Chapel"
       ],
       "initialCount": 1,
@@ -766,7 +766,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ice",
+        "Gemstone",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/two-handed-sword/Almas.webp",
@@ -791,7 +791,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Scrap Metal",
+        "Gemstone",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/two-handed-sword/Chained Nightmare.webp",
@@ -1361,7 +1361,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hammer",
+        "Stone",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/hammer/Evening Star.webp",
@@ -1491,7 +1491,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Iron Ball",
+        "Stone",
         "Mythril"
       ],
       "image": "images/equipment/weapons/hammer/Doomsday.webp",
@@ -1534,7 +1534,7 @@
       "locations": [
         "Dock",
         "Fire Station",
-        "Forest",
+        "Hospital",
         "Factory"
       ],
       "initialCount": 1,
@@ -1909,10 +1909,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Dock",
         "Fire Station",
         "Temple",
-        "Archery Range"
+        "Archery Range",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "Spear",
@@ -2088,7 +2088,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Short Spear",
+        "Fountain Pen",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/spear/Cosmic Bident.webp",
@@ -2253,8 +2253,8 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Archery Range",
-        "Forest",
+        "Fire Station",
+        "Factory",
         "Chapel",
         "School"
       ],
@@ -2436,7 +2436,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ribbon",
+        "Glass Bottle",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/bat/Magic Stick.webp",
@@ -2534,7 +2534,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Short Rod",
+        "Glass Bottle",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/bat/Ghost Hand.webp",
@@ -2609,7 +2609,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Stone",
+        "Glass Bottle",
         "Mythril"
       ],
       "image": "images/equipment/weapons/bat/Lollipop.webp",
@@ -2626,9 +2626,9 @@
       "part": "Weapon",
       "locations": [
         "Hotel",
-        "Archery Range",
         "Cemetery",
-        "Chapel"
+        "Chapel",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "Whip",
@@ -3232,7 +3232,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Thread",
+        "Cotton Gloves",
         "Mythril"
       ],
       "image": "images/equipment/weapons/glove/Imperial Silk Gloves.webp",
@@ -3257,7 +3257,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Leather",
+        "Cotton Gloves",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/glove/Mark of the Phoenix.webp",
@@ -3283,7 +3283,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Cotton Gloves",
+        "Iron Ball",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/glove/Permafrost.webp",
@@ -3332,7 +3332,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Cotton Gloves",
+        "Iron Ball",
         "Mythril"
       ],
       "image": "images/equipment/weapons/glove/Iron Fist.webp",
@@ -3513,7 +3513,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Patched Leather",
+        "Oil",
         "Mythril"
       ],
       "image": "images/equipment/weapons/tonfa/Windrunner.webp",
@@ -3542,7 +3542,7 @@
         "Bamboo",
         "Branch",
         "Stallion Medal",
-        "Watch"
+        "Rubber"
       ],
       "image": "images/equipment/weapons/tonfa/Holster Tonfa.webp",
       "passiveSkills": []
@@ -3563,7 +3563,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bamboo",
+        "Oil",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/tonfa/Obsidian Jitte.webp",
@@ -3658,8 +3658,8 @@
       "locations": [
         "Pond",
         "Beach",
-        "Alley",
-        "School"
+        "School",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "HighAngleFire",
@@ -3816,7 +3816,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Cross",
+        "Baseball",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/throw/Grenade of Antioch.webp",
@@ -3915,7 +3915,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Baseball",
+        "Chemicals",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/throw/Fireball.webp",
@@ -3940,7 +3940,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Battery",
+        "Baseball",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/throw/Dyadic Prism.webp",
@@ -3965,7 +3965,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Baseball",
+        "Chemicals",
         "Mythril"
       ],
       "image": "images/equipment/weapons/throw/Astrapē.webp",
@@ -4020,7 +4020,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Baseball",
+        "Chemicals",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/throw/Imugi's Pearl.webp",
@@ -4062,7 +4062,7 @@
         "Hotel",
         "Temple",
         "Factory",
-        "Chapel"
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "DirectFire",
@@ -4302,7 +4302,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Razor",
+        "Playing Cards",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/shuriken/Frost Venom Dart.webp",
@@ -4384,7 +4384,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Razor",
+        "Playing Cards",
         "Mythril"
       ],
       "image": "images/equipment/weapons/shuriken/Wind and Fire Wheels.webp",
@@ -4459,7 +4459,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Nail",
+        "Razor",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/shuriken/Petal Torrent.webp",
@@ -4499,8 +4499,8 @@
       "part": "Weapon",
       "locations": [
         "Pond",
-        "Stream",
         "Archery Range",
+        "Forest",
         "Chapel"
       ],
       "initialCount": 1,
@@ -4671,8 +4671,9 @@
       "weaponType": "Bow",
       "stats": {
         "attackPower": 65,
-        "attackSpeedRatio": 0.4,
-        "normalLifeSteal": 0.1
+        "attackSpeedRatio": 0.2,
+        "cooldownReduction": 10,
+        "normalLifeSteal": 0.08
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -4775,7 +4776,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bow",
+        "Feather",
         "Mythril"
       ],
       "image": "images/equipment/weapons/bow/Argyrotoxus.webp",
@@ -4826,7 +4827,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bow",
+        "Feather",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/bow/Artemis.webp",
@@ -4846,14 +4847,14 @@
       "weaponType": "Bow",
       "stats": {
         "attackPower": 80,
-        "attackSpeedRatio": 0.4,
-        "normalLifeSteal": 0.1,
-        "moveSpeedRatio": 0.02
+        "attackSpeedRatio": 0.25,
+        "cooldownReduction": 15,
+        "normalLifeSteal": 0.1
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Rubber",
+        "Bow",
         "Mythril"
       ],
       "image": "images/equipment/weapons/bow/Eagle Eye.webp",
@@ -5060,7 +5061,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Short Crossbow",
+        "Cross",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/crossbow/The Golden Ghost.webp",
@@ -5180,7 +5181,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Piano Wire",
+        "Cross",
         "Mythril"
       ],
       "image": "images/equipment/weapons/crossbow/Phantom Bolt.webp",
@@ -5197,9 +5198,9 @@
       "part": "Weapon",
       "locations": [
         "Warehouse",
-        "Hotel",
         "Police Station",
-        "Factory"
+        "Factory",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "Pistol",
@@ -5325,7 +5326,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Walther PPK",
+        "Lighter",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/pistol/Devil's Marksman.webp",
@@ -5523,7 +5524,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gemstone",
+        "Lighter",
         "Mythril"
       ],
       "image": "images/equipment/weapons/pistol/Altair.webp",
@@ -5563,9 +5564,9 @@
       "part": "Weapon",
       "locations": [
         "Warehouse",
-        "Hotel",
         "Police Station",
-        "Factory"
+        "Factory",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "AssaultRifle",
@@ -5818,7 +5819,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gunpowder",
+        "Battery",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/assault-rifle/Black Widow.webp",
@@ -5892,7 +5893,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gunpowder",
+        "Battery",
         "Mythril"
       ],
       "image": "images/equipment/weapons/assault-rifle/Valkyrie.webp",
@@ -5909,8 +5910,8 @@
       "part": "Weapon",
       "locations": [
         "Pond",
-        "Uptown",
         "Police Station",
+        "Cemetery",
         "Barge"
       ],
       "initialCount": 1,
@@ -6046,7 +6047,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Scrap Metal",
+        "Long Rifle",
         "Mythril"
       ],
       "image": "images/equipment/weapons/sniper-rifle/Intervention.webp",
@@ -6141,7 +6142,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Long Rifle",
+        "Laser Pointer",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/sniper-rifle/The Deadly Ray.webp",
@@ -6187,7 +6188,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gunpowder",
+        "Long Rifle",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/sniper-rifle/Andromeda.webp",
@@ -6233,7 +6234,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Long Rifle",
+        "Laser Pointer",
         "Mythril"
       ],
       "image": "images/equipment/weapons/sniper-rifle/Dead Eye.webp",
@@ -6472,7 +6473,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Steel Chain",
+        "Ribbon",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/nunchaku/Crimson Red Lovers.webp",
@@ -6497,7 +6498,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Steel Chain",
+        "Ribbon",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/nunchaku/Geryon.webp",
@@ -6522,7 +6523,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Battery",
+        "Steel Chain",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/nunchaku/Neon Chain.webp",
@@ -6933,7 +6934,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ice",
+        "Branch",
         "Mythril"
       ],
       "image": "images/equipment/weapons/rapier/Field Thorn.webp",
@@ -7314,7 +7315,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Starter Guitar",
+        "Piano Wire",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/guitar/Cpt. Pepper.webp",
@@ -7399,9 +7400,9 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
-        "Pond",
         "Hotel",
         "Archery Range",
+        "Factory",
         "Barge"
       ],
       "initialCount": 1,
@@ -7541,7 +7542,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Binoculars",
+        "Lens",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/camera/Cannon Camera.webp",
@@ -7620,7 +7621,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Lens",
+        "Paper",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/camera/Ultraviolet.webp",
@@ -7671,7 +7672,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Binoculars",
+        "Lens",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/camera/On Air.webp",
@@ -7693,7 +7694,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Lens",
+        "Paper",
         "Meteorite"
       ],
       "image": "images/equipment/weapons/camera/Triple Focus.webp",
@@ -7709,9 +7710,9 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Dock",
         "Alley",
         "Temple",
-        "Chapel",
         "School"
       ],
       "initialCount": 1,
@@ -8000,7 +8001,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Stone",
+        "Glass Bead",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/arcana/The Empress.webp",
@@ -8050,7 +8051,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Glass Bead",
+        "Stone",
         "Tree of Life"
       ],
       "image": "images/equipment/weapons/arcana/The Sun.webp",
@@ -9748,7 +9749,9 @@
         "Stream",
         "Hotel",
         "Temple",
-        "Chapel"
+        "Archery Range",
+        "Chapel",
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -9765,6 +9768,8 @@
       "type": "Common",
       "part": "Head",
       "locations": [
+        "Stream",
+        "Beach",
         "Alley",
         "Gas Station",
         "Hospital",
@@ -9787,11 +9792,13 @@
       "type": "Common",
       "part": "Head",
       "locations": [
+        "Dock",
+        "Pond",
         "Uptown",
         "Gas Station",
+        "Police Station",
         "Fire Station",
         "Forest",
-        "Factory",
         "Barge"
       ],
       "initialCount": 1,
@@ -9810,11 +9817,12 @@
       "part": "Head",
       "locations": [
         "Dock",
+        "Warehouse",
         "Uptown",
+        "Hotel",
         "Police Station",
         "Temple",
         "Cemetery",
-        "Factory",
         "School"
       ],
       "initialCount": 1,
@@ -10261,18 +10269,23 @@
       "weaponType": "",
       "stats": {
         "defense": 15,
-        "cooldownReduction": 25
+        "cooldownReduction": 20
       },
       "uniqueStats": {},
       "statsByLv": {
-        "maxHp": 22
+        "maxHp": 20
       },
       "components": [
-        "Cross",
+        "Scrap Metal",
         "Mythril"
       ],
       "image": "images/equipment/head/Crusader Helmet.webp",
-      "passiveSkills": []
+      "passiveSkills": [
+        {
+          "name": "Guardian Protocol",
+          "nameKo": "수호자 프로토콜"
+        }
+      ]
     },
     "Cowboy Hat": {
       "nameKo": "카우보이 모자",
@@ -10465,7 +10478,7 @@
         "maxHp": 20
       },
       "components": [
-        "Bike Helmet",
+        "Binoculars",
         "Mythril"
       ],
       "image": "images/equipment/head/Mythril Helm.webp",
@@ -10571,7 +10584,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Hat",
         "Meteorite"
       ],
       "image": "images/equipment/head/Fallen Pegasus.webp",
@@ -10598,7 +10611,7 @@
       },
       "statsByLv": {},
       "components": [
-        "Mask",
+        "Feather",
         "Force Core"
       ],
       "image": "images/equipment/head/Persona.webp",
@@ -10618,7 +10631,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hat",
+        "Mask",
         "Tree of Life"
       ],
       "image": "images/equipment/head/Sultan's Turban.webp",
@@ -10648,7 +10661,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Plastic",
+        "Bike Helmet",
         "Mythril"
       ],
       "image": "images/equipment/head/Racing Helmet.webp",
@@ -10673,7 +10686,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hat",
+        "Gunpowder",
         "Meteorite"
       ],
       "image": "images/equipment/head/The Star of the Wilds.webp",
@@ -10703,7 +10716,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Plastic",
+        "Bike Helmet",
         "Meteorite"
       ],
       "image": "images/equipment/head/Astronaut's Helmet.webp",
@@ -10756,7 +10769,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ribbon",
+        "Hairband",
         "Mythril"
       ],
       "image": "images/equipment/head/Twilight.webp",
@@ -10810,7 +10823,7 @@
         "maxHp": 24
       },
       "components": [
-        "Ribbon",
+        "Scrap Metal",
         "Force Core"
       ],
       "image": "images/equipment/head/Bunny Hat.webp",
@@ -10862,7 +10875,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Mask",
+        "Binoculars",
         "Tree of Life"
       ],
       "image": "images/equipment/head/Tactical Visor.webp",
@@ -10881,8 +10894,8 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "defense": 8,
         "skillAmp": 75,
+        "maxHp": 120,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -10915,7 +10928,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Mask",
+        "Plastic",
         "Meteorite"
       ],
       "image": "images/equipment/head/Smart Glasses.webp",
@@ -10941,7 +10954,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gemstone",
+        "Mask",
         "Meteorite"
       ],
       "image": "images/equipment/head/Kundala.webp",
@@ -10963,7 +10976,7 @@
         "maxHp": 25
       },
       "components": [
-        "Hat",
+        "Binoculars",
         "VF Blood Sample"
       ],
       "image": "images/equipment/head/Viking Helmet.webp",
@@ -10994,7 +11007,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bike Helmet",
+        "Plastic",
         "VF Blood Sample"
       ],
       "image": "images/equipment/head/Eyeshield.webp",
@@ -11025,7 +11038,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Plastic",
         "Mythril"
       ],
       "image": "images/equipment/head/David Headphones.webp",
@@ -11052,7 +11065,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Rubber",
+        "Bike Helmet",
         "Tree of Life"
       ],
       "image": "images/equipment/head/Tactical Goggles.webp",
@@ -11079,7 +11092,7 @@
         "maxHp": 17
       },
       "components": [
-        "Feather",
+        "Binoculars",
         "Meteorite"
       ],
       "image": "images/equipment/head/The Captain.webp",
@@ -11105,7 +11118,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Graphite",
+        "Mask",
         "Force Core"
       ],
       "image": "images/equipment/head/Black Veil.webp",
@@ -11197,7 +11210,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Feather",
+        "Hat",
         "VF Blood Sample"
       ],
       "image": "images/equipment/head/Featherfall.webp",
@@ -11227,7 +11240,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gemstone",
+        "Gunpowder",
         "Force Core"
       ],
       "image": "images/equipment/head/Demon Mask.webp",
@@ -11253,7 +11266,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Mask",
+        "Flower",
         "Mythril"
       ],
       "image": "images/equipment/head/White Mitre.webp",
@@ -11279,7 +11292,7 @@
         "maxHp": 25
       },
       "components": [
-        "Lighter",
+        "Binoculars",
         "Force Core"
       ],
       "image": "images/equipment/head/Animalistic.webp",
@@ -11287,6 +11300,32 @@
         {
           "name": "Predation",
           "nameKo": "포식"
+        }
+      ]
+    },
+    "The King's Helmet": {
+      "nameKo": "제왕의 투구",
+      "type": "Legend",
+      "part": "Head",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "stats": {
+        "attackPower": 30,
+        "maxHp": 250,
+        "cooldownReduction": 15
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Plastic",
+        "Force Core"
+      ],
+      "image": "images/equipment/head/The King's Helmet.webp",
+      "passiveSkills": [
+        {
+          "name": "Chain Strike",
+          "nameKo": "연격"
         }
       ]
     },
@@ -11316,9 +11355,9 @@
       "type": "Common",
       "part": "Chest",
       "locations": [
-        "Stream",
         "Gas Station",
         "Hotel",
+        "Factory",
         "Chapel"
       ],
       "initialCount": 1,
@@ -11357,9 +11396,9 @@
       "part": "Chest",
       "locations": [
         "Dock",
-        "Pond",
         "Stream",
-        "Beach"
+        "Beach",
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -11468,7 +11507,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Wetsuit",
+        "Rubber",
         "VF Blood Sample"
       ],
       "image": "images/equipment/chest/Bikini.webp",
@@ -11739,7 +11778,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 9,
+        "attackPower": 7,
         "defense": 13,
         "criticalStrikeChance": 0.24
       },
@@ -11754,7 +11793,12 @@
         "Stone"
       ],
       "image": "images/equipment/chest/Optical Camouflage Suit.webp",
-      "passiveSkills": []
+      "passiveSkills": [
+        {
+          "name": "Healing Reduction",
+          "nameKo": "치유 감소"
+        }
+      ]
     },
     "Rocker's Jacket": {
       "nameKo": "락커의 자켓",
@@ -11764,8 +11808,9 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
+        "attackPower": 10,
         "defense": 20,
-        "penetrationDefense": 12
+        "penetrationDefense": 10
       },
       "uniqueStats": {},
       "statsByLv": {
@@ -11778,12 +11823,7 @@
         "Iron Ball"
       ],
       "image": "images/equipment/chest/Rocker's Jacket.webp",
-      "passiveSkills": [
-        {
-          "name": "Healing Reduction",
-          "nameKo": "치유 감소"
-        }
-      ]
+      "passiveSkills": []
     },
     "Crusader Armor": {
       "nameKo": "성기사의 갑옷",
@@ -11929,7 +11969,7 @@
         "maxHp": 20
       },
       "components": [
-        "Shirt",
+        "Wetsuit",
         "Meteorite"
       ],
       "image": "images/equipment/chest/Battle Suit.webp",
@@ -12114,6 +12154,31 @@
       "image": "images/equipment/chest/Uniform.webp",
       "passiveSkills": []
     },
+    "Pulse Jacket": {
+      "nameKo": "펄스 자켓",
+      "type": "Epic",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "stats": {
+        "defense": 25,
+        "skillAmp": 10,
+        "attackSpeedRatio": 0.2
+      },
+      "uniqueStats": {},
+      "statsByLv": {
+        "skillAmp": 5
+      },
+      "components": [
+        "Shirt",
+        "Branch",
+        "Chemicals",
+        "Battery"
+      ],
+      "image": "images/equipment/chest/Pulse Jacket.webp",
+      "passiveSkills": []
+    },
     "Mythril Armor": {
       "nameKo": "미스릴 갑옷",
       "type": "Legend",
@@ -12130,7 +12195,7 @@
         "maxHp": 24
       },
       "components": [
-        "Shirt",
+        "Wetsuit",
         "Mythril"
       ],
       "image": "images/equipment/chest/Mythril Armor.webp",
@@ -12157,7 +12222,7 @@
         "maxHp": 23
       },
       "components": [
-        "Lighter",
+        "Wetsuit",
         "Tree of Life"
       ],
       "image": "images/equipment/chest/Blazing Dress.webp",
@@ -12184,7 +12249,7 @@
         "maxHp": 24
       },
       "components": [
-        "Wetsuit",
+        "Patched Leather",
         "Mythril"
       ],
       "image": "images/equipment/chest/Mythril Crop.webp",
@@ -12241,7 +12306,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Playing Cards",
+        "Monk's Robe",
         "VF Blood Sample"
       ],
       "image": "images/equipment/chest/Queen of Hearts.webp",
@@ -12298,7 +12363,7 @@
         "attackPower": 3
       },
       "components": [
-        "Windbreaker",
+        "Cloth",
         "VF Blood Sample"
       ],
       "image": "images/equipment/chest/Burgundy 47.webp",
@@ -12357,7 +12422,7 @@
         "maxHp": 20
       },
       "components": [
-        "Windbreaker",
+        "Cloth",
         "Tree of Life"
       ],
       "image": "images/equipment/chest/Phantom Jacket.webp",
@@ -12383,7 +12448,7 @@
         "maxHp": 26
       },
       "components": [
-        "Wetsuit",
+        "Patched Leather",
         "Force Core"
       ],
       "image": "images/equipment/chest/Guardian Suit.webp",
@@ -12411,7 +12476,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Cloth",
+        "Monk's Robe",
         "Mythril"
       ],
       "image": "images/equipment/chest/Elegant Gown.webp",
@@ -12458,7 +12523,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 14,
+        "attackPower": 10,
         "defense": 18,
         "criticalStrikeChance": 0.34
       },
@@ -12467,14 +12532,14 @@
         "attackPower": 3
       },
       "components": [
-        "Wetsuit",
+        "Windbreaker",
         "Meteorite"
       ],
       "image": "images/equipment/chest/Specter.webp",
       "passiveSkills": [
         {
-          "name": "Healing Reduction",
-          "nameKo": "치유 감소"
+          "name": "Lock On",
+          "nameKo": "포착"
         }
       ]
     },
@@ -12522,7 +12587,7 @@
         "attackPower": 3
       },
       "components": [
-        "Windbreaker",
+        "Leather",
         "Force Core"
       ],
       "image": "images/equipment/chest/Omertà.webp",
@@ -12541,9 +12606,9 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 12,
+        "attackPower": 10,
         "defense": 20,
-        "cooldownReduction": 15,
+        "cooldownReduction": 10,
         "penetrationDefense": 12
       },
       "uniqueStats": {},
@@ -12551,14 +12616,14 @@
         "attackPower": 3
       },
       "components": [
-        "Windbreaker",
+        "Shirt",
         "Meteorite"
       ],
       "image": "images/equipment/chest/Shooting Star Jacket.webp",
       "passiveSkills": [
         {
-          "name": "Healing Reduction",
-          "nameKo": "치유 감소"
+          "name": "Laceration",
+          "nameKo": "자상"
         }
       ]
     },
@@ -12607,7 +12672,7 @@
         "attackPower": 3
       },
       "components": [
-        "Gunpowder",
+        "Shirt",
         "Force Core"
       ],
       "image": "images/equipment/chest/Tactical Armor.webp",
@@ -12634,7 +12699,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Branch",
+        "Flower",
         "Force Core"
       ],
       "image": "images/equipment/chest/Elf Dress.webp",
@@ -12662,7 +12727,7 @@
         "maxHp": 20
       },
       "components": [
-        "Shirt",
+        "Patched Leather",
         "Tree of Life"
       ],
       "image": "images/equipment/chest/Titan Armor.webp",
@@ -12690,7 +12755,7 @@
         "attackPower": 3
       },
       "components": [
-        "Wetsuit",
+        "Windbreaker",
         "Tree of Life"
       ],
       "image": "images/equipment/chest/Ghillie Suit.webp",
@@ -12717,7 +12782,7 @@
         "attackPower": 3
       },
       "components": [
-        "Leather",
+        "Chemicals",
         "Force Core"
       ],
       "image": "images/equipment/chest/Spectral Jacket.webp",
@@ -12746,7 +12811,7 @@
         "attackPower": 3
       },
       "components": [
-        "Monk's Robe",
+        "Cloth",
         "Mythril"
       ],
       "image": "images/equipment/chest/Wisdom Robes.webp",
@@ -12774,7 +12839,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Shirt",
+        "Monk's Robe",
         "Force Core"
       ],
       "image": "images/equipment/chest/Inquisitor.webp",
@@ -12801,7 +12866,7 @@
         "maxHp": 25
       },
       "components": [
-        "Lighter",
+        "Wetsuit",
         "VF Blood Sample"
       ],
       "image": "images/equipment/chest/Black Flame Dragon.webp",
@@ -12833,7 +12898,7 @@
         "attackPower": 3
       },
       "components": [
-        "Flower",
+        "Windbreaker",
         "Force Core"
       ],
       "image": "images/equipment/chest/The General's Robe.webp",
@@ -12862,7 +12927,7 @@
         "attackPower": 3
       },
       "components": [
-        "Shirt",
+        "Windbreaker",
         "VF Blood Sample"
       ],
       "image": "images/equipment/chest/Red Star.webp",
@@ -12921,7 +12986,7 @@
         "maxHp": 24
       },
       "components": [
-        "Patched Leather",
+        "Wetsuit",
         "Force Core"
       ],
       "image": "images/equipment/chest/Chillwind Cuirass.webp",
@@ -12932,6 +12997,34 @@
         }
       ]
     },
+    "Generator": {
+      "nameKo": "제너레이터",
+      "type": "Legend",
+      "part": "Chest",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "stats": {
+        "defense": 25,
+        "skillAmp": 10,
+        "attackSpeedRatio": 0.2
+      },
+      "uniqueStats": {},
+      "statsByLv": {
+        "skillAmp": 5
+      },
+      "components": [
+        "Oil",
+        "Tree of Life"
+      ],
+      "image": "images/equipment/chest/Generator.webp",
+      "passiveSkills": [
+        {
+          "name": "Full Throttle",
+          "nameKo": "풀 가동"
+        }
+      ]
+    },
     "Watch": {
       "nameKo": "손목시계",
       "type": "Common",
@@ -12939,6 +13032,7 @@
       "locations": [
         "Uptown",
         "Gas Station",
+        "Hotel",
         "Police Station",
         "Fire Station",
         "Hospital",
@@ -12961,12 +13055,13 @@
       "part": "Arm",
       "locations": [
         "Dock",
-        "Uptown",
+        "Stream",
+        "Beach",
         "Fire Station",
         "Hospital",
+        "Archery Range",
         "Forest",
-        "School",
-        "Barge"
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -12984,11 +13079,13 @@
       "part": "Arm",
       "locations": [
         "Warehouse",
+        "Pond",
         "Uptown",
         "Alley",
         "Hotel",
-        "Hospital",
-        "Cemetery"
+        "Temple",
+        "Cemetery",
+        "Forest"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -13164,7 +13261,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 62,
+        "skillAmp": 63,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -13219,7 +13316,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 75
+        "skillAmp": 76
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -13276,8 +13373,8 @@
       "components": [
         "Bandage",
         "Rubber",
-        "Bandage",
-        "Gunpowder"
+        "Paper",
+        "Patched Leather"
       ],
       "image": "images/equipment/arm/Creed of the Knight.webp",
       "passiveSkills": [
@@ -13348,7 +13445,7 @@
         "Bracelet",
         "Lighter",
         "Gemstone",
-        "Watch"
+        "Ice"
       ],
       "image": "images/equipment/arm/Tindalos Band.webp",
       "passiveSkills": []
@@ -13528,7 +13625,7 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 52,
+        "skillAmp": 55,
         "cooldownReduction": 10
       },
       "uniqueStats": {},
@@ -13542,8 +13639,8 @@
       "image": "images/equipment/arm/White Crane Fan.webp",
       "passiveSkills": [
         {
-          "name": "Primordial Hex",
-          "nameKo": "저주"
+          "name": "Streamlined",
+          "nameKo": "신속"
         }
       ]
     },
@@ -13585,7 +13682,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Graphite",
+        "Bandage",
         "Meteorite"
       ],
       "image": "images/equipment/arm/Buccaneer Doubloon.webp",
@@ -13613,7 +13710,7 @@
         "maxHp": 18
       },
       "components": [
-        "Turtle Shell",
+        "Thread",
         "Mythril"
       ],
       "image": "images/equipment/arm/Mythril Shield.webp",
@@ -13665,7 +13762,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Watch",
+        "Oil",
         "Force Core"
       ],
       "image": "images/equipment/arm/Tellurian Timepiece.webp",
@@ -13716,7 +13813,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Battery",
+        "Glass Bottle",
         "Force Core"
       ],
       "image": "images/equipment/arm/Radar.webp",
@@ -13743,7 +13840,7 @@
       },
       "statsByLv": {},
       "components": [
-        "Plastic",
+        "Bandage",
         "Force Core"
       ],
       "image": "images/equipment/arm/Auto-arms.webp",
@@ -13765,7 +13862,7 @@
         "maxHp": 21
       },
       "components": [
-        "Bracelet",
+        "Turtle Shell",
         "VF Blood Sample"
       ],
       "image": "images/equipment/arm/Prominence.webp",
@@ -13796,7 +13893,7 @@
         "maxHp": 20
       },
       "components": [
-        "Bandage",
+        "Turtle Shell",
         "Meteorite"
       ],
       "image": "images/equipment/arm/Centipede's Pauldron.webp",
@@ -13821,7 +13918,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Watch",
+        "Bracelet",
         "Mythril"
       ],
       "image": "images/equipment/arm/Tindalos Monarch.webp",
@@ -13842,7 +13939,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Turtle Shell",
+        "Graphite",
         "Meteorite"
       ],
       "image": "images/equipment/arm/Shield of Kings.webp",
@@ -13872,7 +13969,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Chemicals",
+        "Bandage",
         "VF Blood Sample"
       ],
       "image": "images/equipment/arm/Bloodripper.webp",
@@ -13897,7 +13994,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Turtle Shell",
+        "Stallion Medal",
         "Force Core"
       ],
       "image": "images/equipment/arm/Dragon Scale.webp",
@@ -13918,7 +14015,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Piano Wire",
+        "Graphite",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Chain of Thorns.webp",
@@ -13937,20 +14034,20 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 75,
-        "cooldownReduction": 20
+        "skillAmp": 73,
+        "cooldownReduction": 15
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Chemicals",
+        "Bracelet",
         "Meteorite"
       ],
       "image": "images/equipment/arm/Nightmare Nails.webp",
       "passiveSkills": [
         {
-          "name": "Healing Reduction",
-          "nameKo": "치유 감소"
+          "name": "Whittle",
+          "nameKo": "깎아내기"
         }
       ]
     },
@@ -13969,7 +14066,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Scrap Metal",
+        "Thread",
         "Force Core"
       ],
       "image": "images/equipment/arm/Helix.webp",
@@ -13995,7 +14092,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bandage",
+        "Watch",
         "Mythril"
       ],
       "image": "images/equipment/arm/Mythril Armband.webp",
@@ -14021,7 +14118,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ice",
+        "Graphite",
         "Force Core"
       ],
       "image": "images/equipment/arm/Psyche's Blade.webp",
@@ -14048,7 +14145,7 @@
         "maxHp": 16
       },
       "components": [
-        "Iron Ball",
+        "Turtle Shell",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Burning Heart.webp",
@@ -14067,8 +14164,8 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 88,
-        "cooldownReduction": 20
+        "skillAmp": 80,
+        "cooldownReduction": 10
       },
       "uniqueStats": {},
       "statsByLv": {},
@@ -14079,8 +14176,8 @@
       "image": "images/equipment/arm/Emerald Tablet.webp",
       "passiveSkills": [
         {
-          "name": "Streamlined",
-          "nameKo": "신속"
+          "name": "Overload",
+          "nameKo": "과부하"
         }
       ]
     },
@@ -14099,7 +14196,7 @@
         "maxHp": 20
       },
       "components": [
-        "Iron Ball",
+        "Turtle Shell",
         "Force Core"
       ],
       "image": "images/equipment/arm/Solar System Miniature.webp",
@@ -14150,7 +14247,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Feather",
+        "Bandage",
         "Mythril"
       ],
       "image": "images/equipment/arm/Mythril Quiver.webp",
@@ -14176,7 +14273,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Feather",
+        "Bandage",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Sultan Adorned.webp",
@@ -14201,7 +14298,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Paper",
+        "Stallion Medal",
         "VF Blood Sample"
       ],
       "image": "images/equipment/arm/Necronomicon.webp",
@@ -14228,7 +14325,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Playing Cards",
+        "Watch",
         "Force Core"
       ],
       "image": "images/equipment/arm/Dice of Destiny.webp",
@@ -14269,20 +14366,20 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "skillAmp": 82,
-        "cooldownReduction": 10
+        "skillAmp": 88,
+        "cooldownReduction": 20
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Feather",
+        "Bracelet",
         "Force Core"
       ],
       "image": "images/equipment/arm/Sanguine Gunbai.webp",
       "passiveSkills": [
         {
-          "name": "Primordial Hex",
-          "nameKo": "저주"
+          "name": "Streamlined",
+          "nameKo": "신속"
         }
       ]
     },
@@ -14301,7 +14398,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bandage",
+        "Bracelet",
         "VF Blood Sample"
       ],
       "image": "images/equipment/arm/Nova Shield.webp",
@@ -14309,6 +14406,10 @@
         {
           "name": "Healing Reduction",
           "nameKo": "치유 감소"
+        },
+        {
+          "name": "Whittle",
+          "nameKo": "깎아내기"
         }
       ]
     },
@@ -14325,7 +14426,7 @@
         "maxHp": 25
       },
       "components": [
-        "Turtle Shell",
+        "Gemstone",
         "VF Blood Sample"
       ],
       "image": "images/equipment/arm/Fáfnir.webp",
@@ -14353,7 +14454,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Graphite",
+        "Paper",
         "Mythril"
       ],
       "image": "images/equipment/arm/Totem.webp",
@@ -14372,21 +14473,21 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 27,
+        "attackPower": 15,
         "attackSpeedRatio": 0.3,
         "criticalStrikeChance": 0.35
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Fountain Pen",
+        "Watch",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Revenge of Goujian.webp",
       "passiveSkills": [
         {
-          "name": "Healing Reduction",
-          "nameKo": "치유 감소"
+          "name": "Keep Your Distance",
+          "nameKo": "간극"
         }
       ]
     },
@@ -14406,7 +14507,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Stone",
+        "Iron Ball",
         "Force Core"
       ],
       "image": "images/equipment/arm/Star Fragment.webp",
@@ -14439,8 +14540,8 @@
       "locations": [
         "Dock",
         "Hospital",
-        "Temple",
-        "Forest"
+        "Forest",
+        "Factory"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -14458,8 +14559,8 @@
       "part": "Leg",
       "locations": [
         "Stream",
+        "Gas Station",
         "Hotel",
-        "Chapel",
         "School"
       ],
       "initialCount": 1,
@@ -15161,7 +15262,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Nail",
+        "Running Shoes",
         "Meteorite"
       ],
       "image": "images/equipment/leg/Blade Boots.webp",
@@ -15261,7 +15362,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Running Shoes",
+        "Patched Leather",
         "Meteorite"
       ],
       "image": "images/equipment/leg/Galaxy Steps.webp",
@@ -15275,19 +15376,23 @@
       "initialCount": 1,
       "weaponType": "",
       "stats": {
-        "attackPower": 23,
-        "attackSpeedRatio": 0.1,
-        "cooldownReduction": 15,
+        "attackPower": 25,
+        "cooldownReduction": 10,
         "moveSpeed": 0.25
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Ice",
+        "Battery",
         "Meteorite"
       ],
       "image": "images/equipment/leg/Mirage Lace-Ups.webp",
-      "passiveSkills": []
+      "passiveSkills": [
+        {
+          "name": "Hone",
+          "nameKo": "연마"
+        }
+      ]
     },
     "Racing Boots": {
       "nameKo": "레이싱 부츠",
@@ -15395,7 +15500,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gemstone",
+        "Leather",
         "VF Blood Sample"
       ],
       "image": "images/equipment/leg/Rose Steps.webp",
@@ -15456,7 +15561,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Running Shoes",
+        "Battery",
         "Force Core"
       ],
       "image": "images/equipment/leg/Tactical Shoes.webp",
@@ -15464,6 +15569,32 @@
         {
           "name": "Tailwind",
           "nameKo": "순풍"
+        }
+      ]
+    },
+    "Ivory Steps": {
+      "nameKo": "아이보리 스텝",
+      "type": "Legend",
+      "part": "Leg",
+      "locations": [],
+      "initialCount": 1,
+      "weaponType": "",
+      "stats": {
+        "attackSpeedRatio": 0.25,
+        "criticalStrikeChance": 0.33,
+        "moveSpeed": 0.25
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "components": [
+        "Tights",
+        "Mythril"
+      ],
+      "image": "images/equipment/leg/Ivory Steps.webp",
+      "passiveSkills": [
+        {
+          "name": "Quick Reflexes",
+          "nameKo": "기민한 대처"
         }
       ]
     },
@@ -15478,16 +15609,21 @@
         "skillAmp": 60,
         "maxHp": 100,
         "cooldownReduction": 15,
-        "healerGiveHpHealRatio": 0.1
+        "healerGiveHpHealRatio": 0.06
       },
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Gemstone",
+        "Flower",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Claddagh Ring.webp",
-      "passiveSkills": []
+      "passiveSkills": [
+        {
+          "name": "Bond",
+          "nameKo": "유대"
+        }
+      ]
     },
     "Box": {
       "nameKo": "상자",
@@ -15524,7 +15660,7 @@
         "maxHp": 17
       },
       "components": [
-        "Bandage",
+        "Thread",
         "Tree of Life"
       ],
       "image": "images/equipment/arm/Smash Totem.webp",
@@ -15602,7 +15738,7 @@
         "maxHp": 22
       },
       "components": [
-        "Glass Bottle",
+        "Turtle Shell",
         "Mythril"
       ],
       "image": "images/equipment/arm/Magic Lamp.webp",
@@ -15654,7 +15790,7 @@
       },
       "statsByLv": {},
       "components": [
-        "Stallion Medal",
+        "Piano Wire",
         "Mythril"
       ],
       "image": "images/equipment/arm/Pharaoh's Artifact.webp",
@@ -15674,7 +15810,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Flower",
+        "Gemstone",
         "Mythril"
       ],
       "image": "images/equipment/head/The Dragon’s Fury.webp",
@@ -15700,7 +15836,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Binoculars",
+        "Hat",
         "Mythril"
       ],
       "image": "images/equipment/head/GPNVG.webp",
@@ -15726,7 +15862,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hat",
+        "Mask",
         "Mythril"
       ],
       "image": "images/equipment/head/The Black Death.webp",
@@ -15752,7 +15888,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Battery",
+        "Graphite",
         "Mythril"
       ],
       "image": "images/equipment/head/Cyberstalker.webp",
@@ -15777,7 +15913,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Bike Helmet",
+        "Gunpowder",
         "Tree of Life"
       ],
       "image": "images/equipment/head/Blaster Helmet.webp",
@@ -15804,7 +15940,7 @@
         "skillAmp": 5
       },
       "components": [
-        "Monk's Robe",
+        "Gemstone",
         "Force Core"
       ],
       "image": "images/equipment/chest/The Revenant.webp",
@@ -15831,7 +15967,7 @@
         "maxHp": 15
       },
       "components": [
-        "Bike Helmet",
+        "Scrap Metal",
         "Meteorite"
       ],
       "image": "images/equipment/head/Commander Headset.webp",
@@ -15859,7 +15995,7 @@
         "attackPower": 3
       },
       "components": [
-        "Windbreaker",
+        "Leather",
         "Mythril"
       ],
       "image": "images/equipment/chest/Racing Suit.webp",
@@ -15885,7 +16021,7 @@
         "maxHp": 24
       },
       "components": [
-        "Piano Wire",
+        "Ribbon",
         "Force Core"
       ],
       "image": "images/equipment/chest/Ghost Bride's Dress.webp",
@@ -15911,7 +16047,7 @@
       "uniqueStats": {},
       "statsByLv": {},
       "components": [
-        "Hairband",
+        "Gunpowder",
         "VF Blood Sample"
       ],
       "image": "images/equipment/head/Blood Crown.webp",
@@ -15934,6 +16070,7 @@
         "Dock",
         "Uptown",
         "Alley",
+        "Fire Station",
         "Hospital",
         "Archery Range",
         "School",
@@ -15954,8 +16091,9 @@
         "Dock",
         "Uptown",
         "Alley",
-        "Fire Station",
-        "Factory",
+        "Temple",
+        "Archery Range",
+        "Chapel",
         "School"
       ],
       "initialCount": 1,
@@ -16045,9 +16183,10 @@
       "locations": [
         "Stream",
         "Uptown",
+        "Alley",
         "Hotel",
         "Fire Station",
-        "Chapel"
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16062,6 +16201,7 @@
       "part": "Misc",
       "locations": [
         "Alley",
+        "Gas Station",
         "Hotel",
         "Fire Station",
         "Temple",
@@ -16086,7 +16226,9 @@
         "Stream",
         "Beach",
         "Temple",
-        "Forest"
+        "Forest",
+        "Chapel",
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16100,6 +16242,7 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Dock",
         "Warehouse",
         "Beach",
         "Gas Station",
@@ -16121,6 +16264,7 @@
       "part": "Misc",
       "locations": [
         "Dock",
+        "Warehouse",
         "Stream",
         "Beach",
         "Uptown",
@@ -16140,13 +16284,13 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
-        "Dock",
-        "Uptown",
         "Alley",
         "Gas Station",
         "Police Station",
         "Cemetery",
         "Forest",
+        "Factory",
+        "Chapel",
         "School"
       ],
       "initialCount": 1,
@@ -16161,6 +16305,7 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Uptown",
         "Gas Station",
         "Hotel",
         "Police Station",
@@ -16182,6 +16327,7 @@
       "part": "Misc",
       "locations": [
         "Warehouse",
+        "Uptown",
         "Gas Station",
         "Hotel",
         "Fire Station",
@@ -16209,7 +16355,7 @@
         "Hospital",
         "Forest",
         "Factory",
-        "Barge"
+        "Chapel"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16224,6 +16370,7 @@
       "part": "Misc",
       "locations": [
         "Uptown",
+        "Alley",
         "Gas Station",
         "Hotel",
         "Hospital",
@@ -16270,6 +16417,7 @@
         "Police Station",
         "Hospital",
         "Factory",
+        "Chapel",
         "School"
       ],
       "initialCount": 1,
@@ -16286,11 +16434,11 @@
       "locations": [
         "Stream",
         "Police Station",
-        "Fire Station",
         "Archery Range",
         "Forest",
         "Factory",
-        "Chapel"
+        "Chapel",
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16338,10 +16486,11 @@
       "part": "Misc",
       "locations": [
         "Warehouse",
+        "Pond",
         "Beach",
+        "Uptown",
         "Alley",
         "Hospital",
-        "Chapel",
         "School",
         "Barge"
       ],
@@ -16397,11 +16546,12 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
-        "Stream",
+        "Dock",
         "Hotel",
+        "Fire Station",
         "Hospital",
-        "Forest",
-        "School"
+        "Cemetery",
+        "Forest"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16637,10 +16787,11 @@
       "locations": [
         "Warehouse",
         "Pond",
+        "Stream",
         "Uptown",
         "Alley",
         "Police Station",
-        "Cemetery",
+        "Forest",
         "School"
       ],
       "initialCount": 1,
@@ -16658,6 +16809,7 @@
         "Uptown",
         "Alley",
         "Fire Station",
+        "Hospital",
         "Cemetery",
         "Chapel",
         "School"
@@ -16756,6 +16908,7 @@
       "part": "Misc",
       "locations": [
         "Beach",
+        "Uptown",
         "Gas Station",
         "Fire Station",
         "Hospital",
@@ -16854,6 +17007,7 @@
         "Pond",
         "Beach",
         "Fire Station",
+        "Hospital",
         "Archery Range",
         "Chapel",
         "School"
@@ -16870,11 +17024,30 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Dock",
+        "Stream",
         "Beach",
         "Police Station",
         "Archery Range",
-        "Forest",
+        "Chapel",
         "Barge"
+      ],
+      "initialCount": 1,
+      "weaponType": "",
+      "stats": {},
+      "uniqueStats": {},
+      "statsByLv": {},
+      "passiveSkills": []
+    },
+    "Laser Pointer": {
+      "nameKo": "레이저 포인터",
+      "type": "Common",
+      "part": "Misc",
+      "locations": [
+        "Police Station",
+        "Hospital",
+        "Factory",
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -16971,7 +17144,6 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
-        "Gas Station",
         "Hotel",
         "Temple",
         "Chapel",
@@ -16992,9 +17164,9 @@
       "part": "Misc",
       "locations": [
         "Dock",
-        "Fire Station",
-        "Factory",
-        "School"
+        "Cemetery",
+        "Forest",
+        "Factory"
       ],
       "initialCount": 1,
       "weaponType": "",
@@ -19896,7 +20068,7 @@
         "moveSpeed": 3.5
       },
       "growth": {
-        "maxHp": 81,
+        "maxHp": 78,
         "attackPower": 4.3,
         "defense": 2.9,
         "hpRegen": 0.09,

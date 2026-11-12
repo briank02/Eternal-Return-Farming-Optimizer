@@ -487,10 +487,10 @@ assert.deepEqual(
 items = fixtureData.items;
 chars = fixtureData.chars;
 const workbookPassiveItems = Object.values(items).filter(item => item.passiveSkills.length > 0);
-assert.equal(workbookPassiveItems.length, 315, 'Every workbook item has passive data in the deployed dataset');
-assert.equal(workbookPassiveItems.reduce((total, item) => total + item.passiveSkills.length, 0), 338,
+assert.equal(workbookPassiveItems.length, 321, 'Every workbook item has passive data in the deployed dataset');
+assert.equal(workbookPassiveItems.reduce((total, item) => total + item.passiveSkills.length, 0), 345,
     'Every workbook passive association is present in the deployed dataset');
-assert.equal(workbookPassiveItems.filter(item => item.passiveSkills.length > 1).length, 23,
+assert.equal(workbookPassiveItems.filter(item => item.passiveSkills.length > 1).length, 24,
     'All workbook multi-passive items are preserved');
 assert.equal(items['Red Star'].passiveSkills.map(passive => passive.name).join('|'), 'Blaze Up|Healing Reduction');
 assert.equal(items['Sports Watch'].passiveSkills[0].name, 'Vigor - Circulation',

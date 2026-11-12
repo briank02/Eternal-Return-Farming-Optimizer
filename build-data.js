@@ -5,7 +5,7 @@ const axios = require('axios');
 const { getCharacterImagePath, getItemImagePath } = require('./image-paths');
 const API_KEY = process.env.ER_API_KEY;
 const API_BASE = 'https://open-api.bser.io';
-const DATA_PATCH_VERSION = '12.7';
+const DATA_PATCH_VERSION = '13.0';
 
 const ITEM_PASSIVE_SKILLS = require('./item-passives.json');
 
