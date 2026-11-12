@@ -4444,7 +4444,7 @@ function createRouteMapSvg(route) {
     svg.appendChild(title);
 
     const mapImage = document.createElementNS(SVG_NAMESPACE, 'image');
-    mapImage.setAttribute('href', 'images/ui/Map.png');
+    mapImage.setAttribute('href', 'images/ui/Map.webp');
     mapImage.setAttribute('width', String(ROUTE_MAP_WIDTH));
     mapImage.setAttribute('height', String(ROUTE_MAP_HEIGHT));
     svg.appendChild(mapImage);

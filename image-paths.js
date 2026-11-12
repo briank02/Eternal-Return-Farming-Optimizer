@@ -41,13 +41,13 @@ function getItemImagePath(name, part, weaponType) {
     if (part === 'Weapon') {
         const directory = WEAPON_DIRECTORY_BY_TYPE[weaponType];
         return directory
-            ? `images/equipment/weapons/${directory}/${imageName}.png`
+            ? `images/equipment/weapons/${directory}/${imageName}.webp`
             : null;
     }
 
     const directory = PART_DIRECTORY[part];
     return directory
-        ? `images/equipment/${directory}/${imageName}.png`
+        ? `images/equipment/${directory}/${imageName}.webp`
         : null;
 }
 

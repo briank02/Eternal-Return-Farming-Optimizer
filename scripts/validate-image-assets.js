@@ -11,7 +11,7 @@ const requiredUiImages = [
     'images/ui/Chest.png',
     'images/ui/Head.png',
     'images/ui/Leg.png',
-    'images/ui/Map.png',
+    'images/ui/Map.webp',
     'images/ui/Weapon.png'
 ];
 
@@ -26,6 +26,18 @@ const failures = [];
 const validatedPaths = new Set();
 let validatedItemCount = 0;
 const pngSignature = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+
+function isGenuineImage(contents, extension) {
+    if (extension === '.png') {
+        return contents.subarray(0, pngSignature.length).equals(pngSignature);
+    }
+    if (extension === '.webp') {
+        return contents.length >= 12 &&
+            contents.subarray(0, 4).toString('ascii') === 'RIFF' &&
+            contents.subarray(8, 12).toString('ascii') === 'WEBP';
+    }
+    return false;
+}
 
 function walkFiles(directory) {
     return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
@@ -50,9 +62,10 @@ function validateRelativePath(relativePath, owner) {
         return;
     }
 
-    const signature = fs.readFileSync(absolutePath).subarray(0, 8);
-    if (!signature.equals(pngSignature)) {
-        failures.push(`${owner}: not a genuine PNG (${relativePath})`);
+    const contents = fs.readFileSync(absolutePath);
+    const extension = path.extname(absolutePath).toLowerCase();
+    if (!isGenuineImage(contents, extension)) {
+        failures.push(`${owner}: not a genuine ${extension || 'image'} (${relativePath})`);
         return;
     }
     validatedPaths.add(relativePath);
@@ -72,20 +85,21 @@ for (const relativePath of [...requiredUiImages, ...requiredWeaponTypeImages]) {
     validateRelativePath(relativePath, 'UI');
 }
 
-const allPngFiles = walkFiles(path.join(docsRoot, 'images'))
-    .filter(file => path.extname(file).toLowerCase() === '.png');
+const allImageFiles = walkFiles(path.join(docsRoot, 'images'))
+    .filter(file => ['.png', '.webp'].includes(path.extname(file).toLowerCase()));
 
-for (const file of allPngFiles) {
+for (const file of allImageFiles) {
     const contents = fs.readFileSync(file);
     const relativePath = path.relative(docsRoot, file).replaceAll(path.sep, '/');
-    if (!contents.subarray(0, 8).equals(pngSignature)) {
-        failures.push(`asset inventory: not a genuine PNG (${relativePath})`);
+    const extension = path.extname(file).toLowerCase();
+    if (!isGenuineImage(contents, extension)) {
+        failures.push(`asset inventory: not a genuine ${extension || 'image'} (${relativePath})`);
         continue;
     }
     if (/^\d+\.\s*/.test(path.basename(file))) {
         failures.push(`asset inventory: numeric filename prefix remains (${relativePath})`);
     }
-    if (contents.length >= 24) {
+    if (extension === '.png' && contents.length >= 24) {
         const width = contents.readUInt32BE(16);
         const height = contents.readUInt32BE(20);
         if (width === 128 && height === 71) {
@@ -100,6 +114,6 @@ if (failures.length > 0) {
 } else {
     console.log(`Validated ${validatedItemCount} equipment item references.`);
     console.log(`Validated ${Object.keys(data.chars).length} character images.`);
-    console.log(`Validated ${validatedPaths.size} unique referenced PNG assets.`);
-    console.log(`Validated all ${allPngFiles.length} organized PNG assets.`);
+    console.log(`Validated ${validatedPaths.size} unique referenced image assets.`);
+    console.log(`Validated all ${allImageFiles.length} organized image assets.`);
 }

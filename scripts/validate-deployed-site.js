@@ -13,6 +13,7 @@ const requiredUiImages = [
     'images/ui/Chest.png',
     'images/ui/Head.png',
     'images/ui/Leg.png',
+    'images/ui/Map.webp',
     'images/ui/Weapon.png'
 ];
 
@@ -33,7 +34,28 @@ function buildAssetUrl(baseUrl, relativePath) {
     return new URL(encodedPath, baseUrl);
 }
 
-async function validatePng(baseUrl, relativePath) {
+function getExpectedImageFormat(relativePath) {
+    const extension = path.extname(relativePath).toLowerCase();
+    if (extension === '.png') {
+        return {
+            contentType: 'image/png',
+            hasSignature: contents => contents.subarray(0, pngSignature.length).equals(pngSignature)
+        };
+    }
+    if (extension === '.webp') {
+        return {
+            contentType: 'image/webp',
+            hasSignature: contents => contents.length >= 12 &&
+                contents.subarray(0, 4).toString('ascii') === 'RIFF' &&
+                contents.subarray(8, 12).toString('ascii') === 'WEBP'
+        };
+    }
+    return null;
+}
+
+async function validateImage(baseUrl, relativePath) {
+    const format = getExpectedImageFormat(relativePath);
+    if (!format) return `${relativePath}: unsupported image format`;
     let lastError;
     for (let attempt = 1; attempt <= 3; attempt += 1) {
         try {
@@ -43,11 +65,11 @@ async function validatePng(baseUrl, relativePath) {
             const contentType = response.headers.get('content-type') || '';
             const contents = Buffer.from(await response.arrayBuffer());
             if (!response.ok) return `${relativePath}: HTTP ${response.status}`;
-            if (!contentType.toLowerCase().startsWith('image/png')) {
-                return `${relativePath}: expected image/png, received ${contentType || 'no content type'}`;
+            if (!contentType.toLowerCase().startsWith(format.contentType)) {
+                return `${relativePath}: expected ${format.contentType}, received ${contentType || 'no content type'}`;
             }
-            if (!contents.subarray(0, pngSignature.length).equals(pngSignature)) {
-                return `${relativePath}: response does not have a PNG signature`;
+            if (!format.hasSignature(contents)) {
+                return `${relativePath}: response does not have a valid image signature`;
             }
             return null;
         } catch (error) {
@@ -119,7 +141,7 @@ async function main() {
 
     const assetPaths = [...referencedPaths].sort();
     const assetFailures = await mapWithConcurrency(assetPaths, concurrency, relativePath =>
-        validatePng(baseUrl, relativePath)
+        validateImage(baseUrl, relativePath)
     );
     failures.push(...assetFailures.filter(Boolean));
 
@@ -137,7 +159,7 @@ async function main() {
         return;
     }
 
-    console.log(`Validated deployed data and ${assetPaths.length} referenced PNG assets at ${baseUrl.href}`);
+    console.log(`Validated deployed data and ${assetPaths.length} referenced image assets at ${baseUrl.href}`);
     console.log(`Validated ${unicodePaths.length} Unicode paths and ${pathsNeedingEncoding.length} paths requiring URL encoding.`);
 }
 
