@@ -4013,7 +4013,13 @@ function isZeroStatValue(val) {
 function formatStatValue(id, val) {
     if (id === 'attackSpeedRatio') return formatPercentValue(val);
     if (id === 'moveSpeed') {
-        if (typeof val === 'object') return val.toString();
+        if (val && typeof val === 'object') {
+            return formatMovementSpeedValue(
+                Number(val.flat) || 0,
+                Number(val.percent) || 0,
+                Number(val.baseFlat) || 0
+            );
+        }
         return val.toFixed(2);
     }
     if (id === 'attackRange' || id === 'visionRange') return val.toFixed(2);

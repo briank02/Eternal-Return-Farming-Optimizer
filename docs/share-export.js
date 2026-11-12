@@ -198,6 +198,7 @@ function syncShareExportButton() {
 
 function syncShareExportTranslations() {
     syncShareExportButton();
+    syncShareImageActionAvailability();
     const closeButton = document.getElementById('close-share-build');
     if (closeButton) closeButton.setAttribute('aria-label', t('closeShareExport'));
     const canvas = document.getElementById('share-build-canvas');
@@ -215,6 +216,17 @@ function setShareExportStatus(message, state = '') {
     status.textContent = message;
     if (state) status.dataset.state = state;
     else status.removeAttribute('data-state');
+}
+
+function syncShareImageActionAvailability(rendering = false) {
+    const copyImageButton = document.getElementById('copy-build-image');
+    const downloadButton = document.getElementById('download-build-image');
+    const supportsImageClipboard = !!(navigator.clipboard?.write && window.ClipboardItem);
+    if (copyImageButton) {
+        copyImageButton.disabled = rendering || !supportsImageClipboard;
+        copyImageButton.title = supportsImageClipboard ? '' : t('copyImageUnsupported');
+    }
+    if (downloadButton) downloadButton.disabled = rendering;
 }
 
 function getDefaultShareRouteIndex() {
@@ -251,6 +263,7 @@ function updateActiveShareSnapshot() {
     activeShareSnapshot = createShareSnapshot(route);
     renderShareCanvas(activeShareSnapshot).catch(error => {
         console.error('Failed to render share preview', error);
+        syncShareImageActionAvailability();
         setShareExportStatus(t('shareExportFailed'), 'error');
     });
 }
@@ -297,9 +310,7 @@ function setupShareExport() {
         setShareExportStatus('');
     });
 
-    const supportsImageClipboard = !!(navigator.clipboard?.write && window.ClipboardItem);
-    copyImageButton.disabled = !supportsImageClipboard;
-    if (!supportsImageClipboard) copyImageButton.title = t('copyImageUnsupported');
+    syncShareImageActionAvailability();
     dialog.dataset.bound = 'true';
     syncShareExportTranslations();
 }
@@ -378,45 +389,73 @@ function getShareSnapshotCharacterName(snapshot) {
     return snapshot.c ? resolveShareReference(snapshot.c, chars) : null;
 }
 
+function getShareSnapshotWeaponType(snapshot) {
+    const weaponName = getShareSnapshotItemNames(snapshot)
+        .find(itemName => items[itemName]?.part === 'Weapon');
+    const weaponType = weaponName ? items[weaponName]?.weaponType : null;
+    return weaponType ? getWeaponTypeName(weaponType) : '';
+}
+
 async function drawShareCharacter(context, snapshot) {
-    drawRoundedRect(context, 34, 88, 192, 516, 18, '#182335', '#2b3b53');
     const characterName = getShareSnapshotCharacterName(snapshot);
+    let portrait = null;
     if (characterName) {
         try {
-            const portrait = await loadShareImage(getCharacterImagePath(characterName));
-            drawImageContained(context, portrait, 55, 113, 150, 224);
+            portrait = await loadShareImage(getCharacterImagePath(characterName));
         } catch (error) {
             // The character name below remains a useful fallback.
         }
     }
 
+    drawRoundedRect(context, 34, 88, 192, 516, 18, '#182335', '#2b3b53');
+    if (portrait) drawImageContained(context, portrait, 55, 113, 150, 224);
+
     context.fillStyle = '#ffffff';
     context.font = `bold 25px ${SHARE_FONT_FAMILY}`;
     context.textAlign = 'center';
-    drawWrappedText(
+    const nameLineCount = drawWrappedText(
         context,
         characterName ? getCharName(characterName) : t('noCharacter'),
         130,
-        380,
+        378,
         160,
         29,
         2
     );
+
+    let detailY = 378 + nameLineCount * 29 + 13;
+    const weaponType = getShareSnapshotWeaponType(snapshot);
+    if (weaponType) {
+        context.fillStyle = '#65c9f3';
+        context.font = `bold 16px ${SHARE_FONT_FAMILY}`;
+        const weaponLineCount = drawWrappedText(context, weaponType, 130, detailY, 160, 20, 2);
+        detailY += weaponLineCount * 20 + 13;
+    }
+
     context.fillStyle = '#94a9c6';
     context.font = `18px ${SHARE_FONT_FAMILY}`;
-    context.fillText(`${t('level').replace(':', '')} ${snapshot.l}`, 130, 446);
+    context.fillText(`${t('level').replace(':', '')} ${snapshot.l}`, 130, detailY);
     context.textAlign = 'left';
 }
 
 async function drawShareItemTiles(context, snapshot, itemNames) {
     const itemBySlot = new Map(itemNames.map(name => [items[name]?.part, name]));
+    const itemImages = new Map();
     const tileWidth = 166;
     const tileHeight = 184;
     const startX = 255;
     const startY = 88;
     const gap = 12;
 
-    await Promise.all(EQUIPMENT_SLOTS.map(async (slot, index) => {
+    await Promise.all([...itemBySlot.values()].filter(Boolean).map(async itemName => {
+        try {
+            itemImages.set(itemName, await loadShareImage(getItemImagePath(itemName)));
+        } catch (error) {
+            // The item name remains visible when an image cannot be loaded.
+        }
+    }));
+
+    EQUIPMENT_SLOTS.forEach((slot, index) => {
         const x = startX + index * (tileWidth + gap);
         const itemName = itemBySlot.get(slot);
         const item = items[itemName];
@@ -429,16 +468,10 @@ async function drawShareItemTiles(context, snapshot, itemNames) {
         context.fillStyle = item ? gradeStyle.color : '#8292a8';
         context.font = `bold 14px ${SHARE_FONT_FAMILY}`;
         context.textAlign = 'center';
-        context.fillText(PART_NAMES[slot][currentLanguage], x + tileWidth / 2, startY + 22);
+        context.fillText(PART_NAMES[slot][currentLanguage], x + tileWidth / 2, startY + 28);
 
-        if (itemName) {
-            try {
-                const image = await loadShareImage(getItemImagePath(itemName));
-                drawImageContained(context, image, x + 14, startY + 30, tileWidth - 28, 91);
-            } catch (error) {
-                // The item name remains visible when an image cannot be loaded.
-            }
-        }
+        const image = itemImages.get(itemName);
+        if (image) drawImageContained(context, image, x + 14, startY + 36, tileWidth - 28, 91);
 
         context.fillStyle = '#ffffff';
         context.font = `bold 15px ${SHARE_FONT_FAMILY}`;
@@ -446,13 +479,19 @@ async function drawShareItemTiles(context, snapshot, itemNames) {
             context,
             itemName ? getItemName(itemName) : t('emptySlot'),
             x + tileWidth / 2,
-            startY + 143,
+            startY + 151,
             tileWidth - 20,
             18,
             2
         );
         context.textAlign = 'left';
-    }));
+    });
+}
+
+function getShareStatLabel(statId) {
+    const statName = getStatName(statId);
+    if (typeof statName === 'string') return statName;
+    return statName[currentLanguage] || statName.en || prettifyStatId(statId);
 }
 
 function getShareStatRows(itemNames) {
@@ -464,7 +503,7 @@ function getShareStatRows(itemNames) {
     return preferredStats
         .filter(statId => stats[statId] !== undefined && !isZeroStatValue(stats[statId]))
         .slice(0, 6)
-        .map(statId => [getStatName(statId), formatStatValue(statId, stats[statId])]);
+        .map(statId => [getShareStatLabel(statId), formatStatValue(statId, stats[statId])]);
 }
 
 function drawShareStats(context, itemNames, x, y, width, maxRows = 6) {
@@ -554,37 +593,38 @@ async function drawShareRouteMap(context, snapshot, x, y, width, height) {
 
 async function drawEarlyShareDetails(context, snapshot, itemNames) {
     drawRoundedRect(context, 252, 298, 594, 306, 16, '#152033', '#2b3b53');
-    context.fillStyle = '#65c9f3';
-    context.font = `bold 17px ${SHARE_FONT_FAMILY}`;
+
+    context.fillStyle = '#9eb2cf';
+    context.font = `bold 16px ${SHARE_FONT_FAMILY}`;
     context.fillText(t('routeLabel'), 274, 329);
     context.fillStyle = '#ffffff';
-    context.font = `bold 22px ${SHARE_FONT_FAMILY}`;
+    context.font = `bold 20px ${SHARE_FONT_FAMILY}`;
     drawWrappedText(
         context,
         snapshot.r.p.map(getLocalizedZoneName).join(' → '),
         274,
-        362,
-        546,
-        28,
+        360,
+        250,
+        26,
         2
     );
 
     context.fillStyle = '#9eb2cf';
-    context.font = `bold 15px ${SHARE_FONT_FAMILY}`;
-    context.fillText(t('droneMaterials'), 274, 424);
+    context.font = `bold 16px ${SHARE_FONT_FAMILY}`;
+    context.fillText(t('droneMaterials'), 574, 329);
     context.fillStyle = snapshot.r.d.length ? '#f39c72' : '#65d69b';
-    context.font = `bold 15px ${SHARE_FONT_FAMILY}`;
+    context.font = `bold 16px ${SHARE_FONT_FAMILY}`;
     drawWrappedText(
         context,
         snapshot.r.d.length ? snapshot.r.d.map(getItemName).join(', ') : t('noDrone'),
-        410,
-        424,
-        410,
+        574,
+        360,
+        250,
         20,
-        2
+        3
     );
-    drawShareStats(context, itemNames, 274, 486, 265, 4);
-    drawSharePassives(context, itemNames, 575, 486, 245, 4);
+    drawShareStats(context, itemNames, 274, 452, 250, 4);
+    drawSharePassives(context, itemNames, 574, 452, 250, 4);
 
     drawRoundedRect(context, 870, 298, 296, 306, 16, '#152033', '#2b3b53');
     await drawShareRouteMap(context, snapshot, 895, 312, 246, 280);
@@ -608,10 +648,12 @@ async function renderShareCanvas(snapshot) {
     if (!canvas) return;
     const renderToken = ++activeShareRenderToken;
     setShareExportStatus(t('renderingPreview'));
+    syncShareImageActionAvailability(true);
 
-    canvas.width = SHARE_CANVAS_WIDTH;
-    canvas.height = SHARE_CANVAS_HEIGHT;
-    const context = canvas.getContext('2d');
+    const renderCanvas = document.createElement('canvas');
+    renderCanvas.width = SHARE_CANVAS_WIDTH;
+    renderCanvas.height = SHARE_CANVAS_HEIGHT;
+    const context = renderCanvas.getContext('2d');
     const background = context.createLinearGradient(0, 0, SHARE_CANVAS_WIDTH, SHARE_CANVAS_HEIGHT);
     background.addColorStop(0, '#0b1320');
     background.addColorStop(1, '#17263c');
@@ -642,7 +684,12 @@ async function renderShareCanvas(snapshot) {
     context.fillText(window.location.host || 'Eternal Return Build Optimizer', 1164, 647);
     context.textAlign = 'left';
 
-    if (renderToken === activeShareRenderToken) setShareExportStatus('');
+    if (renderToken !== activeShareRenderToken) return;
+    canvas.width = SHARE_CANVAS_WIDTH;
+    canvas.height = SHARE_CANVAS_HEIGHT;
+    canvas.getContext('2d').drawImage(renderCanvas, 0, 0);
+    syncShareImageActionAvailability();
+    setShareExportStatus('');
 }
 
 function getShareCanvasBlob() {

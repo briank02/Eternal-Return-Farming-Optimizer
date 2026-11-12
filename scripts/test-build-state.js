@@ -67,6 +67,10 @@ assert.deepEqual(getSharedSnapshotFromLocation({ hash: new URL(shareLinkFixture)
 assert.equal(resolveShareReference({ n: 'Old Name', c: 42 }, {
     'Renamed Item': { code: 42 }
 }), 'Renamed Item', 'Stable API codes survive an item rename');
+assert.equal(formatStatValue('moveSpeed', { flat: 0.1, percent: 0.05, baseFlat: 3.5 }), '5% + 0.10',
+    'Share/export movement speed values never render as [object Object]');
+assert.equal(getShareStatLabel('attackPower'), 'Attack Power',
+    'Share/export stat labels resolve the active language instead of rendering [object Object]');
 assert.equal(STAT_LABELS.adaptiveForce.ko, '맞춤형 능력치');
 assert.equal(Object.values(fixtureData.chars).every(character =>
     character.masteries.every(mastery =>
