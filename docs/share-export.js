@@ -616,7 +616,7 @@ async function drawEarlyShareDetails(context, snapshot, itemNames) {
     context.font = `bold 16px ${SHARE_FONT_FAMILY}`;
     drawWrappedText(
         context,
-        snapshot.r.d.length ? snapshot.r.d.map(getItemName).join(', ') : t('noDrone'),
+        snapshot.r.d.length ? formatMaterialCountList(snapshot.r.d) : t('noDrone'),
         574,
         360,
         250,

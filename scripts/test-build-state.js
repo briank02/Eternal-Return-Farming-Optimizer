@@ -45,6 +45,61 @@ assert.equal(resolveInitialBuildType('?mode=late', BUILD_TYPES.EARLY), BUILD_TYP
 assert.equal(resolveInitialBuildType('?mode=early', BUILD_TYPES.LATE), BUILD_TYPES.EARLY);
 assert.equal(resolveInitialBuildType('', BUILD_TYPES.LATE), BUILD_TYPES.LATE);
 assert.equal(resolveInitialBuildType('?mode=unsupported', 'unsupported'), BUILD_TYPES.EARLY);
+recommendationOnlyOneZone = true;
+recommendationOnlyTwoZones = false;
+assert.equal(getRecommendationRouteZoneLimit(BUILD_TYPES.EARLY), 1,
+    'The one-zone recommendation filter enforces a one-zone route limit');
+recommendationOnlyOneZone = false;
+recommendationOnlyTwoZones = true;
+assert.equal(getRecommendationRouteZoneLimit(BUILD_TYPES.EARLY), 2,
+    'The existing two-zone recommendation filter keeps its two-zone route limit');
+assert.equal(getRecommendationRouteZoneLimit(BUILD_TYPES.LATE), null,
+    'Route-zone recommendation filters never affect late-game builds');
+recommendationOnlyTwoZones = false;
+recommendationMaxOneDrone = true;
+recommendationZeroDrones = false;
+assert.equal(getRecommendationRouteDroneLimit(BUILD_TYPES.EARLY), 1,
+    'The one-drone recommendation filter allows at most one drone delivery');
+recommendationMaxOneDrone = false;
+recommendationZeroDrones = true;
+assert.equal(getRecommendationRouteDroneLimit(BUILD_TYPES.EARLY), 0,
+    'The zero-drone recommendation filter rejects every drone delivery');
+assert.equal(getRecommendationRouteDroneLimit(BUILD_TYPES.LATE), null,
+    'Drone recommendation filters never affect late-game builds');
+recommendationZeroDrones = false;
+
+items = {
+    'Test Epic': {
+        type: 'Epic', part: 'Weapon', weaponType: 'TestSword',
+        components: ['Zone Material', 'Drone Material']
+    },
+    'Duplicate Epic': {
+        type: 'Epic', part: 'Weapon', weaponType: 'TestSword',
+        components: ['Zone Material', 'Drone Material', 'Drone Material']
+    },
+    'Zone Material': { locations: ['Test Zone'] },
+    'Drone Material': { locations: [] }
+};
+mapData = { 'Test Zone': {} };
+recommendationRouteCache.clear();
+assert.equal(hasFeasibleRouteWithinZones(['Test Epic'], 1, 1), true,
+    'A one-zone route requiring one delivery passes the one-drone filter');
+assert.equal(hasFeasibleRouteWithinZones(['Test Epic'], 1, 0), false,
+    'The same route is rejected by the zero-drone filter');
+assert.deepEqual(getRequiredEarlyRouteMaterials(['Duplicate Epic']),
+    ['Zone Material', 'Drone Material', 'Drone Material'],
+    'Repeated recipe materials remain separate required units');
+assert.equal(hasFeasibleRouteWithinZones(['Duplicate Epic'], 1, 2), true,
+    'Two missing copies of one material count as two valid deliveries');
+assert.equal(hasFeasibleRouteWithinZones(['Duplicate Epic'], 1, 1), false,
+    'A duplicated missing material cannot pass the one-drone filter');
+const duplicateMaterialRoute = solveEarlyBuildRoute(new Set(['Duplicate Epic']))[0];
+assert.deepEqual(duplicateMaterialRoute.drones, ['Drone Material', 'Drone Material'],
+    'Route results preserve both missing copies for delivery');
+assert.equal(formatMaterialCountList(duplicateMaterialRoute.drones), 'Drone Material ×2',
+    'Repeated delivery materials display with an explicit quantity');
+items = {};
+mapData = {};
 const shareSnapshotFixture = {
     v: SHARE_SNAPSHOT_VERSION,
     p: '12.7',

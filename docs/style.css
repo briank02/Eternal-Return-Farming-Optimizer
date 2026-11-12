@@ -964,11 +964,26 @@ body.dark-mode .app-status[data-state="error"] {
     opacity: 0.45;
 }
 
+.recommendation-route-constraints {
+    display: grid;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.recommendation-route-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 16px;
+}
+
+.recommendation-route-constraints[hidden] {
+    display: none;
+}
+
 .recommendation-route-filter {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    margin-top: 8px;
     color: var(--text-main);
     cursor: pointer;
     font-size: 0.86em;

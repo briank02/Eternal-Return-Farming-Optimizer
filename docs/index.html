@@ -199,10 +199,28 @@
                                 <label><span data-i18n="maxCredits">Max credits</span><input type="number" id="recommendation-credit-max" min="0" step="50" inputmode="numeric" placeholder="∞"></label>
                             </div>
                         </div>
-                        <label class="recommendation-route-filter">
-                            <input type="checkbox" id="recommend-two-zone-filter">
-                            <span data-i18n="onlyTwoZones">Only show builds with 2 or less zones</span>
-                        </label>
+                        <div class="recommendation-route-constraints">
+                            <div class="recommendation-route-filter-group">
+                                <label class="recommendation-route-filter">
+                                    <input type="checkbox" id="recommend-one-zone-filter">
+                                    <span data-i18n="onlyOneZone">Only show builds with 1 zone</span>
+                                </label>
+                                <label class="recommendation-route-filter">
+                                    <input type="checkbox" id="recommend-two-zone-filter">
+                                    <span data-i18n="onlyTwoZones">Only show builds with 2 or less zones</span>
+                                </label>
+                            </div>
+                            <div class="recommendation-route-filter-group">
+                                <label class="recommendation-route-filter">
+                                    <input type="checkbox" id="recommend-one-drone-filter">
+                                    <span data-i18n="onlyOneDrone">Only show builds with 1 or less drone</span>
+                                </label>
+                                <label class="recommendation-route-filter">
+                                    <input type="checkbox" id="recommend-zero-drone-filter">
+                                    <span data-i18n="onlyZeroDrones">Only show builds with 0 drone</span>
+                                </label>
+                            </div>
+                        </div>
                         <div class="recommendation-actions">
                             <button type="button" id="recommend-builds-btn" class="recommend-primary-btn" data-i18n="recommendBuilds">Recommend Builds</button>
                         </div>
@@ -347,8 +365,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=39-share-export"></script>
-    <script src="share-export.js?v=11"></script>
+    <script src="script.js?v=42-material-counts"></script>
+    <script src="share-export.js?v=12-material-counts"></script>
 </body>
 
 </html>

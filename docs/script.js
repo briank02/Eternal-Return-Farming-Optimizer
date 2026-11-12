@@ -33,7 +33,10 @@ const DICT = {
         recommendationMatch: "Requirement Match: ",
         recommendationApplied: "Build applied. Click Optimize Route to find farming routes.",
         applyRecommendation: "Use build",
+        onlyOneZone: "Only show builds with 1 zone",
         onlyTwoZones: "Only show builds with 2 or less zones",
+        onlyOneDrone: "Only show builds with 1 or less drone",
+        onlyZeroDrones: "Only show builds with 0 drone",
         weightLabel: "Weight",
         automaticWeights: "Weight automatically by order",
         weightHelp: "Auto uses geometric decay (1, 0.68, 0.46…). Turn it off to enter relative weights from 0 to 1.",
@@ -228,7 +231,10 @@ Object.assign(DICT.ko, {
     recommendationMatch: "조건 일치: ",
     recommendationApplied: "빌드가 적용되었습니다. '옵티마이저 실행' 버튼을 눌러 파밍 루트를 찾으세요.",
     applyRecommendation: "빌드 적용",
+    onlyOneZone: "1구역 빌드만 보기",
     onlyTwoZones: "2구역 이하 빌드만 보기",
+    onlyOneDrone: "1배달 이하만 보기",
+    onlyZeroDrones: "0배달만 보기",
     passiveSkills: "고유 장착 효과",
     addPassiveSkill: "고유 장착 효과 추가",
     requirePassiveSkill: "필수 고유 효과 추가",
@@ -791,7 +797,10 @@ const recommendationStateByType = {
         passiveSkills: new Set(),
         lockedItems: new Map(),
         excludedItems: new Set(),
+        onlyOneZone: false,
         onlyTwoZones: false,
+        maxOneDrone: false,
+        zeroDrones: false,
         creditMin: '',
         creditMax: ''
     },
@@ -804,7 +813,10 @@ const recommendationStateByType = {
         passiveSkills: new Set(),
         lockedItems: new Map(),
         excludedItems: new Set(),
+        onlyOneZone: false,
         onlyTwoZones: false,
+        maxOneDrone: false,
+        zeroDrones: false,
         creditMin: '',
         creditMax: ''
     }
@@ -822,7 +834,10 @@ let recommendationPassiveSkills = new Set();
 let recommendationLockedItems = new Map();
 let recommendationExcludedItems = new Set();
 let recommendationItemRulePartFilter = 'All';
+let recommendationOnlyOneZone = false;
 let recommendationOnlyTwoZones = false;
+let recommendationMaxOneDrone = false;
+let recommendationZeroDrones = false;
 let recommendationCreditMin = '';
 let recommendationCreditMax = '';
 const recommendationFiltersCollapsedByType = {
@@ -878,7 +893,10 @@ function saveCurrentRecommendationState() {
     state.passiveSkills = recommendationPassiveSkills;
     state.lockedItems = recommendationLockedItems;
     state.excludedItems = recommendationExcludedItems;
+    state.onlyOneZone = recommendationOnlyOneZone;
     state.onlyTwoZones = recommendationOnlyTwoZones;
+    state.maxOneDrone = recommendationMaxOneDrone;
+    state.zeroDrones = recommendationZeroDrones;
     state.creditMin = recommendationCreditMin;
     state.creditMax = recommendationCreditMax;
 }
@@ -893,7 +911,10 @@ function loadRecommendationState(buildType) {
     recommendationPassiveSkills = state.passiveSkills;
     recommendationLockedItems = state.lockedItems;
     recommendationExcludedItems = state.excludedItems;
+    recommendationOnlyOneZone = state.onlyOneZone;
     recommendationOnlyTwoZones = state.onlyTwoZones;
+    recommendationMaxOneDrone = state.maxOneDrone;
+    recommendationZeroDrones = state.zeroDrones;
     recommendationCreditMin = state.creditMin;
     recommendationCreditMax = state.creditMax;
 }
@@ -1206,8 +1227,8 @@ function renderWorkflowShell() {
     if (lateGamePanel) lateGamePanel.hidden = isEarly;
     const lateResourceFilterGroup = document.getElementById('late-resource-filter-group');
     if (lateResourceFilterGroup) lateResourceFilterGroup.hidden = isEarly;
-    const routeFilter = document.querySelector('.recommendation-route-filter');
-    if (routeFilter) routeFilter.hidden = !isEarly;
+    const routeConstraints = document.querySelector('.recommendation-route-constraints');
+    if (routeConstraints) routeConstraints.hidden = !isEarly;
     const creditFilter = document.getElementById('recommendation-credit-filter');
     if (creditFilter) creditFilter.hidden = isEarly;
 
@@ -1504,7 +1525,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 recommendationConstraints = {};
                 recommendationResults = [];
                 recommendationPassiveSkills.clear();
+                recommendationOnlyOneZone = false;
                 recommendationOnlyTwoZones = false;
+                recommendationMaxOneDrone = false;
+                recommendationZeroDrones = false;
                 recommendationCreditMin = '';
                 recommendationCreditMax = '';
                 clearRecommendationItemRules();
@@ -1514,8 +1538,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 Object.keys(HIGH_TIER_MATERIALS).forEach(material => lateResourceFilters.add(material));
                 lateComparisonBuilds[0] = null;
                 lateComparisonBuilds[1] = null;
+                const oneZoneFilter = document.getElementById('recommend-one-zone-filter');
+                if (oneZoneFilter) oneZoneFilter.checked = false;
                 const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
                 if (twoZoneFilter) twoZoneFilter.checked = false;
+                const oneDroneFilter = document.getElementById('recommend-one-drone-filter');
+                if (oneDroneFilter) oneDroneFilter.checked = false;
+                const zeroDroneFilter = document.getElementById('recommend-zero-drone-filter');
+                if (zeroDroneFilter) zeroDroneFilter.checked = false;
                 const autoWeight = document.getElementById('recommendation-auto-weight');
                 if (autoWeight) autoWeight.checked = true;
                 const creditMinInput = document.getElementById('recommendation-credit-min');
@@ -1735,7 +1765,10 @@ function setupRecommendationControls() {
     const search = document.getElementById('recommendation-stat-search');
     const options = document.getElementById('recommendation-stat-options');
     const recommendBtn = document.getElementById('recommend-builds-btn');
+    const oneZoneFilter = document.getElementById('recommend-one-zone-filter');
     const twoZoneFilter = document.getElementById('recommend-two-zone-filter');
+    const oneDroneFilter = document.getElementById('recommend-one-drone-filter');
+    const zeroDroneFilter = document.getElementById('recommend-zero-drone-filter');
     const autoWeight = document.getElementById('recommendation-auto-weight');
     const passivePicker = document.getElementById('recommendation-passive-picker');
     const filterToggle = document.getElementById('recommendation-filter-toggle');
@@ -1803,15 +1836,67 @@ function setupRecommendationControls() {
         recommendBtn.dataset.bound = 'true';
     }
 
+    if (oneZoneFilter) {
+        oneZoneFilter.checked = recommendationOnlyOneZone;
+        if (oneZoneFilter.dataset.bound !== 'true') {
+            oneZoneFilter.addEventListener('change', () => {
+                recommendationOnlyOneZone = oneZoneFilter.checked;
+                if (recommendationOnlyOneZone) {
+                    recommendationOnlyTwoZones = false;
+                    if (twoZoneFilter) twoZoneFilter.checked = false;
+                }
+                recommendationResults = [];
+                renderRecommendationResults();
+            });
+            oneZoneFilter.dataset.bound = 'true';
+        }
+    }
+
     if (twoZoneFilter) {
         twoZoneFilter.checked = recommendationOnlyTwoZones;
         if (twoZoneFilter.dataset.bound !== 'true') {
             twoZoneFilter.addEventListener('change', () => {
                 recommendationOnlyTwoZones = twoZoneFilter.checked;
+                if (recommendationOnlyTwoZones) {
+                    recommendationOnlyOneZone = false;
+                    if (oneZoneFilter) oneZoneFilter.checked = false;
+                }
                 recommendationResults = [];
                 renderRecommendationResults();
             });
             twoZoneFilter.dataset.bound = 'true';
+        }
+    }
+
+    if (oneDroneFilter) {
+        oneDroneFilter.checked = recommendationMaxOneDrone;
+        if (oneDroneFilter.dataset.bound !== 'true') {
+            oneDroneFilter.addEventListener('change', () => {
+                recommendationMaxOneDrone = oneDroneFilter.checked;
+                if (recommendationMaxOneDrone) {
+                    recommendationZeroDrones = false;
+                    if (zeroDroneFilter) zeroDroneFilter.checked = false;
+                }
+                recommendationResults = [];
+                renderRecommendationResults();
+            });
+            oneDroneFilter.dataset.bound = 'true';
+        }
+    }
+
+    if (zeroDroneFilter) {
+        zeroDroneFilter.checked = recommendationZeroDrones;
+        if (zeroDroneFilter.dataset.bound !== 'true') {
+            zeroDroneFilter.addEventListener('change', () => {
+                recommendationZeroDrones = zeroDroneFilter.checked;
+                if (recommendationZeroDrones) {
+                    recommendationMaxOneDrone = false;
+                    if (oneDroneFilter) oneDroneFilter.checked = false;
+                }
+                recommendationResults = [];
+                renderRecommendationResults();
+            });
+            zeroDroneFilter.dataset.bound = 'true';
         }
     }
 
@@ -2289,6 +2374,9 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
     const candidateSlots = getRecommendationCandidatesBySlot(buildType);
     const requiredSlots = EQUIPMENT_SLOTS;
     const allowPartialBuilds = buildType === BUILD_TYPES.LATE && hasActiveRecommendationCreditLimit();
+    const routeZoneLimit = getRecommendationRouteZoneLimit(buildType);
+    const routeDroneLimit = getRecommendationRouteDroneLimit(buildType);
+    const hasRouteConstraint = routeZoneLimit !== null || routeDroneLimit !== null;
     const candidateCombinationCount = requiredSlots.reduce((count, slot) => {
         const candidateCount = (candidateSlots[slot] && candidateSlots[slot].length) || 0;
         const canLeaveSlotEmpty = allowPartialBuilds && !recommendationLockedItems.has(slot);
@@ -2361,8 +2449,11 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
             if (itemNames.length === 0 || !passesRecommendationCreditLimit(state.credit)) return;
             const stats = calculateRecommendationBuildStats(itemNames);
             if (!passesRecommendationConstraints(stats) || !passesRecommendationPassiveRequirements(itemNames)) return;
-            if (buildType === BUILD_TYPES.EARLY && recommendationOnlyTwoZones &&
-                !hasFeasibleRouteWithinZones(itemNames, 2)) {
+            if (hasRouteConstraint && !hasFeasibleRouteWithinZones(
+                itemNames,
+                routeZoneLimit ?? 3,
+                routeDroneLimit ?? 2
+            )) {
                 metrics.prunedByRoute++;
                 return;
             }
@@ -2680,50 +2771,78 @@ function passesRecommendationPassiveRequirements(itemNames) {
     return Array.from(recommendationPassiveSkills).every(passiveName => effectivePassives.has(passiveName));
 }
 
-function hasFeasibleRouteWithinZones(itemNames, maxZones) {
-    if (itemNames.some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) return false;
+const EARLY_ROUTE_IGNORED_ITEMS = new Set([
+    "Alpha Sidewinder",
+    "Black Mamba King",
+    "Deathadder Queen",
+    "Harmony in Full Bloom"
+]);
 
-    const cacheKey = `${maxZones}|${[...itemNames].sort().join('|')}`;
-    if (recommendationRouteCache.has(cacheKey)) return recommendationRouteCache.get(cacheKey);
-
-    const neededCounts = {};
-    const uniqueItemsToIgnore = new Set([
-        "Alpha Sidewinder",
-        "Black Mamba King",
-        "Deathadder Queen",
-        "Harmony in Full Bloom"
+function getRequiredEarlyRouteMaterials(itemNames) {
+    const neededCounts = new Map();
+    const ownedCounts = new Map([
+        ["Shirt", 1],
+        ["Running Shoes", 1]
     ]);
 
-    itemNames.forEach(itemName => {
-        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
-            items[itemName].components.forEach(mat => {
-                neededCounts[mat] = (neededCounts[mat] || 0) + 1;
+    Array.from(itemNames || []).forEach(itemName => {
+        const item = items[itemName];
+        if (!EARLY_ROUTE_IGNORED_ITEMS.has(itemName) && Array.isArray(item?.components)) {
+            item.components.forEach(material => {
+                neededCounts.set(material, (neededCounts.get(material) || 0) + 1);
+            });
+        }
+        if (item?.part === 'Weapon' && Array.isArray(item.components)) {
+            item.components.forEach(component => {
+                if (BASE_WEAPONS.has(component)) ownedCounts.set(component, 1);
             });
         }
     });
 
-    const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
-    itemNames.forEach(itemName => {
-        const itemData = items[itemName];
-        if (itemData && itemData.part === "Weapon" && itemData.components) {
-            itemData.components.forEach(comp => {
-                if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
-            });
-        }
+    const requiredMaterials = [];
+    neededCounts.forEach((needed, material) => {
+        const remaining = Math.max(0, needed - (ownedCounts.get(material) || 0));
+        for (let count = 0; count < remaining; count++) requiredMaterials.push(material);
     });
+    return requiredMaterials;
+}
 
-    const requiredMaterials = new Set();
-    Object.entries(neededCounts).forEach(([itemName, count]) => {
-        const owned = ownedCounts[itemName] || 0;
-        if (count - owned > 0) requiredMaterials.add(itemName);
+function formatMaterialCountList(materialNames) {
+    const counts = new Map();
+    Array.from(materialNames || []).forEach(material => {
+        counts.set(material, (counts.get(material) || 0) + 1);
     });
+    return Array.from(counts, ([material, count]) =>
+        count > 1 ? `${getItemName(material)} ×${count}` : getItemName(material)
+    ).join(', ');
+}
 
-    if (requiredMaterials.size === 0) {
+function getRecommendationRouteZoneLimit(buildType = activeBuildType) {
+    if (buildType !== BUILD_TYPES.EARLY) return null;
+    if (recommendationOnlyOneZone) return 1;
+    if (recommendationOnlyTwoZones) return 2;
+    return null;
+}
+
+function getRecommendationRouteDroneLimit(buildType = activeBuildType) {
+    if (buildType !== BUILD_TYPES.EARLY) return null;
+    if (recommendationZeroDrones) return 0;
+    if (recommendationMaxOneDrone) return 1;
+    return null;
+}
+
+function hasFeasibleRouteWithinZones(itemNames, maxZones, maxDrones = 2) {
+    if (itemNames.some(name => !isItemEligibleForBuild(items[name], BUILD_TYPES.EARLY))) return false;
+
+    const cacheKey = `${maxZones}|${maxDrones}|${[...itemNames].sort().join('|')}`;
+    if (recommendationRouteCache.has(cacheKey)) return recommendationRouteCache.get(cacheKey);
+
+    const materialList = getRequiredEarlyRouteMaterials(itemNames);
+    if (materialList.length === 0) {
         recommendationRouteCache.set(cacheKey, true);
         return true;
     }
 
-    const materialList = Array.from(requiredMaterials);
     const fullMask = (1n << BigInt(materialList.length)) - 1n;
     const validZones = [];
 
@@ -2749,7 +2868,8 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
     function search(index, currentMask, zoneCount) {
         const missingMask = fullMask ^ currentMask;
         const missingCount = countSetBits(missingMask);
-        if (getRouteTier(zoneCount, missingCount) > 0 && zoneCount <= maxZones) return true;
+        if (getRouteTier(zoneCount, missingCount) > 0 &&
+            zoneCount <= maxZones && missingCount <= maxDrones) return true;
         if (zoneCount >= maxZones) return false;
 
         if (index < validZones.length) {
@@ -2758,6 +2878,7 @@ function hasFeasibleRouteWithinZones(itemNames, maxZones) {
             let allowedDrones = 2;
             if (zoneCount === 1) allowedDrones = 1;
             if (zoneCount >= 2) allowedDrones = 0;
+            allowedDrones = Math.min(allowedDrones, maxDrones);
             if (potentialMissing > allowedDrones) return false;
         }
 
@@ -4279,44 +4400,10 @@ function solveEarlyBuildRoute(buildSet) {
     }
 
     // --- STEP 1: CALCULATE NEEDS VS OWNED ---
-    const neededCounts = {};
-    const uniqueItemsToIgnore = new Set([
-        "Alpha Sidewinder",
-        "Black Mamba King",
-        "Deathadder Queen",
-        "Harmony in Full Bloom"
-    ]);
-
-    buildSet.forEach(itemName => {
-        if (!uniqueItemsToIgnore.has(itemName) && items[itemName] && items[itemName].components) {
-            items[itemName].components.forEach(mat => {
-                neededCounts[mat] = (neededCounts[mat] || 0) + 1;
-            });
-        }
-    });
-
-    const ownedCounts = { "Shirt": 1, "Running Shoes": 1 };
-
-    // Identify Base Weapon for THIS specific combination
-    buildSet.forEach(itemName => {
-        const itemData = items[itemName];
-        if (itemData && itemData.part === "Weapon" && itemData.components) {
-            itemData.components.forEach(comp => {
-                if (BASE_WEAPONS.has(comp)) ownedCounts[comp] = 1;
-            });
-        }
-    });
-
-    const requiredMaterials = new Set();
-    for (const [item, count] of Object.entries(neededCounts)) {
-        const owned = ownedCounts[item] || 0;
-        if (count - owned > 0) requiredMaterials.add(item);
-    }
-    
-    if (requiredMaterials.size === 0) return []; // Should handle "Nothing needed" case in display
+    const materialList = getRequiredEarlyRouteMaterials(buildSet);
+    if (materialList.length === 0) return []; // Should handle "Nothing needed" case in display
 
     // --- STEP 2: BITMASK & ZONES ---
-    const materialList = Array.from(requiredMaterials);
     const TOTAL_ITEMS = materialList.length;
     const FULL_MASK = (1n << BigInt(TOTAL_ITEMS)) - 1n; 
 
@@ -4620,7 +4707,7 @@ function displayResults(routes, container) {
         else if(r.tier === 6) tierLabel = `<span style="background:#2980b9; color:white; padding:3px 8px; border-radius:4px; font-size:0.75em; margin-right:5px;">3Z / 0D</span>`;
 
         let droneHtml = r.drones.length > 0 
-            ? `<span style="color:#e74c3c;">${t('needDrone')}${r.drones.map(getItemName).join(', ')}</strong></span>` 
+            ? `<span style="color:#e74c3c;">${t('needDrone')}${formatMaterialCountList(r.drones)}</strong></span>`
             : `<span style="color:#27ae60;">${t('noDrone')}</span>`;
 
         // Create a summary of the variant (Build) used for this route
