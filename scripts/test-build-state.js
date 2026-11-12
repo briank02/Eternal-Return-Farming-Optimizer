@@ -56,6 +56,31 @@ assert.notEqual(buildFilterState[BUILD_TYPES.EARLY].substats, buildFilterState[B
 assert.notEqual(recommendationStateByType[BUILD_TYPES.EARLY].priorities, recommendationStateByType[BUILD_TYPES.LATE].priorities);
 assert.notEqual(recommendationStateByType[BUILD_TYPES.EARLY].weights, recommendationStateByType[BUILD_TYPES.LATE].weights);
 assert.notEqual(recommendationStateByType[BUILD_TYPES.EARLY].passiveSkills, recommendationStateByType[BUILD_TYPES.LATE].passiveSkills);
+assert.notEqual(recommendationStateByType[BUILD_TYPES.EARLY].lockedItems, recommendationStateByType[BUILD_TYPES.LATE].lockedItems);
+assert.notEqual(recommendationStateByType[BUILD_TYPES.EARLY].excludedItems, recommendationStateByType[BUILD_TYPES.LATE].excludedItems);
+assert.equal(matchesRecommendationItemRulePart({ part: 'Head' }, 'All'), true,
+    'The All item-rule filter includes every equipment slot');
+assert.equal(matchesRecommendationItemRulePart({ part: 'Head' }, 'Head'), true,
+    'The item-rule part filter includes its selected slot');
+assert.equal(matchesRecommendationItemRulePart({ part: 'Head' }, 'Weapon'), false,
+    'The item-rule part filter excludes other slots');
+const koreanChestSearchValues = getRecommendationItemRuleSearchValues('Legend Chest', {
+    nameKo: '전설 옷',
+    part: 'Chest',
+    type: 'Legend'
+});
+assert.equal(matchesSearchTerm('옷', ...koreanChestSearchValues), true,
+    'Item-rule search recognizes Korean equipment-part names');
+const koreanGloveSearchValues = getRecommendationItemRuleSearchValues('Legend Glove', {
+    nameKo: '전설 글러브',
+    part: 'Weapon',
+    weaponType: 'Glove',
+    type: 'Legend'
+});
+assert.equal(matchesSearchTerm('글러브', ...koreanGloveSearchValues), true,
+    'Item-rule search recognizes Korean weapon-type names');
+assert.equal(matchesSearchTerm('전설', ...koreanGloveSearchValues), true,
+    'Item-rule search recognizes Korean rarity names');
 assert.equal(recommendationStateByType[BUILD_TYPES.EARLY].automaticWeights, true);
 assert.equal(recommendationStateByType[BUILD_TYPES.LATE].automaticWeights, true);
 assert.equal(recommendationStateByType[BUILD_TYPES.EARLY].creditMin, '');
@@ -303,6 +328,8 @@ recommendationWeights = { attackPower: 1 };
 recommendationConstraints = { attackPower: { min: '', max: '' } };
 recommendationPassiveSkills = new Set();
 recommendationOnlyTwoZones = true;
+recommendationLockedItems.clear();
+recommendationExcludedItems.clear();
 buildDisplayStats(BUILD_TYPES.LATE);
 
 lateRarityFilters.clear();
@@ -314,6 +341,25 @@ let lateRecommendations = generateRecommendedBuilds(BUILD_TYPES.LATE);
 assert.equal(lateRecommendations.length > 0, true);
 assert.equal(lateRecommendations[0].items.every(name => items[name].type === 'Legend'), true);
 assert.equal(lateRecommendations[0].stats.attackPower, 50);
+
+assert.equal(lockRecommendationItem('Mythic Head'), true);
+lateCandidates = getRecommendationCandidatesBySlot(BUILD_TYPES.LATE);
+assert.deepEqual(lateCandidates.Head, ['Mythic Head'],
+    'A locked item overrides the optional Late rarity filter');
+lateRecommendations = generateRecommendedBuilds(BUILD_TYPES.LATE);
+assert.equal(lateRecommendations.every(build => build.items.includes('Mythic Head')), true,
+    'Every recommendation contains its locked item');
+assert.equal(lockRecommendationItem('Legend Head'), true);
+assert.equal(recommendationLockedItems.size, 1, 'Only one item can be locked per slot');
+assert.equal(recommendationLockedItems.get('Head'), 'Legend Head', 'A new lock replaces the old lock in that slot');
+assert.equal(excludeRecommendationItem('Legend Head'), false, 'A locked item cannot also be excluded');
+clearRecommendationItemRules();
+
+assert.equal(excludeRecommendationItem('Legend Arm'), true);
+lateCandidates = getRecommendationCandidatesBySlot(BUILD_TYPES.LATE);
+assert.equal(lateCandidates.Arm.includes('Legend Arm'), false, 'Excluded items are removed from recommendation candidates');
+assert.equal(lockRecommendationItem('Legend Arm'), false, 'An excluded item cannot also be locked');
+clearRecommendationItemRules();
 
 lateRarityFilters.clear();
 lateRarityFilters.add('Mythic');
@@ -355,13 +401,23 @@ Object.entries(items).forEach(([name, item]) => {
 recommendationPassiveSkills = new Set();
 recommendationCreditMin = '';
 recommendationCreditMax = '200';
+assert.equal(lockRecommendationItem('Legend Chest'), true);
+const lockedPartialModel = createRecommendationSearchModel(
+    getRecommendationCandidatesBySlot(BUILD_TYPES.LATE),
+    true
+);
+assert.equal(lockedPartialModel.candidatesBySlot.Chest.some(candidate => candidate.name === null), false,
+    'A locked slot cannot be left empty in a partial Late build');
 lateRecommendations = generateRecommendedBuilds(BUILD_TYPES.LATE);
 assert.equal(lateRecommendations.length > 0, true);
 assert.equal(lateRecommendations.every(build => build.items.length === 1), true,
     'A 200-credit maximum produces partial one-item recommendations');
+assert.equal(lateRecommendations.every(build => build.items.includes('Legend Chest')), true,
+    'Credit-limited partial recommendations preserve locked items');
 assert.equal(lateRecommendations.every(build => build.credit === 200), true);
 assert.equal(lateRecommendations.every(build => build.items.every(name => items[name].type === 'Legend')), true);
 assert.equal(lastRecommendationSearchMetrics.prunedByCredits > 0, true);
+clearRecommendationItemRules();
 
 recommendationCreditMin = '500';
 recommendationCreditMax = '500';

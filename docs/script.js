@@ -40,6 +40,24 @@ const DICT = {
         highTierMaterial: "Epic Material",
         hideRecommendationFilters: "Hide recommendation filters",
         showRecommendationFilters: "Show recommendation filters",
+        itemRules: "Item rules",
+        editItemRules: "Edit item rules",
+        itemRulesHelp: "Lock items that must appear and exclude items that must not appear.",
+        searchItems: "Search items",
+        searchItemRulesPlaceholder: "Search items...",
+        lockedItems: "Locked items",
+        excludedItems: "Excluded items",
+        lockItem: "Lock",
+        excludeItem: "Exclude",
+        locked: "Locked",
+        excluded: "Excluded",
+        removeRule: "Remove rule",
+        closeItemRules: "Close item rules",
+        replaceLock: "Replace lock",
+        noItemRules: "No item rules",
+        noRuleItems: "None",
+        noMatchingRuleItems: "No matching items",
+        incompatibleLocksRemoved: "incompatible locked item(s) removed",
         buildCreditLimit: "Build credit limit",
         minCredits: "Min credits",
         maxCredits: "Max credits",
@@ -213,6 +231,24 @@ DICT.ko.dataUpdated = "업데이트 일자";
 DICT.ko.viewMap = "지도 보기";
 DICT.ko.routeMap = "경로 지도";
 DICT.ko.closeRouteMap = "경로 지도 닫기";
+DICT.ko.itemRules = "아이템 규칙";
+DICT.ko.editItemRules = "아이템 규칙 편집";
+DICT.ko.itemRulesHelp = "반드시 포함할 아이템을 잠그고 추천에서 제외할 아이템을 선택하세요.";
+DICT.ko.searchItems = "아이템 검색";
+DICT.ko.searchItemRulesPlaceholder = "아이템 검색...";
+DICT.ko.lockedItems = "잠긴 아이템";
+DICT.ko.excludedItems = "제외된 아이템";
+DICT.ko.lockItem = "잠금";
+DICT.ko.excludeItem = "제외";
+DICT.ko.locked = "고정";
+DICT.ko.excluded = "제외";
+DICT.ko.removeRule = "규칙 제거";
+DICT.ko.closeItemRules = "아이템 규칙 닫기";
+DICT.ko.replaceLock = "고정 교체";
+DICT.ko.noItemRules = "아이템 규칙 없음";
+DICT.ko.noRuleItems = "없음";
+DICT.ko.noMatchingRuleItems = "일치하는 아이템 없음";
+DICT.ko.incompatibleLocksRemoved = "개의 호환되지 않는 잠긴 아이템이 제거되었습니다";
 
 let currentLanguage = localStorage.getItem('language') || 'en';
 
@@ -348,7 +384,12 @@ function applyTranslations() {
     });
     const resourceFilterGroup = document.querySelector('.resource-filter-row');
     if (resourceFilterGroup) resourceFilterGroup.setAttribute('aria-label', t('highTierMaterial'));
+    const closeItemRules = document.getElementById('close-recommendation-item-rules');
+    if (closeItemRules) closeItemRules.setAttribute('aria-label', t('closeItemRules'));
     syncRouteMapDialogTranslations();
+    renderRecommendationItemRulesSummary();
+    const itemRulesDialog = document.getElementById('recommendation-item-rules-dialog');
+    if (itemRulesDialog?.open) renderRecommendationItemRulesDialog();
     syncThemeControl();
 }
 
@@ -699,6 +740,8 @@ const recommendationStateByType = {
         constraints: {},
         results: [],
         passiveSkills: new Set(),
+        lockedItems: new Map(),
+        excludedItems: new Set(),
         onlyTwoZones: false,
         creditMin: '',
         creditMax: ''
@@ -710,6 +753,8 @@ const recommendationStateByType = {
         constraints: {},
         results: [],
         passiveSkills: new Set(),
+        lockedItems: new Map(),
+        excludedItems: new Set(),
         onlyTwoZones: false,
         creditMin: '',
         creditMax: ''
@@ -725,6 +770,9 @@ let recommendationAutomaticWeights = true;
 let recommendationConstraints = {};
 let recommendationResults = [];
 let recommendationPassiveSkills = new Set();
+let recommendationLockedItems = new Map();
+let recommendationExcludedItems = new Set();
+let recommendationItemRulePartFilter = 'All';
 let recommendationOnlyTwoZones = false;
 let recommendationCreditMin = '';
 let recommendationCreditMax = '';
@@ -779,6 +827,8 @@ function saveCurrentRecommendationState() {
     state.constraints = recommendationConstraints;
     state.results = recommendationResults;
     state.passiveSkills = recommendationPassiveSkills;
+    state.lockedItems = recommendationLockedItems;
+    state.excludedItems = recommendationExcludedItems;
     state.onlyTwoZones = recommendationOnlyTwoZones;
     state.creditMin = recommendationCreditMin;
     state.creditMax = recommendationCreditMax;
@@ -792,6 +842,8 @@ function loadRecommendationState(buildType) {
     recommendationConstraints = state.constraints;
     recommendationResults = state.results;
     recommendationPassiveSkills = state.passiveSkills;
+    recommendationLockedItems = state.lockedItems;
+    recommendationExcludedItems = state.excludedItems;
     recommendationOnlyTwoZones = state.onlyTwoZones;
     recommendationCreditMin = state.creditMin;
     recommendationCreditMax = state.creditMax;
@@ -820,6 +872,60 @@ function isItemCompatibleWithCharacter(itemName, characterName = currentCharacte
     if (characterName === 'Priya' && item.part === 'Head' && !PRIYA_EXCLUSIVE_HEAD_ITEMS.has(itemName)) return false;
     if (characterName !== 'Echion' && (ECHION_EXCLUSIVE_WEAPONS.has(itemName) || item.weaponType === 'VFArm')) return false;
     return true;
+}
+
+function canUseRecommendationItemRule(itemName, buildType = activeBuildType, characterName = currentCharacter) {
+    const item = items[itemName];
+    return !!item && isItemEligibleForBuild(item, buildType) &&
+        isItemCompatibleWithCharacter(itemName, characterName);
+}
+
+function lockRecommendationItem(itemName, buildType = activeBuildType) {
+    const item = items[itemName];
+    if (!canUseRecommendationItemRule(itemName, buildType) || recommendationExcludedItems.has(itemName)) {
+        return false;
+    }
+    recommendationLockedItems.set(item.part, itemName);
+    return true;
+}
+
+function excludeRecommendationItem(itemName, buildType = activeBuildType) {
+    if (!canUseRecommendationItemRule(itemName, buildType) ||
+        Array.from(recommendationLockedItems.values()).includes(itemName)) {
+        return false;
+    }
+    recommendationExcludedItems.add(itemName);
+    return true;
+}
+
+function removeRecommendationItemRule(itemName) {
+    let changed = recommendationExcludedItems.delete(itemName);
+    recommendationLockedItems.forEach((lockedName, slot) => {
+        if (lockedName === itemName) {
+            recommendationLockedItems.delete(slot);
+            changed = true;
+        }
+    });
+    return changed;
+}
+
+function clearRecommendationItemRules() {
+    recommendationLockedItems.clear();
+    recommendationExcludedItems.clear();
+}
+
+function removeIncompatibleRecommendationLocks(characterName = currentCharacter) {
+    let removedCount = 0;
+    Object.values(BUILD_TYPES).forEach(buildType => {
+        const lockedItems = recommendationStateByType[buildType].lockedItems;
+        lockedItems.forEach((itemName, slot) => {
+            if (!canUseRecommendationItemRule(itemName, buildType, characterName)) {
+                lockedItems.delete(slot);
+                removedCount++;
+            }
+        });
+    });
+    return removedCount;
 }
 
 function removeIncompatibleBuildItems(buildType, characterName = currentCharacter) {
@@ -1258,6 +1364,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         setupModeTabs();
         setupRecommendationControls();
         setupRouteMapDialog();
+        setupRecommendationItemRulesDialog();
         renderWorkflowShell();
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.compact-select')) closeCompactSelects();
@@ -1345,6 +1452,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 recommendationOnlyTwoZones = false;
                 recommendationCreditMin = '';
                 recommendationCreditMax = '';
+                clearRecommendationItemRules();
                 lateRarityFilters.clear();
                 BUILD_CONFIG[BUILD_TYPES.LATE].grades.forEach(grade => lateRarityFilters.add(grade));
                 lateResourceFilters.clear();
@@ -1359,6 +1467,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const creditMaxInput = document.getElementById('recommendation-credit-max');
                 if (creditMinInput) creditMinInput.value = '';
                 if (creditMaxInput) creditMaxInput.value = '';
+                setRecommendationItemRulesNotice('');
                 const substatContainer = document.getElementById('substat-filters');
                 if (substatContainer) renderSubstatPicker(substatContainer);
                 const passiveSkillContainer = document.getElementById('passive-skill-filters');
@@ -1678,6 +1787,243 @@ function setupRecommendationControls() {
             }
         });
     }
+    renderRecommendationItemRulesSummary();
+}
+
+function setRecommendationItemRulesNotice(message) {
+    const notice = document.getElementById('recommendation-item-rules-notice');
+    if (!notice) return;
+    notice.textContent = message;
+    notice.hidden = !message;
+}
+
+function renderRecommendationItemRulesSummary() {
+    const count = document.getElementById('recommendation-item-rules-count');
+    if (!count) return;
+    count.textContent = `${recommendationLockedItems.size} ${t('locked').toLowerCase()} · ` +
+        `${recommendationExcludedItems.size} ${t('excluded').toLowerCase()}`;
+}
+
+function setupRecommendationItemRulesDialog() {
+    const dialog = document.getElementById('recommendation-item-rules-dialog');
+    const editButton = document.getElementById('edit-recommendation-item-rules');
+    const closeButton = document.getElementById('close-recommendation-item-rules');
+    const search = document.getElementById('recommendation-item-rule-search');
+    const partFilters = document.querySelectorAll('.recommendation-item-rule-part-filter');
+    if (!dialog || !editButton || !closeButton || !search) return;
+
+    if (editButton.dataset.bound !== 'true') {
+        editButton.addEventListener('click', () => {
+            search.value = '';
+            recommendationItemRulePartFilter = 'All';
+            renderRecommendationItemRulesDialog();
+            dialog.showModal();
+            search.focus();
+        });
+        editButton.dataset.bound = 'true';
+    }
+    if (closeButton.dataset.bound !== 'true') {
+        closeButton.addEventListener('click', () => dialog.close());
+        closeButton.dataset.bound = 'true';
+    }
+    if (search.dataset.bound !== 'true') {
+        search.addEventListener('input', () => renderRecommendationItemRuleOptions(search.value));
+        setupSearchClearButton(search);
+        search.dataset.bound = 'true';
+    }
+    partFilters.forEach(button => {
+        if (button.dataset.bound === 'true') return;
+        button.addEventListener('click', () => {
+            recommendationItemRulePartFilter = button.dataset.rulePart || 'All';
+            syncRecommendationItemRulePartFilters();
+            renderRecommendationItemRuleOptions(search.value);
+        });
+        button.dataset.bound = 'true';
+    });
+    if (dialog.dataset.bound !== 'true') {
+        dialog.addEventListener('click', event => {
+            if (event.target === dialog) dialog.close();
+        });
+        dialog.dataset.bound = 'true';
+    }
+}
+
+function renderRecommendationItemRulesDialog() {
+    const search = document.getElementById('recommendation-item-rule-search');
+    syncRecommendationItemRulePartFilters();
+    renderRecommendationActiveItemRules();
+    renderRecommendationItemRuleOptions(search?.value || '');
+}
+
+function syncRecommendationItemRulePartFilters() {
+    const group = document.getElementById('recommendation-item-rule-part-filters');
+    if (group) group.setAttribute('aria-label', t('itemPart'));
+    document.querySelectorAll('.recommendation-item-rule-part-filter').forEach(button => {
+        const part = button.dataset.rulePart || 'All';
+        const selected = part === recommendationItemRulePartFilter;
+        const label = part === 'All' ? t('all') : (PART_NAMES[part]?.[currentLanguage] || part);
+        button.classList.toggle('active', selected);
+        button.setAttribute('aria-pressed', String(selected));
+        button.setAttribute('aria-label', label);
+        button.title = label;
+        const image = button.querySelector('img');
+        if (image) image.alt = label;
+    });
+}
+
+function matchesRecommendationItemRulePart(item, partFilter = recommendationItemRulePartFilter) {
+    return partFilter === 'All' || item?.part === partFilter;
+}
+
+function getRecommendationItemRuleSearchValues(itemName, item) {
+    const partNames = PART_NAMES[item?.part] || {};
+    const typeNames = TYPE_NAMES[item?.type] || {};
+    const weaponType = WEAPON_TYPES.find(weapon => weapon.api === item?.weaponType);
+    return [
+        itemName,
+        item?.nameKo,
+        item?.part,
+        partNames.en,
+        partNames.ko,
+        item?.weaponType,
+        weaponType?.name.en,
+        weaponType?.name.ko,
+        item?.type,
+        typeNames.en,
+        typeNames.ko
+    ];
+}
+
+function applyRecommendationItemRuleChange(action) {
+    if (!action()) return;
+    recommendationResults = [];
+    setRecommendationItemRulesNotice('');
+    renderRecommendationItemRulesSummary();
+    renderRecommendationItemRulesDialog();
+    renderRecommendationResults();
+}
+
+function createRecommendationRuleItem(itemName, { removable = false } = {}) {
+    const item = items[itemName];
+    const row = document.createElement('div');
+    row.className = removable ? 'recommendation-item-rule-chip' : 'recommendation-item-rule-option';
+
+    const image = document.createElement('img');
+    image.src = getItemImagePath(itemName);
+    image.alt = '';
+    applyItemImageFallback(image, itemName);
+    row.appendChild(image);
+
+    const details = document.createElement('div');
+    details.className = 'recommendation-item-rule-details';
+    const name = document.createElement('strong');
+    name.textContent = getItemName(itemName);
+    const meta = document.createElement('span');
+    const partName = PART_NAMES[item.part]?.[currentLanguage] || item.part;
+    const typeName = TYPE_NAMES[item.type]?.[currentLanguage] || item.type;
+    const weaponName = item.part === 'Weapon'
+        ? WEAPON_TYPES.find(weapon => weapon.api === item.weaponType)?.name[currentLanguage]
+        : '';
+    meta.textContent = [partName, weaponName, typeName].filter(Boolean).join(' · ');
+    details.append(name, meta);
+    row.appendChild(details);
+
+    if (removable) {
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'recommendation-item-rule-remove';
+        removeButton.textContent = '×';
+        removeButton.setAttribute('aria-label', `${t('removeRule')}: ${getItemName(itemName)}`);
+        removeButton.addEventListener('click', () => {
+            applyRecommendationItemRuleChange(() => removeRecommendationItemRule(itemName));
+        });
+        row.appendChild(removeButton);
+    }
+
+    return row;
+}
+
+function renderRecommendationActiveItemRules() {
+    const container = document.getElementById('recommendation-active-item-rules');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const groups = [
+        [t('lockedItems'), sortItemsByBuildSlot(recommendationLockedItems.values())],
+        [t('excludedItems'), sortItemsByBuildSlot(recommendationExcludedItems)]
+    ];
+    groups.forEach(([label, itemNames]) => {
+        const section = document.createElement('section');
+        section.className = 'recommendation-item-rule-section';
+        const heading = document.createElement('h3');
+        heading.textContent = `${label} (${itemNames.length})`;
+        section.appendChild(heading);
+        if (itemNames.length === 0) {
+            const empty = document.createElement('span');
+            empty.className = 'recommendation-item-rule-empty';
+            empty.textContent = t('noRuleItems');
+            section.appendChild(empty);
+        } else {
+            const list = document.createElement('div');
+            list.className = 'recommendation-item-rule-chip-list';
+            itemNames.forEach(itemName => list.appendChild(
+                createRecommendationRuleItem(itemName, { removable: true })
+            ));
+            section.appendChild(list);
+        }
+        container.appendChild(section);
+    });
+}
+
+function renderRecommendationItemRuleOptions(term = '') {
+    const container = document.getElementById('recommendation-item-rule-options');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const eligibleItems = Object.entries(items)
+        .filter(([itemName, item]) => matchesRecommendationItemRulePart(item) &&
+            canUseRecommendationItemRule(itemName, activeBuildType) &&
+            matchesSearchTerm(term, ...getRecommendationItemRuleSearchValues(itemName, item)))
+        .sort(compareCatalogItems);
+
+    if (eligibleItems.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'recommendation-item-rule-empty';
+        empty.textContent = t('noMatchingRuleItems');
+        container.appendChild(empty);
+        return;
+    }
+
+    eligibleItems.forEach(([itemName, item]) => {
+        const row = createRecommendationRuleItem(itemName);
+        const actions = document.createElement('div');
+        actions.className = 'recommendation-item-rule-actions';
+        const lockedItem = recommendationLockedItems.get(item.part);
+        const isLocked = lockedItem === itemName;
+        const isExcluded = recommendationExcludedItems.has(itemName);
+
+        const lockButton = document.createElement('button');
+        lockButton.type = 'button';
+        lockButton.className = 'recommendation-item-rule-lock';
+        lockButton.textContent = isLocked ? t('locked') : (lockedItem ? t('replaceLock') : t('lockItem'));
+        lockButton.disabled = isLocked || isExcluded;
+        lockButton.addEventListener('click', () => {
+            applyRecommendationItemRuleChange(() => lockRecommendationItem(itemName));
+        });
+
+        const excludeButton = document.createElement('button');
+        excludeButton.type = 'button';
+        excludeButton.className = 'recommendation-item-rule-exclude';
+        excludeButton.textContent = isExcluded ? t('excluded') : t('excludeItem');
+        excludeButton.disabled = isExcluded || isLocked;
+        excludeButton.addEventListener('click', () => {
+            applyRecommendationItemRuleChange(() => excludeRecommendationItem(itemName));
+        });
+
+        actions.append(lockButton, excludeButton);
+        row.appendChild(actions);
+        container.appendChild(row);
+    });
 }
 
 function renderRecommendationStatOptions(container, term = '') {
@@ -1890,7 +2236,8 @@ function generateRecommendedBuilds(buildType = activeBuildType) {
     const allowPartialBuilds = buildType === BUILD_TYPES.LATE && hasActiveRecommendationCreditLimit();
     const candidateCombinationCount = requiredSlots.reduce((count, slot) => {
         const candidateCount = (candidateSlots[slot] && candidateSlots[slot].length) || 0;
-        return count * (candidateCount + (allowPartialBuilds ? 1 : 0));
+        const canLeaveSlotEmpty = allowPartialBuilds && !recommendationLockedItems.has(slot);
+        return count * (candidateCount + (canLeaveSlotEmpty ? 1 : 0));
     }, 1);
     const metrics = {
         algorithm: 'branch-and-bound',
@@ -2107,7 +2454,9 @@ function createRecommendationSearchModel(candidateSlots, allowPartialBuilds = fa
     const adaptiveContext = getRecommendationAdaptiveContext(candidateSlots, allowPartialBuilds);
 
     searchSlots.forEach(slot => {
-        const candidateNames = allowPartialBuilds ? [...candidateSlots[slot], null] : candidateSlots[slot];
+        const candidateNames = allowPartialBuilds && !recommendationLockedItems.has(slot)
+            ? [...candidateSlots[slot], null]
+            : candidateSlots[slot];
         candidatesBySlot[slot] = candidateNames.map(name => {
             return {
                 name,
@@ -2245,14 +2594,20 @@ function getRecommendationCandidatesBySlot(buildType = activeBuildType) {
 
     Object.entries(items).forEach(([name, item]) => {
         if (!isItemEligibleForBuild(item, buildType)) return;
+        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return;
+        if (recommendationExcludedItems.has(name)) return;
         if (buildType === BUILD_TYPES.LATE && !lateRarityFilters.has(item.type)) return;
         if (buildType === BUILD_TYPES.LATE && !itemMatchesLateResourceFilters(name, item)) return;
         if (item.part === "Weapon") {
             if (!masteries.includes(item.weaponType)) return;
             if (currentWeaponFilter !== "All" && item.weaponType !== currentWeaponFilter) return;
         }
-        if (!isItemCompatibleWithCharacter(name, currentCharacter)) return;
         slots[item.part].push(name);
+    });
+
+    recommendationLockedItems.forEach((itemName, slot) => {
+        if (!EQUIPMENT_SLOTS.includes(slot)) return;
+        slots[slot] = canUseRecommendationItemRule(itemName, buildType) ? [itemName] : [];
     });
 
     return slots;
@@ -2418,7 +2773,7 @@ function passesRecommendationCreditLimit(credit) {
 }
 
 function hasRecommendationCriteria() {
-    if (recommendationPassiveSkills.size > 0 || hasPositiveRecommendationWeight()) return true;
+    if (recommendationLockedItems.size > 0 || recommendationPassiveSkills.size > 0 || hasPositiveRecommendationWeight()) return true;
     return recommendationPriorities.some(statId => {
         const constraint = recommendationConstraints[statId] || {};
         return parseRecommendationBound(statId, constraint.min) !== null ||
@@ -2687,6 +3042,10 @@ function selectCharacter(charName) {
     const previousCharacter = currentCharacter;
     currentCharacter = charName || null;
     recommendationResults = [];
+    const removedLockedItems = removeIncompatibleRecommendationLocks(currentCharacter);
+    setRecommendationItemRulesNotice(removedLockedItems > 0
+        ? `${removedLockedItems} ${t('incompatibleLocksRemoved')}`
+        : '');
     if (previousCharacter !== currentCharacter) {
         lateComparisonBuilds[0] = null;
         lateComparisonBuilds[1] = null;
@@ -2727,6 +3086,9 @@ function selectCharacter(charName) {
         renderMainGrid();
     }
     renderStatComparison();
+    renderRecommendationItemRulesSummary();
+    const itemRulesDialog = document.getElementById('recommendation-item-rules-dialog');
+    if (itemRulesDialog?.open) renderRecommendationItemRulesDialog();
     renderRecommendationResults();
     renderLateGamePanel();
 }

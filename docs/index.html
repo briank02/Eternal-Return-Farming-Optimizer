@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal Return Build Optimizer</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="style.css?v=36-map-fit">
+    <link rel="stylesheet" href="style.css?v=39-search-clear">
 </head>
 
 <body>
@@ -180,6 +180,14 @@
                         <div class="recommendation-passive-block">
                             <div id="recommendation-passive-picker"></div>
                         </div>
+                        <div class="recommendation-item-rules-summary">
+                            <div class="recommendation-item-rules-copy">
+                                <span class="recommendation-block-label" data-i18n="itemRules">Item rules</span>
+                                <span id="recommendation-item-rules-count"></span>
+                            </div>
+                            <button type="button" id="edit-recommendation-item-rules" class="recommendation-item-rules-edit" data-i18n="editItemRules">Edit</button>
+                        </div>
+                        <p id="recommendation-item-rules-notice" class="recommendation-item-rules-notice" role="status" aria-live="polite"></p>
                         <div id="recommendation-credit-filter" class="recommendation-credit-filter" hidden>
                             <div class="recommendation-block-label" data-i18n="buildCreditLimit">Build credit limit (optional)</div>
                             <div class="recommendation-credit-inputs">
@@ -265,6 +273,41 @@
         <div id="route-map-content" class="route-map-content"></div>
     </dialog>
 
+    <dialog id="recommendation-item-rules-dialog" class="recommendation-item-rules-dialog" aria-labelledby="recommendation-item-rules-title">
+        <div class="recommendation-item-rules-header">
+            <h2 id="recommendation-item-rules-title" data-i18n="editItemRules">Edit item rules</h2>
+            <button type="button" id="close-recommendation-item-rules" class="recommendation-item-rules-close" aria-label="Close item rules">&times;</button>
+        </div>
+        <div class="recommendation-item-rules-body">
+            <p class="recommendation-item-rules-help" data-i18n="itemRulesHelp">Lock items that must appear and exclude items that must not appear.</p>
+            <div id="recommendation-active-item-rules" class="recommendation-active-item-rules"></div>
+            <div class="recommendation-item-rule-filter-group">
+                <div class="recommendation-item-rule-search-label" data-i18n="itemPart">Item Part</div>
+                <div id="recommendation-item-rule-part-filters" class="recommendation-item-rule-part-filters" role="group" aria-label="Item Part">
+                    <button type="button" class="recommendation-item-rule-part-filter active" data-rule-part="All" aria-pressed="true" data-i18n="all">ALL</button>
+                    <button type="button" class="recommendation-item-rule-part-filter" data-rule-part="Weapon" aria-pressed="false">
+                        <img src="images/ui/Weapon.png" alt="Weapon" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="recommendation-item-rule-part-filter" data-rule-part="Chest" aria-pressed="false">
+                        <img src="images/ui/Chest.png" alt="Chest" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="recommendation-item-rule-part-filter" data-rule-part="Head" aria-pressed="false">
+                        <img src="images/ui/Head.png" alt="Head" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="recommendation-item-rule-part-filter" data-rule-part="Arm" aria-pressed="false">
+                        <img src="images/ui/Arm.png" alt="Arm" loading="lazy" decoding="async">
+                    </button>
+                    <button type="button" class="recommendation-item-rule-part-filter" data-rule-part="Leg" aria-pressed="false">
+                        <img src="images/ui/Leg.png" alt="Leg" loading="lazy" decoding="async">
+                    </button>
+                </div>
+            </div>
+            <label class="recommendation-item-rule-search-label" for="recommendation-item-rule-search" data-i18n="searchItems">Search items</label>
+            <input type="search" id="recommendation-item-rule-search" class="recommendation-item-rule-search" data-i18n-placeholder="searchItemRulesPlaceholder" placeholder="Search items...">
+            <div id="recommendation-item-rule-options" class="recommendation-item-rule-options"></div>
+        </div>
+    </dialog>
+
     <footer class="data-footer" aria-label="Data status">
         <div class="data-status">
             <span id="data-patch"></span>
@@ -273,7 +316,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=33-map-fit"></script>
+    <script src="script.js?v=36-item-rule-search"></script>
 </body>
 
 </html>
