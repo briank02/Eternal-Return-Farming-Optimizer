@@ -132,8 +132,12 @@
             <div class="selection-header" style="flex-shrink: 0;">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                     <h2 id="build-heading" style="margin:0;" data-i18n="yourEarlyBuild">Your Early Build</h2>
-                    <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'" data-i18n="resetBuild">Reset Build</button>
+                    <div class="build-header-actions">
+                        <button type="button" id="share-build-btn" class="share-build-btn" disabled data-i18n="shareEarlyRoute">Share Route</button>
+                        <button id="reset-build-btn" style="padding: 5px 15px; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background 0.2s;" onmouseover="this.style.background='#c0392b'" onmouseout="this.style.background='#e74c3c'" data-i18n="resetBuild">Reset Build</button>
+                    </div>
                 </div>
+                <p id="shared-build-notice" class="shared-build-notice" role="status" aria-live="polite" hidden></p>
                 <div id="selected-item-grid" class="grid-view small-grid">
                     <p class="empty-msg" data-i18n="clickToAdd">Click items below to add them to your build.</p>
                 </div>
@@ -308,6 +312,33 @@
         </div>
     </dialog>
 
+    <dialog id="share-build-dialog" class="share-build-dialog" aria-labelledby="share-build-title">
+        <div class="share-build-header">
+            <div>
+                <span class="share-build-kicker" data-i18n="shareExport">Share / Export</span>
+                <h2 id="share-build-title" data-i18n="shareExportTitle">Build Preview</h2>
+            </div>
+            <button type="button" id="close-share-build" class="share-build-close" aria-label="Close share dialog">&times;</button>
+        </div>
+        <div class="share-build-body">
+            <label id="share-route-picker-wrap" class="share-route-picker" for="share-route-picker" hidden>
+                <span data-i18n="routeToExport">Route to export</span>
+                <select id="share-route-picker"></select>
+            </label>
+            <div class="share-build-preview-wrap">
+                <canvas id="share-build-canvas" width="1200" height="675" role="img" aria-label="Build export preview">
+                    Build export preview
+                </canvas>
+            </div>
+            <p id="share-build-status" class="share-build-status" role="status" aria-live="polite"></p>
+        </div>
+        <div class="share-build-actions">
+            <button type="button" id="copy-build-link" class="share-secondary-btn" data-i18n="copyLink">Copy Link</button>
+            <button type="button" id="copy-build-image" class="share-secondary-btn" data-i18n="copyImage">Copy Image</button>
+            <button type="button" id="download-build-image" class="share-primary-btn" data-i18n="downloadImage">Download Image</button>
+        </div>
+    </dialog>
+
     <footer class="data-footer" aria-label="Data status">
         <div class="data-status">
             <span id="data-patch"></span>
@@ -316,7 +347,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=37-webp-assets"></script>
+    <script src="script.js?v=39-share-export"></script>
+    <script src="share-export.js?v=11"></script>
 </body>
 
 </html>

@@ -383,6 +383,7 @@ async function buildData() {
         validateItemStats(engName, itemStats);
 
         const itemObj = {
+            code: item.code,
             nameKo: koName,
             type: type,
             part: partType,
