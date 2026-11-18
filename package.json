@@ -5,13 +5,15 @@
   "scripts": {
     "start": "npx serve docs",
     "build:data": "node build-data.js && node scripts/update-image-paths.js",
+    "build:data:preview": "node build-data.js && node scripts/apply-patch-preview.js && node scripts/update-image-paths.js",
     "assets:update": "node scripts/update-image-paths.js",
     "assets:optimize": "node scripts/optimize-image-assets.js && node scripts/update-image-paths.js",
     "assets:validate": "node scripts/validate-image-assets.js",
     "assets:validate:remote": "node scripts/validate-deployed-site.js",
     "benchmark:recommendations": "node scripts/benchmark-recommendations.js",
+    "test:patch-preview": "node scripts/test-patch-preview.js",
     "test:build-state": "node scripts/test-build-state.js",
-    "test": "npm run assets:validate && npm run test:build-state"
+    "test": "npm run assets:validate && npm run test:patch-preview && npm run test:build-state"
   },
   "repository": {
     "type": "git",

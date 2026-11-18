@@ -1,0 +1,19 @@
+{
+  "patchVersion": "NEXT_PATCH",
+  "basePatchVersion": "CURRENT_API_PATCH",
+  "sourceUrl": "OFFICIAL_PATCH_NOTES_URL",
+  "items": {
+    "Example Item": {
+      "stats": {
+        "attackPower": 0
+      },
+      "uniqueStats": {},
+      "statsByLv": {},
+      "fields": {},
+      "locations": {
+        "remove": [],
+        "add": []
+      }
+    }
+  }
+}

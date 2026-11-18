@@ -1,0 +1,35 @@
+{
+  "patchVersion": "13.1",
+  "basePatchVersion": "13.0b",
+  "sourceUrl": "https://playeternalreturn.com/posts/news/3969",
+  "items": {
+    "Nightmare Nails": {
+      "stats": {
+        "skillAmp": 70
+      }
+    },
+    "Revenge of Goujian": {
+      "stats": {
+        "attackPower": 16
+      }
+    },
+    "Chemicals": {
+      "locations": {
+        "remove": ["Uptown"],
+        "add": ["Warehouse"]
+      }
+    },
+    "Walther PPK": {
+      "locations": {
+        "remove": ["Warehouse"],
+        "add": ["Uptown"]
+      }
+    },
+    "Fedorova": {
+      "locations": {
+        "remove": ["Warehouse"],
+        "add": ["Uptown"]
+      }
+    }
+  }
+}

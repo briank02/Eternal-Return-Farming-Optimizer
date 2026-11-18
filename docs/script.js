@@ -148,6 +148,7 @@ const DICT = {
         removeItem: "Remove item",
         selectRoute: "Select route for comparison",
         dataPatch: "Data patch",
+        dataPreview: "Preview",
         dataUpdated: "Data updated"
     },
     ko: {
@@ -256,6 +257,7 @@ Object.assign(DICT.ko, {
 });
 
 DICT.ko.dataPatch = "패치 버전";
+DICT.ko.dataPreview = "미리보기";
 DICT.ko.dataUpdated = "업데이트 일자";
 
 DICT.ko.viewMap = "루트 보기";
@@ -1336,7 +1338,9 @@ function renderDataStatus() {
     const updatedElement = document.getElementById('data-updated');
     if (!patchElement || !updatedElement) return;
 
-    patchElement.textContent = `${t('dataPatch')}: ${dataMeta.patchVersion || '-'}`;
+    const patchVersion = dataMeta.patchVersion || '-';
+    const previewLabel = dataMeta.preview ? ` ${t('dataPreview')}` : '';
+    patchElement.textContent = `${t('dataPatch')}: ${patchVersion}${previewLabel}`;
 
     const generatedAt = dataMeta.generatedAt ? new Date(dataMeta.generatedAt) : null;
     if (!generatedAt || Number.isNaN(generatedAt.getTime())) {
