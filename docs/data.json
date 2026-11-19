@@ -1,11 +1,7 @@
 {
   "meta": {
     "patchVersion": "13.1",
-    "generatedAt": "2026-11-18T09:30:22.320Z",
-    "basePatchVersion": "13.0b",
-    "preview": true,
-    "previewSource": "https://playeternalreturn.com/posts/news/3969",
-    "previewAppliedAt": "2026-11-18T09:32:21.079Z"
+    "generatedAt": "2026-11-19T02:41:00.948Z"
   },
   "items": {
     "Kitchen Knife": {
@@ -5425,10 +5421,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Uptown",
         "Police Station",
         "Factory",
-        "Barge",
-        "Uptown"
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "Pistol",
@@ -5807,10 +5803,10 @@
       "type": "Common",
       "part": "Weapon",
       "locations": [
+        "Uptown",
         "Police Station",
         "Factory",
-        "Barge",
-        "Uptown"
+        "Barge"
       ],
       "initialCount": 1,
       "weaponType": "AssaultRifle",
@@ -17615,14 +17611,14 @@
       "type": "Common",
       "part": "Misc",
       "locations": [
+        "Warehouse",
         "Beach",
         "Gas Station",
         "Fire Station",
         "Hospital",
         "Cemetery",
         "Factory",
-        "School",
-        "Warehouse"
+        "School"
       ],
       "initialCount": 1,
       "weaponType": "",
